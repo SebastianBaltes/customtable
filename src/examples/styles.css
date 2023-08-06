@@ -1,0 +1,241 @@
+:root {
+  --color-white: white;
+  --color-black: black;
+  --color-success: hsl(111, 49%, 54%);
+  --color-warning: hsl(41, 82%, 50%);
+  --color-error: hsl(5, 100%, 66%);
+
+  --color-gray-20: hsl(0, 0%, 98%);
+  --color-gray-50: hsl(0, 0%, 95%);
+  --color-gray-100: hsl(0, 0%, 90%);
+  --color-gray-200: hsl(0, 0%, 80%);
+  --color-gray-300: hsl(0, 0%, 70%);
+  --color-gray-400: hsl(0, 0%, 60%);
+  --color-gray-500: hsl(0, 0%, 50%);
+  --color-gray-600: hsl(0, 0%, 40%);
+  --color-gray-700: hsl(0, 0%, 30%);
+  --color-gray-800: hsl(0, 0%, 20%);
+  --color-gray-900: hsl(0, 0%, 10%);
+  --color-gray-950: hsl(0, 0%, 5%);
+
+  --color-blue-20: hsl(207, 100%, 98%);
+  --color-blue-50: hsl(207, 100%, 95%);
+  --color-blue-100: hsl(207, 100%, 90%);
+  --color-blue-100-transparent:  hsla(207, 100%, 50%, 8%);
+  --color-blue-200: hsl(207, 100%, 80%);
+  --color-blue-300: hsl(207, 100%, 70%);
+  --color-blue-400: hsl(207, 100%, 60%);
+  --color-blue-500: hsl(207, 100%, 50%);
+  --color-blue-600: hsl(207, 100%, 40%);
+  --color-blue-700: hsl(207, 100%, 30%);
+  --color-blue-800: hsl(207, 100%, 20%);
+  --color-blue-900: hsl(207, 100%, 10%);
+  --color-blue-950: hsl(207, 100%, 5%);
+
+  --color-red-500: hsl(2, 82%, 55%);
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  margin: 3em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.custom-table {
+  border: 1px solid var(--color-gray-100);
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  user-select: none;
+  font-family: sans-serif;
+}
+
+.custom-table:focus {
+  outline: none;
+}
+
+.custom-table-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  overflow: auto;
+  display: grid;
+}
+
+.custom-table table {
+  border-collapse: collapse;
+  border: none;
+}
+
+.custom-table thead th {
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+}
+
+.custom-table tbody td.sticky {
+  position: sticky;
+  background-color: var(--color-gray-20);
+  z-index: 1;
+}
+
+.custom-table thead th.sticky {
+  position: sticky;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+}
+
+
+
+.custom-table tbody {
+}
+
+.custom-table-table {
+  width: 100%;
+}
+
+.col-header,
+.cell {
+  outline: 1px solid var(--color-gray-100);
+}
+
+.col-header,
+.cell {
+  padding: 10px 14px;
+}
+
+.col-header {
+  background-color: var(--color-gray-50);
+}
+
+.col-edited,
+.col-selected {
+  background-color: var(--color-gray-200);
+}
+
+.col-edited,
+.cell-edited {
+  user-select: all;
+}
+
+.cell-selected {
+}
+
+.row-selected,
+.row-edited {
+  background-color: var(--color-blue-50);
+}
+
+.cell-selected {
+  background-color: var(--color-blue-100);
+}
+
+.cell-edited {
+  background-color: white;
+  outline: solid 4px var(--color-blue-400);
+}
+
+.col-selected,
+.col-edited,
+.row-edited,
+.row-selected,
+.cell-selected,
+.cell-edited {
+  z-index: 1;
+}
+
+.fill-rectangle,
+.selection-rectangle
+{
+  display: none;
+  outline: solid 2px var(--color-blue-400);
+  position: absolute;
+  pointer-events: none;
+}
+
+.selection-rectangle {
+  background-color: var(--color-blue-100-transparent);
+}
+
+.fill-rectangle {
+  outline: dashed 2px var(--color-red-500);
+}
+
+#selection-rectangle, #fill-rectangle {
+  z-index: 0;
+}
+
+#selection-rectangle-sticky, #fill-rectangle-sticky {
+  position: absolute;
+  z-index: 1;
+}
+
+.selection-rectangle-dragger {
+  content: "";
+  width: 8px;
+  height: 8px;
+  outline: solid 1px var(--color-white);
+  background-color: var(--color-blue-400);
+  position: absolute;
+  right: -5px;
+  bottom: -5px;
+  pointer-events: all;
+  z-index: 20;
+  cursor: crosshair;
+}
+
+.context-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 200px;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  font-family: sans-serif;
+}
+
+.context-menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: #222;
+}
+
+.context-menu-shortcut {
+  color: #888;
+  font-size: 0.8em;
+}
+.context-menu-item:hover {
+  background-color: #f0f0f0;
+}
+.context-menu-modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}

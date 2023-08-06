@@ -1,0 +1,43 @@
+{
+  "name": "customtable",
+  "version": "0.0.1",
+  "description": "A powerful and flexible table editor component built with React and TypeScript. It includes comprehensive customization options such as sorting, search fields, custom renderers and editors, right-click menus, scrolling, cell and range selection, copy & paste functionality, and validation. It utilizes the Tailwind CSS framework for modern and responsive styling. Includes unit tests and an interface for data store access.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "start": "parcel src/examples/index.html --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SebastianBaltes/signalstate.git"
+  },
+  "keywords": [
+    "react",
+    "state",
+    "mutable",
+    "signal"
+  ],
+  "author": "Sebastian Baltes <sebastian.l.baltes@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SebastianBaltes/signalstate/issues"
+  },
+  "homepage": "https://github.com/SebastianBaltes/signalstate#readme",
+  "devDependencies": {
+    "@types/jest": "^29.5.3",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "parcel": "^2.9.3",
+    "prettier": "^3.0.0",
+    "process": "^0.11.10",
+    "react-test-renderer": "^18.2.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
