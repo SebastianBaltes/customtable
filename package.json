@@ -8,7 +8,7 @@
     "build": "tsc",
     "test": "jest",
     "start": "parcel src/examples/index.html --open",
-    "build-demo": "parcel build src/examples/index.html --dist-dir docs --no-cache "
+    "build-demo": "parcel build src/examples/index.html --dist-dir docs --no-cache --public-url ./"
   },
   "repository": {
     "type": "git",
