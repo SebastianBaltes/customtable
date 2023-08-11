@@ -140,7 +140,9 @@ body {
 }
 
 .row-selected,
-.row-edited {
+.row-edited,
+.custom-table tbody tr.row-selected td.sticky,
+.custom-table tbody tr.row-edited td.sticky {
   background-color: var(--color-blue-50);
 }
 

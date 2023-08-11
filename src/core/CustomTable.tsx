@@ -51,6 +51,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       fillRectangleStickyRef,
       setCursorRef,
       handleKeyDown,
+      customTableRef,
     } = useCursor(rows, columns, numberOfStickyColums);
 
     const { stickyColumnsLefts } = useStickyColumnsLeftChecker(
@@ -83,7 +84,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     };
 
     return (
-      <div className="custom-table" onKeyDown={handleKeyDown} tabIndex={0}>
+      <div ref={customTableRef} className="custom-table" onKeyDown={handleKeyDown} tabIndex={0}>
         {stickyColumnsLefts.css != null && (
           <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
         )}

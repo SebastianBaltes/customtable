@@ -52,6 +52,14 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
 
   const handleKeyDown = useCursorKeys(cursorRef, setCursorRef, rows, columns);
 
+  const customTableRef = useRef(null);
+
+  useEffect(() => {
+    if (customTableRef.current) {
+      (customTableRef.current as HTMLDivElement).focus();
+    }
+  }, []);
+
   return {
     cursorRef,
     viewportRef,
@@ -62,5 +70,6 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
     fillRectangleStickyRef,
     setCursorRef,
     handleKeyDown,
+    customTableRef,
   };
 }
