@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "start": "parcel src/examples/index.html --open"
+    "start": "parcel src/examples/index.html --open",
+    "build-demo": "parcel build src/examples/index.html --dist-dir docs --no-cache "
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,9 @@
   },
   "homepage": "https://github.com/SebastianBaltes/signalstate#readme",
   "devDependencies": {
+    "@parcel/config-default": "^2.9.3",
+    "@parcel/transformer-html": "^2.9.3",
+    "@parcel/transformer-typescript-tsc": "^2.9.3",
     "@types/jest": "^29.5.3",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
@@ -39,5 +43,10 @@
     "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "targets": {
+    "module": false,
+    "main": false,
+    "types": false
   }
 }
