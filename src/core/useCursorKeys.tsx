@@ -25,7 +25,7 @@ export function useCursorKeys(
         : {
             editing,
             filling: false,
-            cursor: { colIdx: col, rowIdx: row },
+            selectionStart: { colIdx: col, rowIdx: row },
             selectionEnd: { colIdx: col, rowIdx: row },
             fillEnd: { colIdx: col, rowIdx: row },
           };

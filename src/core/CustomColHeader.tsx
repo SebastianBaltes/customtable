@@ -28,7 +28,6 @@ export const CustomColHeader = React.memo(
         className={classNames("col-header", sticky && "sticky", cursorName)}
         onMouseDown={(event) => {
           // wegen direktem DOM-Access muß in Listenern cursorRef.current verwendet werden
-          const cursor = cursorRef.current.selectionStart;
           setCursorRef({
             editing: false,
             filling: false,

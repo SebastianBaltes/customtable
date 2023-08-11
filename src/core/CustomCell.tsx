@@ -33,8 +33,9 @@ export const CustomCell = React.memo(
         onMouseDown={(event) => {
           if (event.buttons == 1) {
             // wegen direktem DOM-Access muß in Listenern cursorRef.current verwendet werden
-            const cursor = cursorRef.current.selectionStart;
-            const cellHasCursor = rowIdx === cursor.rowIdx && colIdx === cursor.colIdx;
+            const selectionStart = cursorRef.current.selectionStart;
+            const cellHasCursor =
+              rowIdx === selectionStart.rowIdx && colIdx === selectionStart.colIdx;
             setCursorRef({
               editing: cellHasCursor,
               selectionStart: { rowIdx, colIdx },

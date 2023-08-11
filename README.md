@@ -14,6 +14,10 @@ The downside, however, is that the grid size is practically limited, meaning in 
 
 One advantage over react-datasheet-grid: Multiple sticky columns are possible.
 
+# live demo
+
+https://sebastianbaltes.github.io/customtable/
+
 # todo
 
 - Copy & Paste
