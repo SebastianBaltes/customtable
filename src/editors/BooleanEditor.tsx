@@ -1,6 +1,11 @@
 import React from "react";
-import { ColumnConfig, Editor } from "../core/Types";
+import { Editor } from "../core/Types";
 
-export const BooleanEditor: Editor<boolean> = ({ value, row, editing, columnConfig }) => (
-  <input type="checkbox" checked={value} disabled />
+export const BooleanEditor: Editor<boolean> = ({ value, row, editing, columnConfig, onChange }) => (
+  <input
+    type="checkbox"
+    checked={!!value}
+    onChange={() => onChange(!value)}
+    onClick={(e) => e.stopPropagation()}
+  />
 );

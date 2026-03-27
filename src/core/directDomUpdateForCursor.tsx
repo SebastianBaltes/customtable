@@ -146,9 +146,9 @@ export function forceUpdateCursorRect(
     const dleft = offsetParent ? -offsetParent.offsetLeft : 0;
     const topDelta = viewportRect.top;
     const leftDelta = viewportRect.left;
-    const top = Math.min(startRect.top, endRect.top) - leftDelta;
+    const top = Math.min(startRect.top, endRect.top) - topDelta;
     const left = Math.min(startRect.left, endRect.left) - leftDelta;
-    const right = Math.max(startRect.right, endRect.right) - topDelta;
+    const right = Math.max(startRect.right, endRect.right) - leftDelta;
     const bottom = Math.max(startRect.bottom, endRect.bottom) - topDelta;
     const width = right - left;
     const height = bottom - top;

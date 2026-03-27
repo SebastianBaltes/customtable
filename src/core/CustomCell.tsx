@@ -1,4 +1,4 @@
-import { ColumnConfig, Cursor, Row } from "./Types";
+import { CellMeta, ColumnConfig, Cursor, Row } from "./Types";
 import React from "react";
 import classNames from "classnames";
 import { getCursorName } from "./CustomTable";
@@ -13,6 +13,9 @@ export const CustomCell = React.memo(
     setCursorRef,
     row,
     sticky,
+    onCellChange,
+    isEditing,
+    cellMeta,
   }: {
     colIdx: number;
     column: ColumnConfig<any>;
@@ -21,23 +24,33 @@ export const CustomCell = React.memo(
     setCursorRef: (partialCursor: Partial<Cursor>) => void;
     row: Row;
     sticky: boolean;
+    onCellChange: (rowIdx: number, colName: string, value: any) => void;
+    isEditing: boolean;
+    cellMeta?: CellMeta;
   }) => {
     const { editing, selectionStart } = cursorRef.current;
     const rowHasCursor = rowIdx === selectionStart.rowIdx;
     const cellHasCursor = rowHasCursor && colIdx === selectionStart.colIdx;
     const cellClass = getCursorName("cell-", cellHasCursor, editing);
+    const isDisabled = cellMeta?.disabled === true;
+    const effectiveEditing = isDisabled ? false : isEditing;
+    const handleChange = (value: any) => {
+      if (isDisabled) return;
+      onCellChange(rowIdx, column.name, value);
+    };
     return (
       <td
         key={column.name}
-        className={classNames("cell", sticky && "sticky", cellClass)}
+        className={classNames("cell", sticky && "sticky", cellClass, isDisabled && "cell-disabled", cellMeta?.className)}
+        style={cellMeta?.style}
+        title={cellMeta?.title}
         onMouseDown={(event) => {
           if (event.buttons == 1) {
-            // wegen direktem DOM-Access muß in Listenern cursorRef.current verwendet werden
             const selectionStart = cursorRef.current.selectionStart;
             const cellHasCursor =
               rowIdx === selectionStart.rowIdx && colIdx === selectionStart.colIdx;
             setCursorRef({
-              editing: cellHasCursor,
+              editing: isDisabled ? false : cellHasCursor,
               selectionStart: { rowIdx, colIdx },
               selectionEnd: { rowIdx, colIdx },
               fillEnd: { rowIdx, colIdx },
@@ -48,7 +61,6 @@ export const CustomCell = React.memo(
         }}
         onMouseMove={(event) => {
           if (event.buttons === 1) {
-            // wegen direktem DOM-Access muß in Listenern cursorRef.current verwendet werden
             const cursor = cursorRef.current;
             const selectionEnd = { rowIdx, colIdx };
             const fillEnd = { rowIdx, colIdx };
@@ -56,7 +68,7 @@ export const CustomCell = React.memo(
           }
         }}
       >
-        {renderCell(row[column.name], row, editing, column)}
+        {renderCell(row[column.name], row, effectiveEditing, column, handleChange)}
       </td>
     );
   },

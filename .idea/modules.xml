@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/customtable.iml" filepath="$PROJECT_DIR$/.idea/customtable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/oc-restraints.iml" filepath="$PROJECT_DIR$/.idea/oc-restraints.iml" />
     </modules>
   </component>
 </project>

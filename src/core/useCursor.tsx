@@ -1,5 +1,5 @@
-import { ColumnConfig, Cursor, Row } from "./Types";
-import { useEffect, useRef } from "react";
+import { CellAddr, ColumnConfig, Cursor, Row } from "./Types";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { directDomUpdateForCursor } from "./directDomUpdateForCursor";
 import { useCursorKeys } from "./useCursorKeys";
 
@@ -13,6 +13,9 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
     fillEnd: { colIdx: -1, rowIdx: -1 },
   });
 
+  // React state to trigger re-renders for the editing cell
+  const [editingCell, setEditingCell] = useState<CellAddr | null>(null);
+
   const viewportRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<HTMLTableElement>(null);
   const selectionRectangleRef = useRef<HTMLDivElement>(null);
@@ -20,7 +23,7 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
   const selectionRectangleStickyRef = useRef<HTMLDivElement>(null);
   const fillRectangleStickyRef = useRef<HTMLDivElement>(null);
 
-  const setCursorRef = (partialCursor: Partial<Cursor>) => {
+  const setCursorRef = useCallback((partialCursor: Partial<Cursor>) => {
     const oldCursor = cursorRef.current;
     const newCursor: Cursor = (cursorRef.current = {
       ...oldCursor,
@@ -37,7 +40,21 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
       fillRectangleRef,
       fillRectangleStickyRef,
     );
-  };
+
+    // Update React state for editing cell to trigger re-renders
+    const wasEditing = oldCursor.editing;
+    const isEditing = newCursor.editing;
+    const cellChanged =
+      oldCursor.selectionStart.rowIdx !== newCursor.selectionStart.rowIdx ||
+      oldCursor.selectionStart.colIdx !== newCursor.selectionStart.colIdx;
+    if (wasEditing !== isEditing || (isEditing && cellChanged)) {
+      setEditingCell(
+        isEditing
+          ? { rowIdx: newCursor.selectionStart.rowIdx, colIdx: newCursor.selectionStart.colIdx }
+          : null,
+      );
+    }
+  }, [numberOfStickyColums]);
 
   useEffect(() => {
     setCursorRef({
@@ -62,6 +79,7 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
 
   return {
     cursorRef,
+    editingCell,
     viewportRef,
     tableRef,
     selectionRectangleRef,

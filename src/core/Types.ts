@@ -72,6 +72,7 @@ export type EditorParams<T> = {
   row: Record<string, T>;
   editing: boolean;
   columnConfig: ColumnConfig<T>;
+  onChange: (value: T) => void;
 };
 
 export type Editor<T> = (params: EditorParams<T>) => JSX.Element;
@@ -89,6 +90,43 @@ export type Cursor = {
   filling: boolean;
   colSelection: boolean;
 };
+
+export type SortConfig = {
+  column: string;
+  direction: "asc" | "desc";
+} | null;
+
+/**
+ * Meta information for a single cell (style, disabled, title).
+ */
+export interface CellMeta {
+  style?: React.CSSProperties;
+  className?: string;
+  disabled?: boolean;
+  title?: string;
+}
+
+/**
+ * Meta information for a row (style, className, title).
+ */
+export interface RowMeta {
+  style?: React.CSSProperties;
+  className?: string;
+  title?: string;
+}
+
+/**
+ * Meta map keyed by row-key, then column-name.
+ * The special key "__row" on the inner record applies RowMeta to the whole <tr>.
+ */
+export interface CellMetaMap {
+  [rowKey: string]: {
+    __row?: RowMeta;
+    [columnName: string]: CellMeta | RowMeta | undefined;
+  };
+}
+
+export type FilterState = Record<string, string>;
 
 export type ContextMenuItem =
   | Partial<{

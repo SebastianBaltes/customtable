@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { ContextMenuItem } from "./Types";
+import { ContextMenuItem, Cursor } from "./Types";
 
-export function useContextMenu() {
+export function useContextMenu(
+  cursorRef: React.MutableRefObject<Cursor>,
+  copySelection: () => Promise<void>,
+  pasteAtCursor: () => Promise<void>,
+  deleteSelection: () => void,
+  handleDeleteRows: () => void,
+) {
   const [contextMenu, setContextMenu] = useState({ visible: false, position: { x: 0, y: 0 } });
   const openContextMenu = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
@@ -23,21 +29,23 @@ export function useContextMenu() {
     },
     {
       label: "remove rows",
-      onClick: () => {},
+      onClick: handleDeleteRows,
     },
     "---",
     {
       label: "copy content",
       shortcut: "Ctrl + C",
-      onClick: () => {},
+      onClick: () => { copySelection(); },
     },
     {
       label: "paste content",
-      onClick: () => {},
+      shortcut: "Ctrl + V",
+      onClick: () => { pasteAtCursor(); },
     },
     {
       label: "delete content",
-      onClick: () => {},
+      shortcut: "Delete",
+      onClick: deleteSelection,
     },
   ];
   return { contextMenu, openContextMenu, closeContextMenu, contextMenuItems };

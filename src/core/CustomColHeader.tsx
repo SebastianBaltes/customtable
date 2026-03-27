@@ -1,4 +1,4 @@
-import { CellAddr, ColumnConfig, Cursor, Row } from "./Types";
+import { CellAddr, ColumnConfig, Cursor, Row, SortConfig } from "./Types";
 import classNames from "classnames";
 import React from "react";
 import { getCursorName } from "./CustomTable";
@@ -11,6 +11,10 @@ export const CustomColHeader = React.memo(
     column,
     rowsLength,
     sticky,
+    sortConfig,
+    onSortChange,
+    filterValue,
+    onFilterChange,
   }: {
     colIdx: number;
     cursorRef: React.MutableRefObject<Cursor>;
@@ -18,16 +22,37 @@ export const CustomColHeader = React.memo(
     column: ColumnConfig<any>;
     rowsLength: number;
     sticky: boolean;
+    sortConfig: SortConfig;
+    onSortChange: (config: SortConfig) => void;
+    filterValue: string;
+    onFilterChange: (value: string) => void;
   }) => {
     const { editing, selectionStart } = cursorRef.current;
     const colHasCursor = colIdx === selectionStart.colIdx;
     const cursorName = getCursorName("col-", colHasCursor, editing);
     const label = column.label ?? column.name;
+
+    const isSorted = sortConfig?.column === column.name;
+    const sortDirection = isSorted ? sortConfig!.direction : null;
+
+    const handleSortClick = (event: React.MouseEvent) => {
+      // Don't trigger sort if clicking the filter input
+      if ((event.target as HTMLElement).tagName === "INPUT") return;
+
+      if (!isSorted) {
+        onSortChange({ column: column.name, direction: "asc" });
+      } else if (sortDirection === "asc") {
+        onSortChange({ column: column.name, direction: "desc" });
+      } else {
+        onSortChange(null);
+      }
+    };
+
     return (
       <th
         className={classNames("col-header", sticky && "sticky", cursorName)}
         onMouseDown={(event) => {
-          // wegen direktem DOM-Access muß in Listenern cursorRef.current verwendet werden
+          if ((event.target as HTMLElement).tagName === "INPUT") return;
           setCursorRef({
             editing: false,
             filling: false,
@@ -38,8 +63,8 @@ export const CustomColHeader = React.memo(
           });
         }}
         onMouseMove={(event) => {
+          if ((event.target as HTMLElement).tagName === "INPUT") return;
           if (event.buttons === 1 && cursorRef.current.colSelection && !cursorRef.current.filling) {
-            // wegen direktem DOM-Access muß in Listenern cursorRef.current verwendet werden
             setCursorRef({
               editing: false,
               filling: false,
@@ -48,8 +73,25 @@ export const CustomColHeader = React.memo(
             });
           }
         }}
+        onClick={handleSortClick}
       >
-        {label}
+        <div className="col-header-content">
+          <span className="col-header-label">
+            {label}
+            {sortDirection === "asc" && " ▲"}
+            {sortDirection === "desc" && " ▼"}
+          </span>
+          <input
+            type="text"
+            className="col-filter-input"
+            placeholder="Filter..."
+            value={filterValue}
+            onChange={(e) => onFilterChange(e.target.value)}
+            onMouseDown={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
+          />
+        </div>
       </th>
     );
   },
