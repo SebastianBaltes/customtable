@@ -1,0 +1,88 @@
+/*
+ * Excel Classic — mimics the traditional Microsoft Excel look.
+ * Gray headers, gridlines, green selection.
+ */
+
+:root {
+  --ct-bg: white;
+  --ct-text: #000;
+  --ct-font: "Segoe UI", Calibri, Arial, sans-serif;
+
+  --ct-border: #b4b4b4;
+  --ct-border-light: #d4d4d4;
+
+  --ct-header-bg: #e6e6e6;
+  --ct-header-border: #b4b4b4;
+  --ct-header-label: #000;
+
+  --ct-row-bg: white;
+  --ct-row-hover: #e8f0fe;
+  --ct-sticky-bg: #f0f0f0;
+
+  --ct-selected-row-bg: #cce5ff;
+  --ct-selected-col-bg: #d5d5d5;
+  --ct-selected-cell-bg: white;
+  --ct-selected-outline: #217346;
+  --ct-edited-outline: #217346;
+  --ct-selection-fill: rgba(33, 115, 70, 0.08);
+  --ct-fill-outline: #c00;
+  --ct-dragger-bg: #217346;
+  --ct-dragger-border: white;
+
+  --ct-toolbar-bg: #f3f3f3;
+  --ct-toolbar-border: #d4d4d4;
+  --ct-input-border: #b4b4b4;
+  --ct-input-bg: white;
+  --ct-button-bg: #e6e6e6;
+  --ct-button-border: #a0a0a0;
+  --ct-button-hover: #d5d5d5;
+
+  --ct-focus-outline: #217346;
+
+  --ct-ctx-bg: #f9f9f9;
+  --ct-ctx-border: #b4b4b4;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.15);
+  --ct-ctx-text: #1a1a1a;
+  --ct-ctx-hover: #e0e0e0;
+  --ct-ctx-shortcut: #777;
+
+  --ct-muted: #888;
+  --ct-muted-light: #bbb;
+
+  --ct-dropdown-bg: white;
+  --ct-dropdown-border: #b4b4b4;
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.15);
+  --ct-dropdown-hover: #e8e8e8;
+  --ct-dropdown-selected: #cce5ff;
+  --ct-dropdown-highlighted: #dce8f5;
+  --ct-dropdown-both: #b8d4f0;
+  --ct-dropdown-text: #000;
+  --ct-dropdown-placeholder: #666;
+  --ct-dropdown-empty: #888;
+
+  --ct-pagination-link: #0563c1;
+  --ct-pagination-hover-bg: #dce8f5;
+  --ct-pagination-hover-border: #8cb4e0;
+  --ct-pagination-current-border: #999;
+  --ct-pagination-label: #444;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.3);
+  --ct-dialog-bg: #f3f3f3;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.25);
+  --ct-dialog-border: #b4b4b4;
+  --ct-dialog-title: #1a1a1a;
+  --ct-dialog-close: #888;
+  --ct-dialog-close-hover: #1a1a1a;
+  --ct-dialog-input-border: #b4b4b4;
+  --ct-dialog-btn-bg: #e6e6e6;
+  --ct-dialog-btn-border: #a0a0a0;
+  --ct-dialog-btn-text: #1a1a1a;
+  --ct-dialog-btn-hover: #d5d5d5;
+  --ct-dialog-save-bg: #217346;
+  --ct-dialog-save-hover: #185a35;
+}
+
+/* Excel green checkboxes */
+.custom-table input[type="checkbox"] {
+  accent-color: #217346;
+}

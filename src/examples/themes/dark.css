@@ -1,0 +1,107 @@
+/*
+ * Dark theme — dark backgrounds, light text, blue accents.
+ */
+
+:root {
+  --ct-bg: hsl(220, 15%, 13%);
+  --ct-text: hsl(220, 10%, 85%);
+  --ct-font: sans-serif;
+
+  --ct-border: hsl(220, 12%, 22%);
+  --ct-border-light: hsl(220, 12%, 18%);
+
+  --ct-header-bg: hsl(220, 15%, 16%);
+  --ct-header-border: hsl(220, 12%, 25%);
+  --ct-header-label: hsl(220, 10%, 80%);
+
+  --ct-row-bg: hsl(220, 15%, 13%);
+  --ct-row-hover: hsl(220, 20%, 18%);
+  --ct-sticky-bg: hsl(220, 15%, 15%);
+
+  --ct-selected-row-bg: hsl(215, 30%, 20%);
+  --ct-selected-col-bg: hsl(220, 15%, 20%);
+  --ct-selected-cell-bg: hsl(220, 15%, 16%);
+  --ct-selected-outline: hsl(207, 80%, 50%);
+  --ct-edited-outline: hsl(207, 80%, 50%);
+  --ct-selection-fill: hsla(207, 80%, 50%, 12%);
+  --ct-fill-outline: hsl(2, 70%, 50%);
+  --ct-dragger-bg: hsl(207, 80%, 50%);
+  --ct-dragger-border: hsl(220, 15%, 13%);
+
+  --ct-toolbar-bg: hsl(220, 15%, 16%);
+  --ct-toolbar-border: hsl(220, 12%, 22%);
+  --ct-input-border: hsl(220, 12%, 28%);
+  --ct-input-bg: hsl(220, 15%, 18%);
+  --ct-button-bg: hsl(220, 15%, 20%);
+  --ct-button-border: hsl(220, 12%, 30%);
+  --ct-button-hover: hsl(220, 15%, 25%);
+
+  --ct-focus-outline: hsl(207, 80%, 50%);
+
+  --ct-ctx-bg: hsl(220, 15%, 18%);
+  --ct-ctx-border: hsl(220, 12%, 28%);
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.5);
+  --ct-ctx-text: hsl(220, 10%, 85%);
+  --ct-ctx-hover: hsl(220, 15%, 24%);
+  --ct-ctx-shortcut: hsl(220, 10%, 50%);
+
+  --ct-muted: hsl(220, 10%, 45%);
+  --ct-muted-light: hsl(220, 10%, 30%);
+
+  --ct-dropdown-bg: hsl(220, 15%, 18%);
+  --ct-dropdown-border: hsl(220, 12%, 28%);
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.4);
+  --ct-dropdown-hover: hsl(220, 15%, 22%);
+  --ct-dropdown-selected: hsl(215, 30%, 22%);
+  --ct-dropdown-highlighted: hsl(215, 30%, 25%);
+  --ct-dropdown-both: hsl(215, 35%, 28%);
+  --ct-dropdown-text: hsl(220, 10%, 85%);
+  --ct-dropdown-placeholder: hsl(220, 10%, 50%);
+  --ct-dropdown-empty: hsl(220, 10%, 45%);
+
+  --ct-pagination-link: hsl(207, 80%, 60%);
+  --ct-pagination-hover-bg: hsl(215, 30%, 22%);
+  --ct-pagination-hover-border: hsl(207, 60%, 40%);
+  --ct-pagination-current-border: hsl(220, 10%, 45%);
+  --ct-pagination-label: hsl(220, 10%, 60%);
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.6);
+  --ct-dialog-bg: hsl(220, 15%, 16%);
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.5);
+  --ct-dialog-border: hsl(220, 12%, 25%);
+  --ct-dialog-title: hsl(220, 10%, 85%);
+  --ct-dialog-close: hsl(220, 10%, 45%);
+  --ct-dialog-close-hover: hsl(220, 10%, 85%);
+  --ct-dialog-input-border: hsl(220, 12%, 28%);
+  --ct-dialog-btn-bg: hsl(220, 15%, 20%);
+  --ct-dialog-btn-border: hsl(220, 12%, 30%);
+  --ct-dialog-btn-text: hsl(220, 10%, 80%);
+  --ct-dialog-btn-hover: hsl(220, 15%, 25%);
+  --ct-dialog-save-bg: hsl(207, 80%, 45%);
+  --ct-dialog-save-hover: hsl(207, 80%, 38%);
+}
+
+/* Dark scrollbars */
+.custom-table .custom-table-viewport {
+  scrollbar-color: hsl(220, 12%, 30%) hsl(220, 15%, 16%);
+}
+
+.custom-table .custom-table-viewport::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.custom-table .custom-table-viewport::-webkit-scrollbar-track {
+  background: hsl(220, 15%, 16%);
+}
+.custom-table .custom-table-viewport::-webkit-scrollbar-thumb {
+  background: hsl(220, 12%, 30%);
+  border-radius: 5px;
+}
+.custom-table .custom-table-viewport::-webkit-scrollbar-thumb:hover {
+  background: hsl(220, 12%, 38%);
+}
+
+/* Dark checkboxes */
+.custom-table input[type="checkbox"] {
+  accent-color: hsl(207, 80%, 50%);
+}

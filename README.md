@@ -63,6 +63,7 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
    - [TypeScript Check](#typescript-check)
    - [E2E Tests (Playwright)](#e2e-tests-playwright)
    - [Project Structure](#project-structure)
+ - [Theming](#theming)
  - [Comparison: CustomTable vs. Others](#comparison-customtable-vs-others)
  - [When to use CustomTable](#when-to-use-customtable)
  - [When to use something else](#when-to-use-something-else)

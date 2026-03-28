@@ -61,6 +61,8 @@ interface IProps {
    * Use `"---"` to insert a separator between custom items.
    */
   extraContextMenuItems: CustomContextMenuItem[];
+  /** Accessible caption for the table (rendered as visually-hidden `<caption>` element). */
+  caption: string;
 }
 
 type CustomTableProps = IRequiredProps & Partial<IProps>;
@@ -85,6 +87,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     textEllipsisLength,
     translations: translationsProp,
     extraContextMenuItems,
+    caption,
   }: CustomTableProps) => {
     const t = React.useMemo(() => resolveTranslations(translationsProp), [translationsProp]);
     const [tableId] = React.useState(() => `MkEu3ZWrGK${Math.floor(Math.random() * 1000000)}`);
@@ -864,6 +867,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
               cellMeta,
               getRowKey,
               textEllipsisLength,
+              caption,
             }}
             stickyPortal={
               numberOfStickyColums === 0

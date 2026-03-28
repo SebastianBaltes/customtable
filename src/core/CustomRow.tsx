@@ -17,6 +17,7 @@ export const CustomRow = React.memo(
     rowMeta,
     cellMetaForRow,
     textEllipsisLength,
+    ariaRowLabel,
   }: {
     columns: ColumnConfig<any>[];
     cursorRef: React.MutableRefObject<Cursor>;
@@ -29,6 +30,7 @@ export const CustomRow = React.memo(
     rowMeta?: RowMeta;
     cellMetaForRow?: Record<string, CellMeta>;
     textEllipsisLength?: number;
+    ariaRowLabel?: string;
   }) => {
     const { editing, selectionStart, selectionEnd } = cursorRef.current;
     const rowHasCursor =
@@ -40,6 +42,7 @@ export const CustomRow = React.memo(
         className={classNames(rowClass, rowMeta?.className)}
         style={rowMeta?.style}
         title={rowMeta?.title}
+        aria-label={ariaRowLabel}
       >
         {columns.map((column, colIdx) => {
           const isEditing =

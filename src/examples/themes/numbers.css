@@ -1,0 +1,95 @@
+/*
+ * Apple Numbers inspired — clean, warm gray headers,
+ * alternating row stripes (gray / white), blue accent.
+ */
+
+:root {
+  --ct-bg: #fff;
+  --ct-text: #1d1d1f;
+  --ct-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+
+  --ct-border: #d2d2d7;
+  --ct-border-light: #e5e5ea;
+
+  --ct-header-bg: #e8e8ed;
+  --ct-header-border: #c7c7cc;
+  --ct-header-label: #3a3a3c;
+
+  --ct-row-bg: #fff;
+  --ct-row-hover: #f2f2f7;
+  --ct-sticky-bg: #f2f2f7;
+
+  --ct-selected-row-bg: #d4e4f7;
+  --ct-selected-col-bg: #d2d2d7;
+  --ct-selected-cell-bg: #fff;
+  --ct-selected-outline: #007aff;
+  --ct-edited-outline: #007aff;
+  --ct-selection-fill: rgba(0, 122, 255, 0.08);
+  --ct-fill-outline: #ff3b30;
+  --ct-dragger-bg: #007aff;
+  --ct-dragger-border: #fff;
+
+  --ct-toolbar-bg: #f2f2f7;
+  --ct-toolbar-border: #d2d2d7;
+  --ct-input-border: #c7c7cc;
+  --ct-input-bg: #fff;
+  --ct-button-bg: #fff;
+  --ct-button-border: #c7c7cc;
+  --ct-button-hover: #e5e5ea;
+
+  --ct-focus-outline: #007aff;
+
+  --ct-ctx-bg: #fff;
+  --ct-ctx-border: #d2d2d7;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.15);
+  --ct-ctx-text: #1d1d1f;
+  --ct-ctx-hover: #e5e5ea;
+  --ct-ctx-shortcut: #8e8e93;
+
+  --ct-muted: #8e8e93;
+  --ct-muted-light: #c7c7cc;
+
+  --ct-dropdown-bg: #fff;
+  --ct-dropdown-border: #d2d2d7;
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.12);
+  --ct-dropdown-hover: #f2f2f7;
+  --ct-dropdown-selected: #d4e4f7;
+  --ct-dropdown-highlighted: #e5e5ea;
+  --ct-dropdown-both: #c5d8ed;
+  --ct-dropdown-text: #1d1d1f;
+  --ct-dropdown-placeholder: #8e8e93;
+  --ct-dropdown-empty: #8e8e93;
+
+  --ct-pagination-link: #007aff;
+  --ct-pagination-hover-bg: #d4e4f7;
+  --ct-pagination-hover-border: #80bfff;
+  --ct-pagination-current-border: #8e8e93;
+  --ct-pagination-label: #3a3a3c;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.35);
+  --ct-dialog-bg: #fff;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.2);
+  --ct-dialog-border: #d2d2d7;
+  --ct-dialog-title: #1d1d1f;
+  --ct-dialog-close: #8e8e93;
+  --ct-dialog-close-hover: #1d1d1f;
+  --ct-dialog-input-border: #c7c7cc;
+  --ct-dialog-btn-bg: #fff;
+  --ct-dialog-btn-border: #c7c7cc;
+  --ct-dialog-btn-text: #3a3a3c;
+  --ct-dialog-btn-hover: #e5e5ea;
+  --ct-dialog-save-bg: #007aff;
+  --ct-dialog-save-hover: #0066d6;
+
+  /* Numbers-specific: alternating row stripes */
+  --ct-row-stripe: #f2f2f7;
+}
+
+/* Alternating row stripes */
+.custom-table tbody tr:nth-child(even) {
+  background-color: var(--ct-row-stripe);
+}
+
+.custom-table tbody tr:nth-child(even) td.sticky {
+  background-color: var(--ct-row-stripe);
+}

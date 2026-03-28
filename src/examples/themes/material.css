@@ -1,0 +1,318 @@
+/*
+ * Material UI DataTable inspired theme.
+ * Borderless cells, horizontal row dividers only, generous padding,
+ * elevated paper surface, rounded corners, Roboto font.
+ */
+
+:root {
+  --ct-bg: #fff;
+  --ct-text: rgba(0, 0, 0, 0.87);
+  --ct-font: "Roboto", "Helvetica", "Arial", sans-serif;
+
+  --ct-border: transparent;
+  --ct-border-light: transparent;
+
+  --ct-header-bg: #fff;
+  --ct-header-border: transparent;
+  --ct-header-label: rgba(0, 0, 0, 0.6);
+
+  --ct-row-bg: #fff;
+  --ct-row-hover: rgba(0, 0, 0, 0.04);
+  --ct-sticky-bg: #fff;
+
+  --ct-selected-row-bg: rgba(25, 118, 210, 0.08);
+  --ct-selected-col-bg: rgba(25, 118, 210, 0.08);
+  --ct-selected-cell-bg: #fff;
+  --ct-selected-outline: #1976d2;
+  --ct-edited-outline: #1976d2;
+  --ct-selection-fill: rgba(25, 118, 210, 0.06);
+  --ct-fill-outline: #d32f2f;
+  --ct-dragger-bg: #1976d2;
+  --ct-dragger-border: #fff;
+
+  --ct-toolbar-bg: #fff;
+  --ct-toolbar-border: rgba(0, 0, 0, 0.12);
+  --ct-input-border: rgba(0, 0, 0, 0.23);
+  --ct-input-bg: #fff;
+  --ct-button-bg: #fff;
+  --ct-button-border: rgba(0, 0, 0, 0.23);
+  --ct-button-hover: rgba(0, 0, 0, 0.04);
+
+  --ct-focus-outline: #1976d2;
+
+  --ct-ctx-bg: #fff;
+  --ct-ctx-border: transparent;
+  --ct-ctx-shadow: 0px 5px 5px -3px rgba(0,0,0,.2), 0px 8px 10px 1px rgba(0,0,0,.14), 0px 3px 14px 2px rgba(0,0,0,.12);
+  --ct-ctx-text: rgba(0, 0, 0, 0.87);
+  --ct-ctx-hover: rgba(0, 0, 0, 0.04);
+  --ct-ctx-shortcut: rgba(0, 0, 0, 0.38);
+
+  --ct-muted: rgba(0, 0, 0, 0.38);
+  --ct-muted-light: rgba(0, 0, 0, 0.12);
+
+  --ct-dropdown-bg: #fff;
+  --ct-dropdown-border: transparent;
+  --ct-dropdown-shadow: 0px 5px 5px -3px rgba(0,0,0,.2), 0px 8px 10px 1px rgba(0,0,0,.14), 0px 3px 14px 2px rgba(0,0,0,.12);
+  --ct-dropdown-hover: rgba(0, 0, 0, 0.04);
+  --ct-dropdown-selected: rgba(25, 118, 210, 0.08);
+  --ct-dropdown-highlighted: rgba(0, 0, 0, 0.04);
+  --ct-dropdown-both: rgba(25, 118, 210, 0.16);
+  --ct-dropdown-text: rgba(0, 0, 0, 0.87);
+  --ct-dropdown-placeholder: rgba(0, 0, 0, 0.38);
+  --ct-dropdown-empty: rgba(0, 0, 0, 0.38);
+
+  --ct-pagination-link: #1976d2;
+  --ct-pagination-hover-bg: rgba(25, 118, 210, 0.08);
+  --ct-pagination-hover-border: transparent;
+  --ct-pagination-current-border: rgba(0, 0, 0, 0.23);
+  --ct-pagination-label: rgba(0, 0, 0, 0.6);
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.5);
+  --ct-dialog-bg: #fff;
+  --ct-dialog-shadow: 0px 11px 15px -7px rgba(0,0,0,.2), 0px 24px 38px 3px rgba(0,0,0,.14), 0px 9px 46px 8px rgba(0,0,0,.12);
+  --ct-dialog-border: transparent;
+  --ct-dialog-title: rgba(0, 0, 0, 0.87);
+  --ct-dialog-close: rgba(0, 0, 0, 0.54);
+  --ct-dialog-close-hover: rgba(0, 0, 0, 0.87);
+  --ct-dialog-input-border: rgba(0, 0, 0, 0.23);
+  --ct-dialog-btn-bg: transparent;
+  --ct-dialog-btn-border: transparent;
+  --ct-dialog-btn-text: #1976d2;
+  --ct-dialog-btn-hover: rgba(25, 118, 210, 0.04);
+  --ct-dialog-save-bg: #1976d2;
+  --ct-dialog-save-hover: #1565c0;
+}
+
+/* ---- MUI overrides: borderless cells, row dividers, generous spacing ---- */
+
+/* Paper-like container with elevation shadow */
+.custom-table {
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,.2), 0px 1px 1px 0px rgba(0,0,0,.14), 0px 1px 3px 0px rgba(0,0,0,.12);
+}
+
+/* No cell outlines — only bottom border on rows */
+.custom-table .col-header,
+.custom-table .cell {
+  outline: none;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  padding: 16px;
+}
+
+.custom-table .col-header {
+  background: #fff;
+  outline: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.01em;
+  line-height: 1.5rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.custom-table th {
+  font-weight: 500;
+}
+
+/* No outline on sticky cells */
+.custom-table tbody td.sticky.cell {
+  outline: none;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+/* Selected column header — no extra border, opaque so sticky headers don't bleed */
+.custom-table .col-edited,
+.custom-table .col-selected {
+  outline: none;
+  background-color: #e3f2fd;
+}
+
+/* Hover effect on rows */
+.custom-table tbody tr:hover td {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Cell data — slightly smaller than header */
+.custom-table .cell {
+  font-size: 0.875rem;
+  line-height: 1.43;
+}
+
+/* Rounded toolbar buttons */
+.custom-table .toolbar-button {
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  padding: 6px 16px;
+  min-height: 36px;
+  border: none;
+  background: transparent;
+  color: #1976d2;
+}
+
+.custom-table .toolbar-button:hover {
+  background: rgba(25, 118, 210, 0.04);
+}
+
+.custom-table .toolbar-input {
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 8px 12px;
+}
+
+.custom-table .toolbar-input:focus {
+  border-color: #1976d2;
+  outline: 1px solid #1976d2;
+}
+
+/* Context menu — MUI elevation */
+.custom-table .context-menu {
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,.2), 0px 8px 10px 1px rgba(0,0,0,.14), 0px 3px 14px 2px rgba(0,0,0,.12);
+  padding: 8px 0;
+}
+
+.custom-table .context-menu-item {
+  padding: 6px 16px;
+  font-size: 1rem;
+  min-height: 36px;
+}
+
+/* Filter input — MUI outlined style */
+.custom-table .col-filter-input {
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  padding: 4px 8px;
+}
+
+.custom-table .col-filter-input:focus {
+  border-color: #1976d2;
+  outline: 1px solid #1976d2;
+}
+
+/* Dropdown list — MUI elevation */
+.custom-table .combo-dropdown-list {
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 5px 5px -3px rgba(0,0,0,.2), 0px 8px 10px 1px rgba(0,0,0,.14), 0px 3px 14px 2px rgba(0,0,0,.12);
+}
+
+.custom-table .combo-dropdown-option {
+  min-height: 36px;
+  padding: 6px 16px;
+}
+
+/* Sort arrows — MUI uses arrow_upward / arrow_downward style */
+.custom-table .col-sort-icon {
+  font-size: 0;
+}
+.custom-table .col-sort-asc::after { content: " ↑"; font-size: 0.875rem; }
+.custom-table .col-sort-desc::after { content: " ↓"; font-size: 0.875rem; }
+
+/* Checkboxes — MUI blue */
+.custom-table input[type="checkbox"] {
+  accent-color: #1976d2;
+  width: 18px;
+  height: 18px;
+}
+
+/* Pagination — MUI style */
+.ct-pagination { font-family: "Roboto", "Helvetica", "Arial", sans-serif; }
+
+.ct-pagination-button {
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  background: transparent;
+  color: #1976d2;
+  padding: 6px 16px;
+}
+
+.ct-pagination-button:hover:not(:disabled) {
+  background: rgba(25, 118, 210, 0.04);
+}
+
+.ct-pagination-page {
+  border: none;
+  border-radius: 50%;
+  min-width: 32px;
+  height: 32px;
+}
+
+.ct-pagination-page:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.ct-pagination-page.is-current {
+  background-color: rgba(25, 118, 210, 0.08);
+  color: #1976d2;
+  border: none;
+}
+
+.ct-pagination-select {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+}
+
+/* Textarea dialog — MUI elevation */
+.textarea-dialog {
+  border-radius: 4px;
+  box-shadow: 0px 11px 15px -7px rgba(0,0,0,.2), 0px 24px 38px 3px rgba(0,0,0,.14), 0px 9px 46px 8px rgba(0,0,0,.12);
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.textarea-dialog-header {
+  border-bottom: none;
+  padding: 16px 24px;
+}
+
+.textarea-dialog-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.textarea-dialog-input {
+  margin: 0 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.23);
+}
+
+.textarea-dialog-input:focus {
+  border-color: #1976d2;
+}
+
+.textarea-dialog-footer {
+  border-top: none;
+  padding: 8px 24px 16px;
+}
+
+.textarea-dialog-btn {
+  border: none;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  background: transparent;
+  color: #1976d2;
+  padding: 6px 16px;
+}
+
+.textarea-dialog-btn:hover {
+  background: rgba(25, 118, 210, 0.04);
+}
+
+.textarea-dialog-btn-save {
+  background: #1976d2;
+  color: white;
+}
+
+.textarea-dialog-btn-save:hover {
+  background: #1565c0;
+}

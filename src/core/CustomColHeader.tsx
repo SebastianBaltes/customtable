@@ -104,6 +104,8 @@ export const CustomColHeader = React.memo(
     const align = column.align ?? (column.type === "Number" ? "right" : "left");
     return (
       <th
+        scope="col"
+        aria-label={column.label ?? column.name}
         className={classNames("col-header", sticky && "sticky", cursorName, align !== "left" && `cell-align-${align}`)}
         onMouseDown={(event) => {
           if (isInteractiveTarget(event.target as HTMLElement)) return;
@@ -132,8 +134,8 @@ export const CustomColHeader = React.memo(
         <div className="col-header-content">
           <span className="col-header-label">
             {label}
-            {sortDirection === "asc" && " ▲"}
-            {sortDirection === "desc" && " ▼"}
+            {sortDirection === "asc" && <span className="col-sort-icon col-sort-asc" aria-label="sorted ascending"> ▲</span>}
+            {sortDirection === "desc" && <span className="col-sort-icon col-sort-desc" aria-label="sorted descending"> ▼</span>}
           </span>
           {renderFilter()}
         </div>

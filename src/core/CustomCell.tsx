@@ -1,5 +1,5 @@
 import { CellMeta, ColumnConfig, Cursor, Row } from "./Types";
-import React from "react";
+import React, { useRef } from "react";
 import classNames from "./classNames";
 import { getCursorName } from "./CustomTable";
 import { renderCell } from "./renderCell";
@@ -38,6 +38,7 @@ export const CustomCell = React.memo(
     const cellHasCursor = rowHasCursor && colIdx === selectionStart.colIdx;
     const isReadOnly =
       column.readOnly === true || rowReadOnly === true || cellMeta?.disabled === true;
+    const lastTapRef = useRef(0);
     const cellClass = getCursorName("cell-", cellHasCursor, editing && !isReadOnly);
     const isDisabled = cellMeta?.disabled === true;
     const effectiveEditing = isReadOnly ? false : isEditing;
@@ -66,6 +67,13 @@ export const CustomCell = React.memo(
             const selectionStart = cursorRef.current.selectionStart;
             const cellHasCursor =
               rowIdx === selectionStart.rowIdx && colIdx === selectionStart.colIdx;
+
+            // If already editing this cell and the click lands on the editor
+            // input/textarea, let the browser handle cursor positioning natively.
+            if (cellHasCursor && cursorRef.current.editing) {
+              const target = event.target as HTMLElement;
+              if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") return;
+            }
 
             // Check if click lands within the 2rem dropdown zone (right edge of cell)
             const isDropdownColumn = column.type === "Combobox" || column.type === "MultiCombobox";
@@ -108,6 +116,19 @@ export const CustomCell = React.memo(
             setCursorRef({
               editing: true,
             });
+          }
+        }}
+        onTouchEnd={(e) => {
+          const now = Date.now();
+          if (now - lastTapRef.current < 400 && !cursorRef.current.editing) {
+            // Double-tap detected — enter edit mode
+            e.preventDefault();
+            if (!isReadOnly) {
+              setCursorRef({ editing: true });
+            }
+            lastTapRef.current = 0; // reset so a third tap is not treated as double-tap
+          } else {
+            lastTapRef.current = now;
           }
         }}
         onMouseMove={(event) => {

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { createRoot } from "react-dom/client";
 import { CellMetaMap, ColumnConfig, CustomContextMenuItem, CustomTable, FilterState, Row, SortConfig } from "../index";
 import { TextareaDialogEditor } from "../editors/TextareaDialogEditor";
@@ -6,6 +6,23 @@ import { Pagination } from "../pagination/Pagination";
 
 // Import JSON as ESM (tsconfig.json has resolveJsonModule: true)
 import exampleData from "./example-data.json";
+
+// Theme CSS — imported as raw strings via Vite's ?raw suffix
+import lightCss from "./themes/light.css?raw";
+import darkCss from "./themes/dark.css?raw";
+import excelCss from "./themes/excel-classic.css?raw";
+import sheetsCss from "./themes/google-sheets.css?raw";
+import materialCss from "./themes/material.css?raw";
+import numbersCss from "./themes/numbers.css?raw";
+
+const themes = [
+  { id: "light", label: "Light", css: lightCss },
+  { id: "dark", label: "Dark", css: darkCss },
+  { id: "excel", label: "Excel Classic", css: excelCss },
+  { id: "sheets", label: "Google Sheets", css: sheetsCss },
+  { id: "material", label: "Material", css: materialCss },
+  { id: "numbers", label: "Numbers", css: numbersCss },
+];
 
 // Column definitions matching example-data.json (30 columns)
 // Order changed: description moved to 8th position
@@ -218,6 +235,21 @@ const exampleCellMeta: CellMetaMap = {
 
 const App = () => {
   const [allRows, setAllRows] = useState(initialRows);
+  const [activeTheme, setActiveTheme] = useState("light");
+
+  const switchTheme = useCallback((themeId: string) => {
+    const theme = themes.find((t) => t.id === themeId);
+    if (!theme) return;
+    // Inject/replace a <style> tag with the selected theme's CSS variables
+    let el = document.getElementById("theme-override") as HTMLStyleElement | null;
+    if (!el) {
+      el = document.createElement("style");
+      el.id = "theme-override";
+      document.head.appendChild(el);
+    }
+    el.textContent = theme.css;
+    setActiveTheme(themeId);
+  }, []);
 
   // Controlled sort & filter — allows external reset
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
@@ -277,11 +309,24 @@ const App = () => {
 
   return (
     <div style={{ display: "contents" }}>
+      <div className="theme-switcher">
+        <span className="theme-switcher-label">Theme:</span>
+        <select
+          className="theme-switcher-select"
+          value={activeTheme}
+          onChange={(e) => switchTheme(e.target.value)}
+        >
+          {themes.map((t) => (
+            <option key={t.id} value={t.id}>{t.label}</option>
+          ))}
+        </select>
+      </div>
       <div className="app-table-wrapper">
         <CustomTable
           rows={rows}
           columns={initialColumns}
           numberOfStickyColums={1}
+          caption="Employee Data"
           textEllipsisLength={ellipsis ? 25 : undefined}
           onRowsChange={(newRows) => {
             // Map changes back to the original (unfiltered/unsorted) allRows array.
@@ -340,7 +385,7 @@ const App = () => {
           ] satisfies CustomContextMenuItem[]}
         />
       </div>
-      <div style={{ display: "flex", alignItems: "center", background: "var(--color-gray-50)", borderTop: "1px solid var(--color-gray-100)" }}>
+      <div style={{ display: "flex", alignItems: "center", background: "var(--ct-toolbar-bg)", borderTop: "1px solid var(--ct-border)" }}>
         <Pagination
           totalRows={totalFilteredRows}
           page={page}

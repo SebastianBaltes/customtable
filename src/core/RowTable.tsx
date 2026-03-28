@@ -25,6 +25,7 @@ export const RowTable = React.memo(
     cellMeta,
     getRowKey,
     textEllipsisLength,
+    caption,
   }: {
     tableId: string;
     tableRef: React.RefObject<HTMLTableElement>;
@@ -44,10 +45,12 @@ export const RowTable = React.memo(
     cellMeta?: CellMetaMap;
     getRowKey: (row: Row, rowIndex: number) => string;
     textEllipsisLength?: number;
+    caption?: string;
   }) => {
     const resolvedGetRowKey = getRowKey ?? (rowKey ?? defaultRowKey);
     return (
       <table ref={tableRef} id={tableId}>
+        {caption && <caption className="sr-only">{caption}</caption>}
         <thead>
           <tr>
             {columns.map((column, colIdx) => {
@@ -87,6 +90,7 @@ export const RowTable = React.memo(
                   cellMetaForRow,
                   textEllipsisLength,
                 }}
+                ariaRowLabel={`Row ${rk}`}
               />
             );
           })}

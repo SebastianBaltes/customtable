@@ -1,0 +1,87 @@
+/*
+ * Google Sheets — clean white, thin borders, blue accent, Roboto-like font.
+ */
+
+:root {
+  --ct-bg: white;
+  --ct-text: #202124;
+  --ct-font: "Google Sans", Roboto, Arial, sans-serif;
+
+  --ct-border: #e0e0e0;
+  --ct-border-light: #e8eaed;
+
+  --ct-header-bg: #f8f9fa;
+  --ct-header-border: #dadce0;
+  --ct-header-label: #5f6368;
+
+  --ct-row-bg: white;
+  --ct-row-hover: #f1f3f4;
+  --ct-sticky-bg: #f8f9fa;
+
+  --ct-selected-row-bg: #e8f0fe;
+  --ct-selected-col-bg: #e8eaed;
+  --ct-selected-cell-bg: white;
+  --ct-selected-outline: #1a73e8;
+  --ct-edited-outline: #1a73e8;
+  --ct-selection-fill: rgba(26, 115, 232, 0.08);
+  --ct-fill-outline: #d93025;
+  --ct-dragger-bg: #1a73e8;
+  --ct-dragger-border: white;
+
+  --ct-toolbar-bg: #f8f9fa;
+  --ct-toolbar-border: #dadce0;
+  --ct-input-border: #dadce0;
+  --ct-input-bg: white;
+  --ct-button-bg: white;
+  --ct-button-border: #dadce0;
+  --ct-button-hover: #f1f3f4;
+
+  --ct-focus-outline: #1a73e8;
+
+  --ct-ctx-bg: white;
+  --ct-ctx-border: #dadce0;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.18);
+  --ct-ctx-text: #202124;
+  --ct-ctx-hover: #f1f3f4;
+  --ct-ctx-shortcut: #80868b;
+
+  --ct-muted: #80868b;
+  --ct-muted-light: #bdc1c6;
+
+  --ct-dropdown-bg: white;
+  --ct-dropdown-border: #dadce0;
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.18);
+  --ct-dropdown-hover: #f1f3f4;
+  --ct-dropdown-selected: #e8f0fe;
+  --ct-dropdown-highlighted: #d2e3fc;
+  --ct-dropdown-both: #c0d7f8;
+  --ct-dropdown-text: #202124;
+  --ct-dropdown-placeholder: #80868b;
+  --ct-dropdown-empty: #80868b;
+
+  --ct-pagination-link: #1a73e8;
+  --ct-pagination-hover-bg: #e8f0fe;
+  --ct-pagination-hover-border: #aecbfa;
+  --ct-pagination-current-border: #80868b;
+  --ct-pagination-label: #5f6368;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.32);
+  --ct-dialog-bg: white;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.28);
+  --ct-dialog-border: #dadce0;
+  --ct-dialog-title: #202124;
+  --ct-dialog-close: #5f6368;
+  --ct-dialog-close-hover: #202124;
+  --ct-dialog-input-border: #dadce0;
+  --ct-dialog-btn-bg: white;
+  --ct-dialog-btn-border: #dadce0;
+  --ct-dialog-btn-text: #5f6368;
+  --ct-dialog-btn-hover: #f1f3f4;
+  --ct-dialog-save-bg: #1a73e8;
+  --ct-dialog-save-hover: #1765cc;
+}
+
+/* Sheets blue checkboxes */
+.custom-table input[type="checkbox"] {
+  accent-color: #1a73e8;
+}
