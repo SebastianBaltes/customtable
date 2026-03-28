@@ -6,7 +6,9 @@
   --color-error: hsl(5, 100%, 66%);
 
   --color-gray-20: hsl(0, 0%, 98%);
+  --color-gray-40: hsl(0, 0%, 96%);
   --color-gray-50: hsl(0, 0%, 95%);
+  --color-gray-70: hsl(0, 0%, 93%);
   --color-gray-100: hsl(0, 0%, 90%);
   --color-gray-200: hsl(0, 0%, 80%);
   --color-gray-300: hsl(0, 0%, 70%);
@@ -19,9 +21,10 @@
   --color-gray-950: hsl(0, 0%, 5%);
 
   --color-blue-20: hsl(207, 100%, 98%);
+  --color-blue-30: hsl(207, 100%, 97%);
   --color-blue-50: hsl(207, 100%, 95%);
   --color-blue-100: hsl(207, 100%, 90%);
-  --color-blue-100-transparent:  hsla(207, 100%, 50%, 8%);
+  --color-blue-100-transparent: hsla(207, 100%, 50%, 8%);
   --color-blue-200: hsl(207, 100%, 80%);
   --color-blue-300: hsl(207, 100%, 70%);
   --color-blue-400: hsl(207, 100%, 60%);
@@ -50,6 +53,14 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-table-wrapper {
+  flex: 1;
+  position: relative;
+  min-height: 0;
 }
 
 .custom-table {
@@ -64,289 +75,527 @@ body {
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
+
+  th {
+    font-weight: 400;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.pending {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  &.has-ellipsis .cell {
+    white-space: nowrap;
+  }
+
+  .custom-table-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background-color: var(--color-gray-50);
+    border-bottom: 1px solid var(--color-gray-100);
+    flex-shrink: 0;
+  }
+
+  .toolbar-input {
+    width: 60px;
+    padding: 4px 8px;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 3px;
+    font-size: 1rem;
+  }
+
+  .toolbar-button {
+    padding: 4px 12px;
+    border: 1px solid var(--color-gray-300);
+    border-radius: 3px;
+    background-color: var(--color-white);
+    cursor: pointer;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: var(--color-gray-50);
+    }
+  }
+
+  .custom-table-viewport {
+    position: relative;
+    flex: 1;
+    overflow: auto;
+    display: grid;
+  }
+
+  table {
+    border-collapse: collapse;
+    border: none;
+  }
+
+  thead th {
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+
+    &.sticky {
+      left: 0px;
+      z-index: 2;
+    }
+  }
+
+  tbody td.sticky {
+    position: sticky;
+
+    &.cell {
+      outline: 1px solid var(--color-gray-200);
+    }
+
+    background-color: var(--color-gray-40);
+    z-index: 1;
+  }
+
+  .custom-table-table {
+    width: 100%;
+  }
+
+  .col-header,
+  .cell {
+    outline: 1px solid var(--color-gray-70);
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 20px;
+    padding-left: 10px;
+
+    color: var(--color-gray-900);
+  }
+
+  .cell {
+    /* cells with a dropdown indicator need relative positioning */
+    position: relative;
+
+    .cell-dropdown-indicator {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: var(--color-gray-200);
+      pointer-events: none;
+      line-height: 1;
+      transition: color 0.15s;
+    }
+  }
+
+  .cell:hover .cell-dropdown-indicator {
+    color: var(--color-gray-600);
+  }
+
+
+
+
+  .col-header {
+    background-color: var(--color-gray-50);
+    outline: 1px solid var(--color-gray-200);
+  }
+
+  .col-edited,
+  .col-selected {
+    background-color: var(--color-gray-100);
+    outline: 1px solid var(--color-gray-200);
+  }
+
+  .col-edited,
+  .cell-edited {
+    user-select: all;
+  }
+
+  .row-selected,
+  .row-edited {
+    background-color: var(--color-blue-30);
+
+    & td.sticky {
+      background-color: var(--color-blue-30);
+    }
+  }
+
+  .cell-selected {
+    background-color: white;
+    outline: solid 3px var(--color-blue-400);
+  }
+
+  .cell-edited {
+    background-color: white;
+    outline: solid 4px var(--color-blue-400);
+  }
+
+  .col-selected,
+  .col-edited,
+  .row-edited,
+  .row-selected,
+  .cell-selected,
+  .cell-edited {
+    z-index: 1;
+  }
+
+  .fill-rectangle,
+  .selection-rectangle {
+    display: none;
+    outline: solid 3px var(--color-blue-400);
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .selection-rectangle {
+    background-color: var(--color-blue-100-transparent);
+  }
+
+  .fill-rectangle {
+    outline: dashed 2px var(--color-red-500);
+  }
+
+  #selection-rectangle,
+  #fill-rectangle {
+    z-index: 0;
+  }
+
+  #selection-rectangle-sticky,
+  #fill-rectangle-sticky {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .selection-rectangle-dragger {
+    content: "";
+    width: 8px;
+    height: 8px;
+    outline: solid 1px var(--color-white);
+    background-color: var(--color-blue-400);
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    pointer-events: all;
+    z-index: 20;
+    cursor: crosshair;
+  }
+
+  .context-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    font-family: sans-serif;
+  }
+
+  .context-menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    color: #222;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .context-menu-shortcut {
+    color: #888;
+
+  }
+
+  .context-menu-modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+  }
+
+  .col-header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .col-header-label {
+    cursor: pointer;
+    white-space: nowrap;
+    color: black;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .col-filter-input {
+    width: calc(100% + 20px);
+    margin-left: -6px;
+    margin-right: -6px;
+    box-sizing: border-box;
+    padding: 2px 4px;
+    border: 1px solid var(--color-gray-200);
+    border-radius: 2px;
+    font-size: 1rem;
+    background: var(--color-white);
+    font-family: inherit;
+
+    &:focus {
+      outline: 1px solid var(--color-blue-400);
+      border-color: var(--color-blue-400);
+    }
+  }
+
+  .cell-editor-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Number editor: prefix/suffix rendered as non-editable pseudo-elements */
+  .number-editor-wrapper {
+    display: inline-flex;
+    align-items: baseline;
+    width: 100%;
+
+    &::before {
+      content: attr(data-prefix);
+      color: var(--color-gray-400);
+      white-space: pre; /* preserve spaces like "$ " */
+      flex-shrink: 0;
+    }
+
+    &::after {
+      content: attr(data-suffix);
+      color: var(--color-gray-400);
+      white-space: pre;
+      flex-shrink: 0;
+    }
+
+    .cell-editor-input {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  /* Alignment helpers — applied to both td.cell and th.col-header */
+  .cell-align-right {
+    text-align: right;
+
+    .cell-editor-input {
+      text-align: right;
+    }
+  }
+
+  .cell-align-center {
+    text-align: center;
+
+    .cell-editor-input {
+      text-align: center;
+    }
+  }
+
+  /* ---- Shared custom dropdown (Combobox + MultiCombobox) ---- */
+  .combo-dropdown {
+    position: relative;
+    outline: none;
+  }
+
+  .combo-dropdown-display {
+    min-height: 1em;
+    color: var(--color-gray-600);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .combo-dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: -10px;
+    /* align with cell padding */
+    min-width: calc(100% + 30px);
+    background: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    z-index: 200;
+    padding: 4px 0;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+
+  .combo-dropdown-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--color-gray-900);
+    user-select: none;
+
+    &:hover {
+      background-color: var(--color-gray-50);
+    }
+
+    &.is-selected {
+      background-color: var(--color-blue-30);
+      font-weight: 500;
+    }
+
+    &.is-highlighted {
+      background-color: var(--color-blue-50);
+    }
+
+    &.is-selected.is-highlighted {
+      background-color: var(--color-blue-100);
+    }
+
+    &.is-custom {
+      font-style: italic;
+    }
+  }
+
+  .combo-dropdown-custom-badge {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--color-gray-400, #aaa);
+    font-style: normal;
+    white-space: nowrap;
+  }
+
+  .combo-dropdown-checkbox {
+    font-size: 1rem;
+    color: var(--color-gray-500);
+    flex-shrink: 0;
+  }
+
+  .combo-dropdown-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background: transparent;
+    font: inherit;
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .combo-dropdown-empty {
+    padding: 6px 12px;
+    font-size: 1rem;
+    color: var(--color-gray-400, #999);
+    font-style: italic;
+  }
 }
 
-.custom-table:focus {
-  outline: none;
-}
+/* ============================================================
+   Pagination — standalone component, no coupling to CustomTable
+   ============================================================ */
 
-.custom-table-toolbar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
-  background-color: var(--color-gray-50);
-  border-bottom: 1px solid var(--color-gray-100);
-  flex-shrink: 0;
-}
-
-.toolbar-input {
-  width: 60px;
-  padding: 4px 8px;
-  border: 1px solid var(--color-gray-200);
-  border-radius: 3px;
-  font-size: 13px;
-}
-
-.toolbar-button {
-  padding: 4px 12px;
-  border: 1px solid var(--color-gray-300);
-  border-radius: 3px;
-  background-color: var(--color-white);
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.toolbar-button:hover {
-  background-color: var(--color-gray-50);
-}
-
-.custom-table-viewport {
-  position: relative;
-  flex: 1;
-  overflow: auto;
-  display: grid;
-}
-
-.custom-table table {
-  border-collapse: collapse;
-  border: none;
-}
-
-.custom-table thead th {
-  position: sticky;
-  top: 0px;
-  z-index: 1;
-}
-
-.custom-table tbody td.sticky {
-  position: sticky;
-  background-color: var(--color-gray-20);
-  z-index: 1;
-}
-
-.custom-table thead th.sticky {
-  position: sticky;
-  left: 0px;
-  top: 0px;
-  z-index: 2;
-}
-
-
-
-.custom-table tbody {
-}
-
-.custom-table-table {
-  width: 100%;
-}
-
-.col-header,
-.cell {
-  outline: 1px solid var(--color-gray-100);
-}
-
-.col-header,
-.cell {
-  padding: 10px 14px;
-}
-
-.col-header {
-  background-color: var(--color-gray-50);
-}
-
-.col-edited,
-.col-selected {
-  background-color: var(--color-gray-200);
-}
-
-.col-edited,
-.cell-edited {
-  user-select: all;
-}
-
-.cell-selected {
-}
-
-.row-selected,
-.row-edited,
-.custom-table tbody tr.row-selected td.sticky,
-.custom-table tbody tr.row-edited td.sticky {
-  background-color: var(--color-blue-50);
-}
-
-.cell-selected {
-  background-color: var(--color-blue-100);
-}
-
-.cell-edited {
-  background-color: white;
-  outline: solid 4px var(--color-blue-400);
-}
-
-.col-selected,
-.col-edited,
-.row-edited,
-.row-selected,
-.cell-selected,
-.cell-edited {
-  z-index: 1;
-}
-
-.fill-rectangle,
-.selection-rectangle
-{
-  display: none;
-  outline: solid 2px var(--color-blue-400);
-  position: absolute;
-  pointer-events: none;
-}
-
-.selection-rectangle {
-  background-color: var(--color-blue-100-transparent);
-}
-
-.fill-rectangle {
-  outline: dashed 2px var(--color-red-500);
-}
-
-#selection-rectangle, #fill-rectangle {
-  z-index: 0;
-}
-
-#selection-rectangle-sticky, #fill-rectangle-sticky {
-  position: absolute;
-  z-index: 1;
-}
-
-.selection-rectangle-dragger {
-  content: "";
-  width: 8px;
-  height: 8px;
-  outline: solid 1px var(--color-white);
-  background-color: var(--color-blue-400);
-  position: absolute;
-  right: -5px;
-  bottom: -5px;
-  pointer-events: all;
-  z-index: 20;
-  cursor: crosshair;
-}
-
-.context-menu {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  width: 200px;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  font-family: sans-serif;
-}
-
-.context-menu-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 20px;
-  cursor: pointer;
-  white-space: nowrap;
-  color: #222;
-}
-
-.context-menu-shortcut {
-  color: #888;
-  font-size: 0.8em;
-}
-.context-menu-item:hover {
-  background-color: #f0f0f0;
-}
-.context-menu-modal-background {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 999;
-}
-
-/* Column header layout */
-.col-header-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.col-header-label {
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.col-filter-input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 2px 4px;
-  border: 1px solid var(--color-gray-200);
-  border-radius: 2px;
-  font-size: 11px;
-  background: var(--color-white);
-}
-
-.col-filter-input:focus {
-  outline: 1px solid var(--color-blue-400);
-  border-color: var(--color-blue-400);
-}
-
-/* Cell editor inputs */
-.cell-editor-input,
-.cell-editor-select {
-  width: 100%;
-  box-sizing: border-box;
-  border: none;
-  outline: none;
-  background: transparent;
-  font: inherit;
-  padding: 0;
-  margin: 0;
-}
-
-/* Multi-combobox */
-.multi-combobox {
-  position: relative;
-}
-
-.multi-combobox-display {
-  min-height: 1em;
-  color: var(--color-gray-600);
-  font-size: 13px;
-}
-
-.multi-combobox-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 150px;
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  z-index: 100;
-  padding: 4px 0;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.multi-combobox-option {
+.ct-pagination {
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 10px;
+  padding: 6px 10px;
+  font-family: sans-serif;
+  font-size: 1rem;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.ct-pagination-label {
+  color: var(--color-gray-700, #444);
+  white-space: nowrap;
+}
+
+.ct-pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+}
+
+.ct-pagination-page {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 4px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  background: none;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 1rem;
+  color: var(--color-blue-600, #0066cc);
+  line-height: 1;
+
+  &:hover {
+    background-color: var(--color-blue-50, #e8f4ff);
+    border-color: var(--color-blue-200, #99ccff);
+  }
+
+  &.is-current {
+    border-color: var(--color-gray-400, #999);
+    background-color: var(--color-white, white);
+    color: var(--color-gray-900, #111);
+    font-weight: 600;
+    cursor: default;
+  }
 }
 
-.multi-combobox-option:hover {
-  background-color: var(--color-gray-50);
+.ct-pagination-ellipsis {
+  padding: 0 2px;
+  color: var(--color-gray-400, #999);
+  user-select: none;
+  line-height: 28px;
 }
 
+.ct-pagination-button {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--color-gray-300, #ccc);
+  border-radius: 3px;
+  background-color: var(--color-white, white);
+  cursor: pointer;
+  font-size: 1rem;
+  white-space: nowrap;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-gray-50, #f5f5f5);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: default;
+  }
+}
+
+.ct-pagination-select {
+  height: 28px;
+  padding: 0 4px;
+  border: 1px solid var(--color-gray-200, #ccc);
+  border-radius: 3px;
+  font-size: 1rem;
+  background-color: var(--color-white, white);
+  cursor: pointer;
+
+  &:focus {
+    outline: 1px solid var(--color-blue-400, #4da6ff);
+    border-color: var(--color-blue-400, #4da6ff);
+  }
+}

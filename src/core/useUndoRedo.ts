@@ -14,22 +14,20 @@ export function useUndoRedo(): UndoRedo {
   const redoStack = useRef<Row[][]>([]);
 
   const pushState = useCallback((rows: Row[]) => {
-    undoStack.current.push(rows.map((r) => ({ ...r })));
+    undoStack.current.push([...rows]);
     redoStack.current = [];
   }, []);
 
   const undo = useCallback((currentRows: Row[]): Row[] | null => {
     if (undoStack.current.length === 0) return null;
-    // Save current state to redo stack before restoring
-    redoStack.current.push(currentRows.map((r) => ({ ...r })));
+    redoStack.current.push([...currentRows]);
     const previousState = undoStack.current.pop()!;
     return previousState;
   }, []);
 
   const redo = useCallback((currentRows: Row[]): Row[] | null => {
     if (redoStack.current.length === 0) return null;
-    // Save current state to undo stack before restoring
-    undoStack.current.push(currentRows.map((r) => ({ ...r })));
+    undoStack.current.push([...currentRows]);
     const state = redoStack.current.pop()!;
     return state;
   }, []);
@@ -39,4 +37,3 @@ export function useUndoRedo(): UndoRedo {
 
   return { pushState, undo, redo, canUndo, canRedo };
 }
-

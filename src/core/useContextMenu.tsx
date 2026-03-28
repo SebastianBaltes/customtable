@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { ContextMenuItem, Cursor } from "./Types";
+import { ContextMenuItem, Cursor, CustomContextMenuItem, TableContextState } from "./Types";
+import { TableTranslations } from "./TranslationsContext";
 
 export function useContextMenu(
   cursorRef: React.MutableRefObject<Cursor>,
@@ -7,6 +8,11 @@ export function useContextMenu(
   pasteAtCursor: () => Promise<void>,
   deleteSelection: () => void,
   handleDeleteRows: () => void,
+  handleInsertRowAbove: () => void,
+  handleInsertRowBelow: () => void,
+  extraItems: CustomContextMenuItem[],
+  contextStateRef: React.MutableRefObject<() => TableContextState>,
+  t: TableTranslations,
 ) {
   const [contextMenu, setContextMenu] = useState({ visible: false, position: { x: 0, y: 0 } });
   const openContextMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -18,35 +24,50 @@ export function useContextMenu(
   const closeContextMenu = () => {
     setContextMenu({ visible: false, position: { x: 0, y: 0 } });
   };
-  const contextMenuItems: ContextMenuItem[] = [
+
+  const builtInItems: ContextMenuItem[] = [
     {
-      label: "insert row above",
-      onClick: () => {},
+      label: t["Insert row above"],
+      onClick: handleInsertRowAbove,
     },
     {
-      label: "insert row below",
-      onClick: () => {},
+      label: t["Insert row below"],
+      onClick: handleInsertRowBelow,
     },
     {
-      label: "remove rows",
+      label: t["Remove rows"],
       onClick: handleDeleteRows,
     },
     "---",
     {
-      label: "copy content",
+      label: t["Copy content"],
       shortcut: "Ctrl + C",
       onClick: () => { copySelection(); },
     },
     {
-      label: "paste content",
+      label: t["Paste content"],
       shortcut: "Ctrl + V",
       onClick: () => { pasteAtCursor(); },
     },
     {
-      label: "delete content",
+      label: t["Delete content"],
       shortcut: "Delete",
       onClick: deleteSelection,
     },
   ];
+
+  const mappedExtraItems: ContextMenuItem[] = extraItems.map((item) => {
+    if (item === "---") return "---";
+    return {
+      label: item.label,
+      shortcut: item.shortcut,
+      onClick: () => item.onClick(contextStateRef.current()),
+    };
+  });
+
+  const contextMenuItems: ContextMenuItem[] = extraItems.length > 0
+    ? [...builtInItems, "---", ...mappedExtraItems]
+    : builtInItems;
+
   return { contextMenu, openContextMenu, closeContextMenu, contextMenuItems };
 }

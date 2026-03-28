@@ -6,6 +6,7 @@ import { useCursorKeys } from "./useCursorKeys";
 export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfStickyColums: number) {
   const cursorRef = useRef<Cursor>({
     editing: false,
+    initialEditValue: null,
     filling: false,
     colSelection: false,
     selectionStart: { colIdx: -1, rowIdx: -1 },
@@ -57,17 +58,33 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
   }, [numberOfStickyColums]);
 
   useEffect(() => {
-    setCursorRef({
-      editing: false,
-      filling: false,
-      colSelection: false,
-      selectionStart: { colIdx: 0, rowIdx: 0 },
-      selectionEnd: { colIdx: 0, rowIdx: 0 },
-      fillEnd: { colIdx: 0, rowIdx: 0 },
-    });
+    const { selectionStart } = cursorRef.current;
+    // Only reset to (0,0) if the cursor points past the end of the rows array.
+    // rowIdx === -1 means "no selection" (e.g. user clicked outside) — leave it alone.
+    // Normal cell edits change `rows` values but must not override the cursor
+    // position that e.g. the Enter-commit already moved to the next row.
+    const outOfBounds =
+      selectionStart.rowIdx >= 0 &&
+      selectionStart.rowIdx >= rows.length;
+
+    if (outOfBounds) {
+      setCursorRef({
+        editing: false,
+        initialEditValue: null,
+        filling: false,
+        colSelection: false,
+        selectionStart: { colIdx: 0, rowIdx: 0 },
+        selectionEnd: { colIdx: 0, rowIdx: 0 },
+        fillEnd: { colIdx: 0, rowIdx: 0 },
+      });
+    } else {
+      // Just close the editor – keep the cursor where it is.
+      setCursorRef({ editing: false, initialEditValue: null });
+    }
   }, [rows]);
 
-  const handleKeyDown = useCursorKeys(cursorRef, setCursorRef, rows, columns);
+
+  const handleKeyDown = useCursorKeys(cursorRef, setCursorRef, rows, columns, tableRef);
 
   const customTableRef = useRef(null);
 
@@ -76,6 +93,24 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
       (customTableRef.current as HTMLDivElement).focus();
     }
   }, []);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const el = customTableRef.current as HTMLElement | null;
+      if (el && !el.contains(e.target as Node)) {
+        setCursorRef({
+          editing: false,
+          filling: false,
+          colSelection: false,
+          selectionStart: { rowIdx: -1, colIdx: -1 },
+          selectionEnd: { rowIdx: -1, colIdx: -1 },
+          fillEnd: { rowIdx: -1, colIdx: -1 },
+        });
+      }
+    };
+    document.addEventListener("mousedown", handler, { capture: true });
+    return () => document.removeEventListener("mousedown", handler, { capture: true });
+  }, [setCursorRef]);
 
   return {
     cursorRef,

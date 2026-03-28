@@ -1,7 +1,8 @@
 import { CellAddr, ColumnConfig, Cursor, Row, SortConfig } from "./Types";
 import classNames from "classnames";
-import React from "react";
+import React, { useContext } from "react";
 import { getCursorName } from "./CustomTable";
+import { TranslationsContext } from "./TranslationsContext";
 
 export const CustomColHeader = React.memo(
   ({
@@ -27,18 +28,24 @@ export const CustomColHeader = React.memo(
     filterValue: string;
     onFilterChange: (value: string) => void;
   }) => {
-    const { editing, selectionStart } = cursorRef.current;
-    const colHasCursor = colIdx === selectionStart.colIdx;
+    const t = useContext(TranslationsContext);
+    const { editing, selectionStart, selectionEnd } = cursorRef.current;
+    const colHasCursor =
+      colIdx >= Math.min(selectionStart.colIdx, selectionEnd.colIdx) &&
+      colIdx <= Math.max(selectionStart.colIdx, selectionEnd.colIdx);
     const cursorName = getCursorName("col-", colHasCursor, editing);
     const label = column.label ?? column.name;
 
     const isSorted = sortConfig?.column === column.name;
     const sortDirection = isSorted ? sortConfig!.direction : null;
 
-    const handleSortClick = (event: React.MouseEvent) => {
-      // Don't trigger sort if clicking the filter input
-      if ((event.target as HTMLElement).tagName === "INPUT") return;
+    const isInteractiveTarget = (el: HTMLElement) => {
+      const tag = el.tagName;
+      return tag === "INPUT" || tag === "SELECT";
+    };
 
+    const handleSortClick = (event: React.MouseEvent) => {
+      if (isInteractiveTarget(event.target as HTMLElement)) return;
       if (!isSorted) {
         onSortChange({ column: column.name, direction: "asc" });
       } else if (sortDirection === "asc") {
@@ -48,11 +55,58 @@ export const CustomColHeader = React.memo(
       }
     };
 
+    const sharedFilterProps = {
+      className: "col-filter-input",
+      onMouseDown: (e: React.MouseEvent) => e.stopPropagation(),
+      onClick: (e: React.MouseEvent) => e.stopPropagation(),
+      onKeyDown: (e: React.KeyboardEvent) => e.stopPropagation(),
+    };
+
+    const renderFilter = () => {
+      if (column.filterable === false) return null;
+
+      // Custom filter editor
+      if (column.filterEditor) {
+        const FilterEditorComp = column.filterEditor;
+        return (
+          <div onMouseDown={(e) => e.stopPropagation()} onClick={(e) => e.stopPropagation()}>
+            <FilterEditorComp value={filterValue} onChange={onFilterChange} column={column} />
+          </div>
+        );
+      }
+
+      // Built-in Boolean select
+      if (column.type === "Boolean") {
+        return (
+          <select
+            {...sharedFilterProps}
+            value={filterValue}
+            onChange={(e) => onFilterChange(e.target.value)}
+          >
+            <option value=""></option>
+            <option value="true">{t["Yes"]}</option>
+            <option value="false">{t["No"]}</option>
+          </select>
+        );
+      }
+
+      // Default text input
+      return (
+        <input
+          {...sharedFilterProps}
+          type="text"
+          value={filterValue}
+          onChange={(e) => onFilterChange(e.target.value)}
+        />
+      );
+    };
+
+    const align = column.align ?? (column.type === "Number" ? "right" : "left");
     return (
       <th
-        className={classNames("col-header", sticky && "sticky", cursorName)}
+        className={classNames("col-header", sticky && "sticky", cursorName, align !== "left" && `cell-align-${align}`)}
         onMouseDown={(event) => {
-          if ((event.target as HTMLElement).tagName === "INPUT") return;
+          if (isInteractiveTarget(event.target as HTMLElement)) return;
           setCursorRef({
             editing: false,
             filling: false,
@@ -63,7 +117,7 @@ export const CustomColHeader = React.memo(
           });
         }}
         onMouseMove={(event) => {
-          if ((event.target as HTMLElement).tagName === "INPUT") return;
+          if (isInteractiveTarget(event.target as HTMLElement)) return;
           if (event.buttons === 1 && cursorRef.current.colSelection && !cursorRef.current.filling) {
             setCursorRef({
               editing: false,
@@ -81,16 +135,7 @@ export const CustomColHeader = React.memo(
             {sortDirection === "asc" && " ▲"}
             {sortDirection === "desc" && " ▼"}
           </span>
-          <input
-            type="text"
-            className="col-filter-input"
-            placeholder="Filter..."
-            value={filterValue}
-            onChange={(e) => onFilterChange(e.target.value)}
-            onMouseDown={(e) => e.stopPropagation()}
-            onClick={(e) => e.stopPropagation()}
-            onKeyDown={(e) => e.stopPropagation()}
-          />
+          {renderFilter()}
         </div>
       </th>
     );

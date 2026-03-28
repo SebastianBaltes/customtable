@@ -45,15 +45,19 @@ export function directDomUpdateForCursor(
     });
   }
 
-  if (rowChange || editChange) {
-    const oldRowElement = getRowElement(oldCursor.selectionStart.rowIdx);
-    const newRowElement = getRowElement(newCursor.selectionStart.rowIdx);
-    if (oldRowElement) {
-      oldRowElement.classList.remove(getCursorName("row-", true, oldCursor.editing));
-    }
-    if (newRowElement) {
-      newRowElement.classList.add(getCursorName("row-", true, newCursor.editing));
-    }
+  if (rowChange || editChange || selectionChange) {
+    range(oldCursor.selectionStart.rowIdx, oldCursor.selectionEnd.rowIdx).forEach((rowIdx) => {
+      const oldRowElement = getRowElement(rowIdx);
+      if (oldRowElement) {
+        oldRowElement.classList.remove(getCursorName("row-", true, oldCursor.editing));
+      }
+    });
+    range(newCursor.selectionStart.rowIdx, newCursor.selectionEnd.rowIdx).forEach((rowIdx) => {
+      const newRowElement = getRowElement(rowIdx);
+      if (newRowElement) {
+        newRowElement.classList.add(getCursorName("row-", true, newCursor.editing));
+      }
+    });
   }
 
   if (colChange || rowChange || editChange) {

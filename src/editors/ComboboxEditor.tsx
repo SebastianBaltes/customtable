@@ -1,42 +1,39 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Editor } from "../core/Types";
+import { DropdownEditor } from "./DropdownEditor";
 
-export const ComboboxEditor: Editor<string> = ({ value, row, editing, columnConfig, onChange }) => {
-  const selectRef = useRef<HTMLSelectElement>(null);
-
-  useEffect(() => {
-    if (editing && selectRef.current) {
-      selectRef.current.focus();
-    }
-  }, [editing]);
+export const ComboboxEditor: Editor<string> = ({
+  value,
+  row,
+  editing,
+  columnConfig,
+  onChange,
+  textEllipsisLength,
+  initialEditValue,
+}) => {
+  const options = columnConfig.selectOptions ?? [];
+  const selected = value != null && value !== "" ? [value] : [];
+  const displayText = value ?? "";
 
   if (!editing) {
-    return <span>{value}</span>;
+    const finalDisplay =
+      textEllipsisLength && displayText.length > textEllipsisLength
+        ? displayText.substring(0, textEllipsisLength) + " [...]"
+        : displayText;
+    return <span title={displayText}>{finalDisplay}</span>;
   }
 
-  const options = columnConfig.selectOptions ?? [];
-
   return (
-    <select
-      ref={selectRef}
-      className="cell-editor-select"
-      value={value ?? ""}
-      onChange={(e) => onChange(e.target.value)}
-      onBlur={() => {}}
-      onKeyDown={(e) => {
-        e.stopPropagation();
-        if (e.key === "Escape") {
-          // do nothing, cursor handles escape
-        }
+    <DropdownEditor
+      options={options}
+      selected={selected}
+      multiselect={false}
+      freeText={columnConfig.freeText ?? true}
+      displayText={displayText}
+      textEllipsisLength={textEllipsisLength}
+      onChange={(newSelected) => {
+        onChange(newSelected[0] ?? "");
       }}
-    >
-      <option value="">-- select --</option>
-      {options.map((opt) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
+    />
   );
 };
-

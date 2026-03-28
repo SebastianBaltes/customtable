@@ -24,6 +24,7 @@ export const RowTable = React.memo(
     onFilterChange,
     cellMeta,
     getRowKey,
+    textEllipsisLength,
   }: {
     tableId: string;
     tableRef: React.RefObject<HTMLTableElement>;
@@ -42,6 +43,7 @@ export const RowTable = React.memo(
     onFilterChange: (colName: string, value: string) => void;
     cellMeta?: CellMetaMap;
     getRowKey: (row: Row, rowIndex: number) => string;
+    textEllipsisLength?: number;
   }) => {
     const resolvedGetRowKey = getRowKey ?? (rowKey ?? defaultRowKey);
     return (
@@ -67,13 +69,8 @@ export const RowTable = React.memo(
           {rows.map((row, rowIdx) => {
             const rk = resolvedGetRowKey(row, rowIdx);
             const rowMetaSlice = cellMeta?.[rk];
-            const rowMeta = rowMetaSlice?.__row as RowMeta | undefined;
-            // Build per-column cellMeta record (excluding __row)
-            const cellMetaForRow: Record<string, CellMeta> | undefined = rowMetaSlice
-              ? Object.fromEntries(
-                  Object.entries(rowMetaSlice).filter(([k]) => k !== "__row"),
-                ) as Record<string, CellMeta>
-              : undefined;
+            const rowMeta = rowMetaSlice?.row;
+            const cellMetaForRow = rowMetaSlice?.cells;
             return (
               <CustomRow
                 key={rk}
@@ -88,6 +85,7 @@ export const RowTable = React.memo(
                   editingCell,
                   rowMeta,
                   cellMetaForRow,
+                  textEllipsisLength,
                 }}
               />
             );
