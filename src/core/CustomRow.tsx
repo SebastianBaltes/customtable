@@ -16,6 +16,7 @@ export const CustomRow = React.memo(
     editingCell,
     rowMeta,
     cellMetaForRow,
+    textEllipsisLength,
   }: {
     columns: ColumnConfig<any>[];
     cursorRef: React.MutableRefObject<Cursor>;
@@ -27,9 +28,12 @@ export const CustomRow = React.memo(
     editingCell: CellAddr | null;
     rowMeta?: RowMeta;
     cellMetaForRow?: Record<string, CellMeta>;
+    textEllipsisLength?: number;
   }) => {
-    const { editing, selectionStart } = cursorRef.current;
-    const rowHasCursor = rowIdx === selectionStart.rowIdx;
+    const { editing, selectionStart, selectionEnd } = cursorRef.current;
+    const rowHasCursor = 
+      rowIdx >= Math.min(selectionStart.rowIdx, selectionEnd.rowIdx) &&
+      rowIdx <= Math.max(selectionStart.rowIdx, selectionEnd.rowIdx);
     const rowClass = getCursorName("row-", rowHasCursor, editing);
     return (
       <tr
@@ -56,6 +60,8 @@ export const CustomRow = React.memo(
                 onCellChange,
                 isEditing,
                 cellMeta: cellMetaEntry,
+                textEllipsisLength,
+                rowReadOnly: rowMeta?.readOnly,
               }}
               sticky={colIdx < numberOfStickyColums}
             />

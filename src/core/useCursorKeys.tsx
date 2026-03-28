@@ -6,24 +6,28 @@ export function useCursorKeys(
   setCursorRef: (value: Partial<Cursor>) => void,
   rows: Row[],
   columns: ColumnConfig<any>[],
+  tableRef: React.RefObject<HTMLTableElement>,
 ) {
-  const setColRow = (col: number, row: number, editing: boolean, shift: boolean, ctrl: boolean) => {
+  const setColRow = (col: number, row: number, editing: boolean, shift: boolean, ctrl: boolean, initialEditValue: string | null = null) => {
     if (row >= 0 && row < rows.length && col >= 0 && col < columns.length) {
       const newCursorState = ctrl
         ? {
             editing,
+            initialEditValue,
             filling: true,
             fillEnd: { colIdx: col, rowIdx: row },
           }
         : shift
         ? {
             editing,
+            initialEditValue,
             filling: false,
             selectionEnd: { colIdx: col, rowIdx: row },
             fillEnd: { colIdx: col, rowIdx: row },
           }
         : {
             editing,
+            initialEditValue,
             filling: false,
             selectionStart: { colIdx: col, rowIdx: row },
             selectionEnd: { colIdx: col, rowIdx: row },
@@ -35,7 +39,7 @@ export function useCursorKeys(
     }
   };
   const jumpTab = (direction: number, editing: boolean) => {
-    // wegen direktem DOM-Access muß in Listenern cursorRef.current verwendet werden
+    // Due to direct DOM access, cursorRef.current must be used in listeners
     const { colIdx, rowIdx } = cursorRef.current.selectionStart;
     if (direction > 0) {
       if (colIdx < columns.length - 1) {
@@ -53,19 +57,57 @@ export function useCursorKeys(
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<any>) => {
-    event.stopPropagation();
-    event.preventDefault();
     const key = event.key;
-    const cursor = cursorRef.current;
     const shift = event.shiftKey;
     const ctrl = event.ctrlKey;
+    const cursor = cursorRef.current;
     const { editing } = cursor;
+    
+    // We handle Escape explicitly even if it bubbles from an editor
+    if (key === "Escape") {
+      setColRow(cursor.selectionStart.colIdx, cursor.selectionStart.rowIdx, false, shift, ctrl, null);
+      const tableContainer = tableRef.current?.closest(".custom-table") as HTMLElement;
+      if (tableContainer) {
+        tableContainer.focus();
+      }
+      event.stopPropagation();
+      event.preventDefault();
+      return;
+    }
+
+    // For other keys, if we are in edit mode, let them bubble (usually captured by editor)
+    if (editing) {
+       const tableContainer = tableRef.current?.closest(".custom-table") as HTMLElement;
+
+       // Enter → commit + move one row down
+       if (key === "Enter") {
+         event.stopPropagation();
+         event.preventDefault();
+         setColRow(cursor.selectionStart.colIdx, cursor.selectionStart.rowIdx + 1, false, shift, ctrl, null);
+         if (tableContainer) tableContainer.focus();
+       }
+
+       // Tab / Shift+Tab → commit + jump to next/prev cell (with row-wrap)
+       if (key === "Tab") {
+         event.stopPropagation();
+         event.preventDefault();
+         jumpTab(shift ? -1 : +1, false);
+         if (tableContainer) tableContainer.focus();
+       }
+
+       return;
+    }
+
+    // --- Navigation Mode ---
+    event.stopPropagation();
+    event.preventDefault();
 
     const { colIdx, rowIdx } = ctrl
       ? cursor.fillEnd
       : shift
       ? cursor.selectionEnd
       : cursor.selectionStart;
+
     if (key === "ArrowUp") {
       setColRow(colIdx, rowIdx - 1, false, shift, ctrl);
     } else if (key === "ArrowDown") {
@@ -74,28 +116,25 @@ export function useCursorKeys(
       setColRow(colIdx - 1, rowIdx, false, shift, ctrl);
     } else if (key === "ArrowRight") {
       setColRow(colIdx + 1, rowIdx, false, shift, ctrl);
-    } else if (key === "Home" && colIdx >= 0 && !editing) {
-      setColRow(0, rowIdx, editing, shift, ctrl);
-    } else if (key === "End" && colIdx < columns.length - 1 && !editing) {
+    } else if (key === "Home" && colIdx >= 0) {
+      setColRow(0, rowIdx, false, shift, ctrl);
+    } else if (key === "End" && colIdx < columns.length - 1) {
       setColRow(columns.length - 1, rowIdx, false, shift, ctrl);
     } else if (key === "PageUp" && rowIdx >= 0) {
       setColRow(colIdx, 0, false, shift, ctrl);
     } else if (key === "PageDown" && rowIdx < rows.length - 1) {
       setColRow(colIdx, rows.length - 1, false, shift, ctrl);
     } else {
-      const { colIdx, rowIdx } = cursor.selectionStart;
+      const cur = cursor.selectionStart;
       if (key === "Tab") {
         jumpTab(shift ? -1 : +1, false);
-      } else if (key === "Enter") {
-        if (editing) {
-          setColRow(colIdx, rowIdx + 1, false, shift, ctrl);
-        } else {
-          setColRow(colIdx, rowIdx, true, shift, ctrl);
-        }
-      } else if (key === "F2") {
-        setColRow(colIdx, rowIdx, true, shift, ctrl);
-      } else if (key === "Escape") {
-        setColRow(colIdx, rowIdx, false, shift, ctrl);
+      } else if (key === "Enter" || key === "F2") {
+        setColRow(cur.colIdx, cur.rowIdx, true, shift, ctrl, null);
+      } else if (key.length === 1 && !ctrl && !event.altKey && !event.metaKey) {
+        // Start editing on printable character.
+        // Use shift=false/ctrl=false: typing should NEVER trigger range selection,
+        // even if Shift is held (e.g. for uppercase letters).
+        setColRow(cur.colIdx, cur.rowIdx, true, false, false, key);
       }
     }
   };

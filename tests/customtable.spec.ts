@@ -4,6 +4,8 @@ test.beforeEach(async ({ page }) => {
   await page.goto("/");
   // Wait for the table to render
   await page.waitForSelector("table");
+  // Show all rows so tests are not affected by pagination
+  await page.locator(".ct-pagination-select").selectOption("0");
 });
 
 // ============================================================================
@@ -21,22 +23,24 @@ test.describe("Basic rendering", () => {
 
   test("should render column headers with labels", async ({ page }) => {
     const firstHeader = page.locator("table thead th").first();
-    await expect(firstHeader).toContainText("id");
+    await expect(firstHeader).toContainText("ID");
   });
 
   test("should render toolbar with create button", async ({ page }) => {
     await expect(page.locator(".custom-table-toolbar")).toBeVisible();
-    await expect(page.locator(".toolbar-button")).toContainText("Create Rows");
-    await expect(page.locator(".toolbar-input")).toBeVisible();
+    await expect(page.locator(".custom-table-toolbar .toolbar-button")).toBeVisible();
+    await expect(page.locator(".custom-table-toolbar .toolbar-input")).toBeVisible();
   });
 
   test("should render all expected column headers", async ({ page }) => {
     const headers = page.locator("table thead th .col-header-label");
-    await expect(headers.nth(0)).toContainText("id");
-    await expect(headers.nth(1)).toContainText("Key");
-    await expect(headers.nth(2)).toContainText("Torpfostenart");
-    await expect(headers.nth(3)).toContainText("Active");
-    await expect(headers.nth(4)).toContainText("Tags");
+    await expect(headers.nth(0)).toContainText("ID");
+    await expect(headers.nth(1)).toContainText("System Key");
+    await expect(headers.nth(2)).toContainText("First Name");
+    await expect(headers.nth(3)).toContainText("Last Name");
+    await expect(headers.nth(4)).toContainText("Email");
+    await expect(headers.nth(5)).toContainText("Department");
+    await expect(headers.nth(6)).toContainText("Skills");
   });
 
   test("should render filter inputs in every column header", async ({ page }) => {
@@ -46,14 +50,12 @@ test.describe("Basic rendering", () => {
   });
 
   test("should render sticky columns with sticky class", async ({ page }) => {
-    // The example uses numberOfStickyColums=2, so first 2 columns should have sticky
+    // The example uses numberOfStickyColums=1, so first column should have sticky
     const firstCell = page.locator("table tbody tr").first().locator("td").first();
     await expect(firstCell).toHaveClass(/sticky/);
+    // Second column should NOT be sticky
     const secondCell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(secondCell).toHaveClass(/sticky/);
-    // Third column should NOT be sticky
-    const thirdCell = page.locator("table tbody tr").first().locator("td").nth(2);
-    await expect(thirdCell).not.toHaveClass(/sticky/);
+    await expect(secondCell).not.toHaveClass(/sticky/);
   });
 });
 
@@ -110,8 +112,8 @@ test.describe("Cursor navigation", () => {
 
     // Verify that multiple row headers get selected class
     const selectedRows = page.locator("table tbody tr.row-selected");
-    // At least the start row should have the cursor class
-    expect(await selectedRows.count()).toBeGreaterThanOrEqual(1);
+    // With Shift+ArrowDown twice, we span 3 rows (starting row + 2 down)
+    expect(await selectedRows.count()).toBe(3);
   });
 
   test("should navigate with PageDown to last row", async ({ page }) => {
@@ -175,26 +177,136 @@ test.describe("Cell editing", () => {
     await expect(input).toBeVisible({ timeout: 2000 });
   });
 
+  test("should enter edit mode on double click", async ({ page }) => {
+    // Double click on a cell
+    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
+    await cell.dblclick();
+
+    // Should show an input
+    const input = cell.locator(".cell-editor-input");
+    await expect(input).toBeVisible({ timeout: 2000 });
+  });
+
+  test("should start editing and enter value when typing on selected cell", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Select a cell (Row 0, Col 1) using arrow keys
+    await page.keyboard.press("ArrowRight");
+    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
+    await expect(cell).toHaveClass(/cell-selected/);
+
+    // Type "abc"
+    await page.keyboard.type("abc");
+
+    // The first "a" should have triggered edit mode, "bc" should have followed
+    const input = cell.locator(".cell-editor-input");
+    await expect(input).toBeVisible();
+    await expect(input).toHaveValue("abc");
+
+    // Cursor should be at the end - if we type more, it should append
+    await page.keyboard.type("d");
+    await expect(input).toHaveValue("abcd");
+    
+    // Commit
+    await page.keyboard.press("Enter");
+    await expect(cell).toContainText("abcd");
+  });
+
+  test("should move cursor to row+1 (not 0/0) after typing-to-edit + Enter", async ({ page }) => {
+    // Regression test: when edit mode is entered by typing (not by ENTER/F2/dblclick),
+    // pressing Enter to commit must advance to row+1, not reset to cell (0,0).
+    const row2Cell = page.locator("table tbody tr").nth(2).locator("td").nth(1);
+
+    // Select cell at row 2, col 1 via mouse click
+    await row2Cell.click();
+    await expect(row2Cell).toHaveClass(/cell-selected/);
+
+    // Immediately start typing – this triggers edit mode
+    await page.keyboard.type("TestValue");
+    const input = row2Cell.locator(".cell-editor-input");
+    await expect(input).toBeVisible();
+    await expect(input).toHaveValue("TestValue");
+
+    // Commit with Enter – cursor should move to row 3, col 1 – NOT to (0, 0)
+    await page.keyboard.press("Enter");
+
+    // The edited cell should contain the new value
+    await expect(row2Cell).toContainText("TestValue");
+
+    // The selection must now be at row 3, col 1 (one below), not row 0
+    const row3Cell = page.locator("table tbody tr").nth(3).locator("td").nth(1);
+    await expect(row3Cell).toHaveClass(/cell-selected/);
+
+    // row 0, col 1 must NOT be selected (regression guard against the 0/0 bug)
+    const row0Cell = page.locator("table tbody tr").first().locator("td").nth(1);
+    await expect(row0Cell).not.toHaveClass(/cell-selected/);
+  });
+
+  test("should not enter edit mode on single click even if selected", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
+    
+    // First click selects
+    await cell.click();
+    await expect(cell).toHaveClass(/cell-selected/);
+    await expect(cell.locator(".cell-editor-input")).not.toBeVisible();
+
+    // Second click after delay should still NOT enter edit mode
+    await page.waitForTimeout(600); // Wait longer than typical dblclick window
+    await cell.click();
+    await expect(cell.locator(".cell-editor-input")).not.toBeVisible();
+
+    // Actual dblclick should work
+    await cell.dblclick();
+    await expect(cell.locator(".cell-editor-input")).toBeVisible();
+  });
+
   test("should toggle boolean cell on click", async ({ page }) => {
-    // Navigate to the "Active" column (index 3)
-    const checkbox = page.locator("table tbody tr").first().locator("td").nth(3).locator("input[type=checkbox]");
+    // Navigate to the "Active" column (index 8)
+    const checkbox = page.locator("table tbody tr").first().locator("td").nth(8).locator("input[type=checkbox]");
     const isChecked = await checkbox.isChecked();
     await checkbox.click();
     expect(await checkbox.isChecked()).toBe(!isChecked);
+  });
+
+  test("Enter on selected boolean cell toggles value and keeps cell selected", async ({ page }) => {
+    // isActive is column index 8 in the demo data.
+    const boolCell = page.locator("table tbody tr").first().locator("td").nth(8);
+    const checkbox = boolCell.locator("input[type=checkbox]");
+
+    // Select the boolean cell via keyboard navigation
+    const table = page.locator(".custom-table");
+    await table.focus();
+    for (let i = 0; i < 8; i++) await page.keyboard.press("ArrowRight");
+    await expect(boolCell).toHaveClass(/cell-selected/);
+
+    const before = await checkbox.isChecked();
+
+    // Press Enter → should toggle, not enter edit mode, not move cursor
+    await page.keyboard.press("Enter");
+
+    expect(await checkbox.isChecked()).toBe(!before);
+
+    // Cell must still be selected (cursor did not move)
+    await expect(boolCell).toHaveClass(/cell-selected/);
+
+    // Press Enter again → toggles back
+    await page.keyboard.press("Enter");
+    expect(await checkbox.isChecked()).toBe(before);
+    await expect(boolCell).toHaveClass(/cell-selected/);
   });
 
   test("should show combobox editor on edit", async ({ page }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
-    // Navigate to Torpfostenart column (index 2)
-    await page.keyboard.press("ArrowRight");
-    await page.keyboard.press("ArrowRight");
+    // Navigate to Department column (index 5)
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter");
 
-    // Should show a select element
-    const select = page.locator("td .cell-editor-select");
-    await expect(select.first()).toBeVisible();
+    // Should show the custom dropdown input and option list
+    await expect(page.locator("td .combo-dropdown-input").first()).toBeVisible();
+    await expect(page.locator("td .combo-dropdown-list").first()).toBeVisible();
   });
 
   test("should not modify a readOnly column via Delete key", async ({ page }) => {
@@ -226,19 +338,29 @@ test.describe("Cell editing", () => {
     await input.fill("CANCELLED");
     await page.keyboard.press("Escape");
 
-    // Click elsewhere to blur and exit edit mode (onBlur commits the reset value)
-    await page.locator("table tbody tr").nth(2).locator("td").nth(1).click();
+    // Click elsewhere to blur and exit edit mode
+    const targetCell = page.locator("table tbody tr").nth(2).locator("td").nth(1);
+    await targetCell.click();
     await page.waitForTimeout(200);
 
-    // Cell should still have original value
+    // Clicking should have selected the targetCell
+    await expect(targetCell).toHaveClass(/cell-selected/);
+
+    // Cell 0,1 should still have original value
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(cell).toContainText("dummy");
+    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
+
+    // Press ArrowRight from targetCell (2,1) should move to (2,2)
+    await page.keyboard.press("ArrowRight");
+    const nextCell = page.locator("table tbody tr").nth(2).locator("td").nth(2);
+    await expect(nextCell).toHaveClass(/cell-selected/);
   });
 
   test("should commit edit on Tab and move to next cell", async ({ page }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
+    // Start at col 1 (name), enter edit mode
     await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter");
 
@@ -246,8 +368,149 @@ test.describe("Cell editing", () => {
     await input.fill("TabCommit");
     await page.keyboard.press("Tab");
 
+    // Value should be committed
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
     await expect(cell).toContainText("TabCommit");
+
+    // Cursor should have moved to col 2 (next column)
+    const nextCell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await expect(nextCell).toHaveClass(/cell-selected/);
+
+    // The table container (not a native input inside a cell) should have focus
+    // i.e. no native input/checkbox element should have document focus
+    const focusedTag = await page.evaluate(() => document.activeElement?.tagName);
+    expect(["DIV", "BODY"]).toContain(focusedTag);
+  });
+
+  test("should commit edit on Shift+Tab and move to previous cell", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to col 2 first
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+
+    const input = page.locator("td .cell-editor-input").first();
+    await input.fill("ShiftTabCommit");
+    await page.keyboard.press("Shift+Tab");
+
+    // Value committed
+    const cell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await expect(cell).toContainText("ShiftTabCommit");
+
+    // Cursor should have moved LEFT to col 1
+    const prevCell = page.locator("table tbody tr").first().locator("td").nth(1);
+    await expect(prevCell).toHaveClass(/cell-selected/);
+  });
+
+  test("Tab in edit mode must not give focus to an external page checkbox", async ({ page }) => {
+    // Regression guard: a focusable checkbox placed AFTER the table in the DOM (and thus
+    // in the browser's native tab order) must NOT receive focus when Tab is pressed inside
+    // a table cell editor. The table intercepts Tab with preventDefault().
+    await page.evaluate(() => {
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.id = "external-checkbox";
+      document.body.appendChild(cb);
+    });
+
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Enter edit mode on a string cell (col 1)
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+
+    const input = page.locator("td .cell-editor-input").first();
+    await expect(input).toBeVisible();
+
+    // Tab must stay inside the table, not jump to the external checkbox
+    await page.keyboard.press("Tab");
+
+    const externalFocused = await page.evaluate(() => document.activeElement?.id);
+    expect(externalFocused).not.toBe("external-checkbox");
+
+    // Cursor should have advanced to col 2
+    const nextCell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await expect(nextCell).toHaveClass(/cell-selected/);
+  });
+
+  test("Tab in navigation mode must not give focus to an external page checkbox", async ({ page }) => {
+    // Same guard for navigation mode (no active editor). The table handles Tab with
+    // preventDefault() so focus must remain on the table container and the cursor
+    // must advance to the next column.
+    await page.evaluate(() => {
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.id = "external-checkbox";
+      document.body.appendChild(cb);
+    });
+
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Move to col 1 so Tab has somewhere to go
+    await page.keyboard.press("ArrowRight");
+
+    await page.keyboard.press("Tab");
+
+    const externalFocused = await page.evaluate(() => document.activeElement?.id);
+    expect(externalFocused).not.toBe("external-checkbox");
+
+    // Cursor must be on col 2
+    const nextCell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await expect(nextCell).toHaveClass(/cell-selected/);
+
+    // Focus must remain on the table container, not on any native input
+    const focusedTag = await page.evaluate(() => document.activeElement?.tagName?.toUpperCase());
+    expect(["DIV", "BODY"]).toContain(focusedTag);
+  });
+
+  test("Tab in edit mode must not give focus to a checkbox in the next column", async ({ page }) => {
+    // Regression: BooleanEditor rendered a focusable checkbox which intercepted Tab.
+    // After Tab from a string cell, if the next column is boolean, focus must stay
+    // on the table container (tabIndex={-1} on the checkbox).
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Find a string cell one column to the LEFT of a boolean cell.
+    // Col 0 = id (readOnly), col 1 = name (string), col 2 = active (bool).
+    // So edit col 1 and Tab to col 2.
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+
+    const input = page.locator("td .cell-editor-input").first();
+    await expect(input).toBeVisible();
+    await page.keyboard.press("Tab");
+
+    // The checkbox in col 2 must NOT have document focus
+    const focusedTag = await page.evaluate(() => document.activeElement?.tagName?.toUpperCase());
+    expect(focusedTag).not.toBe("INPUT");
+
+    // The cursor must be on col 2 (the boolean cell)
+    const boolCell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await expect(boolCell).toHaveClass(/cell-selected/);
+  });
+
+  test("should commit edit on Enter and move to next row", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+
+    const input = page.locator("td .cell-editor-input").first();
+    await input.fill("EnterCommit");
+    await page.keyboard.press("Enter");
+
+    // Check if cell is updated
+    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
+    await expect(cell).toContainText("EnterCommit");
+
+    // Selection should be on next row
+    const nextRowCell = page.locator("table tbody tr").nth(1).locator("td").nth(1);
+    await expect(nextRowCell).toHaveClass(/cell-selected/);
   });
 });
 
@@ -259,11 +522,11 @@ test.describe("Row creation", () => {
     const rowsBefore = await page.locator("table tbody tr").count();
 
     // Set count to 3
-    const input = page.locator(".toolbar-input");
+    const input = page.locator(".custom-table-toolbar .toolbar-input");
     await input.fill("3");
 
     // Click create
-    await page.locator(".toolbar-button").click();
+    await page.locator(".custom-table-toolbar .toolbar-button").click();
 
     const rowsAfter = await page.locator("table tbody tr").count();
     expect(rowsAfter).toBe(rowsBefore + 3);
@@ -273,7 +536,7 @@ test.describe("Row creation", () => {
     const rowsBefore = await page.locator("table tbody tr").count();
 
     // Don't change input (default 1), just click create
-    await page.locator(".toolbar-button").click();
+    await page.locator(".custom-table-toolbar .toolbar-button").click();
 
     const rowsAfter = await page.locator("table tbody tr").count();
     expect(rowsAfter).toBe(rowsBefore + 1);
@@ -287,7 +550,7 @@ test.describe("Row creation", () => {
       }
     });
 
-    await page.locator(".toolbar-button").click();
+    await page.locator(".custom-table-toolbar .toolbar-button").click();
     await page.waitForTimeout(200);
 
     expect(messages.length).toBeGreaterThan(0);
@@ -498,7 +761,7 @@ test.describe("Copy & Paste", () => {
 
     // Verify clipboard has the cell content
     const clipboardText = await page.evaluate(() => navigator.clipboard.readText());
-    expect(clipboardText).toBe("dummy");
+    expect(clipboardText).toBe("2ahYgqh2jbbm6ZY");
 
     // Now write a distinct value to the clipboard for the paste test
     await page.evaluate(() => navigator.clipboard.writeText("PastedValue"));
@@ -567,7 +830,7 @@ test.describe("Undo/Redo", () => {
     await page.waitForTimeout(200);
 
     // Should revert to original value
-    await expect(cell).toContainText("dummy");
+    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
   });
 
   test("should redo after undo", async ({ page }) => {
@@ -593,7 +856,7 @@ test.describe("Undo/Redo", () => {
     // Undo
     await page.keyboard.press("Control+z");
     await page.waitForTimeout(500);
-    await expect(cell).toContainText("dummy");
+    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
 
     // Re-focus table (rows changed on undo, cursor reset may have moved focus)
     await table.focus();
@@ -609,7 +872,7 @@ test.describe("Undo/Redo", () => {
     const table = page.locator(".custom-table");
     const rowsBefore = await page.locator("table tbody tr").count();
 
-    await page.locator(".toolbar-button").click();
+    await page.locator(".custom-table-toolbar .toolbar-button").click();
     await page.waitForTimeout(100);
 
     const rowsAfterCreate = await page.locator("table tbody tr").count();
@@ -645,6 +908,48 @@ test.describe("Undo/Redo", () => {
     const rowsAfterUndo = await page.locator("table tbody tr").count();
     expect(rowsAfterUndo).toBe(rowsBefore);
   });
+
+  test("should log onUndo and change callbacks when undoing", async ({ page }) => {
+    const messages: string[] = [];
+    page.on("console", (msg) => {
+      if (msg.text().includes("onUndo") || msg.text().includes("onUpdateRows") || msg.text().includes("onRedo") || msg.text().includes("onCreateRows")) {
+        messages.push(msg.text());
+      }
+    });
+
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate and edit
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+    const input = page.locator("td .cell-editor-input").first();
+    await input.fill("TestingCallbacks");
+    await page.keyboard.press("Enter");
+    await page.waitForTimeout(200);
+    
+    // Clear messages from the first UpdateRows
+    messages.length = 0;
+
+    // Undo
+    await table.focus();
+    await page.keyboard.press("Control+z");
+    await page.waitForTimeout(300);
+
+    // After undo, onUndo and onUpdateRows should be called
+    expect(messages.some(m => m.includes("onUndo"))).toBeTruthy();
+    expect(messages.some(m => m.includes("onUpdateRows"))).toBeTruthy();
+    messages.length = 0;
+
+    // Redo 
+    await table.focus();
+    await page.keyboard.press("Control+y");
+    await page.waitForTimeout(300);
+
+    // After redo, onRedo and onUpdateRows should be called
+    expect(messages.some(m => m.includes("onRedo"))).toBeTruthy();
+    expect(messages.some(m => m.includes("onUpdateRows"))).toBeTruthy();
+  });
 });
 
 // ============================================================================
@@ -670,9 +975,11 @@ test.describe("Context menu", () => {
     await firstCell.click({ button: "right" });
     await expect(page.locator(".context-menu")).toBeVisible();
 
-    // Click outside
-    await page.locator(".context-menu-modal-background").click();
+    // Click on a different cell — menu should close and that cell gets selected
+    const otherCell = page.locator("table tbody tr").nth(2).locator("td").nth(2);
+    await otherCell.click();
     await expect(page.locator(".context-menu")).not.toBeVisible();
+    await expect(otherCell).toHaveClass(/cell-selected/);
   });
 
   test("should delete content via context menu", async ({ page }) => {
@@ -683,14 +990,14 @@ test.describe("Context menu", () => {
     await page.keyboard.press("ArrowRight");
 
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(cell).toContainText("dummy");
+    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
 
     // Right-click and delete
     await cell.click({ button: "right" });
     await page.locator(".context-menu-item").filter({ hasText: "delete content" }).click();
     await page.waitForTimeout(200);
 
-    await expect(cell).not.toContainText("dummy");
+    await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
   });
 });
 
@@ -707,13 +1014,13 @@ test.describe("Delete content", () => {
 
     // Verify cell has content
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(cell).toContainText("dummy");
+    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
 
     // Press Delete
     await page.keyboard.press("Delete");
 
     // Cell should be empty
-    await expect(cell).not.toContainText("dummy");
+    await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
   });
 
   test("should delete cell content with Backspace key", async ({ page }) => {
@@ -723,11 +1030,11 @@ test.describe("Delete content", () => {
     await page.keyboard.press("ArrowRight");
 
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(cell).toContainText("dummy");
+    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
 
     await page.keyboard.press("Backspace");
 
-    await expect(cell).not.toContainText("dummy");
+    await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
   });
 
   test("should delete multi-cell selection with Delete key", async ({ page }) => {
@@ -746,7 +1053,7 @@ test.describe("Delete content", () => {
     // First three rows Key column should be empty
     for (let r = 0; r < 3; r++) {
       const cell = page.locator("table tbody tr").nth(r).locator("td").nth(1);
-      await expect(cell).not.toContainText("dummy");
+      await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
     }
   });
 
@@ -763,7 +1070,7 @@ test.describe("Delete content", () => {
 
     await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Delete");
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(200);
 
     expect(messages.length).toBeGreaterThan(0);
     expect(messages[0]).toContain("onUpdateRows");
@@ -771,11 +1078,49 @@ test.describe("Delete content", () => {
 });
 
 // ============================================================================
+// Ellipsis feature
+// ============================================================================
+test.describe("Ellipsis", () => {
+  test("should truncate long text based on textEllipsisLength and expand on edit", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Find row 0, col 2 (firstName)
+    const cell = page.locator("table tbody tr").first().locator("td").nth(2);
+    
+    // Edit the cell and input long chars
+    await cell.click();
+    await page.keyboard.press("Enter");
+    const input = cell.locator(".cell-editor-input");
+    
+    const longText = "This string is absolutely longer than twenty-five characters.";
+    await input.fill(longText);
+    await page.keyboard.press("Enter");
+    await page.waitForTimeout(100);
+
+    // Check displayed text
+    const cellText = await cell.textContent();
+    expect(cellText).toContain("[...]");
+    expect(cellText).toBe(longText.substring(0, 25) + " [...]");
+
+    // Enter edit mode again
+    await cell.click();
+    await page.keyboard.press("Enter");
+    const editInput = cell.locator(".cell-editor-input");
+    const inputValue = await editInput.inputValue();
+    
+    // Expect full text in input
+    expect(inputValue).toBe(longText);
+  });
+});
+
+
+// ============================================================================
 // Cell meta: styles, disabled, title
 // ============================================================================
 test.describe("Cell Meta", () => {
   test("should apply cell meta style to the specified cell", async ({ page }) => {
-    // Row "3" (4th data row, 0-indexed) / column "Key" has background #fdd
+    // Row "3" (rowIndex 3) / column "System Key" (index 1) has background #fdd
     const cell = page.locator("table tbody tr").nth(3).locator("td").nth(1);
     const bgColor = await cell.evaluate((el) => getComputedStyle(el).backgroundColor);
     // #fdd = rgb(255, 221, 221)
@@ -783,19 +1128,19 @@ test.describe("Cell Meta", () => {
   });
 
   test("should apply cell meta title attribute", async ({ page }) => {
-    // Row "3" / column "Key" has a title
+    // Row "3" / column "System Key" has a title
     const cell = page.locator("table tbody tr").nth(3).locator("td").nth(1);
     await expect(cell).toHaveAttribute("title", "Validation error: Key must not be 'dummy'");
   });
 
   test("should apply cell meta className", async ({ page }) => {
-    // Row "3" / column "Key" has className "cell-error"
+    // Row "3" / column "System Key" has className "cell-error"
     const cell = page.locator("table tbody tr").nth(3).locator("td").nth(1);
     await expect(cell).toHaveClass(/cell-error/);
   });
 
   test("should apply row meta style to the tr element", async ({ page }) => {
-    // Row "5" (6th data row) has __row style background #eee
+    // Row "5" (6th data row) has row style background #eee
     const row = page.locator("table tbody tr").nth(5);
     const bgColor = await row.evaluate((el) => getComputedStyle(el).backgroundColor);
     // #eee = rgb(238, 238, 238)
@@ -808,11 +1153,11 @@ test.describe("Cell Meta", () => {
   });
 
   test("should apply disabled state to cell – no editing on click", async ({ page }) => {
-    // Row "5" / column "Key" is disabled
+    // Row "5" / column "System Key" is disabled
     const cell = page.locator("table tbody tr").nth(5).locator("td").nth(1);
     await expect(cell).toHaveClass(/cell-disabled/);
 
-    // Click the cell to select, then click again to try to edit
+    // Click the cell to select, then click again (now dblclick is required for edit, single click should just select)
     await cell.click();
     await cell.click();
     await page.waitForTimeout(200);
@@ -826,7 +1171,7 @@ test.describe("Cell Meta", () => {
     const table = page.locator(".custom-table");
     await table.focus();
 
-    // Navigate to row 5, column Key (disabled)
+    // Navigate to row 5, column System Key (disabled)
     for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowDown");
     await page.keyboard.press("ArrowRight");
 
@@ -880,7 +1225,7 @@ test.describe("onUpdateRows callback", () => {
       }
     });
 
-    const checkbox = page.locator("table tbody tr").first().locator("td").nth(3).locator("input[type=checkbox]");
+    const checkbox = page.locator("table tbody tr").first().locator("td").nth(8).locator("input[type=checkbox]");
     await checkbox.click();
     await page.waitForTimeout(300);
 
@@ -892,41 +1237,171 @@ test.describe("onUpdateRows callback", () => {
 // ============================================================================
 // Multi-Combobox editor
 // ============================================================================
+// ============================================================================
+// Combobox keyboard navigation
+// Department = col 5 (Combobox), options: HR, IT, Sales, Marketing, Finance, Legal
+// Skills     = col 6 (MultiCombobox)
+// ============================================================================
+test.describe("Combobox keyboard navigation", () => {
+  test("Enter in Combobox edit mode commits and moves to next row", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter"); // open editor
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // Enter with no highlight → commit current value, advance row
+    await page.keyboard.press("Enter");
+
+    // Dropdown must be gone
+    await expect(page.locator(".combo-dropdown-list")).not.toBeVisible();
+    // Cursor must have moved to row 1 col 5
+    const nextRowCell = page.locator("table tbody tr").nth(1).locator("td").nth(5);
+    await expect(nextRowCell).toHaveClass(/cell-selected/);
+  });
+
+  test("ArrowDown highlights options, Enter selects and advances row", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter"); // open editor
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // Clear the input so all 6 options are visible (input starts pre-filled with current value)
+    const input = page.locator(".combo-dropdown-input").first();
+    await input.clear();
+
+    // ArrowDown → first option highlighted
+    await page.keyboard.press("ArrowDown");
+    const firstOption = page.locator(".combo-dropdown-option").first();
+    await expect(firstOption).toHaveClass(/is-highlighted/);
+
+    // ArrowDown again → second option highlighted
+    await page.keyboard.press("ArrowDown");
+    const secondOption = page.locator(".combo-dropdown-option").nth(1);
+    await expect(secondOption).toHaveClass(/is-highlighted/);
+    const secondText = (await secondOption.locator("span").first().textContent()) ?? "";
+
+    // Enter → selects second option, cursor moves to row 1
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list")).not.toBeVisible();
+
+    const deptCell = page.locator("table tbody tr").first().locator("td").nth(5);
+    await expect(deptCell).toContainText(secondText);
+
+    const nextRowCell = page.locator("table tbody tr").nth(1).locator("td").nth(5);
+    await expect(nextRowCell).toHaveClass(/cell-selected/);
+  });
+
+  test("ArrowUp wraps around to last option", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // ArrowUp from no-highlight → wraps to last option
+    await page.keyboard.press("ArrowUp");
+    const lastOption = page.locator(".combo-dropdown-option").last();
+    await expect(lastOption).toHaveClass(/is-highlighted/);
+    await page.keyboard.press("Escape");
+  });
+
+  test("Space in MultiCombobox toggles the highlighted option", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+    for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter"); // open MultiCombobox editor
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // Navigate to first option
+    await page.keyboard.press("ArrowDown");
+    const firstOption = page.locator(".combo-dropdown-option").first();
+    await expect(firstOption).toHaveClass(/is-highlighted/);
+
+    // Record initial selected state — toggle must flip it regardless of start state
+    const before = await firstOption.evaluate((el) => el.classList.contains("is-selected"));
+
+    // Space → toggle
+    await page.keyboard.press(" ");
+    if (before) {
+      await expect(firstOption).not.toHaveClass(/is-selected/);
+    } else {
+      await expect(firstOption).toHaveClass(/is-selected/);
+    }
+
+    // Space again → toggle back
+    await page.keyboard.press(" ");
+    if (before) {
+      await expect(firstOption).toHaveClass(/is-selected/);
+    } else {
+      await expect(firstOption).not.toHaveClass(/is-selected/);
+    }
+
+    await page.keyboard.press("Escape");
+  });
+
+  test("Enter in MultiCombobox with empty input advances to next row", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+    for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // Enter with no highlighted option and empty input → advance row
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list")).not.toBeVisible();
+
+    const nextRowCell = page.locator("table tbody tr").nth(1).locator("td").nth(6);
+    await expect(nextRowCell).toHaveClass(/cell-selected/);
+  });
+});
+
 test.describe("MultiCombobox editor", () => {
   test("should show multi-combobox dropdown on edit", async ({ page }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
-    // Navigate to Tags column (index 4)
-    for (let i = 0; i < 4; i++) await page.keyboard.press("ArrowRight");
+    // Navigate to Skills column (index 6)
+    for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter");
 
-    // Should show multi-combobox
-    const dropdown = page.locator(".multi-combobox-dropdown");
-    await expect(dropdown.first()).toBeVisible({ timeout: 2000 });
+    // Should show the custom dropdown list with options
+    await expect(page.locator("td .combo-dropdown-list").first()).toBeVisible();
+    await expect(page.locator("td .combo-dropdown-option").first()).toBeVisible();
   });
 
   test("should toggle option in multi-combobox", async ({ page }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
-    // Navigate to Tags column (index 4) and edit
-    for (let i = 0; i < 4; i++) await page.keyboard.press("ArrowRight");
+    // Navigate to Skills column (index 6) and edit
+    for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter");
-    await page.waitForTimeout(500);
 
     // The dropdown should be visible
-    const dropdown = page.locator(".multi-combobox-dropdown").first();
-    await expect(dropdown).toBeVisible();
+    await expect(page.locator("td .combo-dropdown-list").first()).toBeVisible();
 
-    // Click "Tag1" label
-    const tag1Label = dropdown.locator("label").filter({ hasText: "Tag1" });
-    await tag1Label.click();
-    await page.waitForTimeout(500);
+    // Find "React" option and record its initial state
+    const reactOption = page.locator("td .combo-dropdown-option").filter({ hasText: "React" }).first();
+    const wasBefore = await reactOption.evaluate((el) => el.classList.contains("is-selected"));
 
-    // After toggle, the cell should contain "Tag1" in its text
-    const cell = page.locator("table tbody tr").first().locator("td").nth(4);
-    await expect(cell).toContainText("Tag1");
+    // Click to toggle
+    await reactOption.click();
+
+    // State must have flipped
+    if (wasBefore) {
+      await expect(reactOption).not.toHaveClass(/is-selected/);
+    } else {
+      await expect(reactOption).toHaveClass(/is-selected/);
+    }
+
+    // Commit and verify cell text reflects the current selection
+    await page.keyboard.press("Enter");
+    const cell = page.locator("table tbody tr").first().locator("td").nth(6);
+    if (!wasBefore) {
+      await expect(cell).toContainText("React");
+    }
   });
 });
 
@@ -1179,5 +1654,305 @@ test.describe("Pending state", () => {
     await expect(table).toBeVisible();
     const rows = page.locator("table tbody tr");
     expect(await rows.count()).toBeGreaterThan(0);
+  });
+});
+
+// ============================================================================
+// Number formatting
+// Column indices in the demo data:
+//   0  id              – Number, readOnly, no numberFormat
+//   9  salary          – Number, decimalPlaces:2, thousandsSeparator:true, suffix:" €"
+//  19  performanceScore– Number, decimalPlaces:2, thousandsSeparator:false
+//  20  bonus           – Number, decimalPlaces:0, thousandsSeparator:true, prefix:"+ ", suffix:" €"
+// ============================================================================
+test.describe("Number formatting", () => {
+  test("Number cells and their headers carry cell-align-right class", async ({ page }) => {
+    const salaryTd = page.locator("table tbody tr").first().locator("td").nth(9);
+    const salaryTh = page.locator("table thead th").nth(9);
+    await expect(salaryTd).toHaveClass(/cell-align-right/);
+    await expect(salaryTh).toHaveClass(/cell-align-right/);
+  });
+
+  test("Number cell without numberFormat shows the raw number", async ({ page }) => {
+    // id column (index 0) has no numberFormat – plain numeric text
+    const idCell = page.locator("table tbody tr").first().locator("td").nth(0);
+    const text = (await idCell.textContent())?.trim() ?? "";
+    expect(Number(text)).not.toBeNaN();
+    // No affix characters
+    expect(text).not.toContain("€");
+    expect(text).not.toContain("+");
+  });
+
+  test("salary displays suffix and 2 decimal places after editing", async ({ page }) => {
+    const salaryCell = page.locator("table tbody tr").first().locator("td").nth(9);
+    await salaryCell.click();
+    await page.keyboard.press("Enter");
+    await salaryCell.locator("input").fill("1000");
+    await page.keyboard.press("Enter");
+
+    const text = (await salaryCell.textContent()) ?? "";
+    // Must end with "00 €" — holds for en-US "1,000.00 €" and de-DE "1.000,00 €"
+    expect(text.endsWith("00 €")).toBe(true);
+  });
+
+  test("salary edit mode: input is type=text, shows formatted number without affix", async ({ page }) => {
+    // First set a known value so we can predict the formatted string
+    const salaryCell = page.locator("table tbody tr").first().locator("td").nth(9);
+    await salaryCell.click();
+    await page.keyboard.press("Enter");
+    await salaryCell.locator("input").fill("1000");
+    await page.keyboard.press("Enter");
+
+    // Enter edit mode again — click back to row 0, then Enter
+    await salaryCell.click();
+    await page.keyboard.press("Enter");
+    const input = salaryCell.locator("input");
+    await expect(input).toBeVisible();
+
+    // Input must be type="text" (not type="number")
+    const inputType = await input.getAttribute("type");
+    expect(inputType).toBe("text");
+
+    // Input value must NOT contain affix characters
+    const raw = await input.inputValue();
+    expect(raw).not.toContain("€");
+    expect(raw).not.toContain("+");
+
+    // Input value must contain the formatted decimal part: ends with "00"
+    // (en-US "1,000.00" / de-DE "1.000,00" — both end with "00")
+    expect(raw.endsWith("00")).toBe(true);
+
+    await page.keyboard.press("Escape");
+  });
+
+  test("salary edit mode: wrapper element carries data-prefix/data-suffix for CSS affixes", async ({ page }) => {
+    const salaryCell = page.locator("table tbody tr").first().locator("td").nth(9);
+    await salaryCell.click();
+    await page.keyboard.press("Enter");
+
+    // The wrapper span must carry the data attributes used by ::before / ::after
+    const wrapper = salaryCell.locator(".number-editor-wrapper");
+    await expect(wrapper).toBeVisible();
+    // salary has no prefix → data-prefix should be empty
+    await expect(wrapper).toHaveAttribute("data-prefix", "");
+    // salary suffix is " €"
+    await expect(wrapper).toHaveAttribute("data-suffix", " €");
+
+    await page.keyboard.press("Escape");
+  });
+
+  test("bonus edit mode: wrapper carries prefix and suffix data attributes", async ({ page }) => {
+    const bonusCell = page.locator("table tbody tr").first().locator("td").nth(20);
+    await bonusCell.click();
+    await page.keyboard.press("Enter");
+
+    const wrapper = bonusCell.locator(".number-editor-wrapper");
+    await expect(wrapper).toBeVisible();
+    await expect(wrapper).toHaveAttribute("data-prefix", "+ ");
+    await expect(wrapper).toHaveAttribute("data-suffix", " €");
+
+    await page.keyboard.press("Escape");
+  });
+
+  test("single click on selected Number cell opens edit mode", async ({ page }) => {
+    const salaryCell = page.locator("table tbody tr").first().locator("td").nth(9);
+    // First click: select the cell
+    await salaryCell.click();
+    // Verify not yet in edit mode
+    await expect(salaryCell.locator("input")).not.toBeVisible();
+    // Second click: should enter edit mode
+    await salaryCell.click();
+    await expect(salaryCell.locator("input")).toBeVisible();
+    await page.keyboard.press("Escape");
+  });
+
+  test("clicking within the open Number editor does not exit edit mode", async ({ page }) => {
+    const salaryCell = page.locator("table tbody tr").first().locator("td").nth(9);
+    // Enter edit mode
+    await salaryCell.click();
+    await salaryCell.click();
+    const input = salaryCell.locator("input");
+    await expect(input).toBeVisible();
+    // Click within the input — must stay in edit mode
+    await input.click();
+    await expect(input).toBeVisible();
+    await page.keyboard.press("Escape");
+  });
+
+  test("editing a formatted value round-trips correctly", async ({ page }) => {
+    // Set salary to a locale-formatted value by typing the formatted string
+    const salaryCell = page.locator("table tbody tr").first().locator("td").nth(9);
+    await salaryCell.click();
+    await page.keyboard.press("Enter");
+    // Type "2500" as plain digits — parseLocaleNumber must handle this
+    await salaryCell.locator("input").fill("2500");
+    await page.keyboard.press("Enter");
+
+    const displayed = (await salaryCell.textContent()) ?? "";
+    // Should show 2500 formatted with 2 decimals and suffix
+    expect(displayed.endsWith("00 €")).toBe(true);
+    // Enter edit mode — click back to row 0, then Enter
+    await salaryCell.click();
+    await page.keyboard.press("Enter");
+    const inputVal = await salaryCell.locator("input").inputValue();
+    expect(inputVal.endsWith("00")).toBe(true);
+    await page.keyboard.press("Escape");
+  });
+
+  test("bonus displays prefix and suffix, no decimal part", async ({ page }) => {
+    const bonusCell = page.locator("table tbody tr").first().locator("td").nth(20);
+    await bonusCell.click();
+    await page.keyboard.press("Enter");
+    await bonusCell.locator("input").fill("500");
+    await page.keyboard.press("Enter");
+
+    const text = (await bonusCell.textContent()) ?? "";
+    // prefix "+" and suffix "€" must be present
+    expect(text.startsWith("+ ")).toBe(true);
+    expect(text.endsWith(" €")).toBe(true);
+    // decimalPlaces:0 — no decimal separator in the number portion
+    const numberPart = text.slice(2, -2); // strip "+" prefix and "€" suffix
+    expect(numberPart).not.toMatch(/[.,]\d+$/);
+  });
+
+  test("performanceScore shows 2 decimal places, no affix", async ({ page }) => {
+    const scoreCell = page.locator("table tbody tr").first().locator("td").nth(19);
+    await scoreCell.click();
+    await page.keyboard.press("Enter");
+    await scoreCell.locator("input").fill("3.5");
+    await page.keyboard.press("Enter");
+
+    const text = (await scoreCell.textContent()) ?? "";
+    // With decimalPlaces:2 the value 3.5 → "3.50" (en-US) or "3,50" (de-DE) — ends with "50"
+    expect(text.endsWith("50")).toBe(true);
+    // No affix configured for this column
+    expect(text).not.toContain("€");
+    expect(text).not.toContain("+");
+  });
+});
+
+// ============================================================================
+// Click outside clears selection
+// ============================================================================
+test.describe("Click outside clears selection", () => {
+  test("clicking outside the table removes cell-selected class", async ({ page }) => {
+    // Select a cell
+    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
+    await cell.click();
+    await expect(cell).toHaveClass(/cell-selected/);
+
+    // Click outside the table (on the pagination bar)
+    await page.locator(".ct-pagination").click();
+
+    await expect(cell).not.toHaveClass(/cell-selected/);
+  });
+
+  test("clicking outside removes row-selected class", async ({ page }) => {
+    const cell = page.locator("table tbody tr").nth(2).locator("td").nth(1);
+    await cell.click();
+    const row = page.locator("table tbody tr").nth(2);
+    await expect(row).toHaveClass(/row-selected/);
+
+    await page.locator(".ct-pagination").click();
+
+    await expect(row).not.toHaveClass(/row-selected/);
+  });
+});
+
+// ============================================================================
+// ReadOnly behaviour
+// ============================================================================
+test.describe("ReadOnly", () => {
+  test("readOnly column: Enter does not open editor", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Cursor starts at col 0 (ID, readOnly). Press Enter.
+    await page.keyboard.press("Enter");
+
+    // No editor input should appear
+    const input = page.locator("td .cell-editor-input");
+    await expect(input).toHaveCount(0);
+  });
+
+  test("readOnly column: F2 does not open editor", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Cursor starts at col 0 (ID, readOnly). Press F2.
+    await page.keyboard.press("F2");
+
+    const input = page.locator("td .cell-editor-input");
+    await expect(input).toHaveCount(0);
+  });
+
+  test("readOnly column: double-click does not open editor", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").first();
+    await cell.dblclick();
+
+    const input = cell.locator(".cell-editor-input");
+    await expect(input).toHaveCount(0);
+  });
+
+  test("readOnly column: typing does not open editor", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Cursor starts at col 0 (ID, readOnly). Type a character.
+    await page.keyboard.press("A");
+
+    const input = page.locator("td .cell-editor-input");
+    await expect(input).toHaveCount(0);
+  });
+
+  test("readOnly column: cell shows cell-selected (not cell-edited) after Enter", async ({ page }) => {
+    // Click the ID cell (col 0, readOnly) to select it, then press Enter.
+    const cell = page.locator("table tbody tr").first().locator("td").first();
+    await cell.click();
+    await expect(cell).toHaveClass(/cell-selected/);
+
+    await page.keyboard.press("Enter");
+
+    await expect(cell).toHaveClass(/cell-selected/);
+    await expect(cell).not.toHaveClass(/cell-edited/);
+  });
+
+  test("readOnly row: Enter does not open editor", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to row 5 (0-based display row 5, which has readOnly: true), col 1 (System Key)
+    await page.keyboard.press("ArrowRight");
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowDown");
+
+    await page.keyboard.press("Enter");
+
+    const input = page.locator("td .cell-editor-input");
+    await expect(input).toHaveCount(0);
+  });
+
+  test("readOnly row: double-click does not open editor", async ({ page }) => {
+    // Row 5 (0-based) has readOnly: true. Click col 1 (System Key) of that row.
+    const cell = page.locator("table tbody tr").nth(5).locator("td").nth(1);
+    await cell.dblclick();
+
+    const input = cell.locator(".cell-editor-input");
+    await expect(input).toHaveCount(0);
+  });
+
+  test("readOnly row: Delete key does not modify cell value", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to row 5, col 1 (System Key, part of readOnly row)
+    await page.keyboard.press("ArrowRight");
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowDown");
+
+    const cell = page.locator("table tbody tr").nth(5).locator("td").nth(1);
+    const originalText = await cell.textContent();
+
+    await page.keyboard.press("Delete");
+
+    await expect(cell).toHaveText(originalText!);
   });
 });

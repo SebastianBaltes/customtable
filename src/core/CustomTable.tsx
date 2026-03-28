@@ -1,6 +1,7 @@
-import React from "react";
-import { CellMetaMap, ColumnConfig, FilterState, Row, SortConfig } from "./Types";
+import React, { useMemo, useState } from "react";
+import { CellMetaMap, ColumnConfig, CustomContextMenuItem, FilterState, Row, SortConfig, TableContextState } from "./Types";
 import { forceUpdateCursorRect } from "./directDomUpdateForCursor";
+import classNames from "classnames";
 import { ContextMenu } from "./ContextMenu";
 import { RowTable } from "./RowTable";
 import { useStickyColumnsLeftChecker } from "./useStickColumnLeftsChecker";
@@ -8,6 +9,7 @@ import { useOnGridResize } from "./useGridResizeChecker";
 import { useContextMenu } from "./useContextMenu";
 import { useCursor } from "./useCursor";
 import { useUndoRedo } from "./useUndoRedo";
+import { TableTranslations, TranslationsContext, resolveTranslations } from "./TranslationsContext";
 
 export const getCursorName = (prefix: string, hasCursor: boolean, editing: boolean) =>
   hasCursor ? prefix + (editing ? "edited" : "selected") : "";
@@ -28,6 +30,10 @@ interface IProps {
   onUpdateRows: (rows: Row[]) => void | Promise<void>;
   /** Called with deleted rows. May return a Promise – reject triggers rollback. */
   onDeleteRows: (rows: Row[]) => void | Promise<void>;
+  /** Called when undo is performed, with the newly restored full rows array. */
+  onUndo: (recoveredRows: Row[]) => void | Promise<void>;
+  /** Called when redo is performed, with the newly restored full rows array. */
+  onRedo: (recoveredRows: Row[]) => void | Promise<void>;
   rowKey: (row: Row, rowIndex: number) => string;
   numberOfStickyColums: number;
 
@@ -44,6 +50,17 @@ interface IProps {
   // --- Cell / Row meta ---
   /** Meta information (style, disabled, title) per cell/row, keyed by rowKey then columnName. */
   cellMeta: CellMetaMap;
+
+  /** Maximum string length before truncating and adding [...] to text cells */
+  textEllipsisLength: number;
+  /** Override any subset of the built-in UI strings (toolbar, dropdown hints, context menu). */
+  translations: Partial<TableTranslations>;
+  /**
+   * Extra items appended to the built-in context menu.
+   * Each item's `onClick` receives a snapshot of the current table state.
+   * Use `"---"` to insert a separator between custom items.
+   */
+  extraContextMenuItems: CustomContextMenuItem[];
 }
 
 type CustomTableProps = IRequiredProps & Partial<IProps>;
@@ -56,6 +73,8 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     onCreateRows,
     onUpdateRows,
     onDeleteRows,
+    onUndo,
+    onRedo,
     rowKey,
     numberOfStickyColums = 0,
     sortConfig: controlledSortConfig,
@@ -63,7 +82,11 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     filters: controlledFilters,
     onFilterChange: controlledOnFilterChange,
     cellMeta,
+    textEllipsisLength,
+    translations: translationsProp,
+    extraContextMenuItems,
   }: CustomTableProps) => {
+    const t = React.useMemo(() => resolveTranslations(translationsProp), [translationsProp]);
     const [tableId] = React.useState(() => `MkEu3ZWrGK${Math.floor(Math.random() * 1000000)}`);
 
     // --- Internal sort/filter state (used when not controlled) ---
@@ -201,6 +224,9 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
             .catch(() => {
               // Rollback: restore old rows
               changeRows(snapshotRows);
+              // Also restore undo/redo internal stacks
+              // Note: robust rollback of undo/redo stacks might require extra logic,
+              // but replacing the array is safe.
             })
             .finally(() => {
               setPending(false);
@@ -210,10 +236,41 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       [changeRows],
     );
 
+    const detectAndFireChanges = React.useCallback(
+      (oldRows: Row[], newRows: Row[]) => {
+        let callback: (() => void | Promise<void>) | undefined;
+        let diffObj: Row[] = [];
+        
+        if (newRows.length > oldRows.length) {
+          // Rows were created in newRows (e.g. undo a delete)
+          const oldSet = new Set(oldRows);
+          diffObj = newRows.filter((r) => !oldSet.has(r));
+          callback = onCreateRows ? () => onCreateRows(diffObj) : undefined;
+        } else if (newRows.length < oldRows.length) {
+          // Rows were deleted in newRows (e.g. undo a create)
+          const newSet = new Set(newRows);
+          diffObj = oldRows.filter((r) => !newSet.has(r));
+          callback = onDeleteRows ? () => onDeleteRows(diffObj) : undefined;
+        } else {
+          // Rows were updated
+          diffObj = newRows.filter((r, i) => r !== oldRows[i]);
+          if (diffObj.length > 0) {
+            callback = onUpdateRows ? () => onUpdateRows(diffObj) : undefined;
+          }
+        }
+        
+        return callback;
+      },
+      [onCreateRows, onDeleteRows, onUpdateRows],
+    );
+
     const onCellChange = React.useCallback(
       (displayRowIdx: number, colName: string, value: any) => {
         const origIdx = originalIndices[displayRowIdx];
         if (origIdx == null) return;
+        const oldValue = rows[origIdx][colName];
+        if (oldValue === value) return; // Do nothing if unchanged
+        
         const snapshot = rows;
         undoRedo.pushState(rows);
         const updatedRow = { ...rows[origIdx], [colName]: value };
@@ -273,6 +330,8 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
           const displayIdx = startRow + r;
           const origIdx = originalIndices[displayIdx];
           if (origIdx == null || origIdx >= newRows.length) continue;
+          const displayRowKey = getRowKey(displayRows[displayIdx], displayIdx);
+          if (cellMeta?.[displayRowKey]?.row?.readOnly) continue;
           const newRow = { ...newRows[origIdx] };
           let rowChanged = false;
           for (let c = 0; c < cells.length; c++) {
@@ -296,7 +355,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       } catch {
         // clipboard access denied
       }
-    }, [rows, columns, originalIndices, changeRows, undoRedo, onUpdateRows, withAsyncRollback]);
+    }, [rows, columns, originalIndices, displayRows, getRowKey, cellMeta, changeRows, undoRedo, onUpdateRows, withAsyncRollback]);
 
     const deleteSelection = React.useCallback(() => {
       const { startRow, endRow, startCol, endCol } = getSelectionRange();
@@ -307,6 +366,8 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       for (let r = startRow; r <= endRow; r++) {
         const origIdx = originalIndices[r];
         if (origIdx == null) continue;
+        const displayRowKey = getRowKey(displayRows[r], r);
+        if (cellMeta?.[displayRowKey]?.row?.readOnly) continue;
         const newRow = { ...newRows[origIdx] };
         let rowChanged = false;
         for (let c = startCol; c <= endCol; c++) {
@@ -326,7 +387,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         const updatedRows = [...changedOrigIndices].map((i) => newRows[i]);
         withAsyncRollback(snapshot, () => onUpdateRows(updatedRows));
       }
-    }, [rows, columns, originalIndices, changeRows, undoRedo, onUpdateRows, withAsyncRollback]);
+    }, [rows, columns, originalIndices, displayRows, getRowKey, cellMeta, changeRows, undoRedo, onUpdateRows, withAsyncRollback]);
 
     // --- Row creation ---
     const handleCreateRows = () => {
@@ -346,6 +407,31 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         withAsyncRollback(snapshot, () => onCreateRows(newRows));
       }
     };
+
+    // --- Insert row above / below ---
+    const handleInsertRowAbove = React.useCallback(() => {
+      const { startRow } = getSelectionRange();
+      const origIdx = originalIndices[startRow] ?? rows.length;
+      const newRow: Row = {};
+      columns.forEach((c) => { newRow[c.name] = ""; });
+      const snapshot = rows;
+      undoRedo.pushState(rows);
+      const newRows = [...rows.slice(0, origIdx), newRow, ...rows.slice(origIdx)];
+      changeRows(newRows);
+      if (onCreateRows) withAsyncRollback(snapshot, () => onCreateRows([newRow]));
+    }, [rows, columns, originalIndices, changeRows, undoRedo, onCreateRows, withAsyncRollback]);
+
+    const handleInsertRowBelow = React.useCallback(() => {
+      const { endRow } = getSelectionRange();
+      const origIdx = originalIndices[endRow] ?? rows.length - 1;
+      const newRow: Row = {};
+      columns.forEach((c) => { newRow[c.name] = ""; });
+      const snapshot = rows;
+      undoRedo.pushState(rows);
+      const newRows = [...rows.slice(0, origIdx + 1), newRow, ...rows.slice(origIdx + 1)];
+      changeRows(newRows);
+      if (onCreateRows) withAsyncRollback(snapshot, () => onCreateRows([newRow]));
+    }, [rows, columns, originalIndices, changeRows, undoRedo, onCreateRows, withAsyncRollback]);
 
     // --- Row deletion ---
     const handleDeleteRows = React.useCallback(() => {
@@ -367,9 +453,6 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       setCursorRef({
         editing: false,
         filling: false,
-        selectionStart: { colIdx: 0, rowIdx: 0 },
-        selectionEnd: { colIdx: 0, rowIdx: 0 },
-        fillEnd: { colIdx: 0, rowIdx: 0 },
       });
     }, [rows, originalIndices, changeRows, undoRedo, onDeleteRows, setCursorRef, withAsyncRollback]);
 
@@ -378,15 +461,39 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       const state = undoRedo.undo(rows);
       if (state) {
         changeRows(state);
+        const normalCb = detectAndFireChanges(rows, state);
+        const specificCb = onUndo ? () => onUndo(state) : undefined;
+        
+        if (normalCb || specificCb) {
+          const comboCb = async () => {
+            const promises: any[] = [];
+            if (normalCb) promises.push(normalCb());
+            if (specificCb) promises.push(specificCb());
+            await Promise.all(promises);
+          };
+          withAsyncRollback(rows, comboCb);
+        }
       }
-    }, [undoRedo, changeRows, rows]);
+    }, [undoRedo, rows, changeRows, detectAndFireChanges, onUndo, withAsyncRollback]);
 
     const handleRedo = React.useCallback(() => {
       const state = undoRedo.redo(rows);
       if (state) {
         changeRows(state);
+        const normalCb = detectAndFireChanges(rows, state);
+        const specificCb = onRedo ? () => onRedo(state) : undefined;
+        
+        if (normalCb || specificCb) {
+          const comboCb = async () => {
+            const promises: any[] = [];
+            if (normalCb) promises.push(normalCb());
+            if (specificCb) promises.push(specificCb());
+            await Promise.all(promises);
+          };
+          withAsyncRollback(rows, comboCb);
+        }
       }
-    }, [undoRedo, changeRows, rows]);
+    }, [undoRedo, rows, changeRows, detectAndFireChanges, onRedo, withAsyncRollback]);
 
     // --- Fill drag ---
     const handleFillDragComplete = React.useCallback(() => {
@@ -526,9 +633,24 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
           }
         }
 
+        // Enter on a Boolean cell (navigation mode) → toggle value, stay on cell
+        if (event.key === "Enter" && !cursorRef.current.editing) {
+          const { colIdx, rowIdx } = cursorRef.current.selectionStart;
+          const col = columns[colIdx];
+          const displayRowKey = getRowKey(displayRows[rowIdx], rowIdx);
+          const isRowReadOnly = cellMeta?.[displayRowKey]?.row?.readOnly === true;
+          if (col && col.type === "Boolean" && !col.readOnly && !isRowReadOnly) {
+            event.preventDefault();
+            event.stopPropagation();
+            const currentValue = displayRows[rowIdx]?.[col.name];
+            onCellChange(rowIdx, col.name, !currentValue);
+            return;
+          }
+        }
+
         baseCursorKeyDown(event);
       },
-      [pending, baseCursorKeyDown, handleUndo, handleRedo, copySelection, pasteAtCursor, deleteSelection],
+      [pending, baseCursorKeyDown, handleUndo, handleRedo, copySelection, pasteAtCursor, deleteSelection, columns, displayRows, getRowKey, cellMeta, onCellChange],
     );
 
     // --- Mouse up for fill drag ---
@@ -542,12 +664,111 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       return () => document.removeEventListener("mouseup", onMouseUp);
     }, [handleFillDragComplete]);
 
+    // --- Auto-scroll while dragging (selection or fill) ---
+    React.useEffect(() => {
+      const SCROLL_ZONE = 40; // px from edge before scrolling starts
+      const MAX_SPEED = 16;   // px per animation frame at full speed
+      let rafId: number | null = null;
+      let lastMouseY = 0;
+      let lastMouseX = 0;
+
+      const scroll = () => {
+        const vp = viewportRef.current;
+        if (!vp) return;
+        const cursor = cursorRef.current;
+        // Only auto-scroll while a drag (selection or fill) is in progress
+        if (!cursor.filling && cursor.selectionStart.rowIdx === cursor.selectionEnd.rowIdx &&
+            cursor.selectionStart.colIdx === cursor.selectionEnd.colIdx) {
+          // No active drag; stop the loop
+          rafId = null;
+          return;
+        }
+
+        const rect = vp.getBoundingClientRect();
+        let scrollY = 0;
+        let scrollX = 0;
+
+        // Bottom edge
+        if (lastMouseY > rect.bottom - SCROLL_ZONE) {
+          const dist = lastMouseY - (rect.bottom - SCROLL_ZONE);
+          scrollY = Math.min(MAX_SPEED, Math.round((dist / SCROLL_ZONE) * MAX_SPEED));
+        }
+        // Top edge
+        if (lastMouseY < rect.top + SCROLL_ZONE) {
+          const dist = (rect.top + SCROLL_ZONE) - lastMouseY;
+          scrollY = -Math.min(MAX_SPEED, Math.round((dist / SCROLL_ZONE) * MAX_SPEED));
+        }
+        // Right edge
+        if (lastMouseX > rect.right - SCROLL_ZONE) {
+          const dist = lastMouseX - (rect.right - SCROLL_ZONE);
+          scrollX = Math.min(MAX_SPEED, Math.round((dist / SCROLL_ZONE) * MAX_SPEED));
+        }
+        // Left edge
+        if (lastMouseX < rect.left + SCROLL_ZONE) {
+          const dist = (rect.left + SCROLL_ZONE) - lastMouseX;
+          scrollX = -Math.min(MAX_SPEED, Math.round((dist / SCROLL_ZONE) * MAX_SPEED));
+        }
+
+        if (scrollY !== 0 || scrollX !== 0) {
+          vp.scrollBy({ top: scrollY, left: scrollX });
+        }
+
+        rafId = requestAnimationFrame(scroll);
+      };
+
+      const onMouseMove = (e: MouseEvent) => {
+        lastMouseY = e.clientY;
+        lastMouseX = e.clientX;
+        if (e.buttons === 1 && rafId === null) {
+          rafId = requestAnimationFrame(scroll);
+        }
+      };
+
+      const onMouseUp = () => {
+        if (rafId !== null) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+      };
+
+      document.addEventListener("mousemove", onMouseMove);
+      document.addEventListener("mouseup", onMouseUp);
+      return () => {
+        document.removeEventListener("mousemove", onMouseMove);
+        document.removeEventListener("mouseup", onMouseUp);
+        if (rafId !== null) cancelAnimationFrame(rafId);
+      };
+    }, []); // viewportRef and cursorRef are stable refs – no deps needed
+
+
+    // Stable getter so custom item handlers always see fresh state at click time.
+    const contextStateRef = React.useRef<() => TableContextState>(() => ({
+      selectionRange: { startRow: 0, endRow: 0, startCol: 0, endCol: 0 },
+      selectedRows: [],
+      displayRows: [],
+      rows: [],
+      columns: [],
+    }));
+    contextStateRef.current = () => {
+      const range = getSelectionRange();
+      const selectedRows: Row[] = [];
+      for (let r = range.startRow; r <= range.endRow; r++) {
+        if (displayRows[r]) selectedRows.push(displayRows[r]);
+      }
+      return { selectionRange: range, selectedRows, displayRows, rows, columns, cellMeta };
+    };
+
     const { contextMenu, openContextMenu, closeContextMenu, contextMenuItems } = useContextMenu(
       cursorRef,
       copySelection,
       pasteAtCursor,
       deleteSelection,
       handleDeleteRows,
+      handleInsertRowAbove,
+      handleInsertRowBelow,
+      extraContextMenuItems ?? [],
+      contextStateRef,
+      t,
     );
 
     const selectionRectangleDraggerOnMouseDown = (event: React.MouseEvent) => {
@@ -559,30 +780,44 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     };
 
     return (
+      <TranslationsContext.Provider value={t}>
       <div
         ref={customTableRef}
-        className="custom-table"
+        className={classNames("custom-table", pending && "pending", textEllipsisLength && "has-ellipsis")}
         onKeyDown={handleKeyDown}
         tabIndex={0}
-        style={pending ? { pointerEvents: "none", opacity: 0.6 } : undefined}
       >
         {stickyColumnsLefts.css != null && (
           <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
         )}
-        <div className="custom-table-toolbar">
-          <input
-            type="number"
-            min={1}
-            value={newRowCount}
-            onChange={(e) => setNewRowCount(Math.max(1, parseInt(e.target.value) || 1))}
-            className="toolbar-input"
-            onKeyDown={(e) => e.stopPropagation()}
-          />
-          <button onClick={handleCreateRows} className="toolbar-button" disabled={pending}>
-            Create Rows
-          </button>
-        </div>
-        <div ref={viewportRef} className="custom-table-viewport" onContextMenu={openContextMenu}>
+        <div ref={viewportRef} className="custom-table-viewport" onContextMenu={(event) => {
+          // If right-clicked on a cell outside the current selection, select it first.
+          const td = (event.target as HTMLElement).closest<HTMLElement>("td[data-row-idx]");
+          if (td) {
+            const rowIdx = parseInt(td.dataset.rowIdx ?? "-1");
+            const colIdx = parseInt(td.dataset.colIdx ?? "-1");
+            if (rowIdx >= 0 && colIdx >= 0) {
+              const { selectionStart, selectionEnd } = cursorRef.current;
+              const startRow = Math.min(selectionStart.rowIdx, selectionEnd.rowIdx);
+              const endRow = Math.max(selectionStart.rowIdx, selectionEnd.rowIdx);
+              const startCol = Math.min(selectionStart.colIdx, selectionEnd.colIdx);
+              const endCol = Math.max(selectionStart.colIdx, selectionEnd.colIdx);
+              const inSelection = rowIdx >= startRow && rowIdx <= endRow && colIdx >= startCol && colIdx <= endCol;
+              if (!inSelection) {
+                setCursorRef({
+                  editing: false,
+                  initialEditValue: null,
+                  selectionStart: { rowIdx, colIdx },
+                  selectionEnd: { rowIdx, colIdx },
+                  fillEnd: { rowIdx, colIdx },
+                  filling: false,
+                  colSelection: false,
+                });
+              }
+            }
+          }
+          openContextMenu(event);
+        }}>
           <RowTable
             {...{
               tableId,
@@ -601,6 +836,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
               onFilterChange: handleFilterChange,
               cellMeta,
               getRowKey,
+              textEllipsisLength,
             }}
             stickyPortal={
               numberOfStickyColums === 0
@@ -641,7 +877,22 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
             />
           )}
         </div>
+        <div className="custom-table-toolbar">
+          <span>+</span>
+          <input
+            type="number"
+            min={1}
+            value={newRowCount}
+            onChange={(e) => setNewRowCount(Math.max(1, parseInt(e.target.value) || 1))}
+            className="toolbar-input"
+            onKeyDown={(e) => e.stopPropagation()}
+          />
+          <button onClick={handleCreateRows} className="toolbar-button" disabled={pending}>
+            {t["Create Rows"]}
+          </button>
+        </div>
       </div>
+      </TranslationsContext.Provider>
     );
   },
 );
