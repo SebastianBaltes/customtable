@@ -12,6 +12,8 @@ It is the ideal middle ground between a rigid single-record form and a chaotic, 
 
 By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensures a pixel-perfect layout and seamless CSS styling. While ideal for small to medium datasets, it can easily handle larger data through standard pagination.
 
+> **Live Demo:** <https://sebastianbaltes.github.io/customtable/>
+
 ---
 
 ## Table of Contents
