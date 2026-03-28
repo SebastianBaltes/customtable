@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { createRoot } from "react-dom/client";
 import { CellMetaMap, ColumnConfig, CustomContextMenuItem, CustomTable, FilterState, Row, SortConfig } from "../index";
+import { TextareaDialogEditor } from "../editors/TextareaDialogEditor";
 import { Pagination } from "../pagination/Pagination";
 
 // Import JSON as ESM (tsconfig.json has resolveJsonModule: true)
@@ -62,6 +63,8 @@ export const demoColumns: ColumnConfig<any>[] = [
     type: "String",
     label: "Description",
     comment: "Free text / long description (0-1000 characters)",
+    editor: TextareaDialogEditor,
+    dialogTitle: "${firstName} ${lastName}: Description",
   },
   {
     name: "isActive",
@@ -203,6 +206,12 @@ const exampleCellMeta: CellMetaMap = {
       style: { backgroundColor: "#eee" },
       title: "This row is read-only",
       readOnly: true,
+    },
+    cells: {
+      complexKey: {
+        disabled: true,
+        title: "Disabled cell",
+      },
     },
   },
 };

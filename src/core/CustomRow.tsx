@@ -1,6 +1,6 @@
 import { CellAddr, CellMeta, ColumnConfig, Cursor, Row, RowMeta } from "./Types";
 import React from "react";
-import classNames from "classnames";
+import classNames from "./classNames";
 import { CustomCell } from "./CustomCell";
 import { getCursorName } from "./CustomTable";
 
@@ -31,7 +31,7 @@ export const CustomRow = React.memo(
     textEllipsisLength?: number;
   }) => {
     const { editing, selectionStart, selectionEnd } = cursorRef.current;
-    const rowHasCursor = 
+    const rowHasCursor =
       rowIdx >= Math.min(selectionStart.rowIdx, selectionEnd.rowIdx) &&
       rowIdx <= Math.max(selectionStart.rowIdx, selectionEnd.rowIdx);
     const rowClass = getCursorName("row-", rowHasCursor, editing);

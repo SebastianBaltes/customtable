@@ -8,6 +8,7 @@ export const ComboboxEditor: Editor<string> = ({
   editing,
   columnConfig,
   onChange,
+  onRequestClose,
   textEllipsisLength,
   initialEditValue,
 }) => {
@@ -34,6 +35,7 @@ export const ComboboxEditor: Editor<string> = ({
       onChange={(newSelected) => {
         onChange(newSelected[0] ?? "");
       }}
+      onRequestClose={onRequestClose}
     />
   );
 };

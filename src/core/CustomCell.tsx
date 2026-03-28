@@ -1,6 +1,6 @@
 import { CellMeta, ColumnConfig, Cursor, Row } from "./Types";
 import React from "react";
-import classNames from "classnames";
+import classNames from "./classNames";
 import { getCursorName } from "./CustomTable";
 import { renderCell } from "./renderCell";
 import { setPendingNumberEditorClick } from "../editors/NumberEditor";
@@ -36,7 +36,8 @@ export const CustomCell = React.memo(
     const { editing, selectionStart, initialEditValue } = cursorRef.current;
     const rowHasCursor = rowIdx === selectionStart.rowIdx;
     const cellHasCursor = rowHasCursor && colIdx === selectionStart.colIdx;
-    const isReadOnly = column.readOnly === true || rowReadOnly === true || cellMeta?.disabled === true;
+    const isReadOnly =
+      column.readOnly === true || rowReadOnly === true || cellMeta?.disabled === true;
     const cellClass = getCursorName("cell-", cellHasCursor, editing && !isReadOnly);
     const isDisabled = cellMeta?.disabled === true;
     const effectiveEditing = isReadOnly ? false : isEditing;
@@ -50,7 +51,14 @@ export const CustomCell = React.memo(
         key={column.name}
         data-row-idx={rowIdx}
         data-col-idx={colIdx}
-        className={classNames("cell", sticky && "sticky", cellClass, isDisabled && "cell-disabled", cellMeta?.className, align !== "left" && `cell-align-${align}`)}
+        className={classNames(
+          "cell",
+          sticky && "sticky",
+          cellClass,
+          isDisabled && "cell-disabled",
+          cellMeta?.className,
+          align !== "left" && `cell-align-${align}`,
+        )}
         style={cellMeta?.style}
         title={cellMeta?.title}
         onMouseDown={(event) => {
@@ -78,12 +86,14 @@ export const CustomCell = React.memo(
               setPendingNumberEditorClick(event.clientX);
             }
 
-            if (cellHasCursor && !isReadOnly) {
+            const alreadyEditing = cellHasCursor && cursorRef.current.editing;
+
+            if (cellHasCursor && !isReadOnly && !cursorRef.current.editing) {
               event.preventDefault();
             }
 
             setCursorRef({
-              editing: isDropdownZoneClick || enterEditViaClick,
+              editing: alreadyEditing || isDropdownZoneClick || enterEditViaClick,
               initialEditValue: null,
               selectionStart: { rowIdx, colIdx },
               selectionEnd: { rowIdx, colIdx },
@@ -109,9 +119,20 @@ export const CustomCell = React.memo(
           }
         }}
       >
-        {renderCell(row[column.name], row, effectiveEditing, column, handleChange, textEllipsisLength, initialEditValue)}
+        {renderCell(
+          row[column.name],
+          row,
+          effectiveEditing,
+          column,
+          handleChange,
+          textEllipsisLength,
+          initialEditValue,
+          () => setCursorRef({ editing: false }),
+        )}
         {!effectiveEditing && (column.type === "Combobox" || column.type === "MultiCombobox") && (
-          <span className="cell-dropdown-indicator" aria-hidden="true">▾</span>
+          <span className="cell-dropdown-indicator" aria-hidden="true">
+            ▾
+          </span>
         )}
       </td>
     );

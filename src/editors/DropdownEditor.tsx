@@ -9,6 +9,7 @@ interface DropdownEditorProps {
   displayText: string;
   textEllipsisLength?: number;
   onChange: (newSelected: string[]) => void;
+  onRequestClose?: () => void;
 }
 
 /**
@@ -38,6 +39,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
   displayText,
   textEllipsisLength,
   onChange,
+  onRequestClose,
 }) => {
   const t = useContext(TranslationsContext);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -47,6 +49,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
   const [inputValue, setInputValue] = useState(
     freeText && !multiselect ? (selected[0] ?? "") : "",
   );
+  const [hasUserTyped, setHasUserTyped] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
 
   // Multi-select: buffer toggles locally, commit only on explicit close.
@@ -63,10 +66,22 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
 
   const customSelected = effectiveSelected.filter((s) => !options.includes(s));
   const allOptions = [...options, ...customSelected];
+
+  // Multi-select: sort checked options to the top on initial open.
+  // Capture initial selected set once so the order stays stable during interaction.
+  const [initialSelected] = useState(() => new Set(selected));
+  const sortedOptions = multiselect
+    ? [...allOptions].sort((a, b) => {
+        const aChecked = initialSelected.has(a) ? 0 : 1;
+        const bChecked = initialSelected.has(b) ? 0 : 1;
+        return aChecked - bChecked;
+      })
+    : allOptions;
+
   const filteredOptions =
-    freeText && inputValue.trim() !== ""
-      ? allOptions.filter((o) => o.toLowerCase().includes(inputValue.toLowerCase()))
-      : allOptions;
+    freeText && hasUserTyped && inputValue.trim() !== ""
+      ? sortedOptions.filter((o) => o.toLowerCase().includes(inputValue.toLowerCase()))
+      : sortedOptions;
 
   // Clamp highlight when filtered list shrinks
   const prevLenRef = useRef(filteredOptions.length);
@@ -226,7 +241,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
           autoComplete="off"
           data-lpignore="true"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
+          onChange={(e) => { setHasUserTyped(true); setInputValue(e.target.value); }}
           placeholder={multiselect ? t["Filter or add value..."] : t["Enter or select..."]}
           onBlur={() => {
             if (suppressBlurRef.current) return;
@@ -285,7 +300,9 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
                 e.preventDefault();
                 if (!multiselect) {
                   if (freeText) setInputValue(opt);
+                  suppressBlurRef.current = true;
                   commitSingle(opt);
+                  onRequestClose?.();
                 } else {
                   toggleLocal(opt);
                   if (freeText) setInputValue("");

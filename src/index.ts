@@ -7,3 +7,4 @@ export { NumberEditor } from "./editors/NumberEditor";
 export { BooleanEditor } from "./editors/BooleanEditor";
 export { ComboboxEditor } from "./editors/ComboboxEditor";
 export { MultiComboboxEditor } from "./editors/MultiComboboxEditor";
+export { TextareaDialogEditor } from "./editors/TextareaDialogEditor";

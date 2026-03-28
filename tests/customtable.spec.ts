@@ -261,6 +261,27 @@ test.describe("Cell editing", () => {
     await expect(cell.locator(".cell-editor-input")).toBeVisible();
   });
 
+  test("should place text cursor on click inside already-editing cell", async ({ page }) => {
+    // Double-click a string cell to enter edit mode (selects all text)
+    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
+    await cell.dblclick();
+    const input = cell.locator("input.cell-editor-input");
+    await expect(input).toBeVisible();
+
+    // The full text should be selected after double-click
+    const valueBefore = await input.inputValue();
+    expect(valueBefore.length).toBeGreaterThan(0);
+    const selStartBefore = await input.evaluate((el: HTMLInputElement) => el.selectionStart);
+    const selEndBefore = await input.evaluate((el: HTMLInputElement) => el.selectionEnd);
+    expect(selEndBefore! - selStartBefore!).toBe(valueBefore.length);
+
+    // Click once inside the input — should deselect and place a caret
+    await input.click({ position: { x: 5, y: 5 } });
+    const selStartAfter = await input.evaluate((el: HTMLInputElement) => el.selectionStart);
+    const selEndAfter = await input.evaluate((el: HTMLInputElement) => el.selectionEnd);
+    expect(selEndAfter! - selStartAfter!).toBe(0); // collapsed caret, no range selection
+  });
+
   test("should toggle boolean cell on click", async ({ page }) => {
     // Navigate to the "Active" column (index 8)
     const checkbox = page.locator("table tbody tr").first().locator("td").nth(8).locator("input[type=checkbox]");
@@ -1406,6 +1427,71 @@ test.describe("MultiCombobox editor", () => {
 });
 
 // ============================================================================
+// MultiCombobox: selected options sorted to top
+// ============================================================================
+test.describe("MultiCombobox selected options sorted to top", () => {
+  test("should show selected options before unselected options", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to Skills column (col 6, MultiCombobox)
+    for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    const options = page.locator(".combo-dropdown-option");
+    const count = await options.count();
+
+    // Collect which options are selected and their positions
+    let lastSelectedIdx = -1;
+    let firstUnselectedIdx = count;
+    for (let i = 0; i < count; i++) {
+      const isSelected = await options.nth(i).evaluate((el) =>
+        el.classList.contains("is-selected"),
+      );
+      if (isSelected) lastSelectedIdx = i;
+      if (!isSelected && firstUnselectedIdx === count) firstUnselectedIdx = i;
+    }
+
+    // All selected options must come before all unselected options
+    if (lastSelectedIdx >= 0 && firstUnselectedIdx < count) {
+      expect(lastSelectedIdx).toBeLessThan(firstUnselectedIdx);
+    }
+
+    await page.keyboard.press("Escape");
+  });
+
+  test("should keep sort order stable during toggling", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // Record the initial option label order (second span = label text)
+    const options = page.locator(".combo-dropdown-option");
+    const initialOrder: string[] = [];
+    const count = await options.count();
+    for (let i = 0; i < count; i++) {
+      initialOrder.push((await options.nth(i).locator("span").nth(1).textContent()) ?? "");
+    }
+
+    // Toggle the first option (check or uncheck)
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press(" ");
+
+    // The label order should remain the same (stable sort)
+    for (let i = 0; i < count; i++) {
+      const text = await options.nth(i).locator("span").nth(1).textContent();
+      expect(text).toBe(initialOrder[i]);
+    }
+
+    await page.keyboard.press("Escape");
+  });
+});
+
+// ============================================================================
 // Selection rectangle
 // ============================================================================
 test.describe("Selection rectangle", () => {
@@ -1954,5 +2040,380 @@ test.describe("ReadOnly", () => {
     await page.keyboard.press("Delete");
 
     await expect(cell).toHaveText(originalText!);
+  });
+});
+
+// ============================================================================
+// Focus / Blur behavior
+// ============================================================================
+test.describe("Focus and Blur", () => {
+  test("should select cell (0,0) when table receives focus", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    const firstCell = page.locator("table tbody tr").first().locator("td").first();
+    await expect(firstCell).toHaveClass(/cell-selected/);
+  });
+
+  test("should deselect all cells when focus leaves the table", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Verify a cell is selected
+    const firstCell = page.locator("table tbody tr").first().locator("td").first();
+    await expect(firstCell).toHaveClass(/cell-selected/);
+
+    // Click outside the table to blur
+    await page.locator("body").click({ position: { x: 5, y: 5 } });
+
+    // No cell should be selected
+    await expect(page.locator("td.cell-selected")).toHaveCount(0);
+  });
+
+});
+
+// ============================================================================
+// ARIA conformance
+// ============================================================================
+test.describe("ARIA conformance", () => {
+  test("table container should have tabIndex for keyboard access", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await expect(table).toHaveAttribute("tabindex", "0");
+  });
+
+  test("arrow key navigation should work immediately after focus (no extra click needed)", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // First cell should be selected
+    const firstCell = page.locator("table tbody tr").first().locator("td").first();
+    await expect(firstCell).toHaveClass(/cell-selected/);
+
+    // Navigate right and down
+    await page.keyboard.press("ArrowRight");
+    const secondCol = page.locator("table tbody tr").first().locator("td").nth(1);
+    await expect(secondCol).toHaveClass(/cell-selected/);
+
+    await page.keyboard.press("ArrowDown");
+    const nextRowCell = page.locator("table tbody tr").nth(1).locator("td").nth(1);
+    await expect(nextRowCell).toHaveClass(/cell-selected/);
+  });
+
+  test("Enter should not open editor on readOnly column", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Cursor is at col 0 (ID, readOnly)
+    await page.keyboard.press("Enter");
+
+    // Should NOT show cell-edited
+    const cell = page.locator("table tbody tr").first().locator("td").first();
+    await expect(cell).not.toHaveClass(/cell-edited/);
+  });
+
+  test("typing should not open editor on readOnly column", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Cursor is at col 0 (ID, readOnly)
+    await page.keyboard.press("A");
+
+    const input = page.locator("td .cell-editor-input");
+    await expect(input).toHaveCount(0);
+  });
+
+  test("Escape from edit mode should return focus to table container", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Move to editable column and enter edit mode
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+
+    // Verify editor is open
+    await expect(page.locator("td .cell-editor-input").first()).toBeVisible();
+
+    // Escape should close editor and refocus table
+    await page.keyboard.press("Escape");
+
+    await expect(page.locator("td .cell-editor-input")).toHaveCount(0);
+    // Table should still have focus (can press arrow keys)
+    await page.keyboard.press("ArrowDown");
+    const movedCell = page.locator("table tbody tr").nth(1).locator("td").nth(1);
+    await expect(movedCell).toHaveClass(/cell-selected/);
+  });
+});
+
+// ============================================================================
+// Touch device interaction
+// ============================================================================
+test.describe("Touch device interaction", () => {
+  test.use({ hasTouch: true });
+
+  test("single tap should select a cell", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await cell.tap();
+    await expect(cell).toHaveClass(/cell-selected/);
+  });
+
+  test("double tap should enter edit mode", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await cell.dblclick();
+    await expect(cell).toHaveClass(/cell-edited/);
+  });
+
+  test("tapping a different cell should move selection", async ({ page }) => {
+    const cell1 = page.locator("table tbody tr").first().locator("td").nth(2);
+    await cell1.tap();
+    await expect(cell1).toHaveClass(/cell-selected/);
+
+    const cell2 = page.locator("table tbody tr").nth(1).locator("td").nth(3);
+    await cell2.tap();
+    await expect(cell2).toHaveClass(/cell-selected/);
+    await expect(cell1).not.toHaveClass(/cell-selected/);
+  });
+
+  test("tapping outside table should deselect cells", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await cell.tap();
+    await expect(cell).toHaveClass(/cell-selected/);
+
+    // Tap outside the table
+    await page.locator("body").tap({ position: { x: 5, y: 5 } });
+    await expect(page.locator("td.cell-selected")).toHaveCount(0);
+  });
+});
+
+// ============================================================================
+// Textarea Dialog Editor (Description column)
+// ============================================================================
+test.describe("Textarea Dialog Editor", () => {
+  test("should show popup indicator on description cell", async ({ page }) => {
+    // Description column is col 7
+    const cell = page.locator("table tbody tr").first().locator("td").nth(7);
+    const indicator = cell.locator(".cell-popup-indicator");
+    await expect(indicator).toBeVisible();
+  });
+
+  test("should open dialog when clicking popup indicator", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(7);
+    const indicator = cell.locator(".cell-popup-indicator");
+    await indicator.click();
+
+    await expect(page.locator(".textarea-dialog")).toBeVisible();
+    await expect(page.locator(".textarea-dialog-input")).toBeVisible();
+  });
+
+  test("should show title with row values in dialog header", async ({ page }) => {
+    // Get the first row's firstName and lastName
+    const firstNameCell = page.locator("table tbody tr").first().locator("td").nth(2);
+    const lastNameCell = page.locator("table tbody tr").first().locator("td").nth(3);
+    const firstName = await firstNameCell.textContent();
+    const lastName = await lastNameCell.textContent();
+
+    const cell = page.locator("table tbody tr").first().locator("td").nth(7);
+    await cell.locator(".cell-popup-indicator").click();
+
+    const title = page.locator(".textarea-dialog-title");
+    await expect(title).toContainText(`${firstName} ${lastName}: Description`);
+  });
+
+  test("should save text and close dialog on Save click", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(7);
+    await cell.locator(".cell-popup-indicator").click();
+
+    const textarea = page.locator(".textarea-dialog-input");
+    await textarea.fill("New description text");
+
+    await page.locator(".textarea-dialog-btn-save").click();
+
+    // Dialog should be closed
+    await expect(page.locator(".textarea-dialog")).not.toBeVisible();
+
+    // Cell should contain the new value
+    await expect(cell).toContainText("New description text");
+  });
+
+  test("should discard changes and close dialog on Cancel click", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(7);
+    const originalText = await cell.textContent();
+
+    await cell.locator(".cell-popup-indicator").click();
+
+    const textarea = page.locator(".textarea-dialog-input");
+    await textarea.fill("This should be discarded");
+
+    await page.locator(".textarea-dialog-btn-cancel").click();
+
+    // Dialog should be closed
+    await expect(page.locator(".textarea-dialog")).not.toBeVisible();
+
+    // Cell should still have original value
+    await expect(cell).toHaveText(originalText!);
+  });
+
+  test("should close dialog on X button click", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(7);
+    await cell.locator(".cell-popup-indicator").click();
+
+    await expect(page.locator(".textarea-dialog")).toBeVisible();
+    await page.locator(".textarea-dialog-close").click();
+
+    await expect(page.locator(".textarea-dialog")).not.toBeVisible();
+  });
+
+  test("should close dialog on Escape key", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(7);
+    await cell.locator(".cell-popup-indicator").click();
+
+    await expect(page.locator(".textarea-dialog")).toBeVisible();
+    await page.keyboard.press("Escape");
+
+    await expect(page.locator(".textarea-dialog")).not.toBeVisible();
+  });
+
+  test("should show inline text editor on double-click", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(7);
+    await cell.dblclick();
+
+    // Should show inline input (same as StringEditor)
+    const input = cell.locator("input.cell-editor-input");
+    await expect(input).toBeVisible();
+    // Pencil icon should still be visible during inline editing
+    await expect(cell.locator(".cell-popup-indicator")).toBeVisible();
+
+    // Type something and commit
+    await input.fill("New description");
+    await page.keyboard.press("Enter");
+
+    // Value should be updated
+    await expect(cell).toContainText("New description");
+  });
+});
+
+// ============================================================================
+// Combobox: show all options on open (Feature 1)
+// Department = col 5 (Combobox), options: HR, IT, Sales, Marketing, Finance, Legal
+// ============================================================================
+test.describe("Combobox shows all options on open", () => {
+  test("should show all options when opening a combobox cell with existing value", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to Department column (col 5)
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
+
+    // Enter edit mode
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // All 6 options must be visible, even though the cell has a value
+    const options = page.locator(".combo-dropdown-option");
+    await expect(options).toHaveCount(6);
+  });
+
+  test("should filter options when user types in combobox", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to Department column (col 5)
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
+
+    // Enter edit mode
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // Clear and type to filter
+    const input = page.locator(".combo-dropdown-input").first();
+    await input.clear();
+    await input.fill("Mar");
+
+    // Only "Marketing" should match
+    const options = page.locator(".combo-dropdown-option");
+    await expect(options).toHaveCount(1);
+    await expect(options.first()).toContainText("Marketing");
+  });
+
+  test("should show all options again after clearing filter text", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    const input = page.locator(".combo-dropdown-input").first();
+    await input.clear();
+    await input.fill("IT");
+
+    // Filtered to 1
+    await expect(page.locator(".combo-dropdown-option")).toHaveCount(1);
+
+    // Clear → all 6 visible again
+    await input.clear();
+    await expect(page.locator(".combo-dropdown-option")).toHaveCount(6);
+  });
+});
+
+// ============================================================================
+// Combobox: click option closes popover (Feature 2)
+// ============================================================================
+test.describe("Combobox option click closes popover", () => {
+  test("should close popover when clicking a different option", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to Department column (col 5)
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
+
+    // Enter edit mode
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // Get current value
+    const cell = page.locator("table tbody tr").first().locator("td").nth(5);
+    const originalText = (await cell.textContent())?.replace("▾", "").trim();
+
+    // Click a different option
+    const optionsToClick = page.locator(".combo-dropdown-option").filter({
+      hasNotText: originalText ?? "",
+    });
+    const targetOption = optionsToClick.first();
+    const targetText = await targetOption.locator("span").first().textContent();
+    await targetOption.click();
+
+    // Popover should be closed
+    await expect(page.locator(".combo-dropdown-list")).not.toBeVisible();
+
+    // Value should be updated
+    await expect(cell).toContainText(targetText!);
+  });
+
+  test("should close popover when clicking the same option that is already selected", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to Department column (col 5)
+    for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
+
+    // Get the current cell value
+    const cell = page.locator("table tbody tr").first().locator("td").nth(5);
+    const originalText = (await cell.textContent())?.replace("▾", "").trim();
+
+    // Enter edit mode
+    await page.keyboard.press("Enter");
+    await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
+
+    // Click the option that matches the current value
+    const sameOption = page.locator(".combo-dropdown-option").filter({
+      hasText: originalText ?? "",
+    }).first();
+    await sameOption.click();
+
+    // Popover should be closed even though we clicked the same value
+    await expect(page.locator(".combo-dropdown-list")).not.toBeVisible();
+
+    // Value should remain the same
+    await expect(cell).toContainText(originalText!);
   });
 });

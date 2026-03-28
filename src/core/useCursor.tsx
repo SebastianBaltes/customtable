@@ -97,7 +97,9 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       const el = customTableRef.current as HTMLElement | null;
-      if (el && !el.contains(e.target as Node)) {
+      const target = e.target as HTMLElement | null;
+      // Don't deselect when clicking inside the table or its context menu portal.
+      if (el && !el.contains(target) && !target?.closest?.(".context-menu") && !target?.closest?.(".textarea-dialog-overlay")) {
         setCursorRef({
           editing: false,
           filling: false,

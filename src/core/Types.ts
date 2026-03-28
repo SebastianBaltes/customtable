@@ -123,6 +123,13 @@ export interface ColumnConfig<T> {
    * Receives the current string filter value and an onChange callback.
    */
   filterEditor?: FilterEditor;
+
+  /**
+   * Title template for the dialog editor.
+   * Supports `${columnName}` placeholders that are replaced with row values.
+   * Example: `"${firstName} ${lastName}: Description"`
+   */
+  dialogTitle?: string;
 }
 
 export type FilterEditorParams = {
@@ -149,6 +156,7 @@ export type EditorParams<T> = {
   editing: boolean;
   columnConfig: ColumnConfig<T>;
   onChange: (value: T) => void;
+  onRequestClose?: () => void;
   textEllipsisLength?: number;
   initialEditValue: string | null;
 };

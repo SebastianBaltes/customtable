@@ -1,5 +1,5 @@
 import { CellAddr, ColumnConfig, Cursor, Row, SortConfig } from "./Types";
-import classNames from "classnames";
+import classNames from "./classNames";
 import React, { useContext } from "react";
 import { getCursorName } from "./CustomTable";
 import { TranslationsContext } from "./TranslationsContext";

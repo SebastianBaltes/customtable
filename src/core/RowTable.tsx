@@ -3,7 +3,7 @@ import { CellAddr, CellMeta, CellMetaMap, ColumnConfig, Cursor, Row, RowMeta, So
 import { CustomColHeader } from "./CustomColHeader";
 import { CustomRow } from "./CustomRow";
 import { defaultRowKey } from "./CustomTable";
-import classNames from "classnames";
+import classNames from "./classNames";
 
 export const RowTable = React.memo(
   ({

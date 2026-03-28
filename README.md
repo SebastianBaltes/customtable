@@ -93,6 +93,9 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 | **Cell alignment** | Per-column `align` override; Number columns default to right-aligned |
 | **Context menu** | Right-click menu with insert row, remove rows, copy, paste, delete content — right-click also selects cells |
 | **Extensible context menu** | Add custom items that receive a full snapshot of the table state at click time |
+| **ARIA-conformant focus** | Table initializes cursor to (0,0) on focus; deselects all cells on blur |
+| **Combobox shows all options** | Combobox popover shows all options on open; filters only when user types |
+| **Combobox click-to-close** | Clicking any option in a single-select Combobox commits and closes the popover |
 | **Combobox keyboard UX** | Arrow keys navigate options, Enter selects, Space toggles (multi-select), free-text entry |
 | **Boolean keyboard UX** | Enter on a selected Boolean cell toggles its value without entering edit mode |
 | **i18n / translations** | All built-in UI strings are overridable via a typesafe `translations` prop |
@@ -109,6 +112,34 @@ npm install customtable
 ```
 
 **Peer dependencies:** `react >= 18`, `react-dom >= 18`
+
+## Dependencies
+
+Runtime dependencies (as shipped in package.json):
+
+- `react` ^18.2.0
+- `react-dom` ^18.2.0
+
+
+Dev dependencies used for development and building the demo:
+
+- `@playwright/test` ^1.58.2
+- `@types/jest` ^29.5.3
+- `@types/react` ^18.2.15
+- `@types/react-dom` ^18.2.7
+- `@vitejs/plugin-react` ^6.0.1
+- `prettier` ^3.0.0
+- `process` ^0.11.10
+- `react-test-renderer` ^18.2.0
+- `typescript` ^5.1.6
+- `vite` ^8.0.3
+
+Minimum tooling versions (recommended):
+
+- Node.js >= 18
+- npm >= 9
+
+These are the packages used in this repository and declared in `package.json`. When consuming the package as a dependency, only the runtime dependencies and peer dependencies are required in the host project.
 
 The package ships TypeScript sources and type declarations.
 

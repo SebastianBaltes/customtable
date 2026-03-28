@@ -194,6 +194,23 @@ body {
     color: var(--color-gray-600);
   }
 
+  .cell-popup-indicator {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    color: var(--color-gray-200);
+    cursor: pointer;
+    pointer-events: auto;
+    line-height: 1;
+    transition: color 0.15s;
+  }
+
+  .cell:hover .cell-popup-indicator {
+    color: var(--color-gray-600);
+  }
+
 
 
 
@@ -598,4 +615,103 @@ body {
     outline: 1px solid var(--color-blue-400, #4da6ff);
     border-color: var(--color-blue-400, #4da6ff);
   }
+}
+
+/* Textarea Dialog */
+.textarea-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.textarea-dialog {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: min(1200px, 90vw);
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  font-family: sans-serif;
+}
+
+.textarea-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.textarea-dialog-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-gray-900);
+}
+
+.textarea-dialog-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--color-gray-400);
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.textarea-dialog-close:hover {
+  color: var(--color-gray-900);
+}
+
+.textarea-dialog-input {
+  flex: 1;
+  margin: 16px 20px;
+  padding: 12px 14px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 400px;
+  outline: none;
+}
+
+.textarea-dialog-input:focus {
+  border-color: var(--color-blue-400, #4da6ff);
+}
+
+.textarea-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.textarea-dialog-btn {
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--color-gray-200);
+  background: white;
+  color: var(--color-gray-700);
+}
+
+.textarea-dialog-btn:hover {
+  background: var(--color-gray-50);
+}
+
+.textarea-dialog-btn-save {
+  background: var(--color-blue-400, #4da6ff);
+  color: white;
+  border-color: var(--color-blue-400, #4da6ff);
+}
+
+.textarea-dialog-btn-save:hover {
+  background: var(--color-blue-500, #2196f3);
 }

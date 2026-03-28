@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { CellMetaMap, ColumnConfig, CustomContextMenuItem, FilterState, Row, SortConfig, TableContextState } from "./Types";
 import { forceUpdateCursorRect } from "./directDomUpdateForCursor";
-import classNames from "classnames";
+import classNames from "./classNames";
 import { ContextMenu } from "./ContextMenu";
 import { RowTable } from "./RowTable";
 import { useStickyColumnsLeftChecker } from "./useStickColumnLeftsChecker";
@@ -240,7 +240,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       (oldRows: Row[], newRows: Row[]) => {
         let callback: (() => void | Promise<void>) | undefined;
         let diffObj: Row[] = [];
-        
+
         if (newRows.length > oldRows.length) {
           // Rows were created in newRows (e.g. undo a delete)
           const oldSet = new Set(oldRows);
@@ -258,7 +258,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
             callback = onUpdateRows ? () => onUpdateRows(diffObj) : undefined;
           }
         }
-        
+
         return callback;
       },
       [onCreateRows, onDeleteRows, onUpdateRows],
@@ -270,7 +270,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         if (origIdx == null) return;
         const oldValue = rows[origIdx][colName];
         if (oldValue === value) return; // Do nothing if unchanged
-        
+
         const snapshot = rows;
         undoRedo.pushState(rows);
         const updatedRow = { ...rows[origIdx], [colName]: value };
@@ -463,7 +463,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         changeRows(state);
         const normalCb = detectAndFireChanges(rows, state);
         const specificCb = onUndo ? () => onUndo(state) : undefined;
-        
+
         if (normalCb || specificCb) {
           const comboCb = async () => {
             const promises: any[] = [];
@@ -482,7 +482,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         changeRows(state);
         const normalCb = detectAndFireChanges(rows, state);
         const specificCb = onRedo ? () => onRedo(state) : undefined;
-        
+
         if (normalCb || specificCb) {
           const comboCb = async () => {
             const promises: any[] = [];
@@ -770,6 +770,8 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       contextStateRef,
       t,
     );
+    const contextMenuVisibleRef = React.useRef(false);
+    contextMenuVisibleRef.current = contextMenu.visible;
 
     const selectionRectangleDraggerOnMouseDown = (event: React.MouseEvent) => {
       event.preventDefault();
@@ -785,6 +787,31 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         ref={customTableRef}
         className={classNames("custom-table", pending && "pending", textEllipsisLength && "has-ellipsis")}
         onKeyDown={handleKeyDown}
+        onFocus={(e) => {
+          // ARIA: initialize cursor to (0,0) when the table receives focus and no cell is selected.
+          if (e.target === e.currentTarget && cursorRef.current.selectionStart.rowIdx < 0) {
+            setCursorRef({
+              selectionStart: { colIdx: 0, rowIdx: 0 },
+              selectionEnd: { colIdx: 0, rowIdx: 0 },
+              fillEnd: { colIdx: 0, rowIdx: 0 },
+            });
+          }
+        }}
+        onBlur={(e) => {
+          // Deselect all cells when focus leaves the table entirely.
+          // Skip if the context menu or a dialog is open (rendered via portal outside the table DOM).
+          if (contextMenuVisibleRef.current) return;
+          if (document.querySelector(".textarea-dialog-overlay")) return;
+          if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+            setCursorRef({
+              editing: false,
+              initialEditValue: null,
+              selectionStart: { colIdx: -1, rowIdx: -1 },
+              selectionEnd: { colIdx: -1, rowIdx: -1 },
+              fillEnd: { colIdx: -1, rowIdx: -1 },
+            });
+          }
+        }}
         tabIndex={0}
       >
         {stickyColumnsLefts.css != null && (

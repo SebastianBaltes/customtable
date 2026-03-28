@@ -102,11 +102,14 @@ export function useCursorKeys(
     event.stopPropagation();
     event.preventDefault();
 
-    const { colIdx, rowIdx } = ctrl
+    // If no cell is selected yet, treat cursor as (0,0) so the first key press works.
+    const rawAddr = ctrl
       ? cursor.fillEnd
       : shift
       ? cursor.selectionEnd
       : cursor.selectionStart;
+    const colIdx = rawAddr.colIdx < 0 ? 0 : rawAddr.colIdx;
+    const rowIdx = rawAddr.rowIdx < 0 ? 0 : rawAddr.rowIdx;
 
     if (key === "ArrowUp") {
       setColRow(colIdx, rowIdx - 1, false, shift, ctrl);
@@ -125,16 +128,20 @@ export function useCursorKeys(
     } else if (key === "PageDown" && rowIdx < rows.length - 1) {
       setColRow(colIdx, rows.length - 1, false, shift, ctrl);
     } else {
-      const cur = cursor.selectionStart;
+      const isColumnReadOnly = columns[colIdx]?.readOnly === true;
       if (key === "Tab") {
         jumpTab(shift ? -1 : +1, false);
       } else if (key === "Enter" || key === "F2") {
-        setColRow(cur.colIdx, cur.rowIdx, true, shift, ctrl, null);
+        if (!isColumnReadOnly) {
+          setColRow(colIdx, rowIdx, true, shift, ctrl, null);
+        }
       } else if (key.length === 1 && !ctrl && !event.altKey && !event.metaKey) {
-        // Start editing on printable character.
-        // Use shift=false/ctrl=false: typing should NEVER trigger range selection,
-        // even if Shift is held (e.g. for uppercase letters).
-        setColRow(cur.colIdx, cur.rowIdx, true, false, false, key);
+        if (!isColumnReadOnly) {
+          // Start editing on printable character.
+          // Use shift=false/ctrl=false: typing should NEVER trigger range selection,
+          // even if Shift is held (e.g. for uppercase letters).
+          setColRow(colIdx, rowIdx, true, false, false, key);
+        }
       }
     }
   };
