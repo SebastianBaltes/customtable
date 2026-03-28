@@ -103,6 +103,43 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 | **Built-in editors** | String, Number, Boolean (checkbox), Combobox (single-select), MultiCombobox (multi-select) |
 | **Custom editors** | Provide your own editor component per column |
 | **Validation** | Per-column `validate` function with warning/error severity |
+| **Theming** | 6 built-in themes; custom themes are plain CSS files with CSS custom properties |
+
+---
+
+## Theming
+
+CustomTable ships with six ready-made themes and a simple CSS-variable-based theming system that makes it easy to create your own.
+
+### Built-in Themes
+
+| Theme | Description |
+| --- | --- |
+| **Light** | Clean, neutral default theme |
+| **Dark** | Dark backgrounds, light text, styled scrollbars |
+| **Excel Classic** | Traditional Microsoft Excel look — gray headers, green accents |
+| **Google Sheets** | White and blue, thin borders, Roboto-like font |
+| **Material** | MUI DataTable style — borderless cells, row dividers, elevation shadows, generous padding |
+| **Numbers** | Apple Numbers style — alternating row stripes, subtle colors |
+
+### Custom Themes
+
+A theme is just a CSS file that sets CSS custom properties on `:root`. The structural layout (positioning, flexbox, overflow, z-index) lives in `core/base.css` and never needs to change — a theme only controls the visual appearance: colors, borders, fonts, padding, shadows.
+
+```css
+/* my-theme.css */
+:root {
+  --ct-bg: #fff;
+  --ct-text: #333;
+  --ct-font: "My Font", sans-serif;
+  --ct-border: #ddd;
+  --ct-header-bg: #f5f5f5;
+  --ct-selected-outline: #0066cc;
+  /* … see any built-in theme for the full list of variables */
+}
+```
+
+To apply a theme, simply import or inject its CSS after `base.css`. The example app demonstrates runtime theme switching by injecting the selected theme's CSS into a `<style>` tag — but for most use cases a static CSS import is all you need.
 
 ---
 
