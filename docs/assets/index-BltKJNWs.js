@@ -700,8 +700,8 @@ Error generating stack: `+e.message+`
     width: 12px;
     height: 12px;
     position: absolute;
-    right: -5px;
-    bottom: -5px;
+    right: -7px;
+    bottom: -7px;
     pointer-events: all;
     cursor: crosshair;
     border-radius: 100%;
