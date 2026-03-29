@@ -46,9 +46,7 @@ export const CustomRow = React.memo(
       >
         {columns.map((column, colIdx) => {
           const isEditing =
-            editingCell != null &&
-            editingCell.rowIdx === rowIdx &&
-            editingCell.colIdx === colIdx;
+            editingCell != null && editingCell.rowIdx === rowIdx && editingCell.colIdx === colIdx;
           const cellMetaEntry = cellMetaForRow?.[column.name];
           return (
             <CustomCell

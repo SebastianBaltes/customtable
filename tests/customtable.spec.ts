@@ -207,7 +207,7 @@ test.describe("Cell editing", () => {
     // Cursor should be at the end - if we type more, it should append
     await page.keyboard.type("d");
     await expect(input).toHaveValue("abcd");
-    
+
     // Commit
     await page.keyboard.press("Enter");
     await expect(cell).toContainText("abcd");
@@ -245,7 +245,7 @@ test.describe("Cell editing", () => {
 
   test("should not enter edit mode on single click even if selected", async ({ page }) => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    
+
     // First click selects
     await cell.click();
     await expect(cell).toHaveClass(/cell-selected/);
@@ -281,7 +281,12 @@ test.describe("Cell editing", () => {
 
   test("should toggle boolean cell on click", async ({ page }) => {
     // Navigate to the "Active" column (index 8)
-    const checkbox = page.locator("table tbody tr").first().locator("td").nth(8).locator("input[type=checkbox]");
+    const checkbox = page
+      .locator("table tbody tr")
+      .first()
+      .locator("td")
+      .nth(8)
+      .locator("input[type=checkbox]");
     const isChecked = await checkbox.isChecked();
     await checkbox.click();
     expect(await checkbox.isChecked()).toBe(!isChecked);
@@ -454,7 +459,9 @@ test.describe("Cell editing", () => {
     await expect(nextCell).toHaveClass(/cell-selected/);
   });
 
-  test("Tab in navigation mode must not give focus to an external page checkbox", async ({ page }) => {
+  test("Tab in navigation mode must not give focus to an external page checkbox", async ({
+    page,
+  }) => {
     // Same guard for navigation mode (no active editor). The table handles Tab with
     // preventDefault() so focus must remain on the table container and the cursor
     // must advance to the next column.
@@ -485,7 +492,9 @@ test.describe("Cell editing", () => {
     expect(["DIV", "BODY"]).toContain(focusedTag);
   });
 
-  test("Tab in edit mode must not give focus to a checkbox in the next column", async ({ page }) => {
+  test("Tab in edit mode must not give focus to a checkbox in the next column", async ({
+    page,
+  }) => {
     // Regression: BooleanEditor rendered a focusable checkbox which intercepted Tab.
     // After Tab from a string cell, if the next column is boolean, focus must stay
     // on the table container (tabIndex={-1} on the checkbox).
@@ -628,17 +637,29 @@ test.describe("Sorting", () => {
     await keyHeader.click();
 
     // Header should show sort indicator
-    const headerText = await page.locator("table thead th").nth(1).locator(".col-header-label").textContent();
+    const headerText = await page
+      .locator("table thead th")
+      .nth(1)
+      .locator(".col-header-label")
+      .textContent();
     expect(headerText).toContain("▲");
 
     // Click again for DESC
     await keyHeader.click();
-    const headerText2 = await page.locator("table thead th").nth(1).locator(".col-header-label").textContent();
+    const headerText2 = await page
+      .locator("table thead th")
+      .nth(1)
+      .locator(".col-header-label")
+      .textContent();
     expect(headerText2).toContain("▼");
 
     // Click again to remove sort
     await keyHeader.click();
-    const headerText3 = await page.locator("table thead th").nth(1).locator(".col-header-label").textContent();
+    const headerText3 = await page
+      .locator("table thead th")
+      .nth(1)
+      .locator(".col-header-label")
+      .textContent();
     expect(headerText3).not.toContain("▲");
     expect(headerText3).not.toContain("▼");
   });
@@ -648,29 +669,47 @@ test.describe("Sorting", () => {
 
     // ASC
     await idHeader.click();
-    await expect(page.locator("table thead th").first().locator(".col-header-label")).toContainText("▲");
+    await expect(page.locator("table thead th").first().locator(".col-header-label")).toContainText(
+      "▲",
+    );
 
     // DESC
     await idHeader.click();
-    await expect(page.locator("table thead th").first().locator(".col-header-label")).toContainText("▼");
+    await expect(page.locator("table thead th").first().locator(".col-header-label")).toContainText(
+      "▼",
+    );
 
     // None
     await idHeader.click();
-    const text = await page.locator("table thead th").first().locator(".col-header-label").textContent();
+    const text = await page
+      .locator("table thead th")
+      .first()
+      .locator(".col-header-label")
+      .textContent();
     expect(text).not.toContain("▲");
     expect(text).not.toContain("▼");
   });
 
   test("should change displayed row order when sorted", async ({ page }) => {
     // Get first cell value before sort
-    const firstCellBefore = await page.locator("table tbody tr").first().locator("td").first().textContent();
+    const firstCellBefore = await page
+      .locator("table tbody tr")
+      .first()
+      .locator("td")
+      .first()
+      .textContent();
 
     // Sort the id column DESC
     const idHeader = page.locator("table thead th").first().locator(".col-header-label");
     await idHeader.click(); // ASC
     await idHeader.click(); // DESC
 
-    const firstCellAfter = await page.locator("table tbody tr").first().locator("td").first().textContent();
+    const firstCellAfter = await page
+      .locator("table tbody tr")
+      .first()
+      .locator("td")
+      .first()
+      .textContent();
     // After DESC sort on id, the first row should be different (highest id first)
     expect(firstCellAfter).not.toBe(firstCellBefore);
   });
@@ -751,7 +790,10 @@ test.describe("Filtering", () => {
 // ============================================================================
 test.describe("Copy & Paste", () => {
   // Firefox does not support granting clipboard permissions via Playwright
-  test.skip(({ browserName }) => browserName === "firefox", "Clipboard permissions not supported in Firefox");
+  test.skip(
+    ({ browserName }) => browserName === "firefox",
+    "Clipboard permissions not supported in Firefox",
+  );
 
   test("should copy selected cell content", async ({ page }) => {
     // Grant clipboard permissions
@@ -933,7 +975,12 @@ test.describe("Undo/Redo", () => {
   test("should log onUndo and change callbacks when undoing", async ({ page }) => {
     const messages: string[] = [];
     page.on("console", (msg) => {
-      if (msg.text().includes("onUndo") || msg.text().includes("onUpdateRows") || msg.text().includes("onRedo") || msg.text().includes("onCreateRows")) {
+      if (
+        msg.text().includes("onUndo") ||
+        msg.text().includes("onUpdateRows") ||
+        msg.text().includes("onRedo") ||
+        msg.text().includes("onCreateRows")
+      ) {
         messages.push(msg.text());
       }
     });
@@ -948,7 +995,7 @@ test.describe("Undo/Redo", () => {
     await input.fill("TestingCallbacks");
     await page.keyboard.press("Enter");
     await page.waitForTimeout(200);
-    
+
     // Clear messages from the first UpdateRows
     messages.length = 0;
 
@@ -958,18 +1005,18 @@ test.describe("Undo/Redo", () => {
     await page.waitForTimeout(300);
 
     // After undo, onUndo and onUpdateRows should be called
-    expect(messages.some(m => m.includes("onUndo"))).toBeTruthy();
-    expect(messages.some(m => m.includes("onUpdateRows"))).toBeTruthy();
+    expect(messages.some((m) => m.includes("onUndo"))).toBeTruthy();
+    expect(messages.some((m) => m.includes("onUpdateRows"))).toBeTruthy();
     messages.length = 0;
 
-    // Redo 
+    // Redo
     await table.focus();
     await page.keyboard.press("Control+y");
     await page.waitForTimeout(300);
 
     // After redo, onRedo and onUpdateRows should be called
-    expect(messages.some(m => m.includes("onRedo"))).toBeTruthy();
-    expect(messages.some(m => m.includes("onUpdateRows"))).toBeTruthy();
+    expect(messages.some((m) => m.includes("onRedo"))).toBeTruthy();
+    expect(messages.some((m) => m.includes("onUpdateRows"))).toBeTruthy();
   });
 });
 
@@ -985,10 +1032,18 @@ test.describe("Context menu", () => {
     await expect(page.locator(".context-menu")).toBeVisible();
 
     // Should have expected menu items
-    await expect(page.locator(".context-menu-item").filter({ hasText: "copy content" })).toBeVisible();
-    await expect(page.locator(".context-menu-item").filter({ hasText: "paste content" })).toBeVisible();
-    await expect(page.locator(".context-menu-item").filter({ hasText: "delete content" })).toBeVisible();
-    await expect(page.locator(".context-menu-item").filter({ hasText: "remove rows" })).toBeVisible();
+    await expect(
+      page.locator(".context-menu-item").filter({ hasText: "copy content" }),
+    ).toBeVisible();
+    await expect(
+      page.locator(".context-menu-item").filter({ hasText: "paste content" }),
+    ).toBeVisible();
+    await expect(
+      page.locator(".context-menu-item").filter({ hasText: "delete content" }),
+    ).toBeVisible();
+    await expect(
+      page.locator(".context-menu-item").filter({ hasText: "remove rows" }),
+    ).toBeVisible();
   });
 
   test("should close context menu on click outside", async ({ page }) => {
@@ -1102,18 +1157,20 @@ test.describe("Delete content", () => {
 // Ellipsis feature
 // ============================================================================
 test.describe("Ellipsis", () => {
-  test("should truncate long text based on textEllipsisLength and expand on edit", async ({ page }) => {
+  test("should truncate long text based on textEllipsisLength and expand on edit", async ({
+    page,
+  }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
     // Find row 0, col 2 (firstName)
     const cell = page.locator("table tbody tr").first().locator("td").nth(2);
-    
+
     // Edit the cell and input long chars
     await cell.click();
     await page.keyboard.press("Enter");
     const input = cell.locator(".cell-editor-input");
-    
+
     const longText = "This string is absolutely longer than twenty-five characters.";
     await input.fill(longText);
     await page.keyboard.press("Enter");
@@ -1129,12 +1186,11 @@ test.describe("Ellipsis", () => {
     await page.keyboard.press("Enter");
     const editInput = cell.locator(".cell-editor-input");
     const inputValue = await editInput.inputValue();
-    
+
     // Expect full text in input
     expect(inputValue).toBe(longText);
   });
 });
-
 
 // ============================================================================
 // Cell meta: styles, disabled, title
@@ -1246,7 +1302,12 @@ test.describe("onUpdateRows callback", () => {
       }
     });
 
-    const checkbox = page.locator("table tbody tr").first().locator("td").nth(8).locator("input[type=checkbox]");
+    const checkbox = page
+      .locator("table tbody tr")
+      .first()
+      .locator("td")
+      .nth(8)
+      .locator("input[type=checkbox]");
     await checkbox.click();
     await page.waitForTimeout(300);
 
@@ -1404,7 +1465,10 @@ test.describe("MultiCombobox editor", () => {
     await expect(page.locator("td .combo-dropdown-list").first()).toBeVisible();
 
     // Find "React" option and record its initial state
-    const reactOption = page.locator("td .combo-dropdown-option").filter({ hasText: "React" }).first();
+    const reactOption = page
+      .locator("td .combo-dropdown-option")
+      .filter({ hasText: "React" })
+      .first();
     const wasBefore = await reactOption.evaluate((el) => el.classList.contains("is-selected"));
 
     // Click to toggle
@@ -1446,9 +1510,9 @@ test.describe("MultiCombobox selected options sorted to top", () => {
     let lastSelectedIdx = -1;
     let firstUnselectedIdx = count;
     for (let i = 0; i < count; i++) {
-      const isSelected = await options.nth(i).evaluate((el) =>
-        el.classList.contains("is-selected"),
-      );
+      const isSelected = await options
+        .nth(i)
+        .evaluate((el) => el.classList.contains("is-selected"));
       if (isSelected) lastSelectedIdx = i;
       if (!isSelected && firstUnselectedIdx === count) firstUnselectedIdx = i;
     }
@@ -1498,7 +1562,9 @@ test.describe("Selection rectangle", () => {
   // Helper: read the numeric px value from a style string like "42.5px"
   const parsePx = (s: string) => parseFloat(s);
 
-  test("should position selection rectangle over a non-sticky cell after click", async ({ page }) => {
+  test("should position selection rectangle over a non-sticky cell after click", async ({
+    page,
+  }) => {
     // Use a non-sticky cell (col index 2, columns 0+1 are sticky)
     const cell = page.locator("table tbody tr").nth(0).locator("td").nth(2);
     await cell.click();
@@ -1506,7 +1572,9 @@ test.describe("Selection rectangle", () => {
 
     const rect = await page.evaluate(() => {
       const viewport = document.querySelector(".custom-table-viewport") as HTMLElement;
-      const cellEl = document.querySelector("table tbody tr:first-child td:nth-child(3)") as HTMLElement;
+      const cellEl = document.querySelector(
+        "table tbody tr:first-child td:nth-child(3)",
+      ) as HTMLElement;
       const selRect = document.getElementById("selection-rectangle") as HTMLElement;
       if (!viewport || !cellEl || !selRect) return null;
 
@@ -1544,7 +1612,9 @@ test.describe("Selection rectangle", () => {
 
     const result = await page.evaluate(() => {
       const viewport = document.querySelector(".custom-table-viewport") as HTMLElement;
-      const cellEl = document.querySelector("table tbody tr:first-child td:nth-child(3)") as HTMLElement;
+      const cellEl = document.querySelector(
+        "table tbody tr:first-child td:nth-child(3)",
+      ) as HTMLElement;
       const selRect = document.getElementById("selection-rectangle") as HTMLElement;
       if (!viewport || !cellEl || !selRect) return null;
 
@@ -1569,7 +1639,9 @@ test.describe("Selection rectangle", () => {
     expect(result!.actualTop).toBeCloseTo(result!.correctTop, 0);
   });
 
-  test("selection rectangle matches cell ClientRect for first cell of each row (rows 0-4)", async ({ page }) => {
+  test("selection rectangle matches cell ClientRect for first cell of each row (rows 0-4)", async ({
+    page,
+  }) => {
     for (let rowIdx = 0; rowIdx < 5; rowIdx++) {
       const cell = page.locator("table tbody tr").nth(rowIdx).locator("td").nth(2);
       await cell.click();
@@ -1625,7 +1697,9 @@ test.describe("Selection rectangle", () => {
     await page.waitForTimeout(100);
   });
 
-  test("cell selected via keyboard: selection rectangle top/left matches cell ClientRect", async ({ page }) => {
+  test("cell selected via keyboard: selection rectangle top/left matches cell ClientRect", async ({
+    page,
+  }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
@@ -1636,7 +1710,9 @@ test.describe("Selection rectangle", () => {
 
     const result = await page.evaluate(() => {
       const viewport = document.querySelector(".custom-table-viewport") as HTMLElement;
-      const cellEl = document.querySelector("table tbody tr:first-child td:nth-child(3)") as HTMLElement;
+      const cellEl = document.querySelector(
+        "table tbody tr:first-child td:nth-child(3)",
+      ) as HTMLElement;
       const selRect = document.getElementById("selection-rectangle") as HTMLElement;
       if (!viewport || !cellEl || !selRect) return null;
 
@@ -1695,7 +1771,12 @@ test.describe("Filter + Sort interaction", () => {
     await page.waitForTimeout(200);
 
     // Get first visible id — should be a high number containing "1"
-    const firstId = await page.locator("table tbody tr").first().locator("td").first().textContent();
+    const firstId = await page
+      .locator("table tbody tr")
+      .first()
+      .locator("td")
+      .first()
+      .textContent();
     const lastId = await page.locator("table tbody tr").nth(1).locator("td").first().textContent();
     // With DESC sort, first should be >= last
     expect(Number(firstId)).toBeGreaterThanOrEqual(Number(lastId));
@@ -1781,7 +1862,9 @@ test.describe("Number formatting", () => {
     expect(text.endsWith("00 €")).toBe(true);
   });
 
-  test("salary edit mode: input is type=text, shows formatted number without affix", async ({ page }) => {
+  test("salary edit mode: input is type=text, shows formatted number without affix", async ({
+    page,
+  }) => {
     // First set a known value so we can predict the formatted string
     const salaryCell = page.locator("table tbody tr").first().locator("td").nth(9);
     await salaryCell.click();
@@ -1811,7 +1894,9 @@ test.describe("Number formatting", () => {
     await page.keyboard.press("Escape");
   });
 
-  test("salary edit mode: wrapper element carries data-prefix/data-suffix for CSS affixes", async ({ page }) => {
+  test("salary edit mode: wrapper element carries data-prefix/data-suffix for CSS affixes", async ({
+    page,
+  }) => {
     const salaryCell = page.locator("table tbody tr").first().locator("td").nth(9);
     await salaryCell.click();
     await page.keyboard.press("Enter");
@@ -1991,7 +2076,9 @@ test.describe("ReadOnly", () => {
     await expect(input).toHaveCount(0);
   });
 
-  test("readOnly column: cell shows cell-selected (not cell-edited) after Enter", async ({ page }) => {
+  test("readOnly column: cell shows cell-selected (not cell-edited) after Enter", async ({
+    page,
+  }) => {
     // Click the ID cell (col 0, readOnly) to select it, then press Enter.
     const cell = page.locator("table tbody tr").first().locator("td").first();
     await cell.click();
@@ -2069,7 +2156,6 @@ test.describe("Focus and Blur", () => {
     // No cell should be selected
     await expect(page.locator("td.cell-selected")).toHaveCount(0);
   });
-
 });
 
 // ============================================================================
@@ -2081,7 +2167,9 @@ test.describe("ARIA conformance", () => {
     await expect(table).toHaveAttribute("tabindex", "0");
   });
 
-  test("arrow key navigation should work immediately after focus (no extra click needed)", async ({ page }) => {
+  test("arrow key navigation should work immediately after focus (no extra click needed)", async ({
+    page,
+  }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
@@ -2210,7 +2298,9 @@ test.describe("Touch device interaction", () => {
     await expect(page.locator("td.cell-selected")).toHaveCount(0);
   });
 
-  test("third tap in edit mode should keep editor open and allow cursor movement", async ({ page }) => {
+  test("third tap in edit mode should keep editor open and allow cursor movement", async ({
+    page,
+  }) => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(2);
     // Double-tap to enter edit mode
     await cell.tap();
@@ -2342,7 +2432,9 @@ test.describe("Textarea Dialog Editor", () => {
 // Department = col 5 (Combobox), options: HR, IT, Sales, Marketing, Finance, Legal
 // ============================================================================
 test.describe("Combobox shows all options on open", () => {
-  test("should show all options when opening a combobox cell with existing value", async ({ page }) => {
+  test("should show all options when opening a combobox cell with existing value", async ({
+    page,
+  }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
@@ -2435,7 +2527,9 @@ test.describe("Combobox option click closes popover", () => {
     await expect(cell).toContainText(targetText!);
   });
 
-  test("should close popover when clicking the same option that is already selected", async ({ page }) => {
+  test("should close popover when clicking the same option that is already selected", async ({
+    page,
+  }) => {
     const table = page.locator(".custom-table");
     await table.focus();
 
@@ -2451,9 +2545,12 @@ test.describe("Combobox option click closes popover", () => {
     await expect(page.locator(".combo-dropdown-list").first()).toBeVisible();
 
     // Click the option that matches the current value
-    const sameOption = page.locator(".combo-dropdown-option").filter({
-      hasText: originalText ?? "",
-    }).first();
+    const sameOption = page
+      .locator(".combo-dropdown-option")
+      .filter({
+        hasText: originalText ?? "",
+      })
+      .first();
     await sameOption.click();
 
     // Popover should be closed even though we clicked the same value
@@ -2461,5 +2558,89 @@ test.describe("Combobox option click closes popover", () => {
 
     // Value should remain the same
     await expect(cell).toContainText(originalText!);
+  });
+});
+
+// ============================================================================
+// Z-index: selected cell must not paint above sticky header / sticky column
+// ============================================================================
+test.describe("Selected cell z-index vs sticky elements", () => {
+  test("selected cell should not overlap the sticky header row after vertical scroll", async ({
+    page,
+  }) => {
+    const table = page.locator(".custom-table");
+    const viewport = page.locator(".custom-table-viewport");
+    await table.focus();
+
+    // Click a cell in the second row, second column (non-sticky)
+    const targetCell = page.locator("table tbody tr").nth(1).locator("td").nth(1);
+    await targetCell.click();
+    await expect(targetCell).toHaveClass(/cell-selected/);
+
+    // Scroll down so the selected cell is behind the sticky header
+    await viewport.evaluate((el) => {
+      el.scrollTop = el.scrollHeight;
+    });
+    await page.waitForTimeout(100);
+
+    // The header z-index must be greater than the selected cell z-index
+    const headerTh = page.locator("table thead th").nth(1);
+    const headerZ = await headerTh.evaluate((el) => {
+      return parseInt(getComputedStyle(el).zIndex) || 0;
+    });
+    const cellZ = await targetCell.evaluate((el) => {
+      return parseInt(getComputedStyle(el).zIndex) || 0;
+    });
+    expect(headerZ).toBeGreaterThan(cellZ);
+  });
+
+  test("selected cell should not overlap the sticky first column after horizontal scroll", async ({
+    page,
+  }) => {
+    const table = page.locator(".custom-table");
+    const viewport = page.locator(".custom-table-viewport");
+    await table.focus();
+
+    // Navigate right to a non-sticky cell far from the first column
+    for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
+
+    const selectedCell = page.locator("td.cell-selected");
+    await expect(selectedCell).toBeVisible();
+
+    // Scroll left so the selected cell is behind the sticky column
+    await viewport.evaluate((el) => {
+      el.scrollLeft = 0;
+    });
+    await page.waitForTimeout(100);
+
+    // The sticky column cell z-index must be greater than the selected cell
+    const stickyCell = page.locator("table tbody tr").first().locator("td.sticky").first();
+    const stickyZ = await stickyCell.evaluate((el) => {
+      return parseInt(getComputedStyle(el).zIndex) || 0;
+    });
+    const cellZ = await selectedCell.evaluate((el) => {
+      return parseInt(getComputedStyle(el).zIndex) || 0;
+    });
+    expect(stickyZ).toBeGreaterThan(cellZ);
+  });
+
+  test("sticky header in sticky column should have highest z-index", async ({ page }) => {
+    const stickyHeader = page.locator("table thead th.sticky").first();
+    const regularHeader = page.locator("table thead th").nth(1);
+    const stickyBodyCell = page.locator("table tbody tr").first().locator("td.sticky").first();
+
+    const stickyHeaderZ = await stickyHeader.evaluate(
+      (el) => parseInt(getComputedStyle(el).zIndex) || 0,
+    );
+    const regularHeaderZ = await regularHeader.evaluate(
+      (el) => parseInt(getComputedStyle(el).zIndex) || 0,
+    );
+    const stickyBodyZ = await stickyBodyCell.evaluate(
+      (el) => parseInt(getComputedStyle(el).zIndex) || 0,
+    );
+
+    // Sticky header corner must be above both regular headers and sticky body cells
+    expect(stickyHeaderZ).toBeGreaterThan(regularHeaderZ);
+    expect(stickyHeaderZ).toBeGreaterThan(stickyBodyZ);
   });
 });

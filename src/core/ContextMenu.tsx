@@ -31,8 +31,11 @@ export const ContextMenu = ({
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return ReactDOM.createPortal(
-    <div className="custom-table" style={{ display: "contents" }}>
-      <div ref={menuRef} className="context-menu" style={{ top, left, visibility }}
+    <div className="custom-table context-menu-portal">
+      <div
+        ref={menuRef}
+        className="context-menu"
+        style={{ top, left, visibility }}
         onMouseDown={(e) => e.preventDefault()} // prevent focus from leaving the table
       >
         {items.map((item, index) =>

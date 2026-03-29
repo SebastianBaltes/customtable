@@ -1,5 +1,14 @@
 import React from "react";
-import { CellAddr, CellMeta, CellMetaMap, ColumnConfig, Cursor, Row, RowMeta, SortConfig } from "./Types";
+import {
+  CellAddr,
+  CellMeta,
+  CellMetaMap,
+  ColumnConfig,
+  Cursor,
+  Row,
+  RowMeta,
+  SortConfig,
+} from "./Types";
 import { CustomColHeader } from "./CustomColHeader";
 import { CustomRow } from "./CustomRow";
 import { defaultRowKey } from "./CustomTable";
@@ -47,7 +56,7 @@ export const RowTable = React.memo(
     textEllipsisLength?: number;
     caption?: string;
   }) => {
-    const resolvedGetRowKey = getRowKey ?? (rowKey ?? defaultRowKey);
+    const resolvedGetRowKey = getRowKey ?? rowKey ?? defaultRowKey;
     return (
       <table ref={tableRef} id={tableId}>
         {caption && <caption className="sr-only">{caption}</caption>}

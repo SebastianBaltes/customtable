@@ -24,8 +24,8 @@
   --ct-selected-cell-bg: white;
   --ct-selected-outline: #217346;
   --ct-edited-outline: #217346;
-  --ct-selection-fill: rgba(33, 115, 70, 0.08);
-  --ct-fill-outline: #c00;
+  --ct-selection-fill: #9ee6b9;
+  --ct-fill-outline: rgba(33, 115, 70, 0.5);
   --ct-dragger-bg: #217346;
   --ct-dragger-border: white;
 
@@ -82,7 +82,45 @@
   --ct-dialog-save-hover: #185a35;
 }
 
-/* Excel green checkboxes */
-.custom-table input[type="checkbox"] {
-  accent-color: #217346;
+
+/* Excel-style checkboxes — classic Windows form controls */
+.custom-table {
+  & input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #888;
+    border-top-color: #666;
+    border-left-color: #666;
+    background: #fff;
+    border-radius: 1px;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    flex-shrink: 0;
+
+    &:checked {
+      background: #fff;
+
+      &::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #217346;
+      }
+    }
+  }
+  .col-filter-input {
+    border: 1px solid var(--ct-border);
+  }
+  .selection-rectangle {
+    outline: solid 4px var(--ct-selected-outline);
+    outline-offset: 1px;
+  }
 }

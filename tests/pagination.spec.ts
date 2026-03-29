@@ -11,7 +11,9 @@ test.describe("Pagination", () => {
 
   // ── Structure ─────────────────────────────────────────────────────────────
 
-  test("renders page label, page buttons, total row info and page-size select", async ({ page }) => {
+  test("renders page label, page buttons, total row info and page-size select", async ({
+    page,
+  }) => {
     const pg = page.locator(".ct-pagination");
     await expect(pg).toBeVisible();
     await expect(pg.locator(".ct-pagination-pages")).toBeVisible();

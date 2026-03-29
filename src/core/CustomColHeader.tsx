@@ -1,4 +1,4 @@
-import { CellAddr, ColumnConfig, Cursor, Row, SortConfig } from "./Types";
+import { ColumnConfig, Cursor, SortConfig } from "./Types";
 import classNames from "./classNames";
 import React, { useContext } from "react";
 import { getCursorName } from "./CustomTable";
@@ -106,7 +106,12 @@ export const CustomColHeader = React.memo(
       <th
         scope="col"
         aria-label={column.label ?? column.name}
-        className={classNames("col-header", sticky && "sticky", cursorName, align !== "left" && `cell-align-${align}`)}
+        className={classNames(
+          "col-header",
+          sticky && "sticky",
+          cursorName,
+          align !== "left" && `cell-align-${align}`,
+        )}
         onMouseDown={(event) => {
           if (isInteractiveTarget(event.target as HTMLElement)) return;
           setCursorRef({
@@ -129,13 +134,22 @@ export const CustomColHeader = React.memo(
             });
           }
         }}
-        onClick={handleSortClick}
       >
         <div className="col-header-content">
-          <span className="col-header-label">
+          <span className="col-header-label" onClick={handleSortClick}>
             {label}
-            {sortDirection === "asc" && <span className="col-sort-icon col-sort-asc" aria-label="sorted ascending"> ▲</span>}
-            {sortDirection === "desc" && <span className="col-sort-icon col-sort-desc" aria-label="sorted descending"> ▼</span>}
+            {sortDirection === "asc" && (
+              <span className="col-sort-icon col-sort-asc" aria-label="sorted ascending">
+                {" "}
+                ▲
+              </span>
+            )}
+            {sortDirection === "desc" && (
+              <span className="col-sort-icon col-sort-desc" aria-label="sorted descending">
+                {" "}
+                ▼
+              </span>
+            )}
           </span>
           {renderFilter()}
         </div>

@@ -60,11 +60,7 @@ interface CsvInputProps {
   onChange: (newSelected: string[]) => void;
 }
 
-const MultiComboboxCsvInput: React.FC<CsvInputProps> = ({
-  initialChar,
-  selected,
-  onChange,
-}) => {
+const MultiComboboxCsvInput: React.FC<CsvInputProps> = ({ initialChar, selected, onChange }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   // Start with the first typed character; user can continue to type a full CSV
   const [localValue, setLocalValue] = useState(initialChar);

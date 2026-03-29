@@ -207,10 +207,13 @@ export interface RowMeta {
 /**
  * Meta map keyed by row-key.
  */
-export type CellMetaMap = Record<string, {
-  row?: RowMeta;
-  cells?: Record<string, CellMeta>;
-}>;
+export type CellMetaMap = Record<
+  string,
+  {
+    row?: RowMeta;
+    cells?: Record<string, CellMeta>;
+  }
+>;
 
 export type FilterState = Record<string, string>;
 

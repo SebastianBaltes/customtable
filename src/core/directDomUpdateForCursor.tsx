@@ -157,10 +157,10 @@ export function forceUpdateCursorRect(
     const width = right - left;
     const height = bottom - top;
     const style = rectangleDiv.style;
-    style.top = top + viewport.scrollTop + dtop + "px";
-    style.left = left + viewport.scrollLeft + dleft + "px";
-    style.width = width + "px";
-    style.height = height + "px";
+    style.top = Math.round(top + viewport.scrollTop + dtop) + "px";
+    style.left = Math.round(left + viewport.scrollLeft + dleft) + "px";
+    style.width = Math.round(width) + "px";
+    style.height = Math.round(height) + "px";
   }
 
   function updateRectangle(

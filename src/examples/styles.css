@@ -10,7 +10,9 @@ body {
   height: 100%;
   background: var(--ct-bg, white);
   color: var(--ct-text, #222);
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 #root {
@@ -39,7 +41,6 @@ body {
   font-size: 1rem;
   align-items: center;
   background: var(--ct-toolbar-bg, #f5f5f5);
-  border-bottom: 1px solid var(--ct-border, #e0e0e0);
 }
 
 .theme-switcher-label {
@@ -58,3 +59,24 @@ body {
   font-family: inherit;
   cursor: pointer;
 }
+
+.example-page {
+  display: contents;
+}
+
+/* Footer bar under the table (moved from inline styles in example.tsx) */
+.example-footer {
+  display: flex;
+  align-items: center;
+  background: var(--ct-toolbar-bg);
+}
+
+.example-footer-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  flex-shrink: 0;
+}
+

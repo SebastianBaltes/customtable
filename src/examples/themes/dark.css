@@ -23,7 +23,8 @@
   --ct-selected-cell-bg: hsl(220, 15%, 16%);
   --ct-selected-outline: hsl(207, 80%, 50%);
   --ct-edited-outline: hsl(207, 80%, 50%);
-  --ct-selection-fill: hsla(207, 80%, 50%, 12%);
+  --ct-selection-blend: screen; /* Used in base/light css to blend properly in dark mode */
+  --ct-selection-fill: #1a2b40;
   --ct-fill-outline: hsl(2, 70%, 50%);
   --ct-dragger-bg: hsl(207, 80%, 50%);
   --ct-dragger-border: hsl(220, 15%, 13%);
@@ -81,27 +82,30 @@
   --ct-dialog-save-hover: hsl(207, 80%, 38%);
 }
 
-/* Dark scrollbars */
-.custom-table .custom-table-viewport {
-  scrollbar-color: hsl(220, 12%, 30%) hsl(220, 15%, 16%);
-}
 
-.custom-table .custom-table-viewport::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-.custom-table .custom-table-viewport::-webkit-scrollbar-track {
-  background: hsl(220, 15%, 16%);
-}
-.custom-table .custom-table-viewport::-webkit-scrollbar-thumb {
-  background: hsl(220, 12%, 30%);
-  border-radius: 5px;
-}
-.custom-table .custom-table-viewport::-webkit-scrollbar-thumb:hover {
-  background: hsl(220, 12%, 38%);
-}
+/* Dark scrollbars & interactions */
+.custom-table {
+  .custom-table-viewport {
+    scrollbar-color: hsl(220, 12%, 30%) hsl(220, 15%, 16%);
 
-/* Dark checkboxes */
-.custom-table input[type="checkbox"] {
-  accent-color: hsl(207, 80%, 50%);
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: hsl(220, 15%, 16%);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: hsl(220, 12%, 30%);
+      border-radius: 5px;
+      &:hover {
+        background: hsl(220, 12%, 38%);
+      }
+    }
+  }
+
+  /* Dark checkboxes */
+  & input[type="checkbox"] {
+    accent-color: hsl(207, 80%, 50%);
+  }
 }

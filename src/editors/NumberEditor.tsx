@@ -6,7 +6,10 @@ import { Editor, NumberFormat } from "../core/Types";
 // Set by CustomCell before entering edit mode via mouse click so the editor
 // can position the text cursor at the exact click location.
 // ---------------------------------------------------------------------------
-interface PendingClick { x: number; ts: number }
+interface PendingClick {
+  x: number;
+  ts: number;
+}
 let _pendingClick: PendingClick | null = null;
 
 export function setPendingNumberEditorClick(clientX: number): void {
@@ -51,7 +54,8 @@ function charOffsetAtClientX(input: HTMLInputElement, clientX: number): number {
   if (relX >= textWidth) return text.length;
 
   // Binary search for the character boundary closest to relX
-  let lo = 0, hi = text.length;
+  let lo = 0,
+    hi = text.length;
   while (lo < hi) {
     const mid = Math.ceil((lo + hi) / 2);
     if (ctx.measureText(text.slice(0, mid)).width <= relX) lo = mid;
@@ -64,7 +68,10 @@ function charOffsetAtClientX(input: HTMLInputElement, clientX: number): number {
  * Format a raw number for display including prefix/suffix.
  * Returns empty string for null/undefined.
  */
-export function formatNumber(value: number | null | undefined, fmt: NumberFormat | undefined): string {
+export function formatNumber(
+  value: number | null | undefined,
+  fmt: NumberFormat | undefined,
+): string {
   if (value == null) return "";
   const num = Number(value);
   if (isNaN(num)) return String(value);
@@ -97,15 +104,22 @@ export function parseLocaleNumber(str: string, locale?: string): number {
   const groupSep = parts.find((p) => p.type === "group")?.value ?? ",";
 
   const normalized = str
-    .split(groupSep).join("")       // strip all thousands separators
-    .replace(decimalSep, ".");      // normalise decimal to "."
+    .split(groupSep)
+    .join("") // strip all thousands separators
+    .replace(decimalSep, "."); // normalise decimal to "."
 
   const result = parseFloat(normalized);
   // Fallback: let JS try the raw string (handles "1234.56" typed in any locale)
   return isNaN(result) ? parseFloat(str) : result;
 }
 
-export const NumberEditor: Editor<number> = ({ value, editing, columnConfig, onChange, initialEditValue }) => {
+export const NumberEditor: Editor<number> = ({
+  value,
+  editing,
+  columnConfig,
+  onChange,
+  initialEditValue,
+}) => {
   const fmt = columnConfig.numberFormat;
 
   const editDefault = (v: number | null | undefined) =>
@@ -146,7 +160,10 @@ export const NumberEditor: Editor<number> = ({ value, editing, columnConfig, onC
 
   const commit = () => {
     if (isEscapingRef.current) return;
-    if (localValue === "") { onChange(0); return; }
+    if (localValue === "") {
+      onChange(0);
+      return;
+    }
     const num = parseLocaleNumber(localValue, fmt?.locale);
     onChange(isNaN(num) ? 0 : num);
   };

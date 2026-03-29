@@ -27,6 +27,10 @@
   display: flex;
   flex-direction: column;
 
+  table {
+    font-size: var(--font-size);line-height: var(--line-height);
+  }
+
   th {
     font-weight: 400;
   }
@@ -53,20 +57,6 @@
     flex-shrink: 0;
   }
 
-  .toolbar-input {
-    width: 60px;
-    padding: 4px 8px;
-    border-radius: 3px;
-    font-size: 1rem;
-  }
-
-  .toolbar-button {
-    padding: 4px 12px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-
   /* Viewport / scroll area */
   .custom-table-viewport {
     position: relative;
@@ -88,17 +78,17 @@
   thead th {
     position: sticky;
     top: 0px;
-    z-index: 1;
+    z-index: 3;
 
     &.sticky {
       left: 0px;
-      z-index: 2;
+      z-index: 4;
     }
   }
 
   tbody td.sticky {
     position: sticky;
-    z-index: 1;
+    z-index: 3;
   }
 
   /* Cell / column header layout */
@@ -118,7 +108,7 @@
       right: 5px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 1rem;
+      font-size: var(--font-size);line-height: var(--line-height);
       pointer-events: none;
       line-height: 1;
     }
@@ -129,7 +119,7 @@
     right: 5px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 0.85rem;
+    font-size: var(--font-size);line-height: var(--line-height);
     cursor: pointer;
     pointer-events: auto;
     line-height: 1;
@@ -140,10 +130,6 @@
     user-select: all;
   }
 
-  .col-selected,
-  .col-edited,
-  .row-edited,
-  .row-selected,
   .cell-selected,
   .cell-edited {
     z-index: 1;
@@ -159,13 +145,13 @@
 
   #selection-rectangle,
   #fill-rectangle {
-    z-index: 0;
+    z-index: 2;
   }
 
   #selection-rectangle-sticky,
   #fill-rectangle-sticky {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
   }
 
   .selection-rectangle-dragger {
@@ -185,8 +171,17 @@
     position: absolute;
     border-radius: 5px;
     padding: 10px;
-    width: 200px;
     z-index: 1000;
+    /* top/left/visibility are set dynamically via inline styles in the component */
+  }
+
+  /* Portal wrapper used by ContextMenu to avoid affecting document flow */
+  .context-menu-portal {
+    display: contents;
+  }
+
+  .context-menu-shortcut {
+    padding-left: 4rem;
   }
 
   .context-menu-item {
@@ -212,13 +207,24 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    /* center the label horizontally but allow filter/input to stretch */
+    align-items: center;
   }
 
   .col-header-label {
     cursor: pointer;
     white-space: nowrap;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    /* only as wide as its text */
+    display: inline-block;
+    padding: 0 0.25rem;
+    text-align: center;
+  }
+  .col-header-label:hover,
+  .col-header-label:focus-visible {
+    text-decoration: underline;
+    /* improve appearance of the underline */
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
   }
 
   /* Filter input */
@@ -229,8 +235,10 @@
     box-sizing: border-box;
     padding: 2px 4px;
     border-radius: 2px;
-    font-size: 1rem;
+    font-size: var(--font-size);line-height: var(--line-height);
     font-family: inherit;
+    /* ensure input stretches to column width even when parent centers items */
+    align-self: stretch;
   }
 
   /* Editor input */
@@ -318,7 +326,7 @@
     gap: 8px;
     padding: 5px 12px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: var(--font-size);line-height: var(--line-height);
     user-select: none;
 
     &.is-custom {
@@ -328,14 +336,14 @@
 
   .combo-dropdown-custom-badge {
     margin-left: auto;
-    font-size: 0.75rem;
+    font-size: var(--font-size);line-height: var(--line-height);
     font-style: normal;
     white-space: nowrap;
     flex-shrink: 0;
   }
 
   .combo-dropdown-checkbox {
-    font-size: 1rem;
+    font-size: var(--font-size);line-height: var(--line-height);
     flex-shrink: 0;
   }
 
@@ -347,14 +355,14 @@
     outline: none;
     background: transparent;
     font: inherit;
-    font-size: 1rem;
+    font-size: var(--font-size);line-height: var(--line-height);
     padding: 0;
     margin: 0;
   }
 
   .combo-dropdown-empty {
     padding: 6px 12px;
-    font-size: 1rem;
+    font-size: var(--font-size);line-height: var(--line-height);
     font-style: italic;
   }
 }
@@ -365,36 +373,45 @@
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  font-size: 1rem;
+  font-size: var(--font-size);line-height: var(--line-height);
   flex-shrink: 0;
   flex-wrap: wrap;
-}
 
-.ct-pagination-label {
-  white-space: nowrap;
-}
+  .ct-pagination-label {
+    white-space: nowrap;
+  }
 
-.ct-pagination-pages {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  flex-wrap: wrap;
-}
+  .ct-pagination-pages {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+  }
 
-.ct-pagination-page {
-  min-width: 28px;
-  height: 28px;
-  padding: 0 4px;
-  border-radius: 3px;
-  background: none;
-  cursor: pointer;
-  font-size: 1rem;
-  line-height: 1;
+  .ct-pagination-page {
+    min-width: 28px;
+    height: 28px;
+    padding: 0 4px;
+    border-radius: 3px;
+    background: none;
+    cursor: pointer;
+    font-size: var(--font-size);line-height: var(--line-height);
+    line-height: 1;
 
-  &.is-current {
-    cursor: default;
+    &.is-current {
+      cursor: default;
+    }
+  }
+
+  .ct-pagination-select {
+    height: 28px;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-size: var(--font-size);line-height: var(--line-height);
+    cursor: pointer;
   }
 }
+
 
 .ct-pagination-ellipsis {
   padding: 0 2px;
@@ -402,30 +419,43 @@
   line-height: 28px;
 }
 
-.ct-pagination-button {
-  height: 28px;
-  padding: 0 10px;
+
+.toolbar-input {
+  width: 60px;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: var(--font-size);line-height: var(--line-height);
+}
+
+.toolbar-button {
+  border: 1px solid var(--ct-button-border);
+  background-color: var(--ct-button-bg);
+  color: var(--ct-text);
+  &:hover {
+    background-color: var(--ct-button-hover);
+  }
+  padding: 4px 12px;
   border-radius: 3px;
   cursor: pointer;
-  font-size: 1rem;
-  white-space: nowrap;
+  font-size: var(--font-size);line-height: var(--line-height);
 
   &:disabled {
     opacity: 0.4;
     cursor: default;
   }
+
+
+  &.toggle {
+    border: 1px outset var(--ct-border);
+    &.active {
+      border: 1px inset var(--ct-border);
+      background-color: var(--ct-dropdown-both);
+    }
+  }
 }
 
-.ct-pagination-select {
-  height: 28px;
-  padding: 0 4px;
-  border-radius: 3px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-/* Textarea Dialog structure */
-.textarea-dialog-overlay {
+/* Editor Dialog structure (used for Textarea, Subtable, etc.) */
+.editor-dialog-overlay {
   position: fixed;
   inset: 0;
   display: flex;
@@ -434,57 +464,57 @@
   z-index: 10000;
 }
 
-.textarea-dialog {
+.editor-dialog {
   border-radius: 8px;
   width: min(1200px, 90vw);
   display: flex;
   flex-direction: column;
   max-height: 90vh;
-}
 
-.textarea-dialog-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-}
+  .editor-dialog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+  }
 
-.textarea-dialog-title {
-  font-weight: 600;
-  font-size: 1rem;
-}
+  .editor-dialog-title {
+    font-weight: 600;
+    font-size: var(--font-size);line-height: var(--line-height);
+  }
 
-.textarea-dialog-close {
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-  padding: 0 4px;
-  line-height: 1;
-}
+  .editor-dialog-close {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0 4px;
+    line-height: 1;
+  }
 
-.textarea-dialog-input {
-  flex: 1;
-  margin: 16px 20px;
-  padding: 12px 14px;
-  font-size: 1rem;
-  font-family: inherit;
-  border-radius: 4px;
-  resize: vertical;
-  min-height: 400px;
-  outline: none;
-}
+  .editor-dialog-input {
+    flex: 1;
+    margin: 16px 20px;
+    padding: 12px 14px;
+    font-size: var(--font-size);line-height: var(--line-height);
+    font-family: inherit;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 400px;
+    outline: none;
+  }
 
-.textarea-dialog-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-  padding: 12px 16px;
-}
+  .editor-dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px 16px;
+  }
 
-.textarea-dialog-btn {
-  padding: 8px 20px;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
+  .editor-dialog-btn {
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: var(--font-size);line-height: var(--line-height);
+    cursor: pointer;
+  }
 }

@@ -65,10 +65,7 @@ export const TextareaDialogEditor: Editor<string> = ({
   }, [value]);
 
   const dialogTitle = columnConfig.dialogTitle
-    ? columnConfig.dialogTitle.replace(
-        /\$\{(\w+)\}/g,
-        (_, key) => (row[key] ?? "") as string,
-      )
+    ? columnConfig.dialogTitle.replace(/\$\{(\w+)\}/g, (_, key) => (row[key] ?? "") as string)
     : columnConfig.label ?? columnConfig.name;
 
   const handleSave = () => {
@@ -153,7 +150,7 @@ export const TextareaDialogEditor: Editor<string> = ({
         ReactDOM.createPortal(
           <div
             ref={overlayRef}
-            className="textarea-dialog-overlay"
+            className="editor-dialog-overlay"
             onMouseDown={(e) => {
               e.stopPropagation();
               if (e.target === e.currentTarget) {
@@ -161,20 +158,16 @@ export const TextareaDialogEditor: Editor<string> = ({
               }
             }}
           >
-            <div className="textarea-dialog">
-              <div className="textarea-dialog-header">
-                <span className="textarea-dialog-title">{dialogTitle}</span>
-                <button
-                  className="textarea-dialog-close"
-                  onClick={handleCancel}
-                  title="Close"
-                >
+            <div className="editor-dialog">
+              <div className="editor-dialog-header">
+                <span className="editor-dialog-title">{dialogTitle}</span>
+                <button className="editor-dialog-close" onClick={handleCancel} title="Close">
                   ×
                 </button>
               </div>
               <textarea
                 ref={textareaRef}
-                className="textarea-dialog-input"
+                className="editor-dialog-input"
                 value={dialogValue}
                 onChange={(e) => setDialogValue(e.target.value)}
                 onKeyDown={(e) => {
@@ -184,15 +177,12 @@ export const TextareaDialogEditor: Editor<string> = ({
                   e.stopPropagation();
                 }}
               />
-              <div className="textarea-dialog-footer">
-                <button
-                  className="textarea-dialog-btn textarea-dialog-btn-save"
-                  onClick={handleSave}
-                >
+              <div className="editor-dialog-footer">
+                <button className="editor-dialog-btn editor-dialog-btn-save" onClick={handleSave}>
                   Save
                 </button>
                 <button
-                  className="textarea-dialog-btn textarea-dialog-btn-cancel"
+                  className="editor-dialog-btn editor-dialog-btn-cancel"
                   onClick={handleCancel}
                 >
                   Cancel

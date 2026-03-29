@@ -1,5 +1,13 @@
 import React, { useMemo, useState } from "react";
-import { CellMetaMap, ColumnConfig, CustomContextMenuItem, FilterState, Row, SortConfig, TableContextState } from "./Types";
+import {
+  CellMetaMap,
+  ColumnConfig,
+  CustomContextMenuItem,
+  FilterState,
+  Row,
+  SortConfig,
+  TableContextState,
+} from "./Types";
 import { forceUpdateCursorRect } from "./directDomUpdateForCursor";
 import classNames from "./classNames";
 import { ContextMenu } from "./ContextMenu";
@@ -321,9 +329,9 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         const cursor = cursorRef.current;
         const startRow = cursor.selectionStart.rowIdx;
         const startCol = cursor.selectionStart.colIdx;
-        const pasteLines = text.split(/\r?\n/).filter((line, idx, arr) =>
-          idx < arr.length - 1 || line !== "",
-        );
+        const pasteLines = text
+          .split(/\r?\n/)
+          .filter((line, idx, arr) => idx < arr.length - 1 || line !== "");
         const snapshot = rows;
         undoRedo.pushState(rows);
         const newRows = [...rows];
@@ -358,7 +366,18 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       } catch {
         // clipboard access denied
       }
-    }, [rows, columns, originalIndices, displayRows, getRowKey, cellMeta, changeRows, undoRedo, onUpdateRows, withAsyncRollback]);
+    }, [
+      rows,
+      columns,
+      originalIndices,
+      displayRows,
+      getRowKey,
+      cellMeta,
+      changeRows,
+      undoRedo,
+      onUpdateRows,
+      withAsyncRollback,
+    ]);
 
     const deleteSelection = React.useCallback(() => {
       const { startRow, endRow, startCol, endCol } = getSelectionRange();
@@ -390,7 +409,18 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         const updatedRows = [...changedOrigIndices].map((i) => newRows[i]);
         withAsyncRollback(snapshot, () => onUpdateRows(updatedRows));
       }
-    }, [rows, columns, originalIndices, displayRows, getRowKey, cellMeta, changeRows, undoRedo, onUpdateRows, withAsyncRollback]);
+    }, [
+      rows,
+      columns,
+      originalIndices,
+      displayRows,
+      getRowKey,
+      cellMeta,
+      changeRows,
+      undoRedo,
+      onUpdateRows,
+      withAsyncRollback,
+    ]);
 
     // --- Row creation ---
     const handleCreateRows = () => {
@@ -416,7 +446,9 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       const { startRow } = getSelectionRange();
       const origIdx = originalIndices[startRow] ?? rows.length;
       const newRow: Row = {};
-      columns.forEach((c) => { newRow[c.name] = ""; });
+      columns.forEach((c) => {
+        newRow[c.name] = "";
+      });
       const snapshot = rows;
       undoRedo.pushState(rows);
       const newRows = [...rows.slice(0, origIdx), newRow, ...rows.slice(origIdx)];
@@ -428,7 +460,9 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       const { endRow } = getSelectionRange();
       const origIdx = originalIndices[endRow] ?? rows.length - 1;
       const newRow: Row = {};
-      columns.forEach((c) => { newRow[c.name] = ""; });
+      columns.forEach((c) => {
+        newRow[c.name] = "";
+      });
       const snapshot = rows;
       undoRedo.pushState(rows);
       const newRows = [...rows.slice(0, origIdx + 1), newRow, ...rows.slice(origIdx + 1)];
@@ -457,7 +491,15 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         editing: false,
         filling: false,
       });
-    }, [rows, originalIndices, changeRows, undoRedo, onDeleteRows, setCursorRef, withAsyncRollback]);
+    }, [
+      rows,
+      originalIndices,
+      changeRows,
+      undoRedo,
+      onDeleteRows,
+      setCursorRef,
+      withAsyncRollback,
+    ]);
 
     // --- Undo/Redo ---
     const handleUndo = React.useCallback(() => {
@@ -592,7 +634,16 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         withAsyncRollback(snapshot, () => onUpdateRows(updatedRows));
       }
       setCursorRef({ filling: false });
-    }, [rows, columns, originalIndices, changeRows, undoRedo, setCursorRef, onUpdateRows, withAsyncRollback]);
+    }, [
+      rows,
+      columns,
+      originalIndices,
+      changeRows,
+      undoRedo,
+      setCursorRef,
+      onUpdateRows,
+      withAsyncRollback,
+    ]);
 
     // --- Enhanced key handling ---
     const handleKeyDown = React.useCallback(
@@ -653,7 +704,20 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
 
         baseCursorKeyDown(event);
       },
-      [pending, baseCursorKeyDown, handleUndo, handleRedo, copySelection, pasteAtCursor, deleteSelection, columns, displayRows, getRowKey, cellMeta, onCellChange],
+      [
+        pending,
+        baseCursorKeyDown,
+        handleUndo,
+        handleRedo,
+        copySelection,
+        pasteAtCursor,
+        deleteSelection,
+        columns,
+        displayRows,
+        getRowKey,
+        cellMeta,
+        onCellChange,
+      ],
     );
 
     // --- Mouse up for fill drag ---
@@ -670,7 +734,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     // --- Auto-scroll while dragging (selection or fill) ---
     React.useEffect(() => {
       const SCROLL_ZONE = 40; // px from edge before scrolling starts
-      const MAX_SPEED = 16;   // px per animation frame at full speed
+      const MAX_SPEED = 16; // px per animation frame at full speed
       let rafId: number | null = null;
       let lastMouseY = 0;
       let lastMouseX = 0;
@@ -680,8 +744,11 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         if (!vp) return;
         const cursor = cursorRef.current;
         // Only auto-scroll while a drag (selection or fill) is in progress
-        if (!cursor.filling && cursor.selectionStart.rowIdx === cursor.selectionEnd.rowIdx &&
-            cursor.selectionStart.colIdx === cursor.selectionEnd.colIdx) {
+        if (
+          !cursor.filling &&
+          cursor.selectionStart.rowIdx === cursor.selectionEnd.rowIdx &&
+          cursor.selectionStart.colIdx === cursor.selectionEnd.colIdx
+        ) {
           // No active drag; stop the loop
           rafId = null;
           return;
@@ -698,7 +765,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         }
         // Top edge
         if (lastMouseY < rect.top + SCROLL_ZONE) {
-          const dist = (rect.top + SCROLL_ZONE) - lastMouseY;
+          const dist = rect.top + SCROLL_ZONE - lastMouseY;
           scrollY = -Math.min(MAX_SPEED, Math.round((dist / SCROLL_ZONE) * MAX_SPEED));
         }
         // Right edge
@@ -708,7 +775,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         }
         // Left edge
         if (lastMouseX < rect.left + SCROLL_ZONE) {
-          const dist = (rect.left + SCROLL_ZONE) - lastMouseX;
+          const dist = rect.left + SCROLL_ZONE - lastMouseX;
           scrollX = -Math.min(MAX_SPEED, Math.round((dist / SCROLL_ZONE) * MAX_SPEED));
         }
 
@@ -742,7 +809,6 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         if (rafId !== null) cancelAnimationFrame(rafId);
       };
     }, []); // viewportRef and cursorRef are stable refs – no deps needed
-
 
     // Stable getter so custom item handlers always see fresh state at click time.
     const contextStateRef = React.useRef<() => TableContextState>(() => ({
@@ -786,143 +852,159 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
 
     return (
       <TranslationsContext.Provider value={t}>
-      <div
-        ref={customTableRef}
-        className={classNames("custom-table", pending && "pending", textEllipsisLength && "has-ellipsis")}
-        onKeyDown={handleKeyDown}
-        onFocus={(e) => {
-          // ARIA: initialize cursor to (0,0) when the table receives focus and no cell is selected.
-          if (e.target === e.currentTarget && cursorRef.current.selectionStart.rowIdx < 0) {
-            setCursorRef({
-              selectionStart: { colIdx: 0, rowIdx: 0 },
-              selectionEnd: { colIdx: 0, rowIdx: 0 },
-              fillEnd: { colIdx: 0, rowIdx: 0 },
-            });
-          }
-        }}
-        onBlur={(e) => {
-          // Deselect all cells when focus leaves the table entirely.
-          // Skip if the context menu or a dialog is open (rendered via portal outside the table DOM).
-          if (contextMenuVisibleRef.current) return;
-          if (document.querySelector(".textarea-dialog-overlay")) return;
-          if (!e.currentTarget.contains(e.relatedTarget as Node)) {
-            setCursorRef({
-              editing: false,
-              initialEditValue: null,
-              selectionStart: { colIdx: -1, rowIdx: -1 },
-              selectionEnd: { colIdx: -1, rowIdx: -1 },
-              fillEnd: { colIdx: -1, rowIdx: -1 },
-            });
-          }
-        }}
-        tabIndex={0}
-      >
-        {stickyColumnsLefts.css != null && (
-          <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
-        )}
-        <div ref={viewportRef} className="custom-table-viewport" onContextMenu={(event) => {
-          // If right-clicked on a cell outside the current selection, select it first.
-          const td = (event.target as HTMLElement).closest<HTMLElement>("td[data-row-idx]");
-          if (td) {
-            const rowIdx = parseInt(td.dataset.rowIdx ?? "-1");
-            const colIdx = parseInt(td.dataset.colIdx ?? "-1");
-            if (rowIdx >= 0 && colIdx >= 0) {
-              const { selectionStart, selectionEnd } = cursorRef.current;
-              const startRow = Math.min(selectionStart.rowIdx, selectionEnd.rowIdx);
-              const endRow = Math.max(selectionStart.rowIdx, selectionEnd.rowIdx);
-              const startCol = Math.min(selectionStart.colIdx, selectionEnd.colIdx);
-              const endCol = Math.max(selectionStart.colIdx, selectionEnd.colIdx);
-              const inSelection = rowIdx >= startRow && rowIdx <= endRow && colIdx >= startCol && colIdx <= endCol;
-              if (!inSelection) {
-                setCursorRef({
-                  editing: false,
-                  initialEditValue: null,
-                  selectionStart: { rowIdx, colIdx },
-                  selectionEnd: { rowIdx, colIdx },
-                  fillEnd: { rowIdx, colIdx },
-                  filling: false,
-                  colSelection: false,
-                });
-              }
-            }
-          }
-          openContextMenu(event);
-        }}>
-          <RowTable
-            {...{
-              tableId,
-              tableRef,
-              cursorRef,
-              setCursorRef,
-              rows: displayRows,
-              columns,
-              rowKey,
-              numberOfStickyColums,
-              onCellChange,
-              editingCell,
-              sortConfig: effectiveSortConfig,
-              onSortChange: handleSortChange,
-              filters: effectiveFilters,
-              onFilterChange: handleFilterChange,
-              cellMeta,
-              getRowKey,
-              textEllipsisLength,
-              caption,
-            }}
-            stickyPortal={
-              numberOfStickyColums === 0
-                ? undefined
-                : () => (
-                    <>
-                      <div
-                        ref={selectionRectangleStickyRef}
-                        id="selection-rectangle-sticky"
-                        className="selection-rectangle"
-                      >
-                        <div
-                          className="selection-rectangle-dragger"
-                          onMouseDown={selectionRectangleDraggerOnMouseDown}
-                        ></div>
-                      </div>
-                      <div
-                        ref={fillRectangleStickyRef}
-                        id="fill-rectangle-sticky"
-                        className="fill-rectangle"
-                      ></div>
-                    </>
-                  )
-            }
-          />
-          <div ref={selectionRectangleRef} id="selection-rectangle" className="selection-rectangle">
-            <div
-              className="selection-rectangle-dragger"
-              onMouseDown={selectionRectangleDraggerOnMouseDown}
-            ></div>
-          </div>
-          <div ref={fillRectangleRef} id="fill-rectangle" className="fill-rectangle"></div>
-          {contextMenu.visible && (
-            <ContextMenu
-              position={contextMenu.position}
-              items={contextMenuItems}
-              hideMenu={closeContextMenu}
-            />
+        <div
+          ref={customTableRef}
+          className={classNames(
+            "custom-table",
+            pending && "pending",
+            textEllipsisLength && "has-ellipsis",
           )}
+          onKeyDown={handleKeyDown}
+          onFocus={(e) => {
+            // ARIA: initialize cursor to (0,0) when the table receives focus and no cell is selected.
+            if (e.target === e.currentTarget && cursorRef.current.selectionStart.rowIdx < 0) {
+              setCursorRef({
+                selectionStart: { colIdx: 0, rowIdx: 0 },
+                selectionEnd: { colIdx: 0, rowIdx: 0 },
+                fillEnd: { colIdx: 0, rowIdx: 0 },
+              });
+            }
+          }}
+          onBlur={(e) => {
+            // Deselect all cells when focus leaves the table entirely.
+            // Skip if the context menu or a dialog is open (rendered via portal outside the table DOM).
+            if (contextMenuVisibleRef.current) return;
+            if (document.querySelector(".editor-dialog-overlay")) return;
+            if (!e.currentTarget.contains(e.relatedTarget as Node)) {
+              setCursorRef({
+                editing: false,
+                initialEditValue: null,
+                selectionStart: { colIdx: -1, rowIdx: -1 },
+                selectionEnd: { colIdx: -1, rowIdx: -1 },
+                fillEnd: { colIdx: -1, rowIdx: -1 },
+              });
+            }
+          }}
+          tabIndex={0}
+        >
+          {stickyColumnsLefts.css != null && (
+            <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
+          )}
+          <div
+            ref={viewportRef}
+            className="custom-table-viewport"
+            onContextMenu={(event) => {
+              // If right-clicked on a cell outside the current selection, select it first.
+              const td = (event.target as HTMLElement).closest<HTMLElement>("td[data-row-idx]");
+              if (td) {
+                const rowIdx = parseInt(td.dataset.rowIdx ?? "-1");
+                const colIdx = parseInt(td.dataset.colIdx ?? "-1");
+                if (rowIdx >= 0 && colIdx >= 0) {
+                  const { selectionStart, selectionEnd } = cursorRef.current;
+                  const startRow = Math.min(selectionStart.rowIdx, selectionEnd.rowIdx);
+                  const endRow = Math.max(selectionStart.rowIdx, selectionEnd.rowIdx);
+                  const startCol = Math.min(selectionStart.colIdx, selectionEnd.colIdx);
+                  const endCol = Math.max(selectionStart.colIdx, selectionEnd.colIdx);
+                  const inSelection =
+                    rowIdx >= startRow &&
+                    rowIdx <= endRow &&
+                    colIdx >= startCol &&
+                    colIdx <= endCol;
+                  if (!inSelection) {
+                    setCursorRef({
+                      editing: false,
+                      initialEditValue: null,
+                      selectionStart: { rowIdx, colIdx },
+                      selectionEnd: { rowIdx, colIdx },
+                      fillEnd: { rowIdx, colIdx },
+                      filling: false,
+                      colSelection: false,
+                    });
+                  }
+                }
+              }
+              openContextMenu(event);
+            }}
+          >
+            <RowTable
+              {...{
+                tableId,
+                tableRef,
+                cursorRef,
+                setCursorRef,
+                rows: displayRows,
+                columns,
+                rowKey,
+                numberOfStickyColums,
+                onCellChange,
+                editingCell,
+                sortConfig: effectiveSortConfig,
+                onSortChange: handleSortChange,
+                filters: effectiveFilters,
+                onFilterChange: handleFilterChange,
+                cellMeta,
+                getRowKey,
+                textEllipsisLength,
+                caption,
+              }}
+              stickyPortal={
+                numberOfStickyColums === 0
+                  ? undefined
+                  : () => (
+                      <>
+                        <div
+                          ref={selectionRectangleStickyRef}
+                          id="selection-rectangle-sticky"
+                          className="selection-rectangle"
+                        >
+                          <div
+                            className="selection-rectangle-dragger"
+                            onMouseDown={selectionRectangleDraggerOnMouseDown}
+                          ></div>
+                        </div>
+                        <div
+                          ref={fillRectangleStickyRef}
+                          id="fill-rectangle-sticky"
+                          className="fill-rectangle"
+                        ></div>
+                      </>
+                    )
+              }
+            />
+            <div
+              ref={selectionRectangleRef}
+              id="selection-rectangle"
+              className="selection-rectangle"
+            >
+              <div
+                className="selection-rectangle-dragger"
+                onMouseDown={selectionRectangleDraggerOnMouseDown}
+              ></div>
+            </div>
+            <div ref={fillRectangleRef} id="fill-rectangle" className="fill-rectangle"></div>
+            {contextMenu.visible && (
+              <ContextMenu
+                position={contextMenu.position}
+                items={contextMenuItems}
+                hideMenu={closeContextMenu}
+              />
+            )}
+          </div>
+          <div className="custom-table-toolbar">
+            <span>+</span>
+            <input
+              type="number"
+              min={1}
+              value={newRowCount}
+              onChange={(e) => setNewRowCount(Math.max(1, parseInt(e.target.value) || 1))}
+              className="toolbar-input"
+              onKeyDown={(e) => e.stopPropagation()}
+            />
+            <button onClick={handleCreateRows} className="toolbar-button" disabled={pending}>
+              {t["Create Rows"]}
+            </button>
+          </div>
         </div>
-        <div className="custom-table-toolbar">
-          <span>+</span>
-          <input
-            type="number"
-            min={1}
-            value={newRowCount}
-            onChange={(e) => setNewRowCount(Math.max(1, parseInt(e.target.value) || 1))}
-            className="toolbar-input"
-            onKeyDown={(e) => e.stopPropagation()}
-          />
-          <button onClick={handleCreateRows} className="toolbar-button" disabled={pending}>
-            {t["Create Rows"]}
-          </button>
-        </div>
-      </div>
       </TranslationsContext.Provider>
     );
   },

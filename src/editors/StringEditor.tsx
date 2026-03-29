@@ -1,7 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Editor } from "../core/Types";
 
-export const StringEditor: Editor<string> = ({ value, row, editing, columnConfig, onChange, textEllipsisLength, initialEditValue }) => {
+export const StringEditor: Editor<string> = ({
+  value,
+  row,
+  editing,
+  columnConfig,
+  onChange,
+  textEllipsisLength,
+  initialEditValue,
+}) => {
   const [localValue, setLocalValue] = useState(value ?? "");
   const inputRef = useRef<HTMLInputElement>(null);
   const isEscapingRef = useRef(false);
@@ -29,9 +37,10 @@ export const StringEditor: Editor<string> = ({ value, row, editing, columnConfig
 
   if (!editing) {
     const stringVal = value ?? "";
-    const displayValue = textEllipsisLength && stringVal.length > textEllipsisLength
-      ? stringVal.substring(0, textEllipsisLength) + " [...]"
-      : stringVal;
+    const displayValue =
+      textEllipsisLength && stringVal.length > textEllipsisLength
+        ? stringVal.substring(0, textEllipsisLength) + " [...]"
+        : stringVal;
     return <span title={stringVal}>{displayValue}</span>;
   }
 

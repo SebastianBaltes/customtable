@@ -1,0 +1,430 @@
+/*
+ * High Contrast theme — maximum readability and accessibility.
+ * Strong borders, bold colors, larger text, WCAG AAA contrast ratios.
+ * Designed for users who need enhanced visual clarity.
+ */
+
+:root {
+  --font-size: 1.5rem;
+  --line-height: 2rem;
+
+  --ct-bg: #ffffff;
+  --ct-text: #000000;
+  --ct-font: sans-serif;
+
+  --ct-border: #000000;
+  --ct-border-light: #000000;
+
+  --ct-header-bg: #000000;
+  --ct-header-border: #ffffff;
+  --ct-header-label: #ffffff;
+
+  --ct-row-bg: #ffffff;
+  --ct-row-hover: #ffff00;
+  --ct-sticky-bg: #ffffff;
+
+  --ct-selected-row-bg: #ffffcc;
+  --ct-selected-col-bg: #ffffcc;
+  --ct-selected-cell-bg: #ffffff;
+  --ct-selected-outline: #000000;
+  --ct-edited-outline: #000000;
+  --ct-selection-fill: #ffff00;
+  --ct-fill-outline: #000000;
+  --ct-dragger-bg: #000000;
+  --ct-dragger-border: #ffffff;
+
+  --ct-toolbar-bg: #ffffff;
+  --ct-toolbar-border: #000000;
+  --ct-input-border: #000000;
+  --ct-input-bg: #ffffff;
+  --ct-button-bg: #ffffff;
+  --ct-button-border: #000000;
+  --ct-button-hover: #ffff00;
+
+  --ct-focus-outline: #000000;
+
+  --ct-ctx-bg: #ffffff;
+  --ct-ctx-border: #000000;
+  --ct-ctx-shadow: none;
+  --ct-ctx-text: #000000;
+  --ct-ctx-hover: #ffff00;
+  --ct-ctx-shortcut: #000000;
+
+  --ct-muted: #000000;
+  --ct-muted-light: #000000;
+
+  --ct-dropdown-bg: #ffffff;
+  --ct-dropdown-border: #000000;
+  --ct-dropdown-shadow: none;
+  --ct-dropdown-hover: #ffff00;
+  --ct-dropdown-selected: #ffffcc;
+  --ct-dropdown-highlighted: #ffff00;
+  --ct-dropdown-both: #ffff00;
+  --ct-dropdown-text: #000000;
+  --ct-dropdown-placeholder: #000000;
+  --ct-dropdown-empty: #000000;
+
+  --ct-pagination-link: #000000;
+  --ct-pagination-hover-bg: #ffff00;
+  --ct-pagination-hover-border: #000000;
+  --ct-pagination-current-border: #000000;
+  --ct-pagination-label: #000000;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.8);
+  --ct-dialog-bg: #ffffff;
+  --ct-dialog-shadow: none;
+  --ct-dialog-border: #000000;
+  --ct-dialog-title: #000000;
+  --ct-dialog-close: #000000;
+  --ct-dialog-close-hover: #000000;
+  --ct-dialog-input-border: #000000;
+  --ct-dialog-btn-bg: #ffffff;
+  --ct-dialog-btn-border: #000000;
+  --ct-dialog-btn-text: #000000;
+  --ct-dialog-btn-hover: #ffff00;
+  --ct-dialog-save-bg: #000000;
+  --ct-dialog-save-hover: #000000;
+}
+
+
+/* ===== High Contrast Overrides ===== */
+
+.custom-table {
+  border: 4px solid #000000;
+
+  color: #000000;
+  background-color: #ffffff;
+
+
+  table {
+    font-family: Serif;
+    font-weight: bold;
+    th {
+      font-weight: bolder;
+    }
+  }
+
+  /* Base inputs bolder as well */
+  & input,
+  & button,
+  & select,
+  & textarea {
+
+    color: #000000;
+  }
+
+  .col-header,
+  .cell {
+    outline: 2px solid #000000;
+  }
+
+  .col-header {
+    font-weight: 800;
+    border-bottom: 3px solid #000000;
+    color: #ffffff;
+
+    /* If headers have SVGs, we might need to color them white */
+    & svg {
+      fill: #ffffff;
+      stroke: #ffffff;
+    }
+
+    &.col-edited,
+    &.col-selected {
+      color: #000000 !important;
+      & svg {
+        fill: #000000 !important;
+        stroke: #000000 !important;
+      }
+    }
+  }
+
+  & th {
+    font-weight: 800;
+  }
+
+  & tbody {
+    & td.sticky {
+      border-right: 3px solid #000000;
+    }
+    & tr:hover td {
+      background-color: #ffff00;
+      color: #000000;
+    }
+  }
+
+  /* Selected states — very visible with black outlines */
+  .col-edited,
+  .col-selected {
+    background-color: #ffffcc;
+    z-index: 2;
+    color: #000000 !important;
+
+    /* Force everything inside selected columns to be black */
+    & * {
+      color: #000000 !important;
+    }
+    & svg {
+      fill: #000000 !important;
+      stroke: #000000 !important;
+    }
+  }
+
+  .cell-edited {
+    outline: 8px solid #000000;
+    z-index: 3;
+  }
+
+  .row-selected td,
+  .row-edited td {
+    background-color: #ffffcc;
+  }
+
+  /* Selection rectangle */
+  .selection-rectangle {
+    outline: 8px solid #000000;
+    outline-offset: 1px;
+  }
+  .selection-rectangle-dragger {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    pointer-events: all;
+    cursor: crosshair;
+  }
+  .fill-rectangle {
+    outline: dashed 6px;
+    outline-offset: 1px;
+  }
+
+
+  /* Inputs — thick borders */
+  .col-filter-input {
+    border: 3px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+
+    &:focus {
+      border-color: #000000;
+      box-shadow:
+        0 0 0 3px #ffff00,
+        0 0 0 5px #000000;
+    }
+  }
+
+  .toolbar-input {
+    border: 3px solid #000000;
+
+    &:focus {
+      border-color: #000000;
+      box-shadow:
+        0 0 0 3px #ffff00,
+        0 0 0 5px #000000;
+    }
+  }
+
+  /* Buttons — clear thick borders, bold text */
+  .toolbar-button {
+    border: 3px solid #000000;
+    font-weight: 800;
+    background-color: #ffffff;
+    color: #000000;
+
+    &:hover {
+      background: #ffff00;
+    }
+
+    &:focus-visible {
+      outline: 4px solid #000000;
+      outline-offset: 2px;
+      background: #ffff00;
+    }
+  }
+
+  /* Context menu */
+  .context-menu {
+    border: 3px solid #000000;
+    box-shadow: 6px 6px 0 #000000;
+
+    .context-menu-item {
+      font-weight: 700;
+
+      &:hover {
+        background-color: #ffff00;
+        color: #000000;
+      }
+    }
+  }
+
+  /* Dropdown */
+  .combo-dropdown-list {
+    border: 3px solid #000000;
+    box-shadow: 6px 6px 0 #000000;
+  }
+
+  .combo-dropdown-option {
+
+
+    &:hover {
+      background-color: #ffff00;
+    }
+  }
+
+  /* Checkboxes — classic style, larger, high contrast */
+  & input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #000000;
+    background: #ffffff;
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    &:checked {
+      background: #ffffff;
+      border-color: #000000;
+
+      &::after {
+        content: "✔";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 900;
+        line-height: 1;
+        color: #000000;
+      }
+    }
+
+    &:focus-visible {
+      outline: 4px solid #ffff00;
+      box-shadow: 0 0 0 2px #000000;
+    }
+  }
+}
+
+/* Pagination */
+.ct-pagination {
+
+  .ct-tool-button {
+    border: 3px solid #000000;
+    font-weight: 800;
+    color: #000000;
+    background: #ffffff;
+
+    &:hover:not(:disabled) {
+      background: #ffff00;
+    }
+  }
+
+  .ct-pagination-page {
+    border: 2px solid #000000;
+    font-weight: 700;
+    color: #000000;
+    background: #ffffff;
+
+    &:hover {
+      background-color: #ffff00;
+      border-color: #000000;
+    }
+
+    &.is-current {
+      background-color: #000000;
+      color: #ffffff;
+      font-weight: 800;
+      border-color: #000000;
+    }
+  }
+
+  .ct-pagination-select {
+    border: 3px solid #000000;
+    font-weight: 700;
+    background: #ffffff;
+    color: #000000;
+  }
+}
+
+/* Textarea Dialog */
+.editor-dialog {
+  border: 4px solid #000000;
+  box-shadow: 8px 8px 0 #000000;
+
+  .editor-dialog-title {
+    font-weight: 800;
+    color: #000000;
+  }
+
+  .editor-dialog-input {
+    border: 3px solid #000000;
+
+    background: #ffffff;
+    color: #000000;
+
+    &:focus {
+      border-color: #000000;
+      box-shadow:
+        0 0 0 3px #ffff00,
+        0 0 0 5px #000000;
+    }
+  }
+
+  .editor-dialog-btn {
+    border: 3px solid #000000;
+    font-weight: 800;
+    background: #ffffff;
+    color: #000000;
+
+    &:hover {
+      background: #ffff00;
+    }
+  }
+
+  .editor-dialog-btn-save {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+
+    &:hover {
+      background: #ffff00;
+      color: #000000;
+    }
+  }
+}
+
+/* Theme switcher */
+.theme-switcher-select {
+  border: 3px solid #000000;
+  font-weight: 700;
+  background: #ffffff;
+  color: #000000;
+
+  &:focus {
+    outline: none;
+    border-color: #000000;
+    box-shadow:
+      0 0 0 3px #ffff00,
+      0 0 0 5px #000000;
+  }
+}
+
+.example-footer {
+  margin-top: 2rem;
+  border: none;
+}
+
+.app-table-wrapper {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.custom-table-toolbar {
+  border: none !important;
+}

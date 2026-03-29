@@ -31,9 +31,9 @@ export interface TableTranslations {
   /** Context-menu item label. */
   "Delete content": string;
   /** Boolean column filter option: truthy rows. */
-  "Yes": string;
+  Yes: string;
   /** Boolean column filter option: falsy rows. */
-  "No": string;
+  No: string;
 }
 
 export const DEFAULT_TRANSLATIONS: TableTranslations = {
@@ -49,8 +49,8 @@ export const DEFAULT_TRANSLATIONS: TableTranslations = {
   "Copy content": "Copy content",
   "Paste content": "Paste content",
   "Delete content": "Delete content",
-  "Yes": "Yes",
-  "No": "No",
+  Yes: "Yes",
+  No: "No",
 };
 
 export const TranslationsContext = React.createContext<TableTranslations>(DEFAULT_TRANSLATIONS);

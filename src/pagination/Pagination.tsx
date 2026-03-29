@@ -139,10 +139,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           ) : (
             <button
               key={entry}
-              className={[
-                "ct-pagination-page",
-                entry === safePage ? "is-current" : "",
-              ]
+              className={["ct-pagination-page", entry === safePage ? "is-current" : ""]
                 .filter(Boolean)
                 .join(" ")}
               onClick={() => entry !== safePage && onPageChange(entry)}

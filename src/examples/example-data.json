@@ -7,12 +7,7 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "Legal",
-    "skills": [
-      "React",
-      "Docker",
-      "SQL",
-      "Figma"
-    ],
+    "skills": ["React", "Docker", "SQL", "Figma"],
     "isActive": true,
     "salary": "",
     "hireDate": "2022-07-24",
@@ -76,9 +71,7 @@
     "lastName": "Weber",
     "email": "ian.weber@example.com",
     "department": "Sales",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": 52866,
     "hireDate": "2010-07-13",
@@ -142,9 +135,7 @@
     "lastName": "Fischer",
     "email": "ian.fischer@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript"
-    ],
+    "skills": ["TypeScript"],
     "isActive": true,
     "salary": 51528,
     "hireDate": "2006-04-27",
@@ -176,10 +167,7 @@
     "lastName": "Fischer",
     "email": "diana.fischer@example.com",
     "department": "Legal",
-    "skills": [
-      "TypeScript",
-      "Java"
-    ],
+    "skills": ["TypeScript", "Java"],
     "isActive": true,
     "salary": 41170,
     "hireDate": "2009-06-27",
@@ -211,12 +199,7 @@
     "lastName": "Wagner",
     "email": "alice.wagner@example.com",
     "department": "Legal",
-    "skills": [
-      "Java",
-      "Docker",
-      "Python",
-      "SQL"
-    ],
+    "skills": ["Java", "Docker", "Python", "SQL"],
     "isActive": true,
     "salary": 97530,
     "hireDate": "2017-12-01",
@@ -280,11 +263,7 @@
     "lastName": "Schmidt",
     "email": "diana.schmidt@example.com",
     "department": "Legal",
-    "skills": [
-      "Figma",
-      "Python",
-      "Java"
-    ],
+    "skills": ["Figma", "Python", "Java"],
     "isActive": true,
     "salary": 99099,
     "hireDate": "2018-08-23",
@@ -316,11 +295,7 @@
     "lastName": "Müller",
     "email": "eva.müller@example.com",
     "department": "Marketing",
-    "skills": [
-      "Java",
-      "AWS",
-      "Python"
-    ],
+    "skills": ["Java", "AWS", "Python"],
     "isActive": true,
     "salary": "",
     "hireDate": "",
@@ -384,11 +359,7 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "Legal",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["React", "TypeScript", "Python"],
     "isActive": true,
     "salary": 43580,
     "hireDate": "2005-05-21",
@@ -452,10 +423,7 @@
     "lastName": "Weber",
     "email": "bob.weber@example.com",
     "department": "HR",
-    "skills": [
-      "Figma",
-      "Java"
-    ],
+    "skills": ["Figma", "Java"],
     "isActive": true,
     "salary": 75056,
     "hireDate": "2017-07-12",
@@ -487,10 +455,7 @@
     "lastName": "Schneider",
     "email": "ian.schneider@example.com",
     "department": "Legal",
-    "skills": [
-      "AWS",
-      "TypeScript"
-    ],
+    "skills": ["AWS", "TypeScript"],
     "isActive": true,
     "salary": 71839,
     "hireDate": "2018-10-02",
@@ -522,12 +487,7 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "Legal",
-    "skills": [
-      "Figma",
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["Figma", "React", "TypeScript", "Python"],
     "isActive": true,
     "salary": "",
     "hireDate": "2023-02-21",
@@ -559,12 +519,7 @@
     "lastName": "Schneider",
     "email": "diana.schneider@example.com",
     "department": "",
-    "skills": [
-      "Java",
-      "Figma",
-      "AWS",
-      "SQL"
-    ],
+    "skills": ["Java", "Figma", "AWS", "SQL"],
     "isActive": true,
     "salary": "",
     "hireDate": "2010-08-29",
@@ -628,9 +583,7 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "Sales",
-    "skills": [
-      "Docker"
-    ],
+    "skills": ["Docker"],
     "isActive": true,
     "salary": 69104,
     "hireDate": "2006-10-15",
@@ -662,12 +615,7 @@
     "lastName": "Meyer",
     "email": "bob.meyer@example.com",
     "department": "",
-    "skills": [
-      "Figma",
-      "Docker",
-      "Java",
-      "Python"
-    ],
+    "skills": ["Figma", "Docker", "Java", "Python"],
     "isActive": true,
     "salary": 50236,
     "hireDate": "2014-01-31",
@@ -699,11 +647,7 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "IT",
-    "skills": [
-      "SQL",
-      "Java",
-      "Python"
-    ],
+    "skills": ["SQL", "Java", "Python"],
     "isActive": true,
     "salary": 79858,
     "hireDate": "2013-01-07",
@@ -735,10 +679,7 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "Legal",
-    "skills": [
-      "SQL",
-      "Java"
-    ],
+    "skills": ["SQL", "Java"],
     "isActive": true,
     "salary": 64735,
     "hireDate": "2015-04-02",
@@ -770,12 +711,7 @@
     "lastName": "Schmidt",
     "email": "",
     "department": "Marketing",
-    "skills": [
-      "TypeScript",
-      "Java",
-      "React",
-      "Figma"
-    ],
+    "skills": ["TypeScript", "Java", "React", "Figma"],
     "isActive": true,
     "salary": 83629,
     "hireDate": "2021-05-15",
@@ -807,12 +743,7 @@
     "lastName": "Müller",
     "email": "julia.müller@example.com",
     "department": "Legal",
-    "skills": [
-      "Figma",
-      "Python",
-      "Java",
-      "AWS"
-    ],
+    "skills": ["Figma", "Python", "Java", "AWS"],
     "isActive": true,
     "salary": 44079,
     "hireDate": "2021-03-30",
@@ -844,9 +775,7 @@
     "lastName": "",
     "email": "",
     "department": "Sales",
-    "skills": [
-      "SQL"
-    ],
+    "skills": ["SQL"],
     "isActive": true,
     "salary": "",
     "hireDate": "2011-12-20",
@@ -878,9 +807,7 @@
     "lastName": "Wagner",
     "email": "ian.wagner@example.com",
     "department": "Sales",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": false,
     "salary": 81286,
     "hireDate": "2009-10-19",
@@ -912,12 +839,7 @@
     "lastName": "Fischer",
     "email": "",
     "department": "Legal",
-    "skills": [
-      "AWS",
-      "Figma",
-      "TypeScript",
-      "Docker"
-    ],
+    "skills": ["AWS", "Figma", "TypeScript", "Docker"],
     "isActive": false,
     "salary": 54797,
     "hireDate": "2020-06-03",
@@ -949,9 +871,7 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "Legal",
-    "skills": [
-      "SQL"
-    ],
+    "skills": ["SQL"],
     "isActive": false,
     "salary": 76512,
     "hireDate": "2016-04-19",
@@ -983,9 +903,7 @@
     "lastName": "Meyer",
     "email": "",
     "department": "Sales",
-    "skills": [
-      "Docker"
-    ],
+    "skills": ["Docker"],
     "isActive": true,
     "salary": 95408,
     "hireDate": "2008-07-03",
@@ -1017,11 +935,7 @@
     "lastName": "Meyer",
     "email": "ian.meyer@example.com",
     "department": "",
-    "skills": [
-      "Java",
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["Java", "Figma", "AWS"],
     "isActive": true,
     "salary": "",
     "hireDate": "2014-03-12",
@@ -1117,11 +1031,7 @@
     "lastName": "",
     "email": "julia.schneider@example.com",
     "department": "Sales",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["React", "TypeScript", "Python"],
     "isActive": true,
     "salary": 87107,
     "hireDate": "2021-07-24",
@@ -1153,10 +1063,7 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "Sales",
-    "skills": [
-      "AWS",
-      "Python"
-    ],
+    "skills": ["AWS", "Python"],
     "isActive": true,
     "salary": 80188,
     "hireDate": "",
@@ -1188,11 +1095,7 @@
     "lastName": "Müller",
     "email": "diana.müller@example.com",
     "department": "HR",
-    "skills": [
-      "TypeScript",
-      "Java",
-      "Figma"
-    ],
+    "skills": ["TypeScript", "Java", "Figma"],
     "isActive": true,
     "salary": 50779,
     "hireDate": "2018-05-30",
@@ -1224,11 +1127,7 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "Marketing",
-    "skills": [
-      "React",
-      "Docker",
-      "TypeScript"
-    ],
+    "skills": ["React", "Docker", "TypeScript"],
     "isActive": true,
     "salary": 67487,
     "hireDate": "2019-11-17",
@@ -1260,9 +1159,7 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "IT",
-    "skills": [
-      "SQL"
-    ],
+    "skills": ["SQL"],
     "isActive": true,
     "salary": 91542,
     "hireDate": "2017-12-07",
@@ -1326,11 +1223,7 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "Legal",
-    "skills": [
-      "Docker",
-      "SQL",
-      "React"
-    ],
+    "skills": ["Docker", "SQL", "React"],
     "isActive": true,
     "salary": 92988,
     "hireDate": "2022-09-02",
@@ -1362,9 +1255,7 @@
     "lastName": "Wagner",
     "email": "charlie.wagner@example.com",
     "department": "",
-    "skills": [
-      "Docker"
-    ],
+    "skills": ["Docker"],
     "isActive": true,
     "salary": 75578,
     "hireDate": "2020-04-19",
@@ -1428,12 +1319,7 @@
     "lastName": "Weber",
     "email": "hannah.weber@example.com",
     "department": "Sales",
-    "skills": [
-      "Python",
-      "React",
-      "Figma",
-      "TypeScript"
-    ],
+    "skills": ["Python", "React", "Figma", "TypeScript"],
     "isActive": true,
     "salary": 52033,
     "hireDate": "2010-06-09",
@@ -1465,9 +1351,7 @@
     "lastName": "Fischer",
     "email": "julia.fischer@example.com",
     "department": "Legal",
-    "skills": [
-      "Java"
-    ],
+    "skills": ["Java"],
     "isActive": true,
     "salary": "",
     "hireDate": "2024-12-22",
@@ -1499,10 +1383,7 @@
     "lastName": "Becker",
     "email": "ian.becker@example.com",
     "department": "IT",
-    "skills": [
-      "SQL",
-      "Python"
-    ],
+    "skills": ["SQL", "Python"],
     "isActive": true,
     "salary": 64065,
     "hireDate": "2021-10-13",
@@ -1534,9 +1415,7 @@
     "lastName": "Schneider",
     "email": "hannah.schneider@example.com",
     "department": "Marketing",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": false,
     "salary": 40049,
     "hireDate": "",
@@ -1568,11 +1447,7 @@
     "lastName": "Müller",
     "email": "grace.müller@example.com",
     "department": "Marketing",
-    "skills": [
-      "SQL",
-      "AWS",
-      "React"
-    ],
+    "skills": ["SQL", "AWS", "React"],
     "isActive": true,
     "salary": 78022,
     "hireDate": "2006-11-20",
@@ -1604,10 +1479,7 @@
     "lastName": "Schneider",
     "email": "hannah.schneider@example.com",
     "department": "Legal",
-    "skills": [
-      "Figma",
-      "Docker"
-    ],
+    "skills": ["Figma", "Docker"],
     "isActive": true,
     "salary": 43339,
     "hireDate": "2007-05-31",
@@ -1639,12 +1511,7 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": [
-      "SQL",
-      "Python",
-      "TypeScript",
-      "Java"
-    ],
+    "skills": ["SQL", "Python", "TypeScript", "Java"],
     "isActive": true,
     "salary": 73583,
     "hireDate": "",
@@ -1772,11 +1639,7 @@
     "lastName": "Wagner",
     "email": "julia.wagner@example.com",
     "department": "Marketing",
-    "skills": [
-      "SQL",
-      "AWS",
-      "Java"
-    ],
+    "skills": ["SQL", "AWS", "Java"],
     "isActive": true,
     "salary": 45587,
     "hireDate": "2019-05-26",
@@ -1808,12 +1671,7 @@
     "lastName": "Müller",
     "email": "julia.müller@example.com",
     "department": "IT",
-    "skills": [
-      "TypeScript",
-      "AWS",
-      "Figma",
-      "Java"
-    ],
+    "skills": ["TypeScript", "AWS", "Figma", "Java"],
     "isActive": true,
     "salary": 48222,
     "hireDate": "2005-10-17",
@@ -1845,12 +1703,7 @@
     "lastName": "",
     "email": "julia.weber@example.com",
     "department": "Sales",
-    "skills": [
-      "Docker",
-      "SQL",
-      "Java",
-      "AWS"
-    ],
+    "skills": ["Docker", "SQL", "Java", "AWS"],
     "isActive": true,
     "salary": 88987,
     "hireDate": "2019-01-05",
@@ -1882,12 +1735,7 @@
     "lastName": "Becker",
     "email": "alice.becker@example.com",
     "department": "",
-    "skills": [
-      "Java",
-      "SQL",
-      "Python",
-      "TypeScript"
-    ],
+    "skills": ["Java", "SQL", "Python", "TypeScript"],
     "isActive": true,
     "salary": 72873,
     "hireDate": "2022-04-13",
@@ -1951,11 +1799,7 @@
     "lastName": "Schmidt",
     "email": "alice.schmidt@example.com",
     "department": "Marketing",
-    "skills": [
-      "React",
-      "TypeScript",
-      "AWS"
-    ],
+    "skills": ["React", "TypeScript", "AWS"],
     "isActive": false,
     "salary": "",
     "hireDate": "2023-02-11",
@@ -1987,10 +1831,7 @@
     "lastName": "",
     "email": "alice.becker@example.com",
     "department": "Finance",
-    "skills": [
-      "React",
-      "Docker"
-    ],
+    "skills": ["React", "Docker"],
     "isActive": true,
     "salary": 67150,
     "hireDate": "2012-10-20",
@@ -2022,11 +1863,7 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "Finance",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Figma"
-    ],
+    "skills": ["React", "TypeScript", "Figma"],
     "isActive": true,
     "salary": 56119,
     "hireDate": "2012-08-17",
@@ -2058,12 +1895,7 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "HR",
-    "skills": [
-      "TypeScript",
-      "Python",
-      "Docker",
-      "Java"
-    ],
+    "skills": ["TypeScript", "Python", "Docker", "Java"],
     "isActive": true,
     "salary": 47492,
     "hireDate": "2007-03-11",
@@ -2095,11 +1927,7 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "",
-    "skills": [
-      "TypeScript",
-      "Java",
-      "SQL"
-    ],
+    "skills": ["TypeScript", "Java", "SQL"],
     "isActive": true,
     "salary": 64218,
     "hireDate": "2010-04-25",
@@ -2131,11 +1959,7 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": [
-      "Docker",
-      "Figma",
-      "Java"
-    ],
+    "skills": ["Docker", "Figma", "Java"],
     "isActive": false,
     "salary": 86980,
     "hireDate": "2014-02-14",
@@ -2167,11 +1991,7 @@
     "lastName": "Becker",
     "email": "frank.becker@example.com",
     "department": "Finance",
-    "skills": [
-      "React",
-      "AWS",
-      "TypeScript"
-    ],
+    "skills": ["React", "AWS", "TypeScript"],
     "isActive": true,
     "salary": 64753,
     "hireDate": "2022-11-13",
@@ -2203,12 +2023,7 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "",
-    "skills": [
-      "React",
-      "Java",
-      "Figma",
-      "Docker"
-    ],
+    "skills": ["React", "Java", "Figma", "Docker"],
     "isActive": true,
     "salary": 79283,
     "hireDate": "2009-11-22",
@@ -2240,10 +2055,7 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "Sales",
-    "skills": [
-      "Docker",
-      "Java"
-    ],
+    "skills": ["Docker", "Java"],
     "isActive": false,
     "salary": 53658,
     "hireDate": "2009-01-29",
@@ -2275,12 +2087,7 @@
     "lastName": "Meyer",
     "email": "grace.meyer@example.com",
     "department": "HR",
-    "skills": [
-      "SQL",
-      "Java",
-      "Python",
-      "TypeScript"
-    ],
+    "skills": ["SQL", "Java", "Python", "TypeScript"],
     "isActive": true,
     "salary": 87058,
     "hireDate": "2019-06-13",
@@ -2344,9 +2151,7 @@
     "lastName": "Müller",
     "email": "hannah.müller@example.com",
     "department": "HR",
-    "skills": [
-      "SQL"
-    ],
+    "skills": ["SQL"],
     "isActive": true,
     "salary": "",
     "hireDate": "2015-11-04",
@@ -2378,12 +2183,7 @@
     "lastName": "Fischer",
     "email": "bob.fischer@example.com",
     "department": "HR",
-    "skills": [
-      "Figma",
-      "React",
-      "AWS",
-      "TypeScript"
-    ],
+    "skills": ["Figma", "React", "AWS", "TypeScript"],
     "isActive": false,
     "salary": 65841,
     "hireDate": "2015-10-17",
@@ -2415,9 +2215,7 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 74343,
     "hireDate": "2011-05-17",
@@ -2449,11 +2247,7 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "IT",
-    "skills": [
-      "Docker",
-      "AWS",
-      "SQL"
-    ],
+    "skills": ["Docker", "AWS", "SQL"],
     "isActive": true,
     "salary": 80129,
     "hireDate": "2023-03-16",
@@ -2485,12 +2279,7 @@
     "lastName": "Weber",
     "email": "julia.weber@example.com",
     "department": "Finance",
-    "skills": [
-      "React",
-      "Docker",
-      "AWS",
-      "TypeScript"
-    ],
+    "skills": ["React", "Docker", "AWS", "TypeScript"],
     "isActive": true,
     "salary": 46137,
     "hireDate": "2011-03-07",
@@ -2554,10 +2343,7 @@
     "lastName": "Weber",
     "email": "grace.weber@example.com",
     "department": "",
-    "skills": [
-      "React",
-      "TypeScript"
-    ],
+    "skills": ["React", "TypeScript"],
     "isActive": true,
     "salary": 72273,
     "hireDate": "2011-09-02",
@@ -2589,9 +2375,7 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "",
-    "skills": [
-      "TypeScript"
-    ],
+    "skills": ["TypeScript"],
     "isActive": true,
     "salary": 48989,
     "hireDate": "2012-02-29",
@@ -2687,9 +2471,7 @@
     "lastName": "Becker",
     "email": "frank.becker@example.com",
     "department": "HR",
-    "skills": [
-      "Docker"
-    ],
+    "skills": ["Docker"],
     "isActive": true,
     "salary": "",
     "hireDate": "2013-11-09",
@@ -2721,9 +2503,7 @@
     "lastName": "Wagner",
     "email": "alice.wagner@example.com",
     "department": "Finance",
-    "skills": [
-      "SQL"
-    ],
+    "skills": ["SQL"],
     "isActive": true,
     "salary": 74648,
     "hireDate": "2023-09-14",
@@ -2755,12 +2535,7 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "",
-    "skills": [
-      "AWS",
-      "Python",
-      "Figma",
-      "TypeScript"
-    ],
+    "skills": ["AWS", "Python", "Figma", "TypeScript"],
     "isActive": true,
     "salary": "",
     "hireDate": "2016-06-20",
@@ -2792,12 +2567,7 @@
     "lastName": "Wagner",
     "email": "",
     "department": "Marketing",
-    "skills": [
-      "Java",
-      "Python",
-      "TypeScript",
-      "Figma"
-    ],
+    "skills": ["Java", "Python", "TypeScript", "Figma"],
     "isActive": true,
     "salary": 79827,
     "hireDate": "2009-09-16",
@@ -2829,9 +2599,7 @@
     "lastName": "Schneider",
     "email": "hannah.schneider@example.com",
     "department": "HR",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": 97376,
     "hireDate": "2020-10-17",
@@ -2863,9 +2631,7 @@
     "lastName": "Schneider",
     "email": "eva.schneider@example.com",
     "department": "Legal",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": false,
     "salary": 70563,
     "hireDate": "2015-02-06",
@@ -2897,9 +2663,7 @@
     "lastName": "Meyer",
     "email": "hannah.meyer@example.com",
     "department": "HR",
-    "skills": [
-      "Java"
-    ],
+    "skills": ["Java"],
     "isActive": false,
     "salary": 67632,
     "hireDate": "2009-04-11",
@@ -2931,11 +2695,7 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["React", "TypeScript", "Python"],
     "isActive": true,
     "salary": "",
     "hireDate": "",
@@ -2967,12 +2727,7 @@
     "lastName": "Müller",
     "email": "bob.müller@example.com",
     "department": "Sales",
-    "skills": [
-      "React",
-      "SQL",
-      "TypeScript",
-      "Docker"
-    ],
+    "skills": ["React", "SQL", "TypeScript", "Docker"],
     "isActive": true,
     "salary": 54032,
     "hireDate": "2017-08-30",
@@ -3004,9 +2759,7 @@
     "lastName": "Wagner",
     "email": "ian.wagner@example.com",
     "department": "Marketing",
-    "skills": [
-      "Docker"
-    ],
+    "skills": ["Docker"],
     "isActive": true,
     "salary": 55514,
     "hireDate": "2013-04-28",
@@ -3038,11 +2791,7 @@
     "lastName": "Wagner",
     "email": "eva.wagner@example.com",
     "department": "Sales",
-    "skills": [
-      "AWS",
-      "SQL",
-      "Docker"
-    ],
+    "skills": ["AWS", "SQL", "Docker"],
     "isActive": false,
     "salary": 49674,
     "hireDate": "2008-08-20",
@@ -3074,11 +2823,7 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "Finance",
-    "skills": [
-      "Figma",
-      "Java",
-      "SQL"
-    ],
+    "skills": ["Figma", "Java", "SQL"],
     "isActive": true,
     "salary": 72510,
     "hireDate": "2008-12-18",
@@ -3142,9 +2887,7 @@
     "lastName": "Weber",
     "email": "diana.weber@example.com",
     "department": "Marketing",
-    "skills": [
-      "SQL"
-    ],
+    "skills": ["SQL"],
     "isActive": true,
     "salary": 42241,
     "hireDate": "2011-02-15",
@@ -3176,9 +2919,7 @@
     "lastName": "",
     "email": "charlie.fischer@example.com",
     "department": "",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": false,
     "salary": 83551,
     "hireDate": "2008-12-19",
@@ -3210,10 +2951,7 @@
     "lastName": "Schmidt",
     "email": "eva.schmidt@example.com",
     "department": "Legal",
-    "skills": [
-      "Figma",
-      "TypeScript"
-    ],
+    "skills": ["Figma", "TypeScript"],
     "isActive": true,
     "salary": "",
     "hireDate": "2008-03-16",
@@ -3245,10 +2983,7 @@
     "lastName": "Schneider",
     "email": "bob.schneider@example.com",
     "department": "IT",
-    "skills": [
-      "TypeScript",
-      "Figma"
-    ],
+    "skills": ["TypeScript", "Figma"],
     "isActive": false,
     "salary": 90771,
     "hireDate": "2017-11-20",
@@ -3280,11 +3015,7 @@
     "lastName": "Wagner",
     "email": "hannah.wagner@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "Python",
-      "SQL"
-    ],
+    "skills": ["React", "Python", "SQL"],
     "isActive": true,
     "salary": 52462,
     "hireDate": "2021-10-03",
@@ -3348,12 +3079,7 @@
     "lastName": "",
     "email": "grace.wagner@example.com",
     "department": "Finance",
-    "skills": [
-      "AWS",
-      "React",
-      "TypeScript",
-      "SQL"
-    ],
+    "skills": ["AWS", "React", "TypeScript", "SQL"],
     "isActive": true,
     "salary": 61074,
     "hireDate": "2007-09-05",
@@ -3385,12 +3111,7 @@
     "lastName": "Schneider",
     "email": "eva.schneider@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript",
-      "Figma",
-      "React",
-      "AWS"
-    ],
+    "skills": ["TypeScript", "Figma", "React", "AWS"],
     "isActive": true,
     "salary": 53194,
     "hireDate": "",
@@ -3422,11 +3143,7 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "Sales",
-    "skills": [
-      "Figma",
-      "Java",
-      "SQL"
-    ],
+    "skills": ["Figma", "Java", "SQL"],
     "isActive": true,
     "salary": 69513,
     "hireDate": "2016-03-26",
@@ -3490,12 +3207,7 @@
     "lastName": "Fischer",
     "email": "grace.fischer@example.com",
     "department": "Sales",
-    "skills": [
-      "Figma",
-      "Python",
-      "Docker",
-      "TypeScript"
-    ],
+    "skills": ["Figma", "Python", "Docker", "TypeScript"],
     "isActive": true,
     "salary": 56035,
     "hireDate": "2011-07-03",
@@ -3527,9 +3239,7 @@
     "lastName": "Fischer",
     "email": "diana.fischer@example.com",
     "department": "HR",
-    "skills": [
-      "SQL"
-    ],
+    "skills": ["SQL"],
     "isActive": true,
     "salary": 40014,
     "hireDate": "",
@@ -3561,10 +3271,7 @@
     "lastName": "Meyer",
     "email": "julia.meyer@example.com",
     "department": "Legal",
-    "skills": [
-      "Python",
-      "React"
-    ],
+    "skills": ["Python", "React"],
     "isActive": true,
     "salary": 93504,
     "hireDate": "2014-03-14",
@@ -3628,12 +3335,7 @@
     "lastName": "Meyer",
     "email": "",
     "department": "Finance",
-    "skills": [
-      "Figma",
-      "AWS",
-      "TypeScript",
-      "React"
-    ],
+    "skills": ["Figma", "AWS", "TypeScript", "React"],
     "isActive": false,
     "salary": 56257,
     "hireDate": "2008-06-21",
@@ -3697,10 +3399,7 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "Sales",
-    "skills": [
-      "React",
-      "Docker"
-    ],
+    "skills": ["React", "Docker"],
     "isActive": false,
     "salary": 56389,
     "hireDate": "2021-04-13",
@@ -3732,12 +3431,7 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "IT",
-    "skills": [
-      "Python",
-      "AWS",
-      "Java",
-      "React"
-    ],
+    "skills": ["Python", "AWS", "Java", "React"],
     "isActive": true,
     "salary": 62009,
     "hireDate": "2013-12-14",
@@ -3769,9 +3463,7 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "Sales",
-    "skills": [
-      "Figma"
-    ],
+    "skills": ["Figma"],
     "isActive": true,
     "salary": 89220,
     "hireDate": "2017-06-08",
@@ -3803,12 +3495,7 @@
     "lastName": "Weber",
     "email": "bob.weber@example.com",
     "department": "",
-    "skills": [
-      "SQL",
-      "React",
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["SQL", "React", "Figma", "AWS"],
     "isActive": true,
     "salary": 65542,
     "hireDate": "2005-05-07",
@@ -3840,11 +3527,7 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "",
-    "skills": [
-      "Java",
-      "AWS",
-      "Python"
-    ],
+    "skills": ["Java", "AWS", "Python"],
     "isActive": true,
     "salary": 41164,
     "hireDate": "2013-05-28",
@@ -3876,9 +3559,7 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript"
-    ],
+    "skills": ["TypeScript"],
     "isActive": true,
     "salary": 54321,
     "hireDate": "",
@@ -3910,10 +3591,7 @@
     "lastName": "Schmidt",
     "email": "bob.schmidt@example.com",
     "department": "",
-    "skills": [
-      "Figma",
-      "React"
-    ],
+    "skills": ["Figma", "React"],
     "isActive": true,
     "salary": 50949,
     "hireDate": "2012-12-10",
@@ -3977,9 +3655,7 @@
     "lastName": "Fischer",
     "email": "",
     "department": "HR",
-    "skills": [
-      "Docker"
-    ],
+    "skills": ["Docker"],
     "isActive": true,
     "salary": 85758,
     "hireDate": "2010-11-20",
@@ -4011,9 +3687,7 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 73413,
     "hireDate": "2020-04-29",
@@ -4077,12 +3751,7 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "IT",
-    "skills": [
-      "Docker",
-      "AWS",
-      "TypeScript",
-      "React"
-    ],
+    "skills": ["Docker", "AWS", "TypeScript", "React"],
     "isActive": true,
     "salary": 81389,
     "hireDate": "2016-09-19",
@@ -4146,11 +3815,7 @@
     "lastName": "Meyer",
     "email": "grace.meyer@example.com",
     "department": "Sales",
-    "skills": [
-      "SQL",
-      "TypeScript",
-      "Figma"
-    ],
+    "skills": ["SQL", "TypeScript", "Figma"],
     "isActive": true,
     "salary": 73330,
     "hireDate": "2013-05-18",
@@ -4182,12 +3847,7 @@
     "lastName": "Fischer",
     "email": "ian.fischer@example.com",
     "department": "Legal",
-    "skills": [
-      "Docker",
-      "React",
-      "Figma",
-      "TypeScript"
-    ],
+    "skills": ["Docker", "React", "Figma", "TypeScript"],
     "isActive": true,
     "salary": 49900,
     "hireDate": "2008-10-30",
@@ -4219,11 +3879,7 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "Legal",
-    "skills": [
-      "AWS",
-      "Figma",
-      "SQL"
-    ],
+    "skills": ["AWS", "Figma", "SQL"],
     "isActive": true,
     "salary": 44417,
     "hireDate": "2014-07-04",
@@ -4255,9 +3911,7 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "IT",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": "",
     "hireDate": "2016-11-30",
@@ -4289,11 +3943,7 @@
     "lastName": "Becker",
     "email": "diana.becker@example.com",
     "department": "Sales",
-    "skills": [
-      "SQL",
-      "Figma",
-      "Java"
-    ],
+    "skills": ["SQL", "Figma", "Java"],
     "isActive": true,
     "salary": 76456,
     "hireDate": "2020-06-18",
@@ -4325,10 +3975,7 @@
     "lastName": "Wagner",
     "email": "eva.wagner@example.com",
     "department": "Marketing",
-    "skills": [
-      "Python",
-      "Docker"
-    ],
+    "skills": ["Python", "Docker"],
     "isActive": true,
     "salary": 43123,
     "hireDate": "2012-12-27",
@@ -4360,10 +4007,7 @@
     "lastName": "Schmidt",
     "email": "frank.schmidt@example.com",
     "department": "Finance",
-    "skills": [
-      "Figma",
-      "Python"
-    ],
+    "skills": ["Figma", "Python"],
     "isActive": false,
     "salary": 89622,
     "hireDate": "2010-07-20",
@@ -4395,11 +4039,7 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "HR",
-    "skills": [
-      "React",
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["React", "Figma", "AWS"],
     "isActive": true,
     "salary": "",
     "hireDate": "2008-09-27",
@@ -4431,9 +4071,7 @@
     "lastName": "Schmidt",
     "email": "julia.schmidt@example.com",
     "department": "Finance",
-    "skills": [
-      "Figma"
-    ],
+    "skills": ["Figma"],
     "isActive": true,
     "salary": 64376,
     "hireDate": "2015-04-18",
@@ -4465,12 +4103,7 @@
     "lastName": "Wagner",
     "email": "bob.wagner@example.com",
     "department": "",
-    "skills": [
-      "Docker",
-      "React",
-      "TypeScript",
-      "Figma"
-    ],
+    "skills": ["Docker", "React", "TypeScript", "Figma"],
     "isActive": true,
     "salary": 98902,
     "hireDate": "",
@@ -4534,10 +4167,7 @@
     "lastName": "Meyer",
     "email": "grace.meyer@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript",
-      "React"
-    ],
+    "skills": ["TypeScript", "React"],
     "isActive": true,
     "salary": 69109,
     "hireDate": "2012-09-03",
@@ -4601,11 +4231,7 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "Finance",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["React", "TypeScript", "Python"],
     "isActive": true,
     "salary": 57871,
     "hireDate": "2016-04-10",
@@ -4637,10 +4263,7 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript",
-      "SQL"
-    ],
+    "skills": ["TypeScript", "SQL"],
     "isActive": true,
     "salary": 89423,
     "hireDate": "2009-11-26",
@@ -4736,11 +4359,7 @@
     "lastName": "Meyer",
     "email": "hannah.meyer@example.com",
     "department": "Finance",
-    "skills": [
-      "TypeScript",
-      "Docker",
-      "Java"
-    ],
+    "skills": ["TypeScript", "Docker", "Java"],
     "isActive": true,
     "salary": 70994,
     "hireDate": "2019-04-28",
@@ -4868,11 +4487,7 @@
     "lastName": "Fischer",
     "email": "",
     "department": "Legal",
-    "skills": [
-      "Python",
-      "Java",
-      "TypeScript"
-    ],
+    "skills": ["Python", "Java", "TypeScript"],
     "isActive": true,
     "salary": "",
     "hireDate": "2013-10-12",
@@ -4904,10 +4519,7 @@
     "lastName": "Meyer",
     "email": "ian.meyer@example.com",
     "department": "Sales",
-    "skills": [
-      "Docker",
-      "TypeScript"
-    ],
+    "skills": ["Docker", "TypeScript"],
     "isActive": true,
     "salary": 67633,
     "hireDate": "2006-05-04",
@@ -4939,11 +4551,7 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "Finance",
-    "skills": [
-      "React",
-      "Python",
-      "AWS"
-    ],
+    "skills": ["React", "Python", "AWS"],
     "isActive": true,
     "salary": 59561,
     "hireDate": "2015-02-14",
@@ -4975,12 +4583,7 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "IT",
-    "skills": [
-      "Figma",
-      "Python",
-      "TypeScript",
-      "Java"
-    ],
+    "skills": ["Figma", "Python", "TypeScript", "Java"],
     "isActive": true,
     "salary": "",
     "hireDate": "2015-02-01",
@@ -5012,9 +4615,7 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": "",
     "hireDate": "2024-12-11",
@@ -5078,10 +4679,7 @@
     "lastName": "Becker",
     "email": "alice.becker@example.com",
     "department": "",
-    "skills": [
-      "SQL",
-      "Python"
-    ],
+    "skills": ["SQL", "Python"],
     "isActive": true,
     "salary": 69846,
     "hireDate": "",
@@ -5113,12 +4711,7 @@
     "lastName": "Weber",
     "email": "frank.weber@example.com",
     "department": "Legal",
-    "skills": [
-      "Java",
-      "React",
-      "TypeScript",
-      "SQL"
-    ],
+    "skills": ["Java", "React", "TypeScript", "SQL"],
     "isActive": true,
     "salary": 89705,
     "hireDate": "2022-11-24",
@@ -5150,9 +4743,7 @@
     "lastName": "",
     "email": "julia.wagner@example.com",
     "department": "Legal",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 57714,
     "hireDate": "2020-06-18",
@@ -5184,11 +4775,7 @@
     "lastName": "Fischer",
     "email": "diana.fischer@example.com",
     "department": "IT",
-    "skills": [
-      "AWS",
-      "React",
-      "Docker"
-    ],
+    "skills": ["AWS", "React", "Docker"],
     "isActive": true,
     "salary": 55849,
     "hireDate": "2016-12-05",
@@ -5220,12 +4807,7 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "Legal",
-    "skills": [
-      "TypeScript",
-      "Java",
-      "AWS",
-      "React"
-    ],
+    "skills": ["TypeScript", "Java", "AWS", "React"],
     "isActive": true,
     "salary": 82772,
     "hireDate": "2011-06-19",
@@ -5257,10 +4839,7 @@
     "lastName": "Meyer",
     "email": "charlie.meyer@example.com",
     "department": "HR",
-    "skills": [
-      "React",
-      "TypeScript"
-    ],
+    "skills": ["React", "TypeScript"],
     "isActive": true,
     "salary": 44781,
     "hireDate": "2010-02-26",
@@ -5292,10 +4871,7 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "Marketing",
-    "skills": [
-      "Docker",
-      "Figma"
-    ],
+    "skills": ["Docker", "Figma"],
     "isActive": true,
     "salary": 81304,
     "hireDate": "2024-12-22",
@@ -5327,11 +4903,7 @@
     "lastName": "Wagner",
     "email": "bob.wagner@example.com",
     "department": "Marketing",
-    "skills": [
-      "Docker",
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["Docker", "Figma", "AWS"],
     "isActive": true,
     "salary": 96271,
     "hireDate": "2007-11-26",
@@ -5363,12 +4935,7 @@
     "lastName": "",
     "email": "eva.schneider@example.com",
     "department": "HR",
-    "skills": [
-      "Docker",
-      "React",
-      "AWS",
-      "Python"
-    ],
+    "skills": ["Docker", "React", "AWS", "Python"],
     "isActive": true,
     "salary": 99983,
     "hireDate": "2020-03-04",
@@ -5400,12 +4967,7 @@
     "lastName": "Fischer",
     "email": "ian.fischer@example.com",
     "department": "HR",
-    "skills": [
-      "Docker",
-      "React",
-      "TypeScript",
-      "Java"
-    ],
+    "skills": ["Docker", "React", "TypeScript", "Java"],
     "isActive": true,
     "salary": 96385,
     "hireDate": "2016-05-06",
@@ -5437,11 +4999,7 @@
     "lastName": "Meyer",
     "email": "",
     "department": "Legal",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["React", "TypeScript", "Python"],
     "isActive": true,
     "salary": 60120,
     "hireDate": "2018-10-30",
@@ -5473,12 +5031,7 @@
     "lastName": "Schneider",
     "email": "bob.schneider@example.com",
     "department": "Marketing",
-    "skills": [
-      "SQL",
-      "AWS",
-      "TypeScript",
-      "React"
-    ],
+    "skills": ["SQL", "AWS", "TypeScript", "React"],
     "isActive": true,
     "salary": 79007,
     "hireDate": "2024-02-13",
@@ -5510,10 +5063,7 @@
     "lastName": "Schmidt",
     "email": "diana.schmidt@example.com",
     "department": "Sales",
-    "skills": [
-      "AWS",
-      "React"
-    ],
+    "skills": ["AWS", "React"],
     "isActive": false,
     "salary": 52153,
     "hireDate": "2023-08-16",
@@ -5545,12 +5095,7 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "",
-    "skills": [
-      "TypeScript",
-      "React",
-      "Figma",
-      "Java"
-    ],
+    "skills": ["TypeScript", "React", "Figma", "Java"],
     "isActive": true,
     "salary": 94745,
     "hireDate": "2016-10-27",
@@ -5582,11 +5127,7 @@
     "lastName": "Weber",
     "email": "",
     "department": "IT",
-    "skills": [
-      "Java",
-      "Python",
-      "AWS"
-    ],
+    "skills": ["Java", "Python", "AWS"],
     "isActive": true,
     "salary": 99740,
     "hireDate": "",
@@ -5618,12 +5159,7 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "Marketing",
-    "skills": [
-      "SQL",
-      "Docker",
-      "AWS",
-      "Java"
-    ],
+    "skills": ["SQL", "Docker", "AWS", "Java"],
     "isActive": true,
     "salary": "",
     "hireDate": "2016-08-19",
@@ -5655,9 +5191,7 @@
     "lastName": "Fischer",
     "email": "julia.fischer@example.com",
     "department": "",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": 44106,
     "hireDate": "2021-07-29",
@@ -5689,12 +5223,7 @@
     "lastName": "Schmidt",
     "email": "julia.schmidt@example.com",
     "department": "",
-    "skills": [
-      "SQL",
-      "AWS",
-      "Figma",
-      "Docker"
-    ],
+    "skills": ["SQL", "AWS", "Figma", "Docker"],
     "isActive": true,
     "salary": "",
     "hireDate": "2013-08-28",
@@ -5726,12 +5255,7 @@
     "lastName": "Meyer",
     "email": "frank.meyer@example.com",
     "department": "",
-    "skills": [
-      "Python",
-      "Java",
-      "SQL",
-      "React"
-    ],
+    "skills": ["Python", "Java", "SQL", "React"],
     "isActive": false,
     "salary": 49983,
     "hireDate": "2013-05-02",
@@ -5763,10 +5287,7 @@
     "lastName": "Müller",
     "email": "hannah.müller@example.com",
     "department": "",
-    "skills": [
-      "React",
-      "Python"
-    ],
+    "skills": ["React", "Python"],
     "isActive": true,
     "salary": 62386,
     "hireDate": "2007-05-23",
@@ -5798,10 +5319,7 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "Finance",
-    "skills": [
-      "Java",
-      "Python"
-    ],
+    "skills": ["Java", "Python"],
     "isActive": true,
     "salary": 65189,
     "hireDate": "2021-11-11",
@@ -5833,10 +5351,7 @@
     "lastName": "Wagner",
     "email": "frank.wagner@example.com",
     "department": "",
-    "skills": [
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["Figma", "AWS"],
     "isActive": false,
     "salary": 44476,
     "hireDate": "2022-03-23",
@@ -5932,11 +5447,7 @@
     "lastName": "Becker",
     "email": "frank.becker@example.com",
     "department": "Legal",
-    "skills": [
-      "React",
-      "SQL",
-      "TypeScript"
-    ],
+    "skills": ["React", "SQL", "TypeScript"],
     "isActive": true,
     "salary": 60304,
     "hireDate": "2009-07-22",
@@ -5968,12 +5479,7 @@
     "lastName": "Meyer",
     "email": "eva.meyer@example.com",
     "department": "Sales",
-    "skills": [
-      "Java",
-      "AWS",
-      "Python",
-      "Figma"
-    ],
+    "skills": ["Java", "AWS", "Python", "Figma"],
     "isActive": true,
     "salary": 56297,
     "hireDate": "2013-10-15",
@@ -6005,11 +5511,7 @@
     "lastName": "Schmidt",
     "email": "eva.schmidt@example.com",
     "department": "Sales",
-    "skills": [
-      "Figma",
-      "TypeScript",
-      "Java"
-    ],
+    "skills": ["Figma", "TypeScript", "Java"],
     "isActive": true,
     "salary": 65724,
     "hireDate": "2024-04-03",
@@ -6105,11 +5607,7 @@
     "lastName": "Müller",
     "email": "",
     "department": "",
-    "skills": [
-      "SQL",
-      "Java",
-      "AWS"
-    ],
+    "skills": ["SQL", "Java", "AWS"],
     "isActive": true,
     "salary": 57686,
     "hireDate": "2011-11-26",
@@ -6141,9 +5639,7 @@
     "lastName": "Weber",
     "email": "diana.weber@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript"
-    ],
+    "skills": ["TypeScript"],
     "isActive": true,
     "salary": 71759,
     "hireDate": "",
@@ -6175,12 +5671,7 @@
     "lastName": "Müller",
     "email": "diana.müller@example.com",
     "department": "IT",
-    "skills": [
-      "TypeScript",
-      "Java",
-      "SQL",
-      "Python"
-    ],
+    "skills": ["TypeScript", "Java", "SQL", "Python"],
     "isActive": true,
     "salary": 62623,
     "hireDate": "2020-06-24",
@@ -6212,10 +5703,7 @@
     "lastName": "Müller",
     "email": "ian.müller@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "SQL"
-    ],
+    "skills": ["React", "SQL"],
     "isActive": true,
     "salary": 62319,
     "hireDate": "2015-06-05",
@@ -6247,12 +5735,7 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Docker",
-      "Python"
-    ],
+    "skills": ["React", "TypeScript", "Docker", "Python"],
     "isActive": true,
     "salary": 65170,
     "hireDate": "2008-10-03",
@@ -6284,9 +5767,7 @@
     "lastName": "Fischer",
     "email": "bob.fischer@example.com",
     "department": "Marketing",
-    "skills": [
-      "TypeScript"
-    ],
+    "skills": ["TypeScript"],
     "isActive": true,
     "salary": 85286,
     "hireDate": "2013-11-08",
@@ -6350,10 +5831,7 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "",
-    "skills": [
-      "Docker",
-      "React"
-    ],
+    "skills": ["Docker", "React"],
     "isActive": true,
     "salary": 64810,
     "hireDate": "2014-06-19",
@@ -6385,11 +5863,7 @@
     "lastName": "Meyer",
     "email": "alice.meyer@example.com",
     "department": "Sales",
-    "skills": [
-      "Java",
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["Java", "Figma", "AWS"],
     "isActive": true,
     "salary": 86646,
     "hireDate": "2024-05-21",
@@ -6421,10 +5895,7 @@
     "lastName": "Wagner",
     "email": "eva.wagner@example.com",
     "department": "Finance",
-    "skills": [
-      "Python",
-      "TypeScript"
-    ],
+    "skills": ["Python", "TypeScript"],
     "isActive": false,
     "salary": "",
     "hireDate": "2005-06-02",
@@ -6456,9 +5927,7 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "Finance",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": 65863,
     "hireDate": "2016-09-24",
@@ -6490,9 +5959,7 @@
     "lastName": "Fischer",
     "email": "bob.fischer@example.com",
     "department": "HR",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": 45126,
     "hireDate": "2024-08-21",
@@ -6524,11 +5991,7 @@
     "lastName": "Müller",
     "email": "frank.müller@example.com",
     "department": "Legal",
-    "skills": [
-      "Figma",
-      "Java",
-      "AWS"
-    ],
+    "skills": ["Figma", "Java", "AWS"],
     "isActive": false,
     "salary": 83892,
     "hireDate": "2008-07-25",
@@ -6560,11 +6023,7 @@
     "lastName": "Müller",
     "email": "bob.müller@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Figma"
-    ],
+    "skills": ["React", "TypeScript", "Figma"],
     "isActive": true,
     "salary": 46484,
     "hireDate": "2017-05-22",
@@ -6596,11 +6055,7 @@
     "lastName": "",
     "email": "bob.weber@example.com",
     "department": "HR",
-    "skills": [
-      "Figma",
-      "AWS",
-      "React"
-    ],
+    "skills": ["Figma", "AWS", "React"],
     "isActive": true,
     "salary": 71859,
     "hireDate": "2022-04-18",
@@ -6632,12 +6087,7 @@
     "lastName": "Schmidt",
     "email": "alice.schmidt@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "Docker",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["React", "Docker", "TypeScript", "Python"],
     "isActive": true,
     "salary": 56713,
     "hireDate": "2014-12-27",
@@ -6669,10 +6119,7 @@
     "lastName": "Schmidt",
     "email": "julia.schmidt@example.com",
     "department": "HR",
-    "skills": [
-      "Python",
-      "AWS"
-    ],
+    "skills": ["Python", "AWS"],
     "isActive": true,
     "salary": 84097,
     "hireDate": "2023-07-10",
@@ -6736,11 +6183,7 @@
     "lastName": "Meyer",
     "email": "eva.meyer@example.com",
     "department": "IT",
-    "skills": [
-      "SQL",
-      "Java",
-      "AWS"
-    ],
+    "skills": ["SQL", "Java", "AWS"],
     "isActive": true,
     "salary": 50852,
     "hireDate": "2010-03-06",
@@ -6772,10 +6215,7 @@
     "lastName": "Schneider",
     "email": "grace.schneider@example.com",
     "department": "Legal",
-    "skills": [
-      "React",
-      "TypeScript"
-    ],
+    "skills": ["React", "TypeScript"],
     "isActive": true,
     "salary": 42043,
     "hireDate": "2008-11-09",
@@ -6807,11 +6247,7 @@
     "lastName": "",
     "email": "ian.schmidt@example.com",
     "department": "Finance",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["React", "TypeScript", "Python"],
     "isActive": true,
     "salary": 43510,
     "hireDate": "2006-10-28",
@@ -6843,12 +6279,7 @@
     "lastName": "Schmidt",
     "email": "diana.schmidt@example.com",
     "department": "Sales",
-    "skills": [
-      "Docker",
-      "AWS",
-      "SQL",
-      "Figma"
-    ],
+    "skills": ["Docker", "AWS", "SQL", "Figma"],
     "isActive": false,
     "salary": 49521,
     "hireDate": "2022-09-13",
@@ -6880,11 +6311,7 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "Marketing",
-    "skills": [
-      "TypeScript",
-      "AWS",
-      "Java"
-    ],
+    "skills": ["TypeScript", "AWS", "Java"],
     "isActive": true,
     "salary": 58869,
     "hireDate": "2006-04-04",
@@ -6916,10 +6343,7 @@
     "lastName": "Fischer",
     "email": "frank.fischer@example.com",
     "department": "Legal",
-    "skills": [
-      "Figma",
-      "React"
-    ],
+    "skills": ["Figma", "React"],
     "isActive": true,
     "salary": "",
     "hireDate": "2013-12-23",
@@ -6951,11 +6375,7 @@
     "lastName": "Müller",
     "email": "ian.müller@example.com",
     "department": "Marketing",
-    "skills": [
-      "TypeScript",
-      "React",
-      "AWS"
-    ],
+    "skills": ["TypeScript", "React", "AWS"],
     "isActive": true,
     "salary": 70063,
     "hireDate": "2013-06-24",
@@ -7019,12 +6439,7 @@
     "lastName": "Wagner",
     "email": "alice.wagner@example.com",
     "department": "Sales",
-    "skills": [
-      "SQL",
-      "Figma",
-      "Java",
-      "AWS"
-    ],
+    "skills": ["SQL", "Figma", "Java", "AWS"],
     "isActive": true,
     "salary": 60911,
     "hireDate": "2019-12-11",
@@ -7088,12 +6503,7 @@
     "lastName": "Schmidt",
     "email": "eva.schmidt@example.com",
     "department": "Finance",
-    "skills": [
-      "React",
-      "Figma",
-      "Java",
-      "Docker"
-    ],
+    "skills": ["React", "Figma", "Java", "Docker"],
     "isActive": true,
     "salary": 81467,
     "hireDate": "2011-07-23",
@@ -7125,12 +6535,7 @@
     "lastName": "Meyer",
     "email": "diana.meyer@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Java",
-      "SQL"
-    ],
+    "skills": ["React", "TypeScript", "Java", "SQL"],
     "isActive": true,
     "salary": 56536,
     "hireDate": "2018-06-16",
@@ -7162,12 +6567,7 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "Marketing",
-    "skills": [
-      "Java",
-      "Figma",
-      "TypeScript",
-      "SQL"
-    ],
+    "skills": ["Java", "Figma", "TypeScript", "SQL"],
     "isActive": true,
     "salary": 62829,
     "hireDate": "2005-09-04",
@@ -7199,11 +6599,7 @@
     "lastName": "Wagner",
     "email": "diana.wagner@example.com",
     "department": "IT",
-    "skills": [
-      "AWS",
-      "Python",
-      "Java"
-    ],
+    "skills": ["AWS", "Python", "Java"],
     "isActive": false,
     "salary": 66009,
     "hireDate": "2019-10-03",
@@ -7235,9 +6631,7 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": 57537,
     "hireDate": "2005-07-02",
@@ -7269,9 +6663,7 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 61257,
     "hireDate": "2024-03-06",
@@ -7303,10 +6695,7 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "IT",
-    "skills": [
-      "Java",
-      "React"
-    ],
+    "skills": ["Java", "React"],
     "isActive": true,
     "salary": 50759,
     "hireDate": "2021-09-06",
@@ -7370,12 +6759,7 @@
     "lastName": "Wagner",
     "email": "hannah.wagner@example.com",
     "department": "",
-    "skills": [
-      "Figma",
-      "Docker",
-      "React",
-      "TypeScript"
-    ],
+    "skills": ["Figma", "Docker", "React", "TypeScript"],
     "isActive": true,
     "salary": 87949,
     "hireDate": "2020-02-23",
@@ -7407,9 +6791,7 @@
     "lastName": "Meyer",
     "email": "hannah.meyer@example.com",
     "department": "Marketing",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": 84532,
     "hireDate": "2018-07-08",
@@ -7473,10 +6855,7 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "HR",
-    "skills": [
-      "SQL",
-      "Figma"
-    ],
+    "skills": ["SQL", "Figma"],
     "isActive": true,
     "salary": 43184,
     "hireDate": "2011-07-26",
@@ -7508,12 +6887,7 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["React", "TypeScript", "Figma", "AWS"],
     "isActive": true,
     "salary": 83721,
     "hireDate": "2008-02-15",
@@ -7545,10 +6919,7 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "IT",
-    "skills": [
-      "Java",
-      "Python"
-    ],
+    "skills": ["Java", "Python"],
     "isActive": false,
     "salary": 82205,
     "hireDate": "",
@@ -7580,11 +6951,7 @@
     "lastName": "Meyer",
     "email": "frank.meyer@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Java"
-    ],
+    "skills": ["React", "TypeScript", "Java"],
     "isActive": true,
     "salary": 56178,
     "hireDate": "",
@@ -7616,11 +6983,7 @@
     "lastName": "Fischer",
     "email": "charlie.fischer@example.com",
     "department": "Marketing",
-    "skills": [
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["React", "TypeScript", "Python"],
     "isActive": true,
     "salary": "",
     "hireDate": "2014-01-30",
@@ -7652,12 +7015,7 @@
     "lastName": "Schneider",
     "email": "ian.schneider@example.com",
     "department": "",
-    "skills": [
-      "AWS",
-      "Python",
-      "TypeScript",
-      "React"
-    ],
+    "skills": ["AWS", "Python", "TypeScript", "React"],
     "isActive": true,
     "salary": "",
     "hireDate": "",
@@ -7689,9 +7047,7 @@
     "lastName": "Müller",
     "email": "",
     "department": "Sales",
-    "skills": [
-      "TypeScript"
-    ],
+    "skills": ["TypeScript"],
     "isActive": true,
     "salary": 52996,
     "hireDate": "2020-07-11",
@@ -7723,11 +7079,7 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "Marketing",
-    "skills": [
-      "TypeScript",
-      "Figma",
-      "Docker"
-    ],
+    "skills": ["TypeScript", "Figma", "Docker"],
     "isActive": true,
     "salary": 93029,
     "hireDate": "2014-01-24",
@@ -7759,12 +7111,7 @@
     "lastName": "Wagner",
     "email": "",
     "department": "",
-    "skills": [
-      "Figma",
-      "SQL",
-      "TypeScript",
-      "Java"
-    ],
+    "skills": ["Figma", "SQL", "TypeScript", "Java"],
     "isActive": true,
     "salary": 59759,
     "hireDate": "",
@@ -7796,12 +7143,7 @@
     "lastName": "Müller",
     "email": "grace.müller@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript",
-      "React",
-      "SQL",
-      "Java"
-    ],
+    "skills": ["TypeScript", "React", "SQL", "Java"],
     "isActive": true,
     "salary": 60495,
     "hireDate": "2022-10-09",
@@ -7865,12 +7207,7 @@
     "lastName": "Weber",
     "email": "",
     "department": "HR",
-    "skills": [
-      "Python",
-      "Java",
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["Python", "Java", "Figma", "AWS"],
     "isActive": true,
     "salary": 41135,
     "hireDate": "2013-01-06",
@@ -7998,11 +7335,7 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "Sales",
-    "skills": [
-      "Docker",
-      "Java",
-      "AWS"
-    ],
+    "skills": ["Docker", "Java", "AWS"],
     "isActive": true,
     "salary": 64151,
     "hireDate": "2008-02-07",
@@ -8034,9 +7367,7 @@
     "lastName": "Schneider",
     "email": "ian.schneider@example.com",
     "department": "Finance",
-    "skills": [
-      "Python"
-    ],
+    "skills": ["Python"],
     "isActive": true,
     "salary": 55674,
     "hireDate": "2020-10-05",
@@ -8068,10 +7399,7 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "Marketing",
-    "skills": [
-      "AWS",
-      "React"
-    ],
+    "skills": ["AWS", "React"],
     "isActive": true,
     "salary": 55194,
     "hireDate": "2023-11-16",
@@ -8103,12 +7431,7 @@
     "lastName": "Schneider",
     "email": "diana.schneider@example.com",
     "department": "Legal",
-    "skills": [
-      "React",
-      "TypeScript",
-      "AWS",
-      "Figma"
-    ],
+    "skills": ["React", "TypeScript", "AWS", "Figma"],
     "isActive": true,
     "salary": 95505,
     "hireDate": "",
@@ -8140,10 +7463,7 @@
     "lastName": "Schneider",
     "email": "charlie.schneider@example.com",
     "department": "",
-    "skills": [
-      "Python",
-      "Figma"
-    ],
+    "skills": ["Python", "Figma"],
     "isActive": true,
     "salary": 80056,
     "hireDate": "2017-08-13",
@@ -8175,10 +7495,7 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "TypeScript"
-    ],
+    "skills": ["React", "TypeScript"],
     "isActive": true,
     "salary": 51916,
     "hireDate": "2011-12-18",
@@ -8210,12 +7527,7 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "HR",
-    "skills": [
-      "Figma",
-      "React",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["Figma", "React", "TypeScript", "Python"],
     "isActive": true,
     "salary": "",
     "hireDate": "2016-09-03",
@@ -8247,11 +7559,7 @@
     "lastName": "Weber",
     "email": "charlie.weber@example.com",
     "department": "Sales",
-    "skills": [
-      "AWS",
-      "SQL",
-      "Java"
-    ],
+    "skills": ["AWS", "SQL", "Java"],
     "isActive": true,
     "salary": "",
     "hireDate": "2007-05-16",
@@ -8283,11 +7591,7 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "Finance",
-    "skills": [
-      "Python",
-      "TypeScript",
-      "SQL"
-    ],
+    "skills": ["Python", "TypeScript", "SQL"],
     "isActive": false,
     "salary": 72662,
     "hireDate": "2007-02-17",
@@ -8319,11 +7623,7 @@
     "lastName": "Müller",
     "email": "alice.müller@example.com",
     "department": "Marketing",
-    "skills": [
-      "TypeScript",
-      "Python",
-      "SQL"
-    ],
+    "skills": ["TypeScript", "Python", "SQL"],
     "isActive": true,
     "salary": 68398,
     "hireDate": "",
@@ -8355,12 +7655,7 @@
     "lastName": "Müller",
     "email": "diana.müller@example.com",
     "department": "Finance",
-    "skills": [
-      "Java",
-      "Python",
-      "TypeScript",
-      "AWS"
-    ],
+    "skills": ["Java", "Python", "TypeScript", "AWS"],
     "isActive": true,
     "salary": "",
     "hireDate": "2018-03-28",
@@ -8392,11 +7687,7 @@
     "lastName": "Müller",
     "email": "ian.müller@example.com",
     "department": "Legal",
-    "skills": [
-      "Python",
-      "TypeScript",
-      "Java"
-    ],
+    "skills": ["Python", "TypeScript", "Java"],
     "isActive": true,
     "salary": 48314,
     "hireDate": "2009-11-01",
@@ -8428,10 +7719,7 @@
     "lastName": "Fischer",
     "email": "diana.fischer@example.com",
     "department": "HR",
-    "skills": [
-      "Docker",
-      "Figma"
-    ],
+    "skills": ["Docker", "Figma"],
     "isActive": true,
     "salary": 59374,
     "hireDate": "2005-08-05",
@@ -8463,9 +7751,7 @@
     "lastName": "Becker",
     "email": "diana.becker@example.com",
     "department": "",
-    "skills": [
-      "Java"
-    ],
+    "skills": ["Java"],
     "isActive": false,
     "salary": 61484,
     "hireDate": "2024-05-15",
@@ -8529,11 +7815,7 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "Figma",
-      "TypeScript"
-    ],
+    "skills": ["React", "Figma", "TypeScript"],
     "isActive": true,
     "salary": "",
     "hireDate": "2009-07-15",
@@ -8565,12 +7847,7 @@
     "lastName": "",
     "email": "frank.müller@example.com",
     "department": "Marketing",
-    "skills": [
-      "TypeScript",
-      "Java",
-      "Docker",
-      "AWS"
-    ],
+    "skills": ["TypeScript", "Java", "Docker", "AWS"],
     "isActive": true,
     "salary": 86157,
     "hireDate": "2016-11-24",
@@ -8602,9 +7879,7 @@
     "lastName": "Schneider",
     "email": "alice.schneider@example.com",
     "department": "Finance",
-    "skills": [
-      "Figma"
-    ],
+    "skills": ["Figma"],
     "isActive": true,
     "salary": 68094,
     "hireDate": "2011-07-04",
@@ -8668,11 +7943,7 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "IT",
-    "skills": [
-      "Docker",
-      "TypeScript",
-      "SQL"
-    ],
+    "skills": ["Docker", "TypeScript", "SQL"],
     "isActive": true,
     "salary": 72458,
     "hireDate": "",
@@ -8704,12 +7975,7 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "Legal",
-    "skills": [
-      "Java",
-      "Python",
-      "AWS",
-      "SQL"
-    ],
+    "skills": ["Java", "Python", "AWS", "SQL"],
     "isActive": true,
     "salary": 40784,
     "hireDate": "2012-01-02",
@@ -8741,9 +8007,7 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "Legal",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 78634,
     "hireDate": "2016-12-15",
@@ -8775,10 +8039,7 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "IT",
-    "skills": [
-      "Docker",
-      "Python"
-    ],
+    "skills": ["Docker", "Python"],
     "isActive": false,
     "salary": 52436,
     "hireDate": "2008-03-03",
@@ -8810,11 +8071,7 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "IT",
-    "skills": [
-      "Java",
-      "SQL",
-      "AWS"
-    ],
+    "skills": ["Java", "SQL", "AWS"],
     "isActive": true,
     "salary": 73065,
     "hireDate": "2006-01-02",
@@ -8846,12 +8103,7 @@
     "lastName": "Wagner",
     "email": "julia.wagner@example.com",
     "department": "Sales",
-    "skills": [
-      "Figma",
-      "Java",
-      "TypeScript",
-      "Docker"
-    ],
+    "skills": ["Figma", "Java", "TypeScript", "Docker"],
     "isActive": true,
     "salary": 46441,
     "hireDate": "2006-06-09",
@@ -8883,10 +8135,7 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "Finance",
-    "skills": [
-      "Figma",
-      "React"
-    ],
+    "skills": ["Figma", "React"],
     "isActive": false,
     "salary": 53233,
     "hireDate": "2015-08-03",
@@ -8950,9 +8199,7 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "Sales",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 74949,
     "hireDate": "2017-03-27",
@@ -9016,12 +8263,7 @@
     "lastName": "Wagner",
     "email": "ian.wagner@example.com",
     "department": "Legal",
-    "skills": [
-      "Java",
-      "Docker",
-      "SQL",
-      "Python"
-    ],
+    "skills": ["Java", "Docker", "SQL", "Python"],
     "isActive": true,
     "salary": 43201,
     "hireDate": "2006-01-06",
@@ -9053,10 +8295,7 @@
     "lastName": "Wagner",
     "email": "frank.wagner@example.com",
     "department": "Legal",
-    "skills": [
-      "Python",
-      "Java"
-    ],
+    "skills": ["Python", "Java"],
     "isActive": true,
     "salary": 41572,
     "hireDate": "2011-03-30",
@@ -9088,10 +8327,7 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "HR",
-    "skills": [
-      "Java",
-      "Python"
-    ],
+    "skills": ["Java", "Python"],
     "isActive": true,
     "salary": 49805,
     "hireDate": "2021-10-29",
@@ -9123,9 +8359,7 @@
     "lastName": "Wagner",
     "email": "charlie.wagner@example.com",
     "department": "HR",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 96434,
     "hireDate": "2023-10-21",
@@ -9157,12 +8391,7 @@
     "lastName": "Becker",
     "email": "frank.becker@example.com",
     "department": "",
-    "skills": [
-      "React",
-      "Python",
-      "Docker",
-      "SQL"
-    ],
+    "skills": ["React", "Python", "Docker", "SQL"],
     "isActive": true,
     "salary": 41684,
     "hireDate": "2016-06-17",
@@ -9194,10 +8423,7 @@
     "lastName": "Meyer",
     "email": "alice.meyer@example.com",
     "department": "Marketing",
-    "skills": [
-      "Figma",
-      "React"
-    ],
+    "skills": ["Figma", "React"],
     "isActive": true,
     "salary": 52274,
     "hireDate": "2017-04-07",
@@ -9261,11 +8487,7 @@
     "lastName": "Schmidt",
     "email": "frank.schmidt@example.com",
     "department": "Legal",
-    "skills": [
-      "SQL",
-      "AWS",
-      "React"
-    ],
+    "skills": ["SQL", "AWS", "React"],
     "isActive": true,
     "salary": 98403,
     "hireDate": "2024-08-18",
@@ -9297,10 +8519,7 @@
     "lastName": "Weber",
     "email": "grace.weber@example.com",
     "department": "Legal",
-    "skills": [
-      "Docker",
-      "AWS"
-    ],
+    "skills": ["Docker", "AWS"],
     "isActive": true,
     "salary": 73633,
     "hireDate": "2018-08-10",
@@ -9332,9 +8551,7 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "Sales",
-    "skills": [
-      "Java"
-    ],
+    "skills": ["Java"],
     "isActive": true,
     "salary": 72332,
     "hireDate": "2020-04-04",
@@ -9366,10 +8583,7 @@
     "lastName": "Becker",
     "email": "ian.becker@example.com",
     "department": "Legal",
-    "skills": [
-      "Java",
-      "Figma"
-    ],
+    "skills": ["Java", "Figma"],
     "isActive": true,
     "salary": 86583,
     "hireDate": "2021-09-10",
@@ -9433,12 +8647,7 @@
     "lastName": "Becker",
     "email": "diana.becker@example.com",
     "department": "Sales",
-    "skills": [
-      "Python",
-      "AWS",
-      "React",
-      "Docker"
-    ],
+    "skills": ["Python", "AWS", "React", "Docker"],
     "isActive": true,
     "salary": 95512,
     "hireDate": "2012-06-10",
@@ -9470,12 +8679,7 @@
     "lastName": "Fischer",
     "email": "frank.fischer@example.com",
     "department": "Finance",
-    "skills": [
-      "Python",
-      "Java",
-      "Figma",
-      "AWS"
-    ],
+    "skills": ["Python", "Java", "Figma", "AWS"],
     "isActive": true,
     "salary": 84827,
     "hireDate": "",
@@ -9507,9 +8711,7 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "",
-    "skills": [
-      "Figma"
-    ],
+    "skills": ["Figma"],
     "isActive": true,
     "salary": 99256,
     "hireDate": "2012-06-28",
@@ -9541,12 +8743,7 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "Sales",
-    "skills": [
-      "SQL",
-      "React",
-      "Docker",
-      "AWS"
-    ],
+    "skills": ["SQL", "React", "Docker", "AWS"],
     "isActive": true,
     "salary": 89926,
     "hireDate": "2014-10-18",
@@ -9674,10 +8871,7 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "Finance",
-    "skills": [
-      "AWS",
-      "Figma"
-    ],
+    "skills": ["AWS", "Figma"],
     "isActive": false,
     "salary": 56082,
     "hireDate": "2023-05-10",
@@ -9709,10 +8903,7 @@
     "lastName": "Meyer",
     "email": "alice.meyer@example.com",
     "department": "HR",
-    "skills": [
-      "Figma",
-      "Docker"
-    ],
+    "skills": ["Figma", "Docker"],
     "isActive": true,
     "salary": 96490,
     "hireDate": "",
@@ -9776,11 +8967,7 @@
     "lastName": "Wagner",
     "email": "grace.wagner@example.com",
     "department": "Legal",
-    "skills": [
-      "Java",
-      "TypeScript",
-      "Python"
-    ],
+    "skills": ["Java", "TypeScript", "Python"],
     "isActive": true,
     "salary": 41938,
     "hireDate": "2010-09-21",
@@ -9812,10 +8999,7 @@
     "lastName": "Becker",
     "email": "diana.becker@example.com",
     "department": "IT",
-    "skills": [
-      "React",
-      "Figma"
-    ],
+    "skills": ["React", "Figma"],
     "isActive": true,
     "salary": 42184,
     "hireDate": "2017-03-13",
@@ -9879,12 +9063,7 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "HR",
-    "skills": [
-      "Figma",
-      "Docker",
-      "AWS",
-      "SQL"
-    ],
+    "skills": ["Figma", "Docker", "AWS", "SQL"],
     "isActive": true,
     "salary": 93139,
     "hireDate": "2006-08-20",
@@ -9916,11 +9095,7 @@
     "lastName": "Fischer",
     "email": "julia.fischer@example.com",
     "department": "Marketing",
-    "skills": [
-      "Java",
-      "SQL",
-      "Python"
-    ],
+    "skills": ["Java", "SQL", "Python"],
     "isActive": true,
     "salary": 70250,
     "hireDate": "2023-11-16",
@@ -9952,12 +9127,7 @@
     "lastName": "Müller",
     "email": "julia.müller@example.com",
     "department": "HR",
-    "skills": [
-      "AWS",
-      "Java",
-      "Python",
-      "Figma"
-    ],
+    "skills": ["AWS", "Java", "Python", "Figma"],
     "isActive": true,
     "salary": 47020,
     "hireDate": "2016-12-11",
@@ -10021,12 +9191,7 @@
     "lastName": "Meyer",
     "email": "",
     "department": "",
-    "skills": [
-      "Figma",
-      "React",
-      "TypeScript",
-      "AWS"
-    ],
+    "skills": ["Figma", "React", "TypeScript", "AWS"],
     "isActive": false,
     "salary": 55574,
     "hireDate": "2022-09-14",
@@ -10058,10 +9223,7 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "Finance",
-    "skills": [
-      "Docker",
-      "React"
-    ],
+    "skills": ["Docker", "React"],
     "isActive": true,
     "salary": "",
     "hireDate": "2017-07-31",
@@ -10093,9 +9255,7 @@
     "lastName": "Meyer",
     "email": "charlie.meyer@example.com",
     "department": "Finance",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 89280,
     "hireDate": "2017-11-05",
@@ -10127,11 +9287,7 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "HR",
-    "skills": [
-      "AWS",
-      "React",
-      "Figma"
-    ],
+    "skills": ["AWS", "React", "Figma"],
     "isActive": true,
     "salary": 87851,
     "hireDate": "",
@@ -10163,9 +9319,7 @@
     "lastName": "Müller",
     "email": "eva.müller@example.com",
     "department": "Legal",
-    "skills": [
-      "Java"
-    ],
+    "skills": ["Java"],
     "isActive": false,
     "salary": 46478,
     "hireDate": "2022-08-30",
@@ -10197,11 +9351,7 @@
     "lastName": "Wagner",
     "email": "julia.wagner@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript",
-      "AWS",
-      "Python"
-    ],
+    "skills": ["TypeScript", "AWS", "Python"],
     "isActive": true,
     "salary": "",
     "hireDate": "2020-12-23",
@@ -10233,11 +9383,7 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "Finance",
-    "skills": [
-      "Docker",
-      "SQL",
-      "AWS"
-    ],
+    "skills": ["Docker", "SQL", "AWS"],
     "isActive": true,
     "salary": 96355,
     "hireDate": "",
@@ -10269,10 +9415,7 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "Legal",
-    "skills": [
-      "Java",
-      "Figma"
-    ],
+    "skills": ["Java", "Figma"],
     "isActive": true,
     "salary": "",
     "hireDate": "2020-02-05",
@@ -10336,9 +9479,7 @@
     "lastName": "Becker",
     "email": "ian.becker@example.com",
     "department": "Finance",
-    "skills": [
-      "React"
-    ],
+    "skills": ["React"],
     "isActive": true,
     "salary": 91974,
     "hireDate": "2011-06-20",
@@ -10370,10 +9511,7 @@
     "lastName": "Schmidt",
     "email": "eva.schmidt@example.com",
     "department": "Sales",
-    "skills": [
-      "TypeScript",
-      "AWS"
-    ],
+    "skills": ["TypeScript", "AWS"],
     "isActive": true,
     "salary": 66316,
     "hireDate": "2014-01-04",
@@ -10405,10 +9543,7 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "Marketing",
-    "skills": [
-      "Figma",
-      "React"
-    ],
+    "skills": ["Figma", "React"],
     "isActive": true,
     "salary": 77630,
     "hireDate": "2012-04-27",
@@ -10440,12 +9575,7 @@
     "lastName": "Fischer",
     "email": "bob.fischer@example.com",
     "department": "Finance",
-    "skills": [
-      "Figma",
-      "AWS",
-      "Java",
-      "Python"
-    ],
+    "skills": ["Figma", "AWS", "Java", "Python"],
     "isActive": true,
     "salary": "",
     "hireDate": "2012-05-10",

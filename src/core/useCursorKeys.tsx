@@ -8,7 +8,14 @@ export function useCursorKeys(
   columns: ColumnConfig<any>[],
   tableRef: React.RefObject<HTMLTableElement>,
 ) {
-  const setColRow = (col: number, row: number, editing: boolean, shift: boolean, ctrl: boolean, initialEditValue: string | null = null) => {
+  const setColRow = (
+    col: number,
+    row: number,
+    editing: boolean,
+    shift: boolean,
+    ctrl: boolean,
+    initialEditValue: string | null = null,
+  ) => {
     if (row >= 0 && row < rows.length && col >= 0 && col < columns.length) {
       const newCursorState = ctrl
         ? {
@@ -62,10 +69,17 @@ export function useCursorKeys(
     const ctrl = event.ctrlKey;
     const cursor = cursorRef.current;
     const { editing } = cursor;
-    
+
     // We handle Escape explicitly even if it bubbles from an editor
     if (key === "Escape") {
-      setColRow(cursor.selectionStart.colIdx, cursor.selectionStart.rowIdx, false, shift, ctrl, null);
+      setColRow(
+        cursor.selectionStart.colIdx,
+        cursor.selectionStart.rowIdx,
+        false,
+        shift,
+        ctrl,
+        null,
+      );
       const tableContainer = tableRef.current?.closest(".custom-table") as HTMLElement;
       if (tableContainer) {
         tableContainer.focus();
@@ -77,25 +91,32 @@ export function useCursorKeys(
 
     // For other keys, if we are in edit mode, let them bubble (usually captured by editor)
     if (editing) {
-       const tableContainer = tableRef.current?.closest(".custom-table") as HTMLElement;
+      const tableContainer = tableRef.current?.closest(".custom-table") as HTMLElement;
 
-       // Enter → commit + move one row down
-       if (key === "Enter") {
-         event.stopPropagation();
-         event.preventDefault();
-         setColRow(cursor.selectionStart.colIdx, cursor.selectionStart.rowIdx + 1, false, shift, ctrl, null);
-         if (tableContainer) tableContainer.focus();
-       }
+      // Enter → commit + move one row down
+      if (key === "Enter") {
+        event.stopPropagation();
+        event.preventDefault();
+        setColRow(
+          cursor.selectionStart.colIdx,
+          cursor.selectionStart.rowIdx + 1,
+          false,
+          shift,
+          ctrl,
+          null,
+        );
+        if (tableContainer) tableContainer.focus();
+      }
 
-       // Tab / Shift+Tab → commit + jump to next/prev cell (with row-wrap)
-       if (key === "Tab") {
-         event.stopPropagation();
-         event.preventDefault();
-         jumpTab(shift ? -1 : +1, false);
-         if (tableContainer) tableContainer.focus();
-       }
+      // Tab / Shift+Tab → commit + jump to next/prev cell (with row-wrap)
+      if (key === "Tab") {
+        event.stopPropagation();
+        event.preventDefault();
+        jumpTab(shift ? -1 : +1, false);
+        if (tableContainer) tableContainer.focus();
+      }
 
-       return;
+      return;
     }
 
     // --- Navigation Mode ---
@@ -103,11 +124,7 @@ export function useCursorKeys(
     event.preventDefault();
 
     // If no cell is selected yet, treat cursor as (0,0) so the first key press works.
-    const rawAddr = ctrl
-      ? cursor.fillEnd
-      : shift
-      ? cursor.selectionEnd
-      : cursor.selectionStart;
+    const rawAddr = ctrl ? cursor.fillEnd : shift ? cursor.selectionEnd : cursor.selectionStart;
     const colIdx = rawAddr.colIdx < 0 ? 0 : rawAddr.colIdx;
     const rowIdx = rawAddr.rowIdx < 0 ? 0 : rawAddr.rowIdx;
 

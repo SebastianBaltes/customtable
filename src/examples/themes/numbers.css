@@ -24,7 +24,7 @@
   --ct-selected-cell-bg: #fff;
   --ct-selected-outline: #007aff;
   --ct-edited-outline: #007aff;
-  --ct-selection-fill: rgba(0, 122, 255, 0.08);
+  --ct-selection-fill: #b3d7ff;
   --ct-fill-outline: #ff3b30;
   --ct-dragger-bg: #007aff;
   --ct-dragger-border: #fff;
@@ -85,11 +85,13 @@
   --ct-row-stripe: #f2f2f7;
 }
 
-/* Alternating row stripes */
-.custom-table tbody tr:nth-child(even) {
-  background-color: var(--ct-row-stripe);
-}
 
-.custom-table tbody tr:nth-child(even) td.sticky {
-  background-color: var(--ct-row-stripe);
+/* Alternating row stripes */
+.custom-table {
+  tbody tr:nth-child(even) {
+    background-color: var(--ct-row-stripe);
+    & td.sticky {
+      background-color: var(--ct-row-stripe);
+    }
+  }
 }

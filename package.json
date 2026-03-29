@@ -9,7 +9,8 @@
     "test": "jest",
     "test:e2e": "playwright test",
     "start": "vite",
-    "build-demo": "vite build"
+    "build-demo": "vite build",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\""
   },
   "repository": {
     "type": "git",

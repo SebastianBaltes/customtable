@@ -46,9 +46,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const [inputValue, setInputValue] = useState(
-    freeText && !multiselect ? (selected[0] ?? "") : "",
-  );
+  const [inputValue, setInputValue] = useState(freeText && !multiselect ? selected[0] ?? "" : "");
   const [hasUserTyped, setHasUserTyped] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
 
@@ -225,7 +223,10 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
           const fromInput = inputRef.current && e.target === inputRef.current;
           if (!fromInput) {
             const stopProp = handleEnterCommit();
-            if (stopProp) { e.stopPropagation(); return; }
+            if (stopProp) {
+              e.stopPropagation();
+              return;
+            }
           }
           return; // bubble → useCursorKeys
         }
@@ -241,7 +242,10 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
           autoComplete="off"
           data-lpignore="true"
           value={inputValue}
-          onChange={(e) => { setHasUserTyped(true); setInputValue(e.target.value); }}
+          onChange={(e) => {
+            setHasUserTyped(true);
+            setInputValue(e.target.value);
+          }}
           placeholder={multiselect ? t["Filter or add value..."] : t["Enter or select..."]}
           onBlur={() => {
             if (suppressBlurRef.current) return;
@@ -265,7 +269,10 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
             }
             if (e.key === "Enter") {
               const stopProp = handleEnterCommit();
-              if (stopProp) { e.stopPropagation(); return; }
+              if (stopProp) {
+                e.stopPropagation();
+                return;
+              }
               return; // bubble — div handler will see it but skip re-commit (fromInput check)
             }
             if (handleNav(e)) return;

@@ -1,0 +1,620 @@
+/*
+ * Material Design 3 (Material You) theme.
+ * Based on M3 baseline light scheme with purple primary (#6750A4).
+ * Tonal surface hierarchy, pill-shaped buttons, 28px dialog radius,
+ * M3 typography scale, state-layer opacities.
+ */
+
+:root {
+  --ct-bg: #fef7ff;
+  --ct-text: #1d1b20;
+  --ct-font: "Roboto", "Helvetica", "Arial", sans-serif;
+
+  --ct-border: transparent;
+  --ct-border-light: transparent;
+
+  --ct-header-bg: #ede7f3;
+  --ct-header-border: transparent;
+  --ct-header-label: #1d1b20;
+
+  --ct-row-bg: #fef7ff;
+  --ct-row-hover: rgba(29, 27, 32, 0.08);
+  --ct-sticky-bg: #f7f2fa;
+
+  --ct-selected-row-bg: rgba(103, 80, 164, 0.12);
+  --ct-selected-col-bg: rgba(103, 80, 164, 0.12);
+  --ct-selected-cell-bg: #fef7ff;
+  --ct-selected-outline: #6750a4;
+  --ct-edited-outline: #6750a4;
+  --ct-selection-fill: #d8cff3;
+  --ct-fill-outline: #b3261e;
+  --ct-dragger-bg: #6750a4;
+  --ct-dragger-border: #ffffff;
+
+  --ct-toolbar-bg: transparent;
+  --ct-toolbar-border: #cac4d0;
+  --ct-input-border: #79747e;
+  --ct-input-bg: #fef7ff;
+  --ct-button-bg: transparent;
+  --ct-button-border: #79747e;
+  --ct-button-hover: rgba(103, 80, 164, 0.08);
+
+  --ct-focus-outline: #6750a4;
+
+  --ct-ctx-bg: #f3edf7;
+  --ct-ctx-border: transparent;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.3);
+  --ct-ctx-text: #1d1b20;
+  --ct-ctx-hover: rgba(29, 27, 32, 0.08);
+  --ct-ctx-shortcut: #49454f;
+
+  --ct-muted: #49454f;
+  --ct-muted-light: #79747e;
+
+  --ct-dropdown-bg: #f3edf7;
+  --ct-dropdown-border: transparent;
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.3);
+  --ct-dropdown-hover: rgba(29, 27, 32, 0.08);
+  --ct-dropdown-selected: rgba(103, 80, 164, 0.08);
+  --ct-dropdown-highlighted: rgba(29, 27, 32, 0.08);
+  --ct-dropdown-both: rgba(103, 80, 164, 0.16);
+  --ct-dropdown-text: #1d1b20;
+  --ct-dropdown-placeholder: #49454f;
+  --ct-dropdown-empty: #49454f;
+
+  --ct-pagination-link: #6750a4;
+  --ct-pagination-hover-bg: rgba(103, 80, 164, 0.08);
+  --ct-pagination-hover-border: transparent;
+  --ct-pagination-current-border: #79747e;
+  --ct-pagination-label: #49454f;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.32);
+  --ct-dialog-bg: #ece6f0;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.3);
+  --ct-dialog-border: transparent;
+  --ct-dialog-title: #1d1b20;
+  --ct-dialog-close: #49454f;
+  --ct-dialog-close-hover: #1d1b20;
+  --ct-dialog-input-border: #79747e;
+  --ct-dialog-btn-bg: transparent;
+  --ct-dialog-btn-border: transparent;
+  --ct-dialog-btn-text: #6750a4;
+  --ct-dialog-btn-hover: rgba(103, 80, 164, 0.08);
+  --ct-dialog-save-bg: #6750a4;
+  --ct-dialog-save-hover: #7e67ae;
+}
+
+
+/* ===== M3 Overrides ===== */
+
+/* Surface-container-low with tonal elevation instead of shadow */
+.custom-table {
+  border: 1px solid #cac4d0;
+  border-radius: 16px;
+  box-shadow: none;
+  overflow: hidden;
+  background: #fef7ff;
+
+  /* --- Cells & Headers --- */
+
+  .col-header,
+  .cell {
+    outline: none;
+    border-bottom: 1px solid #cac4d0;
+    padding: 16px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .col-header {
+    background: #e8e0ee;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    color: #1d1b20;
+    border-bottom: 1px solid #aea9b4;
+
+    &:hover .col-sort-icon {
+      opacity: 0.6;
+    }
+  }
+
+  & th {
+    font-weight: 500;
+  }
+
+  /* Sticky cells: opaque bg so content doesn't bleed through */
+  tbody td.sticky.cell {
+    outline: none;
+    border-bottom: 1px solid #cac4d0;
+    background-color: #f3edf7;
+  }
+
+  /* Selected column header */
+  .col-edited,
+  .col-selected {
+    outline: none;
+    background-color: #d9ccee;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* Selection outline */
+  .cell-selected,
+  .cell-edited {
+    outline-width: 2px;
+    outline-offset: -1px;
+  }
+
+  /* Row hover */
+  tbody tr {
+    td {
+      transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    }
+    &:hover {
+      td {
+        background-color: rgba(29, 27, 32, 0.08);
+        &.sticky {
+          background-color: #e5dfe9;
+        }
+      }
+    }
+  }
+
+  .row-selected td.sticky,
+  .row-edited td.sticky {
+    background-color: #d9ccee;
+  }
+
+  /* Body cell typography: body-medium */
+  .cell {
+    font-size: 1rem;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+  }
+
+  /* --- Sort icons --- */
+  .col-sort-icon {
+    font-size: 1rem;
+    color: #49454f;
+    transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* --- Inputs: M3 filled style (bottom-indicator + tonal fill) --- */
+  .col-filter-input,
+  .toolbar-input {
+    border: none;
+    border-bottom: 1px solid #79747e;
+    border-radius: 4px 4px 0 0;
+    padding: 6px 8px 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+    color: #1d1b20;
+    background: rgba(29, 27, 32, 0.05);
+    transition:
+      border-color 200ms cubic-bezier(0.2, 0, 0, 1),
+      background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    outline: none;
+
+    &:hover {
+      border-bottom-color: #1d1b20;
+      background: rgba(29, 27, 32, 0.08);
+    }
+
+    &:focus {
+      border-bottom: 2px solid #6750a4;
+      padding-bottom: 4px;
+      background: rgba(29, 27, 32, 0.1);
+    }
+  }
+
+  /* Cell editor input */
+  .cell-editor-input {
+    transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* --- Buttons: M3 pill-shaped text buttons --- */
+  .toolbar-button {
+    border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+    padding: 10px 24px;
+    min-height: 40px;
+    border: none;
+    background: transparent;
+    color: #6750a4;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      background: rgba(103, 80, 164, 0.08);
+    }
+    &:active {
+      background: rgba(103, 80, 164, 0.1);
+    }
+    &:focus-visible {
+      outline: 2px solid #6750a4;
+      outline-offset: 2px;
+    }
+  }
+
+  /* --- Context menu: M3 Menu --- */
+  .context-menu {
+    border: 1px solid #cac4d0;
+    border-radius: 4px;
+    background: #f3edf7;
+    box-shadow:
+      0px 1px 3px 0px rgba(0, 0, 0, 0.15),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    animation: m3-menu-open 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    .context-menu-item {
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+      line-height: 20px;
+      min-height: 48px;
+      transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+      &:hover {
+        background-color: rgba(29, 27, 32, 0.08);
+      }
+      &:active {
+        background-color: rgba(29, 27, 32, 0.1);
+      }
+    }
+  }
+
+  /* --- Combobox / Dropdown: M3 Menu surface --- */
+  .combo-dropdown-list {
+    border: 1px solid #cac4d0;
+    border-radius: 4px;
+    background: #f3edf7;
+    box-shadow:
+      0px 1px 3px 0px rgba(0, 0, 0, 0.15),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    animation: m3-menu-open 200ms cubic-bezier(0.2, 0, 0, 1);
+    padding: 8px 0;
+  }
+
+  .combo-dropdown-option {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:active {
+      background-color: rgba(103, 80, 164, 0.1);
+    }
+  }
+
+  .combo-dropdown-input {
+    border: none;
+    border-bottom: 1px solid #79747e;
+    border-radius: 0;
+    padding: 8px 16px;
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+    background: transparent;
+    transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    outline: none;
+
+    &:focus {
+      border-bottom-width: 2px;
+      border-bottom-color: #6750a4;
+      padding-bottom: 7px;
+    }
+  }
+
+  .combo-dropdown-display {
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+  }
+
+  .combo-dropdown-empty {
+    padding: 16px;
+    font-size: 1rem;
+    color: #49454f;
+  }
+
+  .combo-dropdown-checkbox {
+    font-size: 1.1rem;
+  }
+
+  .cell-dropdown-indicator {
+    color: #49454f;
+    transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* --- Checkboxes: M3 primary --- */
+  & input[type="checkbox"] {
+    accent-color: #6750a4;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: transform 100ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  /* --- Spacing: more whitespace for M3 density --- */
+  .custom-table-toolbar {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  /* --- Scrollbar: thin, subtle --- */
+  .custom-table-viewport {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(29, 27, 32, 0.2) transparent;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(29, 27, 32, 0.2);
+      border-radius: 4px;
+      &:hover {
+        background: rgba(29, 27, 32, 0.35);
+      }
+    }
+  }
+
+  /* --- Selection dragger --- */
+  .fill-dragger {
+    transition: transform 100ms cubic-bezier(0.2, 0, 0, 1);
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+}
+
+.theme-switcher {
+  padding: 10px 16px;
+}
+
+/* --- Pagination: M3 style --- */
+.ct-pagination {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  padding: 10px 16px;
+
+  .ct-tool-button {
+    border: none;
+    border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.1px;
+    background: transparent;
+    color: #6750a4;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover:not(:disabled) {
+      background: rgba(103, 80, 164, 0.08);
+    }
+    &:active:not(:disabled) {
+      background: rgba(103, 80, 164, 0.1);
+    }
+    &:disabled {
+      color: rgba(29, 27, 32, 0.38);
+    }
+  }
+
+  .ct-pagination-page {
+    border: none;
+    border-radius: 50%;
+    min-width: 32px;
+    height: 32px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      background-color: rgba(29, 27, 32, 0.08);
+    }
+    &.is-current {
+      background-color: #eaddff;
+      color: #21005d;
+      font-weight: 500;
+      border: none;
+    }
+  }
+
+  .ct-pagination-select {
+    border: none;
+    border-bottom: 1px solid #79747e;
+    border-radius: 4px 4px 0 0;
+    padding: 6px 8px 5px;
+    font-size: 1rem;
+    background: rgba(29, 27, 32, 0.05);
+    transition:
+      border-color 200ms cubic-bezier(0.2, 0, 0, 1),
+      background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    outline: none;
+
+    &:hover {
+      border-bottom-color: #1d1b20;
+      background: rgba(29, 27, 32, 0.08);
+    }
+    &:focus {
+      border-bottom: 2px solid #6750a4;
+      padding-bottom: 4px;
+      background: rgba(29, 27, 32, 0.1);
+    }
+  }
+}
+
+/* --- Textarea dialog: M3 Dialog (28px radius) --- */
+.editor-dialog-overlay {
+  animation: m3-overlay-open 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.editor-dialog {
+  border-radius: 28px;
+  background: #ece6f0;
+  box-shadow:
+    0px 4px 8px 0px rgba(0, 0, 0, 0.1),
+    0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  animation: m3-dialog-open 200ms cubic-bezier(0.2, 0, 0, 1);
+
+  .editor-dialog-header {
+    border-bottom: none;
+    padding: 24px 24px 0;
+  }
+
+  .editor-dialog-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0px;
+  }
+
+  .editor-dialog-input {
+    margin: 16px 24px;
+    border: none;
+    border-bottom: 1px solid #79747e;
+    border-radius: 4px 4px 0 0;
+    padding: 12px;
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+    color: #1d1b20;
+    background: rgba(29, 27, 32, 0.05);
+    transition:
+      border-color 200ms cubic-bezier(0.2, 0, 0, 1),
+      background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    outline: none;
+
+    &:hover {
+      border-bottom-color: #1d1b20;
+      background: rgba(29, 27, 32, 0.08);
+    }
+    &:focus {
+      border-bottom: 2px solid #6750a4;
+      padding-bottom: 11px;
+      background: rgba(29, 27, 32, 0.1);
+    }
+  }
+
+  .editor-dialog-footer {
+    border-top: none;
+    padding: 16px 24px 24px;
+  }
+
+  .editor-dialog-close {
+    transition:
+      color 200ms cubic-bezier(0.2, 0, 0, 1),
+      background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: rgba(29, 27, 32, 0.08);
+    }
+  }
+
+  .editor-dialog-btn {
+    border: none;
+    border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.1px;
+    background: transparent;
+    color: #6750a4;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      background: rgba(103, 80, 164, 0.08);
+    }
+    &:active {
+      background: rgba(103, 80, 164, 0.1);
+    }
+  }
+
+  .editor-dialog-btn-save {
+    background: #6750a4;
+    color: white;
+    box-shadow: none;
+
+    &:hover {
+      background: #7e67ae;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+    }
+    &:active {
+      background: #5b4397;
+    }
+  }
+}
+
+@keyframes m3-menu-open {
+  from {
+    opacity: 0;
+    transform: scaleY(0.8);
+    transform-origin: top;
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes m3-overlay-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes m3-dialog-open {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Theme switcher integration --- */
+.theme-switcher-select {
+  border: 1px solid #79747e;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1rem;
+  transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+  outline: none;
+
+  &:hover {
+    border-color: #1d1b20;
+  }
+  &:focus {
+    border-color: #6750a4;
+    border-width: 2px;
+    padding: 3px 7px;
+  }
+}

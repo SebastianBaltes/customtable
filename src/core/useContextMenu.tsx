@@ -42,12 +42,16 @@ export function useContextMenu(
     {
       label: t["Copy content"],
       shortcut: "Ctrl + C",
-      onClick: () => { copySelection(); },
+      onClick: () => {
+        copySelection();
+      },
     },
     {
       label: t["Paste content"],
       shortcut: "Ctrl + V",
-      onClick: () => { pasteAtCursor(); },
+      onClick: () => {
+        pasteAtCursor();
+      },
     },
     {
       label: t["Delete content"],
@@ -65,9 +69,8 @@ export function useContextMenu(
     };
   });
 
-  const contextMenuItems: ContextMenuItem[] = extraItems.length > 0
-    ? [...builtInItems, "---", ...mappedExtraItems]
-    : builtInItems;
+  const contextMenuItems: ContextMenuItem[] =
+    extraItems.length > 0 ? [...builtInItems, "---", ...mappedExtraItems] : builtInItems;
 
   return { contextMenu, openContextMenu, closeContextMenu, contextMenuItems };
 }

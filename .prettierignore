@@ -1,0 +1,10 @@
+# Ignore everything
+/*
+# Except the src directory
+!/src
+# (Optional) Prettier config files can also be excluded if they are not considered "sourcery"
+/node_modules
+/dist
+/.parcel-cache
+/test-results
+/coverage
