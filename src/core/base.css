@@ -39,9 +39,12 @@
     outline: none;
   }
 
-  &.pending {
-    pointer-events: none;
-    opacity: 0.6;
+  &.loading {
+    cursor: wait;
+  }
+
+  &.shake {
+    animation: ct-shake 0.4s ease-in-out;
   }
 
   &.has-ellipsis .cell {
@@ -56,6 +59,49 @@
     padding: 6px 10px;
     flex-shrink: 0;
   }
+
+  .toolbar-status {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    white-space: nowrap;
+  }
+
+  .toolbar-status-icon {
+    flex-shrink: 0;
+  }
+
+  .toolbar-status-ok {
+    color: var(--ct-status-ok, #2e7d32);
+  }
+
+  .toolbar-status-info {
+    color: var(--ct-status-info, #1565c0);
+  }
+
+  .toolbar-status-spinner {
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    border: 2px solid var(--ct-status-info, #1565c0);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: ct-spinner-spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+
+  .toolbar-status-warning {
+    color: var(--ct-status-warning, #e65100);
+  }
+
+  .toolbar-status-error {
+    color: var(--ct-status-error, #c62828);
+    font-weight: bold;
+  }
+
 
   /* Viewport / scroll area */
   .custom-table-viewport {
@@ -98,6 +144,16 @@
     padding-bottom: 6px;
     padding-right: 20px;
     padding-left: 10px;
+    white-space: nowrap;
+  }
+
+  .col-header {
+    padding-right: 10px;
+    padding-left: 5px;
+  }
+
+  .col-wrap {
+    white-space: normal;
   }
 
   .cell {
@@ -123,6 +179,10 @@
     cursor: pointer;
     pointer-events: auto;
     line-height: 1;
+
+    &::after {
+      content: var(--ct-pencil-icon, "✎");
+    }
   }
 
   .col-edited,
@@ -166,49 +226,15 @@
     cursor: crosshair;
   }
 
-  /* Context menu structure */
-  .context-menu {
-    position: absolute;
-    border-radius: 5px;
-    padding: 10px;
-    z-index: 1000;
-    /* top/left/visibility are set dynamically via inline styles in the component */
-  }
-
-  /* Portal wrapper used by ContextMenu to avoid affecting document flow */
-  .context-menu-portal {
-    display: contents;
-  }
-
-  .context-menu-shortcut {
-    padding-left: 4rem;
-  }
-
-  .context-menu-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 20px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .context-menu-modal-background {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 999;
-  }
+  /* (context-menu styles moved to top level for portal compatibility) */
 
   /* Column header layout */
   .col-header-content {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    /* center the label horizontally but allow filter/input to stretch */
-    align-items: center;
+    /* stretch so filters fill the full column width */
+    align-items: stretch;
   }
 
   .col-header-label {
@@ -227,18 +253,150 @@
     text-underline-offset: 3px;
   }
 
+  /* Sort spinner (replaces arrow during loading) */
+  .col-sort-spinner {
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    margin-left: 4px;
+    border: 1.5px solid currentColor;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: ct-spinner-spin 0.7s linear infinite;
+    vertical-align: middle;
+  }
+
+  /* Filter wrapper — positions the loading spinner */
+  .col-filter-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    > * {
+      flex: 1;
+      min-width: 0;
+    }
+
+    > .col-filter-spinner {
+      flex: none;
+    }
+  }
+
+  .col-filter-spinner {
+    position: absolute;
+    right: 3px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 0.7em;
+    height: 0.7em;
+    border: 1.5px solid var(--ct-status-info, #1565c0);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: ct-spinner-spin 0.7s linear infinite;
+    pointer-events: none;
+  }
+
   /* Filter input */
   .col-filter-input {
-    width: calc(100% + 20px);
-    margin-left: -6px;
-    margin-right: -6px;
+    width: 100%;
     box-sizing: border-box;
     padding: 2px 4px;
     border-radius: 2px;
     font-size: var(--font-size);line-height: var(--line-height);
     font-family: inherit;
-    /* ensure input stretches to column width even when parent centers items */
-    align-self: stretch;
+  }
+
+  /* Combobox filter (columns with selectOptions) */
+  .col-filter-combobox {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .col-filter-input {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      padding-right: 1.4rem;
+      text-overflow: ellipsis;
+    }
+
+    .col-filter-clear {
+      position: absolute;
+      right: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: var(--font-size);
+      line-height: 1;
+      padding: 0 3px;
+      color: inherit;
+      opacity: 0.6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .col-filter-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    border-radius: 4px;
+    z-index: 200;
+    padding: 4px 0;
+    max-height: 220px;
+    overflow-y: auto;
+    background: var(--ct-dropdown-bg, #fff);
+    border: 1px solid var(--ct-dropdown-border, #ccc);
+    box-shadow: var(--ct-dropdown-shadow, 0 2px 8px rgba(0, 0, 0, 0.15));
+  }
+
+  .col-filter-dropdown-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    user-select: none;
+    white-space: nowrap;
+
+    &:hover {
+      background: var(--ct-dropdown-hover, #f0f0f0);
+    }
+
+    &.is-selected {
+      background: var(--ct-dropdown-selected, #e8f0fe);
+    }
+
+    &.is-selected:hover {
+      background: var(--ct-dropdown-both, #d0e0f8);
+    }
+  }
+
+  .col-filter-dropdown-checkbox {
+    flex-shrink: 0;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+  }
+
+  .col-filter-dropdown-empty {
+    padding: 6px 12px;
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    font-style: italic;
+    opacity: 0.6;
+  }
+
+  .col-filter-empty-label {
+    font-style: italic;
+    opacity: 0.6;
   }
 
   /* Editor input */
@@ -545,4 +703,45 @@
     padding: 12px 24px;
     min-height: 44px;
   }
+}
+
+@keyframes ct-spinner-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ct-shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-4px); }
+  30% { transform: translateX(4px); }
+  45% { transform: translateX(-3px); }
+  60% { transform: translateX(3px); }
+  75% { transform: translateX(-2px); }
+  90% { transform: translateX(2px); }
+}
+
+/* Context menu — top-level so it works in the body-portalled ContextMenu */
+.context-menu-portal {
+  display: contents;
+}
+
+.context-menu {
+  position: absolute;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 1000;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+}
+
+.context-menu-shortcut {
+  padding-left: 4rem;
+}
+
+.context-menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+  cursor: pointer;
+  white-space: nowrap;
 }

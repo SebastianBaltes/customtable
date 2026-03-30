@@ -1,4 +1,4 @@
-import { CellMeta, ColumnConfig, Cursor, Row } from "./Types";
+import { CellMeta, ColumnConfig, Cursor, Row, ValidationResult } from "./Types";
 import React, { useRef } from "react";
 import classNames from "./classNames";
 import { getCursorName } from "./CustomTable";
@@ -36,17 +36,38 @@ export const CustomCell = React.memo(
     const { editing, selectionStart, initialEditValue } = cursorRef.current;
     const rowHasCursor = rowIdx === selectionStart.rowIdx;
     const cellHasCursor = rowHasCursor && colIdx === selectionStart.colIdx;
+    const isDisabled = cellMeta?.disabled === true;
     const isReadOnly =
-      column.readOnly === true || rowReadOnly === true || cellMeta?.disabled === true;
+      column.readOnly === true || rowReadOnly === true || isDisabled;
     const lastTapRef = useRef(0);
     const cellClass = getCursorName("cell-", cellHasCursor, editing && !isReadOnly);
-    const isDisabled = cellMeta?.disabled === true;
     const effectiveEditing = isReadOnly ? false : isEditing;
     const handleChange = (value: any) => {
       if (isDisabled) return;
       onCellChange(rowIdx, column.name, value);
     };
     const align = column.align ?? (column.type === "Number" ? "right" : "left");
+
+    // Validation
+    const cellValue = row[column.name];
+    const validationResult = column.validate ? column.validate(cellValue) : null;
+    let validationClass: string | null = null;
+    let validationMessage: string | null = null;
+    if (validationResult !== null) {
+      if (validationResult === false) {
+        validationClass = "cell-error";
+      } else if (typeof validationResult === "object") {
+        validationClass = validationResult.severity === "warning" ? "cell-warning" : "cell-error";
+        validationMessage = validationResult.message;
+      }
+    }
+
+    // Ellipsis: text value exceeds textEllipsisLength
+    const isEllipsis =
+      textEllipsisLength != null &&
+      typeof cellValue === "string" &&
+      cellValue.length > textEllipsisLength;
+
     return (
       <td
         key={column.name}
@@ -56,14 +77,21 @@ export const CustomCell = React.memo(
           "cell",
           sticky && "sticky",
           cellClass,
+          column.className,
+          `col-type-${column.type}`,
+          column.required && "col-required",
+          isReadOnly && "col-readonly",
+          column.wrap && "col-wrap",
           isDisabled && "cell-disabled",
+          validationClass,
+          isEllipsis && "cell-ellipsis",
           cellMeta?.className,
           align !== "left" && `cell-align-${align}`,
         )}
         style={cellMeta?.style}
-        title={cellMeta?.title}
+        title={cellMeta?.title ?? validationMessage ?? undefined}
         onMouseDown={(event) => {
-          if (event.buttons == 1) {
+          if (event.buttons === 1) {
             const selectionStart = cursorRef.current.selectionStart;
             const cellHasCursor =
               rowIdx === selectionStart.rowIdx && colIdx === selectionStart.colIdx;

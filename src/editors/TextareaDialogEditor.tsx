@@ -124,7 +124,6 @@ export const TextareaDialogEditor: Editor<string> = ({
             setDialogOpen(true);
           }}
         >
-          ✎
         </span>
       </>
     );
@@ -144,7 +143,6 @@ export const TextareaDialogEditor: Editor<string> = ({
           setDialogOpen(true);
         }}
       >
-        ✎
       </span>
       {dialogOpen &&
         ReactDOM.createPortal(

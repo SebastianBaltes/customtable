@@ -85,6 +85,7 @@
   --ct-cell-error-text: hsl(0, 80%, 75%);
   --ct-row-readonly-bg: hsl(220, 15%, 18%);
   --ct-row-readonly-text: hsl(220, 10%, 50%);
+  --ct-pencil-icon: "🖉";
 }
 
 

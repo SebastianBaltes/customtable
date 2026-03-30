@@ -1,8 +1,9 @@
 import { ColumnConfig, Cursor, SortConfig } from "./Types";
 import classNames from "./classNames";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { getCursorName } from "./CustomTable";
 import { TranslationsContext } from "./TranslationsContext";
+import { ComboboxFilter } from "./ComboboxFilter";
 
 export const CustomColHeader = React.memo(
   ({
@@ -16,6 +17,11 @@ export const CustomColHeader = React.memo(
     onSortChange,
     filterValue,
     onFilterChange,
+    filterOptions,
+    loading,
+    pendingSortColumn,
+    pendingFilterColumns,
+    textEllipsisLength,
   }: {
     colIdx: number;
     cursorRef: React.MutableRefObject<Cursor>;
@@ -27,6 +33,11 @@ export const CustomColHeader = React.memo(
     onSortChange: (config: SortConfig) => void;
     filterValue: string;
     onFilterChange: (value: string) => void;
+    filterOptions?: string[];
+    loading?: boolean;
+    pendingSortColumn?: string;
+    pendingFilterColumns?: string[];
+    textEllipsisLength?: number;
   }) => {
     const t = useContext(TranslationsContext);
     const { editing, selectionStart, selectionEnd } = cursorRef.current;
@@ -41,11 +52,29 @@ export const CustomColHeader = React.memo(
 
     const isInteractiveTarget = (el: HTMLElement) => {
       const tag = el.tagName;
-      return tag === "INPUT" || tag === "SELECT";
+      if (tag === "INPUT" || tag === "SELECT" || tag === "BUTTON") return true;
+      // Clicks on the sort label should not trigger column selection
+      if (el.closest(".col-header-label")) return true;
+      return false;
+    };
+
+    // Buffered filter value: keeps user input responsive while the controlled
+    // value (from display.filters) may lag behind in async/backend mode.
+    const [localFilter, setLocalFilter] = useState(filterValue);
+    const [prevControlled, setPrevControlled] = useState(filterValue);
+    if (filterValue !== prevControlled) {
+      setLocalFilter(filterValue);
+      setPrevControlled(filterValue);
+    }
+    const bufferedFilterValue = localFilter;
+    const handleBufferedFilterChange = (value: string) => {
+      setLocalFilter(value);
+      onFilterChange(value);
     };
 
     const handleSortClick = (event: React.MouseEvent) => {
-      if (isInteractiveTarget(event.target as HTMLElement)) return;
+      const tag = (event.target as HTMLElement).tagName;
+      if (tag === "INPUT" || tag === "SELECT" || tag === "BUTTON") return;
       if (!isSorted) {
         onSortChange({ column: column.name, direction: "asc" });
       } else if (sortDirection === "asc") {
@@ -62,15 +91,31 @@ export const CustomColHeader = React.memo(
       onKeyDown: (e: React.KeyboardEvent) => e.stopPropagation(),
     };
 
+    const isFilterPending = pendingFilterColumns?.includes(column.name) ?? false;
+
     const renderFilter = () => {
       if (column.filterable === false) return null;
+
+      const filterSpinner =
+        isFilterPending ? <span className="col-filter-spinner" aria-hidden="true" /> : null;
 
       // Custom filter editor
       if (column.filterEditor) {
         const FilterEditorComp = column.filterEditor;
         return (
-          <div onMouseDown={(e) => e.stopPropagation()} onClick={(e) => e.stopPropagation()}>
-            <FilterEditorComp value={filterValue} onChange={onFilterChange} column={column} />
+          <div className="col-filter-wrap" onMouseDown={(e) => e.stopPropagation()} onClick={(e) => e.stopPropagation()}>
+            <FilterEditorComp value={bufferedFilterValue} onChange={handleBufferedFilterChange} column={column} />
+            {filterSpinner}
+          </div>
+        );
+      }
+
+      // Combobox filter for columns with selectOptions
+      if (filterOptions && filterOptions.length > 0) {
+        return (
+          <div className="col-filter-wrap">
+            <ComboboxFilter value={bufferedFilterValue} onChange={handleBufferedFilterChange} options={filterOptions} />
+            {filterSpinner}
           </div>
         );
       }
@@ -78,26 +123,32 @@ export const CustomColHeader = React.memo(
       // Built-in Boolean select
       if (column.type === "Boolean") {
         return (
-          <select
-            {...sharedFilterProps}
-            value={filterValue}
-            onChange={(e) => onFilterChange(e.target.value)}
-          >
-            <option value=""></option>
-            <option value="true">{t["Yes"]}</option>
-            <option value="false">{t["No"]}</option>
-          </select>
+          <div className="col-filter-wrap">
+            <select
+              {...sharedFilterProps}
+              value={bufferedFilterValue}
+              onChange={(e) => handleBufferedFilterChange(e.target.value)}
+            >
+              <option value=""></option>
+              <option value="true">{t["Yes"]}</option>
+              <option value="false">{t["No"]}</option>
+            </select>
+            {filterSpinner}
+          </div>
         );
       }
 
       // Default text input
       return (
-        <input
-          {...sharedFilterProps}
-          type="text"
-          value={filterValue}
-          onChange={(e) => onFilterChange(e.target.value)}
-        />
+        <div className="col-filter-wrap">
+          <input
+            {...sharedFilterProps}
+            type="text"
+            value={bufferedFilterValue}
+            onChange={(e) => handleBufferedFilterChange(e.target.value)}
+          />
+          {filterSpinner}
+        </div>
       );
     };
 
@@ -110,6 +161,12 @@ export const CustomColHeader = React.memo(
           "col-header",
           sticky && "sticky",
           cursorName,
+          column.className,
+          `col-type-${column.type}`,
+          column.required && "col-required",
+          column.readOnly && "col-readonly",
+          column.wrap && "col-wrap",
+          textEllipsisLength != null && "col-ellipsis",
           align !== "left" && `cell-align-${align}`,
         )}
         onMouseDown={(event) => {
@@ -138,17 +195,23 @@ export const CustomColHeader = React.memo(
         <div className="col-header-content">
           <span className="col-header-label" onClick={handleSortClick}>
             {label}
-            {sortDirection === "asc" && (
-              <span className="col-sort-icon col-sort-asc" aria-label="sorted ascending">
-                {" "}
-                ▲
-              </span>
-            )}
-            {sortDirection === "desc" && (
-              <span className="col-sort-icon col-sort-desc" aria-label="sorted descending">
-                {" "}
-                ▼
-              </span>
+            {pendingSortColumn === column.name ? (
+              <span className="col-sort-spinner" aria-label="loading" />
+            ) : (
+              <>
+                {sortDirection === "asc" && (
+                  <span className="col-sort-icon col-sort-asc" aria-label="sorted ascending">
+                    {" "}
+                    ▲
+                  </span>
+                )}
+                {sortDirection === "desc" && (
+                  <span className="col-sort-icon col-sort-desc" aria-label="sorted descending">
+                    {" "}
+                    ▼
+                  </span>
+                )}
+              </>
             )}
           </span>
           {renderFilter()}

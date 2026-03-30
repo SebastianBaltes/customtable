@@ -89,6 +89,7 @@
   --ct-cell-error-text: #ffffff;
   --ct-row-readonly-bg: #333333;
   --ct-row-readonly-text: #999999;
+  --ct-pencil-icon: "🖋";
 }
 
 
@@ -249,32 +250,23 @@
     }
   }
 
-  /* Context menu */
-  .context-menu {
+  /* Dropdown (cell editor + filter combobox) */
+  .combo-dropdown-list,
+  .col-filter-dropdown {
     border: 3px solid #000000;
     box-shadow: 6px 6px 0 #000000;
-
-    .context-menu-item {
-      font-weight: 700;
-
-      &:hover {
-        background-color: #ffff00;
-        color: #000000;
-      }
-    }
+    background: #ffffff;
+    color: #000000;
   }
 
-  /* Dropdown */
-  .combo-dropdown-list {
-    border: 3px solid #000000;
-    box-shadow: 6px 6px 0 #000000;
-  }
-
-  .combo-dropdown-option {
-
-
+  .combo-dropdown-option,
+  .col-filter-dropdown-option {
     &:hover {
       background-color: #ffff00;
+    }
+
+    &.is-selected {
+      background-color: #ffffcc;
     }
   }
 
@@ -443,4 +435,20 @@
 .custom-table .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
+}
+
+.context-menu {
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0 #000000;
+  background: #ffffff;
+  color: #000000;
+
+  .context-menu-item {
+    font-weight: 700;
+
+    &:hover {
+      background-color: #ffff00;
+      color: #000000;
+    }
+  }
 }

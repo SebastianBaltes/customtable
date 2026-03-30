@@ -80,3 +80,8 @@ body {
   flex-shrink: 0;
 }
 
+/* Description column: wide when ellipsis is not active */
+th.col-description:not(.col-ellipsis) {
+  min-width: 40em;
+}
+

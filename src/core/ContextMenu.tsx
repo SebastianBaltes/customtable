@@ -31,7 +31,7 @@ export const ContextMenu = ({
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return ReactDOM.createPortal(
-    <div className="custom-table context-menu-portal">
+    <div className="context-menu-portal">
       <div
         ref={menuRef}
         className="context-menu"

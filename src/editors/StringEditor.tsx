@@ -13,13 +13,22 @@ export const StringEditor: Editor<string> = ({
   const [localValue, setLocalValue] = useState(value ?? "");
   const inputRef = useRef<HTMLInputElement>(null);
   const isEscapingRef = useRef(false);
+  const prevEditingRef = useRef(false);
 
   useEffect(() => {
-    if (editing && initialEditValue !== null) {
-      setLocalValue(initialEditValue);
-    } else {
+    if (editing && !prevEditingRef.current) {
+      // Just entered edit mode
+      if (initialEditValue !== null) {
+        setLocalValue(initialEditValue);
+      } else {
+        setLocalValue(value ?? "");
+      }
+    } else if (!editing) {
+      // Exited edit mode — sync with prop
       setLocalValue(value ?? "");
     }
+    // While already editing: never overwrite user's in-progress typing
+    prevEditingRef.current = editing;
   }, [value, editing, initialEditValue]);
 
   useEffect(() => {

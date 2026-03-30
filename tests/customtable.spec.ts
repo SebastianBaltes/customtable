@@ -1200,8 +1200,9 @@ test.describe("Cell Meta", () => {
     // Row "3" (rowIndex 3) / column "System Key" (index 1) has background #fdd
     const cell = page.locator("table tbody tr").nth(3).locator("td").nth(1);
     const bgColor = await cell.evaluate((el) => getComputedStyle(el).backgroundColor);
-    // #fdd = rgb(255, 221, 221)
-    expect(bgColor).toBe("rgb(255, 221, 221)");
+    // cell-error class uses --ct-cell-error-bg from theme
+    expect(bgColor).not.toBe("rgba(0, 0, 0, 0)"); // has a background
+    expect(bgColor).toMatch(/^rgb/); // is a valid color
   });
 
   test("should apply cell meta title attribute", async ({ page }) => {
@@ -1217,11 +1218,11 @@ test.describe("Cell Meta", () => {
   });
 
   test("should apply row meta style to the tr element", async ({ page }) => {
-    // Row "5" (6th data row) has row style background #eee
+    // Row "5" (6th data row) has row-readonly class — background is applied to td cells
     const row = page.locator("table tbody tr").nth(5);
-    const bgColor = await row.evaluate((el) => getComputedStyle(el).backgroundColor);
-    // #eee = rgb(238, 238, 238)
-    expect(bgColor).toBe("rgb(238, 238, 238)");
+    await expect(row).toHaveClass(/row-readonly/);
+    const cellBg = await row.locator("td").first().evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(cellBg).not.toBe("rgba(0, 0, 0, 0)"); // td has themed background
   });
 
   test("should apply row meta title to the tr element", async ({ page }) => {
@@ -2336,8 +2337,8 @@ test.describe("Textarea Dialog Editor", () => {
     const indicator = cell.locator(".cell-popup-indicator");
     await indicator.click();
 
-    await expect(page.locator(".textarea-dialog")).toBeVisible();
-    await expect(page.locator(".textarea-dialog-input")).toBeVisible();
+    await expect(page.locator(".editor-dialog")).toBeVisible();
+    await expect(page.locator(".editor-dialog-input")).toBeVisible();
   });
 
   test("should show title with row values in dialog header", async ({ page }) => {
@@ -2350,7 +2351,7 @@ test.describe("Textarea Dialog Editor", () => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(7);
     await cell.locator(".cell-popup-indicator").click();
 
-    const title = page.locator(".textarea-dialog-title");
+    const title = page.locator(".editor-dialog-title");
     await expect(title).toContainText(`${firstName} ${lastName}: Description`);
   });
 
@@ -2358,13 +2359,13 @@ test.describe("Textarea Dialog Editor", () => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(7);
     await cell.locator(".cell-popup-indicator").click();
 
-    const textarea = page.locator(".textarea-dialog-input");
+    const textarea = page.locator(".editor-dialog-input");
     await textarea.fill("New description text");
 
-    await page.locator(".textarea-dialog-btn-save").click();
+    await page.locator(".editor-dialog-btn-save").click();
 
     // Dialog should be closed
-    await expect(page.locator(".textarea-dialog")).not.toBeVisible();
+    await expect(page.locator(".editor-dialog")).not.toBeVisible();
 
     // Cell should contain the new value
     await expect(cell).toContainText("New description text");
@@ -2376,13 +2377,13 @@ test.describe("Textarea Dialog Editor", () => {
 
     await cell.locator(".cell-popup-indicator").click();
 
-    const textarea = page.locator(".textarea-dialog-input");
+    const textarea = page.locator(".editor-dialog-input");
     await textarea.fill("This should be discarded");
 
-    await page.locator(".textarea-dialog-btn-cancel").click();
+    await page.locator(".editor-dialog-btn-cancel").click();
 
     // Dialog should be closed
-    await expect(page.locator(".textarea-dialog")).not.toBeVisible();
+    await expect(page.locator(".editor-dialog")).not.toBeVisible();
 
     // Cell should still have original value
     await expect(cell).toHaveText(originalText!);
@@ -2392,20 +2393,20 @@ test.describe("Textarea Dialog Editor", () => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(7);
     await cell.locator(".cell-popup-indicator").click();
 
-    await expect(page.locator(".textarea-dialog")).toBeVisible();
-    await page.locator(".textarea-dialog-close").click();
+    await expect(page.locator(".editor-dialog")).toBeVisible();
+    await page.locator(".editor-dialog-close").click();
 
-    await expect(page.locator(".textarea-dialog")).not.toBeVisible();
+    await expect(page.locator(".editor-dialog")).not.toBeVisible();
   });
 
   test("should close dialog on Escape key", async ({ page }) => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(7);
     await cell.locator(".cell-popup-indicator").click();
 
-    await expect(page.locator(".textarea-dialog")).toBeVisible();
+    await expect(page.locator(".editor-dialog")).toBeVisible();
     await page.keyboard.press("Escape");
 
-    await expect(page.locator(".textarea-dialog")).not.toBeVisible();
+    await expect(page.locator(".editor-dialog")).not.toBeVisible();
   });
 
   test("should show inline text editor on double-click", async ({ page }) => {
@@ -2642,5 +2643,985 @@ test.describe("Selected cell z-index vs sticky elements", () => {
     // Sticky header corner must be above both regular headers and sticky body cells
     expect(stickyHeaderZ).toBeGreaterThan(regularHeaderZ);
     expect(stickyHeaderZ).toBeGreaterThan(stickyBodyZ);
+  });
+});
+
+// ============================================================================
+// Backend mode – sort delay
+// ============================================================================
+test.describe("Backend mode – sort delay", () => {
+  test.beforeEach(async ({ page }) => {
+    // Switch to Backend (2 s) mode
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-slow");
+    // Wait for initial "Synced" status
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("clicking sort must NOT change row data immediately", async ({ page }) => {
+    // Collect the first 5 Email values before sort
+    const emailCells = () =>
+      page
+        .locator("table tbody tr")
+        .locator("td:nth-child(5)")
+        .evaluateAll((cells) => cells.slice(0, 5).map((c) => c.textContent?.trim() ?? ""));
+
+    const before = await emailCells();
+    expect(before.length).toBeGreaterThan(0);
+
+    // Click the Email column header to sort
+    const emailHeader = page.locator("table thead th .col-header-label").nth(4);
+    await emailHeader.click();
+
+    // A spinner should appear on the Email column header
+    await expect(page.locator("table thead th .col-sort-spinner")).toBeVisible();
+
+    // Immediately after click: data must be UNCHANGED
+    const afterClick = await emailCells();
+    expect(afterClick).toEqual(before);
+
+    // Status should show loading
+    await expect(page.locator(".toolbar-status-info")).toBeVisible();
+
+    // After the 2s delay, data should change (sort applied)
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+    const afterDelay = await emailCells();
+    // The sort arrow should now be visible
+    await expect(page.locator(".col-sort-asc")).toBeVisible();
+    // Data should have changed (sorted ascending by email)
+    expect(afterDelay).not.toEqual(before);
+  });
+
+  test("clicking sort should show spinner, then sort arrow after delay", async ({ page }) => {
+    const emailHeader = page.locator("table thead th .col-header-label").nth(4);
+
+    // No sort arrow initially
+    await expect(page.locator(".col-sort-asc")).not.toBeVisible();
+    await expect(page.locator(".col-sort-desc")).not.toBeVisible();
+
+    // Click to sort
+    await emailHeader.click();
+
+    // Spinner visible, no arrow
+    await expect(page.locator(".col-sort-spinner")).toBeVisible();
+    await expect(page.locator(".col-sort-asc")).not.toBeVisible();
+
+    // Wait for backend response
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+
+    // Spinner gone, arrow visible
+    await expect(page.locator(".col-sort-spinner")).not.toBeVisible();
+    await expect(page.locator(".col-sort-asc")).toBeVisible();
+  });
+
+  test.afterEach(async ({ page }) => {
+    // Reset to local mode
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – filter delay
+// ============================================================================
+test.describe("Backend mode – filter delay", () => {
+  test.beforeEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-slow");
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("typing in a filter input must be immediately visible but data unchanged", async ({
+    page,
+  }) => {
+    // Capture row count before filtering
+    const rowCountBefore = await page.locator("table tbody tr").count();
+
+    // Email filter (5th column, text input)
+    const emailFilter = page.locator("table thead th").nth(4).locator(".col-filter-input");
+    await emailFilter.click();
+    await emailFilter.fill("alice");
+
+    // The typed text should appear immediately
+    await expect(emailFilter).toHaveValue("alice");
+
+    // But data should NOT have changed yet (still same row count)
+    const rowCountAfter = await page.locator("table tbody tr").count();
+    expect(rowCountAfter).toBe(rowCountBefore);
+
+    // After delay, data should filter down
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+    const rowCountFiltered = await page.locator("table tbody tr").count();
+    expect(rowCountFiltered).toBeLessThan(rowCountBefore);
+  });
+
+  test("filter spinner should only appear on the changed column", async ({ page }) => {
+    // Type in Email filter
+    const emailFilter = page.locator("table thead th").nth(4).locator(".col-filter-input");
+    await emailFilter.click();
+    await emailFilter.fill("test");
+
+    // Spinner should appear only in Email header
+    const emailSpinner = page.locator("table thead th").nth(4).locator(".col-filter-spinner");
+    await expect(emailSpinner).toBeVisible();
+
+    // No spinner on other columns (e.g. First Name)
+    const nameSpinner = page.locator("table thead th").nth(2).locator(".col-filter-spinner");
+    await expect(nameSpinner).not.toBeVisible();
+  });
+
+  test("filter spinner disappears after delay", async ({ page }) => {
+    const emailFilter = page.locator("table thead th").nth(4).locator(".col-filter-input");
+    await emailFilter.click();
+    await emailFilter.fill("test");
+
+    // Spinner visible
+    const emailSpinner = page.locator("table thead th").nth(4).locator(".col-filter-spinner");
+    await expect(emailSpinner).toBeVisible();
+
+    // After delay, spinner gone
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+    await expect(emailSpinner).not.toBeVisible();
+  });
+
+  test("second filter does not add spinner to first filter column", async ({ page }) => {
+    // First: filter Skills (combobox)
+    const skillsHeader = page.locator("table thead th").nth(6);
+    const skillsInput = skillsHeader.locator(".col-filter-input");
+    await skillsInput.click();
+    // Select "React" checkbox
+    const reactOption = skillsHeader.locator(".col-filter-dropdown-option", { hasText: "React" });
+    await reactOption.click();
+
+    // Wait for skills filter to complete
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+
+    // Now filter Email
+    const emailFilter = page.locator("table thead th").nth(4).locator(".col-filter-input");
+    await emailFilter.click();
+    await emailFilter.fill("alice");
+
+    // Spinner only on Email, NOT on Skills
+    const emailSpinner = page.locator("table thead th").nth(4).locator(".col-filter-spinner");
+    const skillsSpinner = skillsHeader.locator(".col-filter-spinner");
+    await expect(emailSpinner).toBeVisible();
+    await expect(skillsSpinner).not.toBeVisible();
+  });
+
+  test.afterEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – rapid operations & cancellation
+// ============================================================================
+test.describe("Backend mode – rapid operations", () => {
+  test.beforeEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-slow");
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("rapid sort on different columns: first cancelled, second wins", async ({ page }) => {
+    const emailHeader = page.locator("table thead th .col-header-label").nth(4);
+    const firstNameHeader = page.locator("table thead th .col-header-label").nth(2);
+
+    // Capture initial data
+    const emailCells = () =>
+      page
+        .locator("table tbody tr")
+        .locator("td:nth-child(5)")
+        .evaluateAll((cells) => cells.slice(0, 5).map((c) => c.textContent?.trim() ?? ""));
+    const before = await emailCells();
+
+    // Click Email sort
+    await emailHeader.click();
+    await expect(page.locator(".col-sort-spinner")).toBeVisible();
+
+    // Quickly click First Name sort before first timer fires (cancels first)
+    await page.waitForTimeout(500);
+    await firstNameHeader.click();
+
+    // Data should still be unchanged
+    const duringPending = await emailCells();
+    expect(duringPending).toEqual(before);
+
+    // Spinner should now be on First Name column (3rd header)
+    const firstNameSpinner = page.locator("table thead th").nth(2).locator(".col-sort-spinner");
+    await expect(firstNameSpinner).toBeVisible();
+
+    // Wait for the final result
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+
+    // Sort arrow should be on First Name, not Email
+    await expect(page.locator("table thead th").nth(2).locator(".col-sort-asc")).toBeVisible();
+    await expect(page.locator("table thead th").nth(4).locator(".col-sort-asc")).not.toBeVisible();
+    await expect(page.locator(".col-sort-spinner")).not.toBeVisible();
+  });
+
+  test("sort then filter: both pending simultaneously", async ({ page }) => {
+    const emailHeader = page.locator("table thead th .col-header-label").nth(4);
+
+    // Click sort
+    await emailHeader.click();
+    await expect(page.locator(".col-sort-spinner")).toBeVisible();
+
+    // Also filter First Name
+    const nameFilter = page.locator("table thead th").nth(2).locator(".col-filter-input");
+    await nameFilter.click();
+    await nameFilter.fill("Eva");
+
+    // Both indicators visible
+    await expect(page.locator(".col-sort-spinner")).toBeVisible();
+    const nameSpinner = page.locator("table thead th").nth(2).locator(".col-filter-spinner");
+    await expect(nameSpinner).toBeVisible();
+
+    // After delay, both resolved
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+    await expect(page.locator(".col-sort-spinner")).not.toBeVisible();
+    await expect(nameSpinner).not.toBeVisible();
+  });
+
+  test.afterEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – mode switching
+// ============================================================================
+test.describe("Backend mode – mode switching", () => {
+  test("switching to local mode makes operations instant", async ({ page }) => {
+    // Start in backend-slow
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-slow");
+    await page.waitForSelector(".toolbar-status-ok");
+
+    // Switch back to local
+    await modeSelect.selectOption("local");
+
+    // No status indicator in local mode
+    await expect(page.locator(".toolbar-status")).not.toBeVisible();
+
+    // Sort should be instant
+    const emailCells = () =>
+      page
+        .locator("table tbody tr")
+        .locator("td:nth-child(5)")
+        .evaluateAll((cells) => cells.slice(0, 5).map((c) => c.textContent?.trim() ?? ""));
+    const before = await emailCells();
+
+    const emailHeader = page.locator("table thead th .col-header-label").nth(4);
+    await emailHeader.click();
+
+    // No spinner, no loading status
+    await expect(page.locator(".col-sort-spinner")).not.toBeVisible();
+
+    // Data should change immediately
+    const after = await emailCells();
+    expect(after).not.toEqual(before);
+
+    // Sort arrow should be visible immediately
+    await expect(page.locator(".col-sort-asc")).toBeVisible();
+  });
+
+  test("switching from local to backend adds delay", async ({ page }) => {
+    // Ensure local mode
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+
+    // Switch to backend-slow
+    await modeSelect.selectOption("backend-slow");
+    await page.waitForSelector(".toolbar-status-ok");
+
+    // Sort should now be delayed
+    const emailHeader = page.locator("table thead th .col-header-label").nth(4);
+    await emailHeader.click();
+
+    await expect(page.locator(".col-sort-spinner")).toBeVisible();
+    await expect(page.locator(".toolbar-status-info")).toBeVisible();
+  });
+});
+
+// ============================================================================
+// Backend mode – status indicator
+// ============================================================================
+test.describe("Backend mode – status indicator", () => {
+  test.beforeEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-slow");
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("status shows 'Loading...' during pending operation", async ({ page }) => {
+    const emailHeader = page.locator("table thead th .col-header-label").nth(4);
+    await emailHeader.click();
+
+    await expect(page.locator(".toolbar-status-info")).toContainText("Loading");
+    // Spinner element should be visible
+    await expect(page.locator(".toolbar-status-spinner")).toBeVisible();
+  });
+
+  test("status shows 'Synced' after operation completes", async ({ page }) => {
+    const emailHeader = page.locator("table thead th .col-header-label").nth(4);
+    await emailHeader.click();
+
+    // Wait for completion
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+    await expect(page.locator(".toolbar-status-ok")).toContainText("Synced");
+  });
+
+  test("no status indicator in local mode", async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+
+    await expect(page.locator(".toolbar-status")).not.toBeVisible();
+  });
+
+  test.afterEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – optimistic edits
+// ============================================================================
+test.describe("Backend mode – optimistic edits", () => {
+  test.beforeEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-slow");
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("edited cell value stays visible during backend delay", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to row 1, col 2 (First Name)
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    // The cell we're editing — identified by data attributes (stable after cursor moves)
+    const editedCell = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+    const originalValue = await editedCell.textContent();
+
+    // Enter edit mode and type a new value
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("OptimisticTestName");
+    await page.keyboard.press("Tab"); // commit without changing row
+
+    // The new value should be visible immediately (optimistic)
+    await expect(editedCell).toContainText("OptimisticTestName");
+
+    // Wait a moment to verify it doesn't revert
+    await page.waitForTimeout(1000);
+    await expect(editedCell).toContainText("OptimisticTestName");
+
+    // After the full backend delay, value should still be there
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 5000 });
+    await expect(editedCell).toContainText("OptimisticTestName");
+  });
+
+  test("typing in cell, Tab to next cell, typing there — both values visible immediately", async ({
+    page,
+  }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to row 1, col 2 (First Name)
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    const cell1 = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+    const cell2 = page.locator('td[data-row-idx="1"][data-col-idx="3"]');
+
+    // Edit cell 1
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("CellOneValue");
+    // Tab → commit cell 1, move to cell 2
+    await page.keyboard.press("Tab");
+
+    // Cell 1 should show new value immediately
+    await expect(cell1).toContainText("CellOneValue");
+
+    // Now type in cell 2 (starts edit mode via initialEditValue)
+    await page.keyboard.type("CellTwoValue");
+    // The typed text should be visible in the editor immediately
+    const editor = cell2.locator("input.cell-editor-input");
+    await expect(editor).toHaveValue("CellTwoValue");
+
+    // Commit cell 2
+    await page.keyboard.press("Tab");
+
+    // Both values should be visible immediately
+    await expect(cell1).toContainText("CellOneValue");
+    await expect(cell2).toContainText("CellTwoValue");
+
+    // Wait a moment — values must NOT revert
+    await page.waitForTimeout(1000);
+    await expect(cell1).toContainText("CellOneValue");
+    await expect(cell2).toContainText("CellTwoValue");
+
+    // After backend delay, still there
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 10000 });
+    await expect(cell1).toContainText("CellOneValue");
+    await expect(cell2).toContainText("CellTwoValue");
+  });
+
+  test("insert row, edit 3 cells sequentially — no data loss during loading", async ({
+    page,
+  }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to first data row
+    await page.keyboard.press("ArrowDown");
+
+    // Count rows before insert
+    const rowsBefore = await page.locator("table tbody tr").count();
+
+    // Right-click → Insert row below
+    const firstCell = page.locator("td.cell-selected");
+    await firstCell.click({ button: "right" });
+    await page.waitForSelector(".context-menu");
+    const insertBelow = page.locator(".context-menu-item").nth(1); // "Insert row below"
+    await insertBelow.click();
+
+    // Verify row was inserted
+    const rowsAfter = await page.locator("table tbody tr").count();
+    expect(rowsAfter).toBe(rowsBefore + 1);
+
+    // Navigate to the new row (it's below the current one)
+    await page.keyboard.press("ArrowDown");
+    // Move to col 1 (System Key) — col 0 is ID (readOnly)
+    await page.keyboard.press("ArrowRight");
+
+    // Get the row index of the new row from the selected cell
+    const newRowIdx = await page
+      .locator("td.cell-selected")
+      .getAttribute("data-row-idx");
+
+    // Edit cell 1 (System Key): Enter → type → Tab
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("KEY001");
+    await page.keyboard.press("Tab");
+
+    // Edit cell 2 (First Name): Enter → type → Tab
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("TestFirst");
+    await page.keyboard.press("Tab");
+
+    // Edit cell 3 (Last Name): Enter → type → Tab
+    await page.keyboard.press("Enter");
+    await page.keyboard.type("TestLast");
+    await page.keyboard.press("Tab");
+
+    // All three cells should show their values immediately
+    const cellKey = page.locator(`td[data-row-idx="${newRowIdx}"][data-col-idx="1"]`);
+    const cellFirst = page.locator(`td[data-row-idx="${newRowIdx}"][data-col-idx="2"]`);
+    const cellLast = page.locator(`td[data-row-idx="${newRowIdx}"][data-col-idx="3"]`);
+
+    await expect(cellKey).toContainText("KEY001");
+    await expect(cellFirst).toContainText("TestFirst");
+    await expect(cellLast).toContainText("TestLast");
+
+    // Wait during loading — values must NOT revert
+    await page.waitForTimeout(1500);
+    await expect(cellKey).toContainText("KEY001");
+    await expect(cellFirst).toContainText("TestFirst");
+    await expect(cellLast).toContainText("TestLast");
+
+    // After all backend delays resolve — still there
+    await page.waitForSelector(".toolbar-status-ok", { timeout: 10000 });
+    await expect(cellKey).toContainText("KEY001");
+    await expect(cellFirst).toContainText("TestFirst");
+    await expect(cellLast).toContainText("TestLast");
+  });
+
+  test.afterEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – error handling
+// ============================================================================
+test.describe("Backend mode – error handling (server error)", () => {
+  test.beforeEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-error");
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("editing a cell shows error status after delay and rolls back", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to row 1, col 2 (First Name)
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    const cell = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+    const original = await cell.textContent();
+
+    // Edit
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("WillFail");
+    await page.keyboard.press("Tab");
+
+    // Optimistically shows the edit
+    await expect(cell).toContainText("WillFail");
+
+    // After 2s delay: error status + rollback
+    await expect(page.locator(".toolbar-status-error")).toBeVisible({ timeout: 5000 });
+    await expect(page.locator(".toolbar-status-error")).toContainText("failed");
+
+    // Cell should roll back to original value
+    await expect(cell).toContainText(original!);
+  });
+
+  test("rollback triggers shake animation on the table", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Set up a MutationObserver to detect the shake class
+    await page.evaluate(() => {
+      (window as any).__shakeDetected = false;
+      const el = document.querySelector(".custom-table");
+      if (!el) return;
+      const observer = new MutationObserver((mutations) => {
+        for (const m of mutations) {
+          if (m.type === "attributes" && (m.target as HTMLElement).classList.contains("shake")) {
+            (window as any).__shakeDetected = true;
+          }
+        }
+      });
+      observer.observe(el, { attributes: true, attributeFilter: ["class"] });
+    });
+
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    // Edit a cell (will be rolled back after 2s)
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("ShakeTest");
+    await page.keyboard.press("Tab");
+
+    // Wait for the rollback to happen (2s delay + margin)
+    await page.waitForTimeout(3000);
+
+    // The MutationObserver should have caught the shake class
+    const shakeDetected = await page.evaluate(() => (window as any).__shakeDetected);
+    expect(shakeDetected).toBe(true);
+
+    // After animation ends, shake class should be gone
+    await expect(table).not.toHaveClass(/shake/);
+  });
+
+  test("deleting a row rolls back — row reappears", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+
+    const rowsBefore = await page.locator("table tbody tr").count();
+
+    // Right-click → delete
+    const cell = page.locator("td.cell-selected");
+    await cell.click({ button: "right" });
+    await page.waitForSelector(".context-menu");
+    const removeItem = page.locator(".context-menu-item", { hasText: /Remove rows/ });
+    await removeItem.click();
+
+    // Row removed optimistically
+    const rowsAfterDelete = await page.locator("table tbody tr").count();
+    expect(rowsAfterDelete).toBe(rowsBefore - 1);
+
+    // After error: row reappears (rollback)
+    await expect(page.locator(".toolbar-status-error")).toBeVisible({ timeout: 5000 });
+    const rowsAfterRollback = await page.locator("table tbody tr").count();
+    expect(rowsAfterRollback).toBe(rowsBefore);
+  });
+
+  test.afterEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – connection error (immediate failure)
+// ============================================================================
+test.describe("Backend mode – connection error", () => {
+  test.beforeEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-offline");
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("editing a cell keeps the value and marks it unsaved", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    const cell = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("OfflineEdit");
+    await page.keyboard.press("Tab");
+
+    // Value stays visible (no rollback!)
+    await expect(cell).toContainText("OfflineEdit");
+
+    // Cell marked as unsaved
+    await expect(cell).toHaveClass(/cell-unsaved/);
+
+    // Status shows connection error / unsaved
+    await expect(page.locator(".toolbar-status")).toBeVisible({ timeout: 2000 });
+
+    // Value persists even after waiting
+    await page.waitForTimeout(1000);
+    await expect(cell).toContainText("OfflineEdit");
+  });
+
+  test("inserting a row keeps the row (no rollback)", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    await page.keyboard.press("ArrowDown");
+    const rowsBefore = await page.locator("table tbody tr").count();
+
+    // Create row via toolbar
+    await page.locator(".custom-table-toolbar .toolbar-button").click();
+
+    // Row stays (not rolled back)
+    const rowsAfter = await page.locator("table tbody tr").count();
+    expect(rowsAfter).toBe(rowsBefore + 1);
+
+    // Status shows error
+    await expect(page.locator(".toolbar-status-error")).toBeVisible({ timeout: 2000 });
+  });
+
+  test("editing cell 2 does NOT clear unsaved marking on cell 1", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Edit cell 1 (First Name, row 1 col 2)
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    const cell1 = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+    const cell2 = page.locator('td[data-row-idx="1"][data-col-idx="3"]');
+
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("Unsaved1");
+    await page.keyboard.press("Tab");
+
+    // Cell 1 should be unsaved
+    await expect(cell1).toContainText("Unsaved1");
+    await expect(cell1).toHaveClass(/cell-unsaved/);
+
+    // Now edit cell 2 (Last Name, same row, cursor moved here via Tab)
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("Unsaved2");
+    await page.keyboard.press("Tab");
+
+    // Cell 2 should also be unsaved
+    await expect(cell2).toContainText("Unsaved2");
+    await expect(cell2).toHaveClass(/cell-unsaved/);
+
+    // Cell 1 MUST STILL be unsaved (not cleared!)
+    await expect(cell1).toContainText("Unsaved1");
+    await expect(cell1).toHaveClass(/cell-unsaved/);
+  });
+
+  test("unsaved status persists and shows retrying", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("RetryMe");
+    await page.keyboard.press("Tab");
+
+    // Wait for background retry to start
+    await page.waitForTimeout(3000);
+
+    // Status should show retrying or unsaved (not "Synced")
+    const statusText = await page.locator(".toolbar-status").textContent();
+    expect(statusText).not.toContain("Synced");
+
+    // Value still there
+    const cell = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+    await expect(cell).toContainText("RetryMe");
+  });
+
+  test.afterEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – validation errors from backend
+// ============================================================================
+test.describe("Backend mode – validation errors", () => {
+  test.beforeEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-validation");
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("invalid email gets cell-error class and tooltip after backend response", async ({
+    page,
+  }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to row 1, Email column (col 4)
+    await page.keyboard.press("ArrowDown");
+    for (let i = 0; i < 4; i++) await page.keyboard.press("ArrowRight");
+
+    const emailCell = page.locator('td[data-row-idx="1"][data-col-idx="4"]');
+
+    // Type an invalid email (no @)
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("invalid-email");
+    await page.keyboard.press("Tab");
+
+    // Optimistic: value is visible immediately
+    await expect(emailCell).toContainText("invalid-email");
+
+    // After backend delay: cell should get error class and tooltip
+    await page.waitForSelector(".toolbar-status-error", { timeout: 5000 });
+    await expect(emailCell).toHaveClass(/cell-error/);
+    const title = await emailCell.getAttribute("title");
+    expect(title).toContain("must contain @");
+
+    // The typed value should STILL be visible (not rolled back)
+    await expect(emailCell).toContainText("invalid-email");
+  });
+
+  test("fixing the error clears the validation meta", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to Email (row 1, col 4) and type invalid value
+    await page.keyboard.press("ArrowDown");
+    for (let i = 0; i < 4; i++) await page.keyboard.press("ArrowRight");
+
+    const emailCell = page.locator('td[data-row-idx="1"][data-col-idx="4"]');
+
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("bad");
+    await page.keyboard.press("Tab");
+
+    // Wait for validation error
+    await page.waitForSelector(".toolbar-status-error", { timeout: 5000 });
+    await expect(emailCell).toHaveClass(/cell-error/);
+
+    // Fix the email — navigate back
+    await page.keyboard.press("Shift+Tab");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("valid@example.com");
+    await page.keyboard.press("Tab");
+
+    // Wait for second backend response
+    await page.waitForTimeout(3000);
+
+    // Error should be cleared
+    await expect(emailCell).not.toHaveClass(/cell-error/);
+    await expect(emailCell).toContainText("valid@example.com");
+  });
+
+  test("validation errors persist while editing other cells", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Type invalid email
+    await page.keyboard.press("ArrowDown");
+    for (let i = 0; i < 4; i++) await page.keyboard.press("ArrowRight");
+
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("nope");
+    await page.keyboard.press("Tab");
+
+    const emailCell = page.locator('td[data-row-idx="1"][data-col-idx="4"]');
+
+    // Wait for validation error
+    await page.waitForSelector(".toolbar-status-error", { timeout: 5000 });
+    await expect(emailCell).toHaveClass(/cell-error/);
+
+    // Edit another cell — cursor is on col 5 (Department) after Tab
+    await page.keyboard.type("Sales");
+    await page.keyboard.press("Tab");
+
+    // Email error should still be visible
+    await expect(emailCell).toHaveClass(/cell-error/);
+    await expect(emailCell).toContainText("nope");
+  });
+
+  test.afterEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – stale data detection
+// ============================================================================
+test.describe("Backend mode – stale data", () => {
+  test.beforeEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-stale");
+    await page.waitForSelector(".toolbar-status-ok");
+  });
+
+  test("backend normalization produces stale cells with warning status", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to First Name (row 1, col 2)
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    const nameCell = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+
+    // Type a lowercase name — backend will capitalize first letter
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("alice");
+    await page.keyboard.press("Tab");
+
+    // Optimistic: shows "alice"
+    await expect(nameCell).toContainText("alice");
+
+    // After 2s: backend normalizes to "Alice" — cell becomes stale
+    await page.waitForTimeout(3000);
+    await expect(nameCell).toContainText("Alice");
+    await expect(nameCell).toHaveClass(/cell-stale/);
+
+    // Status should show stale warning
+    await expect(page.locator(".toolbar-status-warning")).toBeVisible();
+    await expect(page.locator(".toolbar-status-warning")).toContainText("Stale");
+  });
+
+  test("email normalization to lowercase produces stale cell", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to Email (row 1, col 4)
+    await page.keyboard.press("ArrowDown");
+    for (let i = 0; i < 4; i++) await page.keyboard.press("ArrowRight");
+
+    const emailCell = page.locator('td[data-row-idx="1"][data-col-idx="4"]');
+
+    // Type uppercase email — backend will lowercase it
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("Alice@Example.COM");
+    await page.keyboard.press("Tab");
+
+    await expect(emailCell).toContainText("Alice@Example.COM");
+
+    // After backend normalization
+    await page.waitForTimeout(3000);
+    await expect(emailCell).toContainText("alice@example.com");
+    await expect(emailCell).toHaveClass(/cell-stale/);
+  });
+
+  test("value matching backend normalization does NOT become stale", async ({ page }) => {
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // Navigate to First Name (row 1, col 2)
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+
+    const nameCell = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+
+    // Type already-capitalized name — no server diff expected
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("Alice");
+    await page.keyboard.press("Tab");
+
+    await page.waitForTimeout(3000);
+    await expect(nameCell).toContainText("Alice");
+    await expect(nameCell).not.toHaveClass(/cell-stale/);
+  });
+
+  test.afterEach(async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("local");
+  });
+});
+
+// ============================================================================
+// Backend mode – auto-retry on connection error
+// ============================================================================
+test.describe("Backend mode – auto-retry", () => {
+  test("connection error shows retry attempts in status and keeps data", async ({ page }) => {
+    const modeSelect = page.locator(".theme-switcher-select").nth(1);
+    await modeSelect.selectOption("backend-offline");
+    await page.waitForSelector(".toolbar-status-ok");
+
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("Enter");
+    await page.keyboard.press("Control+a");
+    await page.keyboard.type("RetryTest");
+    await page.keyboard.press("Tab");
+
+    const cell = page.locator('td[data-row-idx="1"][data-col-idx="2"]');
+
+    // Data stays
+    await expect(cell).toContainText("RetryTest");
+    // Marked as unsaved
+    await expect(cell).toHaveClass(/cell-unsaved/);
+
+    // Wait for background retry to show in status
+    await page.waitForTimeout(3000);
+    const statusText = await page.locator(".toolbar-status").textContent();
+    // Should show retrying or unsaved, never "Synced"
+    expect(statusText).not.toContain("Synced");
+
+    // Reset
+    await modeSelect.selectOption("local");
   });
 });

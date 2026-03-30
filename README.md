@@ -85,6 +85,7 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 | **Undo / Redo**                   | Ctrl+Z / Ctrl+Y with full row-snapshot stack                                                                |
 | **Sorting**                       | Click column headers to cycle ASC → DESC → none                                                             |
 | **Filtering**                     | Per-column text/select filter in each header; Boolean columns get a Yes/No select                           |
+| **Combobox filter**               | Columns with `selectOptions` get a checkbox-dropdown filter; type to narrow the list                        |
 | **Filterable flag**               | Set `filterable: false` on a column to hide its filter input entirely                                       |
 | **Custom filter editor**          | Supply a `filterEditor` component per column to replace the built-in filter input                           |
 | **Controlled filter/sort**        | Optionally control sort & filter state from outside for backend-driven data                                 |
@@ -104,14 +105,23 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 | **i18n / translations**           | All built-in UI strings are overridable via a typesafe `translations` prop                                  |
 | **Built-in editors**              | String, Number, Boolean (checkbox), Combobox (single-select), MultiCombobox (multi-select)                  |
 | **Custom editors**                | Provide your own editor component per column                                                                |
-| **Validation**                    | Per-column `validate` function with warning/error severity                                                  |
-| **Theming**                       | 6 built-in themes; custom themes are plain CSS files with CSS custom properties                             |
+| **Validation**                    | Per-column `validate` function; result shown as `cell-error`/`cell-warning` class + tooltip                 |
+| **Automatic CSS classes**         | Cells and headers receive `col-type-*`, `col-required`, `col-readonly`, `cell-ellipsis` automatically       |
+| **Column `className`**            | Extra CSS class(es) on every `<th>` and `<td>` of a column via `ColumnConfig.className`                     |
+| **Theming**                       | 8 built-in themes; custom themes are plain CSS files with CSS custom properties                             |
+| **Theme pencil icon**             | Per-theme pencil icon for the textarea dialog via `--ct-pencil-icon` CSS variable                          |
+| **`useAsyncTableState` hook**     | Encapsulates deferred snapshots, optimistic edits, inflight tracking, stale detection, and status           |
+| **Shake animation on rollback**   | Table shakes briefly when an async operation fails and rows are rolled back                                 |
+| **Stale data detection**          | Cells changed by the server are marked `cell-stale` with a warning status                                  |
+| **Unsaved cell marking**          | Connection-error edits get `cell-unsaved` class; auto-retry with exponential backoff                       |
+| **`serverOwned` columns**         | Backend-owned columns (e.g. ID) always use server value during merge, ignoring inflight counters            |
+| **`wrap` column option**          | Allow text wrapping per column; all other columns default to `nowrap`                                       |
 
 ---
 
 ## Theming
 
-CustomTable ships with six ready-made themes and a simple CSS-variable-based theming system that makes it easy to create your own.
+CustomTable ships with eight ready-made themes and a simple CSS-variable-based theming system that makes it easy to create your own.
 
 ### Built-in Themes
 
@@ -123,6 +133,8 @@ CustomTable ships with six ready-made themes and a simple CSS-variable-based the
 | **Google Sheets** | White and blue, thin borders, Roboto-like font                                            |
 | **Material**      | MUI DataTable style — borderless cells, row dividers, elevation shadows, generous padding |
 | **Numbers**       | Apple Numbers style — alternating row stripes, subtle colors                              |
+| **Material 3**    | Material Design 3 (Material You) purple scheme, rounded surfaces                         |
+| **High Contrast** | Maximum readability — strong borders, bold colors, WCAG AAA contrast ratios              |
 
 ### Custom Themes
 
@@ -137,9 +149,23 @@ A theme is just a CSS file that sets CSS custom properties on `:root`. The struc
   --ct-border: #ddd;
   --ct-header-bg: #f5f5f5;
   --ct-selected-outline: #0066cc;
+  --ct-pencil-icon: "✏️"; /* Icon shown on the textarea dialog button */
   /* … see any built-in theme for the full list of variables */
 }
 ```
+
+#### `--ct-pencil-icon`
+
+Each theme defines the pencil icon shown on the textarea-dialog trigger button via the `--ct-pencil-icon` CSS variable:
+
+| Theme(s) | Icon |
+| --- | --- |
+| Light, Dark | 🖉 |
+| Material, Material 3 | ✏️ |
+| Excel Classic, Google Sheets | 📝 |
+| Numbers, High Contrast | 🖋 |
+
+The fallback (when no theme sets the variable) is `✎`.
 
 To apply a theme, simply import or inject its CSS after `base.css`. The example app demonstrates runtime theme switching by injecting the selected theme's CSS into a `<style>` tag — but for most use cases a static CSS import is all you need.
 
@@ -393,6 +419,9 @@ When an undo or redo action occurs, the component automatically calculates the d
 | `textEllipsisLength`    | `number`                                          | —        | —                | Truncates long text to this length with ` [...]` in display mode.                                                 |
 | `translations`          | `Partial<TableTranslations>`                      | —        | English defaults | Override any built-in UI string. See [Internationalisation](#internationalisation-i18n).                          |
 | `extraContextMenuItems` | `CustomContextMenuItem[]`                         | —        | `[]`             | Custom entries appended to the right-click context menu. See [Extensible Context Menu](#extensible-context-menu). |
+| `status`                | `TableStatus`                                     | —        | —                | Status indicator in the toolbar. See [TableStatus](#tablestatus).                                                 |
+| `loading`               | `boolean`                                         | —        | `false`          | Shows loading spinners on active filters and sets `cursor: wait`.                                                 |
+| `pendingSortColumn`     | `string`                                          | —        | —                | Column name with a pending sort — shows a spinner instead of the sort arrow.                                      |
 
 ### ColumnConfig\<T\>
 
@@ -402,18 +431,22 @@ interface ColumnConfig<T> {
   type: string; // "String" | "Number" | "Boolean" | "Combobox" | "MultiCombobox"
   label?: string; // Display label (defaults to name)
   readOnly?: boolean; // Prevent editing
-  required?: boolean; // Mark as required (visual indication)
+  required?: boolean; // Mark as required (adds col-required class)
   editor?: Editor<T>; // Custom editor component (overrides type-based lookup)
-  selectOptions?: string[]; // Option list for Combobox / MultiCombobox
+  selectOptions?: string[]; // Option list for Combobox / MultiCombobox; enables combobox filter
   freeText?: boolean; // Allow custom values in Combobox/MultiCombobox (default: true)
   multiselect?: boolean; // Enable multi-select mode (used internally by MultiCombobox)
   enabledIf?: (row: Row) => boolean; // Conditional enable
-  validate?: (value: any) => boolean | ValidationResult;
+  validate?: (value: any) => boolean | ValidationResult; // See Validation section
   numberFormat?: NumberFormat; // Display & parse format for Number columns
   align?: "left" | "right" | "center"; // Text alignment (Number defaults to "right")
   comment?: string; // Tooltip or description shown in column header
   filterable?: boolean; // Set to false to hide the filter input (default: true)
   filterEditor?: FilterEditor; // Custom filter component in the column header
+  dialogTitle?: string; // Title template for the textarea dialog editor
+  wrap?: boolean; // Allow text wrapping (default: false = nowrap)
+  className?: string; // Extra CSS class(es) applied to every <th> and <td> of this column
+  serverOwned?: boolean; // Backend-owned column — always overwritten during merge (default: false)
 }
 ```
 
@@ -528,6 +561,252 @@ const MyRangeFilter: FilterEditor = ({ value, onChange }) => (
 );
 
 { name: "salary", type: "Number", filterEditor: MyRangeFilter }
+```
+
+### Combobox Filter (built-in, for selectOptions columns)
+
+When a column has `selectOptions`, the built-in filter automatically becomes a **checkbox-dropdown combobox** instead of a plain text input. The user can:
+
+- **Type** to narrow the list of options shown in the dropdown
+- **Check/uncheck** individual options — the filter matches rows where the cell value equals **any** of the checked values (exact match, OR logic)
+- Click **×** to clear all selections
+
+Empty-string values in `selectOptions` appear as *(leer)* in italics and are fully selectable.
+
+Internally the filter state encodes selected values as a newline-separated string. When multiple values are selected the matching is exact; when no values are selected the column is not filtered.
+
+```tsx
+{
+  name: "department",
+  type: "Combobox",
+  selectOptions: ["HR", "IT", "Sales", "Marketing"],
+  // → filter header shows a combobox with checkboxes
+}
+```
+
+### ValidationResult
+
+`ColumnConfig.validate` is called on the current cell value on every render. It may return:
+
+| Return value | CSS class on `<td>` | Tooltip |
+| --- | --- | --- |
+| `true` | — | — |
+| `false` | `cell-error` | — |
+| `{ severity: "error", message }` | `cell-error` | `message` |
+| `{ severity: "warning", message }` | `cell-warning` | `message` |
+
+```ts
+interface ValidationResult {
+  message: string; // Shown as the cell's title attribute (tooltip on hover)
+  severity: "warning" | "error";
+}
+```
+
+```tsx
+// Example: required field + minimum length warning
+validate: (value) => {
+  if (value == null || value === "")
+    return { severity: "error", message: "This field is required" };
+  if (value.length < 3)
+    return { severity: "warning", message: "Should be at least 3 characters" };
+  return true;
+}
+```
+
+The `cell-error` and `cell-warning` classes are styled by each theme. You can override them in your own CSS:
+
+```css
+.custom-table .cell-error  { background: #fdd; color: #900; }
+.custom-table .cell-warning { background: #ffe; color: #660; }
+```
+
+> **Note:** If `cellMeta.title` is set for a cell, it takes priority over the validation message.
+
+### Automatic CSS Classes
+
+The following classes are applied automatically to `<th>` and/or `<td>` elements without any extra configuration:
+
+#### On `<th>` (column header) and `<td>` (data cell)
+
+| Class | Condition |
+| --- | --- |
+| `col-type-{type}` | Always — e.g. `col-type-String`, `col-type-Number`, `col-type-Boolean` |
+| `col-required` | `column.required === true` |
+| `col-readonly` | Cell is non-editable (column.readOnly, rowMeta.readOnly, or cellMeta.disabled) |
+| `col-wrap` | `column.wrap === true` (allows text wrapping; all cells are `nowrap` by default) |
+| `column.className` | Always — extra class(es) from the column config |
+
+#### On `<th>` only
+
+| Class | Condition |
+| --- | --- |
+| `col-ellipsis` | `textEllipsisLength` prop is set on the table |
+
+#### On `<td>` only
+
+| Class | Condition |
+| --- | --- |
+| `cell-disabled` | `cellMeta.disabled === true` |
+| `cell-error` | `validate()` returns `false` or `{ severity: "error" }` |
+| `cell-warning` | `validate()` returns `{ severity: "warning" }` |
+| `cell-ellipsis` | Cell value is a string that exceeds `textEllipsisLength` |
+| `cellMeta.className` | Always — extra class(es) from the cell meta map |
+
+These classes make it easy to target specific column types, states, or validation conditions purely in CSS without additional wrapper components.
+
+### TableStatus
+
+Optional status indicator shown in the toolbar (right-aligned, next to "Create Rows").
+
+```ts
+interface TableStatus {
+  text: string;
+  severity: "ok" | "info" | "warning" | "error";
+}
+```
+
+| Severity    | Icon | Style |
+| ----------- | ---- | ----- |
+| `"ok"`      | ✓    | Green |
+| `"info"`    | ⟳ (spinner) | Blue, animated rotation |
+| `"warning"` | ⚠    | Orange |
+| `"error"`   | ⚠    | Red, bold |
+
+Combine with `loading` and `pendingSortColumn` for full backend feedback:
+
+```tsx
+<CustomTable
+  rows={rows}
+  columns={columns}
+  status={{ severity: "info", text: "Saving..." }}
+  loading={true}
+  pendingSortColumn="email"
+/>
+```
+
+- **`loading`**: shows a spinner inside active filter inputs and sets `cursor: wait` on the table
+- **`pendingSortColumn`**: replaces the sort arrow (▲/▼) with a spinner on the specified column
+- **`status`**: shows the status text with icon in the toolbar
+
+### InflightEditTracker
+
+Utility class for safely merging backend data with optimistic local edits. Prevents race conditions where a backend response overwrites a user edit that hasn't been confirmed yet.
+
+```ts
+import { InflightEditTracker } from "customtable";
+
+const tracker = new InflightEditTracker();
+
+// When the user commits an edit:
+tracker.trackEdit(rowKey, colName);       // counter++ for that cell
+
+// When the backend confirms the edit:
+tracker.resolveEdit(rowKey, colName);     // counter-- for that cell
+
+// When merging backend data with local state:
+const merged = tracker.mergeRows(
+  localRows,        // current optimistic rows
+  backendRows,      // rows from backend response
+  columns,          // ColumnConfig[] (checks serverOwned)
+  localKeyFn,       // (row, idx) => rowKey
+  backendKeyFn,     // (row, idx) => rowKey
+);
+```
+
+**Merge rules per cell:**
+
+| Condition | Result |
+| --- | --- |
+| `serverOwned: true` | Always use backend value (e.g. auto-generated ID, timestamps) |
+| Inflight counter > 0 | Keep local value (user edit not yet confirmed) |
+| Inflight counter === 0 | Use backend value |
+
+**Batch helpers:**
+
+```ts
+// Track all changed cells between two row snapshots at once:
+const batch = tracker.trackChanges(oldRows, newRows, columns, rowKeyFn);
+
+// Resolve a full batch when the backend confirms:
+tracker.resolveBatch(batch);
+```
+
+### useAsyncTableState Hook
+
+Encapsulates the complete async backend integration pattern in a single hook. Handles deferred snapshots, optimistic edits, inflight tracking, stale detection, and status derivation.
+
+```tsx
+import { useAsyncTableState } from "customtable";
+
+const asyncState = useAsyncTableState({
+  allRows,                          // Full dataset
+  columns,                          // ColumnConfig[] (for merge + serverOwned)
+  sortConfig, filters,              // Current user-requested sort/filter
+  rowKeyFn: (row, i) => row.id,    // Stable row key
+  pageItems, pageRows,              // Current page (with origIdx mapping)
+  totalFilteredRows,                // For pagination
+  delayMs: 2000,                    // Backend latency (0 = sync)
+  transformBackendRows: (rows) => rows, // Optional: server-side normalization
+  validateRows: (rows, keyFn) => ({}),  // Optional: returns CellMetaMap with errors
+});
+
+// Pass to CustomTable:
+<CustomTable
+  rows={asyncState.displayRows}
+  sortConfig={asyncState.displaySortConfig}
+  filters={asyncState.displayFilters}
+  status={asyncState.status}
+  loading={asyncState.loading}
+  pendingSortColumn={asyncState.pendingSortColumn}
+  pendingFilterColumns={asyncState.pendingFilterColumns}
+  cellMeta={{ ...staticMeta, ...asyncState.asyncCellMeta }}
+  onRowsChange={(newRows) => {
+    asyncState.handleRowsChange(newRows);
+    setAllRows(mapBackToSource(newRows));
+  }}
+  onUpdateRows={asyncState.handleUpdateRows}
+  onCreateRows={() => asyncState.handleAsyncOp("create")}
+  onDeleteRows={() => asyncState.handleAsyncOp("delete")}
+/>
+```
+
+**Returned state & callbacks:**
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `displayRows` | `Row[]` | Confirmed rows for CustomTable |
+| `displaySortConfig` | `SortConfig` | Confirmed sort config |
+| `displayFilters` | `FilterState` | Confirmed filters |
+| `displayItems` | `Array<{row, origIdx}>` | Page items with index mapping |
+| `displayTotalFilteredRows` | `number` | For pagination |
+| `status` | `TableStatus \| undefined` | Auto-derived: ok / info / warning / error |
+| `loading` | `boolean` | Deferred load in progress |
+| `pendingSortColumn` | `string \| undefined` | For sort spinner |
+| `pendingFilterColumns` | `string[] \| undefined` | For filter spinners |
+| `asyncCellMeta` | `CellMetaMap` | Merged validation + stale + unsaved meta |
+| `handleRowsChange` | `(rows) => void` | Optimistic patch + inflight tracking |
+| `handleUpdateRows` | `(rows) => Promise` | Batch resolve + validation |
+| `handleAsyncOp` | `(label) => Promise` | Generic async operation |
+| `setError` | `(msg) => void` | Set custom error message |
+| `markCellsUnsaved` | `(cells) => void` | Mark cells as unsaved (connection error) |
+| `consumeLastBatch` | `() => batch` | Get tracked changes for custom onUpdateRows |
+| `resolveBatch` | `(batch) => void` | Resolve inflight counters |
+| `clearAsyncMeta` | `() => void` | Clear all async meta state |
+
+### Shake Animation
+
+When an async callback (`onUpdateRows`, `onCreateRows`, `onDeleteRows`) rejects, CustomTable automatically:
+1. Rolls back the rows to the pre-mutation state
+2. Triggers a brief horizontal shake animation (0.4s) on the table container
+
+This provides immediate visual feedback that an operation failed, without blocking the UI. The `cell-error` class from `status` provides the textual explanation.
+
+The shake uses the CSS class `.shake` with `@keyframes ct-shake`. You can override the animation in your theme:
+
+```css
+.custom-table.shake {
+  animation: ct-shake 0.4s ease-in-out;
+}
 ```
 
 ### TableTranslations
@@ -816,84 +1095,263 @@ The `TableTranslations` interface is exported and fully typesafe — the TypeScr
 
 ## Backend Integration Guide
 
-CustomTable is designed to be a **view layer** for backend-managed data. Here's the recommended integration pattern:
+CustomTable is designed as a **view layer** for backend-managed data. The library provides building blocks; you compose them into a pattern that fits your backend.
 
-### 1. Controlled Sort & Filter → Backend Query
+### Architecture Overview
 
-```tsx
-const [sort, setSort] = useState<SortConfig>(null);
-const [filters, setFilters] = useState<FilterState>({});
-const [rows, setRows] = useState<Row[]>([]);
+```mermaid
+flowchart TB
+  subgraph app["Your Application"]
+    OP["Optimistic Patch\n(in onRowsChange)"]
+    IT["InflightEditTracker\n(per-cell counter)"]
+    SS["Snapshot & Deferred State\n(confirmed vs pending)"]
+    OP --> IT --> SS
+  end
 
-useEffect(() => {
-  api.fetchRows({ sort, filters }).then(setRows);
-}, [sort, filters]);
+  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta,\npendingSortColumn, ..."| CT["CustomTable"]
 
-<CustomTable
-  rows={rows}
-  columns={columns}
-  onRowsChange={setRows}
-  sortConfig={sort}
-  onSortChange={setSort}
-  filters={filters}
-  onFilterChange={setFilters}
-/>;
+  CT -->|"onRowsChange\nonUpdateRows\nonSortChange\nonFilterChange"| app
 ```
 
-### 2. Granular Change Events → Backend Mutations
+### 1. Deferred Snapshot Pattern (Sort & Filter Latency)
+
+Sort and filter changes should not update the table data instantly when the backend handles the query. Use a **deferred snapshot** that only updates after the backend responds.
 
 ```tsx
+import { SortConfig, FilterState, Row } from "customtable";
+
+// "What the user requested" vs "what the backend confirmed"
+const [sortConfig, setSortConfig] = useState<SortConfig>(null);
+const [filters, setFilters] = useState<FilterState>({});
+const [confirmedRows, setConfirmedRows] = useState<Row[]>([]);
+const [loading, setLoading] = useState(false);
+
+// Fetch from backend when sort/filter changes
+useEffect(() => {
+  setLoading(true);
+  api.fetchRows({ sort: sortConfig, filters }).then((rows) => {
+    setConfirmedRows(rows);
+    setLoading(false);
+  });
+}, [sortConfig, filters]);
+
 <CustomTable
-  rows={rows}
-  columns={columns}
-  onRowsChange={setRows}
-  onCreateRows={async (newRows) => {
-    const created = await api.createRows(newRows);
-    // Optionally update rows with server-assigned IDs
-  }}
-  onUpdateRows={async (updatedRows) => {
-    await api.updateRows(updatedRows);
-  }}
-  onDeleteRows={async (deletedRows) => {
-    await api.deleteRows(deletedRows.map((r) => r.id));
-  }}
+  rows={confirmedRows}           // confirmed data from backend
+  sortConfig={confirmedSort}     // confirmed sort (deferred)
+  onSortChange={setSortConfig}   // immediate: triggers fetch
+  filters={confirmedFilters}     // confirmed filters (deferred)
+  onFilterChange={setFilters}    // immediate: triggers fetch
+  loading={loading}
+  pendingSortColumn={...}        // derived from requested vs confirmed
+  pendingFilterColumns={...}     // derived from requested vs confirmed
 />
 ```
 
-### 3. Cell Meta for Error States
+**Key principle:** Pass the **confirmed** `sortConfig` and `filters` to CustomTable (so it doesn't re-sort/re-filter old data), but update the **requested** state immediately (so `pendingSortColumn`/`pendingFilterColumns` show spinners).
 
-After server validation:
+Filter inputs use an internal buffer (`CustomColHeader`) that preserves the user's typed text even when the controlled `filters` prop lags behind.
+
+### 2. Optimistic Edits with Inflight Tracking
+
+When a user edits a cell, show the change immediately. Track which cells have unconfirmed changes so backend data doesn't overwrite them.
 
 ```tsx
-const [cellMeta, setCellMeta] = useState<CellMetaMap>({});
+import { InflightEditTracker, Row, ColumnConfig } from "customtable";
 
-const handleUpdate = async (updatedRows: Row[]) => {
+const trackerRef = useRef(new InflightEditTracker());
+const lastBatchRef = useRef<Array<{ rowKey: string; colName: string }>>([]);
+
+// In onRowsChange: track changed cells + optimistic patch
+onRowsChange={(newRows) => {
+  // 1. Track which cells changed (increments inflight counters)
+  lastBatchRef.current = trackerRef.current.trackChanges(
+    displayRows, newRows, columns,
+    (_, i) => getRowKey(i),
+  );
+
+  // 2. Update the confirmed snapshot immediately (optimistic)
+  setConfirmed(prev => ({
+    ...prev,
+    rows: newRows,
+    items: prev.items.map((item, i) => ({ ...item, row: newRows[i] })),
+  }));
+
+  // 3. Persist to the authoritative data store
+  setAllRows(updated);
+}}
+
+// In onUpdateRows: resolve counters when backend confirms
+onUpdateRows={(updatedRows) => {
+  const batch = [...lastBatchRef.current];
+  lastBatchRef.current = [];
+  return api.updateRows(updatedRows).then(() => {
+    trackerRef.current.resolveBatch(batch);  // counter-- for each cell
+  });
+}}
+```
+
+### 3. Merging Backend Data with Local Edits
+
+When the backend responds with fresh data, merge it using `InflightEditTracker.mergeRows()`. This protects in-progress edits from being overwritten.
+
+```tsx
+// In the deferred snapshot effect:
+const mergedRows = tracker.mergeRows(
+  localRows,      // current optimistic rows
+  backendRows,    // rows from backend response
+  columns,        // ColumnConfig[] — checks serverOwned
+  localKeyFn,     // (row, idx) => rowKey
+  backendKeyFn,   // (row, idx) => rowKey
+);
+```
+
+**Merge rules per cell:**
+
+| `serverOwned` | Inflight counter | Result |
+|---|---|---|
+| `true` | any | Backend value (always) |
+| `false` | > 0 | Local value (user edit pending) |
+| `false` | 0 | Backend value |
+
+Mark backend-owned columns (auto-generated IDs, timestamps, computed fields) with `serverOwned: true` in the column config:
+
+```tsx
+{ name: "id", type: "Number", readOnly: true, serverOwned: true }
+{ name: "updatedAt", type: "String", readOnly: true, serverOwned: true }
+```
+
+### 4. Stale Data Detection
+
+After merging, detect cells where the backend changed a value the user didn't edit. Mark them visually so the user knows the data was modified externally (e.g. by another user or a server-side computation).
+
+```tsx
+// Compare pre-merge and post-merge by ROW KEY (not array index!)
+const prevByKey = new Map(prev.rows.map((r, i) => [getRowKey(i), r]));
+
+mergedRows.forEach((row, i) => {
+  const rowKey = getRowKey(i);
+  const prevRow = prevByKey.get(rowKey);
+  for (const col of columns) {
+    if (col.serverOwned) continue;
+    if (prevRow[col.name] !== row[col.name] && tracker.getCount(rowKey, col.name) === 0) {
+      // Cell changed by backend, user has no pending edit → stale
+      staleMeta[rowKey].cells[col.name] = {
+        className: "cell-stale",
+        title: `Server changed: "${row[col.name]}"`,
+      };
+    }
+  }
+});
+```
+
+Theme the stale class with CSS variables:
+
+```css
+:root {
+  --ct-cell-stale-bg: hsl(40, 100%, 93%);
+  --ct-cell-stale-text: hsl(30, 80%, 30%);
+}
+.custom-table .cell-stale {
+  background-color: var(--ct-cell-stale-bg);
+  color: var(--ct-cell-stale-text);
+}
+```
+
+### 5. Error Handling & Rollback
+
+CustomTable's `withAsyncRollback` mechanism automatically restores the previous row state when an async callback rejects. Combine with the `status` prop for user feedback:
+
+```tsx
+const [status, setStatus] = useState<TableStatus>();
+
+onUpdateRows={async (rows) => {
+  setStatus({ severity: "info", text: "Saving..." });
   try {
-    await api.updateRows(updatedRows);
-    // Clear errors for updated rows
-  } catch (error) {
-    // Set error meta from server response
-    const newMeta: CellMetaMap = {};
-    for (const err of error.fieldErrors) {
-      newMeta[err.rowKey] = {
-        ...newMeta[err.rowKey],
+    await api.updateRows(rows);
+    setStatus({ severity: "ok", text: "Synced" });
+  } catch (err) {
+    setStatus({ severity: "error", text: err.message });
+    throw err;  // re-throw → CustomTable rolls back the rows
+  }
+}}
+```
+
+**Error types and recommended handling:**
+
+| Error type | Example | Recommended action |
+|---|---|---|
+| Network error | Connection refused | Auto-retry (1–2 attempts, exponential backoff), then show error |
+| Server error (5xx) | Internal server error | Show error, rollback. User can retry manually |
+| Validation error (4xx) | "Email is invalid" | Keep data, apply `cellMeta` with `cell-error` class + tooltip |
+| Conflict (409) | Concurrent edit | Merge + mark stale cells |
+
+### 6. Backend Validation via cellMeta
+
+When the backend returns field-level validation errors, apply them as dynamic `cellMeta`. The errors remain visible while the user continues editing other cells.
+
+```tsx
+const [validationMeta, setValidationMeta] = useState<CellMetaMap>({});
+
+onUpdateRows={async (rows) => {
+  const response = await api.updateRows(rows);
+  if (response.validationErrors) {
+    const meta: CellMetaMap = {};
+    for (const err of response.validationErrors) {
+      meta[err.rowKey] = {
         cells: {
-          ...newMeta[err.rowKey]?.cells,
+          ...meta[err.rowKey]?.cells,
           [err.column]: {
-            style: { backgroundColor: "#fdd" },
+            className: err.severity === "warning" ? "cell-warning" : "cell-error",
             title: err.message,
-            className: "cell-error",
           },
         },
       };
     }
-    setCellMeta(newMeta);
-    throw error; // Triggers rollback
+    setValidationMeta(meta);
+  } else {
+    // Clear errors for successfully validated rows
+    setValidationMeta({});
   }
-};
+}}
 
-<CustomTable cellMeta={cellMeta} onUpdateRows={handleUpdate} /* ... */ />;
+// Merge static + dynamic cellMeta
+const mergedMeta = { ...staticMeta, ...validationMeta, ...staleMeta };
+<CustomTable cellMeta={mergedMeta} ... />
 ```
+
+### 7. Status Indicator
+
+The `status` prop renders a status indicator in the toolbar. Use it to show the current sync state:
+
+```tsx
+const status = useMemo(() => {
+  if (lastError) return { severity: "error", text: lastError };
+  if (loading) return { severity: "info", text: "Loading..." };
+  if (staleCount > 0) return { severity: "warning", text: `${staleCount} stale cell(s)` };
+  return { severity: "ok", text: "Synced" };
+}, [lastError, loading, staleCount]);
+```
+
+| Severity | Visual | When |
+|---|---|---|
+| `ok` | ✓ green | All data synced |
+| `info` | ⟳ spinner | Request in flight |
+| `warning` | ⚠ orange | Stale data detected |
+| `error` | ⚠ red | Operation failed |
+
+### Complete Example
+
+The included example app (`src/examples/example.tsx`) demonstrates all of these patterns with 7 switchable modes:
+
+| Mode | What it demonstrates |
+|---|---|
+| Local (sync) | Baseline — no async, instant everything |
+| Backend (100 ms) | Realistic fast backend |
+| Backend (2 s) | Slow backend — visible spinners and deferred snapshots |
+| Error (2 s) | Server errors → rollback after delay |
+| Connection error | Network failure → auto-retry → rollback |
+| Validation (2 s) | Backend returns field-level errors via cellMeta |
+| Stale (2 s) | Backend normalizes data → stale cell detection |
 
 ---
 
@@ -1002,6 +1460,9 @@ src/
 │   ├── useCursorKeys.tsx         — Keyboard navigation
 │   ├── useContextMenu.tsx        — Context menu state & item building
 │   ├── directDomUpdateForCursor.tsx — Direct DOM updates for cursor
+│   ├── InflightEditTracker.ts    — Per-cell edit counter for optimistic merge
+│   ├── useAsyncTableState.ts    — Hook: deferred snapshots, optimistic edits, stale detection
+│   ├── ComboboxFilter.tsx        — Checkbox-dropdown filter for selectOptions columns
 │   ├── useUndoRedo.ts            — Undo/Redo stack
 │   ├── useGridResizeChecker.ts
 │   ├── useStickColumnLeftsChecker.ts

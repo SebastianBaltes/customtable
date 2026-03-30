@@ -8,10 +8,12 @@ import {
   FilterState,
   Row,
   SortConfig,
+  TableStatus,
 } from "../index";
 import { TextareaDialogEditor } from "../editors/TextareaDialogEditor";
 import { Pagination } from "../pagination/Pagination";
 import { useLocalStorage } from "./useLocalStorage";
+import { useAsyncTableState } from "../core/useAsyncTableState";
 
 // Import JSON as ESM (tsconfig.json has resolveJsonModule: true)
 import exampleData from "./example-data.json";
@@ -47,6 +49,7 @@ export const demoColumns: ColumnConfig<any>[] = [
     readOnly: true,
     label: "ID",
     comment: "Unique internal row ID",
+    serverOwned: true,
   },
   {
     name: "complexKey",
@@ -96,6 +99,8 @@ export const demoColumns: ColumnConfig<any>[] = [
     comment: "Free text / long description (0-1000 characters)",
     editor: TextareaDialogEditor,
     dialogTitle: "${firstName} ${lastName}: Description",
+    className: "col-description",
+    wrap: true,
   },
   {
     name: "isActive",
@@ -246,8 +251,92 @@ const exampleCellMeta: CellMetaMap = {
   },
 };
 
+type DataMode =
+  | "local"
+  | "backend-fast"
+  | "backend-slow"
+  | "backend-error"
+  | "backend-offline"
+  | "backend-validation"
+  | "backend-stale";
+
+const modeLabels: Record<DataMode, string> = {
+  local: "Local (sync)",
+  "backend-fast": "Backend (100 ms)",
+  "backend-slow": "Backend (2 s)",
+  "backend-error": "Error (2 s)",
+  "backend-offline": "Connection error",
+  "backend-validation": "Validation (2 s)",
+  "backend-stale": "Stale (2 s)",
+};
+
+const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
+const delayReject = (ms: number, msg: string) =>
+  new Promise<void>((_, reject) => setTimeout(() => reject(new Error(msg)), ms));
+
+/** Retry a promise-returning function with exponential backoff. */
+async function withRetry(fn: () => Promise<void>, retries: number, baseMs: number): Promise<void> {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (i === retries) throw err;
+      await delay(baseMs * 2 ** i);
+    }
+  }
+}
+
+/**
+ * Simulate backend-side normalization (stale mode):
+ * trims whitespace, capitalizes first letter of names, lowercases emails.
+ */
+function simulateServerNormalization(rows: Row[]): Row[] {
+  return rows.map((row) => {
+    const r = { ...row };
+    if (typeof r.firstName === "string" && r.firstName) {
+      r.firstName = r.firstName.trim().replace(/^\w/, (c: string) => c.toUpperCase());
+    }
+    if (typeof r.lastName === "string" && r.lastName) {
+      r.lastName = r.lastName.trim().replace(/^\w/, (c: string) => c.toUpperCase());
+    }
+    if (typeof r.email === "string" && r.email) {
+      r.email = r.email.trim().toLowerCase();
+    }
+    return r;
+  });
+}
+
+/** Simulate backend validation: returns cellMeta errors for specific columns. */
+function simulateValidation(
+  updatedRows: Row[],
+  rowKeyFn: (row: Row, idx: number) => string,
+): CellMetaMap {
+  const meta: CellMetaMap = {};
+  updatedRows.forEach((row, i) => {
+    const key = rowKeyFn(row, i);
+    const cells: Record<string, { title?: string; className?: string }> = {};
+    // Email: must contain @
+    if (row.email != null && row.email !== "" && !String(row.email).includes("@")) {
+      cells.email = { title: "Invalid email: must contain @", className: "cell-error" };
+    }
+    // First name: required, min 2 chars
+    if (row.firstName != null && row.firstName !== "" && String(row.firstName).length < 2) {
+      cells.firstName = { title: "Too short: minimum 2 characters", className: "cell-warning" };
+    }
+    // Last name: must not be empty if first name is set
+    if (row.firstName && (!row.lastName || String(row.lastName).trim() === "")) {
+      cells.lastName = { title: "Last name is required", className: "cell-error" };
+    }
+    if (Object.keys(cells).length > 0) {
+      meta[key] = { cells };
+    }
+  });
+  return meta;
+}
+
 const App = () => {
   const [allRows, setAllRows] = useState(initialRows);
+  const [dataMode, setDataMode] = useLocalStorage<DataMode>("ct-data-mode", "local");
   const [activeTheme, setActiveTheme] = useLocalStorage("ct-theme", "light");
 
   const applyTheme = useCallback((themeId: string) => {
@@ -267,12 +356,13 @@ const App = () => {
     applyTheme(activeTheme);
   }, [activeTheme, applyTheme]);
 
+
   // Controlled sort & filter — allows external reset
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
   const [filters, setFilters] = useState<FilterState>({});
 
-  // Ellipsis toggle
-  const [ellipsis, setEllipsis] = useState(true);
+  // Ellipsis toggle (persisted)
+  const [ellipsis, setEllipsis] = useLocalStorage("ct-ellipsis", true);
 
   // Pagination state
   const [page, setPage] = useState(1);
@@ -287,7 +377,25 @@ const App = () => {
       indexed = indexed.filter(({ row }) =>
         activeFilters.every(([colName, filterVal]) => {
           const cellVal = row[colName];
+
+          // Multi-select filter: \x00 prefix + newline-separated exact match
+          if (filterVal.startsWith("\x00")) {
+            const selectedVals = filterVal
+              .slice(1)
+              .split("\n")
+              .filter(Boolean)
+              .map((v) => (v === "\x01empty\x01" ? "" : v));
+            if (cellVal == null || cellVal === "") return selectedVals.includes("");
+            if (Array.isArray(cellVal))
+              return (cellVal as unknown[]).some((v) => selectedVals.includes(String(v)));
+            return selectedVals.includes(String(cellVal));
+          }
+
           if (cellVal == null) return false;
+          if (Array.isArray(cellVal))
+            return (cellVal as unknown[]).some((v) =>
+              String(v).toLowerCase().includes(filterVal.toLowerCase()),
+            );
           return String(cellVal).toLowerCase().includes(filterVal.toLowerCase());
         }),
       );
@@ -310,8 +418,98 @@ const App = () => {
   const totalFilteredRows = filteredSorted.length;
   const effectivePageSize = pageSize === 0 ? totalFilteredRows || 1 : pageSize;
   const start = (page - 1) * effectivePageSize;
-  const currentPageItems = filteredSorted.slice(start, start + effectivePageSize);
-  const rows = currentPageItems.map((item) => item.row);
+  const currentPageItems = useMemo(
+    () => filteredSorted.slice(start, start + effectivePageSize),
+    [filteredSorted, start, effectivePageSize],
+  );
+  const pageRows = useMemo(() => currentPageItems.map((item) => item.row), [currentPageItems]);
+
+  // --- Async delay for each mode ---
+  const asyncDelayMs =
+    dataMode === "backend-slow" || dataMode === "backend-error" || dataMode === "backend-validation" || dataMode === "backend-stale"
+      ? 2000
+      : dataMode === "backend-offline"
+        ? 200
+        : dataMode === "backend-fast"
+          ? 100
+          : 0; // local = sync
+
+  // --- useAsyncTableState hook ---
+  const asyncState = useAsyncTableState({
+    allRows,
+    columns: initialColumns,
+    sortConfig,
+    filters,
+    rowKeyFn: (_r, i) => "" + currentPageItems[i]?.origIdx,
+    pageItems: currentPageItems,
+    pageRows,
+    totalFilteredRows,
+    delayMs: asyncDelayMs,
+    transformBackendRows:
+      dataMode === "backend-stale" ? simulateServerNormalization : undefined,
+    validateRows:
+      dataMode === "backend-validation" ? simulateValidation : undefined,
+  });
+
+  const {
+    displayRows,
+    displayItems,
+    displaySortConfig,
+    displayFilters,
+    displayTotalFilteredRows,
+    status: hookStatus,
+    loading,
+    pendingSortColumn,
+    pendingFilterColumns,
+    asyncCellMeta,
+    handleRowsChange: hookHandleRowsChange,
+    handleUpdateRows: hookHandleUpdateRows,
+    handleAsyncOp,
+    setError: setLastError,
+    markCellsUnsaved,
+    consumeLastBatch,
+    resolveBatch,
+    clearAsyncMeta,
+  } = asyncState;
+
+  // Merge static example cellMeta + async meta from hook
+  const mergedCellMeta = useMemo<CellMetaMap>(() => {
+    const merged: CellMetaMap = { ...exampleCellMeta };
+    for (const [rowKey, entry] of Object.entries(asyncCellMeta)) {
+      if (!merged[rowKey]) {
+        merged[rowKey] = entry;
+      } else {
+        merged[rowKey] = { ...merged[rowKey], cells: { ...merged[rowKey].cells, ...entry.cells } };
+      }
+    }
+    return merged;
+  }, [asyncCellMeta]);
+
+  // --- Error/offline mode overrides (example-specific simulation) ---
+  const backendOp = useCallback(
+    (label: string): void | Promise<void> => {
+      if (dataMode === "local") return undefined;
+      if (dataMode === "backend-offline") {
+        setLastError(`${label}: connection failed — changes kept locally`);
+        return Promise.resolve();
+      }
+      if (dataMode === "backend-error") {
+        const ms = 2000;
+        return delayReject(ms, `${label} failed: server error`).catch((err: Error) => {
+          setLastError(err.message);
+          throw err;
+        });
+      }
+      return handleAsyncOp(label);
+    },
+    [dataMode, handleAsyncOp, setLastError],
+  );
+
+  // Override status for error/offline modes
+  const status = useMemo<TableStatus | undefined>(() => {
+    if (dataMode === "local") return undefined;
+    return hookStatus;
+  }, [dataMode, hookStatus]);
 
   const handlePageSizeChange = (ps: number) => {
     setPageSize(ps);
@@ -320,7 +518,7 @@ const App = () => {
 
   const handleFilterChange = (newFilters: FilterState) => {
     setFilters(newFilters);
-    setPage(1); // reset to page 1 on filter change
+    setPage(1);
   };
 
   return (
@@ -338,34 +536,50 @@ const App = () => {
             </option>
           ))}
         </select>
+        <span className="theme-switcher-label" style={{ marginLeft: "2rem" }}>Mode:</span>
+        <select
+          className="theme-switcher-select"
+          value={dataMode}
+          onChange={(e) => {
+            setDataMode(e.target.value as DataMode);
+            clearAsyncMeta();
+            try { localStorage.removeItem("ct-unsaved"); } catch {}
+          }}
+        >
+          {(Object.keys(modeLabels) as DataMode[]).map((m) => (
+            <option key={m} value={m}>
+              {modeLabels[m]}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="app-table-wrapper">
         <CustomTable
-          rows={rows}
+          rows={displayRows}
           columns={initialColumns}
           numberOfStickyColums={1}
           caption="Employee Data"
           textEllipsisLength={ellipsis ? 25 : undefined}
           onRowsChange={(newRows) => {
-            // Map changes back to the original (unfiltered/unsorted) allRows array.
+            // Let hook handle tracking + optimistic patch
+            hookHandleRowsChange(newRows);
+
+            // Map changes back to the allRows source array
             const updated = [...allRows];
-            if (newRows.length === rows.length) {
-              // Updates: patch by origIdx
+            if (newRows.length === displayRows.length) {
               newRows.forEach((r, i) => {
-                updated[currentPageItems[i].origIdx] = r;
+                updated[displayItems[i].origIdx] = r;
               });
-            } else if (newRows.length > rows.length) {
-              // Creates: patch existing by origIdx, then append new rows
-              const added = newRows.slice(rows.length);
-              newRows.slice(0, rows.length).forEach((r, i) => {
-                updated[currentPageItems[i].origIdx] = r;
+            } else if (newRows.length > displayRows.length) {
+              const added = newRows.slice(displayRows.length);
+              newRows.slice(0, displayRows.length).forEach((r, i) => {
+                updated[displayItems[i].origIdx] = r;
               });
               updated.push(...added);
             } else {
-              // Deletes: remove rows that disappeared (by reference)
               const newSet = new Set(newRows);
               const removedOrigIdxs = new Set(
-                currentPageItems
+                displayItems
                   .filter((item) => !newSet.has(item.row))
                   .map((item) => item.origIdx),
               );
@@ -374,26 +588,63 @@ const App = () => {
             }
             setAllRows(updated);
           }}
-          rowKey={(_row: Row, idx: number) => "" + currentPageItems[idx]?.origIdx}
-          cellMeta={exampleCellMeta}
-          sortConfig={sortConfig}
+          rowKey={(_row: Row, idx: number) => "" + displayItems[idx]?.origIdx}
+          cellMeta={mergedCellMeta}
+          sortConfig={displaySortConfig}
           onSortChange={setSortConfig}
-          filters={filters}
+          filters={displayFilters}
           onFilterChange={(f) => handleFilterChange(f)}
+          status={status}
+          loading={loading}
+          pendingFilterColumns={pendingFilterColumns}
+          pendingSortColumn={pendingSortColumn}
           onUpdateRows={(updatedRows) => {
             console.log("onUpdateRows:", updatedRows);
+            if (dataMode === "backend-error") {
+              const batch = consumeLastBatch();
+              return delayReject(2000, "update failed: server error").catch((err: Error) => {
+                resolveBatch(batch);
+                setLastError(err.message);
+                throw err;
+              });
+            }
+            if (dataMode === "backend-offline") {
+              const batch = consumeLastBatch();
+              markCellsUnsaved(batch);
+              setLastError("Connection error — retrying in background");
+              // Background retry with exponential backoff
+              const retryInBackground = async (attempt: number) => {
+                const backoff = Math.min(2000 * 2 ** attempt, 30000);
+                await delay(backoff);
+                try {
+                  await Promise.reject(new Error("connection refused"));
+                } catch {
+                  setLastError(
+                    `Connection error — retry ${attempt + 2} in ${Math.round(Math.min(backoff * 2, 30000) / 1000)}s`,
+                  );
+                  retryInBackground(attempt + 1);
+                }
+              };
+              retryInBackground(0);
+              return Promise.resolve(); // no rollback
+            }
+            return hookHandleUpdateRows(updatedRows);
           }}
-          onCreateRows={(newRows) => {
-            console.log("onCreateRows:", newRows);
+          onCreateRows={(rows) => {
+            console.log("onCreateRows:", rows);
+            return backendOp("create");
           }}
-          onDeleteRows={(deletedRows) => {
-            console.log("onDeleteRows:", deletedRows);
+          onDeleteRows={(rows) => {
+            console.log("onDeleteRows:", rows);
+            return backendOp("delete");
           }}
-          onUndo={(recoveredRows) => {
-            console.log("onUndo:", recoveredRows);
+          onUndo={(rows) => {
+            console.log("onUndo:", rows);
+            return backendOp("undo");
           }}
-          onRedo={(recoveredRows) => {
-            console.log("onRedo:", recoveredRows);
+          onRedo={(rows) => {
+            console.log("onRedo:", rows);
+            return backendOp("redo");
           }}
           extraContextMenuItems={
             [
@@ -409,7 +660,7 @@ const App = () => {
       </div>
       <div className="example-footer">
         <Pagination
-          totalRows={totalFilteredRows}
+          totalRows={displayTotalFilteredRows}
           page={page}
           pageSize={pageSize}
           onPageChange={setPage}

@@ -7,6 +7,7 @@ import {
   Row,
   SortConfig,
   TableContextState,
+  TableStatus,
 } from "./Types";
 import { forceUpdateCursorRect } from "./directDomUpdateForCursor";
 import classNames from "./classNames";
@@ -71,6 +72,14 @@ interface IProps {
   extraContextMenuItems: CustomContextMenuItem[];
   /** Accessible caption for the table (rendered as visually-hidden `<caption>` element). */
   caption: string;
+  /** Status indicator shown in the toolbar. */
+  status: TableStatus;
+  /** When true, active filters show a loading spinner and cursor becomes wait. */
+  loading: boolean;
+  /** Column name that has a pending sort operation — shows a spinner instead of the sort arrow. */
+  pendingSortColumn: string;
+  /** Column names with pending filter changes — shows a spinner in the filter input. */
+  pendingFilterColumns: string[];
 }
 
 type CustomTableProps = IRequiredProps & Partial<IProps>;
@@ -96,6 +105,10 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     translations: translationsProp,
     extraContextMenuItems,
     caption,
+    status,
+    loading: loadingProp,
+    pendingSortColumn,
+    pendingFilterColumns,
   }: CustomTableProps) => {
     const t = React.useMemo(() => resolveTranslations(translationsProp), [translationsProp]);
     const [tableId] = React.useState(() => `MkEu3ZWrGK${Math.floor(Math.random() * 1000000)}`);
@@ -144,6 +157,38 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     // --- rowKey helper ---
     const getRowKey = rowKey ?? defaultRowKey;
 
+    // Accumulative set per column: once a value is seen, it never disappears.
+    // This prevents options from vanishing when the passed `rows` are already
+    // filtered (controlled-filter + pagination pattern).
+    const filterOptionsSetsRef = React.useRef<Record<string, Set<string>>>({});
+
+    // Compute unique filter options for columns with selectOptions
+    const filterOptionsMap = React.useMemo(() => {
+      const map: Record<string, string[]> = {};
+      const sets = filterOptionsSetsRef.current;
+      for (const col of columns) {
+        if (col.selectOptions) {
+          if (!sets[col.name]) sets[col.name] = new Set<string>();
+          const vals = sets[col.name];
+          col.selectOptions.forEach((o) => vals.add(o));
+          for (const row of rows) {
+            const v = row[col.name];
+            if (v != null) {
+              if (Array.isArray(v)) {
+                v.forEach((item) => vals.add(String(item)));
+              } else {
+                vals.add(String(v));
+              }
+            }
+          }
+          map[col.name] = [...vals].sort((a, b) =>
+            a.localeCompare(b, undefined, { sensitivity: "base" }),
+          );
+        }
+      }
+      return map;
+    }, [rows, columns]);
+
     // Index mapping for filtered/sorted rows
     const { displayRows, originalIndices } = React.useMemo(() => {
       let indexed = rows.map((row, idx) => ({ row, originalIdx: idx }));
@@ -154,7 +199,32 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         indexed = indexed.filter(({ row }) =>
           activeFilters.every(([colName, filterVal]) => {
             const cellVal = row[colName];
+
+            // Multi-select filter: \x00 prefix + newline-separated exact match
+            // \x01empty\x01 is the sentinel for the empty string value
+            if (filterVal.startsWith("\x00")) {
+              const selectedVals = filterVal
+                .slice(1)
+                .split("\n")
+                .filter(Boolean)
+                .map((v) => (v === "\x01empty\x01" ? "" : v));
+              if (cellVal == null || cellVal === "") {
+                return selectedVals.includes("");
+              }
+              if (Array.isArray(cellVal)) {
+                return cellVal.some((v) => selectedVals.includes(String(v)));
+              }
+              return selectedVals.includes(String(cellVal));
+            }
+
             if (cellVal == null) return false;
+
+            // Text filter: substring match
+            if (Array.isArray(cellVal)) {
+              return cellVal.some((v) =>
+                String(v).toLowerCase().includes(filterVal.toLowerCase()),
+              );
+            }
             return String(cellVal).toLowerCase().includes(filterVal.toLowerCase());
           }),
         );
@@ -225,6 +295,20 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
      * Wraps an async callback with pending-state and rollback on rejection.
      * `snapshotRows` is the rows state before the mutation (for rollback).
      */
+    const triggerShake = React.useCallback(() => {
+      const el = customTableRef.current as HTMLDivElement | null;
+      if (!el) return;
+      el.classList.remove("shake");
+      // Force reflow so re-adding the class restarts the animation
+      void el.offsetWidth;
+      el.classList.add("shake");
+      const onEnd = () => {
+        el.classList.remove("shake");
+        el.removeEventListener("animationend", onEnd);
+      };
+      el.addEventListener("animationend", onEnd);
+    }, [customTableRef]);
+
     const withAsyncRollback = React.useCallback(
       (snapshotRows: Row[], callback: (() => void | Promise<void>) | undefined) => {
         if (!callback) return;
@@ -235,16 +319,14 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
             .catch(() => {
               // Rollback: restore old rows
               changeRows(snapshotRows);
-              // Also restore undo/redo internal stacks
-              // Note: robust rollback of undo/redo stacks might require extra logic,
-              // but replacing the array is safe.
+              triggerShake();
             })
             .finally(() => {
               setPending(false);
             });
         }
       },
-      [changeRows],
+      [changeRows, triggerShake],
     );
 
     const detectAndFireChanges = React.useCallback(
@@ -648,10 +730,8 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     // --- Enhanced key handling ---
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<any>) => {
-        if (pending) {
-          event.preventDefault();
-          return;
-        }
+        // Note: pending state no longer blocks keyboard input.
+        // Optimistic editing allows continued interaction during async operations.
         const ctrl = event.ctrlKey || event.metaKey;
 
         if (ctrl && event.key === "z") {
@@ -857,6 +937,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
           className={classNames(
             "custom-table",
             pending && "pending",
+            loadingProp && "loading",
             textEllipsisLength && "has-ellipsis",
           )}
           onKeyDown={handleKeyDown}
@@ -942,6 +1023,10 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
                 onSortChange: handleSortChange,
                 filters: effectiveFilters,
                 onFilterChange: handleFilterChange,
+                filterOptionsMap,
+                loading: loadingProp,
+                pendingSortColumn,
+                pendingFilterColumns,
                 cellMeta,
                 getRowKey,
                 textEllipsisLength,
@@ -1000,9 +1085,21 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
               className="toolbar-input"
               onKeyDown={(e) => e.stopPropagation()}
             />
-            <button onClick={handleCreateRows} className="toolbar-button" disabled={pending}>
+            <button onClick={handleCreateRows} className="toolbar-button">
               {t["Create Rows"]}
             </button>
+            {status && (
+              <span className={classNames("toolbar-status", `toolbar-status-${status.severity}`)}>
+                {status.severity === "info" ? (
+                  <span className="toolbar-status-spinner" aria-hidden="true" />
+                ) : (
+                  <span className="toolbar-status-icon" aria-hidden="true">
+                    {status.severity === "ok" ? "✓" : "⚠"}
+                  </span>
+                )}
+                {status.text}
+              </span>
+            )}
           </div>
         </div>
       </TranslationsContext.Provider>

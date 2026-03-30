@@ -130,6 +130,28 @@ export interface ColumnConfig<T> {
    * Example: `"${firstName} ${lastName}: Description"`
    */
   dialogTitle?: string;
+
+  /**
+   * Allow text to wrap in this column.
+   * Default: false (white-space: nowrap).
+   * Set to true for long-text columns like descriptions.
+   */
+  wrap?: boolean;
+
+  /**
+   * Additional CSS class name(s) applied to both the column header (`<th>`)
+   * and every data cell (`<td>`) in this column.
+   */
+  className?: string;
+
+  /**
+   * When true, this column's values are owned by the backend.
+   * During optimistic merge, backend values always overwrite local values
+   * for server-owned columns, regardless of inflight edit counters.
+   * Typical examples: auto-generated IDs, timestamps, computed fields.
+   * Default: false (user-owned — local edits are preserved during merge).
+   */
+  serverOwned?: boolean;
 }
 
 export type FilterEditorParams = {
@@ -143,8 +165,33 @@ export type FilterEditorParams = {
 
 export type FilterEditor = (params: FilterEditorParams) => JSX.Element;
 
+/**
+ * Result returned by `ColumnConfig.validate()` when more detail than a simple
+ * boolean is needed.
+ *
+ * The `severity` controls the CSS class applied to the cell:
+ * - `"error"`   → adds `cell-error`   (indicates invalid data that must be corrected)
+ * - `"warning"` → adds `cell-warning` (indicates data that may need attention)
+ *
+ * The `message` is shown as the cell's tooltip (`title` attribute) so the user
+ * can see what is wrong on hover.
+ *
+ * When `validate` returns `false` instead of a `ValidationResult`, the cell
+ * receives the `cell-error` class without a tooltip message.
+ *
+ * @example
+ * ```ts
+ * validate: (value) => {
+ *   if (value == null || value === "") return { message: "Field is required", severity: "error" };
+ *   if (value.length < 3) return { message: "Too short", severity: "warning" };
+ *   return true;
+ * }
+ * ```
+ */
 export interface ValidationResult {
+  /** Human-readable message shown as a tooltip on the cell. */
   message: string;
+  /** Controls the visual severity: `"error"` or `"warning"`. */
   severity: "warning" | "error";
 }
 
@@ -216,6 +263,22 @@ export type CellMetaMap = Record<
 >;
 
 export type FilterState = Record<string, string>;
+
+/**
+ * Status indicator shown in the toolbar area.
+ *
+ * Severity controls the visual style:
+ * - `"ok"`      — green checkmark, confirms a successful operation
+ * - `"info"`    — neutral, informational (e.g. "loading", "saving")
+ * - `"warning"` — yellow warning icon
+ * - `"error"`   — red alert icon, indicates a failed operation
+ */
+export interface TableStatus {
+  /** Human-readable status text. */
+  text: string;
+  /** Visual severity level. */
+  severity: "ok" | "info" | "warning" | "error";
+}
 
 export type ContextMenuItem =
   | Partial<{

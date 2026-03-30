@@ -31,6 +31,10 @@ export const RowTable = React.memo(
     onSortChange,
     filters,
     onFilterChange,
+    filterOptionsMap,
+    loading,
+    pendingSortColumn,
+    pendingFilterColumns,
     cellMeta,
     getRowKey,
     textEllipsisLength,
@@ -51,6 +55,10 @@ export const RowTable = React.memo(
     onSortChange: (config: SortConfig) => void;
     filters: Record<string, string>;
     onFilterChange: (colName: string, value: string) => void;
+    filterOptionsMap?: Record<string, string[]>;
+    loading?: boolean;
+    pendingSortColumn?: string;
+    pendingFilterColumns?: string[];
     cellMeta?: CellMetaMap;
     getRowKey: (row: Row, rowIndex: number) => string;
     textEllipsisLength?: number;
@@ -72,6 +80,11 @@ export const RowTable = React.memo(
                   onSortChange={onSortChange}
                   filterValue={filters[column.name] ?? ""}
                   onFilterChange={(value) => onFilterChange(column.name, value)}
+                  filterOptions={filterOptionsMap?.[column.name]}
+                  loading={loading}
+                  pendingSortColumn={pendingSortColumn}
+                  pendingFilterColumns={pendingFilterColumns}
+                  textEllipsisLength={textEllipsisLength}
                 />
               );
             })}

@@ -87,6 +87,7 @@
   --ct-cell-error-text: #410e0b;
   --ct-row-readonly-bg: rgba(29, 27, 32, 0.05);
   --ct-row-readonly-text: rgba(29, 27, 32, 0.38);
+  --ct-pencil-icon: "✏️";
 }
 
 
@@ -246,34 +247,6 @@
     }
   }
 
-  /* --- Context menu: M3 Menu --- */
-  .context-menu {
-    border: 1px solid #cac4d0;
-    border-radius: 4px;
-    background: #f3edf7;
-    box-shadow:
-      0px 1px 3px 0px rgba(0, 0, 0, 0.15),
-      0px 4px 8px 0px rgba(0, 0, 0, 0.1);
-    padding: 8px 0;
-    animation: m3-menu-open 200ms cubic-bezier(0.2, 0, 0, 1);
-
-    .context-menu-item {
-      padding: 12px 16px;
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.1px;
-      line-height: 20px;
-      min-height: 48px;
-      transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
-
-      &:hover {
-        background-color: rgba(29, 27, 32, 0.08);
-      }
-      &:active {
-        background-color: rgba(29, 27, 32, 0.1);
-      }
-    }
-  }
 
   /* --- Combobox / Dropdown: M3 Menu surface --- */
   .combo-dropdown-list {
@@ -633,4 +606,33 @@
 .custom-table .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
+}
+
+.context-menu {
+  border: 1px solid #cac4d0;
+  border-radius: 4px;
+  background: #f3edf7;
+  color: #1d1b20;
+  box-shadow:
+    0px 1px 3px 0px rgba(0, 0, 0, 0.15),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  animation: m3-menu-open 200ms cubic-bezier(0.2, 0, 0, 1);
+
+  .context-menu-item {
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+    min-height: 48px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      background-color: rgba(29, 27, 32, 0.08);
+    }
+    &:active {
+      background-color: rgba(29, 27, 32, 0.1);
+    }
+  }
 }

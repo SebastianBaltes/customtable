@@ -87,8 +87,11 @@
 
   --ct-cell-error-bg: hsl(0, 90%, 95%);
   --ct-cell-error-text: hsl(0, 70%, 35%);
+  --ct-cell-stale-bg: hsl(40, 100%, 93%);
+  --ct-cell-stale-text: hsl(30, 80%, 30%);
   --ct-row-readonly-bg: hsl(0, 0%, 93%);
   --ct-row-readonly-text: hsl(0, 0%, 45%);
+  --ct-pencil-icon: "🖉";
 }
 
 /* ---- Apply theme variables ---- */
@@ -187,22 +190,6 @@
   .selection-rectangle-dragger {
     outline: solid 1px var(--ct-dragger-border);
     background-color: var(--ct-dragger-bg);
-  }
-
-  .context-menu {
-    background-color: var(--ct-ctx-bg);
-    border: 1px solid var(--ct-ctx-border);
-    box-shadow: 0 2px 10px var(--ct-ctx-shadow);
-    font-family: var(--ct-font);
-  }
-  .context-menu-item {
-    color: var(--ct-ctx-text);
-    &:hover {
-      background-color: var(--ct-ctx-hover);
-    }
-  }
-  .context-menu-shortcut {
-    color: var(--ct-ctx-shortcut);
   }
 
   .col-header-label {
@@ -371,7 +358,33 @@
   color: var(--ct-cell-error-text);
 }
 
+.custom-table .cell-stale {
+  background-color: var(--ct-cell-stale-bg);
+  color: var(--ct-cell-stale-text);
+}
+
+.custom-table .cell-unsaved {
+  background-color: hsl(30, 100%, 95%);
+  border-left: 3px solid hsl(30, 100%, 50%);
+}
+
 .custom-table .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
+}
+
+.context-menu {
+  background-color: var(--ct-ctx-bg);
+  border: 1px solid var(--ct-ctx-border);
+  box-shadow: 0 2px 10px var(--ct-ctx-shadow);
+  font-family: var(--ct-font);
+}
+.context-menu-item {
+  color: var(--ct-ctx-text);
+  &:hover {
+    background-color: var(--ct-ctx-hover);
+  }
+}
+.context-menu-shortcut {
+  color: var(--ct-ctx-shortcut);
 }
