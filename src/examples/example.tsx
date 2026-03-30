@@ -226,7 +226,6 @@ const exampleCellMeta: CellMetaMap = {
   "3": {
     cells: {
       complexKey: {
-        style: { backgroundColor: "#fdd" },
         title: "Validation error: Key must not be 'dummy'",
         className: "cell-error",
       },
@@ -234,7 +233,7 @@ const exampleCellMeta: CellMetaMap = {
   },
   "5": {
     row: {
-      style: { backgroundColor: "#eee" },
+      className: "row-readonly",
       title: "This row is read-only",
       readOnly: true,
     },

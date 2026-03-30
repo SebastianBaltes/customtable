@@ -85,6 +85,11 @@
   --ct-dialog-btn-hover: rgba(25, 118, 210, 0.04);
   --ct-dialog-save-bg: #1976d2;
   --ct-dialog-save-hover: #1565c0;
+
+  --ct-cell-error-bg: #fdecea;
+  --ct-cell-error-text: #611a15;
+  --ct-row-readonly-bg: rgba(0, 0, 0, 0.04);
+  --ct-row-readonly-text: rgba(0, 0, 0, 0.38);
 }
 
 
@@ -611,4 +616,15 @@
     border-color: #1976d2;
     box-shadow: 0 0 0 1px #1976d2;
   }
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }

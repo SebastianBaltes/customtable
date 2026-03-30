@@ -84,6 +84,11 @@
   --ct-dialog-btn-hover: #ffff00;
   --ct-dialog-save-bg: #000000;
   --ct-dialog-save-hover: #000000;
+
+  --ct-cell-error-bg: #ff0000;
+  --ct-cell-error-text: #ffffff;
+  --ct-row-readonly-bg: #333333;
+  --ct-row-readonly-text: #999999;
 }
 
 
@@ -427,4 +432,15 @@
 
 .custom-table-toolbar {
   border: none !important;
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }

@@ -80,6 +80,11 @@
   --ct-dialog-btn-hover: hsl(220, 15%, 25%);
   --ct-dialog-save-bg: hsl(207, 80%, 45%);
   --ct-dialog-save-hover: hsl(207, 80%, 38%);
+
+  --ct-cell-error-bg: hsl(0, 40%, 22%);
+  --ct-cell-error-text: hsl(0, 80%, 75%);
+  --ct-row-readonly-bg: hsl(220, 15%, 18%);
+  --ct-row-readonly-text: hsl(220, 10%, 50%);
 }
 
 
@@ -108,4 +113,15 @@
   & input[type="checkbox"] {
     accent-color: hsl(207, 80%, 50%);
   }
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }

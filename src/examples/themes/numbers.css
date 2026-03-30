@@ -83,6 +83,11 @@
 
   /* Numbers-specific: alternating row stripes */
   --ct-row-stripe: #f2f2f7;
+
+  --ct-cell-error-bg: #fde8e8;
+  --ct-cell-error-text: #bf2626;
+  --ct-row-readonly-bg: #f5f5f7;
+  --ct-row-readonly-text: #86868b;
 }
 
 
@@ -94,4 +99,15 @@
       background-color: var(--ct-row-stripe);
     }
   }
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }

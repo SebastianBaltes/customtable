@@ -93,6 +93,11 @@ Error generating stack: `+e.message+`
   --ct-dialog-btn-hover: hsl(0, 0%, 95%);
   --ct-dialog-save-bg: hsl(207, 100%, 60%);
   --ct-dialog-save-hover: hsl(207, 100%, 50%);
+
+  --ct-cell-error-bg: hsl(0, 90%, 95%);
+  --ct-cell-error-text: hsl(0, 70%, 35%);
+  --ct-row-readonly-bg: hsl(0, 0%, 93%);
+  --ct-row-readonly-text: hsl(0, 0%, 45%);
 }
 
 /* ---- Apply theme variables ---- */
@@ -368,6 +373,17 @@ Error generating stack: `+e.message+`
     }
   }
 }
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
 `},{id:`dark`,label:`Dark`,css:`/*
  * Dark theme — dark backgrounds, light text, blue accents.
  */
@@ -450,6 +466,11 @@ Error generating stack: `+e.message+`
   --ct-dialog-btn-hover: hsl(220, 15%, 25%);
   --ct-dialog-save-bg: hsl(207, 80%, 45%);
   --ct-dialog-save-hover: hsl(207, 80%, 38%);
+
+  --ct-cell-error-bg: hsl(0, 40%, 22%);
+  --ct-cell-error-text: hsl(0, 80%, 75%);
+  --ct-row-readonly-bg: hsl(220, 15%, 18%);
+  --ct-row-readonly-text: hsl(220, 10%, 50%);
 }
 
 
@@ -478,6 +499,17 @@ Error generating stack: `+e.message+`
   & input[type="checkbox"] {
     accent-color: hsl(207, 80%, 50%);
   }
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }
 `},{id:`excel`,label:`Excel Classic`,css:`/*
  * Excel Classic — mimics the traditional Microsoft Excel look.
@@ -561,6 +593,11 @@ Error generating stack: `+e.message+`
   --ct-dialog-btn-hover: #d5d5d5;
   --ct-dialog-save-bg: #217346;
   --ct-dialog-save-hover: #185a35;
+
+  --ct-cell-error-bg: #ffc7ce;
+  --ct-cell-error-text: #9c0006;
+  --ct-row-readonly-bg: #f2f2f2;
+  --ct-row-readonly-text: #808080;
 }
 
 
@@ -604,6 +641,17 @@ Error generating stack: `+e.message+`
     outline: solid 4px var(--ct-selected-outline);
     outline-offset: 1px;
   }
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }
 `},{id:`sheets`,label:`Google Sheets`,css:`/*
  * Google Sheets — clean white, thin borders, blue accent, Roboto-like font.
@@ -686,6 +734,11 @@ Error generating stack: `+e.message+`
   --ct-dialog-btn-hover: #f1f3f4;
   --ct-dialog-save-bg: #1a73e8;
   --ct-dialog-save-hover: #1765cc;
+
+  --ct-cell-error-bg: #fce8e6;
+  --ct-cell-error-text: #c5221f;
+  --ct-row-readonly-bg: #f8f9fa;
+  --ct-row-readonly-text: #80868b;
 }
 
 
@@ -714,6 +767,17 @@ Error generating stack: `+e.message+`
   .col-header-label {
     font-weight: bold;
   }
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }
 `},{id:`material`,label:`Material`,css:`/*
  * Material UI DataTable inspired theme.
@@ -802,6 +866,11 @@ Error generating stack: `+e.message+`
   --ct-dialog-btn-hover: rgba(25, 118, 210, 0.04);
   --ct-dialog-save-bg: #1976d2;
   --ct-dialog-save-hover: #1565c0;
+
+  --ct-cell-error-bg: #fdecea;
+  --ct-cell-error-text: #611a15;
+  --ct-row-readonly-bg: rgba(0, 0, 0, 0.04);
+  --ct-row-readonly-text: rgba(0, 0, 0, 0.38);
 }
 
 
@@ -1329,6 +1398,17 @@ Error generating stack: `+e.message+`
     box-shadow: 0 0 0 1px #1976d2;
   }
 }
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
 `},{id:`material3`,label:`Material 3`,css:`/*
  * Material Design 3 (Material You) theme.
  * Based on M3 baseline light scheme with purple primary (#6750A4).
@@ -1413,6 +1493,11 @@ Error generating stack: `+e.message+`
   --ct-dialog-btn-hover: rgba(103, 80, 164, 0.08);
   --ct-dialog-save-bg: #6750a4;
   --ct-dialog-save-hover: #7e67ae;
+
+  --ct-cell-error-bg: #f9dedc;
+  --ct-cell-error-text: #410e0b;
+  --ct-row-readonly-bg: rgba(29, 27, 32, 0.05);
+  --ct-row-readonly-text: rgba(29, 27, 32, 0.38);
 }
 
 
@@ -1949,6 +2034,17 @@ Error generating stack: `+e.message+`
     padding: 3px 7px;
   }
 }
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
 `},{id:`numbers`,label:`Numbers`,css:`/*
  * Apple Numbers inspired — clean, warm gray headers,
  * alternating row stripes (gray / white), blue accent.
@@ -2034,6 +2130,11 @@ Error generating stack: `+e.message+`
 
   /* Numbers-specific: alternating row stripes */
   --ct-row-stripe: #f2f2f7;
+
+  --ct-cell-error-bg: #fde8e8;
+  --ct-cell-error-text: #bf2626;
+  --ct-row-readonly-bg: #f5f5f7;
+  --ct-row-readonly-text: #86868b;
 }
 
 
@@ -2045,6 +2146,17 @@ Error generating stack: `+e.message+`
       background-color: var(--ct-row-stripe);
     }
   }
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }
 `},{id:`high-contrast`,label:`High Contrast`,css:`/*
  * High Contrast theme — maximum readability and accessibility.
@@ -2132,6 +2244,11 @@ Error generating stack: `+e.message+`
   --ct-dialog-btn-hover: #ffff00;
   --ct-dialog-save-bg: #000000;
   --ct-dialog-save-hover: #000000;
+
+  --ct-cell-error-bg: #ff0000;
+  --ct-cell-error-text: #ffffff;
+  --ct-row-readonly-bg: #333333;
+  --ct-row-readonly-text: #999999;
 }
 
 
@@ -2476,4 +2593,15 @@ Error generating stack: `+e.message+`
 .custom-table-toolbar {
   border: none !important;
 }
-`}],Be=[...[{name:`id`,type:`Number`,readOnly:!0,label:`ID`,comment:`Unique internal row ID`},{name:`complexKey`,type:`String`,label:`System Key`,comment:`Internal system key (10-50 characters)`},{name:`firstName`,type:`String`,label:`First Name`,required:!0,comment:`First name of the person`},{name:`lastName`,type:`String`,label:`Last Name`,required:!0,comment:`Last name of the person`},{name:`email`,type:`String`,label:`Email`,required:!0,comment:`Email address in the format user@example.com`},{name:`department`,type:`Combobox`,label:`Department`,selectOptions:[`HR`,`IT`,`Sales`,`Marketing`,`Finance`,`Legal`],comment:`Department / organizational unit`},{name:`skills`,type:`MultiCombobox`,label:`Skills`,selectOptions:[`React`,`TypeScript`,`Python`,`Java`,`SQL`,`AWS`,`Docker`,`Figma`],comment:`Skills / competencies (multiple selection)`},{name:`description`,type:`String`,label:`Description`,comment:`Free text / long description (0-1000 characters)`,editor:Ie,dialogTitle:"${firstName} ${lastName}: Description"},{name:`isActive`,type:`Boolean`,label:`Active`,comment:`Whether the person is active in the company`},{name:`salary`,type:`Number`,label:`Salary`,comment:`Annual salary in EUR`,numberFormat:{decimalPlaces:2,thousandsSeparator:!0,suffix:` €`}},{name:`hireDate`,type:`String`,label:`Hire Date`,comment:`Hire date (YYYY-MM-DD)`},{name:`manager`,type:`String`,label:`Manager`,comment:`Name of the direct manager`},{name:`officeLocation`,type:`String`,label:`Office Location`,comment:`Location or office`},{name:`phone`,type:`String`,label:`Phone`,comment:`Phone number (international format)`},{name:`employeeNumber`,type:`String`,label:`Employee Number`,comment:`Company-internal employee number`},{name:`status`,type:`String`,label:`Employment Status`,comment:`Employment status (e.g. Active, On Leave)`},{name:`role`,type:`String`,label:`Role`,comment:`Job title / role in the company`},{name:`team`,type:`String`,label:`Team`,comment:`Team name or unit`},{name:`lastLogin`,type:`String`,label:`Last Login`,comment:`Last login timestamp (ISO)`},{name:`performanceScore`,type:`Number`,label:`Score`,comment:`Rating value (0-5)`,numberFormat:{decimalPlaces:2,thousandsSeparator:!1}},{name:`bonus`,type:`Number`,label:`Bonus`,comment:`Variable bonus payments in EUR`,numberFormat:{decimalPlaces:0,thousandsSeparator:!0,prefix:`+ `,suffix:` €`}},{name:`contractType`,type:`String`,label:`Contract Type`,comment:`Type of contract (Permanent/Temporary/etc.)`},{name:`country`,type:`String`,label:`Country`,comment:`Country of residence or workplace`},{name:`city`,type:`String`,label:`City`,comment:`City`},{name:`postalCode`,type:`String`,label:`Postal Code`,comment:`Postal code`},{name:`address`,type:`String`,label:`Address`,comment:`Street and house number`},{name:`linkedin`,type:`String`,label:`LinkedIn`,comment:`LinkedIn profile URL`},{name:`github`,type:`String`,label:`GitHub`,comment:`GitHub profile URL`},{name:`dateOfBirth`,type:`String`,label:`Date of Birth`,comment:`Date of birth (YYYY-MM-DD)`},{name:`emergencyContact`,type:`String`,label:`Emergency Contact`,comment:`Emergency contact (name + phone)`}]],Ve=Re.map((e,t)=>{let n={};return Be.forEach(t=>{Object.prototype.hasOwnProperty.call(e,t.name)?n[t.name]=e[t.name]:t.type===`Boolean`?n[t.name]=!1:t.type===`Number`?n[t.name]=null:n[t.name]=``}),n.id=e.id==null?t:e.id,n}),He={3:{cells:{complexKey:{style:{backgroundColor:`#fdd`},title:`Validation error: Key must not be 'dummy'`,className:`cell-error`}}},5:{row:{style:{backgroundColor:`#eee`},title:`This row is read-only`,readOnly:!0},cells:{complexKey:{disabled:!0,title:`Disabled cell`}}}};(0,_.createRoot)(document.getElementById(`root`)).render((0,D.jsx)(()=>{let[e,t]=(0,g.useState)(Ve),[n,r]=Le(`ct-theme`,`light`),i=(0,g.useCallback)(e=>{let t=ze.find(t=>t.id===e);if(!t)return;let n=document.getElementById(`theme-override`);n||(n=document.createElement(`style`),n.id=`theme-override`,document.head.appendChild(n)),n.textContent=t.css},[]);(0,g.useEffect)(()=>{i(n)},[n,i]);let[a,o]=(0,g.useState)(null),[s,c]=(0,g.useState)({}),[l,u]=(0,g.useState)(!0),[d,f]=(0,g.useState)(1),[p,m]=(0,g.useState)(100),h=(0,g.useMemo)(()=>{let t=e.map((e,t)=>({row:e,origIdx:t})),n=Object.entries(s).filter(([,e])=>e.trim()!==``);if(n.length>0&&(t=t.filter(({row:e})=>n.every(([t,n])=>{let r=e[t];return r==null?!1:String(r).toLowerCase().includes(n.toLowerCase())}))),a){let{column:e,direction:n}=a;t.sort((t,r)=>{let i=t.row[e],a=r.row[e];if(i==null&&a==null)return 0;if(i==null)return 1;if(a==null)return-1;let o=String(i).localeCompare(String(a),void 0,{numeric:!0});return n===`asc`?o:-o})}return t},[e,s,a]),_=h.length,v=p===0?_||1:p,y=(d-1)*v,b=h.slice(y,y+v),x=b.map(e=>e.row),S=e=>{m(e),f(1)},C=e=>{c(e),f(1)};return(0,D.jsxs)(`div`,{className:`example-page`,children:[(0,D.jsxs)(`div`,{className:`theme-switcher`,children:[(0,D.jsx)(`span`,{className:`theme-switcher-label`,children:`Theme:`}),(0,D.jsx)(`select`,{className:`theme-switcher-select`,value:n,onChange:e=>r(e.target.value),children:ze.map(e=>(0,D.jsx)(`option`,{value:e.id,children:e.label},e.id))})]}),(0,D.jsx)(`div`,{className:`app-table-wrapper`,children:(0,D.jsx)(F,{rows:x,columns:Be,numberOfStickyColums:1,caption:`Employee Data`,textEllipsisLength:l?25:void 0,onRowsChange:n=>{let r=[...e];if(n.length===x.length)n.forEach((e,t)=>{r[b[t].origIdx]=e});else if(n.length>x.length){let e=n.slice(x.length);n.slice(0,x.length).forEach((e,t)=>{r[b[t].origIdx]=e}),r.push(...e)}else{let e=new Set(n),i=new Set(b.filter(t=>!e.has(t.row)).map(e=>e.origIdx));t(r.filter((e,t)=>!i.has(t)));return}t(r)},rowKey:(e,t)=>``+b[t]?.origIdx,cellMeta:He,sortConfig:a,onSortChange:o,filters:s,onFilterChange:e=>C(e),onUpdateRows:e=>{console.log(`onUpdateRows:`,e)},onCreateRows:e=>{console.log(`onCreateRows:`,e)},onDeleteRows:e=>{console.log(`onDeleteRows:`,e)},onUndo:e=>{console.log(`onUndo:`,e)},onRedo:e=>{console.log(`onRedo:`,e)},extraContextMenuItems:[{label:`Log selection`,onClick:({selectedRows:e,selectionRange:t})=>{console.log(`Selected range:`,t,`Rows:`,e)}}]})}),(0,D.jsxs)(`div`,{className:`example-footer`,children:[(0,D.jsx)(Fe,{totalRows:_,page:d,pageSize:p,onPageChange:f,onPageSizeChange:S}),(0,D.jsxs)(`div`,{className:`example-footer-controls`,children:[(0,D.jsx)(`button`,{className:`toolbar-button`,disabled:!a&&Object.keys(s).every(e=>!s[e]),onClick:()=>{o(null),c({}),f(1)},children:`Reset Filter & Sort`}),(0,D.jsx)(`button`,{className:re(`toolbar-button`,`toggle`,l&&`active`),onClick:()=>u(e=>!e),title:`Toggle text truncation`,children:`[...]`})]})]})]})},{}));
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+`}],Be=[...[{name:`id`,type:`Number`,readOnly:!0,label:`ID`,comment:`Unique internal row ID`},{name:`complexKey`,type:`String`,label:`System Key`,comment:`Internal system key (10-50 characters)`},{name:`firstName`,type:`String`,label:`First Name`,required:!0,comment:`First name of the person`},{name:`lastName`,type:`String`,label:`Last Name`,required:!0,comment:`Last name of the person`},{name:`email`,type:`String`,label:`Email`,required:!0,comment:`Email address in the format user@example.com`},{name:`department`,type:`Combobox`,label:`Department`,selectOptions:[`HR`,`IT`,`Sales`,`Marketing`,`Finance`,`Legal`],comment:`Department / organizational unit`},{name:`skills`,type:`MultiCombobox`,label:`Skills`,selectOptions:[`React`,`TypeScript`,`Python`,`Java`,`SQL`,`AWS`,`Docker`,`Figma`],comment:`Skills / competencies (multiple selection)`},{name:`description`,type:`String`,label:`Description`,comment:`Free text / long description (0-1000 characters)`,editor:Ie,dialogTitle:"${firstName} ${lastName}: Description"},{name:`isActive`,type:`Boolean`,label:`Active`,comment:`Whether the person is active in the company`},{name:`salary`,type:`Number`,label:`Salary`,comment:`Annual salary in EUR`,numberFormat:{decimalPlaces:2,thousandsSeparator:!0,suffix:` €`}},{name:`hireDate`,type:`String`,label:`Hire Date`,comment:`Hire date (YYYY-MM-DD)`},{name:`manager`,type:`String`,label:`Manager`,comment:`Name of the direct manager`},{name:`officeLocation`,type:`String`,label:`Office Location`,comment:`Location or office`},{name:`phone`,type:`String`,label:`Phone`,comment:`Phone number (international format)`},{name:`employeeNumber`,type:`String`,label:`Employee Number`,comment:`Company-internal employee number`},{name:`status`,type:`String`,label:`Employment Status`,comment:`Employment status (e.g. Active, On Leave)`},{name:`role`,type:`String`,label:`Role`,comment:`Job title / role in the company`},{name:`team`,type:`String`,label:`Team`,comment:`Team name or unit`},{name:`lastLogin`,type:`String`,label:`Last Login`,comment:`Last login timestamp (ISO)`},{name:`performanceScore`,type:`Number`,label:`Score`,comment:`Rating value (0-5)`,numberFormat:{decimalPlaces:2,thousandsSeparator:!1}},{name:`bonus`,type:`Number`,label:`Bonus`,comment:`Variable bonus payments in EUR`,numberFormat:{decimalPlaces:0,thousandsSeparator:!0,prefix:`+ `,suffix:` €`}},{name:`contractType`,type:`String`,label:`Contract Type`,comment:`Type of contract (Permanent/Temporary/etc.)`},{name:`country`,type:`String`,label:`Country`,comment:`Country of residence or workplace`},{name:`city`,type:`String`,label:`City`,comment:`City`},{name:`postalCode`,type:`String`,label:`Postal Code`,comment:`Postal code`},{name:`address`,type:`String`,label:`Address`,comment:`Street and house number`},{name:`linkedin`,type:`String`,label:`LinkedIn`,comment:`LinkedIn profile URL`},{name:`github`,type:`String`,label:`GitHub`,comment:`GitHub profile URL`},{name:`dateOfBirth`,type:`String`,label:`Date of Birth`,comment:`Date of birth (YYYY-MM-DD)`},{name:`emergencyContact`,type:`String`,label:`Emergency Contact`,comment:`Emergency contact (name + phone)`}]],Ve=Re.map((e,t)=>{let n={};return Be.forEach(t=>{Object.prototype.hasOwnProperty.call(e,t.name)?n[t.name]=e[t.name]:t.type===`Boolean`?n[t.name]=!1:t.type===`Number`?n[t.name]=null:n[t.name]=``}),n.id=e.id==null?t:e.id,n}),He={3:{cells:{complexKey:{title:`Validation error: Key must not be 'dummy'`,className:`cell-error`}}},5:{row:{className:`row-readonly`,title:`This row is read-only`,readOnly:!0},cells:{complexKey:{disabled:!0,title:`Disabled cell`}}}};(0,_.createRoot)(document.getElementById(`root`)).render((0,D.jsx)(()=>{let[e,t]=(0,g.useState)(Ve),[n,r]=Le(`ct-theme`,`light`),i=(0,g.useCallback)(e=>{let t=ze.find(t=>t.id===e);if(!t)return;let n=document.getElementById(`theme-override`);n||(n=document.createElement(`style`),n.id=`theme-override`,document.head.appendChild(n)),n.textContent=t.css},[]);(0,g.useEffect)(()=>{i(n)},[n,i]);let[a,o]=(0,g.useState)(null),[s,c]=(0,g.useState)({}),[l,u]=(0,g.useState)(!0),[d,f]=(0,g.useState)(1),[p,m]=(0,g.useState)(100),h=(0,g.useMemo)(()=>{let t=e.map((e,t)=>({row:e,origIdx:t})),n=Object.entries(s).filter(([,e])=>e.trim()!==``);if(n.length>0&&(t=t.filter(({row:e})=>n.every(([t,n])=>{let r=e[t];return r==null?!1:String(r).toLowerCase().includes(n.toLowerCase())}))),a){let{column:e,direction:n}=a;t.sort((t,r)=>{let i=t.row[e],a=r.row[e];if(i==null&&a==null)return 0;if(i==null)return 1;if(a==null)return-1;let o=String(i).localeCompare(String(a),void 0,{numeric:!0});return n===`asc`?o:-o})}return t},[e,s,a]),_=h.length,v=p===0?_||1:p,y=(d-1)*v,b=h.slice(y,y+v),x=b.map(e=>e.row),S=e=>{m(e),f(1)},C=e=>{c(e),f(1)};return(0,D.jsxs)(`div`,{className:`example-page`,children:[(0,D.jsxs)(`div`,{className:`theme-switcher`,children:[(0,D.jsx)(`span`,{className:`theme-switcher-label`,children:`Theme:`}),(0,D.jsx)(`select`,{className:`theme-switcher-select`,value:n,onChange:e=>r(e.target.value),children:ze.map(e=>(0,D.jsx)(`option`,{value:e.id,children:e.label},e.id))})]}),(0,D.jsx)(`div`,{className:`app-table-wrapper`,children:(0,D.jsx)(F,{rows:x,columns:Be,numberOfStickyColums:1,caption:`Employee Data`,textEllipsisLength:l?25:void 0,onRowsChange:n=>{let r=[...e];if(n.length===x.length)n.forEach((e,t)=>{r[b[t].origIdx]=e});else if(n.length>x.length){let e=n.slice(x.length);n.slice(0,x.length).forEach((e,t)=>{r[b[t].origIdx]=e}),r.push(...e)}else{let e=new Set(n),i=new Set(b.filter(t=>!e.has(t.row)).map(e=>e.origIdx));t(r.filter((e,t)=>!i.has(t)));return}t(r)},rowKey:(e,t)=>``+b[t]?.origIdx,cellMeta:He,sortConfig:a,onSortChange:o,filters:s,onFilterChange:e=>C(e),onUpdateRows:e=>{console.log(`onUpdateRows:`,e)},onCreateRows:e=>{console.log(`onCreateRows:`,e)},onDeleteRows:e=>{console.log(`onDeleteRows:`,e)},onUndo:e=>{console.log(`onUndo:`,e)},onRedo:e=>{console.log(`onRedo:`,e)},extraContextMenuItems:[{label:`Log selection`,onClick:({selectedRows:e,selectionRange:t})=>{console.log(`Selected range:`,t,`Rows:`,e)}}]})}),(0,D.jsxs)(`div`,{className:`example-footer`,children:[(0,D.jsx)(Fe,{totalRows:_,page:d,pageSize:p,onPageChange:f,onPageSizeChange:S}),(0,D.jsxs)(`div`,{className:`example-footer-controls`,children:[(0,D.jsx)(`button`,{className:`toolbar-button`,disabled:!a&&Object.keys(s).every(e=>!s[e]),onClick:()=>{o(null),c({}),f(1)},children:`Reset Filter & Sort`}),(0,D.jsx)(`button`,{className:re(`toolbar-button`,`toggle`,l&&`active`),onClick:()=>u(e=>!e),title:`Toggle text truncation`,children:`[...]`})]})]})]})},{}));

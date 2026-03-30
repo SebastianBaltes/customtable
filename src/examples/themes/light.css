@@ -84,6 +84,11 @@
   --ct-dialog-btn-hover: hsl(0, 0%, 95%);
   --ct-dialog-save-bg: hsl(207, 100%, 60%);
   --ct-dialog-save-hover: hsl(207, 100%, 50%);
+
+  --ct-cell-error-bg: hsl(0, 90%, 95%);
+  --ct-cell-error-text: hsl(0, 70%, 35%);
+  --ct-row-readonly-bg: hsl(0, 0%, 93%);
+  --ct-row-readonly-text: hsl(0, 0%, 45%);
 }
 
 /* ---- Apply theme variables ---- */
@@ -358,4 +363,15 @@
       background: var(--ct-dialog-save-hover);
     }
   }
+}
+
+/* Cell-meta utility classes */
+.custom-table .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.custom-table .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
 }
