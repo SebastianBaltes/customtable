@@ -518,3 +518,31 @@
     cursor: pointer;
   }
 }
+
+/* Mobile: fullscreen dialog for usability with virtual keyboard */
+@media (max-width: 600px) {
+  .editor-dialog {
+    width: 100vw;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .editor-dialog .editor-dialog-input {
+    min-height: 200px;
+    margin: 8px 12px;
+  }
+
+  .editor-dialog .editor-dialog-header {
+    padding: 12px;
+  }
+
+  .editor-dialog .editor-dialog-footer {
+    padding: 12px;
+  }
+
+  .editor-dialog .editor-dialog-btn {
+    padding: 12px 24px;
+    min-height: 44px;
+  }
+}
