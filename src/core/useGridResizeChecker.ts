@@ -1,11 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { arrayEquals } from "./utils";
-import { ColumnConfig, Row } from "./Types";
-
-interface StickColumnLefts {
-  lefts: number[];
-  css: string | null;
-}
+import React, { useEffect, useRef } from "react";
 
 export function useOnGridResize(
   tableRef: React.RefObject<HTMLTableElement>,
@@ -13,8 +6,11 @@ export function useOnGridResize(
   columnsLength: number,
   onResize: () => void,
 ) {
+  const onResizeRef = useRef(onResize);
+  onResizeRef.current = onResize;
+
   useEffect(() => {
-    const observer = new ResizeObserver(onResize);
+    const observer = new ResizeObserver(() => onResizeRef.current());
     const cells = tableRef.current?.rows?.[0]?.cells;
     if (cells) {
       for (let i = 0; i < columnsLength; i++) {
@@ -27,7 +23,7 @@ export function useOnGridResize(
   }, [columnsLength]);
 
   useEffect(() => {
-    const observer = new ResizeObserver(onResize);
+    const observer = new ResizeObserver(() => onResizeRef.current());
     const rows = tableRef.current?.rows;
     if (rows) {
       for (let i = 0; i < rowsLength; i++) {
