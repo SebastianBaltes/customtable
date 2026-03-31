@@ -3,18 +3,22 @@ import React from "react";
 import { getCursorName } from "./CustomTable";
 import { last, range } from "./utils";
 
+export interface CursorRefs {
+  viewportRef: React.RefObject<HTMLDivElement>;
+  tableRef: React.RefObject<HTMLTableElement>;
+  selectionRectangleRef: React.RefObject<HTMLDivElement>;
+  selectionRectangleStickyRef: React.RefObject<HTMLDivElement>;
+  fillRectangleRef: React.RefObject<HTMLDivElement>;
+  fillRectangleStickyRef: React.RefObject<HTMLDivElement>;
+}
+
 export function directDomUpdateForCursor(
   oldCursor: Cursor,
   newCursor: Cursor,
   numberOfStickyColums: number,
-  viewportRef: React.RefObject<HTMLDivElement>,
-  tableRef: React.RefObject<HTMLTableElement>,
-  selectionRectangleRef: React.RefObject<HTMLDivElement>,
-  selectionRectangleStickyRef: React.RefObject<HTMLDivElement>,
-  fillRectangleRef: React.RefObject<HTMLDivElement>,
-  fillRectangleStickyRef: React.RefObject<HTMLDivElement>,
+  refs: CursorRefs,
 ) {
-  const { getRowElement, getColHeaderElement, getCellElement } = getCellAccessors(tableRef);
+  const { getRowElement, getColHeaderElement, getCellElement } = getCellAccessors(refs.tableRef);
 
   const colChange = oldCursor.selectionStart.colIdx !== newCursor.selectionStart.colIdx;
   const rowChange = oldCursor.selectionStart.rowIdx !== newCursor.selectionStart.rowIdx;
@@ -26,9 +30,10 @@ export function directDomUpdateForCursor(
     oldCursor.fillEnd.rowIdx !== newCursor.fillEnd.rowIdx ||
     oldCursor.fillEnd.colIdx !== newCursor.fillEnd.colIdx;
 
-  if (colChange || rowChange || editChange || selectionChange || fillChange) {
-    scrollToCellAddr(newCursor.fillEnd, numberOfStickyColums, viewportRef, getCellElement);
-  }
+  const anyChange = colChange || rowChange || editChange || selectionChange || fillChange;
+  if (!anyChange) return;
+
+  scrollToCellAddr(newCursor.fillEnd, numberOfStickyColums, refs.viewportRef, getCellElement);
 
   if (colChange || editChange || selectionChange) {
     range(oldCursor.selectionStart.colIdx, oldCursor.selectionEnd.colIdx).forEach((colIdx) => {
@@ -71,131 +76,51 @@ export function directDomUpdateForCursor(
     }
   }
 
-  if (fillChange || selectionChange || colChange || rowChange || editChange) {
-    forceUpdateCursorRect(
-      newCursor,
-      numberOfStickyColums,
-      viewportRef,
-      tableRef,
-      selectionRectangleRef,
-      selectionRectangleStickyRef,
-      fillRectangleRef,
-      fillRectangleStickyRef,
-    );
-  }
+  forceUpdateCursorRect(newCursor, numberOfStickyColums, refs, getCellElement);
 }
 
 export function forceUpdateCursorRect(
   newCursor: Cursor,
   numberOfStickyColums: number,
-  viewportRef: React.RefObject<HTMLDivElement>,
-  tableRef: React.RefObject<HTMLTableElement>,
-  selectionRectangleRef: React.RefObject<HTMLDivElement>,
-  selectionRectangleStickyRef: React.RefObject<HTMLDivElement>,
-  fillRectangleRef: React.RefObject<HTMLDivElement>,
-  fillRectangleStickyRef: React.RefObject<HTMLDivElement>,
+  refs: CursorRefs,
+  resolvedGetCell?: (addr: CellAddr | undefined) => HTMLTableCellElement | undefined,
 ) {
-  const { getCellElement } = getCellAccessors(tableRef);
-  const viewport = viewportRef.current;
-
-  function splitCursorRange(
-    selectionStart: CellAddr | undefined,
-    selectionEnd: CellAddr | undefined,
-    numberOfStickyColumns: number,
-  ): [CellAddr | undefined, CellAddr | undefined, CellAddr | undefined, CellAddr | undefined] {
-    let selectionStartSticky, selectionEndSticky, selectionStartNonSticky, selectionEndNonSticky;
-
-    if (selectionStart && selectionEnd) {
-      if (selectionStart.colIdx < numberOfStickyColumns) {
-        selectionStartSticky = selectionStart;
-
-        if (selectionEnd.colIdx < numberOfStickyColumns) {
-          selectionEndSticky = selectionEnd;
-        } else {
-          selectionEndSticky = { rowIdx: selectionEnd.rowIdx, colIdx: numberOfStickyColumns - 1 };
-          selectionStartNonSticky = {
-            rowIdx: selectionStart.rowIdx,
-            colIdx: numberOfStickyColumns,
-          };
-          selectionEndNonSticky = selectionEnd;
-        }
-      } else {
-        selectionStartNonSticky = selectionStart;
-        selectionEndNonSticky = selectionEnd;
-      }
-    }
-
-    return [
-      selectionStartNonSticky,
-      selectionEndNonSticky,
-      selectionStartSticky,
-      selectionEndSticky,
-    ];
-  }
-
-  function setRectangleOverCells(
-    viewport: HTMLDivElement | null | undefined,
-    offsetParent: HTMLElement | null | undefined,
-    rectangleDiv: HTMLDivElement | null | undefined,
-    startCell: HTMLTableCellElement | null | undefined,
-    endCell: HTMLTableCellElement | null | undefined,
-  ) {
-    if (!(viewport && rectangleDiv && startCell && endCell)) {
-      return;
-    }
-    const viewportRect = viewport.getBoundingClientRect();
-    const startRect = startCell.getBoundingClientRect();
-    const endRect = endCell.getBoundingClientRect();
-    const dtop = offsetParent ? -offsetParent.offsetTop : 0;
-    const dleft = offsetParent ? -offsetParent.offsetLeft : 0;
-    const topDelta = viewportRect.top;
-    const leftDelta = viewportRect.left;
-    const top = Math.min(startRect.top, endRect.top) - topDelta;
-    const left = Math.min(startRect.left, endRect.left) - leftDelta;
-    const right = Math.max(startRect.right, endRect.right) - leftDelta;
-    const bottom = Math.max(startRect.bottom, endRect.bottom) - topDelta;
-    const width = right - left;
-    const height = bottom - top;
-    const style = rectangleDiv.style;
-    style.top = Math.round(top + viewport.scrollTop + dtop) + "px";
-    style.left = Math.round(left + viewport.scrollLeft + dleft) + "px";
-    style.width = Math.round(width) + "px";
-    style.height = Math.round(height) + "px";
-  }
+  const getCellElement = resolvedGetCell ?? getCellAccessors(refs.tableRef).getCellElement;
+  const viewport = refs.viewportRef.current;
 
   function updateRectangle(
     offsetParent: HTMLElement | null | undefined,
-    selectionRectangleRef: React.RefObject<HTMLDivElement>,
+    rectRef: React.RefObject<HTMLDivElement>,
     selectionStart: CellAddr | undefined,
     selectionEnd: CellAddr | undefined,
     show: boolean,
   ) {
-    const selectionRectangle = selectionRectangleRef.current;
-    if (selectionRectangle) {
+    const rect = rectRef.current;
+    if (rect) {
       if (selectionStart && selectionEnd) {
         setRectangleOverCells(
           viewport,
           offsetParent,
-          selectionRectangle,
+          rect,
           getCellElement(selectionStart),
           getCellElement(selectionEnd),
         );
       }
-      selectionRectangle.style.display = selectionStart && selectionEnd && show ? "block" : "none";
+      rect.style.display = selectionStart && selectionEnd && show ? "block" : "none";
     }
   }
 
-  const stickyOffsetParent = last(tableRef.current?.rows)?.cells?.[numberOfStickyColums - 1];
+  const stickyOffsetParent = last(refs.tableRef.current?.rows)?.cells?.[numberOfStickyColums - 1];
   const [selectionStart, selectionEnd, selectionStartSticky, selectionEndSticky] = splitCursorRange(
     newCursor.selectionStart,
     newCursor.selectionEnd,
     numberOfStickyColums,
   );
   const showSelection = !newCursor.editing;
-  updateRectangle(null, selectionRectangleRef, selectionStart, selectionEnd, showSelection);
+  updateRectangle(null, refs.selectionRectangleRef, selectionStart, selectionEnd, showSelection);
   updateRectangle(
     stickyOffsetParent as HTMLElement,
-    selectionRectangleStickyRef,
+    refs.selectionRectangleStickyRef,
     selectionStartSticky,
     selectionEndSticky,
     showSelection,
@@ -208,14 +133,79 @@ export function forceUpdateCursorRect(
     numberOfStickyColums,
   );
   const showFill = !newCursor.editing && newCursor.filling && fillArea != null;
-  updateRectangle(null, fillRectangleRef, fillStart, fillEnd, showFill);
+  updateRectangle(null, refs.fillRectangleRef, fillStart, fillEnd, showFill);
   updateRectangle(
     stickyOffsetParent as HTMLElement,
-    fillRectangleStickyRef,
+    refs.fillRectangleStickyRef,
     fillStartSticky,
     fillEndSticky,
     showFill,
   );
+}
+
+function splitCursorRange(
+  selectionStart: CellAddr | undefined,
+  selectionEnd: CellAddr | undefined,
+  numberOfStickyColumns: number,
+): [CellAddr | undefined, CellAddr | undefined, CellAddr | undefined, CellAddr | undefined] {
+  let selectionStartSticky, selectionEndSticky, selectionStartNonSticky, selectionEndNonSticky;
+
+  if (selectionStart && selectionEnd) {
+    if (selectionStart.colIdx < numberOfStickyColumns) {
+      selectionStartSticky = selectionStart;
+
+      if (selectionEnd.colIdx < numberOfStickyColumns) {
+        selectionEndSticky = selectionEnd;
+      } else {
+        selectionEndSticky = { rowIdx: selectionEnd.rowIdx, colIdx: numberOfStickyColumns - 1 };
+        selectionStartNonSticky = {
+          rowIdx: selectionStart.rowIdx,
+          colIdx: numberOfStickyColumns,
+        };
+        selectionEndNonSticky = selectionEnd;
+      }
+    } else {
+      selectionStartNonSticky = selectionStart;
+      selectionEndNonSticky = selectionEnd;
+    }
+  }
+
+  return [
+    selectionStartNonSticky,
+    selectionEndNonSticky,
+    selectionStartSticky,
+    selectionEndSticky,
+  ];
+}
+
+function setRectangleOverCells(
+  viewport: HTMLDivElement | null | undefined,
+  offsetParent: HTMLElement | null | undefined,
+  rectangleDiv: HTMLDivElement | null | undefined,
+  startCell: HTMLTableCellElement | null | undefined,
+  endCell: HTMLTableCellElement | null | undefined,
+) {
+  if (!(viewport && rectangleDiv && startCell && endCell)) {
+    return;
+  }
+  const viewportRect = viewport.getBoundingClientRect();
+  const startRect = startCell.getBoundingClientRect();
+  const endRect = endCell.getBoundingClientRect();
+  const dtop = offsetParent ? -offsetParent.offsetTop : 0;
+  const dleft = offsetParent ? -offsetParent.offsetLeft : 0;
+  const topDelta = viewportRect.top;
+  const leftDelta = viewportRect.left;
+  const top = Math.min(startRect.top, endRect.top) - topDelta;
+  const left = Math.min(startRect.left, endRect.left) - leftDelta;
+  const right = Math.max(startRect.right, endRect.right) - leftDelta;
+  const bottom = Math.max(startRect.bottom, endRect.bottom) - topDelta;
+  const width = right - left;
+  const height = bottom - top;
+  const style = rectangleDiv.style;
+  style.top = Math.round(top + viewport.scrollTop + dtop) + "px";
+  style.left = Math.round(left + viewport.scrollLeft + dleft) + "px";
+  style.width = Math.round(width) + "px";
+  style.height = Math.round(height) + "px";
 }
 
 function getCellAccessors(tableRef: React.RefObject<HTMLTableElement>) {

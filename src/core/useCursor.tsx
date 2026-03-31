@@ -1,7 +1,9 @@
 import { CellAddr, ColumnConfig, Cursor, Row, SelectionInfo } from "./Types";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { directDomUpdateForCursor } from "./directDomUpdateForCursor";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { CursorRefs, directDomUpdateForCursor } from "./directDomUpdateForCursor";
 import { useCursorKeys } from "./useCursorKeys";
+
+const addrEqual = (a: CellAddr, b: CellAddr) => a.colIdx === b.colIdx && a.rowIdx === b.rowIdx;
 
 /**
  * RAF-throttled mousemove dispatcher. Shared across all cells so that
@@ -56,6 +58,18 @@ export function useCursor(
   const onSelectionChangeRef = useRef(onSelectionChange);
   onSelectionChangeRef.current = onSelectionChange;
 
+  const cursorRefs: CursorRefs = useMemo(
+    () => ({
+      viewportRef,
+      tableRef,
+      selectionRectangleRef,
+      selectionRectangleStickyRef,
+      fillRectangleRef,
+      fillRectangleStickyRef,
+    }),
+    [],
+  );
+
   const setCursorRef = useCallback(
     (partialCursor: Partial<Cursor>) => {
       const oldCursor = cursorRef.current;
@@ -63,25 +77,13 @@ export function useCursor(
         ...oldCursor,
         ...partialCursor,
       });
-      directDomUpdateForCursor(
-        oldCursor,
-        newCursor,
-        numberOfStickyColums,
-        viewportRef,
-        tableRef,
-        selectionRectangleRef,
-        selectionRectangleStickyRef,
-        fillRectangleRef,
-        fillRectangleStickyRef,
-      );
+      directDomUpdateForCursor(oldCursor, newCursor, numberOfStickyColums, cursorRefs);
 
       // Update React state for editing cell to trigger re-renders
       const wasEditing = oldCursor.editing;
       const isEditing = newCursor.editing;
-      const cellChanged =
-        oldCursor.selectionStart.rowIdx !== newCursor.selectionStart.rowIdx ||
-        oldCursor.selectionStart.colIdx !== newCursor.selectionStart.colIdx;
-      if (wasEditing !== isEditing || (isEditing && cellChanged)) {
+      const startChanged = !addrEqual(oldCursor.selectionStart, newCursor.selectionStart);
+      if (wasEditing !== isEditing || (isEditing && startChanged)) {
         setEditingCell(
           isEditing
             ? { rowIdx: newCursor.selectionStart.rowIdx, colIdx: newCursor.selectionStart.colIdx }
@@ -91,12 +93,8 @@ export function useCursor(
 
       // Fire onSelectionChange if the selection range changed
       if (onSelectionChangeRef.current) {
-        const selChanged =
-          oldCursor.selectionStart.rowIdx !== newCursor.selectionStart.rowIdx ||
-          oldCursor.selectionStart.colIdx !== newCursor.selectionStart.colIdx ||
-          oldCursor.selectionEnd.rowIdx !== newCursor.selectionEnd.rowIdx ||
-          oldCursor.selectionEnd.colIdx !== newCursor.selectionEnd.colIdx;
-        if (selChanged) {
+        const endChanged = !addrEqual(oldCursor.selectionEnd, newCursor.selectionEnd);
+        if (startChanged || endChanged) {
           const hasSelection =
             newCursor.selectionStart.colIdx >= 0 && newCursor.selectionStart.rowIdx >= 0;
           const range = {
@@ -109,7 +107,7 @@ export function useCursor(
         }
       }
     },
-    [numberOfStickyColums],
+    [numberOfStickyColums, cursorRefs],
   );
 
   useEffect(() => {

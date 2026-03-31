@@ -91,44 +91,24 @@ export function useCursorKeys(
 
     // For other keys, if we are in edit mode, let them bubble (usually captured by editor)
     if (editing) {
-      const tableContainer = tableRef.current?.closest(".custom-table") as HTMLElement;
+      const commitAndFocus = (action: () => void) => {
+        event.stopPropagation();
+        event.preventDefault();
+        action();
+        const tableContainer = tableRef.current?.closest(".custom-table") as HTMLElement;
+        if (tableContainer) tableContainer.focus();
+      };
 
-      // Enter → commit + move one row down
       if (key === "Enter") {
-        event.stopPropagation();
-        event.preventDefault();
-        setColRow(
-          cursor.selectionStart.colIdx,
-          cursor.selectionStart.rowIdx + 1,
-          false,
-          shift,
-          ctrl,
-          null,
+        commitAndFocus(() =>
+          setColRow(cursor.selectionStart.colIdx, cursor.selectionStart.rowIdx + 1, false, shift, ctrl, null),
         );
-        if (tableContainer) tableContainer.focus();
-      }
-
-      // Tab / Shift+Tab → commit + jump to next/prev cell (with row-wrap)
-      if (key === "Tab") {
-        event.stopPropagation();
-        event.preventDefault();
-        jumpTab(shift ? -1 : +1, false);
-        if (tableContainer) tableContainer.focus();
-      }
-
-      // ArrowRight bubbled from editor → editor committed, move to next cell
-      if (key === "ArrowRight") {
-        event.stopPropagation();
-        event.preventDefault();
-        setColRow(
-          cursor.selectionStart.colIdx + 1,
-          cursor.selectionStart.rowIdx,
-          false,
-          false,
-          false,
-          null,
+      } else if (key === "Tab") {
+        commitAndFocus(() => jumpTab(shift ? -1 : +1, false));
+      } else if (key === "ArrowRight") {
+        commitAndFocus(() =>
+          setColRow(cursor.selectionStart.colIdx + 1, cursor.selectionStart.rowIdx, false, false, false, null),
         );
-        if (tableContainer) tableContainer.focus();
       }
 
       return;

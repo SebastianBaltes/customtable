@@ -299,16 +299,14 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     );
 
     useOnGridResize(tableRef, displayRows.length, columns.length, () => {
-      forceUpdateCursorRect(
-        cursorRef.current,
-        numberOfStickyColums,
+      forceUpdateCursorRect(cursorRef.current, numberOfStickyColums, {
         viewportRef,
         tableRef,
         selectionRectangleRef,
         selectionRectangleStickyRef,
         fillRectangleRef,
         fillRectangleStickyRef,
-      );
+      });
     });
 
     // --- Data mutation helpers ---
