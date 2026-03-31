@@ -26,10 +26,8 @@
   user-select: none;
   display: flex;
   flex-direction: column;
-
-  table {
-    font-size: var(--font-size);line-height: var(--line-height);
-  }
+  font-size: var(--font-size);
+  line-height: var(--line-height);
 
   th {
     font-weight: 400;
@@ -65,8 +63,6 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
     white-space: nowrap;
   }
 
@@ -102,7 +98,6 @@
     font-weight: bold;
   }
 
-
   /* Viewport / scroll area */
   .custom-table-viewport {
     position: relative;
@@ -124,11 +119,11 @@
   /* Sticky positioning */
   thead th {
     position: sticky;
-    top: 0px;
+    top: 0;
     z-index: 3;
 
     &.sticky {
-      left: 0px;
+      left: 0;
       z-index: 4;
     }
   }
@@ -182,7 +177,6 @@
       right: 5px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: var(--font-size);line-height: var(--line-height);
       pointer-events: none;
       line-height: 1;
     }
@@ -193,7 +187,6 @@
     right: 5px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: var(--font-size);line-height: var(--line-height);
     cursor: pointer;
     pointer-events: auto;
     line-height: 1;
@@ -223,7 +216,6 @@
     display: none;
     position: absolute;
     pointer-events: none;
-    will-change: top, left, width, height;
   }
 
   #selection-rectangle,
@@ -238,7 +230,6 @@
   }
 
   .selection-rectangle-dragger {
-    content: "";
     width: 8px;
     height: 8px;
     position: absolute;
@@ -332,7 +323,6 @@
     box-sizing: border-box;
     padding: 2px 4px;
     border-radius: 2px;
-    font-size: var(--font-size);line-height: var(--line-height);
     font-family: inherit;
   }
 
@@ -358,7 +348,6 @@
       border: none;
       background: none;
       cursor: pointer;
-      font-size: var(--font-size);
       line-height: 1;
       padding: 0 3px;
       color: inherit;
@@ -391,8 +380,6 @@
     gap: 8px;
     padding: 4px 10px;
     cursor: pointer;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
     user-select: none;
     white-space: nowrap;
 
@@ -411,14 +398,10 @@
 
   .col-filter-dropdown-checkbox {
     flex-shrink: 0;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
   }
 
   .col-filter-dropdown-empty {
     padding: 6px 12px;
-    font-size: var(--font-size);
-    line-height: var(--line-height);
     font-style: italic;
     opacity: 0.6;
   }
@@ -513,7 +496,6 @@
     gap: 8px;
     padding: 5px 12px;
     cursor: pointer;
-    font-size: var(--font-size);line-height: var(--line-height);
     user-select: none;
 
     &.is-custom {
@@ -523,14 +505,12 @@
 
   .combo-dropdown-custom-badge {
     margin-left: auto;
-    font-size: var(--font-size);line-height: var(--line-height);
     font-style: normal;
     white-space: nowrap;
     flex-shrink: 0;
   }
 
   .combo-dropdown-checkbox {
-    font-size: var(--font-size);line-height: var(--line-height);
     flex-shrink: 0;
   }
 
@@ -542,14 +522,12 @@
     outline: none;
     background: transparent;
     font: inherit;
-    font-size: var(--font-size);line-height: var(--line-height);
     padding: 0;
     margin: 0;
   }
 
   .combo-dropdown-empty {
     padding: 6px 12px;
-    font-size: var(--font-size);line-height: var(--line-height);
     font-style: italic;
   }
 }
@@ -620,7 +598,8 @@
   align-items: center;
   gap: 6px;
   padding: 6px 10px;
-  font-size: var(--font-size);line-height: var(--line-height);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
   flex-shrink: 0;
   flex-wrap: wrap;
 
@@ -642,7 +621,6 @@
     border-radius: 3px;
     background: none;
     cursor: pointer;
-    font-size: var(--font-size);line-height: var(--line-height);
     line-height: 1;
 
     &.is-current {
@@ -654,35 +632,33 @@
     height: 28px;
     padding: 0 4px;
     border-radius: 3px;
-    font-size: var(--font-size);line-height: var(--line-height);
     cursor: pointer;
   }
+
+  .ct-pagination-ellipsis {
+    padding: 0 2px;
+    user-select: none;
+    line-height: 28px;
+  }
+
+  .ct-pagination-spinner {
+    display: inline-block;
+    width: 0.85em;
+    height: 0.85em;
+    border: 1.5px solid var(--ct-status-info, #1565c0);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: ct-spinner-spin 0.7s linear infinite;
+    vertical-align: middle;
+  }
 }
-
-
-.ct-pagination-ellipsis {
-  padding: 0 2px;
-  user-select: none;
-  line-height: 28px;
-}
-
-.ct-pagination-spinner {
-  display: inline-block;
-  width: 0.85em;
-  height: 0.85em;
-  border: 1.5px solid var(--ct-status-info, #1565c0);
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: ct-spinner-spin 0.7s linear infinite;
-  vertical-align: middle;
-}
-
 
 .toolbar-input {
   width: 60px;
   padding: 4px 8px;
   border-radius: 3px;
-  font-size: var(--font-size);line-height: var(--line-height);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
 }
 
 .toolbar-button {
@@ -695,13 +671,13 @@
   padding: 4px 12px;
   border-radius: 3px;
   cursor: pointer;
-  font-size: var(--font-size);line-height: var(--line-height);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
 
   &:disabled {
     opacity: 0.4;
     cursor: default;
   }
-
 
   &.toggle {
     border: 1px outset var(--ct-border);
@@ -728,6 +704,8 @@
   display: flex;
   flex-direction: column;
   max-height: 90vh;
+  font-size: var(--font-size);
+  line-height: var(--line-height);
 
   .editor-dialog-header {
     display: flex;
@@ -738,7 +716,6 @@
 
   .editor-dialog-title {
     font-weight: 600;
-    font-size: var(--font-size);line-height: var(--line-height);
   }
 
   .editor-dialog-close {
@@ -754,7 +731,6 @@
     flex: 1;
     margin: 16px 20px;
     padding: 12px 14px;
-    font-size: var(--font-size);line-height: var(--line-height);
     font-family: inherit;
     border-radius: 4px;
     resize: vertical;
@@ -772,7 +748,6 @@
   .editor-dialog-btn {
     padding: 8px 20px;
     border-radius: 4px;
-    font-size: var(--font-size);line-height: var(--line-height);
     cursor: pointer;
   }
 }
@@ -784,24 +759,24 @@
     max-height: 100vh;
     height: 100vh;
     border-radius: 0;
-  }
 
-  .editor-dialog .editor-dialog-input {
-    min-height: 200px;
-    margin: 8px 12px;
-  }
+    .editor-dialog-input {
+      min-height: 200px;
+      margin: 8px 12px;
+    }
 
-  .editor-dialog .editor-dialog-header {
-    padding: 12px;
-  }
+    .editor-dialog-header {
+      padding: 12px;
+    }
 
-  .editor-dialog .editor-dialog-footer {
-    padding: 12px;
-  }
+    .editor-dialog-footer {
+      padding: 12px;
+    }
 
-  .editor-dialog .editor-dialog-btn {
-    padding: 12px 24px;
-    min-height: 44px;
+    .editor-dialog-btn {
+      padding: 12px 24px;
+      min-height: 44px;
+    }
   }
 }
 
