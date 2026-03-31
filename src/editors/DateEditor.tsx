@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { DateFormat, Editor } from "../core/Types";
+import { useInlineEdit } from "./useInlineEdit";
 
 // ---------------------------------------------------------------------------
 // Formatting / Parsing helpers
@@ -24,21 +25,18 @@ export function formatDate(isoString: string | null | undefined, fmt?: DateForma
 export function parseDateInput(text: string): string {
   const trimmed = text.trim();
   if (!trimmed) return "";
-  // Already ISO?
   if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) return trimmed;
-  // Try Date constructor
   const d = new Date(trimmed);
   if (!isNaN(d.getTime())) {
     return toISODate(d);
   }
-  // Try common EU formats: DD.MM.YYYY, DD/MM/YYYY
   const euMatch = trimmed.match(/^(\d{1,2})[./](\d{1,2})[./](\d{4})$/);
   if (euMatch) {
     const [, day, month, year] = euMatch;
     const candidate = new Date(+year, +month - 1, +day);
     if (!isNaN(candidate.getTime())) return toISODate(candidate);
   }
-  return trimmed; // free-text fallback
+  return trimmed;
 }
 
 function toISODate(d: Date): string {
@@ -60,44 +58,15 @@ export const DateEditor: Editor<string> = ({
   initialEditValue,
 }) => {
   const fmt = columnConfig.dateFormat;
-  const [localValue, setLocalValue] = useState(value ?? "");
-  const inputRef = useRef<HTMLInputElement>(null);
   const pickerRef = useRef<HTMLInputElement>(null);
-  const isEscapingRef = useRef(false);
-  const prevEditingRef = useRef(false);
-  const navigateOnArrowRightRef = useRef(false);
 
-  useEffect(() => {
-    if (editing && !prevEditingRef.current) {
-      if (initialEditValue !== null && initialEditValue !== "") {
-        setLocalValue(initialEditValue);
-        navigateOnArrowRightRef.current = true;
-      } else {
-        setLocalValue(value ?? "");
-        navigateOnArrowRightRef.current = false;
-      }
-    } else if (!editing) {
-      setLocalValue(value ?? "");
-    }
-    prevEditingRef.current = editing;
-  }, [value, editing, initialEditValue]);
-
-  useEffect(() => {
-    if (editing && inputRef.current) {
-      inputRef.current.focus();
-      if (initialEditValue === null) {
-        inputRef.current.select();
-      } else {
-        const len = inputRef.current.value.length;
-        inputRef.current.setSelectionRange(len, len);
-      }
-    }
-  }, [editing, initialEditValue]);
-
-  const commit = () => {
-    if (isEscapingRef.current) return;
-    onChange(parseDateInput(localValue));
-  };
+  const { localValue, setLocalValue, inputRef, handleKeyDown, handleBlur } =
+    useInlineEdit({
+      value: value ?? "",
+      editing,
+      initialEditValue,
+      onCommit: (val) => onChange(parseDateInput(val)),
+    });
 
   if (!editing) {
     return <span>{formatDate(value, fmt)}</span>;
@@ -113,26 +82,8 @@ export const DateEditor: Editor<string> = ({
         data-lpignore="true"
         value={localValue}
         onChange={(e) => setLocalValue(e.target.value)}
-        onBlur={commit}
-        onKeyDown={(e) => {
-          if (e.key === "Escape") {
-            isEscapingRef.current = true;
-            setLocalValue(value ?? "");
-            return;
-          }
-          if (e.key === "Enter" || e.key === "Tab") {
-            commit();
-            return;
-          }
-          if (e.key === "ArrowRight" && navigateOnArrowRightRef.current) {
-            const input = inputRef.current!;
-            if (input.selectionStart === input.value.length && input.selectionEnd === input.value.length) {
-              commit();
-              return;
-            }
-          }
-          e.stopPropagation();
-        }}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
       />
       <input
         ref={pickerRef}
