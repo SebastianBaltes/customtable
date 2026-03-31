@@ -878,7 +878,6 @@
 }
 
 .search-replace-field span {
-  font-size: 0.85rem;
   font-weight: 500;
 }
 
@@ -895,7 +894,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px 16px;
-  font-size: 0.85rem;
 }
 
 .search-replace-options label {
@@ -915,7 +913,6 @@
 
 .search-replace-result {
   flex: 1;
-  font-size: 0.85rem;
   color: var(--ct-muted, #666);
 }
 
@@ -986,7 +983,6 @@
 }
 
 .column-manager-type {
-  font-size: 0.75rem;
   opacity: 0.5;
   text-transform: uppercase;
 }

@@ -1014,18 +1014,17 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       return { selectionRange: range, selectedRows, displayRows, rows, columns, cellMeta };
     };
 
-    const { contextMenu, openContextMenu, closeContextMenu, contextMenuItems } = useContextMenu(
-      cursorRef,
+    const { contextMenu, openContextMenu, closeContextMenu, contextMenuItems } = useContextMenu({
       copySelection,
       pasteAtCursor,
       deleteSelection,
       handleDeleteRows,
       handleInsertRowAbove,
       handleInsertRowBelow,
-      extraContextMenuItems ?? [],
+      extraItems: extraContextMenuItems ?? [],
       contextStateRef,
       t,
-    );
+    });
     const contextMenuVisibleRef = React.useRef(false);
     contextMenuVisibleRef.current = contextMenu.visible;
 

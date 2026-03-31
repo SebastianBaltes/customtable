@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { classNames } from "./classNames";
 
 interface ComboboxFilterProps {
   value: string;
@@ -102,12 +103,14 @@ export const ComboboxFilter: React.FC<ComboboxFilterProps> = ({ value, onChange,
     return () => document.removeEventListener("mousedown", handler);
   }, [open]);
 
-  // Sort: checked options first
-  const sortedOptions = [...filteredOptions].sort((a, b) => {
-    const aChecked = isSelected(a) ? 0 : 1;
-    const bChecked = isSelected(b) ? 0 : 1;
-    return aChecked - bChecked;
-  });
+  const sortedOptions = useMemo(() => {
+    const selectedSet = new Set(selected);
+    return [...filteredOptions].sort((a, b) => {
+      const aChecked = selectedSet.has(encodeOption(a)) ? 0 : 1;
+      const bChecked = selectedSet.has(encodeOption(b)) ? 0 : 1;
+      return aChecked - bChecked;
+    });
+  }, [filteredOptions, value]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Display value: when dropdown is open show the search text,
   // otherwise show selected labels or text filter
@@ -167,11 +170,10 @@ export const ComboboxFilter: React.FC<ComboboxFilterProps> = ({ value, onChange,
             return (
               <label
                 key={isEmpty ? EMPTY_SENTINEL : opt}
-                className={
-                  "col-filter-dropdown-option" +
-                  (checked ? " is-selected" : "") +
-                  (isEmpty ? " is-empty-value" : "")
-                }
+                className={classNames("col-filter-dropdown-option", {
+                  "is-selected": checked,
+                  "is-empty-value": isEmpty,
+                })}
                 onMouseDown={(e) => {
                   e.preventDefault();
                   toggle(opt);

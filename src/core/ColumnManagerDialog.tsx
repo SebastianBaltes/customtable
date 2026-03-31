@@ -1,6 +1,8 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import { ColumnConfig } from "./Types";
+import { classNames } from "./classNames";
+import { useStopMousedownPropagation } from "./useStopMousedownPropagation";
 
 export interface ColumnManagerProps {
   open: boolean;
@@ -32,22 +34,12 @@ export const ColumnManagerDialog: React.FC<ColumnManagerProps> = ({
   const [dropIdx, setDropIdx] = useState<number | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const el = overlayRef.current;
-    if (!el) return;
-    const stop = (e: MouseEvent) => e.stopPropagation();
-    el.addEventListener("mousedown", stop, { capture: true });
-    return () => el.removeEventListener("mousedown", stop, { capture: true });
-  }, [open]);
+  useStopMousedownPropagation(overlayRef, open);
 
   if (!open) return null;
 
   const colMap = new Map(columns.map((c) => [c.name, c]));
   const orderedNames = columnOrder.length > 0 ? columnOrder : columns.map((c) => c.name);
-
-  const handleDragStart = (idx: number) => {
-    setDragIdx(idx);
-  };
 
   const handleDragOver = (e: React.DragEvent, idx: number) => {
     e.preventDefault();
@@ -106,9 +98,9 @@ export const ColumnManagerDialog: React.FC<ColumnManagerProps> = ({
             return (
               <div
                 key={colName}
-                className={`column-manager-item${isDragOver ? " drag-over" : ""}${dragIdx === idx ? " dragging" : ""}`}
+                className={classNames("column-manager-item", { "drag-over": isDragOver, "dragging": dragIdx === idx })}
                 draggable
-                onDragStart={() => handleDragStart(idx)}
+                onDragStart={() => setDragIdx(idx)}
                 onDragOver={(e) => handleDragOver(e, idx)}
                 onDrop={() => handleDrop(idx)}
                 onDragEnd={() => { setDragIdx(null); setDropIdx(null); }}

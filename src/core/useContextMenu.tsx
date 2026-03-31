@@ -1,20 +1,32 @@
 import React, { useState } from "react";
-import { ContextMenuItem, Cursor, CustomContextMenuItem, TableContextState } from "./Types";
+import { ContextMenuItem, CustomContextMenuItem, TableContextState } from "./Types";
 import { TableTranslations } from "./TranslationsContext";
 
-export function useContextMenu(
-  cursorRef: React.MutableRefObject<Cursor>,
-  copySelection: () => Promise<void>,
-  pasteAtCursor: () => Promise<void>,
-  deleteSelection: () => void,
-  handleDeleteRows: () => void,
-  handleInsertRowAbove: () => void,
-  handleInsertRowBelow: () => void,
-  extraItems: CustomContextMenuItem[],
-  contextStateRef: React.MutableRefObject<() => TableContextState>,
-  t: TableTranslations,
-) {
+export interface UseContextMenuOptions {
+  copySelection: () => Promise<void>;
+  pasteAtCursor: () => Promise<void>;
+  deleteSelection: () => void;
+  handleDeleteRows: () => void;
+  handleInsertRowAbove: () => void;
+  handleInsertRowBelow: () => void;
+  extraItems: CustomContextMenuItem[];
+  contextStateRef: React.MutableRefObject<() => TableContextState>;
+  t: TableTranslations;
+}
+
+export function useContextMenu({
+  copySelection,
+  pasteAtCursor,
+  deleteSelection,
+  handleDeleteRows,
+  handleInsertRowAbove,
+  handleInsertRowBelow,
+  extraItems,
+  contextStateRef,
+  t,
+}: UseContextMenuOptions) {
   const [contextMenu, setContextMenu] = useState({ visible: false, position: { x: 0, y: 0 } });
+
   const openContextMenu = (event: React.MouseEvent<HTMLElement>) => {
     event.stopPropagation();
     event.preventDefault();
@@ -22,42 +34,25 @@ export function useContextMenu(
   };
 
   const closeContextMenu = () => {
-    setContextMenu({ visible: false, position: { x: 0, y: 0 } });
+    setContextMenu((prev) => (prev.visible ? { ...prev, visible: false } : prev));
   };
 
   const builtInItems: ContextMenuItem[] = [
-    {
-      label: t["Insert row above"],
-      onClick: handleInsertRowAbove,
-    },
-    {
-      label: t["Insert row below"],
-      onClick: handleInsertRowBelow,
-    },
-    {
-      label: t["Remove rows"],
-      onClick: handleDeleteRows,
-    },
+    { label: t["Insert row above"], onClick: handleInsertRowAbove },
+    { label: t["Insert row below"], onClick: handleInsertRowBelow },
+    { label: t["Remove rows"], onClick: handleDeleteRows },
     "---",
     {
       label: t["Copy content"],
       shortcut: "Ctrl + C",
-      onClick: () => {
-        copySelection();
-      },
+      onClick: () => { copySelection(); },
     },
     {
       label: t["Paste content"],
       shortcut: "Ctrl + V",
-      onClick: () => {
-        pasteAtCursor();
-      },
+      onClick: () => { pasteAtCursor(); },
     },
-    {
-      label: t["Delete content"],
-      shortcut: "Delete",
-      onClick: deleteSelection,
-    },
+    { label: t["Delete content"], shortcut: "Delete", onClick: deleteSelection },
   ];
 
   const mappedExtraItems: ContextMenuItem[] = extraItems.map((item) => {
