@@ -638,6 +638,14 @@ const App = () => {
   return (
     <div className="example-page">
       <div className="theme-switcher">
+        <a
+          href="https://github.com/SebastianBaltes/customtable/blob/master/src/examples/example.tsx"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="view-source-link"
+        >
+          &lt;/&gt; View Source
+        </a>
         <span className="theme-switcher-label">Theme:</span>
         <select
           className="theme-switcher-select"
