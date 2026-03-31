@@ -137,6 +137,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   const safePage = Math.min(Math.max(1, page), totalPages);
 
   const visiblePages = getVisiblePages(safePage, totalPages, maxVisiblePages);
+  const spinnerPage = pendingPage ?? page;
 
   return (
     <div className={["ct-pagination", className].filter(Boolean).join(" ")}>
@@ -151,7 +152,6 @@ export const Pagination: React.FC<PaginationProps> = ({
               </span>
             );
           }
-          const spinnerPage = pendingPage ?? page;
           const showSpinner = loading && entry === spinnerPage;
           return (
             <button
