@@ -1124,7 +1124,6 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
                 setCursorRef,
                 rows: displayRows,
                 columns,
-                rowKey,
                 numberOfStickyColums,
                 onCellChange,
                 editingCell,

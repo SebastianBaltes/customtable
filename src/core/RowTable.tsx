@@ -23,7 +23,6 @@ export const RowTable = React.memo(
     setCursorRef,
     rows,
     columns,
-    rowKey,
     numberOfStickyColums,
     stickyPortal,
     onCellChange,
@@ -49,7 +48,6 @@ export const RowTable = React.memo(
     setCursorRef: (value: Partial<Cursor>) => void;
     rows: Row[];
     columns: ColumnConfig<any>[];
-    rowKey: ((row: Row, rowIndex: number) => string) | undefined;
     numberOfStickyColums: number;
     stickyPortal: (() => any) | undefined;
     onCellChange: (rowIdx: number, colName: string, value: any) => void;
@@ -69,7 +67,7 @@ export const RowTable = React.memo(
     columnWidths?: Record<string, number>;
     onColumnResize?: OnColumnResize;
   }) => {
-    const resolvedGetRowKey = getRowKey ?? rowKey ?? defaultRowKey;
+    const resolvedGetRowKey = getRowKey ?? defaultRowKey;
     return (
       <table ref={tableRef} id={tableId}>
         {caption && <caption className="sr-only">{caption}</caption>}

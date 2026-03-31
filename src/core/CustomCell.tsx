@@ -4,6 +4,7 @@ import classNames from "./classNames";
 import { getCursorName } from "./CustomTable";
 import { renderCell } from "./renderCell";
 import { throttledMouseMove } from "./useCursor";
+import { columnAlign, isDropdownType } from "./utils";
 
 export const CustomCell = React.memo(
   ({
@@ -46,7 +47,7 @@ export const CustomCell = React.memo(
       if (isDisabled) return;
       onCellChange(rowIdx, column.name, value);
     };
-    const align = column.align ?? (column.type === "Number" ? "right" : "left");
+    const align = columnAlign(column);
 
     // Validation
     const cellValue = row[column.name];
@@ -104,11 +105,12 @@ export const CustomCell = React.memo(
             }
 
             // Check if click lands within the 2rem dropdown zone (right edge of cell)
-            const isDropdownColumn = column.type === "Combobox" || column.type === "MultiCombobox";
-            const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
-            const cellRect = (event.currentTarget as HTMLElement).getBoundingClientRect();
-            const distFromRight = cellRect.right - event.clientX;
-            const isDropdownZoneClick = isDropdownColumn && !isReadOnly && distFromRight <= 2 * rem;
+            let isDropdownZoneClick = false;
+            if (isDropdownType(column.type) && !isReadOnly) {
+              const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+              const cellRect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+              isDropdownZoneClick = cellRect.right - event.clientX <= 2 * rem;
+            }
 
             const alreadyEditing = cellHasCursor && cursorRef.current.editing;
 
@@ -178,7 +180,7 @@ export const CustomCell = React.memo(
           initialEditValue,
           () => setCursorRef({ editing: false }),
         )}
-        {!effectiveEditing && (column.type === "Combobox" || column.type === "MultiCombobox") && (
+        {!effectiveEditing && isDropdownType(column.type) && (
           <span className="cell-dropdown-indicator" aria-hidden="true">
             ▾
           </span>

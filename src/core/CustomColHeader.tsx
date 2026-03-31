@@ -5,6 +5,7 @@ import { getCursorName } from "./CustomTable";
 import { TranslationsContext } from "./TranslationsContext";
 import { ComboboxFilter } from "./ComboboxFilter";
 import { throttledMouseMove } from "./useCursor";
+import { columnAlign } from "./utils";
 
 export const CustomColHeader = React.memo(
   ({
@@ -221,7 +222,7 @@ export const CustomColHeader = React.memo(
       );
     };
 
-    const align = column.align ?? (column.type === "Number" ? "right" : "left");
+    const align = columnAlign(column);
     return (
       <th
         ref={thRef}

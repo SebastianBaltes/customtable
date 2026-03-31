@@ -1,4 +1,4 @@
-import { ColumnConfig, Editor, EditorParams } from "./Types";
+import { ColumnConfig, EditorParams } from "./Types";
 import { JSX } from "react";
 import { editorMap } from "./EditorMap";
 import { StringEditor } from "../editors/StringEditor";
@@ -13,9 +13,8 @@ export const renderCell = (
   initialEditValue: string | null = null,
   onRequestClose?: () => void,
 ): JSX.Element => {
-  const editor: Editor<any> =
-    columnConfig.editor ?? editorMap.get(columnConfig.type) ?? StringEditor;
-  const params: EditorParams<any> = {
+  const editor = columnConfig.editor ?? editorMap.get(columnConfig.type) ?? StringEditor;
+  return editor({
     value,
     row,
     editing,
@@ -24,7 +23,5 @@ export const renderCell = (
     onRequestClose,
     textEllipsisLength,
     initialEditValue,
-  };
-  const result: JSX.Element = editor(params);
-  return result;
+  });
 };
