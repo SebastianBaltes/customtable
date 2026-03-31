@@ -8,6 +8,7 @@ interface DropdownEditorProps {
   freeText?: boolean;
   displayText: string;
   textEllipsisLength?: number;
+  initialEditValue?: string | null;
   onChange: (newSelected: string[]) => void;
   onRequestClose?: () => void;
 }
@@ -30,6 +31,7 @@ interface DropdownEditorProps {
  *   Space  (multi)       — toggle highlighted option (local buffer, no immediate commit)
  *   Tab                  — commit and bubble to useCursorKeys
  *   Escape               — bubble (useCursorKeys exits edit mode; blur commit suppressed)
+ *   ArrowRight at end    — if entered via typing, commit and bubble to navigate right
  */
 export const DropdownEditor: React.FC<DropdownEditorProps> = ({
   options,
@@ -38,6 +40,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
   freeText = true,
   displayText,
   textEllipsisLength,
+  initialEditValue = null,
   onChange,
   onRequestClose,
 }) => {
@@ -46,9 +49,28 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
 
-  const [inputValue, setInputValue] = useState(freeText && !multiselect ? selected[0] ?? "" : "");
-  const [hasUserTyped, setHasUserTyped] = useState(false);
+  // Determine initial input value based on entry mode
+  const getInitialInputValue = () => {
+    if (initialEditValue !== null && initialEditValue !== "") {
+      // Typing entry: start with typed character
+      return initialEditValue;
+    }
+    if (freeText && !multiselect) {
+      return selected[0] ?? "";
+    }
+    return "";
+  };
+
+  const [inputValue, setInputValue] = useState(getInitialInputValue);
+  const [hasUserTyped, setHasUserTyped] = useState(
+    initialEditValue !== null && initialEditValue !== "",
+  );
   const [highlightedIndex, setHighlightedIndex] = useState<number | null>(null);
+
+  // Track whether edit was started by typing (ArrowRight at end navigates)
+  const navigateOnArrowRightRef = useRef(
+    initialEditValue !== null && initialEditValue !== "",
+  );
 
   // Multi-select: buffer toggles locally, commit only on explicit close.
   const [localSelected, setLocalSelected] = useState<string[]>(selected);
@@ -93,11 +115,18 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
   useEffect(() => {
     if (freeText) {
       inputRef.current?.focus();
-      if (!multiselect) inputRef.current?.select();
+      if (initialEditValue === null) {
+        // Triple-click or select-all entry: select all text in input
+        inputRef.current?.select();
+      } else {
+        // Typing or F2/dblclick: cursor at end
+        const len = inputRef.current?.value.length ?? 0;
+        inputRef.current?.setSelectionRange(len, len);
+      }
     } else {
       dropdownRef.current?.focus();
     }
-  }, [freeText, multiselect]);
+  }, [freeText, initialEditValue]);
 
   useEffect(() => {
     if (highlightedIndex === null || !listRef.current) return;
@@ -108,19 +137,25 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
   // ---- Commit helpers ----
 
   const commitSingle = (text: string) => onChange([text]);
-  const commitMulti = () => onChangeRef.current(localSelectedRef.current);
 
   const toggleLocal = (opt: string) => {
-    setLocalSelected((prev) =>
-      prev.includes(opt) ? prev.filter((s) => s !== opt) : [...prev, opt],
-    );
+    const next = localSelectedRef.current.includes(opt)
+      ? localSelectedRef.current.filter((s) => s !== opt)
+      : [...localSelectedRef.current, opt];
+    setLocalSelected(next);
+    // Commit immediately so every toggle is persisted right away.
+    // This way ESC, blur, or click-outside all preserve the current state.
+    // Use queueMicrotask to avoid "setState during render" warning.
+    queueMicrotask(() => onChangeRef.current(next));
   };
 
   const addCustomEntry = () => {
     const trimmed = inputValue.trim();
     if (trimmed === "") return;
-    if (!localSelected.includes(trimmed)) {
-      setLocalSelected((prev) => [...prev, trimmed]);
+    if (!localSelectedRef.current.includes(trimmed)) {
+      const next = [...localSelectedRef.current, trimmed];
+      setLocalSelected(next);
+      queueMicrotask(() => onChangeRef.current(next));
     }
     setInputValue("");
   };
@@ -159,6 +194,23 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
     return false;
   };
 
+  // ---- ArrowRight at end: navigate to next cell if entered via typing ----
+
+  const handleArrowRight = (e: React.KeyboardEvent): boolean => {
+    if (e.key === "ArrowRight" && navigateOnArrowRightRef.current && inputRef.current) {
+      const input = inputRef.current;
+      if (input.selectionStart === input.value.length && input.selectionEnd === input.value.length) {
+        suppressBlurRef.current = true;
+        if (!multiselect) {
+          commitSingle(inputValue);
+        }
+        // multi: already committed on each toggle
+        return true; // let it bubble to useCursorKeys
+      }
+    }
+    return false;
+  };
+
   // ---- Enter commit logic (shared) ----
 
   /**
@@ -170,13 +222,8 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
     if (highlightedIndex !== null) {
       const opt = filteredOptions[highlightedIndex];
       if (multiselect) {
+        // toggleLocal already commits immediately
         toggleLocal(opt);
-        // We need localSelected AFTER the toggle for commitMulti.
-        // Since setLocalSelected is async, compute it directly:
-        const next = localSelected.includes(opt)
-          ? localSelected.filter((s) => s !== opt)
-          : [...localSelected, opt];
-        onChangeRef.current(next);
       } else {
         commitSingle(opt);
       }
@@ -185,11 +232,11 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
     }
     if (multiselect) {
       if (inputValue.trim()) {
-        // Add custom entry, stay in edit mode
+        // Add custom entry (commits immediately via toggleLocal-like path)
         addCustomEntry();
-        return true; // stop propagation
+        return true; // stop propagation — stay in edit mode
       }
-      commitMulti();
+      // Nothing to do — already committed on each toggle
       suppressBlurRef.current = true;
       return false; // bubble
     } else {
@@ -214,8 +261,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
         }
         if (e.key === "Tab") {
           suppressBlurRef.current = true;
-          if (multiselect) commitMulti();
-          return; // bubble
+          return; // bubble — multi already committed on each toggle
         }
         if (e.key === "Enter") {
           // Only handle Enter originating from the div itself, not bubbled from the input.
@@ -231,6 +277,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
           return; // bubble → useCursorKeys
         }
         if (handleNav(e)) return;
+        if (handleArrowRight(e)) return; // bubble to useCursorKeys
         e.stopPropagation();
       }}
     >
@@ -250,7 +297,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
           onBlur={() => {
             if (suppressBlurRef.current) return;
             if (!multiselect) commitSingle(inputValue);
-            else commitMulti();
+            // multi: already committed on each toggle, nothing to do
           }}
           onKeyDown={(e) => {
             if (e.key === "Escape") {
@@ -261,7 +308,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
               suppressBlurRef.current = true;
               if (multiselect) {
                 if (inputValue.trim()) addCustomEntry();
-                commitMulti();
+                // already committed on each toggle
               } else {
                 commitSingle(inputValue);
               }
@@ -276,6 +323,7 @@ export const DropdownEditor: React.FC<DropdownEditorProps> = ({
               return; // bubble — div handler will see it but skip re-commit (fromInput check)
             }
             if (handleNav(e)) return;
+            if (handleArrowRight(e)) return; // bubble to useCursorKeys
             e.stopPropagation();
           }}
         />

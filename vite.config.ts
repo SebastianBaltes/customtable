@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { resolve } from "path";
 
 export default defineConfig({
   plugins: [react()],
@@ -7,6 +8,12 @@ export default defineConfig({
   build: {
     outDir: "../../docs",
     emptyOutDir: true,
+    rolldownOptions: {
+      input: {
+        main: resolve(__dirname, "src/examples/index.html"),
+        simple: resolve(__dirname, "src/examples/simple.html"),
+      },
+    },
   },
   base: "./",
 });

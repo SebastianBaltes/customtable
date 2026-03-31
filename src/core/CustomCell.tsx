@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import classNames from "./classNames";
 import { getCursorName } from "./CustomTable";
 import { renderCell } from "./renderCell";
-import { setPendingNumberEditorClick } from "../editors/NumberEditor";
+import { throttledMouseMove } from "./useCursor";
 
 export const CustomCell = React.memo(
   ({
@@ -110,18 +110,6 @@ export const CustomCell = React.memo(
             const distFromRight = cellRect.right - event.clientX;
             const isDropdownZoneClick = isDropdownColumn && !isReadOnly && distFromRight <= 2 * rem;
 
-            // For Number columns: single click on the already-selected cell enters edit
-            // mode and positions the text cursor at the click location.
-            const enterEditViaClick =
-              cellHasCursor &&
-              !isReadOnly &&
-              !cursorRef.current.editing &&
-              column.type === "Number";
-
-            if (enterEditViaClick) {
-              setPendingNumberEditorClick(event.clientX);
-            }
-
             const alreadyEditing = cellHasCursor && cursorRef.current.editing;
 
             if (cellHasCursor && !isReadOnly && !cursorRef.current.editing) {
@@ -129,8 +117,8 @@ export const CustomCell = React.memo(
             }
 
             setCursorRef({
-              editing: alreadyEditing || isDropdownZoneClick || enterEditViaClick,
-              initialEditValue: null,
+              editing: alreadyEditing || isDropdownZoneClick,
+              initialEditValue: isDropdownZoneClick ? "" : null,
               selectionStart: { rowIdx, colIdx },
               selectionEnd: { rowIdx, colIdx },
               fillEnd: { rowIdx, colIdx },
@@ -143,16 +131,28 @@ export const CustomCell = React.memo(
           if (!isReadOnly) {
             setCursorRef({
               editing: true,
+              initialEditValue: "", // cursor at end, not select-all
+            });
+          }
+        }}
+        onClick={(event) => {
+          // Triple-click → select all text in the editor
+          // onDoubleClick already entered edit mode; we just override the selection
+          if (event.detail >= 3 && !isReadOnly) {
+            const td = event.currentTarget as HTMLElement;
+            requestAnimationFrame(() => {
+              const input = td.querySelector("input, textarea") as HTMLInputElement;
+              if (input) input.select();
             });
           }
         }}
         onTouchEnd={(e) => {
           const now = Date.now();
           if (now - lastTapRef.current < 400 && !cursorRef.current.editing) {
-            // Double-tap detected — enter edit mode
+            // Double-tap detected — enter edit mode with cursor at end
             e.preventDefault();
             if (!isReadOnly) {
-              setCursorRef({ editing: true });
+              setCursorRef({ editing: true, initialEditValue: "" });
             }
             lastTapRef.current = 0; // reset so a third tap is not treated as double-tap
           } else {
@@ -164,7 +164,7 @@ export const CustomCell = React.memo(
             const cursor = cursorRef.current;
             const selectionEnd = { rowIdx, colIdx };
             const fillEnd = { rowIdx, colIdx };
-            setCursorRef(cursor.filling ? { fillEnd } : { selectionEnd, fillEnd });
+            throttledMouseMove(setCursorRef, cursor.filling ? { fillEnd } : { selectionEnd, fillEnd });
           }
         }}
       >

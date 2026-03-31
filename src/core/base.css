@@ -109,6 +109,7 @@
     flex: 1;
     overflow: auto;
     display: grid;
+    contain: strict;
   }
 
   table {
@@ -150,6 +151,22 @@
   .col-header {
     padding-right: 10px;
     padding-left: 5px;
+    position: relative;
+  }
+
+  .col-resize-handle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 5;
+  }
+
+  .col-resize-handle:hover,
+  .col-resize-handle.resizing {
+    background-color: var(--ct-resize-handle, #4285f4);
   }
 
   .col-wrap {
@@ -158,6 +175,7 @@
 
   .cell {
     position: relative;
+    contain: content;
 
     .cell-dropdown-indicator {
       position: absolute;
@@ -195,12 +213,17 @@
     z-index: 1;
   }
 
+  .cell-edited {
+    contain: style;
+  }
+
   /* Selection / fill rectangles */
   .fill-rectangle,
   .selection-rectangle {
     display: none;
     position: absolute;
     pointer-events: none;
+    will-change: top, left, width, height;
   }
 
   #selection-rectangle,
@@ -251,6 +274,12 @@
     /* improve appearance of the underline */
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
+  }
+
+  .col-sort-priority {
+    font-size: 0.7em;
+    opacity: 0.7;
+    margin-left: 1px;
   }
 
   /* Sort spinner (replaces arrow during loading) */
@@ -525,6 +554,66 @@
   }
 }
 
+/* Date / Time / Color editor wrappers */
+.date-editor-wrapper {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+.date-editor-wrapper .cell-editor-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.cell-editor-picker-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cell-editor-picker-btn {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.6;
+  &:hover { opacity: 1; }
+}
+
+.color-editor-display,
+.color-editor-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.color-editor-wrapper .cell-editor-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.color-swatch-clickable {
+  cursor: pointer;
+}
+
 /* Pagination structure */
 .ct-pagination {
   display: flex;
@@ -575,6 +664,17 @@
   padding: 0 2px;
   user-select: none;
   line-height: 28px;
+}
+
+.ct-pagination-spinner {
+  display: inline-block;
+  width: 0.85em;
+  height: 0.85em;
+  border: 1.5px solid var(--ct-status-info, #1565c0);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: ct-spinner-spin 0.7s linear infinite;
+  vertical-align: middle;
 }
 
 
@@ -717,6 +817,178 @@
   60% { transform: translateX(3px); }
   75% { transform: translateX(-2px); }
   90% { transform: translateX(2px); }
+}
+
+/* Search & Replace dialog */
+.search-replace-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.search-replace-dialog {
+  background: var(--ct-dialog-bg, #fff);
+  color: var(--ct-text, #222);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  min-width: 380px;
+  max-width: 500px;
+}
+
+.search-replace-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--ct-border, #ddd);
+}
+
+.search-replace-title {
+  font-weight: 600;
+}
+
+.search-replace-close {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0 4px;
+  color: inherit;
+  opacity: 0.6;
+  &:hover { opacity: 1; }
+}
+
+.search-replace-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-replace-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.search-replace-field span {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.search-replace-field input[type="text"] {
+  padding: 6px 8px;
+  border: 1px solid var(--ct-input-border, #ccc);
+  border-radius: 4px;
+  background: var(--ct-input-bg, #fff);
+  color: inherit;
+  font: inherit;
+}
+
+.search-replace-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 0.85rem;
+}
+
+.search-replace-options label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.search-replace-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--ct-border, #ddd);
+}
+
+.search-replace-result {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--ct-muted, #666);
+}
+
+.search-replace-btn {
+  padding: 6px 16px;
+  border: 1px solid var(--ct-input-border, #ccc);
+  border-radius: 4px;
+  background: var(--ct-input-bg, #fff);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  &:hover { background: var(--ct-hover-bg, #f0f0f0); }
+}
+
+.search-replace-btn-primary {
+  background: var(--ct-status-info, #1565c0);
+  color: #fff;
+  border-color: transparent;
+  &:hover { opacity: 0.9; }
+  &:disabled { opacity: 0.5; cursor: default; }
+}
+
+/* Column manager dialog */
+.column-manager-dialog {
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.column-manager-list {
+  overflow-y: auto;
+  padding: 8px 0;
+  flex: 1;
+}
+
+.column-manager-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  cursor: grab;
+  user-select: none;
+  border-top: 2px solid transparent;
+  transition: background-color 0.1s;
+  &:hover { background: var(--ct-hover-bg, #f0f0f0); }
+}
+
+.column-manager-item.dragging {
+  opacity: 0.4;
+}
+
+.column-manager-item.drag-over {
+  border-top-color: var(--ct-status-info, #1565c0);
+}
+
+.column-manager-grip {
+  opacity: 0.4;
+  font-size: 1rem;
+  cursor: grab;
+}
+
+.column-manager-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  cursor: pointer;
+}
+
+.column-manager-type {
+  font-size: 0.75rem;
+  opacity: 0.5;
+  text-transform: uppercase;
 }
 
 /* Context menu — top-level so it works in the body-portalled ContextMenu */

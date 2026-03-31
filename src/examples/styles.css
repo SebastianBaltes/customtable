@@ -80,6 +80,13 @@ body {
   flex-shrink: 0;
 }
 
+.selection-summary {
+  padding: 0 12px;
+  font-size: 0.85rem;
+  color: var(--ct-muted, #666);
+  white-space: nowrap;
+}
+
 /* Description column: wide when ellipsis is not active */
 th.col-description:not(.col-ellipsis) {
   min-width: 40em;

@@ -1,68 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Editor, NumberFormat } from "../core/Types";
 
-// ---------------------------------------------------------------------------
-// Module-level click-position hint
-// Set by CustomCell before entering edit mode via mouse click so the editor
-// can position the text cursor at the exact click location.
-// ---------------------------------------------------------------------------
-interface PendingClick {
-  x: number;
-  ts: number;
-}
-let _pendingClick: PendingClick | null = null;
-
-export function setPendingNumberEditorClick(clientX: number): void {
-  _pendingClick = { x: clientX, ts: Date.now() };
-}
-
-/** Consume (read + clear) the pending click if it is fresh (< 400 ms old). */
-function consumePendingClick(): number | null {
-  const p = _pendingClick;
-  _pendingClick = null;
-  if (p && Date.now() - p.ts < 400) return p.x;
-  return null;
-}
-
-/**
- * Map a clientX coordinate to a character offset inside a text input using
- * canvas text-measurement. Works for both left- and right-aligned inputs.
- */
-function charOffsetAtClientX(input: HTMLInputElement, clientX: number): number {
-  const rect = input.getBoundingClientRect();
-  const style = window.getComputedStyle(input);
-  const text = input.value;
-  if (!text) return 0;
-
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d")!;
-  ctx.font = style.font;
-
-  const paddingLeft = parseFloat(style.paddingLeft) || 0;
-  const paddingRight = parseFloat(style.paddingRight) || 0;
-  const innerWidth = rect.width - paddingLeft - paddingRight;
-  const textWidth = ctx.measureText(text).width;
-  const isRight = style.textAlign === "right";
-
-  // X-coordinate of the first character relative to viewport
-  const textStartX = isRight
-    ? rect.left + paddingLeft + Math.max(0, innerWidth - textWidth)
-    : rect.left + paddingLeft;
-
-  const relX = clientX - textStartX;
-  if (relX <= 0) return 0;
-  if (relX >= textWidth) return text.length;
-
-  // Binary search for the character boundary closest to relX
-  let lo = 0,
-    hi = text.length;
-  while (lo < hi) {
-    const mid = Math.ceil((lo + hi) / 2);
-    if (ctx.measureText(text.slice(0, mid)).width <= relX) lo = mid;
-    else hi = mid - 1;
-  }
-  return lo;
-}
 
 /**
  * Format a raw number for display including prefix/suffix.
@@ -128,32 +66,36 @@ export const NumberEditor: Editor<number> = ({
   const [localValue, setLocalValue] = useState(editDefault(value));
   const inputRef = useRef<HTMLInputElement>(null);
   const isEscapingRef = useRef(false);
+  // Track whether edit was started by typing a character (ArrowRight at end navigates)
+  const navigateOnArrowRightRef = useRef(false);
+  const prevEditingRef = useRef(false);
 
   useEffect(() => {
-    if (editing && initialEditValue !== null && /^[0-9.,-]$/.test(initialEditValue)) {
-      setLocalValue(initialEditValue);
-    } else {
+    if (editing && !prevEditingRef.current) {
+      // Just entered edit mode
+      if (initialEditValue !== null && initialEditValue !== "" && /^[0-9.,-]$/.test(initialEditValue)) {
+        setLocalValue(initialEditValue);
+        navigateOnArrowRightRef.current = true;
+      } else {
+        setLocalValue(editDefault(value));
+        navigateOnArrowRightRef.current = false;
+      }
+    } else if (!editing) {
       setLocalValue(editDefault(value));
     }
+    prevEditingRef.current = editing;
   }, [value, editing, initialEditValue]);
 
   useEffect(() => {
     if (editing && inputRef.current) {
       inputRef.current.focus();
-      if (initialEditValue !== null && /^[0-9.,-]$/.test(initialEditValue)) {
-        // Started by typing a character — cursor at end
-        const len = localValue.length;
-        inputRef.current.setSelectionRange(len, len);
+      if (initialEditValue === null) {
+        // Triple-click: select all
+        inputRef.current.select();
       } else {
-        const clickX = consumePendingClick();
-        if (clickX !== null) {
-          // Entered via mouse click — position cursor at the click location
-          const offset = charOffsetAtClientX(inputRef.current, clickX);
-          inputRef.current.setSelectionRange(offset, offset);
-        } else {
-          // Entered via Enter / F2 / double-click — select all for quick replacement
-          inputRef.current.select();
-        }
+        // F2/dblclick (initialEditValue="") or typing: cursor at end
+        const len = String(inputRef.current.value).length;
+        inputRef.current.setSelectionRange(len, len);
       }
     }
   }, [editing, initialEditValue]);
@@ -201,6 +143,14 @@ export const NumberEditor: Editor<number> = ({
           if (e.key === "Enter" || e.key === "Tab") {
             commit();
             return; // bubble up
+          }
+          // ArrowRight at end of input: navigate to next cell (only if entered via typing)
+          if (e.key === "ArrowRight" && navigateOnArrowRightRef.current) {
+            const input = inputRef.current!;
+            if (input.selectionStart === input.value.length && input.selectionEnd === input.value.length) {
+              commit();
+              return; // bubble up to useCursorKeys
+            }
           }
           e.stopPropagation();
         }}

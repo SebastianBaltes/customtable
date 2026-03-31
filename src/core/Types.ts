@@ -35,6 +35,56 @@ export interface NumberFormat {
 }
 
 /**
+ * Display format for Date columns.
+ * Internal value is always an ISO date string (YYYY-MM-DD).
+ */
+export interface DateFormat {
+  /** BCP 47 locale (default: navigator.language). */
+  locale?: string;
+  /** Shorthand date style. */
+  dateStyle?: "full" | "long" | "medium" | "short";
+  /** Full Intl.DateTimeFormatOptions override (takes precedence over dateStyle). */
+  options?: Intl.DateTimeFormatOptions;
+}
+
+/**
+ * Display format for DateTime columns.
+ * Internal value is always an ISO datetime string (YYYY-MM-DDTHH:mm[:ss]).
+ */
+export interface DateTimeFormat {
+  /** BCP 47 locale (default: navigator.language). */
+  locale?: string;
+  /** Shorthand date style. Default: "short". */
+  dateStyle?: "full" | "long" | "medium" | "short";
+  /** Shorthand time style. Default: "short". */
+  timeStyle?: "full" | "long" | "medium" | "short";
+  /** Full Intl.DateTimeFormatOptions override. */
+  options?: Intl.DateTimeFormatOptions;
+}
+
+/**
+ * Display format for Time columns.
+ * Internal value is always HH:mm or HH:mm:ss.
+ */
+export interface TimeFormat {
+  /** BCP 47 locale (default: navigator.language). */
+  locale?: string;
+  /** Whether to display seconds. Default: false. */
+  showSeconds?: boolean;
+  /** Override Intl hour cycle (h12, h23, h24). */
+  hourCycle?: "h11" | "h12" | "h23" | "h24";
+}
+
+/**
+ * Display format for Duration columns.
+ * Internal value is ISO 8601 duration (e.g. "PT2H30M") or short form ("2h 30m").
+ */
+export interface DurationFormat {
+  /** Display style: "short" => "2h 30m", "long" => "2 hours 30 minutes", "iso" => "PT2H30M". Default: "short". */
+  style?: "short" | "long" | "iso";
+}
+
+/**
  * Interface for column configuration.
  */
 export interface ColumnConfig<T> {
@@ -69,9 +119,11 @@ export interface ColumnConfig<T> {
   editor?: Editor<any>;
 
   /**
-   * List of options for the select field.
+   * Options for the select field. Can be a static array or a function
+   * that receives the current row and returns options dynamically
+   * (e.g. for dependent dropdowns like Country → City).
    */
-  selectOptions?: string[];
+  selectOptions?: string[] | ((row: Row) => string[]);
 
   /**
    * The condition under which the field gets enabled.
@@ -104,6 +156,26 @@ export interface ColumnConfig<T> {
    * Number display format. Only meaningful for type "Number".
    */
   numberFormat?: NumberFormat;
+
+  /**
+   * Date display format. Only meaningful for type "Date".
+   */
+  dateFormat?: DateFormat;
+
+  /**
+   * DateTime display format. Only meaningful for type "DateTime".
+   */
+  dateTimeFormat?: DateTimeFormat;
+
+  /**
+   * Time display format. Only meaningful for type "Time".
+   */
+  timeFormat?: TimeFormat;
+
+  /**
+   * Duration display format. Only meaningful for type "Duration".
+   */
+  durationFormat?: DurationFormat;
 
   /**
    * Explicit text alignment for the cell and its header.
@@ -152,6 +224,14 @@ export interface ColumnConfig<T> {
    * Default: false (user-owned — local edits are preserved during merge).
    */
   serverOwned?: boolean;
+
+  /**
+   * Input mask pattern for text fields. Use `#` for any digit, `A` for any letter,
+   * `*` for any character. All other characters are literal separators inserted automatically.
+   * Examples: "+## ### #######" (phone), "##.##.####" (date), "###.###.###.###" (IP address),
+   * "AA## #### #### #### #### ##" (IBAN).
+   */
+  inputMask?: string;
 }
 
 export type FilterEditorParams = {
@@ -225,10 +305,20 @@ export type Cursor = {
   colSelection: boolean;
 };
 
-export type SortConfig = {
+/**
+ * A single sort criterion. Multi-sort is represented as an array of these.
+ */
+export interface SortCriterion {
   column: string;
   direction: "asc" | "desc";
-} | null;
+}
+
+/**
+ * Sort configuration: an array of sort criteria (multi-sort).
+ * The first entry is the primary sort, subsequent entries are tie-breakers.
+ * An empty array or null means unsorted.
+ */
+export type SortConfig = SortCriterion[] | null;
 
 /**
  * Meta information for a single cell (style, disabled, title).
@@ -308,10 +398,28 @@ export interface TableContextState {
 }
 
 /**
+ * Information about the current cell selection range,
+ * passed to the `onSelectionChange` callback.
+ */
+export interface SelectionInfo {
+  /** Normalized selection range (start <= end). */
+  range: { startRow: number; endRow: number; startCol: number; endCol: number };
+  /** Whether any cells are selected (false when cursor is at -1,-1). */
+  hasSelection: boolean;
+}
+
+/**
  * A custom entry for the context menu.
  * `onClick` receives the table state at the moment the item is clicked.
  * Use `"---"` for a visual separator.
  */
+/**
+ * Callback fired when a column is resized via drag handle.
+ * @param columnName - The name of the resized column.
+ * @param width - The new width in pixels.
+ */
+export type OnColumnResize = (columnName: string, width: number) => void;
+
 export type CustomContextMenuItem =
   | {
       label: string;

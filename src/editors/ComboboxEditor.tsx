@@ -12,7 +12,8 @@ export const ComboboxEditor: Editor<string> = ({
   textEllipsisLength,
   initialEditValue,
 }) => {
-  const options = columnConfig.selectOptions ?? [];
+  const rawOpts = columnConfig.selectOptions;
+  const options = typeof rawOpts === "function" ? rawOpts(row) : rawOpts ?? [];
   const selected = value != null && value !== "" ? [value] : [];
   const displayText = value ?? "";
 
@@ -32,6 +33,7 @@ export const ComboboxEditor: Editor<string> = ({
       freeText={columnConfig.freeText ?? true}
       displayText={displayText}
       textEllipsisLength={textEllipsisLength}
+      initialEditValue={initialEditValue}
       onChange={(newSelected) => {
         onChange(newSelected[0] ?? "");
       }}

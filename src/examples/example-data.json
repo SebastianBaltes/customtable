@@ -7,7 +7,12 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "Legal",
-    "skills": ["React", "Docker", "SQL", "Figma"],
+    "skills": [
+      "React",
+      "Docker",
+      "SQL",
+      "Figma"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2022-07-24",
@@ -29,7 +34,10 @@
     "linkedin": "https://www.linkedin.com/in/frankschneider",
     "github": "",
     "dateOfBirth": "1985-08-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 2,
@@ -61,7 +69,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1972-05-06",
-    "emergencyContact": "Diana Müller (+14538053561)"
+    "emergencyContact": "Diana Müller (+14538053561)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 3,
@@ -71,7 +82,9 @@
     "lastName": "Weber",
     "email": "ian.weber@example.com",
     "department": "Sales",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": 52866,
     "hireDate": "2010-07-13",
@@ -93,7 +106,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-05-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 4,
@@ -125,7 +141,10 @@
     "linkedin": "https://www.linkedin.com/in/gracemeyer",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Bob Fischer (+11699286041)"
+    "emergencyContact": "Bob Fischer (+11699286041)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 5,
@@ -135,7 +154,9 @@
     "lastName": "Fischer",
     "email": "ian.fischer@example.com",
     "department": "Sales",
-    "skills": ["TypeScript"],
+    "skills": [
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 51528,
     "hireDate": "2006-04-27",
@@ -157,7 +178,10 @@
     "linkedin": "https://www.linkedin.com/in/ianfischer",
     "github": "",
     "dateOfBirth": "1974-12-26",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 6,
@@ -167,7 +191,10 @@
     "lastName": "Fischer",
     "email": "diana.fischer@example.com",
     "department": "Legal",
-    "skills": ["TypeScript", "Java"],
+    "skills": [
+      "TypeScript",
+      "Java"
+    ],
     "isActive": true,
     "salary": 41170,
     "hireDate": "2009-06-27",
@@ -189,7 +216,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 7,
@@ -199,7 +229,12 @@
     "lastName": "Wagner",
     "email": "alice.wagner@example.com",
     "department": "Legal",
-    "skills": ["Java", "Docker", "Python", "SQL"],
+    "skills": [
+      "Java",
+      "Docker",
+      "Python",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 97530,
     "hireDate": "2017-12-01",
@@ -221,7 +256,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1988-04-05",
-    "emergencyContact": "Hannah Müller (+49154221962)"
+    "emergencyContact": "Hannah Müller (+49154221962)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 8,
@@ -253,7 +291,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1975-06-18",
-    "emergencyContact": "Frank Müller (+49550305527)"
+    "emergencyContact": "Frank Müller (+49550305527)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 9,
@@ -263,7 +304,11 @@
     "lastName": "Schmidt",
     "email": "diana.schmidt@example.com",
     "department": "Legal",
-    "skills": ["Figma", "Python", "Java"],
+    "skills": [
+      "Figma",
+      "Python",
+      "Java"
+    ],
     "isActive": true,
     "salary": 99099,
     "hireDate": "2018-08-23",
@@ -285,7 +330,10 @@
     "linkedin": "",
     "github": "https://github.com/dianaschmidt",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 10,
@@ -295,7 +343,11 @@
     "lastName": "Müller",
     "email": "eva.müller@example.com",
     "department": "Marketing",
-    "skills": ["Java", "AWS", "Python"],
+    "skills": [
+      "Java",
+      "AWS",
+      "Python"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "",
@@ -317,7 +369,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1997-02-27",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 11,
@@ -349,7 +404,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Meyer (+49346161977)"
+    "emergencyContact": "Frank Meyer (+49346161977)",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 12,
@@ -359,7 +417,11 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "Legal",
-    "skills": ["React", "TypeScript", "Python"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": 43580,
     "hireDate": "2005-05-21",
@@ -381,7 +443,10 @@
     "linkedin": "https://www.linkedin.com/in/bobbecker",
     "github": "https://github.com/bobbecker",
     "dateOfBirth": "1997-12-22",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 13,
@@ -413,7 +478,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 14,
@@ -423,7 +491,10 @@
     "lastName": "Weber",
     "email": "bob.weber@example.com",
     "department": "HR",
-    "skills": ["Figma", "Java"],
+    "skills": [
+      "Figma",
+      "Java"
+    ],
     "isActive": true,
     "salary": 75056,
     "hireDate": "2017-07-12",
@@ -445,7 +516,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-09-02",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 15,
@@ -455,7 +529,10 @@
     "lastName": "Schneider",
     "email": "ian.schneider@example.com",
     "department": "Legal",
-    "skills": ["AWS", "TypeScript"],
+    "skills": [
+      "AWS",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 71839,
     "hireDate": "2018-10-02",
@@ -477,7 +554,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1995-05-15",
-    "emergencyContact": "Alice Müller (+11317791246)"
+    "emergencyContact": "Alice Müller (+11317791246)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 16,
@@ -487,7 +567,12 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "Legal",
-    "skills": ["Figma", "React", "TypeScript", "Python"],
+    "skills": [
+      "Figma",
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2023-02-21",
@@ -509,7 +594,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1988-04-11",
-    "emergencyContact": "Diana Wagner (+49422452877)"
+    "emergencyContact": "Diana Wagner (+49422452877)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 17,
@@ -519,7 +607,12 @@
     "lastName": "Schneider",
     "email": "diana.schneider@example.com",
     "department": "",
-    "skills": ["Java", "Figma", "AWS", "SQL"],
+    "skills": [
+      "Java",
+      "Figma",
+      "AWS",
+      "SQL"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2010-08-29",
@@ -541,7 +634,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1998-06-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 18,
@@ -573,7 +669,10 @@
     "linkedin": "",
     "github": "https://github.com/dianameyer",
     "dateOfBirth": "1996-02-13",
-    "emergencyContact": "Charlie Fischer (+49695458427)"
+    "emergencyContact": "Charlie Fischer (+49695458427)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 19,
@@ -583,7 +682,9 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "Sales",
-    "skills": ["Docker"],
+    "skills": [
+      "Docker"
+    ],
     "isActive": true,
     "salary": 69104,
     "hireDate": "2006-10-15",
@@ -605,7 +706,10 @@
     "linkedin": "",
     "github": "https://github.com/hannahschmidt",
     "dateOfBirth": "1976-07-02",
-    "emergencyContact": "Charlie Meyer (+49815483039)"
+    "emergencyContact": "Charlie Meyer (+49815483039)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 20,
@@ -615,7 +719,12 @@
     "lastName": "Meyer",
     "email": "bob.meyer@example.com",
     "department": "",
-    "skills": ["Figma", "Docker", "Java", "Python"],
+    "skills": [
+      "Figma",
+      "Docker",
+      "Java",
+      "Python"
+    ],
     "isActive": true,
     "salary": 50236,
     "hireDate": "2014-01-31",
@@ -637,7 +746,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 21,
@@ -647,7 +759,11 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "IT",
-    "skills": ["SQL", "Java", "Python"],
+    "skills": [
+      "SQL",
+      "Java",
+      "Python"
+    ],
     "isActive": true,
     "salary": 79858,
     "hireDate": "2013-01-07",
@@ -669,7 +785,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1997-03-24",
-    "emergencyContact": "Charlie Weber (+49750303095)"
+    "emergencyContact": "Charlie Weber (+49750303095)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 22,
@@ -679,7 +798,10 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "Legal",
-    "skills": ["SQL", "Java"],
+    "skills": [
+      "SQL",
+      "Java"
+    ],
     "isActive": true,
     "salary": 64735,
     "hireDate": "2015-04-02",
@@ -701,7 +823,10 @@
     "linkedin": "https://www.linkedin.com/in/charliebecker",
     "github": "",
     "dateOfBirth": "1990-02-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 23,
@@ -711,7 +836,12 @@
     "lastName": "Schmidt",
     "email": "",
     "department": "Marketing",
-    "skills": ["TypeScript", "Java", "React", "Figma"],
+    "skills": [
+      "TypeScript",
+      "Java",
+      "React",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 83629,
     "hireDate": "2021-05-15",
@@ -733,7 +863,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1969-11-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 24,
@@ -743,7 +876,12 @@
     "lastName": "Müller",
     "email": "julia.müller@example.com",
     "department": "Legal",
-    "skills": ["Figma", "Python", "Java", "AWS"],
+    "skills": [
+      "Figma",
+      "Python",
+      "Java",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 44079,
     "hireDate": "2021-03-30",
@@ -765,7 +903,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1974-02-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 25,
@@ -775,7 +916,9 @@
     "lastName": "",
     "email": "",
     "department": "Sales",
-    "skills": ["SQL"],
+    "skills": [
+      "SQL"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2011-12-20",
@@ -797,7 +940,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "2000-01-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 26,
@@ -807,7 +953,9 @@
     "lastName": "Wagner",
     "email": "ian.wagner@example.com",
     "department": "Sales",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": false,
     "salary": 81286,
     "hireDate": "2009-10-19",
@@ -829,7 +977,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Julia Fischer (+16111361681)"
+    "emergencyContact": "Julia Fischer (+16111361681)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 27,
@@ -839,7 +990,12 @@
     "lastName": "Fischer",
     "email": "",
     "department": "Legal",
-    "skills": ["AWS", "Figma", "TypeScript", "Docker"],
+    "skills": [
+      "AWS",
+      "Figma",
+      "TypeScript",
+      "Docker"
+    ],
     "isActive": false,
     "salary": 54797,
     "hireDate": "2020-06-03",
@@ -861,7 +1017,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 28,
@@ -871,7 +1030,9 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "Legal",
-    "skills": ["SQL"],
+    "skills": [
+      "SQL"
+    ],
     "isActive": false,
     "salary": 76512,
     "hireDate": "2016-04-19",
@@ -893,7 +1054,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1994-03-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 29,
@@ -903,7 +1067,9 @@
     "lastName": "Meyer",
     "email": "",
     "department": "Sales",
-    "skills": ["Docker"],
+    "skills": [
+      "Docker"
+    ],
     "isActive": true,
     "salary": 95408,
     "hireDate": "2008-07-03",
@@ -925,7 +1091,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Schmidt (+49228037974)"
+    "emergencyContact": "Frank Schmidt (+49228037974)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 30,
@@ -935,7 +1104,11 @@
     "lastName": "Meyer",
     "email": "ian.meyer@example.com",
     "department": "",
-    "skills": ["Java", "Figma", "AWS"],
+    "skills": [
+      "Java",
+      "Figma",
+      "AWS"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2014-03-12",
@@ -957,7 +1130,10 @@
     "linkedin": "https://www.linkedin.com/in/ianmeyer",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Schneider (+49958609505)"
+    "emergencyContact": "Ian Schneider (+49958609505)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 31,
@@ -989,7 +1165,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 32,
@@ -1021,7 +1200,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 33,
@@ -1031,7 +1213,11 @@
     "lastName": "",
     "email": "julia.schneider@example.com",
     "department": "Sales",
-    "skills": ["React", "TypeScript", "Python"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": 87107,
     "hireDate": "2021-07-24",
@@ -1053,7 +1239,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-01-23",
-    "emergencyContact": "Eva Weber (+14273374543)"
+    "emergencyContact": "Eva Weber (+14273374543)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 34,
@@ -1063,7 +1252,10 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "Sales",
-    "skills": ["AWS", "Python"],
+    "skills": [
+      "AWS",
+      "Python"
+    ],
     "isActive": true,
     "salary": 80188,
     "hireDate": "",
@@ -1085,7 +1277,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1972-05-26",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 35,
@@ -1095,7 +1290,11 @@
     "lastName": "Müller",
     "email": "diana.müller@example.com",
     "department": "HR",
-    "skills": ["TypeScript", "Java", "Figma"],
+    "skills": [
+      "TypeScript",
+      "Java",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 50779,
     "hireDate": "2018-05-30",
@@ -1117,7 +1316,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 36,
@@ -1127,7 +1329,11 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "Marketing",
-    "skills": ["React", "Docker", "TypeScript"],
+    "skills": [
+      "React",
+      "Docker",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 67487,
     "hireDate": "2019-11-17",
@@ -1149,7 +1355,10 @@
     "linkedin": "https://www.linkedin.com/in/evabecker",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 37,
@@ -1159,7 +1368,9 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "IT",
-    "skills": ["SQL"],
+    "skills": [
+      "SQL"
+    ],
     "isActive": true,
     "salary": 91542,
     "hireDate": "2017-12-07",
@@ -1181,7 +1392,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1979-02-27",
-    "emergencyContact": "Bob Schneider (+19543968866)"
+    "emergencyContact": "Bob Schneider (+19543968866)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 38,
@@ -1213,7 +1427,10 @@
     "linkedin": "https://www.linkedin.com/in/graceschmidt",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 39,
@@ -1223,7 +1440,11 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "Legal",
-    "skills": ["Docker", "SQL", "React"],
+    "skills": [
+      "Docker",
+      "SQL",
+      "React"
+    ],
     "isActive": true,
     "salary": 92988,
     "hireDate": "2022-09-02",
@@ -1245,7 +1466,10 @@
     "linkedin": "https://www.linkedin.com/in/alicefischer",
     "github": "",
     "dateOfBirth": "1993-10-18",
-    "emergencyContact": "Ian Becker (+49996794769)"
+    "emergencyContact": "Ian Becker (+49996794769)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 40,
@@ -1255,7 +1479,9 @@
     "lastName": "Wagner",
     "email": "charlie.wagner@example.com",
     "department": "",
-    "skills": ["Docker"],
+    "skills": [
+      "Docker"
+    ],
     "isActive": true,
     "salary": 75578,
     "hireDate": "2020-04-19",
@@ -1277,7 +1503,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1991-05-10",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 41,
@@ -1309,7 +1538,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-05-28",
-    "emergencyContact": "Julia Schneider (+11217352845)"
+    "emergencyContact": "Julia Schneider (+11217352845)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 42,
@@ -1319,7 +1551,12 @@
     "lastName": "Weber",
     "email": "hannah.weber@example.com",
     "department": "Sales",
-    "skills": ["Python", "React", "Figma", "TypeScript"],
+    "skills": [
+      "Python",
+      "React",
+      "Figma",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 52033,
     "hireDate": "2010-06-09",
@@ -1341,7 +1578,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-07-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 43,
@@ -1351,7 +1591,9 @@
     "lastName": "Fischer",
     "email": "julia.fischer@example.com",
     "department": "Legal",
-    "skills": ["Java"],
+    "skills": [
+      "Java"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2024-12-22",
@@ -1373,7 +1615,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Wagner (+19681786697)"
+    "emergencyContact": "Frank Wagner (+19681786697)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 44,
@@ -1383,7 +1628,10 @@
     "lastName": "Becker",
     "email": "ian.becker@example.com",
     "department": "IT",
-    "skills": ["SQL", "Python"],
+    "skills": [
+      "SQL",
+      "Python"
+    ],
     "isActive": true,
     "salary": 64065,
     "hireDate": "2021-10-13",
@@ -1405,7 +1653,10 @@
     "linkedin": "",
     "github": "https://github.com/ianbecker",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 45,
@@ -1415,7 +1666,9 @@
     "lastName": "Schneider",
     "email": "hannah.schneider@example.com",
     "department": "Marketing",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": false,
     "salary": 40049,
     "hireDate": "",
@@ -1437,7 +1690,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Weber (+49163375219)"
+    "emergencyContact": "Diana Weber (+49163375219)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 46,
@@ -1447,7 +1703,11 @@
     "lastName": "Müller",
     "email": "grace.müller@example.com",
     "department": "Marketing",
-    "skills": ["SQL", "AWS", "React"],
+    "skills": [
+      "SQL",
+      "AWS",
+      "React"
+    ],
     "isActive": true,
     "salary": 78022,
     "hireDate": "2006-11-20",
@@ -1469,7 +1729,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1994-08-14",
-    "emergencyContact": "Julia Schneider (+16940557760)"
+    "emergencyContact": "Julia Schneider (+16940557760)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 47,
@@ -1479,7 +1742,10 @@
     "lastName": "Schneider",
     "email": "hannah.schneider@example.com",
     "department": "Legal",
-    "skills": ["Figma", "Docker"],
+    "skills": [
+      "Figma",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 43339,
     "hireDate": "2007-05-31",
@@ -1501,7 +1767,10 @@
     "linkedin": "",
     "github": "https://github.com/hannahschneider",
     "dateOfBirth": "1994-05-04",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 48,
@@ -1511,7 +1780,12 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": ["SQL", "Python", "TypeScript", "Java"],
+    "skills": [
+      "SQL",
+      "Python",
+      "TypeScript",
+      "Java"
+    ],
     "isActive": true,
     "salary": 73583,
     "hireDate": "",
@@ -1533,7 +1807,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-09-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 49,
@@ -1565,7 +1842,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-07-04",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 50,
@@ -1597,7 +1877,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Schmidt (+49320398209)"
+    "emergencyContact": "Grace Schmidt (+49320398209)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 51,
@@ -1629,7 +1912,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1990-03-27",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 52,
@@ -1639,7 +1925,11 @@
     "lastName": "Wagner",
     "email": "julia.wagner@example.com",
     "department": "Marketing",
-    "skills": ["SQL", "AWS", "Java"],
+    "skills": [
+      "SQL",
+      "AWS",
+      "Java"
+    ],
     "isActive": true,
     "salary": 45587,
     "hireDate": "2019-05-26",
@@ -1661,7 +1951,10 @@
     "linkedin": "https://www.linkedin.com/in/juliawagner",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Wagner (+16244069005)"
+    "emergencyContact": "Grace Wagner (+16244069005)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 53,
@@ -1671,7 +1964,12 @@
     "lastName": "Müller",
     "email": "julia.müller@example.com",
     "department": "IT",
-    "skills": ["TypeScript", "AWS", "Figma", "Java"],
+    "skills": [
+      "TypeScript",
+      "AWS",
+      "Figma",
+      "Java"
+    ],
     "isActive": true,
     "salary": 48222,
     "hireDate": "2005-10-17",
@@ -1693,7 +1991,10 @@
     "linkedin": "",
     "github": "https://github.com/juliamüller",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 54,
@@ -1703,7 +2004,12 @@
     "lastName": "",
     "email": "julia.weber@example.com",
     "department": "Sales",
-    "skills": ["Docker", "SQL", "Java", "AWS"],
+    "skills": [
+      "Docker",
+      "SQL",
+      "Java",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 88987,
     "hireDate": "2019-01-05",
@@ -1725,7 +2031,10 @@
     "linkedin": "",
     "github": "https://github.com/juliaweber",
     "dateOfBirth": "1967-01-03",
-    "emergencyContact": "Hannah Meyer (+49254334182)"
+    "emergencyContact": "Hannah Meyer (+49254334182)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 55,
@@ -1735,7 +2044,12 @@
     "lastName": "Becker",
     "email": "alice.becker@example.com",
     "department": "",
-    "skills": ["Java", "SQL", "Python", "TypeScript"],
+    "skills": [
+      "Java",
+      "SQL",
+      "Python",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 72873,
     "hireDate": "2022-04-13",
@@ -1757,7 +2071,10 @@
     "linkedin": "https://www.linkedin.com/in/alicebecker",
     "github": "https://github.com/alicebecker",
     "dateOfBirth": "1987-05-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 56,
@@ -1789,7 +2106,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Fischer (+19972351934)"
+    "emergencyContact": "Grace Fischer (+19972351934)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 57,
@@ -1799,7 +2119,11 @@
     "lastName": "Schmidt",
     "email": "alice.schmidt@example.com",
     "department": "Marketing",
-    "skills": ["React", "TypeScript", "AWS"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "AWS"
+    ],
     "isActive": false,
     "salary": "",
     "hireDate": "2023-02-11",
@@ -1821,7 +2145,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1979-01-29",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 58,
@@ -1831,7 +2158,10 @@
     "lastName": "",
     "email": "alice.becker@example.com",
     "department": "Finance",
-    "skills": ["React", "Docker"],
+    "skills": [
+      "React",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 67150,
     "hireDate": "2012-10-20",
@@ -1853,7 +2183,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 59,
@@ -1863,7 +2196,11 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "Finance",
-    "skills": ["React", "TypeScript", "Figma"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 56119,
     "hireDate": "2012-08-17",
@@ -1885,7 +2222,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 60,
@@ -1895,7 +2235,12 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "HR",
-    "skills": ["TypeScript", "Python", "Docker", "Java"],
+    "skills": [
+      "TypeScript",
+      "Python",
+      "Docker",
+      "Java"
+    ],
     "isActive": true,
     "salary": 47492,
     "hireDate": "2007-03-11",
@@ -1917,7 +2262,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 61,
@@ -1927,7 +2275,11 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "",
-    "skills": ["TypeScript", "Java", "SQL"],
+    "skills": [
+      "TypeScript",
+      "Java",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 64218,
     "hireDate": "2010-04-25",
@@ -1949,7 +2301,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Alice Müller (+49685889930)"
+    "emergencyContact": "Alice Müller (+49685889930)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 62,
@@ -1959,7 +2314,11 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": ["Docker", "Figma", "Java"],
+    "skills": [
+      "Docker",
+      "Figma",
+      "Java"
+    ],
     "isActive": false,
     "salary": 86980,
     "hireDate": "2014-02-14",
@@ -1981,7 +2340,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1982-09-09",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 63,
@@ -1991,7 +2353,11 @@
     "lastName": "Becker",
     "email": "frank.becker@example.com",
     "department": "Finance",
-    "skills": ["React", "AWS", "TypeScript"],
+    "skills": [
+      "React",
+      "AWS",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 64753,
     "hireDate": "2022-11-13",
@@ -2013,7 +2379,10 @@
     "linkedin": "https://www.linkedin.com/in/frankbecker",
     "github": "",
     "dateOfBirth": "1978-04-02",
-    "emergencyContact": "Bob Wagner (+49407481848)"
+    "emergencyContact": "Bob Wagner (+49407481848)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 64,
@@ -2023,7 +2392,12 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "",
-    "skills": ["React", "Java", "Figma", "Docker"],
+    "skills": [
+      "React",
+      "Java",
+      "Figma",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 79283,
     "hireDate": "2009-11-22",
@@ -2045,7 +2419,10 @@
     "linkedin": "https://www.linkedin.com/in/evabecker",
     "github": "",
     "dateOfBirth": "1992-06-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 65,
@@ -2055,7 +2432,10 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "Sales",
-    "skills": ["Docker", "Java"],
+    "skills": [
+      "Docker",
+      "Java"
+    ],
     "isActive": false,
     "salary": 53658,
     "hireDate": "2009-01-29",
@@ -2077,7 +2457,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Becker (+49183075052)"
+    "emergencyContact": "Eva Becker (+49183075052)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 66,
@@ -2087,7 +2470,12 @@
     "lastName": "Meyer",
     "email": "grace.meyer@example.com",
     "department": "HR",
-    "skills": ["SQL", "Java", "Python", "TypeScript"],
+    "skills": [
+      "SQL",
+      "Java",
+      "Python",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 87058,
     "hireDate": "2019-06-13",
@@ -2109,7 +2497,10 @@
     "linkedin": "https://www.linkedin.com/in/gracemeyer",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 67,
@@ -2141,7 +2532,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1966-12-24",
-    "emergencyContact": "Bob Schneider (+49850639883)"
+    "emergencyContact": "Bob Schneider (+49850639883)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 68,
@@ -2151,7 +2545,9 @@
     "lastName": "Müller",
     "email": "hannah.müller@example.com",
     "department": "HR",
-    "skills": ["SQL"],
+    "skills": [
+      "SQL"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2015-11-04",
@@ -2173,7 +2569,10 @@
     "linkedin": "https://www.linkedin.com/in/hannahmüller",
     "github": "",
     "dateOfBirth": "1968-08-09",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 69,
@@ -2183,7 +2582,12 @@
     "lastName": "Fischer",
     "email": "bob.fischer@example.com",
     "department": "HR",
-    "skills": ["Figma", "React", "AWS", "TypeScript"],
+    "skills": [
+      "Figma",
+      "React",
+      "AWS",
+      "TypeScript"
+    ],
     "isActive": false,
     "salary": 65841,
     "hireDate": "2015-10-17",
@@ -2205,7 +2609,10 @@
     "linkedin": "https://www.linkedin.com/in/bobfischer",
     "github": "",
     "dateOfBirth": "1979-07-09",
-    "emergencyContact": "Diana Fischer (+14143011099)"
+    "emergencyContact": "Diana Fischer (+14143011099)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 70,
@@ -2215,7 +2622,9 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 74343,
     "hireDate": "2011-05-17",
@@ -2237,7 +2646,10 @@
     "linkedin": "",
     "github": "https://github.com/hannahfischer",
     "dateOfBirth": "1980-12-11",
-    "emergencyContact": "Hannah Müller (+49316348189)"
+    "emergencyContact": "Hannah Müller (+49316348189)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 71,
@@ -2247,7 +2659,11 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "IT",
-    "skills": ["Docker", "AWS", "SQL"],
+    "skills": [
+      "Docker",
+      "AWS",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 80129,
     "hireDate": "2023-03-16",
@@ -2269,7 +2685,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 72,
@@ -2279,7 +2698,12 @@
     "lastName": "Weber",
     "email": "julia.weber@example.com",
     "department": "Finance",
-    "skills": ["React", "Docker", "AWS", "TypeScript"],
+    "skills": [
+      "React",
+      "Docker",
+      "AWS",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 46137,
     "hireDate": "2011-03-07",
@@ -2301,7 +2725,10 @@
     "linkedin": "https://www.linkedin.com/in/juliaweber",
     "github": "",
     "dateOfBirth": "1967-01-27",
-    "emergencyContact": "Bob Müller (+18385989776)"
+    "emergencyContact": "Bob Müller (+18385989776)",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 73,
@@ -2333,7 +2760,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1978-04-07",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 74,
@@ -2343,7 +2773,10 @@
     "lastName": "Weber",
     "email": "grace.weber@example.com",
     "department": "",
-    "skills": ["React", "TypeScript"],
+    "skills": [
+      "React",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 72273,
     "hireDate": "2011-09-02",
@@ -2365,7 +2798,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 75,
@@ -2375,7 +2811,9 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "",
-    "skills": ["TypeScript"],
+    "skills": [
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 48989,
     "hireDate": "2012-02-29",
@@ -2397,7 +2835,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Weber (+49553666152)"
+    "emergencyContact": "Ian Weber (+49553666152)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 76,
@@ -2429,7 +2870,10 @@
     "linkedin": "",
     "github": "https://github.com/juliaschneider",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Weber (+17436091102)"
+    "emergencyContact": "Charlie Weber (+17436091102)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 77,
@@ -2461,7 +2905,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1999-07-10",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 78,
@@ -2471,7 +2918,9 @@
     "lastName": "Becker",
     "email": "frank.becker@example.com",
     "department": "HR",
-    "skills": ["Docker"],
+    "skills": [
+      "Docker"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2013-11-09",
@@ -2493,7 +2942,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1977-05-17",
-    "emergencyContact": "Eva Becker (+49657460262)"
+    "emergencyContact": "Eva Becker (+49657460262)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 79,
@@ -2503,7 +2955,9 @@
     "lastName": "Wagner",
     "email": "alice.wagner@example.com",
     "department": "Finance",
-    "skills": ["SQL"],
+    "skills": [
+      "SQL"
+    ],
     "isActive": true,
     "salary": 74648,
     "hireDate": "2023-09-14",
@@ -2525,7 +2979,10 @@
     "linkedin": "https://www.linkedin.com/in/alicewagner",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 80,
@@ -2535,7 +2992,12 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "",
-    "skills": ["AWS", "Python", "Figma", "TypeScript"],
+    "skills": [
+      "AWS",
+      "Python",
+      "Figma",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2016-06-20",
@@ -2557,7 +3019,10 @@
     "linkedin": "https://www.linkedin.com/in/bobbecker",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 81,
@@ -2567,7 +3032,12 @@
     "lastName": "Wagner",
     "email": "",
     "department": "Marketing",
-    "skills": ["Java", "Python", "TypeScript", "Figma"],
+    "skills": [
+      "Java",
+      "Python",
+      "TypeScript",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 79827,
     "hireDate": "2009-09-16",
@@ -2589,7 +3059,10 @@
     "linkedin": "https://www.linkedin.com/in/charliewagner",
     "github": "",
     "dateOfBirth": "1974-11-01",
-    "emergencyContact": "Hannah Wagner (+14536958401)"
+    "emergencyContact": "Hannah Wagner (+14536958401)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 82,
@@ -2599,7 +3072,9 @@
     "lastName": "Schneider",
     "email": "hannah.schneider@example.com",
     "department": "HR",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": 97376,
     "hireDate": "2020-10-17",
@@ -2621,7 +3096,10 @@
     "linkedin": "https://www.linkedin.com/in/hannahschneider",
     "github": "",
     "dateOfBirth": "1995-01-22",
-    "emergencyContact": "Alice Becker (+49394022770)"
+    "emergencyContact": "Alice Becker (+49394022770)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 83,
@@ -2631,7 +3109,9 @@
     "lastName": "Schneider",
     "email": "eva.schneider@example.com",
     "department": "Legal",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": false,
     "salary": 70563,
     "hireDate": "2015-02-06",
@@ -2653,7 +3133,10 @@
     "linkedin": "",
     "github": "https://github.com/evaschneider",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Meyer (+12588794939)"
+    "emergencyContact": "Hannah Meyer (+12588794939)",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 84,
@@ -2663,7 +3146,9 @@
     "lastName": "Meyer",
     "email": "hannah.meyer@example.com",
     "department": "HR",
-    "skills": ["Java"],
+    "skills": [
+      "Java"
+    ],
     "isActive": false,
     "salary": 67632,
     "hireDate": "2009-04-11",
@@ -2685,7 +3170,10 @@
     "linkedin": "https://www.linkedin.com/in/hannahmeyer",
     "github": "https://github.com/hannahmeyer",
     "dateOfBirth": "1997-09-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 85,
@@ -2695,7 +3183,11 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "",
-    "skills": ["React", "TypeScript", "Python"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "",
@@ -2717,7 +3209,10 @@
     "linkedin": "",
     "github": "https://github.com/alicefischer",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Weber (+17769734571)"
+    "emergencyContact": "Frank Weber (+17769734571)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 86,
@@ -2727,7 +3222,12 @@
     "lastName": "Müller",
     "email": "bob.müller@example.com",
     "department": "Sales",
-    "skills": ["React", "SQL", "TypeScript", "Docker"],
+    "skills": [
+      "React",
+      "SQL",
+      "TypeScript",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 54032,
     "hireDate": "2017-08-30",
@@ -2749,7 +3249,10 @@
     "linkedin": "",
     "github": "https://github.com/bobmüller",
     "dateOfBirth": "1972-07-18",
-    "emergencyContact": "Charlie Müller (+18355631364)"
+    "emergencyContact": "Charlie Müller (+18355631364)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 87,
@@ -2759,7 +3262,9 @@
     "lastName": "Wagner",
     "email": "ian.wagner@example.com",
     "department": "Marketing",
-    "skills": ["Docker"],
+    "skills": [
+      "Docker"
+    ],
     "isActive": true,
     "salary": 55514,
     "hireDate": "2013-04-28",
@@ -2781,7 +3286,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1976-12-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 88,
@@ -2791,7 +3299,11 @@
     "lastName": "Wagner",
     "email": "eva.wagner@example.com",
     "department": "Sales",
-    "skills": ["AWS", "SQL", "Docker"],
+    "skills": [
+      "AWS",
+      "SQL",
+      "Docker"
+    ],
     "isActive": false,
     "salary": 49674,
     "hireDate": "2008-08-20",
@@ -2813,7 +3325,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1977-04-01",
-    "emergencyContact": "Charlie Fischer (+19236950620)"
+    "emergencyContact": "Charlie Fischer (+19236950620)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 89,
@@ -2823,7 +3338,11 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "Finance",
-    "skills": ["Figma", "Java", "SQL"],
+    "skills": [
+      "Figma",
+      "Java",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 72510,
     "hireDate": "2008-12-18",
@@ -2845,7 +3364,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1997-03-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 90,
@@ -2877,7 +3399,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 91,
@@ -2887,7 +3412,9 @@
     "lastName": "Weber",
     "email": "diana.weber@example.com",
     "department": "Marketing",
-    "skills": ["SQL"],
+    "skills": [
+      "SQL"
+    ],
     "isActive": true,
     "salary": 42241,
     "hireDate": "2011-02-15",
@@ -2909,7 +3436,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1996-03-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 92,
@@ -2919,7 +3449,9 @@
     "lastName": "",
     "email": "charlie.fischer@example.com",
     "department": "",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": false,
     "salary": 83551,
     "hireDate": "2008-12-19",
@@ -2941,7 +3473,10 @@
     "linkedin": "",
     "github": "https://github.com/charliefischer",
     "dateOfBirth": "1998-05-13",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 93,
@@ -2951,7 +3486,10 @@
     "lastName": "Schmidt",
     "email": "eva.schmidt@example.com",
     "department": "Legal",
-    "skills": ["Figma", "TypeScript"],
+    "skills": [
+      "Figma",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2008-03-16",
@@ -2973,7 +3511,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-08-09",
-    "emergencyContact": "Bob Schmidt (+49338466767)"
+    "emergencyContact": "Bob Schmidt (+49338466767)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 94,
@@ -2983,7 +3524,10 @@
     "lastName": "Schneider",
     "email": "bob.schneider@example.com",
     "department": "IT",
-    "skills": ["TypeScript", "Figma"],
+    "skills": [
+      "TypeScript",
+      "Figma"
+    ],
     "isActive": false,
     "salary": 90771,
     "hireDate": "2017-11-20",
@@ -3005,7 +3549,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-07-22",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 95,
@@ -3015,7 +3562,11 @@
     "lastName": "Wagner",
     "email": "hannah.wagner@example.com",
     "department": "IT",
-    "skills": ["React", "Python", "SQL"],
+    "skills": [
+      "React",
+      "Python",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 52462,
     "hireDate": "2021-10-03",
@@ -3037,7 +3588,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1992-09-30",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 96,
@@ -3069,7 +3623,10 @@
     "linkedin": "",
     "github": "https://github.com/ianschneider",
     "dateOfBirth": "1987-06-29",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 97,
@@ -3079,7 +3636,12 @@
     "lastName": "",
     "email": "grace.wagner@example.com",
     "department": "Finance",
-    "skills": ["AWS", "React", "TypeScript", "SQL"],
+    "skills": [
+      "AWS",
+      "React",
+      "TypeScript",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 61074,
     "hireDate": "2007-09-05",
@@ -3101,7 +3663,10 @@
     "linkedin": "",
     "github": "https://github.com/gracewagner",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 98,
@@ -3111,7 +3676,12 @@
     "lastName": "Schneider",
     "email": "eva.schneider@example.com",
     "department": "Sales",
-    "skills": ["TypeScript", "Figma", "React", "AWS"],
+    "skills": [
+      "TypeScript",
+      "Figma",
+      "React",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 53194,
     "hireDate": "",
@@ -3133,7 +3703,10 @@
     "linkedin": "https://www.linkedin.com/in/evaschneider",
     "github": "https://github.com/evaschneider",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 99,
@@ -3143,7 +3716,11 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "Sales",
-    "skills": ["Figma", "Java", "SQL"],
+    "skills": [
+      "Figma",
+      "Java",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 69513,
     "hireDate": "2016-03-26",
@@ -3165,7 +3742,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 100,
@@ -3197,7 +3777,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 101,
@@ -3207,7 +3790,12 @@
     "lastName": "Fischer",
     "email": "grace.fischer@example.com",
     "department": "Sales",
-    "skills": ["Figma", "Python", "Docker", "TypeScript"],
+    "skills": [
+      "Figma",
+      "Python",
+      "Docker",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 56035,
     "hireDate": "2011-07-03",
@@ -3229,7 +3817,10 @@
     "linkedin": "https://www.linkedin.com/in/gracefischer",
     "github": "https://github.com/gracefischer",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 102,
@@ -3239,7 +3830,9 @@
     "lastName": "Fischer",
     "email": "diana.fischer@example.com",
     "department": "HR",
-    "skills": ["SQL"],
+    "skills": [
+      "SQL"
+    ],
     "isActive": true,
     "salary": 40014,
     "hireDate": "",
@@ -3261,7 +3854,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1974-08-13",
-    "emergencyContact": "Bob Wagner (+49952906774)"
+    "emergencyContact": "Bob Wagner (+49952906774)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 103,
@@ -3271,7 +3867,10 @@
     "lastName": "Meyer",
     "email": "julia.meyer@example.com",
     "department": "Legal",
-    "skills": ["Python", "React"],
+    "skills": [
+      "Python",
+      "React"
+    ],
     "isActive": true,
     "salary": 93504,
     "hireDate": "2014-03-14",
@@ -3293,7 +3892,10 @@
     "linkedin": "",
     "github": "https://github.com/juliameyer",
     "dateOfBirth": "1970-08-02",
-    "emergencyContact": "Hannah Becker (+49435451938)"
+    "emergencyContact": "Hannah Becker (+49435451938)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 104,
@@ -3325,7 +3927,10 @@
     "linkedin": "",
     "github": "https://github.com/bobschneider",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Meyer (+11054913470)"
+    "emergencyContact": "Hannah Meyer (+11054913470)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 105,
@@ -3335,7 +3940,12 @@
     "lastName": "Meyer",
     "email": "",
     "department": "Finance",
-    "skills": ["Figma", "AWS", "TypeScript", "React"],
+    "skills": [
+      "Figma",
+      "AWS",
+      "TypeScript",
+      "React"
+    ],
     "isActive": false,
     "salary": 56257,
     "hireDate": "2008-06-21",
@@ -3357,7 +3967,10 @@
     "linkedin": "",
     "github": "https://github.com/charliemeyer",
     "dateOfBirth": "1986-04-17",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 106,
@@ -3389,7 +4002,10 @@
     "linkedin": "https://www.linkedin.com/in/hannahwagner",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 107,
@@ -3399,7 +4015,10 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "Sales",
-    "skills": ["React", "Docker"],
+    "skills": [
+      "React",
+      "Docker"
+    ],
     "isActive": false,
     "salary": 56389,
     "hireDate": "2021-04-13",
@@ -3421,7 +4040,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 108,
@@ -3431,7 +4053,12 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "IT",
-    "skills": ["Python", "AWS", "Java", "React"],
+    "skills": [
+      "Python",
+      "AWS",
+      "Java",
+      "React"
+    ],
     "isActive": true,
     "salary": 62009,
     "hireDate": "2013-12-14",
@@ -3453,7 +4080,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1980-05-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 109,
@@ -3463,7 +4093,9 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "Sales",
-    "skills": ["Figma"],
+    "skills": [
+      "Figma"
+    ],
     "isActive": true,
     "salary": 89220,
     "hireDate": "2017-06-08",
@@ -3485,7 +4117,10 @@
     "linkedin": "https://www.linkedin.com/in/frankschneider",
     "github": "",
     "dateOfBirth": "1976-07-04",
-    "emergencyContact": "Frank Schmidt (+49421718335)"
+    "emergencyContact": "Frank Schmidt (+49421718335)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 110,
@@ -3495,7 +4130,12 @@
     "lastName": "Weber",
     "email": "bob.weber@example.com",
     "department": "",
-    "skills": ["SQL", "React", "Figma", "AWS"],
+    "skills": [
+      "SQL",
+      "React",
+      "Figma",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 65542,
     "hireDate": "2005-05-07",
@@ -3517,7 +4157,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Fischer (+13464718026)"
+    "emergencyContact": "Charlie Fischer (+13464718026)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 111,
@@ -3527,7 +4170,11 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "",
-    "skills": ["Java", "AWS", "Python"],
+    "skills": [
+      "Java",
+      "AWS",
+      "Python"
+    ],
     "isActive": true,
     "salary": 41164,
     "hireDate": "2013-05-28",
@@ -3549,7 +4196,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 112,
@@ -3559,7 +4209,9 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "Sales",
-    "skills": ["TypeScript"],
+    "skills": [
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 54321,
     "hireDate": "",
@@ -3581,7 +4233,10 @@
     "linkedin": "https://www.linkedin.com/in/hannahschmidt",
     "github": "https://github.com/hannahschmidt",
     "dateOfBirth": "1990-10-05",
-    "emergencyContact": "Julia Schneider (+11306286799)"
+    "emergencyContact": "Julia Schneider (+11306286799)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 113,
@@ -3591,7 +4246,10 @@
     "lastName": "Schmidt",
     "email": "bob.schmidt@example.com",
     "department": "",
-    "skills": ["Figma", "React"],
+    "skills": [
+      "Figma",
+      "React"
+    ],
     "isActive": true,
     "salary": 50949,
     "hireDate": "2012-12-10",
@@ -3613,7 +4271,10 @@
     "linkedin": "",
     "github": "https://github.com/bobschmidt",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 114,
@@ -3645,7 +4306,10 @@
     "linkedin": "",
     "github": "https://github.com/ianweber",
     "dateOfBirth": "1974-06-23",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 115,
@@ -3655,7 +4319,9 @@
     "lastName": "Fischer",
     "email": "",
     "department": "HR",
-    "skills": ["Docker"],
+    "skills": [
+      "Docker"
+    ],
     "isActive": true,
     "salary": 85758,
     "hireDate": "2010-11-20",
@@ -3677,7 +4343,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1996-05-06",
-    "emergencyContact": "Julia Wagner (+49294803991)"
+    "emergencyContact": "Julia Wagner (+49294803991)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 116,
@@ -3687,7 +4356,9 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 73413,
     "hireDate": "2020-04-29",
@@ -3709,7 +4380,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1981-07-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 117,
@@ -3741,7 +4415,10 @@
     "linkedin": "",
     "github": "https://github.com/gracemüller",
     "dateOfBirth": "1977-11-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 118,
@@ -3751,7 +4428,12 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "IT",
-    "skills": ["Docker", "AWS", "TypeScript", "React"],
+    "skills": [
+      "Docker",
+      "AWS",
+      "TypeScript",
+      "React"
+    ],
     "isActive": true,
     "salary": 81389,
     "hireDate": "2016-09-19",
@@ -3773,7 +4455,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1989-05-04",
-    "emergencyContact": "Hannah Fischer (+19602611851)"
+    "emergencyContact": "Hannah Fischer (+19602611851)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 119,
@@ -3805,7 +4490,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-04-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 120,
@@ -3815,7 +4503,11 @@
     "lastName": "Meyer",
     "email": "grace.meyer@example.com",
     "department": "Sales",
-    "skills": ["SQL", "TypeScript", "Figma"],
+    "skills": [
+      "SQL",
+      "TypeScript",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 73330,
     "hireDate": "2013-05-18",
@@ -3837,7 +4529,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-04-20",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 121,
@@ -3847,7 +4542,12 @@
     "lastName": "Fischer",
     "email": "ian.fischer@example.com",
     "department": "Legal",
-    "skills": ["Docker", "React", "Figma", "TypeScript"],
+    "skills": [
+      "Docker",
+      "React",
+      "Figma",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 49900,
     "hireDate": "2008-10-30",
@@ -3869,7 +4569,10 @@
     "linkedin": "https://www.linkedin.com/in/ianfischer",
     "github": "",
     "dateOfBirth": "1966-02-16",
-    "emergencyContact": "Bob Meyer (+49499029387)"
+    "emergencyContact": "Bob Meyer (+49499029387)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 122,
@@ -3879,7 +4582,11 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "Legal",
-    "skills": ["AWS", "Figma", "SQL"],
+    "skills": [
+      "AWS",
+      "Figma",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 44417,
     "hireDate": "2014-07-04",
@@ -3901,7 +4608,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1972-12-07",
-    "emergencyContact": "Diana Weber (+49377366778)"
+    "emergencyContact": "Diana Weber (+49377366778)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 123,
@@ -3911,7 +4621,9 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "IT",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2016-11-30",
@@ -3933,7 +4645,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Weber (+49759400214)"
+    "emergencyContact": "Grace Weber (+49759400214)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 124,
@@ -3943,7 +4658,11 @@
     "lastName": "Becker",
     "email": "diana.becker@example.com",
     "department": "Sales",
-    "skills": ["SQL", "Figma", "Java"],
+    "skills": [
+      "SQL",
+      "Figma",
+      "Java"
+    ],
     "isActive": true,
     "salary": 76456,
     "hireDate": "2020-06-18",
@@ -3965,7 +4684,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1973-01-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 125,
@@ -3975,7 +4697,10 @@
     "lastName": "Wagner",
     "email": "eva.wagner@example.com",
     "department": "Marketing",
-    "skills": ["Python", "Docker"],
+    "skills": [
+      "Python",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 43123,
     "hireDate": "2012-12-27",
@@ -3997,7 +4722,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1980-10-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 126,
@@ -4007,7 +4735,10 @@
     "lastName": "Schmidt",
     "email": "frank.schmidt@example.com",
     "department": "Finance",
-    "skills": ["Figma", "Python"],
+    "skills": [
+      "Figma",
+      "Python"
+    ],
     "isActive": false,
     "salary": 89622,
     "hireDate": "2010-07-20",
@@ -4029,7 +4760,10 @@
     "linkedin": "https://www.linkedin.com/in/frankschmidt",
     "github": "https://github.com/frankschmidt",
     "dateOfBirth": "1994-01-10",
-    "emergencyContact": "Eva Müller (+49675316859)"
+    "emergencyContact": "Eva Müller (+49675316859)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 127,
@@ -4039,7 +4773,11 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "HR",
-    "skills": ["React", "Figma", "AWS"],
+    "skills": [
+      "React",
+      "Figma",
+      "AWS"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2008-09-27",
@@ -4061,7 +4799,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1974-03-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 128,
@@ -4071,7 +4812,9 @@
     "lastName": "Schmidt",
     "email": "julia.schmidt@example.com",
     "department": "Finance",
-    "skills": ["Figma"],
+    "skills": [
+      "Figma"
+    ],
     "isActive": true,
     "salary": 64376,
     "hireDate": "2015-04-18",
@@ -4093,7 +4836,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Meyer (+17468837528)"
+    "emergencyContact": "Diana Meyer (+17468837528)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 129,
@@ -4103,7 +4849,12 @@
     "lastName": "Wagner",
     "email": "bob.wagner@example.com",
     "department": "",
-    "skills": ["Docker", "React", "TypeScript", "Figma"],
+    "skills": [
+      "Docker",
+      "React",
+      "TypeScript",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 98902,
     "hireDate": "",
@@ -4125,7 +4876,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1971-10-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 130,
@@ -4157,7 +4911,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1972-09-04",
-    "emergencyContact": "Ian Wagner (+49881283072)"
+    "emergencyContact": "Ian Wagner (+49881283072)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 131,
@@ -4167,7 +4924,10 @@
     "lastName": "Meyer",
     "email": "grace.meyer@example.com",
     "department": "Sales",
-    "skills": ["TypeScript", "React"],
+    "skills": [
+      "TypeScript",
+      "React"
+    ],
     "isActive": true,
     "salary": 69109,
     "hireDate": "2012-09-03",
@@ -4189,7 +4949,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-09-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 132,
@@ -4221,7 +4984,10 @@
     "linkedin": "",
     "github": "https://github.com/hannahmüller",
     "dateOfBirth": "1969-10-30",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 133,
@@ -4231,7 +4997,11 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "Finance",
-    "skills": ["React", "TypeScript", "Python"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": 57871,
     "hireDate": "2016-04-10",
@@ -4253,7 +5023,10 @@
     "linkedin": "",
     "github": "https://github.com/frankschneider",
     "dateOfBirth": "1976-04-03",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 134,
@@ -4263,7 +5036,10 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "Sales",
-    "skills": ["TypeScript", "SQL"],
+    "skills": [
+      "TypeScript",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 89423,
     "hireDate": "2009-11-26",
@@ -4285,7 +5061,10 @@
     "linkedin": "https://www.linkedin.com/in/hannahbecker",
     "github": "https://github.com/hannahbecker",
     "dateOfBirth": "1982-01-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 135,
@@ -4317,7 +5096,10 @@
     "linkedin": "https://www.linkedin.com/in/dianamüller",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 136,
@@ -4349,7 +5131,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Becker (+49690571363)"
+    "emergencyContact": "Eva Becker (+49690571363)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 137,
@@ -4359,7 +5144,11 @@
     "lastName": "Meyer",
     "email": "hannah.meyer@example.com",
     "department": "Finance",
-    "skills": ["TypeScript", "Docker", "Java"],
+    "skills": [
+      "TypeScript",
+      "Docker",
+      "Java"
+    ],
     "isActive": true,
     "salary": 70994,
     "hireDate": "2019-04-28",
@@ -4381,7 +5170,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1989-11-08",
-    "emergencyContact": "Julia Becker (+49453099619)"
+    "emergencyContact": "Julia Becker (+49453099619)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 138,
@@ -4413,7 +5205,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Schmidt (+13616761735)"
+    "emergencyContact": "Diana Schmidt (+13616761735)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 139,
@@ -4445,7 +5240,10 @@
     "linkedin": "https://www.linkedin.com/in/gracewagner",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Schneider (+49524807627)"
+    "emergencyContact": "Diana Schneider (+49524807627)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 140,
@@ -4477,7 +5275,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 141,
@@ -4487,7 +5288,11 @@
     "lastName": "Fischer",
     "email": "",
     "department": "Legal",
-    "skills": ["Python", "Java", "TypeScript"],
+    "skills": [
+      "Python",
+      "Java",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2013-10-12",
@@ -4509,7 +5314,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1970-04-01",
-    "emergencyContact": "Diana Becker (+49198852765)"
+    "emergencyContact": "Diana Becker (+49198852765)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 142,
@@ -4519,7 +5327,10 @@
     "lastName": "Meyer",
     "email": "ian.meyer@example.com",
     "department": "Sales",
-    "skills": ["Docker", "TypeScript"],
+    "skills": [
+      "Docker",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 67633,
     "hireDate": "2006-05-04",
@@ -4541,7 +5352,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1995-04-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 143,
@@ -4551,7 +5365,11 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "Finance",
-    "skills": ["React", "Python", "AWS"],
+    "skills": [
+      "React",
+      "Python",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 59561,
     "hireDate": "2015-02-14",
@@ -4573,7 +5391,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1970-06-02",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 144,
@@ -4583,7 +5404,12 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "IT",
-    "skills": ["Figma", "Python", "TypeScript", "Java"],
+    "skills": [
+      "Figma",
+      "Python",
+      "TypeScript",
+      "Java"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2015-02-01",
@@ -4605,7 +5431,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1991-11-12",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 145,
@@ -4615,7 +5444,9 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2024-12-11",
@@ -4637,7 +5468,10 @@
     "linkedin": "https://www.linkedin.com/in/evafischer",
     "github": "https://github.com/evafischer",
     "dateOfBirth": "1975-12-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 146,
@@ -4669,7 +5503,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1988-03-16",
-    "emergencyContact": "Hannah Weber (+16087472173)"
+    "emergencyContact": "Hannah Weber (+16087472173)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 147,
@@ -4679,7 +5516,10 @@
     "lastName": "Becker",
     "email": "alice.becker@example.com",
     "department": "",
-    "skills": ["SQL", "Python"],
+    "skills": [
+      "SQL",
+      "Python"
+    ],
     "isActive": true,
     "salary": 69846,
     "hireDate": "",
@@ -4701,7 +5541,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 148,
@@ -4711,7 +5554,12 @@
     "lastName": "Weber",
     "email": "frank.weber@example.com",
     "department": "Legal",
-    "skills": ["Java", "React", "TypeScript", "SQL"],
+    "skills": [
+      "Java",
+      "React",
+      "TypeScript",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 89705,
     "hireDate": "2022-11-24",
@@ -4733,7 +5581,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Müller (+15028016908)"
+    "emergencyContact": "Diana Müller (+15028016908)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 149,
@@ -4743,7 +5594,9 @@
     "lastName": "",
     "email": "julia.wagner@example.com",
     "department": "Legal",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 57714,
     "hireDate": "2020-06-18",
@@ -4765,7 +5618,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1983-07-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 150,
@@ -4775,7 +5631,11 @@
     "lastName": "Fischer",
     "email": "diana.fischer@example.com",
     "department": "IT",
-    "skills": ["AWS", "React", "Docker"],
+    "skills": [
+      "AWS",
+      "React",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 55849,
     "hireDate": "2016-12-05",
@@ -4797,7 +5657,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 151,
@@ -4807,7 +5670,12 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "Legal",
-    "skills": ["TypeScript", "Java", "AWS", "React"],
+    "skills": [
+      "TypeScript",
+      "Java",
+      "AWS",
+      "React"
+    ],
     "isActive": true,
     "salary": 82772,
     "hireDate": "2011-06-19",
@@ -4829,7 +5697,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1982-06-26",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 152,
@@ -4839,7 +5710,10 @@
     "lastName": "Meyer",
     "email": "charlie.meyer@example.com",
     "department": "HR",
-    "skills": ["React", "TypeScript"],
+    "skills": [
+      "React",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 44781,
     "hireDate": "2010-02-26",
@@ -4861,7 +5735,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1973-05-22",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 153,
@@ -4871,7 +5748,10 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "Marketing",
-    "skills": ["Docker", "Figma"],
+    "skills": [
+      "Docker",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 81304,
     "hireDate": "2024-12-22",
@@ -4893,7 +5773,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1974-05-11",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 154,
@@ -4903,7 +5786,11 @@
     "lastName": "Wagner",
     "email": "bob.wagner@example.com",
     "department": "Marketing",
-    "skills": ["Docker", "Figma", "AWS"],
+    "skills": [
+      "Docker",
+      "Figma",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 96271,
     "hireDate": "2007-11-26",
@@ -4925,7 +5812,10 @@
     "linkedin": "https://www.linkedin.com/in/bobwagner",
     "github": "",
     "dateOfBirth": "1987-04-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 155,
@@ -4935,7 +5825,12 @@
     "lastName": "",
     "email": "eva.schneider@example.com",
     "department": "HR",
-    "skills": ["Docker", "React", "AWS", "Python"],
+    "skills": [
+      "Docker",
+      "React",
+      "AWS",
+      "Python"
+    ],
     "isActive": true,
     "salary": 99983,
     "hireDate": "2020-03-04",
@@ -4957,7 +5852,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1998-12-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 156,
@@ -4967,7 +5865,12 @@
     "lastName": "Fischer",
     "email": "ian.fischer@example.com",
     "department": "HR",
-    "skills": ["Docker", "React", "TypeScript", "Java"],
+    "skills": [
+      "Docker",
+      "React",
+      "TypeScript",
+      "Java"
+    ],
     "isActive": true,
     "salary": 96385,
     "hireDate": "2016-05-06",
@@ -4989,7 +5892,10 @@
     "linkedin": "https://www.linkedin.com/in/ianfischer",
     "github": "https://github.com/ianfischer",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Wagner (+11403603135)"
+    "emergencyContact": "Ian Wagner (+11403603135)",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 157,
@@ -4999,7 +5905,11 @@
     "lastName": "Meyer",
     "email": "",
     "department": "Legal",
-    "skills": ["React", "TypeScript", "Python"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": 60120,
     "hireDate": "2018-10-30",
@@ -5021,7 +5931,10 @@
     "linkedin": "",
     "github": "https://github.com/ianmeyer",
     "dateOfBirth": "1988-12-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 158,
@@ -5031,7 +5944,12 @@
     "lastName": "Schneider",
     "email": "bob.schneider@example.com",
     "department": "Marketing",
-    "skills": ["SQL", "AWS", "TypeScript", "React"],
+    "skills": [
+      "SQL",
+      "AWS",
+      "TypeScript",
+      "React"
+    ],
     "isActive": true,
     "salary": 79007,
     "hireDate": "2024-02-13",
@@ -5053,7 +5971,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1967-08-06",
-    "emergencyContact": "Eva Fischer (+19651911646)"
+    "emergencyContact": "Eva Fischer (+19651911646)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 159,
@@ -5063,7 +5984,10 @@
     "lastName": "Schmidt",
     "email": "diana.schmidt@example.com",
     "department": "Sales",
-    "skills": ["AWS", "React"],
+    "skills": [
+      "AWS",
+      "React"
+    ],
     "isActive": false,
     "salary": 52153,
     "hireDate": "2023-08-16",
@@ -5085,7 +6009,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1982-11-11",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 160,
@@ -5095,7 +6022,12 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "",
-    "skills": ["TypeScript", "React", "Figma", "Java"],
+    "skills": [
+      "TypeScript",
+      "React",
+      "Figma",
+      "Java"
+    ],
     "isActive": true,
     "salary": 94745,
     "hireDate": "2016-10-27",
@@ -5117,7 +6049,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1984-12-11",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 161,
@@ -5127,7 +6062,11 @@
     "lastName": "Weber",
     "email": "",
     "department": "IT",
-    "skills": ["Java", "Python", "AWS"],
+    "skills": [
+      "Java",
+      "Python",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 99740,
     "hireDate": "",
@@ -5149,7 +6088,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Schmidt (+49217203652)"
+    "emergencyContact": "Charlie Schmidt (+49217203652)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 162,
@@ -5159,7 +6101,12 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "Marketing",
-    "skills": ["SQL", "Docker", "AWS", "Java"],
+    "skills": [
+      "SQL",
+      "Docker",
+      "AWS",
+      "Java"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2016-08-19",
@@ -5181,7 +6128,10 @@
     "linkedin": "",
     "github": "https://github.com/evabecker",
     "dateOfBirth": "1969-06-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 163,
@@ -5191,7 +6141,9 @@
     "lastName": "Fischer",
     "email": "julia.fischer@example.com",
     "department": "",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": 44106,
     "hireDate": "2021-07-29",
@@ -5213,7 +6165,10 @@
     "linkedin": "https://www.linkedin.com/in/juliafischer",
     "github": "",
     "dateOfBirth": "1990-11-04",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 164,
@@ -5223,7 +6178,12 @@
     "lastName": "Schmidt",
     "email": "julia.schmidt@example.com",
     "department": "",
-    "skills": ["SQL", "AWS", "Figma", "Docker"],
+    "skills": [
+      "SQL",
+      "AWS",
+      "Figma",
+      "Docker"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2013-08-28",
@@ -5245,7 +6205,10 @@
     "linkedin": "",
     "github": "https://github.com/juliaschmidt",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 165,
@@ -5255,7 +6218,12 @@
     "lastName": "Meyer",
     "email": "frank.meyer@example.com",
     "department": "",
-    "skills": ["Python", "Java", "SQL", "React"],
+    "skills": [
+      "Python",
+      "Java",
+      "SQL",
+      "React"
+    ],
     "isActive": false,
     "salary": 49983,
     "hireDate": "2013-05-02",
@@ -5277,7 +6245,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 166,
@@ -5287,7 +6258,10 @@
     "lastName": "Müller",
     "email": "hannah.müller@example.com",
     "department": "",
-    "skills": ["React", "Python"],
+    "skills": [
+      "React",
+      "Python"
+    ],
     "isActive": true,
     "salary": 62386,
     "hireDate": "2007-05-23",
@@ -5309,7 +6283,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Alice Meyer (+19265654651)"
+    "emergencyContact": "Alice Meyer (+19265654651)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 167,
@@ -5319,7 +6296,10 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "Finance",
-    "skills": ["Java", "Python"],
+    "skills": [
+      "Java",
+      "Python"
+    ],
     "isActive": true,
     "salary": 65189,
     "hireDate": "2021-11-11",
@@ -5341,7 +6321,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1994-04-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 168,
@@ -5351,7 +6334,10 @@
     "lastName": "Wagner",
     "email": "frank.wagner@example.com",
     "department": "",
-    "skills": ["Figma", "AWS"],
+    "skills": [
+      "Figma",
+      "AWS"
+    ],
     "isActive": false,
     "salary": 44476,
     "hireDate": "2022-03-23",
@@ -5373,7 +6359,10 @@
     "linkedin": "https://www.linkedin.com/in/frankwagner",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Meyer (+19403532211)"
+    "emergencyContact": "Eva Meyer (+19403532211)",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 169,
@@ -5405,7 +6394,10 @@
     "linkedin": "",
     "github": "https://github.com/graceschneider",
     "dateOfBirth": "1974-06-11",
-    "emergencyContact": "Ian Meyer (+17579250176)"
+    "emergencyContact": "Ian Meyer (+17579250176)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 170,
@@ -5437,7 +6429,10 @@
     "linkedin": "https://www.linkedin.com/in/gracemeyer",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 171,
@@ -5447,7 +6442,11 @@
     "lastName": "Becker",
     "email": "frank.becker@example.com",
     "department": "Legal",
-    "skills": ["React", "SQL", "TypeScript"],
+    "skills": [
+      "React",
+      "SQL",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 60304,
     "hireDate": "2009-07-22",
@@ -5469,7 +6468,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1967-08-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 172,
@@ -5479,7 +6481,12 @@
     "lastName": "Meyer",
     "email": "eva.meyer@example.com",
     "department": "Sales",
-    "skills": ["Java", "AWS", "Python", "Figma"],
+    "skills": [
+      "Java",
+      "AWS",
+      "Python",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 56297,
     "hireDate": "2013-10-15",
@@ -5501,7 +6508,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 173,
@@ -5511,7 +6521,11 @@
     "lastName": "Schmidt",
     "email": "eva.schmidt@example.com",
     "department": "Sales",
-    "skills": ["Figma", "TypeScript", "Java"],
+    "skills": [
+      "Figma",
+      "TypeScript",
+      "Java"
+    ],
     "isActive": true,
     "salary": 65724,
     "hireDate": "2024-04-03",
@@ -5533,7 +6547,10 @@
     "linkedin": "https://www.linkedin.com/in/evaschmidt",
     "github": "",
     "dateOfBirth": "1977-12-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 174,
@@ -5565,7 +6582,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-09-23",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 175,
@@ -5597,7 +6617,10 @@
     "linkedin": "https://www.linkedin.com/in/aliceweber",
     "github": "",
     "dateOfBirth": "1975-09-10",
-    "emergencyContact": "Ian Müller (+49507528537)"
+    "emergencyContact": "Ian Müller (+49507528537)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 176,
@@ -5607,7 +6630,11 @@
     "lastName": "Müller",
     "email": "",
     "department": "",
-    "skills": ["SQL", "Java", "AWS"],
+    "skills": [
+      "SQL",
+      "Java",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 57686,
     "hireDate": "2011-11-26",
@@ -5629,7 +6656,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1989-06-26",
-    "emergencyContact": "Ian Meyer (+16647811166)"
+    "emergencyContact": "Ian Meyer (+16647811166)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 177,
@@ -5639,7 +6669,9 @@
     "lastName": "Weber",
     "email": "diana.weber@example.com",
     "department": "Sales",
-    "skills": ["TypeScript"],
+    "skills": [
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 71759,
     "hireDate": "",
@@ -5661,7 +6693,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1967-07-28",
-    "emergencyContact": "Julia Wagner (+11744160785)"
+    "emergencyContact": "Julia Wagner (+11744160785)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 178,
@@ -5671,7 +6706,12 @@
     "lastName": "Müller",
     "email": "diana.müller@example.com",
     "department": "IT",
-    "skills": ["TypeScript", "Java", "SQL", "Python"],
+    "skills": [
+      "TypeScript",
+      "Java",
+      "SQL",
+      "Python"
+    ],
     "isActive": true,
     "salary": 62623,
     "hireDate": "2020-06-24",
@@ -5693,7 +6733,10 @@
     "linkedin": "https://www.linkedin.com/in/dianamüller",
     "github": "",
     "dateOfBirth": "1971-03-22",
-    "emergencyContact": "Frank Fischer (+49323353925)"
+    "emergencyContact": "Frank Fischer (+49323353925)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 179,
@@ -5703,7 +6746,10 @@
     "lastName": "Müller",
     "email": "ian.müller@example.com",
     "department": "IT",
-    "skills": ["React", "SQL"],
+    "skills": [
+      "React",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 62319,
     "hireDate": "2015-06-05",
@@ -5725,7 +6771,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 180,
@@ -5735,7 +6784,12 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "",
-    "skills": ["React", "TypeScript", "Docker", "Python"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Docker",
+      "Python"
+    ],
     "isActive": true,
     "salary": 65170,
     "hireDate": "2008-10-03",
@@ -5757,7 +6811,10 @@
     "linkedin": "",
     "github": "https://github.com/hannahfischer",
     "dateOfBirth": "1977-01-28",
-    "emergencyContact": "Ian Wagner (+18795061456)"
+    "emergencyContact": "Ian Wagner (+18795061456)",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 181,
@@ -5767,7 +6824,9 @@
     "lastName": "Fischer",
     "email": "bob.fischer@example.com",
     "department": "Marketing",
-    "skills": ["TypeScript"],
+    "skills": [
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 85286,
     "hireDate": "2013-11-08",
@@ -5789,7 +6848,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 182,
@@ -5821,7 +6883,10 @@
     "linkedin": "https://www.linkedin.com/in/frankfischer",
     "github": "https://github.com/frankfischer",
     "dateOfBirth": "1992-06-10",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 183,
@@ -5831,7 +6896,10 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "",
-    "skills": ["Docker", "React"],
+    "skills": [
+      "Docker",
+      "React"
+    ],
     "isActive": true,
     "salary": 64810,
     "hireDate": "2014-06-19",
@@ -5853,7 +6921,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 184,
@@ -5863,7 +6934,11 @@
     "lastName": "Meyer",
     "email": "alice.meyer@example.com",
     "department": "Sales",
-    "skills": ["Java", "Figma", "AWS"],
+    "skills": [
+      "Java",
+      "Figma",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 86646,
     "hireDate": "2024-05-21",
@@ -5885,7 +6960,10 @@
     "linkedin": "https://www.linkedin.com/in/alicemeyer",
     "github": "https://github.com/alicemeyer",
     "dateOfBirth": "1997-04-16",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 185,
@@ -5895,7 +6973,10 @@
     "lastName": "Wagner",
     "email": "eva.wagner@example.com",
     "department": "Finance",
-    "skills": ["Python", "TypeScript"],
+    "skills": [
+      "Python",
+      "TypeScript"
+    ],
     "isActive": false,
     "salary": "",
     "hireDate": "2005-06-02",
@@ -5917,7 +6998,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1975-10-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 186,
@@ -5927,7 +7011,9 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "Finance",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": 65863,
     "hireDate": "2016-09-24",
@@ -5949,7 +7035,10 @@
     "linkedin": "",
     "github": "https://github.com/alicefischer",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 187,
@@ -5959,7 +7048,9 @@
     "lastName": "Fischer",
     "email": "bob.fischer@example.com",
     "department": "HR",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": 45126,
     "hireDate": "2024-08-21",
@@ -5981,7 +7072,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1966-06-12",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 188,
@@ -5991,7 +7085,11 @@
     "lastName": "Müller",
     "email": "frank.müller@example.com",
     "department": "Legal",
-    "skills": ["Figma", "Java", "AWS"],
+    "skills": [
+      "Figma",
+      "Java",
+      "AWS"
+    ],
     "isActive": false,
     "salary": 83892,
     "hireDate": "2008-07-25",
@@ -6013,7 +7111,10 @@
     "linkedin": "",
     "github": "https://github.com/frankmüller",
     "dateOfBirth": "1970-03-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 189,
@@ -6023,7 +7124,11 @@
     "lastName": "Müller",
     "email": "bob.müller@example.com",
     "department": "IT",
-    "skills": ["React", "TypeScript", "Figma"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 46484,
     "hireDate": "2017-05-22",
@@ -6045,7 +7150,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Fischer (+49862880291)"
+    "emergencyContact": "Grace Fischer (+49862880291)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 190,
@@ -6055,7 +7163,11 @@
     "lastName": "",
     "email": "bob.weber@example.com",
     "department": "HR",
-    "skills": ["Figma", "AWS", "React"],
+    "skills": [
+      "Figma",
+      "AWS",
+      "React"
+    ],
     "isActive": true,
     "salary": 71859,
     "hireDate": "2022-04-18",
@@ -6077,7 +7189,10 @@
     "linkedin": "",
     "github": "https://github.com/bobweber",
     "dateOfBirth": "1996-12-14",
-    "emergencyContact": "Eva Müller (+16010996570)"
+    "emergencyContact": "Eva Müller (+16010996570)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 191,
@@ -6087,7 +7202,12 @@
     "lastName": "Schmidt",
     "email": "alice.schmidt@example.com",
     "department": "IT",
-    "skills": ["React", "Docker", "TypeScript", "Python"],
+    "skills": [
+      "React",
+      "Docker",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": 56713,
     "hireDate": "2014-12-27",
@@ -6109,7 +7229,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-09-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 192,
@@ -6119,7 +7242,10 @@
     "lastName": "Schmidt",
     "email": "julia.schmidt@example.com",
     "department": "HR",
-    "skills": ["Python", "AWS"],
+    "skills": [
+      "Python",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 84097,
     "hireDate": "2023-07-10",
@@ -6141,7 +7267,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1995-06-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 193,
@@ -6173,7 +7302,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Julia Weber (+49269651750)"
+    "emergencyContact": "Julia Weber (+49269651750)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 194,
@@ -6183,7 +7315,11 @@
     "lastName": "Meyer",
     "email": "eva.meyer@example.com",
     "department": "IT",
-    "skills": ["SQL", "Java", "AWS"],
+    "skills": [
+      "SQL",
+      "Java",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 50852,
     "hireDate": "2010-03-06",
@@ -6205,7 +7341,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 195,
@@ -6215,7 +7354,10 @@
     "lastName": "Schneider",
     "email": "grace.schneider@example.com",
     "department": "Legal",
-    "skills": ["React", "TypeScript"],
+    "skills": [
+      "React",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 42043,
     "hireDate": "2008-11-09",
@@ -6237,7 +7379,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1980-12-21",
-    "emergencyContact": "Julia Weber (+49491146407)"
+    "emergencyContact": "Julia Weber (+49491146407)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 196,
@@ -6247,7 +7392,11 @@
     "lastName": "",
     "email": "ian.schmidt@example.com",
     "department": "Finance",
-    "skills": ["React", "TypeScript", "Python"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": 43510,
     "hireDate": "2006-10-28",
@@ -6269,7 +7418,10 @@
     "linkedin": "",
     "github": "https://github.com/ianschmidt",
     "dateOfBirth": "",
-    "emergencyContact": "Julia Müller (+49188210586)"
+    "emergencyContact": "Julia Müller (+49188210586)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 197,
@@ -6279,7 +7431,12 @@
     "lastName": "Schmidt",
     "email": "diana.schmidt@example.com",
     "department": "Sales",
-    "skills": ["Docker", "AWS", "SQL", "Figma"],
+    "skills": [
+      "Docker",
+      "AWS",
+      "SQL",
+      "Figma"
+    ],
     "isActive": false,
     "salary": 49521,
     "hireDate": "2022-09-13",
@@ -6301,7 +7458,10 @@
     "linkedin": "https://www.linkedin.com/in/dianaschmidt",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Becker (+49801917189)"
+    "emergencyContact": "Ian Becker (+49801917189)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 198,
@@ -6311,7 +7471,11 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "Marketing",
-    "skills": ["TypeScript", "AWS", "Java"],
+    "skills": [
+      "TypeScript",
+      "AWS",
+      "Java"
+    ],
     "isActive": true,
     "salary": 58869,
     "hireDate": "2006-04-04",
@@ -6333,7 +7497,10 @@
     "linkedin": "https://www.linkedin.com/in/charlieschmidt",
     "github": "",
     "dateOfBirth": "1997-09-29",
-    "emergencyContact": "Eva Müller (+13538416529)"
+    "emergencyContact": "Eva Müller (+13538416529)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 199,
@@ -6343,7 +7510,10 @@
     "lastName": "Fischer",
     "email": "frank.fischer@example.com",
     "department": "Legal",
-    "skills": ["Figma", "React"],
+    "skills": [
+      "Figma",
+      "React"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2013-12-23",
@@ -6365,7 +7535,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1970-10-19",
-    "emergencyContact": "Alice Fischer (+49250575691)"
+    "emergencyContact": "Alice Fischer (+49250575691)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 200,
@@ -6375,7 +7548,11 @@
     "lastName": "Müller",
     "email": "ian.müller@example.com",
     "department": "Marketing",
-    "skills": ["TypeScript", "React", "AWS"],
+    "skills": [
+      "TypeScript",
+      "React",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 70063,
     "hireDate": "2013-06-24",
@@ -6397,7 +7574,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Becker (+49297232867)"
+    "emergencyContact": "Charlie Becker (+49297232867)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 201,
@@ -6429,7 +7609,10 @@
     "linkedin": "https://www.linkedin.com/in/dianabecker",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 202,
@@ -6439,7 +7622,12 @@
     "lastName": "Wagner",
     "email": "alice.wagner@example.com",
     "department": "Sales",
-    "skills": ["SQL", "Figma", "Java", "AWS"],
+    "skills": [
+      "SQL",
+      "Figma",
+      "Java",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 60911,
     "hireDate": "2019-12-11",
@@ -6461,7 +7649,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1966-12-26",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 203,
@@ -6493,7 +7684,10 @@
     "linkedin": "",
     "github": "https://github.com/bobschneider",
     "dateOfBirth": "1970-06-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 204,
@@ -6503,7 +7697,12 @@
     "lastName": "Schmidt",
     "email": "eva.schmidt@example.com",
     "department": "Finance",
-    "skills": ["React", "Figma", "Java", "Docker"],
+    "skills": [
+      "React",
+      "Figma",
+      "Java",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 81467,
     "hireDate": "2011-07-23",
@@ -6525,7 +7724,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1991-06-03",
-    "emergencyContact": "Ian Fischer (+49770323266)"
+    "emergencyContact": "Ian Fischer (+49770323266)",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 205,
@@ -6535,7 +7737,12 @@
     "lastName": "Meyer",
     "email": "diana.meyer@example.com",
     "department": "IT",
-    "skills": ["React", "TypeScript", "Java", "SQL"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Java",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 56536,
     "hireDate": "2018-06-16",
@@ -6557,7 +7764,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-04-26",
-    "emergencyContact": "Ian Weber (+16546808804)"
+    "emergencyContact": "Ian Weber (+16546808804)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 206,
@@ -6567,7 +7777,12 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "Marketing",
-    "skills": ["Java", "Figma", "TypeScript", "SQL"],
+    "skills": [
+      "Java",
+      "Figma",
+      "TypeScript",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 62829,
     "hireDate": "2005-09-04",
@@ -6589,7 +7804,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1977-02-18",
-    "emergencyContact": "Charlie Meyer (+13621575015)"
+    "emergencyContact": "Charlie Meyer (+13621575015)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 207,
@@ -6599,7 +7817,11 @@
     "lastName": "Wagner",
     "email": "diana.wagner@example.com",
     "department": "IT",
-    "skills": ["AWS", "Python", "Java"],
+    "skills": [
+      "AWS",
+      "Python",
+      "Java"
+    ],
     "isActive": false,
     "salary": 66009,
     "hireDate": "2019-10-03",
@@ -6621,7 +7843,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 208,
@@ -6631,7 +7856,9 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": 57537,
     "hireDate": "2005-07-02",
@@ -6653,7 +7880,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1967-06-22",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 209,
@@ -6663,7 +7893,9 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 61257,
     "hireDate": "2024-03-06",
@@ -6685,7 +7917,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Wagner (+11884023228)"
+    "emergencyContact": "Ian Wagner (+11884023228)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 210,
@@ -6695,7 +7930,10 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "IT",
-    "skills": ["Java", "React"],
+    "skills": [
+      "Java",
+      "React"
+    ],
     "isActive": true,
     "salary": 50759,
     "hireDate": "2021-09-06",
@@ -6717,7 +7955,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1990-09-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 211,
@@ -6749,7 +7990,10 @@
     "linkedin": "https://www.linkedin.com/in/ianweber",
     "github": "",
     "dateOfBirth": "1984-02-03",
-    "emergencyContact": "Bob Schmidt (+49115717748)"
+    "emergencyContact": "Bob Schmidt (+49115717748)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 212,
@@ -6759,7 +8003,12 @@
     "lastName": "Wagner",
     "email": "hannah.wagner@example.com",
     "department": "",
-    "skills": ["Figma", "Docker", "React", "TypeScript"],
+    "skills": [
+      "Figma",
+      "Docker",
+      "React",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 87949,
     "hireDate": "2020-02-23",
@@ -6781,7 +8030,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Alice Schmidt (+49541042311)"
+    "emergencyContact": "Alice Schmidt (+49541042311)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 213,
@@ -6791,7 +8043,9 @@
     "lastName": "Meyer",
     "email": "hannah.meyer@example.com",
     "department": "Marketing",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": 84532,
     "hireDate": "2018-07-08",
@@ -6813,7 +8067,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1984-08-25",
-    "emergencyContact": "Bob Schneider (+49616165985)"
+    "emergencyContact": "Bob Schneider (+49616165985)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 214,
@@ -6845,7 +8102,10 @@
     "linkedin": "https://www.linkedin.com/in/alicefischer",
     "github": "",
     "dateOfBirth": "1993-01-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 215,
@@ -6855,7 +8115,10 @@
     "lastName": "Becker",
     "email": "grace.becker@example.com",
     "department": "HR",
-    "skills": ["SQL", "Figma"],
+    "skills": [
+      "SQL",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 43184,
     "hireDate": "2011-07-26",
@@ -6877,7 +8140,10 @@
     "linkedin": "https://www.linkedin.com/in/gracebecker",
     "github": "https://github.com/gracebecker",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 216,
@@ -6887,7 +8153,12 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": ["React", "TypeScript", "Figma", "AWS"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Figma",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 83721,
     "hireDate": "2008-02-15",
@@ -6909,7 +8180,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-03-20",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 217,
@@ -6919,7 +8193,10 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "IT",
-    "skills": ["Java", "Python"],
+    "skills": [
+      "Java",
+      "Python"
+    ],
     "isActive": false,
     "salary": 82205,
     "hireDate": "",
@@ -6941,7 +8218,10 @@
     "linkedin": "https://www.linkedin.com/in/bobbecker",
     "github": "",
     "dateOfBirth": "1988-05-03",
-    "emergencyContact": "Ian Wagner (+17752852299)"
+    "emergencyContact": "Ian Wagner (+17752852299)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 218,
@@ -6951,7 +8231,11 @@
     "lastName": "Meyer",
     "email": "frank.meyer@example.com",
     "department": "IT",
-    "skills": ["React", "TypeScript", "Java"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Java"
+    ],
     "isActive": true,
     "salary": 56178,
     "hireDate": "",
@@ -6973,7 +8257,10 @@
     "linkedin": "https://www.linkedin.com/in/frankmeyer",
     "github": "",
     "dateOfBirth": "1993-01-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 219,
@@ -6983,7 +8270,11 @@
     "lastName": "Fischer",
     "email": "charlie.fischer@example.com",
     "department": "Marketing",
-    "skills": ["React", "TypeScript", "Python"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2014-01-30",
@@ -7005,7 +8296,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1966-11-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 220,
@@ -7015,7 +8309,12 @@
     "lastName": "Schneider",
     "email": "ian.schneider@example.com",
     "department": "",
-    "skills": ["AWS", "Python", "TypeScript", "React"],
+    "skills": [
+      "AWS",
+      "Python",
+      "TypeScript",
+      "React"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "",
@@ -7037,7 +8336,10 @@
     "linkedin": "https://www.linkedin.com/in/ianschneider",
     "github": "",
     "dateOfBirth": "1990-11-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 221,
@@ -7047,7 +8349,9 @@
     "lastName": "Müller",
     "email": "",
     "department": "Sales",
-    "skills": ["TypeScript"],
+    "skills": [
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 52996,
     "hireDate": "2020-07-11",
@@ -7069,7 +8373,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 222,
@@ -7079,7 +8386,11 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "Marketing",
-    "skills": ["TypeScript", "Figma", "Docker"],
+    "skills": [
+      "TypeScript",
+      "Figma",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 93029,
     "hireDate": "2014-01-24",
@@ -7101,7 +8412,10 @@
     "linkedin": "https://www.linkedin.com/in/ianschmidt",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Fischer (+49354601967)"
+    "emergencyContact": "Ian Fischer (+49354601967)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 223,
@@ -7111,7 +8425,12 @@
     "lastName": "Wagner",
     "email": "",
     "department": "",
-    "skills": ["Figma", "SQL", "TypeScript", "Java"],
+    "skills": [
+      "Figma",
+      "SQL",
+      "TypeScript",
+      "Java"
+    ],
     "isActive": true,
     "salary": 59759,
     "hireDate": "",
@@ -7133,7 +8452,10 @@
     "linkedin": "https://www.linkedin.com/in/gracewagner",
     "github": "",
     "dateOfBirth": "1973-01-07",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 224,
@@ -7143,7 +8465,12 @@
     "lastName": "Müller",
     "email": "grace.müller@example.com",
     "department": "Sales",
-    "skills": ["TypeScript", "React", "SQL", "Java"],
+    "skills": [
+      "TypeScript",
+      "React",
+      "SQL",
+      "Java"
+    ],
     "isActive": true,
     "salary": 60495,
     "hireDate": "2022-10-09",
@@ -7165,7 +8492,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-07-29",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 225,
@@ -7197,7 +8527,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1967-01-11",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 226,
@@ -7207,7 +8540,12 @@
     "lastName": "Weber",
     "email": "",
     "department": "HR",
-    "skills": ["Python", "Java", "Figma", "AWS"],
+    "skills": [
+      "Python",
+      "Java",
+      "Figma",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 41135,
     "hireDate": "2013-01-06",
@@ -7229,7 +8567,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1996-05-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 227,
@@ -7261,7 +8602,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 228,
@@ -7293,7 +8637,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-06-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 229,
@@ -7325,7 +8672,10 @@
     "linkedin": "https://www.linkedin.com/in/bobwagner",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 230,
@@ -7335,7 +8685,11 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "Sales",
-    "skills": ["Docker", "Java", "AWS"],
+    "skills": [
+      "Docker",
+      "Java",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 64151,
     "hireDate": "2008-02-07",
@@ -7357,7 +8711,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1982-09-12",
-    "emergencyContact": "Frank Becker (+15736816471)"
+    "emergencyContact": "Frank Becker (+15736816471)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 231,
@@ -7367,7 +8724,9 @@
     "lastName": "Schneider",
     "email": "ian.schneider@example.com",
     "department": "Finance",
-    "skills": ["Python"],
+    "skills": [
+      "Python"
+    ],
     "isActive": true,
     "salary": 55674,
     "hireDate": "2020-10-05",
@@ -7389,7 +8748,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 232,
@@ -7399,7 +8761,10 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "Marketing",
-    "skills": ["AWS", "React"],
+    "skills": [
+      "AWS",
+      "React"
+    ],
     "isActive": true,
     "salary": 55194,
     "hireDate": "2023-11-16",
@@ -7421,7 +8786,10 @@
     "linkedin": "",
     "github": "https://github.com/ianschmidt",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Weber (+49399322592)"
+    "emergencyContact": "Frank Weber (+49399322592)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 233,
@@ -7431,7 +8799,12 @@
     "lastName": "Schneider",
     "email": "diana.schneider@example.com",
     "department": "Legal",
-    "skills": ["React", "TypeScript", "AWS", "Figma"],
+    "skills": [
+      "React",
+      "TypeScript",
+      "AWS",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 95505,
     "hireDate": "",
@@ -7453,7 +8826,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Schmidt (+49760396309)"
+    "emergencyContact": "Eva Schmidt (+49760396309)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 234,
@@ -7463,7 +8839,10 @@
     "lastName": "Schneider",
     "email": "charlie.schneider@example.com",
     "department": "",
-    "skills": ["Python", "Figma"],
+    "skills": [
+      "Python",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 80056,
     "hireDate": "2017-08-13",
@@ -7485,7 +8864,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1967-08-13",
-    "emergencyContact": "Hannah Meyer (+49395393352)"
+    "emergencyContact": "Hannah Meyer (+49395393352)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 235,
@@ -7495,7 +8877,10 @@
     "lastName": "Fischer",
     "email": "eva.fischer@example.com",
     "department": "IT",
-    "skills": ["React", "TypeScript"],
+    "skills": [
+      "React",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": 51916,
     "hireDate": "2011-12-18",
@@ -7517,7 +8902,10 @@
     "linkedin": "https://www.linkedin.com/in/evafischer",
     "github": "",
     "dateOfBirth": "1985-08-30",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 236,
@@ -7527,7 +8915,12 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "HR",
-    "skills": ["Figma", "React", "TypeScript", "Python"],
+    "skills": [
+      "Figma",
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2016-09-03",
@@ -7549,7 +8942,10 @@
     "linkedin": "",
     "github": "https://github.com/charlieschmidt",
     "dateOfBirth": "1996-06-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 237,
@@ -7559,7 +8955,11 @@
     "lastName": "Weber",
     "email": "charlie.weber@example.com",
     "department": "Sales",
-    "skills": ["AWS", "SQL", "Java"],
+    "skills": [
+      "AWS",
+      "SQL",
+      "Java"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2007-05-16",
@@ -7581,7 +8981,10 @@
     "linkedin": "",
     "github": "https://github.com/charlieweber",
     "dateOfBirth": "1982-08-12",
-    "emergencyContact": "Eva Schneider (+49616903716)"
+    "emergencyContact": "Eva Schneider (+49616903716)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 238,
@@ -7591,7 +8994,11 @@
     "lastName": "Schneider",
     "email": "frank.schneider@example.com",
     "department": "Finance",
-    "skills": ["Python", "TypeScript", "SQL"],
+    "skills": [
+      "Python",
+      "TypeScript",
+      "SQL"
+    ],
     "isActive": false,
     "salary": 72662,
     "hireDate": "2007-02-17",
@@ -7613,7 +9020,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Wagner (+49833336346)"
+    "emergencyContact": "Frank Wagner (+49833336346)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 239,
@@ -7623,7 +9033,11 @@
     "lastName": "Müller",
     "email": "alice.müller@example.com",
     "department": "Marketing",
-    "skills": ["TypeScript", "Python", "SQL"],
+    "skills": [
+      "TypeScript",
+      "Python",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 68398,
     "hireDate": "",
@@ -7645,7 +9059,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1997-09-11",
-    "emergencyContact": "Ian Meyer (+49319213995)"
+    "emergencyContact": "Ian Meyer (+49319213995)",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 240,
@@ -7655,7 +9072,12 @@
     "lastName": "Müller",
     "email": "diana.müller@example.com",
     "department": "Finance",
-    "skills": ["Java", "Python", "TypeScript", "AWS"],
+    "skills": [
+      "Java",
+      "Python",
+      "TypeScript",
+      "AWS"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2018-03-28",
@@ -7677,7 +9099,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1997-01-19",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 241,
@@ -7687,7 +9112,11 @@
     "lastName": "Müller",
     "email": "ian.müller@example.com",
     "department": "Legal",
-    "skills": ["Python", "TypeScript", "Java"],
+    "skills": [
+      "Python",
+      "TypeScript",
+      "Java"
+    ],
     "isActive": true,
     "salary": 48314,
     "hireDate": "2009-11-01",
@@ -7709,7 +9138,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1976-06-20",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 242,
@@ -7719,7 +9151,10 @@
     "lastName": "Fischer",
     "email": "diana.fischer@example.com",
     "department": "HR",
-    "skills": ["Docker", "Figma"],
+    "skills": [
+      "Docker",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 59374,
     "hireDate": "2005-08-05",
@@ -7741,7 +9176,10 @@
     "linkedin": "https://www.linkedin.com/in/dianafischer",
     "github": "",
     "dateOfBirth": "1983-12-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 243,
@@ -7751,7 +9189,9 @@
     "lastName": "Becker",
     "email": "diana.becker@example.com",
     "department": "",
-    "skills": ["Java"],
+    "skills": [
+      "Java"
+    ],
     "isActive": false,
     "salary": 61484,
     "hireDate": "2024-05-15",
@@ -7773,7 +9213,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1989-03-04",
-    "emergencyContact": "Grace Schneider (+49384662311)"
+    "emergencyContact": "Grace Schneider (+49384662311)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 244,
@@ -7805,7 +9248,10 @@
     "linkedin": "https://www.linkedin.com/in/ianweber",
     "github": "",
     "dateOfBirth": "1993-06-13",
-    "emergencyContact": "Frank Becker (+15493412627)"
+    "emergencyContact": "Frank Becker (+15493412627)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 245,
@@ -7815,7 +9261,11 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "IT",
-    "skills": ["React", "Figma", "TypeScript"],
+    "skills": [
+      "React",
+      "Figma",
+      "TypeScript"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2009-07-15",
@@ -7837,7 +9287,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1969-07-18",
-    "emergencyContact": "Julia Weber (+49521106682)"
+    "emergencyContact": "Julia Weber (+49521106682)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 246,
@@ -7847,7 +9300,12 @@
     "lastName": "",
     "email": "frank.müller@example.com",
     "department": "Marketing",
-    "skills": ["TypeScript", "Java", "Docker", "AWS"],
+    "skills": [
+      "TypeScript",
+      "Java",
+      "Docker",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 86157,
     "hireDate": "2016-11-24",
@@ -7869,7 +9327,10 @@
     "linkedin": "https://www.linkedin.com/in/frankmüller",
     "github": "",
     "dateOfBirth": "1972-07-01",
-    "emergencyContact": "Grace Schmidt (+16712463624)"
+    "emergencyContact": "Grace Schmidt (+16712463624)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 247,
@@ -7879,7 +9340,9 @@
     "lastName": "Schneider",
     "email": "alice.schneider@example.com",
     "department": "Finance",
-    "skills": ["Figma"],
+    "skills": [
+      "Figma"
+    ],
     "isActive": true,
     "salary": 68094,
     "hireDate": "2011-07-04",
@@ -7901,7 +9364,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1992-03-07",
-    "emergencyContact": "Hannah Weber (+49721784150)"
+    "emergencyContact": "Hannah Weber (+49721784150)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 248,
@@ -7933,7 +9399,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "2000-01-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 249,
@@ -7943,7 +9412,11 @@
     "lastName": "Schmidt",
     "email": "hannah.schmidt@example.com",
     "department": "IT",
-    "skills": ["Docker", "TypeScript", "SQL"],
+    "skills": [
+      "Docker",
+      "TypeScript",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 72458,
     "hireDate": "",
@@ -7965,7 +9438,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-03-27",
-    "emergencyContact": "Bob Schmidt (+49744168832)"
+    "emergencyContact": "Bob Schmidt (+49744168832)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 250,
@@ -7975,7 +9451,12 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "Legal",
-    "skills": ["Java", "Python", "AWS", "SQL"],
+    "skills": [
+      "Java",
+      "Python",
+      "AWS",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 40784,
     "hireDate": "2012-01-02",
@@ -7997,7 +9478,10 @@
     "linkedin": "https://www.linkedin.com/in/charliebecker",
     "github": "",
     "dateOfBirth": "1996-01-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 251,
@@ -8007,7 +9491,9 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "Legal",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 78634,
     "hireDate": "2016-12-15",
@@ -8029,7 +9515,10 @@
     "linkedin": "https://www.linkedin.com/in/charliebecker",
     "github": "",
     "dateOfBirth": "1984-11-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 252,
@@ -8039,7 +9528,10 @@
     "lastName": "Becker",
     "email": "bob.becker@example.com",
     "department": "IT",
-    "skills": ["Docker", "Python"],
+    "skills": [
+      "Docker",
+      "Python"
+    ],
     "isActive": false,
     "salary": 52436,
     "hireDate": "2008-03-03",
@@ -8061,7 +9553,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1992-04-19",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 253,
@@ -8071,7 +9566,11 @@
     "lastName": "Weber",
     "email": "eva.weber@example.com",
     "department": "IT",
-    "skills": ["Java", "SQL", "AWS"],
+    "skills": [
+      "Java",
+      "SQL",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 73065,
     "hireDate": "2006-01-02",
@@ -8093,7 +9592,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1976-08-09",
-    "emergencyContact": "Eva Meyer (+49790445491)"
+    "emergencyContact": "Eva Meyer (+49790445491)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 254,
@@ -8103,7 +9605,12 @@
     "lastName": "Wagner",
     "email": "julia.wagner@example.com",
     "department": "Sales",
-    "skills": ["Figma", "Java", "TypeScript", "Docker"],
+    "skills": [
+      "Figma",
+      "Java",
+      "TypeScript",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 46441,
     "hireDate": "2006-06-09",
@@ -8125,7 +9632,10 @@
     "linkedin": "https://www.linkedin.com/in/juliawagner",
     "github": "",
     "dateOfBirth": "1966-02-25",
-    "emergencyContact": "Eva Meyer (+49545394097)"
+    "emergencyContact": "Eva Meyer (+49545394097)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 255,
@@ -8135,7 +9645,10 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "Finance",
-    "skills": ["Figma", "React"],
+    "skills": [
+      "Figma",
+      "React"
+    ],
     "isActive": false,
     "salary": 53233,
     "hireDate": "2015-08-03",
@@ -8157,7 +9670,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1988-11-20",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 256,
@@ -8189,7 +9705,10 @@
     "linkedin": "",
     "github": "https://github.com/dianafischer",
     "dateOfBirth": "1973-10-24",
-    "emergencyContact": "Alice Meyer (+49760171722)"
+    "emergencyContact": "Alice Meyer (+49760171722)",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 257,
@@ -8199,7 +9718,9 @@
     "lastName": "Schmidt",
     "email": "ian.schmidt@example.com",
     "department": "Sales",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 74949,
     "hireDate": "2017-03-27",
@@ -8221,7 +9742,10 @@
     "linkedin": "",
     "github": "https://github.com/ianschmidt",
     "dateOfBirth": "1982-11-12",
-    "emergencyContact": "Ian Becker (+13653971904)"
+    "emergencyContact": "Ian Becker (+13653971904)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 258,
@@ -8253,7 +9777,10 @@
     "linkedin": "",
     "github": "https://github.com/frankweber",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Fischer (+49404182071)"
+    "emergencyContact": "Hannah Fischer (+49404182071)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 259,
@@ -8263,7 +9790,12 @@
     "lastName": "Wagner",
     "email": "ian.wagner@example.com",
     "department": "Legal",
-    "skills": ["Java", "Docker", "SQL", "Python"],
+    "skills": [
+      "Java",
+      "Docker",
+      "SQL",
+      "Python"
+    ],
     "isActive": true,
     "salary": 43201,
     "hireDate": "2006-01-06",
@@ -8285,7 +9817,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-12-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 260,
@@ -8295,7 +9830,10 @@
     "lastName": "Wagner",
     "email": "frank.wagner@example.com",
     "department": "Legal",
-    "skills": ["Python", "Java"],
+    "skills": [
+      "Python",
+      "Java"
+    ],
     "isActive": true,
     "salary": 41572,
     "hireDate": "2011-03-30",
@@ -8317,7 +9855,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1992-02-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 261,
@@ -8327,7 +9868,10 @@
     "lastName": "Becker",
     "email": "hannah.becker@example.com",
     "department": "HR",
-    "skills": ["Java", "Python"],
+    "skills": [
+      "Java",
+      "Python"
+    ],
     "isActive": true,
     "salary": 49805,
     "hireDate": "2021-10-29",
@@ -8349,7 +9893,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1994-12-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 262,
@@ -8359,7 +9906,9 @@
     "lastName": "Wagner",
     "email": "charlie.wagner@example.com",
     "department": "HR",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 96434,
     "hireDate": "2023-10-21",
@@ -8381,7 +9930,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1979-08-03",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 263,
@@ -8391,7 +9943,12 @@
     "lastName": "Becker",
     "email": "frank.becker@example.com",
     "department": "",
-    "skills": ["React", "Python", "Docker", "SQL"],
+    "skills": [
+      "React",
+      "Python",
+      "Docker",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 41684,
     "hireDate": "2016-06-17",
@@ -8413,7 +9970,10 @@
     "linkedin": "",
     "github": "https://github.com/frankbecker",
     "dateOfBirth": "1990-10-03",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 264,
@@ -8423,7 +9983,10 @@
     "lastName": "Meyer",
     "email": "alice.meyer@example.com",
     "department": "Marketing",
-    "skills": ["Figma", "React"],
+    "skills": [
+      "Figma",
+      "React"
+    ],
     "isActive": true,
     "salary": 52274,
     "hireDate": "2017-04-07",
@@ -8445,7 +10008,10 @@
     "linkedin": "https://www.linkedin.com/in/alicemeyer",
     "github": "",
     "dateOfBirth": "1966-04-23",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 265,
@@ -8477,7 +10043,10 @@
     "linkedin": "https://www.linkedin.com/in/hannahschneider",
     "github": "",
     "dateOfBirth": "1991-05-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 266,
@@ -8487,7 +10056,11 @@
     "lastName": "Schmidt",
     "email": "frank.schmidt@example.com",
     "department": "Legal",
-    "skills": ["SQL", "AWS", "React"],
+    "skills": [
+      "SQL",
+      "AWS",
+      "React"
+    ],
     "isActive": true,
     "salary": 98403,
     "hireDate": "2024-08-18",
@@ -8509,7 +10082,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1975-08-04",
-    "emergencyContact": "Grace Schmidt (+16044785725)"
+    "emergencyContact": "Grace Schmidt (+16044785725)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 267,
@@ -8519,7 +10095,10 @@
     "lastName": "Weber",
     "email": "grace.weber@example.com",
     "department": "Legal",
-    "skills": ["Docker", "AWS"],
+    "skills": [
+      "Docker",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 73633,
     "hireDate": "2018-08-10",
@@ -8541,7 +10120,10 @@
     "linkedin": "https://www.linkedin.com/in/graceweber",
     "github": "",
     "dateOfBirth": "1976-08-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 268,
@@ -8551,7 +10133,9 @@
     "lastName": "Becker",
     "email": "eva.becker@example.com",
     "department": "Sales",
-    "skills": ["Java"],
+    "skills": [
+      "Java"
+    ],
     "isActive": true,
     "salary": 72332,
     "hireDate": "2020-04-04",
@@ -8573,7 +10157,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-02-17",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 269,
@@ -8583,7 +10170,10 @@
     "lastName": "Becker",
     "email": "ian.becker@example.com",
     "department": "Legal",
-    "skills": ["Java", "Figma"],
+    "skills": [
+      "Java",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 86583,
     "hireDate": "2021-09-10",
@@ -8605,7 +10195,10 @@
     "linkedin": "",
     "github": "https://github.com/ianbecker",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 270,
@@ -8637,7 +10230,10 @@
     "linkedin": "https://www.linkedin.com/in/alicemeyer",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Weber (+14540070991)"
+    "emergencyContact": "Diana Weber (+14540070991)",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   },
   {
     "id": 271,
@@ -8647,7 +10243,12 @@
     "lastName": "Becker",
     "email": "diana.becker@example.com",
     "department": "Sales",
-    "skills": ["Python", "AWS", "React", "Docker"],
+    "skills": [
+      "Python",
+      "AWS",
+      "React",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 95512,
     "hireDate": "2012-06-10",
@@ -8669,7 +10270,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-08-15",
-    "emergencyContact": "Charlie Wagner (+19873924293)"
+    "emergencyContact": "Charlie Wagner (+19873924293)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 272,
@@ -8679,7 +10283,12 @@
     "lastName": "Fischer",
     "email": "frank.fischer@example.com",
     "department": "Finance",
-    "skills": ["Python", "Java", "Figma", "AWS"],
+    "skills": [
+      "Python",
+      "Java",
+      "Figma",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 84827,
     "hireDate": "",
@@ -8701,7 +10310,10 @@
     "linkedin": "https://www.linkedin.com/in/frankfischer",
     "github": "",
     "dateOfBirth": "1989-08-24",
-    "emergencyContact": "Alice Meyer (+49402534590)"
+    "emergencyContact": "Alice Meyer (+49402534590)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 273,
@@ -8711,7 +10323,9 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "",
-    "skills": ["Figma"],
+    "skills": [
+      "Figma"
+    ],
     "isActive": true,
     "salary": 99256,
     "hireDate": "2012-06-28",
@@ -8733,7 +10347,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Schmidt (+14323876918)"
+    "emergencyContact": "Frank Schmidt (+14323876918)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 274,
@@ -8743,7 +10360,12 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "Sales",
-    "skills": ["SQL", "React", "Docker", "AWS"],
+    "skills": [
+      "SQL",
+      "React",
+      "Docker",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 89926,
     "hireDate": "2014-10-18",
@@ -8765,7 +10387,10 @@
     "linkedin": "",
     "github": "https://github.com/juliaschneider",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 275,
@@ -8797,7 +10422,10 @@
     "linkedin": "https://www.linkedin.com/in/juliamüller",
     "github": "",
     "dateOfBirth": "1969-08-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 276,
@@ -8829,7 +10457,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 277,
@@ -8861,7 +10492,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Weber (+16117377232)"
+    "emergencyContact": "Hannah Weber (+16117377232)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 278,
@@ -8871,7 +10505,10 @@
     "lastName": "Müller",
     "email": "charlie.müller@example.com",
     "department": "Finance",
-    "skills": ["AWS", "Figma"],
+    "skills": [
+      "AWS",
+      "Figma"
+    ],
     "isActive": false,
     "salary": 56082,
     "hireDate": "2023-05-10",
@@ -8893,7 +10530,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "2000-06-23",
-    "emergencyContact": "Hannah Weber (+49413074059)"
+    "emergencyContact": "Hannah Weber (+49413074059)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT5H",
+    "brandColor": "#84cc16"
   },
   {
     "id": 279,
@@ -8903,7 +10543,10 @@
     "lastName": "Meyer",
     "email": "alice.meyer@example.com",
     "department": "HR",
-    "skills": ["Figma", "Docker"],
+    "skills": [
+      "Figma",
+      "Docker"
+    ],
     "isActive": true,
     "salary": 96490,
     "hireDate": "",
@@ -8925,7 +10568,10 @@
     "linkedin": "https://www.linkedin.com/in/alicemeyer",
     "github": "",
     "dateOfBirth": "1995-07-07",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 280,
@@ -8957,7 +10603,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1971-03-19",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#6366f1"
   },
   {
     "id": 281,
@@ -8967,7 +10616,11 @@
     "lastName": "Wagner",
     "email": "grace.wagner@example.com",
     "department": "Legal",
-    "skills": ["Java", "TypeScript", "Python"],
+    "skills": [
+      "Java",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": 41938,
     "hireDate": "2010-09-21",
@@ -8989,7 +10642,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Fischer (+16910899931)"
+    "emergencyContact": "Eva Fischer (+16910899931)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 282,
@@ -8999,7 +10655,10 @@
     "lastName": "Becker",
     "email": "diana.becker@example.com",
     "department": "IT",
-    "skills": ["React", "Figma"],
+    "skills": [
+      "React",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 42184,
     "hireDate": "2017-03-13",
@@ -9021,7 +10680,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1977-09-09",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#e11d48"
   },
   {
     "id": 283,
@@ -9053,7 +10715,10 @@
     "linkedin": "https://www.linkedin.com/in/charlieweber",
     "github": "",
     "dateOfBirth": "1981-05-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 284,
@@ -9063,7 +10728,12 @@
     "lastName": "Fischer",
     "email": "hannah.fischer@example.com",
     "department": "HR",
-    "skills": ["Figma", "Docker", "AWS", "SQL"],
+    "skills": [
+      "Figma",
+      "Docker",
+      "AWS",
+      "SQL"
+    ],
     "isActive": true,
     "salary": 93139,
     "hireDate": "2006-08-20",
@@ -9085,7 +10755,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-11-01",
-    "emergencyContact": "Eva Müller (+16157625269)"
+    "emergencyContact": "Eva Müller (+16157625269)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a855f7"
   },
   {
     "id": 285,
@@ -9095,7 +10768,11 @@
     "lastName": "Fischer",
     "email": "julia.fischer@example.com",
     "department": "Marketing",
-    "skills": ["Java", "SQL", "Python"],
+    "skills": [
+      "Java",
+      "SQL",
+      "Python"
+    ],
     "isActive": true,
     "salary": 70250,
     "hireDate": "2023-11-16",
@@ -9117,7 +10794,10 @@
     "linkedin": "https://www.linkedin.com/in/juliafischer",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT6H",
+    "brandColor": "#d946ef"
   },
   {
     "id": 286,
@@ -9127,7 +10807,12 @@
     "lastName": "Müller",
     "email": "julia.müller@example.com",
     "department": "HR",
-    "skills": ["AWS", "Java", "Python", "Figma"],
+    "skills": [
+      "AWS",
+      "Java",
+      "Python",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 47020,
     "hireDate": "2016-12-11",
@@ -9149,7 +10834,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT7H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 287,
@@ -9181,7 +10869,10 @@
     "linkedin": "https://www.linkedin.com/in/hannahwagner",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 288,
@@ -9191,7 +10882,12 @@
     "lastName": "Meyer",
     "email": "",
     "department": "",
-    "skills": ["Figma", "React", "TypeScript", "AWS"],
+    "skills": [
+      "Figma",
+      "React",
+      "TypeScript",
+      "AWS"
+    ],
     "isActive": false,
     "salary": 55574,
     "hireDate": "2022-09-14",
@@ -9213,7 +10909,10 @@
     "linkedin": "https://www.linkedin.com/in/charliemeyer",
     "github": "",
     "dateOfBirth": "1992-06-30",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#10b981"
   },
   {
     "id": 289,
@@ -9223,7 +10922,10 @@
     "lastName": "Becker",
     "email": "charlie.becker@example.com",
     "department": "Finance",
-    "skills": ["Docker", "React"],
+    "skills": [
+      "Docker",
+      "React"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2017-07-31",
@@ -9245,7 +10947,10 @@
     "linkedin": "",
     "github": "https://github.com/charliebecker",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 290,
@@ -9255,7 +10960,9 @@
     "lastName": "Meyer",
     "email": "charlie.meyer@example.com",
     "department": "Finance",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 89280,
     "hireDate": "2017-11-05",
@@ -9277,7 +10984,10 @@
     "linkedin": "https://www.linkedin.com/in/charliemeyer",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Wagner (+13081115451)"
+    "emergencyContact": "Grace Wagner (+13081115451)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 291,
@@ -9287,7 +10997,11 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "HR",
-    "skills": ["AWS", "React", "Figma"],
+    "skills": [
+      "AWS",
+      "React",
+      "Figma"
+    ],
     "isActive": true,
     "salary": 87851,
     "hireDate": "",
@@ -9309,7 +11023,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-01-26",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ec4899"
   },
   {
     "id": 292,
@@ -9319,7 +11036,9 @@
     "lastName": "Müller",
     "email": "eva.müller@example.com",
     "department": "Legal",
-    "skills": ["Java"],
+    "skills": [
+      "Java"
+    ],
     "isActive": false,
     "salary": 46478,
     "hireDate": "2022-08-30",
@@ -9341,7 +11060,10 @@
     "linkedin": "",
     "github": "https://github.com/evamüller",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:15",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 293,
@@ -9351,7 +11073,11 @@
     "lastName": "Wagner",
     "email": "julia.wagner@example.com",
     "department": "Sales",
-    "skills": ["TypeScript", "AWS", "Python"],
+    "skills": [
+      "TypeScript",
+      "AWS",
+      "Python"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2020-12-23",
@@ -9373,7 +11099,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1988-12-17",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#84cc16"
   },
   {
     "id": 294,
@@ -9383,7 +11112,11 @@
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
     "department": "Finance",
-    "skills": ["Docker", "SQL", "AWS"],
+    "skills": [
+      "Docker",
+      "SQL",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 96355,
     "hireDate": "",
@@ -9405,7 +11138,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:45",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 295,
@@ -9415,7 +11151,10 @@
     "lastName": "Fischer",
     "email": "alice.fischer@example.com",
     "department": "Legal",
-    "skills": ["Java", "Figma"],
+    "skills": [
+      "Java",
+      "Figma"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2020-02-05",
@@ -9437,7 +11176,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1990-06-04",
-    "emergencyContact": "Bob Weber (+49271666523)"
+    "emergencyContact": "Bob Weber (+49271666523)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#6366f1"
   },
   {
     "id": 296,
@@ -9469,7 +11211,10 @@
     "linkedin": "https://www.linkedin.com/in/ianschmidt",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Schmidt (+18010734676)"
+    "emergencyContact": "Charlie Schmidt (+18010734676)",
+    "checkInTime": "09:15",
+    "shiftDuration": "PT7H",
+    "brandColor": "#14b8a6"
   },
   {
     "id": 297,
@@ -9479,7 +11224,9 @@
     "lastName": "Becker",
     "email": "ian.becker@example.com",
     "department": "Finance",
-    "skills": ["React"],
+    "skills": [
+      "React"
+    ],
     "isActive": true,
     "salary": 91974,
     "hireDate": "2011-06-20",
@@ -9501,7 +11248,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#e11d48"
   },
   {
     "id": 298,
@@ -9511,7 +11261,10 @@
     "lastName": "Schmidt",
     "email": "eva.schmidt@example.com",
     "department": "Sales",
-    "skills": ["TypeScript", "AWS"],
+    "skills": [
+      "TypeScript",
+      "AWS"
+    ],
     "isActive": true,
     "salary": 66316,
     "hireDate": "2014-01-04",
@@ -9533,7 +11286,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H",
+    "brandColor": "#0ea5e9"
   },
   {
     "id": 299,
@@ -9543,7 +11299,10 @@
     "lastName": "Schneider",
     "email": "julia.schneider@example.com",
     "department": "Marketing",
-    "skills": ["Figma", "React"],
+    "skills": [
+      "Figma",
+      "React"
+    ],
     "isActive": true,
     "salary": 77630,
     "hireDate": "2012-04-27",
@@ -9565,7 +11324,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1980-11-20",
-    "emergencyContact": "Diana Schneider (+49339976377)"
+    "emergencyContact": "Diana Schneider (+49339976377)",
+    "checkInTime": "10:30",
+    "shiftDuration": "PT6H30M",
+    "brandColor": "#a855f7"
   },
   {
     "id": 300,
@@ -9575,7 +11337,12 @@
     "lastName": "Fischer",
     "email": "bob.fischer@example.com",
     "department": "Finance",
-    "skills": ["Figma", "AWS", "Java", "Python"],
+    "skills": [
+      "Figma",
+      "AWS",
+      "Java",
+      "Python"
+    ],
     "isActive": true,
     "salary": "",
     "hireDate": "2012-05-10",
@@ -9597,6 +11364,9 @@
     "linkedin": "",
     "github": "https://github.com/bobfischer",
     "dateOfBirth": "1979-02-12",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "11:00",
+    "shiftDuration": "PT8H15M",
+    "brandColor": "#d946ef"
   }
 ]

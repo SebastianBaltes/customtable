@@ -116,6 +116,21 @@ export function useCursorKeys(
         if (tableContainer) tableContainer.focus();
       }
 
+      // ArrowRight bubbled from editor → editor committed, move to next cell
+      if (key === "ArrowRight") {
+        event.stopPropagation();
+        event.preventDefault();
+        setColRow(
+          cursor.selectionStart.colIdx + 1,
+          cursor.selectionStart.rowIdx,
+          false,
+          false,
+          false,
+          null,
+        );
+        if (tableContainer) tableContainer.focus();
+      }
+
       return;
     }
 
@@ -150,7 +165,7 @@ export function useCursorKeys(
         jumpTab(shift ? -1 : +1, false);
       } else if (key === "Enter" || key === "F2") {
         if (!isColumnReadOnly) {
-          setColRow(colIdx, rowIdx, true, shift, ctrl, null);
+          setColRow(colIdx, rowIdx, true, shift, ctrl, "");
         }
       } else if (key.length === 1 && !ctrl && !event.altKey && !event.metaKey) {
         if (!isColumnReadOnly) {

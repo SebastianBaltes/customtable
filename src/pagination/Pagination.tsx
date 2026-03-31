@@ -48,6 +48,16 @@ export interface PaginationProps {
   labels?: Partial<PaginationLabels>;
   /** Optional className appended to the root element. */
   className?: string;
+  /**
+   * When true, shows a loading spinner on the page button identified by
+   * `pendingPage` (or the current page if `pendingPage` is not set).
+   */
+  loading?: boolean;
+  /**
+   * The page number whose button should show a spinner during loading.
+   * Defaults to the current `page` value.
+   */
+  pendingPage?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -117,6 +127,8 @@ export const Pagination: React.FC<PaginationProps> = ({
   maxVisiblePages = DEFAULT_MAX_VISIBLE,
   labels: labelsProp,
   className,
+  loading = false,
+  pendingPage,
 }) => {
   const labels = { ...DEFAULT_LABELS, ...labelsProp };
 
@@ -131,12 +143,17 @@ export const Pagination: React.FC<PaginationProps> = ({
       <span className="ct-pagination-label">{labels.page}</span>
 
       <div className="ct-pagination-pages">
-        {visiblePages.map((entry, idx) =>
-          entry === "…" ? (
-            <span key={`ellipsis-${idx}`} className="ct-pagination-ellipsis">
-              …
-            </span>
-          ) : (
+        {visiblePages.map((entry, idx) => {
+          if (entry === "…") {
+            return (
+              <span key={`ellipsis-${idx}`} className="ct-pagination-ellipsis">
+                …
+              </span>
+            );
+          }
+          const spinnerPage = pendingPage ?? page;
+          const showSpinner = loading && entry === spinnerPage;
+          return (
             <button
               key={entry}
               className={["ct-pagination-page", entry === safePage ? "is-current" : ""]
@@ -146,10 +163,10 @@ export const Pagination: React.FC<PaginationProps> = ({
               aria-current={entry === safePage ? "page" : undefined}
               aria-label={`Page ${entry}`}
             >
-              {entry}
+              {showSpinner ? <span className="ct-pagination-spinner" /> : entry}
             </button>
-          ),
-        )}
+          );
+        })}
       </div>
 
       <span className="ct-pagination-label">

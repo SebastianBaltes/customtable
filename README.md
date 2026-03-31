@@ -12,7 +12,9 @@ It is the ideal middle ground between a rigid single-record form and a chaotic, 
 
 By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensures a pixel-perfect layout and seamless CSS styling. While ideal for small to medium datasets, it can easily handle larger data through standard pagination.
 
-> **Live Demo:** <https://sebastianbaltes.github.io/customtable/>
+> **Full Demo:** <https://sebastianbaltes.github.io/customtable/> — all features, async backend simulation, 8 themes
+>
+> **Simple Demo:** <https://sebastianbaltes.github.io/customtable/simple.html> — minimal setup, 10 columns, 5 rows
 
 ---
 
@@ -67,6 +69,10 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 - [Theming](#theming)
 - [Comparison: CustomTable vs. Others](#comparison-customtable-vs-others)
 - [When to use CustomTable](#when-to-use-customtable)
+- [Performance](#performance)
+  - [Implemented Optimizations](#implemented-optimizations)
+  - [Evaluated but not Implemented](#evaluated-but-not-implemented)
+  - [Profiling](#profiling)
 - [When to use something else](#when-to-use-something-else)
 - [License](#license)
 
@@ -83,7 +89,7 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 | **Fill drag**                     | Excel-style fill handle to copy values across cells                                                         |
 | **Copy & Paste**                  | Ctrl+C / Ctrl+V with tab-separated clipboard (Excel-compatible)                                             |
 | **Undo / Redo**                   | Ctrl+Z / Ctrl+Y with full row-snapshot stack                                                                |
-| **Sorting**                       | Click column headers to cycle ASC → DESC → none                                                             |
+| **Multi-Sort**                    | Click column headers to sort; Shift+click to add secondary sort criteria with priority numbers              |
 | **Filtering**                     | Per-column text/select filter in each header; Boolean columns get a Yes/No select                           |
 | **Combobox filter**               | Columns with `selectOptions` get a checkbox-dropdown filter; type to narrow the list                        |
 | **Filterable flag**               | Set `filterable: false` on a column to hide its filter input entirely                                       |
@@ -103,7 +109,7 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 | **Combobox keyboard UX**          | Arrow keys navigate options, Enter selects, Space toggles (multi-select), free-text entry                   |
 | **Boolean keyboard UX**           | Enter on a selected Boolean cell toggles its value without entering edit mode                               |
 | **i18n / translations**           | All built-in UI strings are overridable via a typesafe `translations` prop                                  |
-| **Built-in editors**              | String, Number, Boolean (checkbox), Combobox (single-select), MultiCombobox (multi-select)                  |
+| **Built-in editors**              | String, Number, Boolean, Combobox, MultiCombobox, Date, DateTime, Time, Duration, Color                     |
 | **Custom editors**                | Provide your own editor component per column                                                                |
 | **Validation**                    | Per-column `validate` function; result shown as `cell-error`/`cell-warning` class + tooltip                 |
 | **Automatic CSS classes**         | Cells and headers receive `col-type-*`, `col-required`, `col-readonly`, `cell-ellipsis` automatically       |
@@ -116,6 +122,16 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 | **Unsaved cell marking**          | Connection-error edits get `cell-unsaved` class; auto-retry with exponential backoff                       |
 | **`serverOwned` columns**         | Backend-owned columns (e.g. ID) always use server value during merge, ignoring inflight counters            |
 | **`wrap` column option**          | Allow text wrapping per column; all other columns default to `nowrap`                                       |
+| **Column resizing**               | Drag the right edge of column headers to resize; widths can be persisted in localStorage                    |
+| **Column reordering & hiding**    | Dialog for drag & drop column reordering and checkbox-based visibility toggles; persistable in localStorage |
+| **Selection range listener**      | `onSelectionChange` callback provides normalized selection range for aggregation (sum, count, average)      |
+| **Search & Replace (Ctrl+H)**     | Global dialog to find and replace text across the entire dataset or current selection; supports regex        |
+| **Input masking**                 | `inputMask` pattern on ColumnConfig constrains input during typing (e.g. phone numbers, IBAN, IP)          |
+| **Dependent dropdowns**           | `selectOptions` accepts `(row) => string[]` for dynamic options based on other cell values                  |
+| **Date/DateTime/Time editors**    | Locale-aware display via `Intl.DateTimeFormat` with native browser date/time pickers                       |
+| **Duration editor**               | Parses multiple formats (`2h 30m`, `PT2H30M`, `2:30`); normalizes to ISO 8601                              |
+| **Color editor**                  | Hex color input with swatch preview and native browser color picker                                         |
+| **Pagination**                    | Standalone `<Pagination>` component with sliding page window, configurable page sizes, loading spinner      |
 
 ---
 
@@ -422,31 +438,45 @@ When an undo or redo action occurs, the component automatically calculates the d
 | `status`                | `TableStatus`                                     | —        | —                | Status indicator in the toolbar. See [TableStatus](#tablestatus).                                                 |
 | `loading`               | `boolean`                                         | —        | `false`          | Shows loading spinners on active filters and sets `cursor: wait`.                                                 |
 | `pendingSortColumn`     | `string`                                          | —        | —                | Column name with a pending sort — shows a spinner instead of the sort arrow.                                      |
+| `pendingFilterColumns`  | `string[]`                                        | —        | —                | Column names with pending filter changes — shows spinners in the filter inputs.                                   |
+| `columnWidths`          | `Record<string, number>`                          | —        | —                | Map of column names to pixel widths for resizable columns.                                                        |
+| `onColumnResize`        | `(colName: string, width: number) => void`        | —        | —                | Called when a column is resized via drag handle.                                                                  |
+| `onSelectionChange`     | `(selection: SelectionInfo) => void`              | —        | —                | Called when the cell selection range changes. Useful for showing aggregated values.                                |
+| `shakeRef`              | `MutableRefObject<(() => void) \| null>`          | —        | —                | Ref populated with a function to trigger the shake animation programmatically.                                    |
 
 ### ColumnConfig\<T\>
 
 ```ts
 interface ColumnConfig<T> {
-  name: string; // Column key in the row record
-  type: string; // "String" | "Number" | "Boolean" | "Combobox" | "MultiCombobox"
-  label?: string; // Display label (defaults to name)
-  readOnly?: boolean; // Prevent editing
-  required?: boolean; // Mark as required (adds col-required class)
-  editor?: Editor<T>; // Custom editor component (overrides type-based lookup)
-  selectOptions?: string[]; // Option list for Combobox / MultiCombobox; enables combobox filter
-  freeText?: boolean; // Allow custom values in Combobox/MultiCombobox (default: true)
-  multiselect?: boolean; // Enable multi-select mode (used internally by MultiCombobox)
-  enabledIf?: (row: Row) => boolean; // Conditional enable
-  validate?: (value: any) => boolean | ValidationResult; // See Validation section
-  numberFormat?: NumberFormat; // Display & parse format for Number columns
-  align?: "left" | "right" | "center"; // Text alignment (Number defaults to "right")
-  comment?: string; // Tooltip or description shown in column header
-  filterable?: boolean; // Set to false to hide the filter input (default: true)
-  filterEditor?: FilterEditor; // Custom filter component in the column header
-  dialogTitle?: string; // Title template for the textarea dialog editor
-  wrap?: boolean; // Allow text wrapping (default: false = nowrap)
-  className?: string; // Extra CSS class(es) applied to every <th> and <td> of this column
-  serverOwned?: boolean; // Backend-owned column — always overwritten during merge (default: false)
+  name: string;           // Column key in the row record
+  type: string;           // "String" | "Number" | "Boolean" | "Combobox" | "MultiCombobox"
+                          // | "Date" | "DateTime" | "Time" | "Duration" | "Color"
+  label?: string;         // Display label (defaults to name)
+  readOnly?: boolean;     // Prevent editing
+  required?: boolean;     // Mark as required (adds col-required class)
+  editor?: Editor<T>;     // Custom editor component (overrides type-based lookup)
+  selectOptions?: string[] | ((row: Row) => string[]);
+                          // Options for Combobox/MultiCombobox — static array or function for
+                          // dependent dropdowns (e.g. Country → City)
+  freeText?: boolean;     // Allow custom values in Combobox/MultiCombobox (default: true)
+  multiselect?: boolean;  // Enable multi-select mode (used internally by MultiCombobox)
+  enabledIf?: (row: Row) => boolean;  // Conditional enable
+  validate?: (value: any) => boolean | ValidationResult;
+  numberFormat?: NumberFormat;      // Display & parse format for Number columns
+  dateFormat?: DateFormat;          // Display format for Date columns
+  dateTimeFormat?: DateTimeFormat;  // Display format for DateTime columns
+  timeFormat?: TimeFormat;          // Display format for Time columns
+  durationFormat?: DurationFormat;  // Display format for Duration columns
+  inputMask?: string;     // Input mask pattern: # = digit, A = letter, * = any char,
+                          // all other chars are literal separators (e.g. "+## ### ########")
+  align?: "left" | "right" | "center";  // Text alignment (Number defaults to "right")
+  comment?: string;       // Tooltip or description
+  filterable?: boolean;   // Set to false to hide the filter input (default: true)
+  filterEditor?: FilterEditor;   // Custom filter component
+  dialogTitle?: string;   // Title template for the textarea dialog editor
+  wrap?: boolean;         // Allow text wrapping (default: false = nowrap)
+  className?: string;     // Extra CSS class(es) applied to <th> and <td>
+  serverOwned?: boolean;  // Backend-owned — always overwritten during merge (default: false)
 }
 ```
 
@@ -474,6 +504,43 @@ interface NumberFormat {
 { name: "score",   type: "Number", numberFormat: { decimalPlaces: 1, thousandsSeparator: false } }
 { name: "bonus",   type: "Number", numberFormat: { decimalPlaces: 0, prefix: "+ ", suffix: " €" } }
 { name: "rate",    type: "Number", numberFormat: { locale: "de-DE", decimalPlaces: 2, suffix: " %" } }
+```
+
+### DateFormat / DateTimeFormat / TimeFormat / DurationFormat
+
+```ts
+interface DateFormat {
+  locale?: string;                          // BCP 47 locale (default: navigator.language)
+  dateStyle?: "full" | "long" | "medium" | "short";  // Intl.DateTimeFormat dateStyle
+  options?: Intl.DateTimeFormatOptions;     // Full override (takes precedence over dateStyle)
+}
+
+interface DateTimeFormat {
+  locale?: string;
+  dateStyle?: "full" | "long" | "medium" | "short";  // Default: "short"
+  timeStyle?: "full" | "long" | "medium" | "short";  // Default: "short"
+  options?: Intl.DateTimeFormatOptions;
+}
+
+interface TimeFormat {
+  locale?: string;
+  showSeconds?: boolean;                    // Include seconds in display (default: false)
+  hourCycle?: "h11" | "h12" | "h23" | "h24";  // Override Intl hour cycle
+}
+
+interface DurationFormat {
+  style?: "short" | "long" | "iso";  // "short" → "2h 30m", "long" → "2 hours 30 minutes",
+                                     // "iso" → "PT2H30M" (default: "short")
+}
+```
+
+### SelectionInfo
+
+```ts
+interface SelectionInfo {
+  range: { startRow: number; endRow: number; startCol: number; endCol: number };
+  hasSelection: boolean;  // false when cursor is at (-1, -1)
+}
 ```
 
 ### Editor\<T\>
@@ -521,11 +588,24 @@ type CellMetaMap = Record<
 >;
 ```
 
-### SortConfig
+### SortConfig (Multi-Sort)
 
 ```ts
-type SortConfig = { column: string; direction: "asc" | "desc" } | null;
+interface SortCriterion {
+  column: string;
+  direction: "asc" | "desc";
+}
+
+// Array of criteria — first entry is primary sort, subsequent entries are tie-breakers.
+// null or empty array = unsorted.
+type SortConfig = SortCriterion[] | null;
 ```
+
+**Multi-sort interaction:**
+- **Click** a column header → single-sort by that column (replaces all criteria)
+- **Shift+Click** → add/cycle that column as an additional sort criterion
+- Priority numbers (¹²³) appear next to the sort arrows when multiple criteria are active
+- **Shift+Click** on an already-sorted column cycles asc → desc → remove
 
 ### FilterState
 
@@ -947,11 +1027,16 @@ const pageItems = filteredSorted.slice(start, start + effectivePageSize);
 
 | Type              | Editor                | Behaviour                                                                                    |
 | ----------------- | --------------------- | -------------------------------------------------------------------------------------------- |
-| `"String"`        | `StringEditor`        | `<input type="text">`. Commits on Enter/Tab/blur, cancels on Escape.                         |
+| `"String"`        | `StringEditor`        | `<input type="text">`. Supports `inputMask` for pattern-based formatting.                    |
 | `"Number"`        | `NumberEditor`        | Locale-aware formatted text input. See [Number Editor](#number-editor).                      |
 | `"Boolean"`       | `BooleanEditor`       | Checkbox — always interactive. Enter on a selected cell toggles without entering edit mode.  |
 | `"Combobox"`      | `ComboboxEditor`      | Searchable single-select dropdown. See [Combobox & MultiCombobox](#combobox--multicombobox). |
 | `"MultiCombobox"` | `MultiComboboxEditor` | Multi-select variant of Combobox.                                                            |
+| `"Date"`          | `DateEditor`          | Free-text + native date picker. Display via `Intl.DateTimeFormat`. Internal: `YYYY-MM-DD`.   |
+| `"DateTime"`      | `DateTimeEditor`      | Free-text + native datetime picker. Internal: ISO datetime string.                           |
+| `"Time"`          | `TimeEditor`          | Free-text + native time picker. Internal: `HH:mm` or `HH:mm:ss`.                            |
+| `"Duration"`      | `DurationEditor`      | Free-text with multiple format parsing. Internal: ISO 8601 (`PT2H30M`).                      |
+| `"Color"`         | `ColorEditor`         | Hex text input + native color picker + swatch preview. Internal: `#rrggbb`.                  |
 
 The editor is resolved in `renderCell.tsx`:
 
@@ -990,7 +1075,7 @@ Both editor types share the same dropdown component. Cells show a `▾` indicato
 
 **`freeText` option** (default: `true`): when `true`, the user may type values not present in `selectOptions`. The typed text can be committed as a custom entry. Set to `false` to restrict input to the predefined option list only.
 
-**Multi-select buffering:** Toggles in multi-select mode are buffered locally and only committed to the row data on explicit close (Enter/Tab/blur). This prevents intermediate selections from triggering the `onRowsChange` side-effect that would close the dropdown.
+**Multi-select immediate commit:** Every checkbox toggle in a multi-select dropdown is committed immediately. This means ESC, blur, or clicking outside all preserve the current state — no changes are lost.
 
 ### Boolean Editor
 
@@ -998,6 +1083,115 @@ The checkbox is always rendered and clickable. Additionally:
 
 - **Enter** on a selected (non-editing) Boolean cell toggles the value and keeps the cell selected.
 - **Tab** navigates to the next cell without stealing focus to external page checkboxes.
+
+### Date, DateTime & Time Editors
+
+These editors combine a free-text `<input>` with a native browser picker button:
+
+- **Date** — Internal format: `YYYY-MM-DD`. Displays via `Intl.DateTimeFormat` with configurable `dateFormat: { locale?, dateStyle?, options? }`. Parses ISO, EU (`DD.MM.YYYY`, `DD/MM/YYYY`) and natural Date constructor formats.
+- **DateTime** — Internal format: ISO datetime string (`2024-03-15T14:30:00Z`). Configurable via `dateTimeFormat: { locale?, dateStyle?, timeStyle?, options? }`.
+- **Time** — Internal format: `HH:mm` or `HH:mm:ss`. Configurable via `timeFormat: { locale?, showSeconds?, hourCycle? }`. Parses 12h (`2:30 PM`) and 24h formats.
+
+The picker button (📅/🕒) calls `showPicker()` on a hidden native `<input type="date|datetime-local|time">`. Free-text entry is always available as fallback.
+
+### Duration Editor
+
+Parses and normalizes multiple duration formats:
+
+| Input Format | Example | Internal (ISO 8601) |
+| --- | --- | --- |
+| Short | `2h 30m` | `PT2H30M` |
+| Colon | `2:30` | `PT2H30M` |
+| ISO 8601 | `PT2H30M` | `PT2H30M` |
+| Minutes only | `150m` | `PT2H30M` |
+
+Display format configurable via `durationFormat: { style: "short" | "long" | "iso" }`.
+
+### Color Editor
+
+Renders a color swatch (16×16 rounded square) next to the hex value in display mode. In edit mode:
+
+- Free-text hex input (auto-normalizes: `f00` → `#ff0000`, `FF0000` → `#ff0000`)
+- Clicking the swatch opens the native browser color picker (`<input type="color">`)
+- Invalid hex values are preserved as free text
+
+### Input Masking
+
+The `inputMask` property on `ColumnConfig` enables pattern-based input formatting:
+
+```ts
+{ name: "phone", type: "String", inputMask: "+## ### ########" }
+{ name: "ip",    type: "String", inputMask: "###.###.###.###" }
+{ name: "iban",  type: "String", inputMask: "AA## #### #### #### #### ##" }
+```
+
+**Mask characters:** `#` = digit, `A` = letter, `*` = any character. All other characters are literal separators inserted automatically as the user types. The masked value is what gets stored.
+
+### Dependent Dropdowns
+
+`selectOptions` accepts a function for dynamic options based on other cell values:
+
+```ts
+{
+  name: "country",
+  type: "Combobox",
+  selectOptions: ["Germany", "France", "Austria"],
+},
+{
+  name: "city",
+  type: "Combobox",
+  selectOptions: (row) => {
+    const cities: Record<string, string[]> = {
+      Germany: ["Berlin", "Munich", "Hamburg"],
+      France: ["Paris", "Lyon", "Marseille"],
+    };
+    return cities[row.country] ?? [];
+  },
+  freeText: true,
+}
+```
+
+The filter dropdown in the column header automatically collects all options from all rows.
+
+### Column Resizing
+
+Pass `columnWidths` and `onColumnResize` props to enable drag-to-resize:
+
+```tsx
+const [widths, setWidths] = useState<Record<string, number>>({});
+
+<CustomTable
+  columnWidths={widths}
+  onColumnResize={(colName, width) => setWidths(prev => ({ ...prev, [colName]: width }))}
+/>
+```
+
+A resize handle appears on the right edge of each column header. Minimum width: 40px.
+
+### Selection Range Listener
+
+```tsx
+<CustomTable
+  onSelectionChange={(sel) => {
+    if (sel.hasSelection) {
+      const { startRow, endRow, startCol, endCol } = sel.range;
+      // Compute aggregations over the selected range
+    }
+  }}
+/>
+```
+
+The `SelectionInfo` type provides a normalized range (start ≤ end) and a `hasSelection` flag.
+
+### Search & Replace
+
+Press **Ctrl+H** to open the Search & Replace dialog. Features:
+
+- **Scope:** entire dataset or current selection only
+- **Match case** toggle
+- **Regex** toggle — when enabled, the search string is treated as a regular expression
+- Read-only columns and read-only rows are skipped
+- Supports undo — replacements can be reversed with Ctrl+Z
 
 ---
 
@@ -1417,7 +1611,8 @@ npm install
 
 ```bash
 npm start
-# Opens Vite dev server at http://localhost:5173
+# Full example:   http://localhost:5173/
+# Simple example: http://localhost:5173/simple.html
 ```
 
 ### Build Demo
@@ -1469,19 +1664,29 @@ src/
 │   ├── usePositionInsideViewport.tsx
 │   └── useWindowSize.tsx
 ├── editors/
-│   ├── StringEditor.tsx
+│   ├── StringEditor.tsx          — Text input with optional inputMask
 │   ├── NumberEditor.tsx          — Locale-aware formatted number input
 │   ├── BooleanEditor.tsx
 │   ├── ComboboxEditor.tsx
 │   ├── MultiComboboxEditor.tsx
-│   └── DropdownEditor.tsx        — Shared dropdown UI for Combobox/MultiCombobox
+│   ├── DropdownEditor.tsx        — Shared dropdown UI for Combobox/MultiCombobox
+│   ├── DateEditor.tsx            — Date with native picker
+│   ├── DateTimeEditor.tsx        — DateTime with native picker
+│   ├── TimeEditor.tsx            — Time with native picker
+│   ├── DurationEditor.tsx        — Duration with multi-format parser
+│   ├── ColorEditor.tsx           — Color with swatch + native picker
+│   └── TextareaDialogEditor.tsx  — Multi-line text in a dialog
+├── pagination/
+│   └── Pagination.tsx            — Standalone pagination component
 └── examples/
-    ├── example.tsx               — Demo application
-    ├── example-data.json         — Demo data
-    ├── index.html
+    ├── example.tsx               — Full demo (all features, async backend, themes)
+    ├── example-simple.tsx         — Simple demo (minimal setup, 5 rows)
+    ├── example-data.json         — Demo data (300 rows)
+    ├── index.html                — Full demo entry
+    ├── simple.html               — Simple demo entry
     └── styles.css                — Default stylesheet
 tests/
-└── customtable.spec.ts           — Playwright E2E tests (94 tests)
+└── customtable.spec.ts           — Playwright E2E tests (232 tests)
 ```
 
 ---
@@ -1525,6 +1730,48 @@ While there are many grid libraries available, `CustomTable` occupies a unique n
 - **Massive Datasets:** If you need to render >5,000 rows at once, use a virtualized grid like **AG Grid** or **Glide Data Grid**.
 - **Free-form Data:** If your users need to add arbitrary columns or write complex formulas, use **Handsontable** or **Luckysheet**.
 - **Complete UI Control:** If you want to build the entire UI from scratch and only need the math, use **TanStack Table**.
+
+---
+
+## Performance
+
+CustomTable is designed for small to medium datasets rendered as a native HTML `<table>`. The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`). The following targeted optimizations further reduce CPU load during interactive use.
+
+### Implemented Optimizations
+
+**RAF-throttled Mousemove** (`useCursor.tsx`)
+During selection-drag and fill-drag, `onMouseMove` events can fire 100+ times per second. Each event would trigger `setCursorRef` → `directDomUpdateForCursor` → `getBoundingClientRect` (forced reflow). A shared `requestAnimationFrame` dispatcher batches these updates to at most once per frame (60/s). The visual result is identical since the browser renders at 60 FPS anyway.
+
+- Measured improvement: **86% less CPU time** during drag operations (130ms → 18ms for 300 events on a 101x30 table).
+- Code: `throttledMouseMove()` in `useCursor.tsx`, used by `CustomCell.onMouseMove` and `CustomColHeader.onMouseMove`.
+
+**CSS Containment** (`base.css`)
+`contain: strict` on `.custom-table-viewport` and `contain: content` on `.cell` tell the browser that layout changes inside these elements cannot affect elements outside. This allows the browser to skip unnecessary reflow calculations on surrounding DOM.
+
+- Measured improvement: ~4% on isolated pages, more significant when the table is embedded in complex layouts.
+
+**GPU Compositing Hint** (`base.css`)
+`will-change: top, left, width, height` on `.selection-rectangle` and `.fill-rectangle` promotes these frequently-repositioned overlays to their own compositing layer, avoiding repaints of underlying cells.
+
+### Evaluated but not Implemented
+
+The following optimizations were prototyped, benchmarked, and deliberately rejected due to unfavorable complexity/benefit ratio:
+
+**Event Delegation** (moving mouse handlers from individual cells to `<tbody>`/`<thead>`)
+Would reduce ~12,000 React handler props to 6. However, React already delegates events internally — the "12,000 handlers" are closures, not DOM listeners. The delegated version required duplicating cell interaction logic (readOnly checks, dropdown zone detection, cellMeta lookups) in `RowTable`, making it fragile. The memory savings were not measurable in practice.
+
+**Cell Position Cache** (caching `getBoundingClientRect` results during drag)
+Would eliminate redundant reflow calls during drag. However, with RAF-throttling already in place, only ~7-10 BCR calls remain per drag operation (down from 250+ without throttling). The cache reduced this to ~5-7 — a marginal improvement that added lifecycle complexity (`startDragCache`/`clearDragCache`).
+
+**editingCell State Isolation** (replacing React state with a ref + portal)
+Would eliminate `React.memo` comparison overhead on 300+ rows when entering/exiting edit mode. Not implemented because the current approach already filters out most re-renders via `React.memo`, and the complexity of managing a portal-based editor injection is high.
+
+**Row/Column Highlight Overlay** (replacing `classList` operations with overlay divs)
+Would reduce N classList operations to 2 style updates. Not implemented because classList is already fast for typical table sizes, and the overlay approach introduces complexity around sticky column clipping.
+
+### Profiling
+
+For detailed analysis methodology and benchmark procedures, see `PERFORMANCE_REPORT.md`.
 
 ---
 

@@ -22,22 +22,36 @@ export const TextareaDialogEditor: Editor<string> = ({
   const inlineRef = useRef<HTMLInputElement>(null);
   const isEscapingRef = useRef(false);
 
+  const prevEditingRef = useRef(false);
+  const navigateOnArrowRightRef = useRef(false);
+
   useEffect(() => {
-    if (editing && initialEditValue !== null) {
-      setInlineValue(initialEditValue);
-    } else {
+    if (editing && !prevEditingRef.current) {
+      if (initialEditValue !== null && initialEditValue !== "") {
+        // Typing entry: replace content with typed character
+        setInlineValue(initialEditValue);
+        navigateOnArrowRightRef.current = true;
+      } else {
+        // F2/dblclick/tripleclick: keep existing value
+        setInlineValue(value ?? "");
+        navigateOnArrowRightRef.current = false;
+      }
+    } else if (!editing) {
       setInlineValue(value ?? "");
     }
+    prevEditingRef.current = editing;
   }, [value, editing, initialEditValue]);
 
   useEffect(() => {
     if (editing && inlineRef.current) {
       inlineRef.current.focus();
-      if (initialEditValue !== null) {
-        const len = String(inlineValue).length;
-        inlineRef.current.setSelectionRange(len, len);
-      } else {
+      if (initialEditValue === null) {
+        // Triple-click: select all
         inlineRef.current.select();
+      } else {
+        // F2/dblclick or typing: cursor at end
+        const len = String(inlineRef.current.value).length;
+        inlineRef.current.setSelectionRange(len, len);
       }
     }
   }, [editing, initialEditValue]);
@@ -110,6 +124,13 @@ export const TextareaDialogEditor: Editor<string> = ({
             if (e.key === "Enter" || e.key === "Tab") {
               onChange(inlineValue);
               return;
+            }
+            if (e.key === "ArrowRight" && navigateOnArrowRightRef.current) {
+              const input = inlineRef.current!;
+              if (input.selectionStart === input.value.length && input.selectionEnd === input.value.length) {
+                onChange(inlineValue);
+                return; // bubble to useCursorKeys
+              }
             }
             e.stopPropagation();
           }}

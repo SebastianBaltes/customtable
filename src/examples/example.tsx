@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import React, { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import {
   CellMetaMap,
@@ -7,12 +7,14 @@ import {
   CustomTable,
   FilterState,
   Row,
+  SelectionInfo,
   SortConfig,
   TableStatus,
 } from "../index";
 import { TextareaDialogEditor } from "../editors/TextareaDialogEditor";
 import { Pagination } from "../pagination/Pagination";
 import { useLocalStorage } from "./useLocalStorage";
+import { ColumnManagerDialog } from "../core/ColumnManagerDialog";
 import { useAsyncTableState } from "../core/useAsyncTableState";
 
 // Import JSON as ESM (tsconfig.json has resolveJsonModule: true)
@@ -117,9 +119,10 @@ export const demoColumns: ColumnConfig<any>[] = [
   },
   {
     name: "hireDate",
-    type: "String",
+    type: "Date",
     label: "Hire Date",
     comment: "Hire date (YYYY-MM-DD)",
+    dateFormat: { dateStyle: "medium" },
   },
   { name: "manager", type: "String", label: "Manager", comment: "Name of the direct manager" },
   {
@@ -132,6 +135,7 @@ export const demoColumns: ColumnConfig<any>[] = [
     name: "phone",
     type: "String",
     label: "Phone",
+    inputMask: "+## ### ########",
     comment: "Phone number (international format)",
   },
   {
@@ -155,9 +159,10 @@ export const demoColumns: ColumnConfig<any>[] = [
   { name: "team", type: "String", label: "Team", comment: "Team name or unit" },
   {
     name: "lastLogin",
-    type: "String",
+    type: "DateTime",
     label: "Last Login",
     comment: "Last login timestamp (ISO)",
+    dateTimeFormat: { dateStyle: "medium", timeStyle: "short" },
   },
   {
     name: "performanceScore",
@@ -181,26 +186,65 @@ export const demoColumns: ColumnConfig<any>[] = [
   },
   {
     name: "country",
-    type: "String",
+    type: "Combobox",
     label: "Country",
     comment: "Country of residence or workplace",
+    selectOptions: ["Germany", "Netherlands", "Austria", "Switzerland", "France"],
+    freeText: true,
   },
-  { name: "city", type: "String", label: "City", comment: "City" },
+  {
+    name: "city",
+    type: "Combobox",
+    label: "City",
+    comment: "City (dependent on Country)",
+    selectOptions: (row) => {
+      const cities: Record<string, string[]> = {
+        Germany: ["Berlin", "Munich", "Hamburg", "Frankfurt", "Cologne", "Stuttgart"],
+        Netherlands: ["Amsterdam", "Rotterdam", "Utrecht", "The Hague", "Eindhoven"],
+        Austria: ["Vienna", "Graz", "Salzburg", "Innsbruck", "Linz"],
+        Switzerland: ["Zurich", "Geneva", "Basel", "Bern", "Lausanne"],
+        France: ["Paris", "Lyon", "Marseille", "Toulouse", "Strasbourg"],
+      };
+      return cities[row.country as string] ?? [];
+    },
+    freeText: true,
+  },
   { name: "postalCode", type: "String", label: "Postal Code", comment: "Postal code" },
   { name: "address", type: "String", label: "Address", comment: "Street and house number" },
   { name: "linkedin", type: "String", label: "LinkedIn", comment: "LinkedIn profile URL" },
   { name: "github", type: "String", label: "GitHub", comment: "GitHub profile URL" },
   {
     name: "dateOfBirth",
-    type: "String",
+    type: "Date",
     label: "Date of Birth",
     comment: "Date of birth (YYYY-MM-DD)",
+    dateFormat: { dateStyle: "long" },
   },
   {
     name: "emergencyContact",
     type: "String",
     label: "Emergency Contact",
     comment: "Emergency contact (name + phone)",
+  },
+  {
+    name: "checkInTime",
+    type: "Time",
+    label: "Check-In",
+    comment: "Daily check-in time",
+    timeFormat: { showSeconds: false },
+  },
+  {
+    name: "shiftDuration",
+    type: "Duration",
+    label: "Shift",
+    comment: "Standard shift duration",
+    durationFormat: { style: "short" },
+  },
+  {
+    name: "brandColor",
+    type: "Color",
+    label: "Color",
+    comment: "Team / brand color",
   },
 ];
 
@@ -337,6 +381,12 @@ function simulateValidation(
 const App = () => {
   const [allRows, setAllRows] = useState(initialRows);
   const [dataMode, setDataMode] = useLocalStorage<DataMode>("ct-data-mode", "local");
+  const dataModeRef = useRef(dataMode);
+  dataModeRef.current = dataMode;
+  // Abort controller for background retry loops — cancelled on mode switch
+  const retryAbortRef = useRef<AbortController | null>(null);
+  // Ref for programmatic shake from outside CustomTable
+  const shakeRef = useRef<(() => void) | null>(null);
   const [activeTheme, setActiveTheme] = useLocalStorage("ct-theme", "light");
 
   const applyTheme = useCallback((themeId: string) => {
@@ -357,9 +407,34 @@ const App = () => {
   }, [activeTheme, applyTheme]);
 
 
+  // Selection summary for numeric values
+  const [selectionSummary, setSelectionSummary] = useState("");
+
   // Controlled sort & filter — allows external reset
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
   const [filters, setFilters] = useState<FilterState>({});
+
+  // Column order & visibility (persisted)
+  const [columnOrder, setColumnOrder] = useLocalStorage<string[]>("ct-column-order", []);
+  const [hiddenColumnNames, setHiddenColumnNames] = useLocalStorage<string[]>("ct-hidden-columns", []);
+  const hiddenColumns = useMemo(() => new Set(hiddenColumnNames), [hiddenColumnNames]);
+  const [columnManagerOpen, setColumnManagerOpen] = useState(false);
+
+  // Column widths (persisted)
+  const [columnWidths, setColumnWidths] = useLocalStorage<Record<string, number>>("ct-column-widths", {});
+
+  // Effective columns: reordered + filtered by visibility
+  const effectiveColumns = useMemo(() => {
+    const colMap = new Map(initialColumns.map((c) => [c.name, c]));
+    const order = columnOrder.length > 0 ? columnOrder : initialColumns.map((c) => c.name);
+    // Add any new columns not in saved order
+    const orderSet = new Set(order);
+    const fullOrder = [...order, ...initialColumns.filter((c) => !orderSet.has(c.name)).map((c) => c.name)];
+    return fullOrder
+      .filter((name) => !hiddenColumns.has(name))
+      .map((name) => colMap.get(name))
+      .filter(Boolean) as typeof initialColumns;
+  }, [columnOrder, hiddenColumns]);
 
   // Ellipsis toggle (persisted)
   const [ellipsis, setEllipsis] = useLocalStorage("ct-ellipsis", true);
@@ -400,16 +475,18 @@ const App = () => {
         }),
       );
     }
-    if (sortConfig) {
-      const { column, direction } = sortConfig;
+    if (sortConfig && sortConfig.length > 0) {
       indexed.sort((a, b) => {
-        const aVal = a.row[column];
-        const bVal = b.row[column];
-        if (aVal == null && bVal == null) return 0;
-        if (aVal == null) return 1;
-        if (bVal == null) return -1;
-        const cmp = String(aVal).localeCompare(String(bVal), undefined, { numeric: true });
-        return direction === "asc" ? cmp : -cmp;
+        for (const { column, direction } of sortConfig) {
+          const aVal = a.row[column];
+          const bVal = b.row[column];
+          if (aVal == null && bVal == null) continue;
+          if (aVal == null) return 1;
+          if (bVal == null) return -1;
+          const cmp = String(aVal).localeCompare(String(bVal), undefined, { numeric: true });
+          if (cmp !== 0) return direction === "asc" ? cmp : -cmp;
+        }
+        return 0;
       });
     }
     return indexed;
@@ -437,7 +514,7 @@ const App = () => {
   // --- useAsyncTableState hook ---
   const asyncState = useAsyncTableState({
     allRows,
-    columns: initialColumns,
+    columns: effectiveColumns,
     sortConfig,
     filters,
     rowKeyFn: (_r, i) => "" + currentPageItems[i]?.origIdx,
@@ -449,6 +526,7 @@ const App = () => {
       dataMode === "backend-stale" ? simulateServerNormalization : undefined,
     validateRows:
       dataMode === "backend-validation" ? simulateValidation : undefined,
+    onStaleDetected: () => requestAnimationFrame(() => shakeRef.current?.()),
   });
 
   const {
@@ -486,14 +564,18 @@ const App = () => {
   }, [asyncCellMeta]);
 
   // --- Error/offline mode overrides (example-specific simulation) ---
+  // Uses dataModeRef so the callback always sees the CURRENT mode,
+  // not the mode at closure-creation time.
   const backendOp = useCallback(
     (label: string): void | Promise<void> => {
-      if (dataMode === "local") return undefined;
-      if (dataMode === "backend-offline") {
+      const mode = dataModeRef.current;
+      if (mode === "local") return undefined;
+      if (mode === "backend-offline") {
         setLastError(`${label}: connection failed — changes kept locally`);
+        requestAnimationFrame(() => shakeRef.current?.());
         return Promise.resolve();
       }
-      if (dataMode === "backend-error") {
+      if (mode === "backend-error") {
         const ms = 2000;
         return delayReject(ms, `${label} failed: server error`).catch((err: Error) => {
           setLastError(err.message);
@@ -502,7 +584,7 @@ const App = () => {
       }
       return handleAsyncOp(label);
     },
-    [dataMode, handleAsyncOp, setLastError],
+    [handleAsyncOp, setLastError],
   );
 
   // Override status for error/offline modes
@@ -520,6 +602,38 @@ const App = () => {
     setFilters(newFilters);
     setPage(1);
   };
+
+  const handleSelectionChange = useCallback(
+    (sel: SelectionInfo) => {
+      if (!sel.hasSelection) {
+        setSelectionSummary("");
+        return;
+      }
+      const { startRow, endRow, startCol, endCol } = sel.range;
+      let sum = 0;
+      let count = 0;
+      for (let r = startRow; r <= endRow; r++) {
+        for (let c = startCol; c <= endCol; c++) {
+          const col = effectiveColumns[c];
+          if (!col) continue;
+          const val = displayRows[r]?.[col.name];
+          const num = Number(val);
+          if (val != null && val !== "" && !isNaN(num)) {
+            sum += num;
+            count++;
+          }
+        }
+      }
+      if (count > 0) {
+        setSelectionSummary(
+          `Sum: ${sum.toFixed(2)} | Count: ${count} | Avg: ${(sum / count).toFixed(2)}`,
+        );
+      } else {
+        setSelectionSummary("");
+      }
+    },
+    [displayRows],
+  );
 
   return (
     <div className="example-page">
@@ -541,6 +655,9 @@ const App = () => {
           className="theme-switcher-select"
           value={dataMode}
           onChange={(e) => {
+            // Cancel any running retry loops from previous mode
+            retryAbortRef.current?.abort();
+            retryAbortRef.current = null;
             setDataMode(e.target.value as DataMode);
             clearAsyncMeta();
             try { localStorage.removeItem("ct-unsaved"); } catch {}
@@ -556,7 +673,7 @@ const App = () => {
       <div className="app-table-wrapper">
         <CustomTable
           rows={displayRows}
-          columns={initialColumns}
+          columns={effectiveColumns}
           numberOfStickyColums={1}
           caption="Employee Data"
           textEllipsisLength={ellipsis ? 25 : undefined}
@@ -598,9 +715,11 @@ const App = () => {
           loading={loading}
           pendingFilterColumns={pendingFilterColumns}
           pendingSortColumn={pendingSortColumn}
+          shakeRef={shakeRef}
           onUpdateRows={(updatedRows) => {
             console.log("onUpdateRows:", updatedRows);
-            if (dataMode === "backend-error") {
+            const mode = dataModeRef.current;
+            if (mode === "backend-error") {
               const batch = consumeLastBatch();
               return delayReject(2000, "update failed: server error").catch((err: Error) => {
                 resolveBatch(batch);
@@ -608,21 +727,35 @@ const App = () => {
                 throw err;
               });
             }
-            if (dataMode === "backend-offline") {
+            if (mode === "backend-offline") {
               const batch = consumeLastBatch();
               markCellsUnsaved(batch);
               setLastError("Connection error — retrying in background");
-              // Background retry with exponential backoff
+              requestAnimationFrame(() => shakeRef.current?.());
+              // Cancel any previous retry loop
+              retryAbortRef.current?.abort();
+              const abort = new AbortController();
+              retryAbortRef.current = abort;
+              // Background retry with exponential backoff — checks current mode
               const retryInBackground = async (attempt: number) => {
                 const backoff = Math.min(2000 * 2 ** attempt, 30000);
                 await delay(backoff);
-                try {
-                  await Promise.reject(new Error("connection refused"));
-                } catch {
+                if (abort.signal.aborted) return; // cancelled by mode switch
+                const currentMode = dataModeRef.current;
+                if (currentMode === "backend-offline") {
+                  // Still in offline mode — keep retrying
                   setLastError(
                     `Connection error — retry ${attempt + 2} in ${Math.round(Math.min(backoff * 2, 30000) / 1000)}s`,
                   );
                   retryInBackground(attempt + 1);
+                } else if (currentMode !== "local") {
+                  // Mode switched to a working backend — resolve the pending batch
+                  resolveBatch(batch);
+                  clearAsyncMeta();
+                } else {
+                  // Switched to local mode — just clear everything
+                  resolveBatch(batch);
+                  clearAsyncMeta();
                 }
               };
               retryInBackground(0);
@@ -646,6 +779,12 @@ const App = () => {
             console.log("onRedo:", rows);
             return backendOp("redo");
           }}
+          onSelectionChange={handleSelectionChange}
+          enableSearchReplace
+          columnWidths={columnWidths}
+          onColumnResize={(colName, width) => {
+            setColumnWidths((prev) => ({ ...prev, [colName]: width }));
+          }}
           extraContextMenuItems={
             [
               {
@@ -665,11 +804,16 @@ const App = () => {
           pageSize={pageSize}
           onPageChange={setPage}
           onPageSizeChange={handlePageSizeChange}
+          maxVisiblePages={7}
+          loading={loading}
         />
+        {selectionSummary && (
+          <span className="selection-summary">{selectionSummary}</span>
+        )}
         <div className="example-footer-controls">
           <button
             className="toolbar-button"
-            disabled={!sortConfig && Object.keys(filters).every((k) => !filters[k])}
+            disabled={(!sortConfig || sortConfig.length === 0) && Object.keys(filters).every((k) => !filters[k])}
             onClick={() => {
               setSortConfig(null);
               setFilters({});
@@ -685,8 +829,41 @@ const App = () => {
           >
             [...]
           </button>
+          <button
+            className="toolbar-button"
+            onClick={() => setColumnManagerOpen(true)}
+            title="Manage columns (order, visibility)"
+          >
+            Columns
+          </button>
+          <button
+            className="toolbar-button"
+            disabled={columnOrder.length === 0 && hiddenColumnNames.length === 0 && Object.keys(columnWidths).length === 0}
+            onClick={() => {
+              setColumnOrder([]);
+              setHiddenColumnNames([]);
+              setColumnWidths({});
+            }}
+            title="Reset column order, visibility, and widths"
+          >
+            Reset Columns
+          </button>
         </div>
       </div>
+      <ColumnManagerDialog
+        open={columnManagerOpen}
+        onClose={() => setColumnManagerOpen(false)}
+        columns={initialColumns}
+        columnOrder={columnOrder.length > 0 ? columnOrder : initialColumns.map((c) => c.name)}
+        onColumnOrderChange={setColumnOrder}
+        hiddenColumns={hiddenColumns}
+        onHiddenColumnsChange={(s) => setHiddenColumnNames([...s])}
+        onReset={() => {
+          setColumnOrder([]);
+          setHiddenColumnNames([]);
+          setColumnWidths({});
+        }}
+      />
     </div>
   );
 };

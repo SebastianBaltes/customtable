@@ -1,10 +1,13 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
+import { SearchReplaceDialog } from "./SearchReplaceDialog";
 import {
   CellMetaMap,
   ColumnConfig,
   CustomContextMenuItem,
   FilterState,
+  OnColumnResize,
   Row,
+  SelectionInfo,
   SortConfig,
   TableContextState,
   TableStatus,
@@ -44,6 +47,8 @@ interface IProps {
   /** Called when redo is performed, with the newly restored full rows array. */
   onRedo: (recoveredRows: Row[]) => void | Promise<void>;
   rowKey: (row: Row, rowIndex: number) => string;
+  /** Ref populated with a function to programmatically trigger the shake animation. */
+  shakeRef: React.MutableRefObject<(() => void) | null>;
   numberOfStickyColums: number;
 
   // --- Controlled filter / sort ---
@@ -80,6 +85,14 @@ interface IProps {
   pendingSortColumn: string;
   /** Column names with pending filter changes — shows a spinner in the filter input. */
   pendingFilterColumns: string[];
+  /** Map of column names to pixel widths for resizable columns. */
+  columnWidths: Record<string, number>;
+  /** Called when a column is resized via drag handle. */
+  onColumnResize: OnColumnResize;
+  /** Called when the cell selection range changes. */
+  onSelectionChange: (selection: SelectionInfo) => void;
+  /** Enable the Search & Replace dialog (Ctrl+H). Default: false. */
+  enableSearchReplace: boolean;
 }
 
 type CustomTableProps = IRequiredProps & Partial<IProps>;
@@ -109,6 +122,11 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     loading: loadingProp,
     pendingSortColumn,
     pendingFilterColumns,
+    shakeRef,
+    onSelectionChange,
+    enableSearchReplace,
+    columnWidths,
+    onColumnResize,
   }: CustomTableProps) => {
     const t = React.useMemo(() => resolveTranslations(translationsProp), [translationsProp]);
     const [tableId] = React.useState(() => `MkEu3ZWrGK${Math.floor(Math.random() * 1000000)}`);
@@ -148,6 +166,9 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     // Row creation input
     const [newRowCount, setNewRowCount] = React.useState(1);
 
+    // Search & Replace dialog
+    const [searchReplaceOpen, setSearchReplaceOpen] = React.useState(false);
+
     // Pending state for async operations
     const [pending, setPending] = React.useState(false);
 
@@ -170,8 +191,13 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         if (col.selectOptions) {
           if (!sets[col.name]) sets[col.name] = new Set<string>();
           const vals = sets[col.name];
-          col.selectOptions.forEach((o) => vals.add(o));
+          const staticOpts = typeof col.selectOptions === "function" ? [] : col.selectOptions;
+          staticOpts.forEach((o) => vals.add(o));
           for (const row of rows) {
+            // For function-based selectOptions, collect options from each row
+            if (typeof col.selectOptions === "function") {
+              col.selectOptions(row).forEach((o) => vals.add(o));
+            }
             const v = row[col.name];
             if (v != null) {
               if (Array.isArray(v)) {
@@ -230,17 +256,19 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         );
       }
 
-      // Apply sorting
-      if (effectiveSortConfig) {
-        const { column, direction } = effectiveSortConfig;
+      // Apply multi-sort
+      if (effectiveSortConfig && effectiveSortConfig.length > 0) {
         indexed.sort((a, b) => {
-          const aVal = a.row[column];
-          const bVal = b.row[column];
-          if (aVal == null && bVal == null) return 0;
-          if (aVal == null) return 1;
-          if (bVal == null) return -1;
-          const cmp = String(aVal).localeCompare(String(bVal), undefined, { numeric: true });
-          return direction === "asc" ? cmp : -cmp;
+          for (const { column, direction } of effectiveSortConfig) {
+            const aVal = a.row[column];
+            const bVal = b.row[column];
+            if (aVal == null && bVal == null) continue;
+            if (aVal == null) return 1;
+            if (bVal == null) return -1;
+            const cmp = String(aVal).localeCompare(String(bVal), undefined, { numeric: true });
+            if (cmp !== 0) return direction === "asc" ? cmp : -cmp;
+          }
+          return 0;
         });
       }
 
@@ -262,7 +290,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       setCursorRef,
       handleKeyDown: baseCursorKeyDown,
       customTableRef,
-    } = useCursor(displayRows, columns, numberOfStickyColums);
+    } = useCursor(displayRows, columns, numberOfStickyColums, onSelectionChange);
 
     const { stickyColumnsLefts } = useStickyColumnsLeftChecker(
       tableRef,
@@ -309,6 +337,12 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       el.addEventListener("animationend", onEnd);
     }, [customTableRef]);
 
+    // Expose triggerShake to parent via ref
+    React.useEffect(() => {
+      if (shakeRef) shakeRef.current = triggerShake;
+      return () => { if (shakeRef) shakeRef.current = null; };
+    }, [shakeRef, triggerShake]);
+
     const withAsyncRollback = React.useCallback(
       (snapshotRows: Row[], callback: (() => void | Promise<void>) | undefined) => {
         if (!callback) return;
@@ -319,7 +353,9 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
             .catch(() => {
               // Rollback: restore old rows
               changeRows(snapshotRows);
-              triggerShake();
+              // Trigger shake AFTER React re-renders from changeRows + setPending,
+              // otherwise React reconciliation overwrites the shake class.
+              requestAnimationFrame(() => triggerShake());
             })
             .finally(() => {
               setPending(false);
@@ -623,6 +659,73 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     }, [undoRedo, rows, changeRows, detectAndFireChanges, onRedo, withAsyncRollback]);
 
     // --- Fill drag ---
+    // --- Search & Replace ---
+    const handleSearchReplace = useCallback(
+      ({ search, replace, scope, matchCase, useRegex }: {
+        search: string;
+        replace: string;
+        scope: "all" | "selection";
+        matchCase: boolean;
+        useRegex: boolean;
+      }): number => {
+        const regex = useRegex
+          ? new RegExp(search, matchCase ? "g" : "gi")
+          : new RegExp(search.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), matchCase ? "g" : "gi");
+
+        let count = 0;
+        const snapshot = rows;
+        const newRows = [...rows];
+
+        const { startRow, endRow, startCol, endCol } = getSelectionRange();
+        const rowStart = scope === "selection" ? startRow : 0;
+        const rowEnd = scope === "selection" ? endRow : displayRows.length - 1;
+        const colStart = scope === "selection" ? startCol : 0;
+        const colEnd = scope === "selection" ? endCol : columns.length - 1;
+
+        for (let r = rowStart; r <= rowEnd; r++) {
+          const origIdx = originalIndices[r];
+          if (origIdx == null) continue;
+          let rowChanged = false;
+          const updatedRow = { ...newRows[origIdx] };
+
+          for (let c = colStart; c <= colEnd; c++) {
+            const col = columns[c];
+            if (!col || col.readOnly) continue;
+            const displayRowKey = getRowKey(displayRows[r], r);
+            const isRowReadOnly = cellMeta?.[displayRowKey]?.row?.readOnly === true;
+            if (isRowReadOnly) continue;
+
+            const val = updatedRow[col.name];
+            if (val == null || typeof val !== "string") continue;
+
+            const replaced = val.replace(regex, replace);
+            if (replaced !== val) {
+              updatedRow[col.name] = replaced;
+              const matches = val.match(regex);
+              count += matches ? matches.length : 0;
+              rowChanged = true;
+            }
+          }
+
+          if (rowChanged) {
+            newRows[origIdx] = updatedRow;
+          }
+        }
+
+        if (count > 0) {
+          undoRedo.pushState(rows);
+          changeRows(newRows);
+          if (onUpdateRows) {
+            const changedRows = newRows.filter((r, i) => r !== snapshot[i]);
+            withAsyncRollback(snapshot, () => onUpdateRows(changedRows));
+          }
+        }
+
+        return count;
+      },
+      [rows, displayRows, columns, originalIndices, getSelectionRange, getRowKey, cellMeta, undoRedo, changeRows, onUpdateRows, withAsyncRollback],
+    );
+
     const handleFillDragComplete = React.useCallback(() => {
       const cursor = cursorRef.current;
       if (!cursor.filling) return;
@@ -756,6 +859,12 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
           event.preventDefault();
           event.stopPropagation();
           pasteAtCursor();
+          return;
+        }
+        if (ctrl && event.key === "h" && enableSearchReplace) {
+          event.preventDefault();
+          event.stopPropagation();
+          setSearchReplaceOpen(true);
           return;
         }
         if (event.key === "Delete" || event.key === "Backspace") {
@@ -1031,6 +1140,8 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
                 getRowKey,
                 textEllipsisLength,
                 caption,
+                columnWidths,
+                onColumnResize,
               }}
               stickyPortal={
                 numberOfStickyColums === 0
@@ -1102,6 +1213,13 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
             )}
           </div>
         </div>
+        {enableSearchReplace && (
+          <SearchReplaceDialog
+            open={searchReplaceOpen}
+            onClose={() => setSearchReplaceOpen(false)}
+            onReplace={handleSearchReplace}
+          />
+        )}
       </TranslationsContext.Provider>
     );
   },

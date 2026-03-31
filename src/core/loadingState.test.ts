@@ -10,18 +10,18 @@
 import { SortConfig, FilterState } from "./Types";
 
 // ---------------------------------------------------------------------------
-// Reproduce the pendingSortColumn logic from the example
+// Reproduce the pendingSortColumn logic (multi-sort aware)
 
 function derivePendingSortColumn(
   loading: boolean,
   requested: SortConfig,
   confirmed: SortConfig,
 ): string | undefined {
-  if (
-    loading &&
-    (requested?.column !== confirmed?.column || requested?.direction !== confirmed?.direction)
-  ) {
-    return requested?.column ?? confirmed?.column;
+  if (!loading) return undefined;
+  const reqStr = JSON.stringify(requested);
+  const dispStr = JSON.stringify(confirmed);
+  if (reqStr !== dispStr) {
+    return requested?.[0]?.column ?? confirmed?.[0]?.column;
   }
   return undefined;
 }
@@ -45,7 +45,7 @@ function deriveStatus(
 describe("pendingSortColumn", () => {
   test("not loading → no pending column", () => {
     expect(
-      derivePendingSortColumn(false, { column: "email", direction: "asc" }, null),
+      derivePendingSortColumn(false, [{ column: "email", direction: "asc" }], null),
     ).toBeUndefined();
   });
 
@@ -53,7 +53,7 @@ describe("pendingSortColumn", () => {
     expect(
       derivePendingSortColumn(
         true,
-        { column: "email", direction: "asc" },
+        [{ column: "email", direction: "asc" }],
         null,
       ),
     ).toBe("email");
@@ -63,8 +63,8 @@ describe("pendingSortColumn", () => {
     expect(
       derivePendingSortColumn(
         true,
-        { column: "email", direction: "desc" },
-        { column: "email", direction: "asc" },
+        [{ column: "email", direction: "desc" }],
+        [{ column: "email", direction: "asc" }],
       ),
     ).toBe("email");
   });
@@ -73,8 +73,8 @@ describe("pendingSortColumn", () => {
     expect(
       derivePendingSortColumn(
         true,
-        { column: "salary", direction: "asc" },
-        { column: "email", direction: "asc" },
+        [{ column: "salary", direction: "asc" }],
+        [{ column: "email", direction: "asc" }],
       ),
     ).toBe("salary");
   });
@@ -84,14 +84,24 @@ describe("pendingSortColumn", () => {
       derivePendingSortColumn(
         true,
         null,
-        { column: "email", direction: "asc" },
+        [{ column: "email", direction: "asc" }],
       ),
     ).toBe("email");
   });
 
   test("loading, same sort → no pending column", () => {
-    const sort: SortConfig = { column: "email", direction: "asc" };
+    const sort: SortConfig = [{ column: "email", direction: "asc" }];
     expect(derivePendingSortColumn(true, sort, sort)).toBeUndefined();
+  });
+
+  test("loading, multi-sort changed → returns first column", () => {
+    expect(
+      derivePendingSortColumn(
+        true,
+        [{ column: "lastName", direction: "asc" }, { column: "firstName", direction: "asc" }],
+        [{ column: "email", direction: "asc" }],
+      ),
+    ).toBe("lastName");
   });
 });
 

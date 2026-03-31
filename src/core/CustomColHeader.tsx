@@ -1,9 +1,10 @@
-import { ColumnConfig, Cursor, SortConfig } from "./Types";
+import { ColumnConfig, Cursor, OnColumnResize, SortConfig } from "./Types";
 import classNames from "./classNames";
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useRef, useState } from "react";
 import { getCursorName } from "./CustomTable";
 import { TranslationsContext } from "./TranslationsContext";
 import { ComboboxFilter } from "./ComboboxFilter";
+import { throttledMouseMove } from "./useCursor";
 
 export const CustomColHeader = React.memo(
   ({
@@ -22,6 +23,8 @@ export const CustomColHeader = React.memo(
     pendingSortColumn,
     pendingFilterColumns,
     textEllipsisLength,
+    columnWidth,
+    onColumnResize,
   }: {
     colIdx: number;
     cursorRef: React.MutableRefObject<Cursor>;
@@ -38,6 +41,8 @@ export const CustomColHeader = React.memo(
     pendingSortColumn?: string;
     pendingFilterColumns?: string[];
     textEllipsisLength?: number;
+    columnWidth?: number;
+    onColumnResize?: OnColumnResize;
   }) => {
     const t = useContext(TranslationsContext);
     const { editing, selectionStart, selectionEnd } = cursorRef.current;
@@ -47,16 +52,60 @@ export const CustomColHeader = React.memo(
     const cursorName = getCursorName("col-", colHasCursor, editing);
     const label = column.label ?? column.name;
 
-    const isSorted = sortConfig?.column === column.name;
-    const sortDirection = isSorted ? sortConfig!.direction : null;
+    // Multi-sort: find this column's position and direction in a single pass
+    const sortIndex = sortConfig?.findIndex((s) => s.column === column.name) ?? -1;
+    const sortEntry = sortIndex >= 0 ? sortConfig![sortIndex] : undefined;
+    const isSorted = !!sortEntry;
+    const sortDirection = sortEntry?.direction ?? null;
+    const sortPriority = sortConfig && sortConfig.length > 1 ? sortIndex + 1 : 0;
 
     const isInteractiveTarget = (el: HTMLElement) => {
       const tag = el.tagName;
       if (tag === "INPUT" || tag === "SELECT" || tag === "BUTTON") return true;
       // Clicks on the sort label should not trigger column selection
       if (el.closest(".col-header-label")) return true;
+      // Clicks on the resize handle should not trigger column selection
+      if (el.closest(".col-resize-handle")) return true;
       return false;
     };
+
+    const MIN_COL_WIDTH = 40;
+    const thRef = useRef<HTMLTableCellElement>(null);
+    const resizeHandleRef = useRef<HTMLDivElement>(null);
+
+    const handleResizeMouseDown = useCallback(
+      (e: React.MouseEvent) => {
+        if (!onColumnResize) return;
+        e.preventDefault();
+        e.stopPropagation();
+
+        const th = thRef.current;
+        if (!th) return;
+        const startX = e.clientX;
+        const startWidth = th.getBoundingClientRect().width;
+
+        resizeHandleRef.current?.classList.add("resizing");
+        document.body.style.userSelect = "none";
+        document.body.style.cursor = "col-resize";
+
+        const onMouseMove = (ev: MouseEvent) => {
+          const newWidth = Math.max(MIN_COL_WIDTH, startWidth + (ev.clientX - startX));
+          onColumnResize(column.name, newWidth);
+        };
+
+        const onMouseUp = () => {
+          resizeHandleRef.current?.classList.remove("resizing");
+          document.body.style.userSelect = "";
+          document.body.style.cursor = "";
+          document.removeEventListener("mousemove", onMouseMove);
+          document.removeEventListener("mouseup", onMouseUp);
+        };
+
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+      },
+      [onColumnResize, column.name],
+    );
 
     // Buffered filter value: keeps user input responsive while the controlled
     // value (from display.filters) may lag behind in async/backend mode.
@@ -75,12 +124,32 @@ export const CustomColHeader = React.memo(
     const handleSortClick = (event: React.MouseEvent) => {
       const tag = (event.target as HTMLElement).tagName;
       if (tag === "INPUT" || tag === "SELECT" || tag === "BUTTON") return;
-      if (!isSorted) {
-        onSortChange({ column: column.name, direction: "asc" });
-      } else if (sortDirection === "asc") {
-        onSortChange({ column: column.name, direction: "desc" });
+
+      const current = sortConfig ?? [];
+      const existing = current.findIndex((s) => s.column === column.name);
+
+      if (event.shiftKey) {
+        // Shift+click: add/cycle this column as additional sort criterion
+        if (existing === -1) {
+          onSortChange([...current, { column: column.name, direction: "asc" }]);
+        } else if (current[existing].direction === "asc") {
+          const next = [...current];
+          next[existing] = { column: column.name, direction: "desc" };
+          onSortChange(next);
+        } else {
+          // Remove this column from multi-sort
+          const next = current.filter((_, i) => i !== existing);
+          onSortChange(next.length > 0 ? next : null);
+        }
       } else {
-        onSortChange(null);
+        // Regular click: single-sort (replaces all)
+        if (!isSorted) {
+          onSortChange([{ column: column.name, direction: "asc" }]);
+        } else if (sortDirection === "asc") {
+          onSortChange([{ column: column.name, direction: "desc" }]);
+        } else {
+          onSortChange(null);
+        }
       }
     };
 
@@ -155,8 +224,10 @@ export const CustomColHeader = React.memo(
     const align = column.align ?? (column.type === "Number" ? "right" : "left");
     return (
       <th
+        ref={thRef}
         scope="col"
         aria-label={column.label ?? column.name}
+        style={columnWidth != null ? { minWidth: columnWidth } : undefined}
         className={classNames(
           "col-header",
           sticky && "sticky",
@@ -183,7 +254,7 @@ export const CustomColHeader = React.memo(
         onMouseMove={(event) => {
           if (isInteractiveTarget(event.target as HTMLElement)) return;
           if (event.buttons === 1 && cursorRef.current.colSelection && !cursorRef.current.filling) {
-            setCursorRef({
+            throttledMouseMove(setCursorRef, {
               editing: false,
               filling: false,
               selectionEnd: { rowIdx: rowsLength - 1, colIdx },
@@ -201,14 +272,12 @@ export const CustomColHeader = React.memo(
               <>
                 {sortDirection === "asc" && (
                   <span className="col-sort-icon col-sort-asc" aria-label="sorted ascending">
-                    {" "}
-                    ▲
+                    {" "}▲{sortPriority > 0 && <sup className="col-sort-priority">{sortPriority}</sup>}
                   </span>
                 )}
                 {sortDirection === "desc" && (
                   <span className="col-sort-icon col-sort-desc" aria-label="sorted descending">
-                    {" "}
-                    ▼
+                    {" "}▼{sortPriority > 0 && <sup className="col-sort-priority">{sortPriority}</sup>}
                   </span>
                 )}
               </>
@@ -216,6 +285,13 @@ export const CustomColHeader = React.memo(
           </span>
           {renderFilter()}
         </div>
+        {onColumnResize && (
+          <div
+            ref={resizeHandleRef}
+            className="col-resize-handle"
+            onMouseDown={handleResizeMouseDown}
+          />
+        )}
       </th>
     );
   },

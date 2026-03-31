@@ -46,6 +46,8 @@ export interface UseAsyncTableStateOptions {
   ) => CellMetaMap;
   /** How to handle connection errors. "rollback" throws (CustomTable rolls back). "keep" resolves (data stays, marked unsaved). Default: "keep". */
   connectionErrorStrategy?: "rollback" | "keep";
+  /** Called when stale data is detected after a backend response. Useful for triggering shake animation. */
+  onStaleDetected?: () => void;
 }
 
 export interface UseAsyncTableStateResult {
@@ -135,6 +137,7 @@ export function useAsyncTableState(opts: UseAsyncTableStateOptions): UseAsyncTab
     transformBackendRows,
     validateRows,
     connectionErrorStrategy = "keep",
+    onStaleDetected,
   } = opts;
 
   const isAsync = delayMs > 0;
@@ -149,6 +152,9 @@ export function useAsyncTableState(opts: UseAsyncTableStateOptions): UseAsyncTab
   const [loading, setLoading] = useState(false);
 
   // --- Inflight tracking ---
+  const onStaleDetectedRef = useRef(onStaleDetected);
+  onStaleDetectedRef.current = onStaleDetected;
+
   const trackerRef = useRef(new InflightEditTracker());
   const lastBatchRef = useRef<Array<{ rowKey: string; colName: string }>>([]);
   const lastValidationRowsRef = useRef<Array<{ row: Row; rowKey: string }>>([]);
@@ -239,6 +245,9 @@ export function useAsyncTableState(opts: UseAsyncTableStateOptions): UseAsyncTab
           }
         });
         setStaleMeta(newStale);
+        if (Object.keys(newStale).length > 0) {
+          onStaleDetectedRef.current?.();
+        }
 
         return {
           ...backendSnapshot,
@@ -257,11 +266,11 @@ export function useAsyncTableState(opts: UseAsyncTableStateOptions): UseAsyncTab
   // --- Pending indicators ---
   const pendingSortColumn = useMemo(() => {
     if (!loading || !isAsync) return undefined;
-    if (
-      sortConfig?.column !== display.sortConfig?.column ||
-      sortConfig?.direction !== display.sortConfig?.direction
-    ) {
-      return sortConfig?.column ?? display.sortConfig?.column;
+    const reqStr = JSON.stringify(sortConfig);
+    const dispStr = JSON.stringify(display.sortConfig);
+    if (reqStr !== dispStr) {
+      // Show spinner on the first differing sort column
+      return sortConfig?.[0]?.column ?? display.sortConfig?.[0]?.column;
     }
     return undefined;
   }, [loading, isAsync, sortConfig, display.sortConfig]);

@@ -5,6 +5,7 @@ import {
   CellMetaMap,
   ColumnConfig,
   Cursor,
+  OnColumnResize,
   Row,
   RowMeta,
   SortConfig,
@@ -39,6 +40,8 @@ export const RowTable = React.memo(
     getRowKey,
     textEllipsisLength,
     caption,
+    columnWidths,
+    onColumnResize,
   }: {
     tableId: string;
     tableRef: React.RefObject<HTMLTableElement>;
@@ -63,11 +66,27 @@ export const RowTable = React.memo(
     getRowKey: (row: Row, rowIndex: number) => string;
     textEllipsisLength?: number;
     caption?: string;
+    columnWidths?: Record<string, number>;
+    onColumnResize?: OnColumnResize;
   }) => {
     const resolvedGetRowKey = getRowKey ?? rowKey ?? defaultRowKey;
     return (
       <table ref={tableRef} id={tableId}>
         {caption && <caption className="sr-only">{caption}</caption>}
+        {columnWidths && Object.keys(columnWidths).length > 0 && (
+          <colgroup>
+            {columns.map((column) => (
+              <col
+                key={column.name}
+                style={
+                  columnWidths[column.name] != null
+                    ? { width: columnWidths[column.name] }
+                    : undefined
+                }
+              />
+            ))}
+          </colgroup>
+        )}
         <thead>
           <tr>
             {columns.map((column, colIdx) => {
@@ -85,6 +104,8 @@ export const RowTable = React.memo(
                   pendingSortColumn={pendingSortColumn}
                   pendingFilterColumns={pendingFilterColumns}
                   textEllipsisLength={textEllipsisLength}
+                  columnWidth={columnWidths?.[column.name]}
+                  onColumnResize={onColumnResize}
                 />
               );
             })}

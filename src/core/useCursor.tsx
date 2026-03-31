@@ -1,9 +1,37 @@
-import { CellAddr, ColumnConfig, Cursor, Row } from "./Types";
+import { CellAddr, ColumnConfig, Cursor, Row, SelectionInfo } from "./Types";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { directDomUpdateForCursor } from "./directDomUpdateForCursor";
 import { useCursorKeys } from "./useCursorKeys";
 
-export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfStickyColums: number) {
+/**
+ * RAF-throttled mousemove dispatcher. Shared across all cells so that
+ * rapid mousemove events during drag are batched to max once per frame.
+ */
+let _pendingMove: { setCursorRef: (p: Partial<Cursor>) => void; update: Partial<Cursor> } | null = null;
+let _rafId = 0;
+
+export function throttledMouseMove(
+  setCursorRef: (partialCursor: Partial<Cursor>) => void,
+  update: Partial<Cursor>,
+) {
+  _pendingMove = { setCursorRef, update };
+  if (_rafId === 0) {
+    _rafId = requestAnimationFrame(() => {
+      _rafId = 0;
+      if (_pendingMove) {
+        _pendingMove.setCursorRef(_pendingMove.update);
+        _pendingMove = null;
+      }
+    });
+  }
+}
+
+export function useCursor(
+  rows: Row[],
+  columns: ColumnConfig<any>[],
+  numberOfStickyColums: number,
+  onSelectionChange?: (selection: SelectionInfo) => void,
+) {
   const cursorRef = useRef<Cursor>({
     editing: false,
     initialEditValue: null,
@@ -23,6 +51,10 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
   const fillRectangleRef = useRef<HTMLDivElement>(null);
   const selectionRectangleStickyRef = useRef<HTMLDivElement>(null);
   const fillRectangleStickyRef = useRef<HTMLDivElement>(null);
+
+  // Keep callback in a ref so setCursorRef doesn't depend on it
+  const onSelectionChangeRef = useRef(onSelectionChange);
+  onSelectionChangeRef.current = onSelectionChange;
 
   const setCursorRef = useCallback(
     (partialCursor: Partial<Cursor>) => {
@@ -56,6 +88,26 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
             : null,
         );
       }
+
+      // Fire onSelectionChange if the selection range changed
+      if (onSelectionChangeRef.current) {
+        const selChanged =
+          oldCursor.selectionStart.rowIdx !== newCursor.selectionStart.rowIdx ||
+          oldCursor.selectionStart.colIdx !== newCursor.selectionStart.colIdx ||
+          oldCursor.selectionEnd.rowIdx !== newCursor.selectionEnd.rowIdx ||
+          oldCursor.selectionEnd.colIdx !== newCursor.selectionEnd.colIdx;
+        if (selChanged) {
+          const hasSelection =
+            newCursor.selectionStart.colIdx >= 0 && newCursor.selectionStart.rowIdx >= 0;
+          const range = {
+            startRow: Math.min(newCursor.selectionStart.rowIdx, newCursor.selectionEnd.rowIdx),
+            endRow: Math.max(newCursor.selectionStart.rowIdx, newCursor.selectionEnd.rowIdx),
+            startCol: Math.min(newCursor.selectionStart.colIdx, newCursor.selectionEnd.colIdx),
+            endCol: Math.max(newCursor.selectionStart.colIdx, newCursor.selectionEnd.colIdx),
+          };
+          onSelectionChangeRef.current({ range, hasSelection });
+        }
+      }
     },
     [numberOfStickyColums],
   );
@@ -66,6 +118,8 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
     // rowIdx === -1 means "no selection" (e.g. user clicked outside) — leave it alone.
     // Normal cell edits change `rows` values but must not override the cursor
     // position that e.g. the Enter-commit already moved to the next row.
+    // Do NOT close the editor on every rows change — this would prevent
+    // multi-combobox from committing immediately on each checkbox toggle.
     const outOfBounds = selectionStart.rowIdx >= 0 && selectionStart.rowIdx >= rows.length;
 
     if (outOfBounds) {
@@ -78,9 +132,6 @@ export function useCursor(rows: Row[], columns: ColumnConfig<any>[], numberOfSti
         selectionEnd: { colIdx: 0, rowIdx: 0 },
         fillEnd: { colIdx: 0, rowIdx: 0 },
       });
-    } else {
-      // Just close the editor – keep the cursor where it is.
-      setCursorRef({ editing: false, initialEditValue: null });
     }
   }, [rows]);
 
