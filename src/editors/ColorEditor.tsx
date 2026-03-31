@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Editor } from "../core/Types";
+import { useInlineEdit } from "./useInlineEdit";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -36,44 +37,15 @@ export const ColorEditor: Editor<string> = ({
   onChange,
   initialEditValue,
 }) => {
-  const [localValue, setLocalValue] = useState(value ?? "");
-  const inputRef = useRef<HTMLInputElement>(null);
   const pickerRef = useRef<HTMLInputElement>(null);
-  const isEscapingRef = useRef(false);
-  const prevEditingRef = useRef(false);
-  const navigateOnArrowRightRef = useRef(false);
 
-  useEffect(() => {
-    if (editing && !prevEditingRef.current) {
-      if (initialEditValue !== null && initialEditValue !== "") {
-        setLocalValue(initialEditValue);
-        navigateOnArrowRightRef.current = true;
-      } else {
-        setLocalValue(value ?? "");
-        navigateOnArrowRightRef.current = false;
-      }
-    } else if (!editing) {
-      setLocalValue(value ?? "");
-    }
-    prevEditingRef.current = editing;
-  }, [value, editing, initialEditValue]);
-
-  useEffect(() => {
-    if (editing && inputRef.current) {
-      inputRef.current.focus();
-      if (initialEditValue === null) {
-        inputRef.current.select();
-      } else {
-        const len = inputRef.current.value.length;
-        inputRef.current.setSelectionRange(len, len);
-      }
-    }
-  }, [editing, initialEditValue]);
-
-  const commit = () => {
-    if (isEscapingRef.current) return;
-    onChange(normalizeHex(localValue));
-  };
+  const { localValue, setLocalValue, inputRef, handleKeyDown, handleBlur } =
+    useInlineEdit({
+      value: value ?? "",
+      editing,
+      initialEditValue,
+      onCommit: (val) => onChange(normalizeHex(val)),
+    });
 
   const swatchColor = isValidHex(localValue) ? localValue : (isValidHex(value ?? "") ? value! : undefined);
 
@@ -108,26 +80,8 @@ export const ColorEditor: Editor<string> = ({
         data-lpignore="true"
         value={localValue}
         onChange={(e) => setLocalValue(e.target.value)}
-        onBlur={commit}
-        onKeyDown={(e) => {
-          if (e.key === "Escape") {
-            isEscapingRef.current = true;
-            setLocalValue(value ?? "");
-            return;
-          }
-          if (e.key === "Enter" || e.key === "Tab") {
-            commit();
-            return;
-          }
-          if (e.key === "ArrowRight" && navigateOnArrowRightRef.current) {
-            const input = inputRef.current!;
-            if (input.selectionStart === input.value.length && input.selectionEnd === input.value.length) {
-              commit();
-              return;
-            }
-          }
-          e.stopPropagation();
-        }}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
       />
       <input
         ref={pickerRef}

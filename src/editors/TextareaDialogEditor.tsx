@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Editor } from "../core/Types";
+import { useInlineEdit } from "./useInlineEdit";
 
 export const TextareaDialogEditor: Editor<string> = ({
   value,
@@ -17,44 +18,12 @@ export const TextareaDialogEditor: Editor<string> = ({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  // --- Inline editor state (same as StringEditor) ---
-  const [inlineValue, setInlineValue] = useState(value ?? "");
-  const inlineRef = useRef<HTMLInputElement>(null);
-  const isEscapingRef = useRef(false);
-
-  const prevEditingRef = useRef(false);
-  const navigateOnArrowRightRef = useRef(false);
-
-  useEffect(() => {
-    if (editing && !prevEditingRef.current) {
-      if (initialEditValue !== null && initialEditValue !== "") {
-        // Typing entry: replace content with typed character
-        setInlineValue(initialEditValue);
-        navigateOnArrowRightRef.current = true;
-      } else {
-        // F2/dblclick/tripleclick: keep existing value
-        setInlineValue(value ?? "");
-        navigateOnArrowRightRef.current = false;
-      }
-    } else if (!editing) {
-      setInlineValue(value ?? "");
-    }
-    prevEditingRef.current = editing;
-  }, [value, editing, initialEditValue]);
-
-  useEffect(() => {
-    if (editing && inlineRef.current) {
-      inlineRef.current.focus();
-      if (initialEditValue === null) {
-        // Triple-click: select all
-        inlineRef.current.select();
-      } else {
-        // F2/dblclick or typing: cursor at end
-        const len = String(inlineRef.current.value).length;
-        inlineRef.current.setSelectionRange(len, len);
-      }
-    }
-  }, [editing, initialEditValue]);
+  const { localValue, setLocalValue, inputRef, handleKeyDown, handleBlur } = useInlineEdit({
+    value: value ?? "",
+    editing,
+    initialEditValue,
+    onCommit: onChange,
+  });
 
   // --- Dialog state ---
   useEffect(() => {
@@ -105,35 +74,15 @@ export const TextareaDialogEditor: Editor<string> = ({
     return (
       <>
         <input
-          ref={inlineRef}
+          ref={inputRef}
           type="text"
           className="cell-editor-input"
           autoComplete="off"
           data-lpignore="true"
-          value={inlineValue}
-          onChange={(e) => setInlineValue(e.target.value)}
-          onBlur={() => {
-            if (!isEscapingRef.current) onChange(inlineValue);
-          }}
-          onKeyDown={(e) => {
-            if (e.key === "Escape") {
-              isEscapingRef.current = true;
-              setInlineValue(value ?? "");
-              return;
-            }
-            if (e.key === "Enter" || e.key === "Tab") {
-              onChange(inlineValue);
-              return;
-            }
-            if (e.key === "ArrowRight" && navigateOnArrowRightRef.current) {
-              const input = inlineRef.current!;
-              if (input.selectionStart === input.value.length && input.selectionEnd === input.value.length) {
-                onChange(inlineValue);
-                return; // bubble to useCursorKeys
-              }
-            }
-            e.stopPropagation();
-          }}
+          value={localValue}
+          onChange={(e) => setLocalValue(e.target.value)}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
         />
         <span
           className="cell-popup-indicator"
@@ -141,7 +90,7 @@ export const TextareaDialogEditor: Editor<string> = ({
           onMouseDown={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            setDialogValue(inlineValue);
+            setDialogValue(localValue);
             setDialogOpen(true);
           }}
         >

@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Editor, TimeFormat } from "../core/Types";
+import { useInlineEdit } from "./useInlineEdit";
 
 // ---------------------------------------------------------------------------
 // Formatting / Parsing helpers
@@ -7,11 +8,9 @@ import { Editor, TimeFormat } from "../core/Types";
 
 export function formatTime(timeStr: string | null | undefined, fmt?: TimeFormat): string {
   if (!timeStr) return "";
-  // Parse HH:mm or HH:mm:ss
   const match = timeStr.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?$/);
   if (!match) return String(timeStr);
   const [, h, m, s] = match;
-  // Use a dummy date for Intl formatting
   const d = new Date(2000, 0, 1, +h, +m, +(s ?? 0));
   if (isNaN(d.getTime())) return String(timeStr);
   const locale = fmt?.locale;
@@ -32,9 +31,7 @@ export function formatTime(timeStr: string | null | undefined, fmt?: TimeFormat)
 export function parseTimeInput(text: string, showSeconds?: boolean): string {
   const trimmed = text.trim();
   if (!trimmed) return "";
-  // Already HH:mm or HH:mm:ss?
   if (/^\d{1,2}:\d{2}(:\d{2})?$/.test(trimmed)) return trimmed;
-  // Try 12h format: "2:30 PM", "2:30pm"
   const ampm = trimmed.match(/^(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(am|pm)$/i);
   if (ampm) {
     let h = +ampm[1];
@@ -61,44 +58,15 @@ export const TimeEditor: Editor<string> = ({
   initialEditValue,
 }) => {
   const fmt = columnConfig.timeFormat;
-  const [localValue, setLocalValue] = useState(value ?? "");
-  const inputRef = useRef<HTMLInputElement>(null);
   const pickerRef = useRef<HTMLInputElement>(null);
-  const isEscapingRef = useRef(false);
-  const prevEditingRef = useRef(false);
-  const navigateOnArrowRightRef = useRef(false);
 
-  useEffect(() => {
-    if (editing && !prevEditingRef.current) {
-      if (initialEditValue !== null && initialEditValue !== "") {
-        setLocalValue(initialEditValue);
-        navigateOnArrowRightRef.current = true;
-      } else {
-        setLocalValue(value ?? "");
-        navigateOnArrowRightRef.current = false;
-      }
-    } else if (!editing) {
-      setLocalValue(value ?? "");
-    }
-    prevEditingRef.current = editing;
-  }, [value, editing, initialEditValue]);
-
-  useEffect(() => {
-    if (editing && inputRef.current) {
-      inputRef.current.focus();
-      if (initialEditValue === null) {
-        inputRef.current.select();
-      } else {
-        const len = inputRef.current.value.length;
-        inputRef.current.setSelectionRange(len, len);
-      }
-    }
-  }, [editing, initialEditValue]);
-
-  const commit = () => {
-    if (isEscapingRef.current) return;
-    onChange(parseTimeInput(localValue, fmt?.showSeconds));
-  };
+  const { localValue, setLocalValue, inputRef, handleKeyDown, handleBlur } =
+    useInlineEdit({
+      value: value ?? "",
+      editing,
+      initialEditValue,
+      onCommit: (val) => onChange(parseTimeInput(val, fmt?.showSeconds)),
+    });
 
   if (!editing) {
     return <span>{formatTime(value, fmt)}</span>;
@@ -114,26 +82,8 @@ export const TimeEditor: Editor<string> = ({
         data-lpignore="true"
         value={localValue}
         onChange={(e) => setLocalValue(e.target.value)}
-        onBlur={commit}
-        onKeyDown={(e) => {
-          if (e.key === "Escape") {
-            isEscapingRef.current = true;
-            setLocalValue(value ?? "");
-            return;
-          }
-          if (e.key === "Enter" || e.key === "Tab") {
-            commit();
-            return;
-          }
-          if (e.key === "ArrowRight" && navigateOnArrowRightRef.current) {
-            const input = inputRef.current!;
-            if (input.selectionStart === input.value.length && input.selectionEnd === input.value.length) {
-              commit();
-              return;
-            }
-          }
-          e.stopPropagation();
-        }}
+        onBlur={handleBlur}
+        onKeyDown={handleKeyDown}
       />
       <input
         ref={pickerRef}
