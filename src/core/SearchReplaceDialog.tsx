@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import ReactDOM from "react-dom";
+import { useStopMousedownPropagation } from "./useStopMousedownPropagation";
 
 export interface SearchReplaceProps {
   /** Whether the dialog is open. */
@@ -40,14 +41,7 @@ export const SearchReplaceDialog: React.FC<SearchReplaceProps> = ({
     }
   }, [open]);
 
-  // Stop mousedown from reaching useCursor's document handler
-  useEffect(() => {
-    const el = overlayRef.current;
-    if (!el) return;
-    const stop = (e: MouseEvent) => e.stopPropagation();
-    el.addEventListener("mousedown", stop, { capture: true });
-    return () => el.removeEventListener("mousedown", stop, { capture: true });
-  }, [open]);
+  useStopMousedownPropagation(overlayRef, open);
 
   const handleReplace = useCallback(() => {
     if (!search) return;
