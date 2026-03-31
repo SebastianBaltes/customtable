@@ -102,6 +102,13 @@ export interface UseAsyncTableStateResult {
 
 const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
 
+function sortConfigEquals(a: SortConfig, b: SortConfig): boolean {
+  if (a === b) return true;
+  if (!a || !b) return false;
+  if (a.length !== b.length) return false;
+  return a.every((s, i) => s.column === b[i].column && s.direction === b[i].direction);
+}
+
 function deepMergeMeta(...sources: CellMetaMap[]): CellMetaMap {
   const merged: CellMetaMap = {};
   for (const source of sources) {
@@ -171,8 +178,8 @@ export function useAsyncTableState(opts: UseAsyncTableStateOptions): UseAsyncTab
 
   // --- Status ---
   const [lastError, setLastError] = useState<string | null>(null);
-  const staleCount = useMemo(() => Object.keys(staleMeta).length, [staleMeta]);
-  const unsavedCount = useMemo(() => Object.keys(unsavedMeta).length, [unsavedMeta]);
+  const staleCount = Object.keys(staleMeta).length;
+  const unsavedCount = Object.keys(unsavedMeta).length;
 
   const status = useMemo<TableStatus | undefined>(() => {
     if (!isAsync) return undefined;
@@ -266,10 +273,7 @@ export function useAsyncTableState(opts: UseAsyncTableStateOptions): UseAsyncTab
   // --- Pending indicators ---
   const pendingSortColumn = useMemo(() => {
     if (!loading || !isAsync) return undefined;
-    const reqStr = JSON.stringify(sortConfig);
-    const dispStr = JSON.stringify(display.sortConfig);
-    if (reqStr !== dispStr) {
-      // Show spinner on the first differing sort column
+    if (!sortConfigEquals(sortConfig, display.sortConfig)) {
       return sortConfig?.[0]?.column ?? display.sortConfig?.[0]?.column;
     }
     return undefined;
@@ -330,11 +334,6 @@ export function useAsyncTableState(opts: UseAsyncTableStateOptions): UseAsyncTab
       lastBatchRef.current = [];
       lastValidationRowsRef.current = [];
 
-      if (connectionErrorStrategy === "keep") {
-        // For "keep" strategy: don't reject — resolve and mark unsaved
-        // (The actual error simulation is done by the consumer passing delayMs/transformBackendRows)
-      }
-
       setLastError(null);
       return delay(delayMs).then(() => {
         trackerRef.current.resolveBatch(batch);
@@ -357,7 +356,7 @@ export function useAsyncTableState(opts: UseAsyncTableStateOptions): UseAsyncTab
         }
       });
     },
-    [isAsync, delayMs, validateRows, connectionErrorStrategy],
+    [isAsync, delayMs, validateRows],
   );
 
   const handleAsyncOp = useCallback(
