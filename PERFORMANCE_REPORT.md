@@ -1,55 +1,55 @@
-# Performance-Optimierungsbericht: CustomTable
+# Performance Optimization Report: CustomTable
 
-## 1. Ist-Zustand: Architektur-Analyse
+## 1. Current State: Architecture Analysis
 
-### Cursor/Selection: Direkte DOM-Manipulation (sehr effizient)
+### Cursor/Selection: Direct DOM Manipulation (very efficient)
 
-Die Cursor-Bewegung (Pfeiltasten, Tab, Mausklick, Drag) vermeidet React-Re-Renders komplett. `directDomUpdateForCursor.tsx` arbeitet ausschließlich mit:
+Cursor movement (arrow keys, Tab, mouse click, drag) avoids React re-renders entirely. `directDomUpdateForCursor.tsx` works exclusively with:
 
-- `classList.add()` / `classList.remove()` auf `<th>`, `<tr>`, `<td>` Elementen
-- Direkte `style`-Property-Zuweisungen auf den Selection-Rectangle-Divs
-- `getBoundingClientRect()` zur Positionsberechnung
+- `classList.add()` / `classList.remove()` on `<th>`, `<tr>`, `<td>` elements
+- Direct `style` property assignments on the selection-rectangle divs
+- `getBoundingClientRect()` for position calculations
 
-**Einziger React-State-Trigger:** `setEditingCell()` in `useCursor.tsx` -- nur beim Wechsel in den Edit-Modus.
+**Only React state trigger:** `setEditingCell()` in `useCursor.tsx` — only when entering edit mode.
 
-### Selection Rectangle: Overlay-Verfahren (effizient)
+### Selection Rectangle: Overlay Approach (efficient)
 
-Zwei separate Rectangles (normal + sticky) werden synchron per DOM positioniert. Keine `requestAnimationFrame`-Nutzung bei der Positionierung selbst -- nur beim Auto-Scroll waehrend Drag.
+Two separate rectangles (normal + sticky) are positioned synchronously via the DOM. No `requestAnimationFrame` is used for the positioning itself — only for auto-scroll during drag.
 
-### Row/Column Background-Shading
+### Row/Column Background Shading
 
-`.row-selected`, `.col-selected` werden per classList direkt auf DOM-Elemente gesetzt. **Kein React-Re-Render** dafuer noetig. Die CSS-Engine handled das Painting.
+`.row-selected`, `.col-selected` are applied via `classList` directly to DOM elements. **No React re-render** is required. The CSS engine handles painting.
 
-### React-Rendering
+### React Rendering
 
-Alle Komponenten nutzen `React.memo()`: `CustomTable`, `RowTable`, `CustomRow`, `CustomCell`, `CustomColHeader`. Re-Renders werden nur bei Prop-Aenderungen ausgeloest.
+All components use `React.memo()`: `CustomTable`, `RowTable`, `CustomRow`, `CustomCell`, `CustomColHeader`. Re-renders are only triggered on prop changes.
 
 ---
 
-## 2. Optimierungsmoeglichkeiten
+## 2. Optimization Opportunities
 
-### 2.1 `getBoundingClientRect()` bei jedem Mousemove reduzieren
+### 2.1 Reduce `getBoundingClientRect()` Calls on Every Mousemove
 
-**Problem:** Bei Selection-Drag ruft `forceUpdateCursorRect()` bei jedem `onMouseMove`-Event `getBoundingClientRect()` auf Start- und End-Zelle auf. Das erzwingt ein Browser-Layout-Reflow.
+**Problem:** During selection drag, `forceUpdateCursorRect()` calls `getBoundingClientRect()` for the start and end cell on every `onMouseMove` event. This forces a browser layout reflow.
 
-**Loesung:** Cell-Positionen cachen. Da Zellen waehrend eines Drags nicht ihre Groesse aendern, kann beim `mousedown` ein Positions-Grid einmalig berechnet und waehrend des Drags wiederverwendet werden.
+**Solution:** Cache cell positions. Since cells do not change size during a drag, compute a position grid once on `mousedown` and reuse it during the drag.
 
-```typescript
-// Pseudo-Code
+```text
+// Pseudo-Code (plain text to avoid language parsing)
 let cellPositionCache: Map<string, DOMRect> | null = null;
 
-onMouseDown → cellPositionCache = buildPositionCache(table);
-onMouseMove → lookup from cellPositionCache (kein Reflow)
-onMouseUp → cellPositionCache = null;
+onMouseDown -> cellPositionCache = buildPositionCache(table);
+onMouseMove -> lookup from cellPositionCache (no reflow)
+onMouseUp -> cellPositionCache = null;
 ```
 
-**Erwarteter Gewinn:** Eliminiert ~2 Reflows pro Mousemove-Event (~100-200/Sek bei schnellem Drag). Besonders relevant bei grossen Tabellen mit vielen sichtbaren Zellen.
+**Expected gain:** Eliminates ~2 reflows per mousemove event (~100-200/sec during fast drags). Especially relevant for large tables with many visible cells.
 
-### 2.2 Mousemove-Events throttlen
+### 2.2 Throttle Mousemove Events
 
-**Problem:** `onMouseMove` auf jeder Zelle feuert `setCursorRef()` synchron. Bei schnellem Drag ueber viele Zellen koennen 100+ Events/Sek auftreten.
+**Problem:** `onMouseMove` on each cell synchronously fires `setCursorRef()`. During a fast drag across many cells, 100+ events/sec can occur.
 
-**Loesung:** `requestAnimationFrame`-basiertes Throttling:
+**Solution:** Use `requestAnimationFrame`-based throttling:
 
 ```typescript
 let pendingUpdate: CursorUpdate | null = null;
@@ -68,38 +68,38 @@ onMouseMove = (update) => {
 };
 ```
 
-**Erwarteter Gewinn:** Reduziert DOM-Updates auf max. 60/Sek (1 pro Frame). Visuell kein Unterschied, da der Browser ohnehin nur bei 60 FPS rendert.
+**Expected gain:** Reduces DOM updates to max 60/sec (one per frame). Visually no difference because the browser already renders at the display refresh rate.
 
-### 2.3 Row/Column-Highlight auf Overlay-Verfahren umstellen
+### 2.3 Switch Row/Column Highlighting to an Overlay Approach
 
-**Problem:** Bei jeder Cursor-Bewegung werden classList-Operationen auf potenziell vielen `<tr>`- und `<th>`-Elementen ausgefuehrt. Bei Column-Selection ueber viele Spalten hinweg oder bei Spalten-Drag werden alle betroffenen Header-TH und alle TR-Elemente angefasst.
+**Problem:** On every cursor movement, `classList` operations affect potentially many `<tr>` and `<th>` elements. Column selection across many columns or column dragging touches all affected header TH and all TR elements.
 
-**Loesung:** Statt classList auf einzelnen Elementen koennte ein zusaetzliches Overlay-Div (analog zum Selection-Rectangle) fuer Row- und Column-Highlighting verwendet werden:
+**Solution:** Use an additional overlay div (similar to the selection rectangle) for row and column highlighting instead of toggling classes on many elements:
 
 ```
-Row-Highlight: Ein halbtransparentes Div mit voller Tabellenbreite, Hoehe = Zeilenhoehe
-Col-Highlight: Ein halbtransparentes Div mit voller Tabellenhoehe, Breite = Spaltenbreite
+Row highlight: a semi-transparent div spanning the full table width, height = row height
+Column highlight: a semi-transparent div spanning the full table height, width = column width
 ```
 
-**Vorteil:** Nur 2 DOM-Style-Updates statt N classList-Operationen (N = Anzahl Zeilen/Spalten).
+**Advantage:** Only 2 DOM style updates instead of N classList operations (N = number of rows/columns).
 
-**Nachteil:** Komplexer bei Multi-Column/Multi-Row-Selection, erfordert Clip-Path oder aehnliches fuer sticky Bereiche. Die aktuelle classList-Loesung ist bereits schnell genug fuer die meisten Faelle -- dieser Umbau lohnt sich nur bei messbaren Engpaessen.
+**Disadvantage:** More complex for multi-column/multi-row selection; may require clip-path or similar for sticky areas. The current classList solution is already fast for most cases — this refactor is only worth it when measurable bottlenecks exist.
 
-### 2.4 `editingCell`-State isolieren
+### 2.4 Isolate `editingCell` State
 
-**Problem:** `editingCell` als React-State in `useCursor.tsx` loest Re-Renders aus, die sich durch `RowTable` → `CustomRow` → `CustomCell` propagieren. Zwar filtert `React.memo()` die meisten ab, aber der Vergleich selbst kostet bei 300+ Rows Zeit.
+**Problem:** `editingCell` as React state in `useCursor.tsx` triggers re-renders that propagate through `RowTable` → `CustomRow` → `CustomCell`. Although `React.memo()` filters most updates, the shallow prop comparison itself costs time for 300+ rows.
 
-**Loesung A:** `editingCell` als Ref statt State fuehren und nur die betroffene Zelle per direktem DOM-Update aktualisieren. Der Editor koennte per `createPortal` in die Zelle injiziert werden.
+**Solution A:** Keep `editingCell` as a ref instead of state and update only the affected cell via direct DOM updates. The editor can be injected into the cell using `createPortal`.
 
-**Loesung B:** Einen separaten React-Context nur fuer die editierende Zelle verwenden, den nur `CustomCell` konsumiert -- mit einem `useMemo`-Check, ob die eigene Adresse betroffen ist.
+**Solution B:** Use a separate React context only for the editing cell, consumed only by `CustomCell` — with a `useMemo` check to determine if the cell is affected.
 
-**Erwarteter Gewinn:** Eliminiert den memo-Vergleich auf allen 300+ Rows beim Wechsel in/aus dem Edit-Modus.
+**Expected gain:** Eliminates the memo comparison across 300+ rows when entering/exiting edit mode.
 
 ### 2.5 CSS Containment
 
-**Problem:** Jede DOM-Aenderung (classList, style) kann potenziell Reflows in der gesamten Seite ausloesen.
+**Problem:** Any DOM change (classList, style) can potentially cause reflows across the whole page.
 
-**Loesung:** CSS `contain` Property auf Zellen und Viewport setzen:
+**Solution:** Apply the CSS `contain` property to cells and the viewport:
 
 ```css
 .custom-table-viewport {
@@ -111,40 +111,40 @@ Col-Highlight: Ein halbtransparentes Div mit voller Tabellenhoehe, Breite = Spal
 }
 ```
 
-**Erwarteter Gewinn:** Browser kann Reflow-Berechnungen auf den Container beschraenken statt die gesamte Seite neu zu berechnen. Besonders relevant bei grossen Tabellen.
+**Expected gain:** The browser can confine reflow calculations to the container instead of recalculating the entire page. Especially beneficial for very large tables.
 
-### 2.6 `will-change` fuer Selection-Rectangles
+### 2.6 `will-change` for Selection Rectangles
 
-**Loesung:** GPU-beschleunigte Compositing-Layer fuer haeufig bewegte Elemente:
+**Solution:** Use GPU-accelerated compositing layers for frequently moved elements:
 
-```css
+```text
 .selection-rectangle,
 .fill-rectangle {
   will-change: top, left, width, height;
 }
 ```
 
-**Erwarteter Gewinn:** Browser legt diese Elemente auf eigene Compositing-Layer, wodurch Aenderungen an Position/Groesse kein Repaint der darunterliegenden Zellen ausloesen.
+**Expected gain:** The browser promotes these elements to their own compositing layers so changes in position/size do not repaint underlying cells.
 
-**Achtung:** Sparsam einsetzen -- jeder Layer kostet GPU-Speicher.
+**Caution:** Use sparingly — each layer consumes GPU memory.
 
-### 2.7 Sticky-Column CSS-Generierung optimieren
+### 2.7 Optimize Sticky-Column CSS Generation
 
-**Problem:** `useStickColumnLeftsChecker.ts` generiert bei jedem ResizeObserver-Callback einen CSS-String und setzt ihn als State. Das erzeugt einen React-Re-Render.
+**Problem:** `useStickColumnLeftsChecker.ts` generates a CSS string on every ResizeObserver callback and sets it as state. This triggers a React re-render.
 
-**Loesung:** Den generierten CSS-Text direkt in ein `<style>`-Element schreiben (wie es teilweise schon gemacht wird), ohne den React-State-Update:
+**Solution:** Write the generated CSS text directly into a `<style>` element (as is already done in some places) without a React state update:
 
 ```typescript
-styleElement.textContent = css; // Direkt, ohne setState
+styleElement.textContent = css; // Direct, without setState
 ```
 
-### 2.8 Event-Delegation statt Einzelner Handler
+### 2.8 Event Delegation Instead of Individual Handlers
 
-**Problem:** Jede Zelle hat eigene `onMouseDown`, `onMouseMove`, `onMouseUp`, `onClick`, `onDoubleClick` Handler. Bei 300 Rows x 10 Columns = 3000 Event-Handler-Registrierungen.
+**Problem:** Each cell has its own `onMouseDown`, `onMouseMove`, `onMouseUp`, `onClick`, `onDoubleClick` handlers. With 300 Rows x 10 Columns = 3000 event handler registrations.
 
-**Loesung:** Event-Delegation auf `<table>` oder `<tbody>` Ebene:
+**Solution:** Use event delegation at the `<table>` or `<tbody>` level:
 
-```typescript
+```text
 <tbody onMouseDown={(e) => {
   const td = (e.target as HTMLElement).closest('td');
   if (!td) return;
@@ -154,48 +154,48 @@ styleElement.textContent = css; // Direkt, ohne setState
 }}>
 ```
 
-**Erwarteter Gewinn:**
+**Expected gain:**
 
-- Weniger Speicher (1 Handler statt 3000)
-- Schnelleres initiales Rendering (weniger Props auf jedem `<td>`)
-- Kein Unterschied bei der Event-Verarbeitung selbst
+- Less memory (1 handler instead of 3000)
+- Faster initial rendering (fewer props on each `<td>`)
+- No difference in event processing itself
 
 ---
 
-## 3. Mess- und Benchmark-Moeglichkeiten
+## 3. Measurement and Benchmark Options
 
 ### 3.1 Chrome DevTools Performance Panel
 
-**Workflow:**
+Workflow:
 
-1. Performance-Tab oeffnen, Recording starten
-2. Selection-Drag ueber viele Zellen ausfuehren
-3. Recording stoppen, Flamechart analysieren
+1. Open the Performance tab and start recording
+2. Perform a selection drag across many cells
+3. Stop recording and analyze the flame chart
 
-**Metriken:**
+Metrics:
 
-- **Scripting Time**: Wie viel Zeit in JS (Event-Handler, DOM-Updates)
-- **Rendering Time**: Wie viel Zeit fuer Style-Berechnung + Layout
-- **Painting Time**: Wie viel Zeit fuer Pixel-Ausgabe
-- **Frames**: Wie viele Frames unter 16.6ms (60 FPS Ziel)
+- **Scripting Time**: Time spent in JS (event handlers, DOM updates)
+- **Rendering Time**: Time spent on style calculation and layout
+- **Painting Time**: Time spent painting pixels
+- **Frames**: How many frames are above/below 16.6ms (60 FPS target)
 
 ### 3.2 `performance.mark()` / `performance.measure()` API
 
-Instrumentierung direkt im Code:
+Instrument the code directly:
 
-```typescript
+```text
 // In setCursorRef:
 performance.mark('cursor-update-start');
-directDomUpdateForCursor(oldCursor, newCursor, ...);
+directDomUpdateForCursor(oldCursor, newCursor /*, ...args */);
 performance.mark('cursor-update-end');
 performance.measure('cursor-update', 'cursor-update-start', 'cursor-update-end');
 ```
 
-Ergebnisse via `performance.getEntriesByName('cursor-update')` oder im DevTools Performance-Tab sichtbar.
+Results are visible via `performance.getEntriesByName('cursor-update')` or in the DevTools Performance panel.
 
 ### 3.3 Frame-Rate Monitoring
 
-Eigener FPS-Counter fuer Live-Monitoring:
+A lightweight FPS counter for live monitoring:
 
 ```typescript
 let frameCount = 0;
@@ -216,7 +216,7 @@ requestAnimationFrame(measureFPS);
 
 ### 3.4 React Profiler
 
-```tsx
+```text
 <React.Profiler id="CustomTable" onRender={(id, phase, actualDuration) => {
   console.log(`${id} ${phase}: ${actualDuration.toFixed(2)}ms`);
 }}>
@@ -224,16 +224,16 @@ requestAnimationFrame(measureFPS);
 </React.Profiler>
 ```
 
-Zeigt exakt, welche Komponenten wie lange zum Rendern brauchen und wie oft sie rendern.
+This shows exactly which components take how long to render and how often.
 
-### 3.5 Lighthouse / Web Vitals (fuer initiales Laden)
+### 3.5 Lighthouse / Web Vitals (for initial load)
 
-- **LCP** (Largest Contentful Paint): Wie schnell die Tabelle sichtbar wird
-- **INP** (Interaction to Next Paint): Wie schnell die Tabelle auf Interaktion reagiert
-- **TBT** (Total Blocking Time): Wie lange der Main Thread blockiert ist
+- **LCP** (Largest Contentful Paint): How quickly the table becomes visible
+- **INP** (Interaction to Next Paint): How quickly the table responds to interaction
+- **TBT** (Total Blocking Time): How long the main thread is blocked
 
 ```typescript
-// INP messen fuer spezifische Interaktionen:
+// Measure INP for specific interactions:
 new PerformanceObserver((list) => {
   for (const entry of list.getEntries()) {
     console.log("INP candidate:", entry.duration, entry.name);
@@ -241,7 +241,7 @@ new PerformanceObserver((list) => {
 }).observe({ type: "event", buffered: true });
 ```
 
-### 3.6 Automatisierter Benchmark mit Playwright
+### 3.6 Automated Benchmark with Playwright
 
 ```typescript
 test("selection drag performance", async ({ page }) => {
@@ -264,7 +264,7 @@ test("selection drag performance", async ({ page }) => {
     });
   });
 
-  // Waehrend der 3 Sekunden: Selection-Drag simulieren
+  // During the 3 seconds: simulate a selection drag
   // ...
 
   expect(metrics.p95).toBeLessThan(100); // INP < 100ms = "good"
@@ -273,16 +273,16 @@ test("selection drag performance", async ({ page }) => {
 
 ---
 
-## 4. Priorisierte Empfehlung
+## 4. Prioritized Recommendation
 
-| Prio | Massnahme                           | Aufwand | Erwarteter Gewinn                      |
-| ---- | ----------------------------------- | ------- | -------------------------------------- |
-| 1    | CSS Containment (2.5)               | Gering  | Hoch bei grossen Tabellen              |
-| 2    | Mousemove-RAF-Throttling (2.2)      | Gering  | Mittel, reduziert CPU-Last             |
-| 3    | `will-change` fuer Rectangles (2.6) | Minimal | Mittel, GPU-Compositing                |
-| 4    | Event-Delegation (2.8)              | Mittel  | Hoch bei vielen Rows, weniger Speicher |
-| 5    | Cell-Position-Cache (2.1)           | Mittel  | Hoch bei schnellem Drag                |
-| 6    | editingCell isolieren (2.4)         | Mittel  | Mittel, weniger memo-Vergleiche        |
-| 7    | Row/Col-Overlay (2.3)               | Hoch    | Gering (classList ist bereits schnell) |
+| Prio | Measure                              | Effort | Expected Gain                          |
+| ---- | ------------------------------------ | ------ | -------------------------------------- |
+| 1    | CSS Containment (2.5)                | Low    | High for large tables                  |
+| 2    | Mousemove RAF Throttling (2.2)       | Low    | Medium, reduces CPU load               |
+| 3    | `will-change` for rectangles (2.6)   | Minimal| Medium, GPU compositing                |
+| 4    | Event Delegation (2.8)               | Medium | High for many rows, less memory usage  |
+| 5    | Cell Position Cache (2.1)            | Medium | High for fast drags                    |
+| 6    | Isolate editingCell (2.4)            | Medium | Medium, fewer memo comparisons         |
+| 7    | Row/Col Overlay (2.3)                | High   | Low (classList is already fast)        |
 
-**Empfohlener erster Schritt:** CSS Containment + Performance-Instrumentierung einbauen, dann mit echten Messdaten entscheiden, welche weiteren Optimierungen den groessten Effekt haben.
+**Recommended first step:** Add CSS containment + performance instrumentation, then use real measurements to decide which further optimizations yield the largest effect.

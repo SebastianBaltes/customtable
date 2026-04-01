@@ -941,57 +941,41 @@ The context menu does not appear when an editor dialog is open or when right-cli
 
 ## Performance
 
-The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation. Additional optimizations:
+The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`). State updates only trigger when entering/exiting edit mode.
 
-- **RAF-throttled mousemove** — during drag operations, mouse events are batched to 60/s via `requestAnimationFrame`
-- **CSS containment** — `contain: content` on cells limits reflow scope
-- **GPU compositing** — `will-change` on selection/fill overlays promotes them to compositing layers
+| Optimization | Technique | Measured Impact |
+| --- | --- | --- |
+| **RAF-throttled mousemove** | Batch drag events to 60/s via `requestAnimationFrame` | **86% less CPU time** (130 ms to 18 ms for 300 events) |
+| **CSS containment** | `contain: content` on cells limits reflow scope | ~4% on isolated pages, more in complex layouts |
+| **GPU compositing** | `will-change` on selection/fill overlays | Eliminates repaints of underlying cells |
+
+### Why no virtualization?
+
+TableCraft deliberately uses native `<table>` elements instead of virtualized rendering. This gives you:
+
+- **Native column sizing** — the browser calculates column widths based on content, no manual measurement needed
+- **Native sticky positioning** — `position: sticky` on headers and columns, no JS scroll listeners
+- **Full CSS control** — standard selectors work on every cell, no cell-recycling side effects
+- **Screen reader support** — native table semantics, no ARIA workarounds
+- **Simpler mental model** — inspect the DOM and see real table rows
+
+The trade-off: not suited for 5,000+ rows without pagination. For most admin/back-office use cases (10-500 rows per page), native tables outperform virtualized grids in perceived responsiveness because there is zero scroll jank.
+
+For detailed benchmarks and methodology, see [PERFORMANCE.md](PERFORMANCE.md).
 
 ---
 
 ## Development
 
-### Setup
-
 ```bash
 git clone https://github.com/SebastianBaltes/react-tablecraft.git
 cd react-tablecraft
 npm install
+npm start            # Dev server at http://localhost:5173/
+npm run test:e2e     # Playwright E2E tests
 ```
 
-**Requirements:** Node.js >= 18, npm >= 9
-
-### Dev Server
-
-```bash
-npm start
-# Full demo:   http://localhost:5173/
-# Simple demo: http://localhost:5173/simple.html
-```
-
-### Build & Test
-
-```bash
-npm run build               # Library build (dist/)
-npm run build-demo          # Demo build (docs/)
-npm run build-release       # Minified release (release/)
-npx tsc --noEmit            # Type check
-npx playwright install      # First time only
-npm run test:e2e            # Playwright E2E tests
-```
-
-### Project Structure
-
-```
-src/
-  index.ts                  — Public API exports
-  core/                     — Main component, cursor, context menu, async state
-  editors/                  — All built-in editor components
-  pagination/               — Standalone Pagination component
-  examples/                 — Demo apps and sample data
-tests/
-  customtable.spec.ts       — Playwright E2E tests
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) for project structure, build commands, and architecture details.
 
 ---
 
