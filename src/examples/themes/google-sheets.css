@@ -4,6 +4,7 @@
 
 :root {
   --ct-bg: white;
+  --ct-empty-area-bg: hsl(0, 0%, 92%);
   --ct-text: #202124;
   --ct-font: "Google Sans", Roboto, Arial, sans-serif;
 

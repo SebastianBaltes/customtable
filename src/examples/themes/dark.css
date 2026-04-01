@@ -4,6 +4,7 @@
 
 :root {
   --ct-bg: hsl(220, 15%, 13%);
+  --ct-empty-area-bg: hsl(220, 15%, 10%);
   --ct-text: hsl(220, 10%, 85%);
   --ct-font: sans-serif;
 

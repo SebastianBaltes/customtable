@@ -5,6 +5,7 @@
 
 :root {
   --ct-bg: white;
+  --ct-empty-area-bg: hsl(0, 0%, 85%);
   --ct-text: #000;
   --ct-font: "Segoe UI", Calibri, Arial, sans-serif;
 

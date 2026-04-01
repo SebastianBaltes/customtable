@@ -4428,3 +4428,48 @@ test.describe("Column Manager", () => {
     await expect(emailHeader).not.toBeVisible();
   });
 });
+
+// ============================================================================
+// Table rows should not stretch to fill viewport
+// ============================================================================
+test.describe("Empty area below rows", () => {
+  test("table should not stretch rows when few rows are displayed", async ({ page }) => {
+    // Filter to get only a few rows
+    const filterInput = page.locator("table thead th").first().locator(".col-filter-input");
+    await filterInput.fill("42");
+    await page.waitForTimeout(200);
+
+    const dataRows = page.locator("table tbody tr");
+    const rowCount = await dataRows.count();
+    expect(rowCount).toBeLessThan(10);
+
+    // The table's bounding box height should be less than the viewport's height
+    const viewport = page.locator(".custom-table-viewport");
+    const table = page.locator(".custom-table-viewport table");
+
+    const viewportBox = await viewport.boundingBox();
+    const tableBox = await table.boundingBox();
+
+    expect(viewportBox).not.toBeNull();
+    expect(tableBox).not.toBeNull();
+
+    // Table should be shorter than the viewport, leaving gray empty area
+    expect(tableBox!.height).toBeLessThan(viewportBox!.height);
+  });
+
+  test("empty area below rows should have the correct background color", async ({ page }) => {
+    // Filter to get only a few rows
+    const filterInput = page.locator("table thead th").first().locator(".col-filter-input");
+    await filterInput.fill("42");
+    await page.waitForTimeout(200);
+
+    // The viewport background should be the empty-area color (gray)
+    const viewport = page.locator(".custom-table-viewport");
+    const bgColor = await viewport.evaluate((el) => getComputedStyle(el).backgroundColor);
+
+    // Default light theme: hsl(0, 0%, 92%) ≈ rgb(235, 235, 235)
+    // Just verify it's not white (rgb(255, 255, 255)) and not transparent
+    expect(bgColor).not.toBe("rgba(0, 0, 0, 0)");
+    expect(bgColor).not.toBe("rgb(255, 255, 255)");
+  });
+});

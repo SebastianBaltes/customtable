@@ -104,7 +104,9 @@
     flex: 1;
     overflow: auto;
     display: grid;
+    align-content: start;
     contain: strict;
+    background: var(--ct-empty-area-bg, hsl(0, 0%, 92%));
   }
 
   table {

@@ -9,6 +9,7 @@
   --line-height: 2rem;
 
   --ct-bg: #ffffff;
+  --ct-empty-area-bg: hsl(0, 0%, 85%);
   --ct-text: #000000;
   --ct-font: sans-serif;
 

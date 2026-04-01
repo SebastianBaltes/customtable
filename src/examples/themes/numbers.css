@@ -5,6 +5,7 @@
 
 :root {
   --ct-bg: #fff;
+  --ct-empty-area-bg: hsl(0, 0%, 92%);
   --ct-text: #1d1d1f;
   --ct-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 
