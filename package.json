@@ -1,6 +1,6 @@
 {
   "name": "react-grid-db-editor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A powerful, flexible React table editor with sorting, filtering, inline editing, copy & paste, undo/redo, custom editors, column resizing, and more.",
   "main": "dist/react-griddbeditor.umd.js",
   "module": "dist/react-griddbeditor.mjs",
