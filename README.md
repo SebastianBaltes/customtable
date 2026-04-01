@@ -11,7 +11,7 @@
 
 A schema-bound data grid for React — built for keyboard-driven bulk editing of structured datasets.
 
-TableCraft sits between a rigid single-record form and a free-form spreadsheet. It combines the speed of Excel-style interaction (arrow keys, fill drag, copy/paste, undo/redo) with the data integrity of a fixed schema and built-in async backend integration.
+GridDbEditor sits between a rigid single-record form and a free-form spreadsheet. It combines the speed of Excel-style interaction (arrow keys, fill drag, copy/paste, undo/redo) with the data integrity of a fixed schema and built-in async backend integration.
 
 <p align="center">
   <img src="assets/screenshot-full-demo.png" alt="Full demo — Light theme, backend mode, sorting, filtering" width="800" />
@@ -123,7 +123,7 @@ The package ships TypeScript sources and type declarations.
 
 ```tsx
 import React, { useState } from "react";
-import { TableCraft, ColumnConfig, Row } from "react-grid-db-editor";
+import { GridDbEditor, ColumnConfig, Row } from "react-grid-db-editor";
 import "react-grid-db-editor/style.css";
 
 const columns: ColumnConfig<any>[] = [
@@ -148,7 +148,7 @@ export const App = () => {
   const [rows, setRows] = useState(initialRows);
 
   return (
-    <TableCraft
+    <GridDbEditor
       rows={rows}
       columns={columns}
       onRowsChange={setRows}
@@ -166,12 +166,12 @@ export const App = () => {
 
 ### Data Flow
 
-TableCraft is a **controlled component** — it does not own the data:
+GridDbEditor is a **controlled component** — it does not own the data:
 
 ```mermaid
 flowchart LR
   Parent[Parent App]
-  CT[TableCraft]
+  CT[GridDbEditor]
 
   Parent -- "rows (prop)" --> CT
   CT -- "onRowsChange(rows)" --> Parent
@@ -187,7 +187,7 @@ Every mutation (cell edit, paste, fill drag, create/delete rows) produces a new 
 
 ```mermaid
 flowchart TD
-  CT["TableCraft"]
+  CT["GridDbEditor"]
   RT["RowTable"]
   CCH["ColHeaderList"]
   CR["TableRowList"]
@@ -217,7 +217,7 @@ flowchart TD
 
 ## API Reference
 
-### TableCraft Props
+### GridDbEditor Props
 
 | Prop | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -591,7 +591,7 @@ const columns = [{ name: "rating", type: "custom", editor: RatingEditor }];
 
 ## Theming
 
-TableCraft ships with 8 themes and a CSS-variable-based theming system.
+GridDbEditor ships with 8 themes and a CSS-variable-based theming system.
 
 ### Built-in Themes
 
@@ -632,7 +632,7 @@ Import your theme CSS after `base.css`. The demo app demonstrates runtime theme 
 All built-in UI strings are overridable via the typesafe `translations` prop:
 
 ```tsx
-<TableCraft
+<GridDbEditor
   translations={{
     "Create Rows": "Zeilen hinzufuegen",
     "Remove rows": "Zeilen loeschen",
@@ -656,7 +656,7 @@ Unspecified keys fall back to English defaults. The `TableTranslations` interfac
 
 ## Backend Integration Guide
 
-TableCraft is designed as a view layer for backend-managed data. It provides building blocks you compose into your own integration pattern.
+GridDbEditor is designed as a view layer for backend-managed data. It provides building blocks you compose into your own integration pattern.
 
 ### Architecture Overview
 
@@ -669,7 +669,7 @@ flowchart TB
     OP --> IT --> SS
   end
 
-  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta"| CT["TableCraft"]
+  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta"| CT["GridDbEditor"]
   CT -->|"onRowsChange\nonUpdateRows\nonSortChange\nonFilterChange"| app
 ```
 
@@ -686,7 +686,7 @@ useEffect(() => {
   fetchFromBackend(sort, filters).then(setRows);
 }, [sort, filters]);
 
-<TableCraft
+<GridDbEditor
   rows={rows}
   columns={columns}
   onRowsChange={setRows}
@@ -697,14 +697,14 @@ useEffect(() => {
 />
 ```
 
-**Key principle:** Pass the **confirmed** sort/filter to TableCraft (so it doesn't re-sort old data), but update the **requested** state immediately (so spinners show via `pendingSortColumn` / `pendingFilterColumns`).
+**Key principle:** Pass the **confirmed** sort/filter to GridDbEditor (so it doesn't re-sort old data), but update the **requested** state immediately (so spinners show via `pendingSortColumn` / `pendingFilterColumns`).
 
 ### Async Callbacks & Rollback
 
 `onCreateRows`, `onUpdateRows`, and `onDeleteRows` may return a `Promise<void>`. On rejection, the table rolls back to the pre-mutation state and shakes briefly for visual feedback.
 
 ```tsx
-<TableCraft
+<GridDbEditor
   onUpdateRows={async (updatedRows) => {
     await fetch("/api/rows", { method: "PATCH", body: JSON.stringify(updatedRows) });
     // On success: nothing to do — table already shows the new state.
@@ -754,7 +754,7 @@ const asyncState = useAsyncTableState({
   delayMs: 2000,
 });
 
-<TableCraft
+<GridDbEditor
   rows={asyncState.displayRows}
   sortConfig={asyncState.displaySortConfig}
   filters={asyncState.displayFilters}
@@ -837,7 +837,7 @@ The included example app (`src/examples/example.tsx`) demonstrates all integrati
 
 ## Pagination
 
-`Pagination` is a standalone component — no coupling to `TableCraft`. Use it with any paginated list.
+`Pagination` is a standalone component — no coupling to `GridDbEditor`. Use it with any paginated list.
 
 ```tsx
 import { Pagination } from "react-grid-db-editor";
@@ -894,7 +894,7 @@ const myItems: CustomContextMenuItem[] = [
   },
 ];
 
-<TableCraft extraContextMenuItems={myItems} />
+<GridDbEditor extraContextMenuItems={myItems} />
 ```
 
 ### Built-in Context Menu Items
@@ -921,7 +921,7 @@ The context menu does not appear when an editor dialog is open or when right-cli
 
 ## Comparison & When to Use
 
-| Feature | TableCraft | Handsontable | AG Grid (Community) | TanStack Table |
+| Feature | GridDbEditor | Handsontable | AG Grid (Community) | TanStack Table |
 | :--- | :--- | :--- | :--- | :--- |
 | **Primary goal** | **DB bulk editing** | Spreadsheet clone | Enterprise grid | Headless logic |
 | **Rendering** | Native `<table>` | Virtual DOM | Virtual (div/canvas) | User-defined |
@@ -932,7 +932,7 @@ The context menu does not appear when an editor dialog is open or when right-cli
 | **i18n** | Built-in | Included | Included | Manual |
 | **License** | **MIT** | Commercial | MIT / Commercial | MIT |
 
-### When to use TableCraft
+### When to use GridDbEditor
 
 - Internal admin tools, back-office dashboards, data management UIs
 - Data with a fixed schema (rows and columns)
@@ -959,7 +959,7 @@ The cursor/selection system bypasses React re-renders entirely via direct DOM ma
 
 ### Why no virtualization?
 
-TableCraft deliberately uses native `<table>` elements instead of virtualized rendering. This gives you:
+GridDbEditor deliberately uses native `<table>` elements instead of virtualized rendering. This gives you:
 
 - **Native column sizing** — the browser calculates column widths based on content, no manual measurement needed
 - **Native sticky positioning** — `position: sticky` on headers and columns, no JS scroll listeners
@@ -976,8 +976,8 @@ For detailed benchmarks and methodology, see [PERFORMANCE.md](PERFORMANCE.md).
 ## Development
 
 ```bash
-git clone https://github.com/SebastianBaltes/react-tablecraft.git
-cd react-tablecraft
+git clone https://github.com/SebastianBaltes/react-grid-db-editor.git
+cd react-griddbeditor
 npm install
 npm start            # Dev server at http://localhost:5173/
 npm run test:e2e     # Playwright E2E tests

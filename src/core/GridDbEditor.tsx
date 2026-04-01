@@ -97,9 +97,9 @@ interface IProps {
   colSelection: boolean;
 }
 
-type TableCraftProps = IRequiredProps & Partial<IProps>;
+type GridDbEditorProps = IRequiredProps & Partial<IProps>;
 
-export const TableCraft: React.FC<TableCraftProps> = React.memo(
+export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
   ({
     rows,
     columns,
@@ -130,7 +130,7 @@ export const TableCraft: React.FC<TableCraftProps> = React.memo(
     colSelection: colSelectionProp,
     columnWidths,
     onColumnResize,
-  }: TableCraftProps) => {
+  }: GridDbEditorProps) => {
     const t = React.useMemo(() => resolveTranslations(translationsProp), [translationsProp]);
     const [tableId] = React.useState(() => `MkEu3ZWrGK${Math.floor(Math.random() * 1000000)}`);
 
@@ -292,7 +292,7 @@ export const TableCraft: React.FC<TableCraftProps> = React.memo(
       fillRectangleStickyRef,
       setCursorRef,
       handleKeyDown: baseCursorKeyDown,
-      tableCraftRef,
+      gridDbEditorRef,
     } = useCursor(displayRows, columns, numberOfStickyColums, onSelectionChange);
 
     const { stickyColumnsLefts } = useStickyColumnsLeftChecker(
@@ -325,7 +325,7 @@ export const TableCraft: React.FC<TableCraftProps> = React.memo(
      * `snapshotRows` is the rows state before the mutation (for rollback).
      */
     const triggerShake = React.useCallback(() => {
-      const el = tableCraftRef.current as HTMLDivElement | null;
+      const el = gridDbEditorRef.current as HTMLDivElement | null;
       if (!el) return;
       el.classList.remove("shake");
       // Force reflow so re-adding the class restarts the animation
@@ -336,7 +336,7 @@ export const TableCraft: React.FC<TableCraftProps> = React.memo(
         el.removeEventListener("animationend", onEnd);
       };
       el.addEventListener("animationend", onEnd);
-    }, [tableCraftRef]);
+    }, [gridDbEditorRef]);
 
     // Expose triggerShake to parent via ref
     React.useEffect(() => {
@@ -1064,9 +1064,9 @@ export const TableCraft: React.FC<TableCraftProps> = React.memo(
     return (
       <TranslationsContext.Provider value={t}>
         <div
-          ref={tableCraftRef}
+          ref={gridDbEditorRef}
           className={classNames(
-            "table-craft",
+            "grid-db-editor",
             pending && "pending",
             loadingProp && "loading",
             textEllipsisLength && "has-ellipsis",
@@ -1113,7 +1113,7 @@ export const TableCraft: React.FC<TableCraftProps> = React.memo(
           )}
           <div
             ref={viewportRef}
-            className="table-craft-viewport"
+            className="grid-db-editor-viewport"
             onContextMenu={(event) => {
               // Don't show context menu when a dialog is open
               if (searchReplaceOpen || document.querySelector(".editor-dialog-overlay")) {
@@ -1228,7 +1228,7 @@ export const TableCraft: React.FC<TableCraftProps> = React.memo(
               />
             )}
           </div>
-          <div className="table-craft-toolbar">
+          <div className="grid-db-editor-toolbar">
             <span>+</span>
             <input
               type="number"

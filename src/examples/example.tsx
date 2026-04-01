@@ -4,7 +4,7 @@ import {
   CellMetaMap,
   ColumnConfig,
   CustomContextMenuItem,
-  TableCraft,
+  GridDbEditor,
   FilterState,
   Row,
   SelectionInfo,
@@ -385,7 +385,7 @@ const App = () => {
   dataModeRef.current = dataMode;
   // Abort controller for background retry loops — cancelled on mode switch
   const retryAbortRef = useRef<AbortController | null>(null);
-  // Ref for programmatic shake from outside TableCraft
+  // Ref for programmatic shake from outside GridDbEditor
   const shakeRef = useRef<(() => void) | null>(null);
   const [activeTheme, setActiveTheme] = useLocalStorage("ct-theme", "light");
 
@@ -444,7 +444,7 @@ const App = () => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(100);
 
-  // Pre-filter and sort ALL rows (same logic as TableCraft internally)
+  // Pre-filter and sort ALL rows (same logic as GridDbEditor internally)
   // so that filters span the entire dataset, not just the current page.
   const filteredSorted = useMemo(() => {
     let indexed = allRows.map((row, origIdx) => ({ row, origIdx }));
@@ -680,7 +680,7 @@ const App = () => {
         </select>
       </div>
       <div className="app-table-wrapper">
-        <TableCraft
+        <GridDbEditor
           rows={displayRows}
           columns={effectiveColumns}
           numberOfStickyColums={stickyColumns}

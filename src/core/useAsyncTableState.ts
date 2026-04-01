@@ -44,19 +44,19 @@ export interface UseAsyncTableStateOptions {
     rows: Row[],
     rowKeyFn: (row: Row, idx: number) => string,
   ) => CellMetaMap;
-  /** How to handle connection errors. "rollback" throws (TableCraft rolls back). "keep" resolves (data stays, marked unsaved). Default: "keep". */
+  /** How to handle connection errors. "rollback" throws (GridDbEditor rolls back). "keep" resolves (data stays, marked unsaved). Default: "keep". */
   connectionErrorStrategy?: "rollback" | "keep";
   /** Called when stale data is detected after a backend response. Useful for triggering shake animation. */
   onStaleDetected?: () => void;
 }
 
 export interface UseAsyncTableStateResult {
-  // --- Props to pass to TableCraft ---
+  // --- Props to pass to GridDbEditor ---
   /** Rows to display (from confirmed snapshot). */
   displayRows: Row[];
-  /** Sort config to pass to TableCraft (confirmed). */
+  /** Sort config to pass to GridDbEditor (confirmed). */
   displaySortConfig: SortConfig;
-  /** Filters to pass to TableCraft (confirmed). */
+  /** Filters to pass to GridDbEditor (confirmed). */
   displayFilters: FilterState;
   /** Total filtered rows for pagination (confirmed). */
   displayTotalFilteredRows: number;
@@ -75,7 +75,7 @@ export interface UseAsyncTableStateResult {
   /** Page items from the confirmed snapshot (with origIdx). */
   displayItems: Array<{ row: Row; origIdx: number }>;
 
-  // --- Callbacks to wire into TableCraft ---
+  // --- Callbacks to wire into GridDbEditor ---
   /** Pass as onRowsChange — handles optimistic patch + inflight tracking. */
   handleRowsChange: (newRows: Row[]) => void;
   /** Pass as onUpdateRows — handles batch resolve + retry + validation. */

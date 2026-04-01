@@ -1,5 +1,5 @@
 /*
- * TableCraft — structural / layout base styles.
+ * GridDbEditor — structural / layout base styles.
  * No colors, backgrounds, shadows, or border-colors here.
  * Theme files provide visual appearance via CSS custom properties.
  */
@@ -16,7 +16,7 @@
   border: 0;
 }
 
-.table-craft {
+.grid-db-editor {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -50,7 +50,7 @@
   }
 
   /* Toolbar */
-  .table-craft-toolbar {
+  .grid-db-editor-toolbar {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -99,7 +99,7 @@
   }
 
   /* Viewport / scroll area */
-  .table-craft-viewport {
+  .grid-db-editor-viewport {
     position: relative;
     flex: 1;
     overflow: auto;
@@ -114,7 +114,7 @@
     background-color: var(--ct-row-bg, var(--ct-bg));
   }
 
-  .table-craft-table {
+  .grid-db-editor-table {
     width: 100%;
   }
 

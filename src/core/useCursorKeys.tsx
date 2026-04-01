@@ -80,7 +80,7 @@ export function useCursorKeys(
         ctrl,
         null,
       );
-      const tableContainer = tableRef.current?.closest(".table-craft") as HTMLElement;
+      const tableContainer = tableRef.current?.closest(".grid-db-editor") as HTMLElement;
       if (tableContainer) {
         tableContainer.focus();
       }
@@ -95,7 +95,7 @@ export function useCursorKeys(
         event.stopPropagation();
         event.preventDefault();
         action();
-        const tableContainer = tableRef.current?.closest(".table-craft") as HTMLElement;
+        const tableContainer = tableRef.current?.closest(".grid-db-editor") as HTMLElement;
         if (tableContainer) tableContainer.focus();
       };
 

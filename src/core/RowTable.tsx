@@ -12,7 +12,7 @@ import {
 } from "./Types";
 import { ColHeader } from "./ColHeader";
 import { TableRow } from "./TableRow";
-import { defaultRowKey } from "./TableCraft";
+import { defaultRowKey } from "./GridDbEditor";
 import classNames from "./classNames";
 
 export const RowTable = React.memo(

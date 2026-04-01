@@ -96,7 +96,7 @@
 
 /* ===== High Contrast Overrides ===== */
 
-.table-craft {
+.grid-db-editor {
   border: 4px solid #000000;
 
   color: #000000;
@@ -423,17 +423,17 @@
   margin-bottom: 1rem;
 }
 
-.table-craft-toolbar {
+.grid-db-editor-toolbar {
   border: none !important;
 }
 
 /* Cell-meta utility classes */
-.table-craft .cell-error {
+.grid-db-editor .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.table-craft .row-readonly td {
+.grid-db-editor .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }

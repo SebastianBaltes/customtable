@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * All user-visible strings emitted by TableCraft and its built-in editors.
+ * All user-visible strings emitted by GridDbEditor and its built-in editors.
  * Pass a `Partial<TableTranslations>` via the `translations` prop to override
  * any subset of strings.
  */

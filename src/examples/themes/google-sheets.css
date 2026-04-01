@@ -90,7 +90,7 @@
 
 
 /* Sheets blue checkboxes & interactions */
-.table-craft {
+.grid-db-editor {
   & input[type="checkbox"] {
     accent-color: #1a73e8;
   }
@@ -117,12 +117,12 @@
 }
 
 /* Cell-meta utility classes */
-.table-craft .cell-error {
+.grid-db-editor .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.table-craft .row-readonly td {
+.grid-db-editor .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }

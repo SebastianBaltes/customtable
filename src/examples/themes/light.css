@@ -97,13 +97,13 @@
 
 /* ---- Apply theme variables ---- */
 
-.table-craft {
+.grid-db-editor {
   font-family: var(--ct-font);
   color: var(--ct-text);
   background: var(--ct-bg);
   border: 1px solid var(--ct-border-light);
 
-  .table-craft-toolbar {
+  .grid-db-editor-toolbar {
     background-color: var(--ct-toolbar-bg);
     border-bottom: 1px solid var(--ct-toolbar-border);
   }
@@ -354,22 +354,22 @@
 }
 
 /* Cell-meta utility classes */
-.table-craft .cell-error {
+.grid-db-editor .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.table-craft .cell-stale {
+.grid-db-editor .cell-stale {
   background-color: var(--ct-cell-stale-bg);
   color: var(--ct-cell-stale-text);
 }
 
-.table-craft .cell-unsaved {
+.grid-db-editor .cell-unsaved {
   background-color: hsl(30, 100%, 95%);
   border-left: 3px solid hsl(30, 100%, 50%);
 }
 
-.table-craft .row-readonly td {
+.grid-db-editor .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }

@@ -1,6 +1,6 @@
 # Performance
 
-TableCraft is designed for small to medium datasets rendered as a native HTML `<table>`. The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`).
+GridDbEditor is designed for small to medium datasets rendered as a native HTML `<table>`. The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`).
 
 ## Implemented Optimizations
 
@@ -43,7 +43,7 @@ Replacing `classList` operations with overlay divs would reduce N classList oper
 
 ## Why No Virtualization?
 
-TableCraft deliberately uses native `<table>` elements. This gives:
+GridDbEditor deliberately uses native `<table>` elements. This gives:
 
 - **Native column sizing** — browser calculates widths based on content
 - **Native sticky positioning** — `position: sticky` on headers and columns

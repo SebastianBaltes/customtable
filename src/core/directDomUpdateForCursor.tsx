@@ -1,6 +1,6 @@
 import { CellAddr, Cursor } from "./Types";
 import React from "react";
-import { getCursorName } from "./TableCraft";
+import { getCursorName } from "./GridDbEditor";
 import { last, range } from "./utils";
 
 export interface CursorRefs {

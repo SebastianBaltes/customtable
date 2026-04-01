@@ -27,9 +27,9 @@ test.describe("Basic rendering", () => {
   });
 
   test("should render toolbar with create button", async ({ page }) => {
-    await expect(page.locator(".table-craft-toolbar")).toBeVisible();
-    await expect(page.locator(".table-craft-toolbar .toolbar-button")).toBeVisible();
-    await expect(page.locator(".table-craft-toolbar .toolbar-input")).toBeVisible();
+    await expect(page.locator(".grid-db-editor-toolbar")).toBeVisible();
+    await expect(page.locator(".grid-db-editor-toolbar .toolbar-button")).toBeVisible();
+    await expect(page.locator(".grid-db-editor-toolbar .toolbar-input")).toBeVisible();
   });
 
   test("should render all expected column headers", async ({ page }) => {
@@ -64,7 +64,7 @@ test.describe("Basic rendering", () => {
 // ============================================================================
 test.describe("Cursor navigation", () => {
   test("should navigate with arrow keys", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Press arrow down
@@ -80,7 +80,7 @@ test.describe("Cursor navigation", () => {
   });
 
   test("should navigate with Tab", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("Tab");
@@ -88,7 +88,7 @@ test.describe("Cursor navigation", () => {
   });
 
   test("should navigate with Home and End", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowRight");
@@ -98,7 +98,7 @@ test.describe("Cursor navigation", () => {
   });
 
   test("should navigate with Shift+Arrow for range selection", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // First move to a cell
@@ -117,23 +117,23 @@ test.describe("Cursor navigation", () => {
   });
 
   test("should navigate with PageDown to last row", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("PageDown");
     // After PageDown, cursor should be at last row – verify it scrolled
-    const viewport = page.locator(".table-craft-viewport");
+    const viewport = page.locator(".grid-db-editor-viewport");
     const scrollTop = await viewport.evaluate((el) => el.scrollTop);
     expect(scrollTop).toBeGreaterThan(0);
   });
 
   test("should navigate with End to last column", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("End");
     // Viewport should be scrolled to the right
-    const viewport = page.locator(".table-craft-viewport");
+    const viewport = page.locator(".grid-db-editor-viewport");
     const scrollLeft = await viewport.evaluate((el) => el.scrollLeft);
     expect(scrollLeft).toBeGreaterThan(0);
   });
@@ -144,7 +144,7 @@ test.describe("Cursor navigation", () => {
 // ============================================================================
 test.describe("Cell editing", () => {
   test("should enter edit mode on Enter key and edit a string cell", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to the "Key" column (index 1)
@@ -188,7 +188,7 @@ test.describe("Cell editing", () => {
   });
 
   test("should start editing and enter value when typing on selected cell", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Select a cell (Row 0, Col 1) using arrow keys
@@ -299,7 +299,7 @@ test.describe("Cell editing", () => {
     const checkbox = boolCell.locator("input[type=checkbox]");
 
     // Select the boolean cell via keyboard navigation
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     for (let i = 0; i < 8; i++) await page.keyboard.press("ArrowRight");
     await expect(boolCell).toHaveClass(/cell-selected/);
@@ -321,7 +321,7 @@ test.describe("Cell editing", () => {
   });
 
   test("should show combobox editor on edit", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Department column (index 5)
@@ -334,7 +334,7 @@ test.describe("Cell editing", () => {
   });
 
   test("should not modify a readOnly column via Delete key", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // First column is id (readOnly). Get original value.
@@ -349,7 +349,7 @@ test.describe("Cell editing", () => {
   });
 
   test("should cancel edit on Escape", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowRight");
@@ -381,7 +381,7 @@ test.describe("Cell editing", () => {
   });
 
   test("should commit edit on Tab and move to next cell", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Start at col 1 (name), enter edit mode
@@ -407,7 +407,7 @@ test.describe("Cell editing", () => {
   });
 
   test("should commit edit on Shift+Tab and move to previous cell", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to col 2 first
@@ -439,7 +439,7 @@ test.describe("Cell editing", () => {
       document.body.appendChild(cb);
     });
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Enter edit mode on a string cell (col 1)
@@ -473,7 +473,7 @@ test.describe("Cell editing", () => {
       document.body.appendChild(cb);
     });
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Move to col 1 so Tab has somewhere to go
@@ -499,7 +499,7 @@ test.describe("Cell editing", () => {
     // Regression: BooleanEditor rendered a focusable checkbox which intercepted Tab.
     // After Tab from a string cell, if the next column is boolean, focus must stay
     // on the table container (tabIndex={-1} on the checkbox).
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Find a string cell one column to the LEFT of a boolean cell.
@@ -522,7 +522,7 @@ test.describe("Cell editing", () => {
   });
 
   test("should commit edit on Enter and move to next row", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowRight");
@@ -562,7 +562,7 @@ test.describe("Google Sheets-like editing behavior", () => {
   });
 
   test("typing on selected cell replaces content", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     await page.keyboard.press("ArrowRight"); // col 1
     await page.keyboard.press("ArrowRight"); // col 2
@@ -580,7 +580,7 @@ test.describe("Google Sheets-like editing behavior", () => {
   test("ArrowRight at end of input navigates to next cell when entered via typing", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     await page.keyboard.press("ArrowRight"); // col 1
     await page.keyboard.press("ArrowRight"); // col 2
@@ -729,7 +729,7 @@ test.describe("Google Sheets-like editing behavior", () => {
   });
 
   test("combobox dropdown opens when entering edit mode via typing", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Department column (col 5)
@@ -746,7 +746,7 @@ test.describe("Google Sheets-like editing behavior", () => {
   });
 
   test("combobox dropdown opens when entering edit mode via F2", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Department column (col 5)
@@ -771,7 +771,7 @@ test.describe("Google Sheets-like editing behavior", () => {
   });
 
   test("multi-combobox dropdown opens when entering edit mode via typing", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Skills column (col 6)
@@ -796,11 +796,11 @@ test.describe("Row creation", () => {
     const rowsBefore = await page.locator("table tbody tr").count();
 
     // Set count to 3
-    const input = page.locator(".table-craft-toolbar .toolbar-input");
+    const input = page.locator(".grid-db-editor-toolbar .toolbar-input");
     await input.fill("3");
 
     // Click create
-    await page.locator(".table-craft-toolbar .toolbar-button").click();
+    await page.locator(".grid-db-editor-toolbar .toolbar-button").click();
 
     const rowsAfter = await page.locator("table tbody tr").count();
     expect(rowsAfter).toBe(rowsBefore + 3);
@@ -810,7 +810,7 @@ test.describe("Row creation", () => {
     const rowsBefore = await page.locator("table tbody tr").count();
 
     // Don't change input (default 1), just click create
-    await page.locator(".table-craft-toolbar .toolbar-button").click();
+    await page.locator(".grid-db-editor-toolbar .toolbar-button").click();
 
     const rowsAfter = await page.locator("table tbody tr").count();
     expect(rowsAfter).toBe(rowsBefore + 1);
@@ -824,7 +824,7 @@ test.describe("Row creation", () => {
       }
     });
 
-    await page.locator(".table-craft-toolbar .toolbar-button").click();
+    await page.locator(".grid-db-editor-toolbar .toolbar-button").click();
     await page.waitForTimeout(200);
 
     expect(messages.length).toBeGreaterThan(0);
@@ -837,7 +837,7 @@ test.describe("Row creation", () => {
 // ============================================================================
 test.describe("Row deletion", () => {
   test("should delete rows via context menu", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     const rowsBefore = await page.locator("table tbody tr").count();
@@ -1046,7 +1046,7 @@ test.describe("Copy & Paste", () => {
     // Grant clipboard permissions
     await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Select a cell and copy
@@ -1060,7 +1060,7 @@ test.describe("Copy & Paste", () => {
   test("should copy and paste a cell value", async ({ page }) => {
     await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Key column (0,1) and copy it
@@ -1096,7 +1096,7 @@ test.describe("Copy & Paste", () => {
       }
     });
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Copy first cell
@@ -1116,7 +1116,7 @@ test.describe("Copy & Paste", () => {
 // ============================================================================
 test.describe("Undo/Redo", () => {
   test("should undo and redo cell edit", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Key column and edit
@@ -1144,7 +1144,7 @@ test.describe("Undo/Redo", () => {
   });
 
   test("should redo after undo", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Edit cell (0, 1)
@@ -1179,10 +1179,10 @@ test.describe("Undo/Redo", () => {
   });
 
   test("should undo row creation", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     const rowsBefore = await page.locator("table tbody tr").count();
 
-    await page.locator(".table-craft-toolbar .toolbar-button").click();
+    await page.locator(".grid-db-editor-toolbar .toolbar-button").click();
     await page.waitForTimeout(100);
 
     const rowsAfterCreate = await page.locator("table tbody tr").count();
@@ -1198,7 +1198,7 @@ test.describe("Undo/Redo", () => {
   });
 
   test("should undo row deletion", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     const rowsBefore = await page.locator("table tbody tr").count();
 
     // Delete first row
@@ -1232,7 +1232,7 @@ test.describe("Undo/Redo", () => {
       }
     });
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate and edit
@@ -1306,7 +1306,7 @@ test.describe("Context menu", () => {
   });
 
   test("should delete content via context menu", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Key column
@@ -1345,7 +1345,7 @@ test.describe("Context menu", () => {
     await expect(page.locator(".editor-dialog-overlay")).toBeVisible();
 
     // Right-click on the table viewport — context menu should NOT appear
-    await page.locator(".table-craft-viewport").click({ button: "right", position: { x: 10, y: 10 }, force: true });
+    await page.locator(".grid-db-editor-viewport").click({ button: "right", position: { x: 10, y: 10 }, force: true });
     await page.waitForTimeout(100);
 
     const contextMenu = page.locator(".context-menu");
@@ -1363,7 +1363,7 @@ test.describe("Context menu", () => {
     await expect(redoItem).toHaveClass(/context-menu-item-disabled/);
 
     // Close menu by clicking outside, make an edit, then check again
-    await page.locator(".table-craft").click();
+    await page.locator(".grid-db-editor").click();
     await page.waitForTimeout(100);
     await cell.click();
     await page.keyboard.press("Delete");
@@ -1417,7 +1417,7 @@ test.describe("Context menu", () => {
 // ============================================================================
 test.describe("Delete content", () => {
   test("should delete cell content with Delete key", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Key column
@@ -1435,7 +1435,7 @@ test.describe("Delete content", () => {
   });
 
   test("should delete cell content with Backspace key", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowRight");
@@ -1449,7 +1449,7 @@ test.describe("Delete content", () => {
   });
 
   test("should delete multi-cell selection with Delete key", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Key column and select 3 rows
@@ -1476,7 +1476,7 @@ test.describe("Delete content", () => {
       }
     });
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowRight");
@@ -1495,7 +1495,7 @@ test.describe("Ellipsis", () => {
   test("should truncate long text based on textEllipsisLength and expand on edit", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Find row 0, col 2 (firstName)
@@ -1581,7 +1581,7 @@ test.describe("Cell Meta", () => {
   });
 
   test("should apply disabled state to cell – no editing via keyboard", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to row 5, column System Key (disabled)
@@ -1615,7 +1615,7 @@ test.describe("onUpdateRows callback", () => {
       }
     });
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Edit Key column
@@ -1662,7 +1662,7 @@ test.describe("onUpdateRows callback", () => {
 // ============================================================================
 test.describe("Combobox keyboard navigation", () => {
   test("Enter in Combobox edit mode commits and moves to next row", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter"); // open editor
@@ -1679,7 +1679,7 @@ test.describe("Combobox keyboard navigation", () => {
   });
 
   test("ArrowDown highlights options, Enter selects and advances row", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter"); // open editor
@@ -1712,7 +1712,7 @@ test.describe("Combobox keyboard navigation", () => {
   });
 
   test("ArrowUp wraps around to last option", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter");
@@ -1726,7 +1726,7 @@ test.describe("Combobox keyboard navigation", () => {
   });
 
   test("Space in MultiCombobox toggles the highlighted option", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter"); // open MultiCombobox editor
@@ -1760,7 +1760,7 @@ test.describe("Combobox keyboard navigation", () => {
   });
 
   test("Enter in MultiCombobox with empty input advances to next row", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter");
@@ -1777,7 +1777,7 @@ test.describe("Combobox keyboard navigation", () => {
 
 test.describe("MultiCombobox editor", () => {
   test("should show multi-combobox dropdown on edit", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Skills column (index 6)
@@ -1790,7 +1790,7 @@ test.describe("MultiCombobox editor", () => {
   });
 
   test("should toggle option in multi-combobox", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Skills column (index 6) and edit
@@ -1831,7 +1831,7 @@ test.describe("MultiCombobox editor", () => {
 // ============================================================================
 test.describe("MultiCombobox selected options sorted to top", () => {
   test("should show selected options before unselected options", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Skills column (col 6, MultiCombobox)
@@ -1862,7 +1862,7 @@ test.describe("MultiCombobox selected options sorted to top", () => {
   });
 
   test("should keep sort order stable during toggling", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     for (let i = 0; i < 6; i++) await page.keyboard.press("ArrowRight");
@@ -1907,7 +1907,7 @@ test.describe("Selection rectangle", () => {
     await page.waitForTimeout(300);
 
     const rect = await page.evaluate(() => {
-      const viewport = document.querySelector(".table-craft-viewport") as HTMLElement;
+      const viewport = document.querySelector(".grid-db-editor-viewport") as HTMLElement;
       const cellEl = document.querySelector(
         "table tbody tr:first-child td:nth-child(3)",
       ) as HTMLElement;
@@ -1947,7 +1947,7 @@ test.describe("Selection rectangle", () => {
     await page.waitForTimeout(300);
 
     const result = await page.evaluate(() => {
-      const viewport = document.querySelector(".table-craft-viewport") as HTMLElement;
+      const viewport = document.querySelector(".grid-db-editor-viewport") as HTMLElement;
       const cellEl = document.querySelector(
         "table tbody tr:first-child td:nth-child(3)",
       ) as HTMLElement;
@@ -1984,7 +1984,7 @@ test.describe("Selection rectangle", () => {
       await page.waitForTimeout(200);
 
       const result = await page.evaluate((row) => {
-        const viewport = document.querySelector(".table-craft-viewport") as HTMLElement;
+        const viewport = document.querySelector(".grid-db-editor-viewport") as HTMLElement;
         const cellEl = document.querySelector(
           `table tbody tr:nth-child(${row + 1}) td:nth-child(3)`,
         ) as HTMLElement;
@@ -2036,7 +2036,7 @@ test.describe("Selection rectangle", () => {
   test("cell selected via keyboard: selection rectangle top/left matches cell ClientRect", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Move to col 2, row 0
@@ -2045,7 +2045,7 @@ test.describe("Selection rectangle", () => {
     await page.waitForTimeout(200);
 
     const result = await page.evaluate(() => {
-      const viewport = document.querySelector(".table-craft-viewport") as HTMLElement;
+      const viewport = document.querySelector(".grid-db-editor-viewport") as HTMLElement;
       const cellEl = document.querySelector(
         "table tbody tr:first-child td:nth-child(3)",
       ) as HTMLElement;
@@ -2141,7 +2141,7 @@ test.describe("Filter + Sort interaction", () => {
 // ============================================================================
 test.describe("Pending state", () => {
   test("should not crash when rapid mutations happen", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Rapid-fire multiple edits
@@ -2369,7 +2369,7 @@ test.describe("Click outside clears selection", () => {
 // ============================================================================
 test.describe("ReadOnly", () => {
   test("readOnly column: Enter does not open editor", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Cursor starts at col 0 (ID, readOnly). Press Enter.
@@ -2381,7 +2381,7 @@ test.describe("ReadOnly", () => {
   });
 
   test("readOnly column: F2 does not open editor", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Cursor starts at col 0 (ID, readOnly). Press F2.
@@ -2400,7 +2400,7 @@ test.describe("ReadOnly", () => {
   });
 
   test("readOnly column: typing does not open editor", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Cursor starts at col 0 (ID, readOnly). Type a character.
@@ -2425,7 +2425,7 @@ test.describe("ReadOnly", () => {
   });
 
   test("readOnly row: Enter does not open editor", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to row 5 (0-based display row 5, which has readOnly: true), col 1 (System Key)
@@ -2448,7 +2448,7 @@ test.describe("ReadOnly", () => {
   });
 
   test("readOnly row: Delete key does not modify cell value", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to row 5, col 1 (System Key, part of readOnly row)
@@ -2469,7 +2469,7 @@ test.describe("ReadOnly", () => {
 // ============================================================================
 test.describe("Focus and Blur", () => {
   test("should select cell (0,0) when table receives focus", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     const firstCell = page.locator("table tbody tr").first().locator("td").first();
@@ -2477,7 +2477,7 @@ test.describe("Focus and Blur", () => {
   });
 
   test("should deselect all cells when focus leaves the table", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Verify a cell is selected
@@ -2497,14 +2497,14 @@ test.describe("Focus and Blur", () => {
 // ============================================================================
 test.describe("ARIA conformance", () => {
   test("table container should have tabIndex for keyboard access", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await expect(table).toHaveAttribute("tabindex", "0");
   });
 
   test("arrow key navigation should work immediately after focus (no extra click needed)", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // First cell should be selected
@@ -2522,7 +2522,7 @@ test.describe("ARIA conformance", () => {
   });
 
   test("Enter should not open editor on readOnly column", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Cursor is at col 0 (ID, readOnly)
@@ -2534,7 +2534,7 @@ test.describe("ARIA conformance", () => {
   });
 
   test("typing should not open editor on readOnly column", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Cursor is at col 0 (ID, readOnly)
@@ -2571,7 +2571,7 @@ test.describe("ARIA conformance", () => {
   });
 
   test("Escape from edit mode should return focus to table container", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Move to editable column and enter edit mode
@@ -2769,7 +2769,7 @@ test.describe("Combobox shows all options on open", () => {
   test("should show all options when opening a combobox cell with existing value", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Department column (col 5)
@@ -2785,7 +2785,7 @@ test.describe("Combobox shows all options on open", () => {
   });
 
   test("should filter options when user types in combobox", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Department column (col 5)
@@ -2807,7 +2807,7 @@ test.describe("Combobox shows all options on open", () => {
   });
 
   test("should show all options again after clearing filter text", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     for (let i = 0; i < 5; i++) await page.keyboard.press("ArrowRight");
@@ -2832,7 +2832,7 @@ test.describe("Combobox shows all options on open", () => {
 // ============================================================================
 test.describe("Combobox option click closes popover", () => {
   test("should close popover when clicking a different option", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Department column (col 5)
@@ -2864,7 +2864,7 @@ test.describe("Combobox option click closes popover", () => {
   test("should close popover when clicking the same option that is already selected", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Department column (col 5)
@@ -2902,8 +2902,8 @@ test.describe("Selected cell z-index vs sticky elements", () => {
   test("selected cell should not overlap the sticky header row after vertical scroll", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
-    const viewport = page.locator(".table-craft-viewport");
+    const table = page.locator(".grid-db-editor");
+    const viewport = page.locator(".grid-db-editor-viewport");
     await table.focus();
 
     // Click a cell in the second row, second column (non-sticky)
@@ -2931,8 +2931,8 @@ test.describe("Selected cell z-index vs sticky elements", () => {
   test("selected cell should not overlap the sticky first column after horizontal scroll", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
-    const viewport = page.locator(".table-craft-viewport");
+    const table = page.locator(".grid-db-editor");
+    const viewport = page.locator(".grid-db-editor-viewport");
     await table.focus();
 
     // Navigate right to a non-sticky cell far from the first column
@@ -3331,7 +3331,7 @@ test.describe("Backend mode – optimistic edits", () => {
   });
 
   test("edited cell value stays visible during backend delay", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to row 1, col 2 (First Name)
@@ -3364,7 +3364,7 @@ test.describe("Backend mode – optimistic edits", () => {
   test("typing in cell, Tab to next cell, typing there — both values visible immediately", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to row 1, col 2 (First Name)
@@ -3412,7 +3412,7 @@ test.describe("Backend mode – optimistic edits", () => {
   test("insert row, edit 3 cells sequentially — no data loss during loading", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to first data row
@@ -3496,7 +3496,7 @@ test.describe("Backend mode – error handling (server error)", () => {
   });
 
   test("editing a cell shows error status after delay and rolls back", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to row 1, col 2 (First Name)
@@ -3525,13 +3525,13 @@ test.describe("Backend mode – error handling (server error)", () => {
   });
 
   test("rollback triggers shake animation on the table", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Set up a MutationObserver to detect the shake class
     await page.evaluate(() => {
       (window as any).__shakeDetected = false;
-      const el = document.querySelector(".table-craft");
+      const el = document.querySelector(".grid-db-editor");
       if (!el) return;
       const observer = new MutationObserver((mutations) => {
         for (const m of mutations) {
@@ -3565,7 +3565,7 @@ test.describe("Backend mode – error handling (server error)", () => {
   });
 
   test("deleting a row rolls back — row reappears", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowDown");
@@ -3607,7 +3607,7 @@ test.describe("Backend mode – connection error", () => {
   });
 
   test("editing a cell keeps the value and marks it unsaved", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowDown");
@@ -3636,14 +3636,14 @@ test.describe("Backend mode – connection error", () => {
   });
 
   test("inserting a row keeps the row (no rollback)", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowDown");
     const rowsBefore = await page.locator("table tbody tr").count();
 
     // Create row via toolbar
-    await page.locator(".table-craft-toolbar .toolbar-button").click();
+    await page.locator(".grid-db-editor-toolbar .toolbar-button").click();
 
     // Row stays (not rolled back)
     const rowsAfter = await page.locator("table tbody tr").count();
@@ -3654,7 +3654,7 @@ test.describe("Backend mode – connection error", () => {
   });
 
   test("editing cell 2 does NOT clear unsaved marking on cell 1", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Edit cell 1 (First Name, row 1 col 2)
@@ -3690,7 +3690,7 @@ test.describe("Backend mode – connection error", () => {
   });
 
   test("unsaved status persists and shows retrying", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowDown");
@@ -3733,7 +3733,7 @@ test.describe("Backend mode – validation errors", () => {
   test("invalid email gets cell-error class and tooltip after backend response", async ({
     page,
   }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to row 1, Email column (col 4)
@@ -3762,7 +3762,7 @@ test.describe("Backend mode – validation errors", () => {
   });
 
   test("fixing the error clears the validation meta", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Email (row 1, col 4) and type invalid value
@@ -3796,7 +3796,7 @@ test.describe("Backend mode – validation errors", () => {
   });
 
   test("validation errors persist while editing other cells", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Type invalid email
@@ -3840,7 +3840,7 @@ test.describe("Backend mode – stale data", () => {
   });
 
   test("backend normalization produces stale cells with warning status", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to First Name (row 1, col 2)
@@ -3870,7 +3870,7 @@ test.describe("Backend mode – stale data", () => {
   });
 
   test("email normalization to lowercase produces stale cell", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to Email (row 1, col 4)
@@ -3894,7 +3894,7 @@ test.describe("Backend mode – stale data", () => {
   });
 
   test("value matching backend normalization does NOT become stale", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Navigate to First Name (row 1, col 2)
@@ -3930,7 +3930,7 @@ test.describe("Backend mode – auto-retry", () => {
     await modeSelect.selectOption("backend-offline");
     await page.waitForSelector(".toolbar-status-ok");
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     await page.keyboard.press("ArrowDown");
@@ -3970,7 +3970,7 @@ test.describe("Backend mode – mode switching", () => {
     await modeSelect.selectOption("backend-offline");
     await page.waitForSelector(".toolbar-status-ok");
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Edit a cell → triggers connection error + unsaved marking
@@ -4004,13 +4004,13 @@ test.describe("Backend mode – mode switching", () => {
     await modeSelect.selectOption("backend-error");
     await page.waitForSelector(".toolbar-status-ok");
 
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
 
     // Set up shake detector
     await page.evaluate(() => {
       (window as any).__shakeDetected = false;
-      const el = document.querySelector(".table-craft");
+      const el = document.querySelector(".grid-db-editor");
       if (!el) return;
       const observer = new MutationObserver((mutations) => {
         for (const m of mutations) {
@@ -4443,7 +4443,7 @@ test.describe("Selection Summary", () => {
 // ============================================================================
 test.describe("Search & Replace", () => {
   test("should open search/replace dialog with Ctrl+H", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     await page.keyboard.press("Control+h");
 
@@ -4468,7 +4468,7 @@ test.describe("Search & Replace", () => {
 
   test("should perform replacements with Replace All", async ({ page }) => {
     // First set a known value in a cell
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     await page.keyboard.press("ArrowRight"); // System Key column
     await page.keyboard.press("Enter");
@@ -4501,7 +4501,7 @@ test.describe("Search & Replace", () => {
   });
 
   test("should close dialog with Escape", async ({ page }) => {
-    const table = page.locator(".table-craft");
+    const table = page.locator(".grid-db-editor");
     await table.focus();
     await page.keyboard.press("Control+h");
 
@@ -4611,8 +4611,8 @@ test.describe("Empty area below rows", () => {
     expect(rowCount).toBeLessThan(10);
 
     // The table's bounding box height should be less than the viewport's height
-    const viewport = page.locator(".table-craft-viewport");
-    const table = page.locator(".table-craft-viewport table");
+    const viewport = page.locator(".grid-db-editor-viewport");
+    const table = page.locator(".grid-db-editor-viewport table");
 
     const viewportBox = await viewport.boundingBox();
     const tableBox = await table.boundingBox();
@@ -4631,7 +4631,7 @@ test.describe("Empty area below rows", () => {
     await page.waitForTimeout(200);
 
     // The viewport background should be the empty-area color (gray)
-    const viewport = page.locator(".table-craft-viewport");
+    const viewport = page.locator(".grid-db-editor-viewport");
     const bgColor = await viewport.evaluate((el) => getComputedStyle(el).backgroundColor);
 
     // Default light theme: hsl(0, 0%, 92%) ≈ rgb(235, 235, 235)
@@ -4647,7 +4647,7 @@ test.describe("Empty area below rows", () => {
     await page.waitForTimeout(200);
 
     // The table itself should have a white (row-bg) background, not gray
-    const table = page.locator(".table-craft-viewport table");
+    const table = page.locator(".grid-db-editor-viewport table");
     const tableBg = await table.evaluate((el) => getComputedStyle(el).backgroundColor);
 
     // Light theme: --ct-row-bg is white
@@ -4677,7 +4677,7 @@ test.describe("Column header title tooltip", () => {
 // ============================================================================
 test.describe("Sticky column headers", () => {
   test("thead should stay visible after scrolling down", async ({ page }) => {
-    const viewport = page.locator(".table-craft-viewport");
+    const viewport = page.locator(".grid-db-editor-viewport");
     const th = page.locator("table thead th").first();
 
     // Scroll the viewport down

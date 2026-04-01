@@ -2,14 +2,14 @@
   "name": "react-grid-db-editor",
   "version": "1.0.0",
   "description": "A powerful, flexible React table editor with sorting, filtering, inline editing, copy & paste, undo/redo, custom editors, column resizing, and more.",
-  "main": "dist/react-tablecraft.umd.js",
-  "module": "dist/react-tablecraft.mjs",
+  "main": "dist/react-griddbeditor.umd.js",
+  "module": "dist/react-griddbeditor.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/react-tablecraft.mjs",
-      "require": "./dist/react-tablecraft.umd.js"
+      "import": "./dist/react-griddbeditor.mjs",
+      "require": "./dist/react-griddbeditor.umd.js"
     },
     "./style.css": "./dist/style.css",
     "./themes/*": "./dist/themes/*"
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SebastianBaltes/react-tablecraft.git"
+    "url": "git+https://github.com/SebastianBaltes/react-grid-db-editor.git"
   },
   "keywords": [
     "react",
@@ -47,7 +47,7 @@
   "author": "Sebastian Baltes <sebastian.l.baltes@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SebastianBaltes/react-tablecraft/issues"
+    "url": "https://github.com/SebastianBaltes/react-grid-db-editor/issues"
   },
   "homepage": "https://sebastianbaltes.github.io/react-tablecraft/",
   "peerDependencies": {

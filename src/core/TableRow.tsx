@@ -2,7 +2,7 @@ import { CellAddr, CellMeta, ColumnConfig, Cursor, Row, RowMeta } from "./Types"
 import React from "react";
 import classNames from "./classNames";
 import { TableCell } from "./TableCell";
-import { getCursorName } from "./TableCraft";
+import { getCursorName } from "./GridDbEditor";
 
 export const TableRow = React.memo(
   ({

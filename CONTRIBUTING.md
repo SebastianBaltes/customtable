@@ -1,10 +1,10 @@
-# Contributing to react-tablecraft
+# Contributing to react-griddbeditor
 
 ## Setup
 
 ```bash
-git clone https://github.com/SebastianBaltes/react-tablecraft.git
-cd react-tablecraft
+git clone https://github.com/SebastianBaltes/react-grid-db-editor.git
+cd react-griddbeditor
 npm install
 ```
 
@@ -42,7 +42,7 @@ Tests live in `tests/customtable.spec.ts` and cover rendering, keyboard navigati
 src/
   index.ts                    — Public API exports
   core/
-    TableCraft.tsx             — Main component (~1200 lines): state, mutations, keyboard, undo/redo
+    GridDbEditor.tsx             — Main component (~1200 lines): state, mutations, keyboard, undo/redo
     RowTable.tsx               — Renders <table> with <thead> and <tbody>
     ColHeader.tsx              — Column header: sort, filter, resize, column selection
     TableRow.tsx               — Row rendering (<tr>)
@@ -66,12 +66,12 @@ tests/
 
 ### Data Flow
 
-TableCraft is a controlled component. The parent owns the data:
+GridDbEditor is a controlled component. The parent owns the data:
 
 1. Parent passes `rows` as a prop
-2. User edits a cell -> TableCraft calls `onRowsChange(newRows)` with the complete new array
+2. User edits a cell -> GridDbEditor calls `onRowsChange(newRows)` with the complete new array
 3. For targeted backend operations: `onUpdateRows`, `onCreateRows`, `onDeleteRows` with only the affected rows
-4. Parent updates state -> TableCraft re-renders with new rows
+4. Parent updates state -> GridDbEditor re-renders with new rows
 
 ### Cursor System
 

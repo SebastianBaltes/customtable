@@ -135,17 +135,17 @@ export function useCursor(
 
   const handleKeyDown = useCursorKeys(cursorRef, setCursorRef, rows, columns, tableRef);
 
-  const tableCraftRef = useRef(null);
+  const gridDbEditorRef = useRef(null);
 
   useEffect(() => {
-    if (tableCraftRef.current) {
-      (tableCraftRef.current as HTMLDivElement).focus();
+    if (gridDbEditorRef.current) {
+      (gridDbEditorRef.current as HTMLDivElement).focus();
     }
   }, []);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      const el = tableCraftRef.current as HTMLElement | null;
+      const el = gridDbEditorRef.current as HTMLElement | null;
       const target = e.target as HTMLElement | null;
       // Don't deselect when clicking inside the table or its context menu portal.
       if (
@@ -179,6 +179,6 @@ export function useCursor(
     fillRectangleStickyRef,
     setCursorRef,
     handleKeyDown,
-    tableCraftRef,
+    gridDbEditorRef,
   };
 }
