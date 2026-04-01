@@ -97,9 +97,9 @@ interface IProps {
   colSelection: boolean;
 }
 
-type TableEditProps = IRequiredProps & Partial<IProps>;
+type TableCraftProps = IRequiredProps & Partial<IProps>;
 
-export const TableEdit: React.FC<TableEditProps> = React.memo(
+export const TableCraft: React.FC<TableCraftProps> = React.memo(
   ({
     rows,
     columns,
@@ -130,7 +130,7 @@ export const TableEdit: React.FC<TableEditProps> = React.memo(
     colSelection: colSelectionProp,
     columnWidths,
     onColumnResize,
-  }: TableEditProps) => {
+  }: TableCraftProps) => {
     const t = React.useMemo(() => resolveTranslations(translationsProp), [translationsProp]);
     const [tableId] = React.useState(() => `MkEu3ZWrGK${Math.floor(Math.random() * 1000000)}`);
 
@@ -292,7 +292,7 @@ export const TableEdit: React.FC<TableEditProps> = React.memo(
       fillRectangleStickyRef,
       setCursorRef,
       handleKeyDown: baseCursorKeyDown,
-      tableEditRef,
+      tableCraftRef,
     } = useCursor(displayRows, columns, numberOfStickyColums, onSelectionChange);
 
     const { stickyColumnsLefts } = useStickyColumnsLeftChecker(
@@ -325,7 +325,7 @@ export const TableEdit: React.FC<TableEditProps> = React.memo(
      * `snapshotRows` is the rows state before the mutation (for rollback).
      */
     const triggerShake = React.useCallback(() => {
-      const el = tableEditRef.current as HTMLDivElement | null;
+      const el = tableCraftRef.current as HTMLDivElement | null;
       if (!el) return;
       el.classList.remove("shake");
       // Force reflow so re-adding the class restarts the animation
@@ -336,7 +336,7 @@ export const TableEdit: React.FC<TableEditProps> = React.memo(
         el.removeEventListener("animationend", onEnd);
       };
       el.addEventListener("animationend", onEnd);
-    }, [tableEditRef]);
+    }, [tableCraftRef]);
 
     // Expose triggerShake to parent via ref
     React.useEffect(() => {
@@ -1064,9 +1064,9 @@ export const TableEdit: React.FC<TableEditProps> = React.memo(
     return (
       <TranslationsContext.Provider value={t}>
         <div
-          ref={tableEditRef}
+          ref={tableCraftRef}
           className={classNames(
-            "table-edit",
+            "table-craft",
             pending && "pending",
             loadingProp && "loading",
             textEllipsisLength && "has-ellipsis",
@@ -1113,7 +1113,7 @@ export const TableEdit: React.FC<TableEditProps> = React.memo(
           )}
           <div
             ref={viewportRef}
-            className="table-edit-viewport"
+            className="table-craft-viewport"
             onContextMenu={(event) => {
               // Don't show context menu when a dialog is open
               if (searchReplaceOpen || document.querySelector(".editor-dialog-overlay")) {
@@ -1228,7 +1228,7 @@ export const TableEdit: React.FC<TableEditProps> = React.memo(
               />
             )}
           </div>
-          <div className="table-edit-toolbar">
+          <div className="table-craft-toolbar">
             <span>+</span>
             <input
               type="number"

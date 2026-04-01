@@ -1,4 +1,4 @@
-# TableEdit
+# TableCraft
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)
@@ -6,15 +6,15 @@
 
 A powerful Schema-bound Data Grid for React, designed for high-efficiency bulk-editing of structured datasets.
 
-Unlike a free-form spreadsheet (like Excel), TableEdit is built specifically as a tabular CRUD interface for databases.
+Unlike a free-form spreadsheet (like Excel), TableCraft is built specifically as a tabular CRUD interface for databases.
 It combines the speed of keyboard-driven spreadsheet interaction with the data integrity of a fixed schema.
 It is the ideal middle ground between a rigid single-record form and a chaotic, unstructured spreadsheet.
 
-By utilizing a native HTML `<table>` instead of virtualization, TableEdit ensures a pixel-perfect layout and seamless CSS styling. While ideal for small to medium datasets, it can easily handle larger data through standard pagination.
+By utilizing a native HTML `<table>` instead of virtualization, TableCraft ensures a pixel-perfect layout and seamless CSS styling. While ideal for small to medium datasets, it can easily handle larger data through standard pagination.
 
-> **Full Demo:** <https://sebastianbaltes.github.io/tableedit/> — all features, async backend simulation, 8 themes
+> **Full Demo:** <https://sebastianbaltes.github.io/react-tablecraft/> — all features, async backend simulation, 8 themes
 >
-> **Simple Demo:** <https://sebastianbaltes.github.io/tableedit/simple.html> — minimal setup, 10 columns, 5 rows
+> **Simple Demo:** <https://sebastianbaltes.github.io/react-tablecraft/simple.html> — minimal setup, 10 columns, 5 rows
 
 ---
 
@@ -32,7 +32,7 @@ By utilizing a native HTML `<table>` instead of virtualization, TableEdit ensure
   - [Async Callbacks & Rollback](#async-callbacks--rollback)
   - [Undo / Redo](#undo--redo)
 - [API Reference](#api-reference)
-  - [TableEdit Props](#customtable-props)
+  - [TableCraft Props](#customtable-props)
   - [ColumnConfig\<T\>](#columnconfigt)
   - [NumberFormat](#numberformat)
   - [Editor\<T\>](#editort)
@@ -67,8 +67,8 @@ By utilizing a native HTML `<table>` instead of virtualization, TableEdit ensure
   - [E2E Tests (Playwright)](#e2e-tests-playwright)
   - [Project Structure](#project-structure)
 - [Theming](#theming)
-- [Comparison: TableEdit vs. Others](#comparison-customtable-vs-others)
-- [When to use TableEdit](#when-to-use-customtable)
+- [Comparison: TableCraft vs. Others](#comparison-customtable-vs-others)
+- [When to use TableCraft](#when-to-use-customtable)
 - [Performance](#performance)
   - [Implemented Optimizations](#implemented-optimizations)
   - [Evaluated but not Implemented](#evaluated-but-not-implemented)
@@ -137,7 +137,7 @@ By utilizing a native HTML `<table>` instead of virtualization, TableEdit ensure
 
 ## Theming
 
-TableEdit ships with eight ready-made themes and a simple CSS-variable-based theming system that makes it easy to create your own.
+TableCraft ships with eight ready-made themes and a simple CSS-variable-based theming system that makes it easy to create your own.
 
 ### Built-in Themes
 
@@ -190,7 +190,7 @@ To apply a theme, simply import or inject its CSS after `base.css`. The example 
 ## Installation
 
 ```bash
-npm install tableedit
+npm install react-tablecraft
 ```
 
 **Peer dependencies:** `react >= 18`, `react-dom >= 18`
@@ -230,9 +230,9 @@ The package ships TypeScript sources and type declarations.
 
 ```tsx
 import React, { useState } from "react";
-import { TableEdit, ColumnConfig, Row } from "tableedit";
+import { TableCraft, ColumnConfig, Row } from "react-tablecraft";
 // Import the default styles (or provide your own):
-import "tableedit/style.css";
+import "react-tablecraft/style.css";
 
 const columns: ColumnConfig<any>[] = [
   { name: "id", type: "Number", readOnly: true, numberFormat: { decimalPlaces: 0 } },
@@ -256,7 +256,7 @@ export const App = () => {
   const [rows, setRows] = useState(initialRows);
 
   return (
-    <TableEdit
+    <TableCraft
       rows={rows}
       columns={columns}
       onRowsChange={setRows}
@@ -275,7 +275,7 @@ export const App = () => {
 
 ```mermaid
 flowchart TD
-  CT["TableEdit"]
+  CT["TableCraft"]
   RT["RowTable"]
   CCH["ColHeaderList"]
   CR["TableRowList"]
@@ -293,12 +293,12 @@ flowchart TD
 
 ### Data Flow
 
-TableEdit follows the **Controlled Component** pattern. It does **not** own the data:
+TableCraft follows the **Controlled Component** pattern. It does **not** own the data:
 
 ```mermaid
 flowchart LR
   Parent[Parent App]
-  CT[TableEdit]
+  CT[TableCraft]
 
   Parent -- "rows (prop)" --> CT
   CT -- "onRowsChange(rows)" --> Parent
@@ -342,7 +342,7 @@ useEffect(() => {
   fetchFromBackend(sort, filters).then(setRows);
 }, [sort, filters]);
 
-<TableEdit
+<TableCraft
   rows={rows}
   columns={columns}
   onRowsChange={setRows}
@@ -390,7 +390,7 @@ const cellMeta: CellMetaMap = {
 3. On **reject**: the table **rolls back** to the row snapshot before the mutation.
 
 ```tsx
-<TableEdit
+<TableCraft
   // ...
   onUpdateRows={async (updatedRows) => {
     await fetch("/api/rows", {
@@ -413,7 +413,7 @@ When an undo or redo action occurs, the component automatically calculates the d
 
 ## API Reference
 
-### TableEdit Props
+### TableCraft Props
 
 | Prop                    | Type                                              | Required | Default          | Description                                                                                                       |
 | ----------------------- | ------------------------------------------------- | -------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -697,8 +697,8 @@ validate: (value) => {
 The `cell-error` and `cell-warning` classes are styled by each theme. You can override them in your own CSS:
 
 ```css
-.table-edit .cell-error  { background: #fdd; color: #900; }
-.table-edit .cell-warning { background: #ffe; color: #660; }
+.table-craft .cell-error  { background: #fdd; color: #900; }
+.table-craft .cell-warning { background: #ffe; color: #660; }
 ```
 
 > **Note:** If `cellMeta.title` is set for a cell, it takes priority over the validation message.
@@ -756,7 +756,7 @@ interface TableStatus {
 Combine with `loading` and `pendingSortColumn` for full backend feedback:
 
 ```tsx
-<TableEdit
+<TableCraft
   rows={rows}
   columns={columns}
   status={{ severity: "info", text: "Saving..." }}
@@ -774,7 +774,7 @@ Combine with `loading` and `pendingSortColumn` for full backend feedback:
 Utility class for safely merging backend data with optimistic local edits. Prevents race conditions where a backend response overwrites a user edit that hasn't been confirmed yet.
 
 ```ts
-import { InflightEditTracker } from "tableedit";
+import { InflightEditTracker } from "react-tablecraft";
 
 const tracker = new InflightEditTracker();
 
@@ -817,7 +817,7 @@ tracker.resolveBatch(batch);
 Encapsulates the complete async backend integration pattern in a single hook. Handles deferred snapshots, optimistic edits, inflight tracking, stale detection, and status derivation.
 
 ```tsx
-import { useAsyncTableState } from "tableedit";
+import { useAsyncTableState } from "react-tablecraft";
 
 const asyncState = useAsyncTableState({
   allRows,                          // Full dataset
@@ -831,8 +831,8 @@ const asyncState = useAsyncTableState({
   validateRows: (rows, keyFn) => ({}),  // Optional: returns CellMetaMap with errors
 });
 
-// Pass to TableEdit:
-<TableEdit
+// Pass to TableCraft:
+<TableCraft
   rows={asyncState.displayRows}
   sortConfig={asyncState.displaySortConfig}
   filters={asyncState.displayFilters}
@@ -855,7 +855,7 @@ const asyncState = useAsyncTableState({
 
 | Property | Type | Description |
 | --- | --- | --- |
-| `displayRows` | `Row[]` | Confirmed rows for TableEdit |
+| `displayRows` | `Row[]` | Confirmed rows for TableCraft |
 | `displaySortConfig` | `SortConfig` | Confirmed sort config |
 | `displayFilters` | `FilterState` | Confirmed filters |
 | `displayItems` | `Array<{row, origIdx}>` | Page items with index mapping |
@@ -876,7 +876,7 @@ const asyncState = useAsyncTableState({
 
 ### Shake Animation
 
-When an async callback (`onUpdateRows`, `onCreateRows`, `onDeleteRows`) rejects, TableEdit automatically:
+When an async callback (`onUpdateRows`, `onCreateRows`, `onDeleteRows`) rejects, TableCraft automatically:
 1. Rolls back the rows to the pre-mutation state
 2. Triggers a brief horizontal shake animation (0.4s) on the table container
 
@@ -885,7 +885,7 @@ This provides immediate visual feedback that an operation failed, without blocki
 The shake uses the CSS class `.shake` with `@keyframes ct-shake`. You can override the animation in your theme:
 
 ```css
-.table-edit.shake {
+.table-craft.shake {
   animation: ct-shake 0.4s ease-in-out;
 }
 ```
@@ -935,10 +935,10 @@ type CustomContextMenuItem =
 
 ## Pagination Component
 
-`Pagination` is a **standalone** component — it has no internal coupling to `TableEdit`. Use it to drive any paginated list or table, including `TableEdit`.
+`Pagination` is a **standalone** component — it has no internal coupling to `TableCraft`. Use it to drive any paginated list or table, including `TableCraft`.
 
 ```tsx
-import { Pagination } from "tableedit";
+import { Pagination } from "react-tablecraft";
 
 <Pagination
   totalRows={300}
@@ -981,7 +981,7 @@ interface PaginationLabels {
 
 ### Pagination with filters spanning all rows
 
-When using `TableEdit` in **controlled filter/sort mode** alongside `Pagination`, filter the full dataset in the parent and pass `filteredSorted.length` as `totalRows`:
+When using `TableCraft` in **controlled filter/sort mode** alongside `Pagination`, filter the full dataset in the parent and pass `filteredSorted.length` as `totalRows`:
 
 ```tsx
 const filteredSorted = useMemo(() => {
@@ -1012,7 +1012,7 @@ const effectivePageSize = pageSize === 0 ? filteredSorted.length || 1 : pageSize
 const start = (page - 1) * effectivePageSize;
 const pageItems = filteredSorted.slice(start, start + effectivePageSize);
 
-<TableEdit
+<TableCraft
   rows={pageItems.map(i => i.row)}
   // pass pre-filtered data + same controlled filters (filter is idempotent)
   filters={filters}
@@ -1161,7 +1161,7 @@ Pass `columnWidths` and `onColumnResize` props to enable drag-to-resize:
 ```tsx
 const [widths, setWidths] = useState<Record<string, number>>({});
 
-<TableEdit
+<TableCraft
   columnWidths={widths}
   onColumnResize={(colName, width) => setWidths(prev => ({ ...prev, [colName]: width }))}
 />
@@ -1172,7 +1172,7 @@ A resize handle appears on the right edge of each column header. Minimum width: 
 ### Selection Range Listener
 
 ```tsx
-<TableEdit
+<TableCraft
   onSelectionChange={(sel) => {
     if (sel.hasSelection) {
       const { startRow, endRow, startCol, endCol } = sel.range;
@@ -1199,7 +1199,7 @@ Press **Ctrl+H** to open the Search & Replace dialog. Features:
 ## Custom Editors
 
 ```tsx
-import { Editor } from "tableedit";
+import { Editor } from "react-tablecraft";
 
 const ColorEditor: Editor<string> = ({ value, editing, onChange }) => {
   if (!editing) return <span style={{ color: value }}>{value}</span>;
@@ -1225,7 +1225,7 @@ const columns = [{ name: "color", type: "custom", editor: ColorEditor }];
 The built-in right-click menu can be extended with custom items via the `extraContextMenuItems` prop. Each item's `onClick` receives a `TableContextState` snapshot captured at the moment of the click.
 
 ```tsx
-import { CustomContextMenuItem, TableEdit } from "tableedit";
+import { CustomContextMenuItem, TableCraft } from "react-tablecraft";
 
 const myItems: CustomContextMenuItem[] = [
   {
@@ -1248,7 +1248,7 @@ const myItems: CustomContextMenuItem[] = [
   },
 ];
 
-<TableEdit extraContextMenuItems={myItems} /* ... */ />;
+<TableCraft extraContextMenuItems={myItems} /* ... */ />;
 ```
 
 Custom items appear after a separator below the built-in items. Use `"---"` within your array to insert additional separators between your own entries.
@@ -1265,7 +1265,7 @@ Custom items appear after a separator below the built-in items. Use `"---"` with
 Pass a `Partial<TableTranslations>` to override any subset of built-in strings. Unspecified keys fall back to their English defaults.
 
 ```tsx
-<TableEdit
+<TableCraft
   translations={{
     "Create Rows": "Zeilen hinzufügen",
     "Remove rows": "Zeilen löschen",
@@ -1290,7 +1290,7 @@ The `TableTranslations` interface is exported and fully typesafe — the TypeScr
 
 ## Backend Integration Guide
 
-TableEdit is designed as a **view layer** for backend-managed data. The library provides building blocks; you compose them into a pattern that fits your backend.
+TableCraft is designed as a **view layer** for backend-managed data. The library provides building blocks; you compose them into a pattern that fits your backend.
 
 ### Architecture Overview
 
@@ -1303,7 +1303,7 @@ flowchart TB
     OP --> IT --> SS
   end
 
-  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta,\npendingSortColumn, ..."| CT["TableEdit"]
+  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta,\npendingSortColumn, ..."| CT["TableCraft"]
 
   CT -->|"onRowsChange\nonUpdateRows\nonSortChange\nonFilterChange"| app
 ```
@@ -1313,7 +1313,7 @@ flowchart TB
 Sort and filter changes should not update the table data instantly when the backend handles the query. Use a **deferred snapshot** that only updates after the backend responds.
 
 ```tsx
-import { SortConfig, FilterState, Row } from "tableedit";
+import { SortConfig, FilterState, Row } from "react-tablecraft";
 
 // "What the user requested" vs "what the backend confirmed"
 const [sortConfig, setSortConfig] = useState<SortConfig>(null);
@@ -1330,7 +1330,7 @@ useEffect(() => {
   });
 }, [sortConfig, filters]);
 
-<TableEdit
+<TableCraft
   rows={confirmedRows}           // confirmed data from backend
   sortConfig={confirmedSort}     // confirmed sort (deferred)
   onSortChange={setSortConfig}   // immediate: triggers fetch
@@ -1342,7 +1342,7 @@ useEffect(() => {
 />
 ```
 
-**Key principle:** Pass the **confirmed** `sortConfig` and `filters` to TableEdit (so it doesn't re-sort/re-filter old data), but update the **requested** state immediately (so `pendingSortColumn`/`pendingFilterColumns` show spinners).
+**Key principle:** Pass the **confirmed** `sortConfig` and `filters` to TableCraft (so it doesn't re-sort/re-filter old data), but update the **requested** state immediately (so `pendingSortColumn`/`pendingFilterColumns` show spinners).
 
 Filter inputs use an internal buffer (`ColHeader`) that preserves the user's typed text even when the controlled `filters` prop lags behind.
 
@@ -1351,7 +1351,7 @@ Filter inputs use an internal buffer (`ColHeader`) that preserves the user's typ
 When a user edits a cell, show the change immediately. Track which cells have unconfirmed changes so backend data doesn't overwrite them.
 
 ```tsx
-import { InflightEditTracker, Row, ColumnConfig } from "tableedit";
+import { InflightEditTracker, Row, ColumnConfig } from "react-tablecraft";
 
 const trackerRef = useRef(new InflightEditTracker());
 const lastBatchRef = useRef<Array<{ rowKey: string; colName: string }>>([]);
@@ -1446,7 +1446,7 @@ Theme the stale class with CSS variables:
   --ct-cell-stale-bg: hsl(40, 100%, 93%);
   --ct-cell-stale-text: hsl(30, 80%, 30%);
 }
-.table-edit .cell-stale {
+.table-craft .cell-stale {
   background-color: var(--ct-cell-stale-bg);
   color: var(--ct-cell-stale-text);
 }
@@ -1454,7 +1454,7 @@ Theme the stale class with CSS variables:
 
 ### 5. Error Handling & Rollback
 
-TableEdit's `withAsyncRollback` mechanism automatically restores the previous row state when an async callback rejects. Combine with the `status` prop for user feedback:
+TableCraft's `withAsyncRollback` mechanism automatically restores the previous row state when an async callback rejects. Combine with the `status` prop for user feedback:
 
 ```tsx
 const [status, setStatus] = useState<TableStatus>();
@@ -1466,7 +1466,7 @@ onUpdateRows={async (rows) => {
     setStatus({ severity: "ok", text: "Synced" });
   } catch (err) {
     setStatus({ severity: "error", text: err.message });
-    throw err;  // re-throw → TableEdit rolls back the rows
+    throw err;  // re-throw → TableCraft rolls back the rows
   }
 }}
 ```
@@ -1511,7 +1511,7 @@ onUpdateRows={async (rows) => {
 
 // Merge static + dynamic cellMeta
 const mergedMeta = { ...staticMeta, ...validationMeta, ...staleMeta };
-<TableEdit cellMeta={mergedMeta} ... />
+<TableCraft cellMeta={mergedMeta} ... />
 ```
 
 ### 7. Status Indicator
@@ -1604,7 +1604,7 @@ The table applies changes immediately (optimistic update) and only rolls back if
 
 ```bash
 git clone <repo-url>
-cd tableedit
+cd react-tablecraft
 npm install
 ```
 
@@ -1644,7 +1644,7 @@ src/
 ├── core/
 │   ├── Types.ts                  — All TypeScript types/interfaces
 │   ├── TranslationsContext.tsx   — TableTranslations interface, context & defaults
-│   ├── TableEdit.tsx           — Main component
+│   ├── TableCraft.tsx           — Main component
 │   ├── RowTable.tsx              — Table rendering (<table>, <thead>, <tbody>)
 │   ├── ColHeader.tsx       — Column header (sort + filter)
 │   ├── TableRow.tsx             — Row rendering (<tr>)
@@ -1692,19 +1692,19 @@ tests/
 
 ---
 
-## Comparison: TableEdit vs. Others
+## Comparison: TableCraft vs. Others
 
-While there are many grid libraries available, `TableEdit` occupies a unique niche. It is designed specifically for **structured data editing** (Database-first) rather than being a general-purpose spreadsheet clone or a read-only data viewer.
+While there are many grid libraries available, `TableCraft` occupies a unique niche. It is designed specifically for **structured data editing** (Database-first) rather than being a general-purpose spreadsheet clone or a read-only data viewer.
 
-### Why choose TableEdit?
+### Why choose TableCraft?
 
 1.  **Native Layout Engine:** By using a standard HTML `<table>`, we let the browser handle cell alignment and text wrapping. No more fighting with fixed-width virtualization bugs or complex CSS overrides.
 2.  **Built-in Data Integrity:** Features like **Async Rollback** and **Undo/Redo** are core primitives, not afterthoughts. You don't have to manually manage complex state snapshots when a backend update fails.
-3.  **Pro Features for Free:** Many "Enterprise" grids lock features like Range Selection, Fill Handle, or Undo/Redo behind expensive commercial licenses. `TableEdit` provides these out-of-the-box under the MIT license.
+3.  **Pro Features for Free:** Many "Enterprise" grids lock features like Range Selection, Fill Handle, or Undo/Redo behind expensive commercial licenses. `TableCraft` provides these out-of-the-box under the MIT license.
 
 ### Feature Comparison
 
-| Feature               | TableEdit         | Handsontable      | AG Grid (Community)  | TanStack Table |
+| Feature               | TableCraft         | Handsontable      | AG Grid (Community)  | TanStack Table |
 | :-------------------- | :------------------ | :---------------- | :------------------- | :------------- |
 | **Primary Goal**      | **DB Bulk-Editing** | Spreadsheet Clone | Enterprise Grid      | Headless Logic |
 | **Rendering**         | Native `<table>`    | Virtual DOM       | Virtual (Div/Canvas) | User-defined   |
@@ -1719,7 +1719,7 @@ While there are many grid libraries available, `TableEdit` occupies a unique nic
 
 ---
 
-### When to use TableEdit
+### When to use TableCraft
 
 - Internal admin tools and back-office dashboards.
 - Applications where data follows a strict schema (Rows & Columns).
@@ -1736,7 +1736,7 @@ While there are many grid libraries available, `TableEdit` occupies a unique nic
 
 ## Performance
 
-TableEdit is designed for small to medium datasets rendered as a native HTML `<table>`. The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`). The following targeted optimizations further reduce CPU load during interactive use.
+TableCraft is designed for small to medium datasets rendered as a native HTML `<table>`. The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`). The following targeted optimizations further reduce CPU load during interactive use.
 
 ### Implemented Optimizations
 
@@ -1747,7 +1747,7 @@ During selection-drag and fill-drag, `onMouseMove` events can fire 100+ times pe
 - Code: `throttledMouseMove()` in `useCursor.tsx`, used by `TableCell.onMouseMove` and `ColHeader.onMouseMove`.
 
 **CSS Containment** (`base.css`)
-`contain: strict` on `.table-edit-viewport` and `contain: content` on `.cell` tell the browser that layout changes inside these elements cannot affect elements outside. This allows the browser to skip unnecessary reflow calculations on surrounding DOM.
+`contain: strict` on `.table-craft-viewport` and `contain: content` on `.cell` tell the browser that layout changes inside these elements cannot affect elements outside. This allows the browser to skip unnecessary reflow calculations on surrounding DOM.
 
 - Measured improvement: ~4% on isolated pages, more significant when the table is embedded in complex layouts.
 

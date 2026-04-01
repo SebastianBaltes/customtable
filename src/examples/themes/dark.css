@@ -91,8 +91,8 @@
 
 
 /* Dark scrollbars & interactions */
-.table-edit {
-  .table-edit-viewport {
+.table-craft {
+  .table-craft-viewport {
     scrollbar-color: hsl(220, 12%, 30%) hsl(220, 15%, 16%);
 
     &::-webkit-scrollbar {
@@ -118,12 +118,12 @@
 }
 
 /* Cell-meta utility classes */
-.table-edit .cell-error {
+.table-craft .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.table-edit .row-readonly td {
+.table-craft .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }

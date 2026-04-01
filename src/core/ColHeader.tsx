@@ -1,7 +1,7 @@
 import { ColumnConfig, Cursor, OnColumnResize, SortConfig } from "./Types";
 import classNames from "./classNames";
 import React, { useCallback, useContext, useRef, useState } from "react";
-import { getCursorName } from "./TableEdit";
+import { getCursorName } from "./TableCraft";
 import { TranslationsContext } from "./TranslationsContext";
 import { ComboboxFilter } from "./ComboboxFilter";
 import { throttledMouseMove } from "./useCursor";
@@ -86,7 +86,7 @@ export const ColHeader = React.memo(
         const startWidth = th.getBoundingClientRect().width;
 
         resizeHandleRef.current?.classList.add("resizing");
-        const viewport = th.closest(".table-edit-viewport") as HTMLElement | null;
+        const viewport = th.closest(".table-craft-viewport") as HTMLElement | null;
         if (viewport) viewport.style.pointerEvents = "none";
         document.body.style.userSelect = "none";
         document.body.style.cursor = "col-resize";

@@ -1,5 +1,5 @@
 /*
- * TableEdit — structural / layout base styles.
+ * TableCraft — structural / layout base styles.
  * No colors, backgrounds, shadows, or border-colors here.
  * Theme files provide visual appearance via CSS custom properties.
  */
@@ -16,7 +16,7 @@
   border: 0;
 }
 
-.table-edit {
+.table-craft {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -50,7 +50,7 @@
   }
 
   /* Toolbar */
-  .table-edit-toolbar {
+  .table-craft-toolbar {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -99,7 +99,7 @@
   }
 
   /* Viewport / scroll area */
-  .table-edit-viewport {
+  .table-craft-viewport {
     position: relative;
     flex: 1;
     overflow: auto;
@@ -114,7 +114,7 @@
     background-color: var(--ct-row-bg, var(--ct-bg));
   }
 
-  .table-edit-table {
+  .table-craft-table {
     width: 100%;
   }
 

@@ -95,7 +95,7 @@
 /* ===== M3 Overrides ===== */
 
 /* Surface-container-low with tonal elevation instead of shadow */
-.table-edit {
+.table-craft {
   border: 1px solid #cac4d0;
   border-radius: 16px;
   box-shadow: none;
@@ -327,13 +327,13 @@
   }
 
   /* --- Spacing: more whitespace for M3 density --- */
-  .table-edit-toolbar {
+  .table-craft-toolbar {
     padding: 10px 16px;
     gap: 10px;
   }
 
   /* --- Scrollbar: thin, subtle --- */
-  .table-edit-viewport {
+  .table-craft-viewport {
     scrollbar-width: thin;
     scrollbar-color: rgba(29, 27, 32, 0.2) transparent;
 
@@ -599,12 +599,12 @@
 }
 
 /* Cell-meta utility classes */
-.table-edit .cell-error {
+.table-craft .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.table-edit .row-readonly td {
+.table-craft .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }

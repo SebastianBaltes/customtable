@@ -1,5 +1,5 @@
 {
-  "name": "tableedit",
+  "name": "react-tablecraft",
   "version": "1.0.0",
   "description": "A powerful, flexible React table editor with sorting, filtering, inline editing, copy & paste, undo/redo, custom editors, column resizing, and more.",
   "main": "dist/index.js",
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SebastianBaltes/tableedit.git"
+    "url": "git+https://github.com/SebastianBaltes/react-tablecraft.git"
   },
   "keywords": [
     "react",
@@ -46,9 +46,9 @@
   "author": "Sebastian Baltes <sebastian.l.baltes@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SebastianBaltes/tableedit/issues"
+    "url": "https://github.com/SebastianBaltes/react-tablecraft/issues"
   },
-  "homepage": "https://sebastianbaltes.github.io/tableedit/",
+  "homepage": "https://sebastianbaltes.github.io/react-tablecraft/",
   "peerDependencies": {
     "react": ">=17.0.0",
     "react-dom": ">=17.0.0"

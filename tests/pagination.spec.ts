@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-// The Pagination component is rendered in the example app below the TableEdit.
+// The Pagination component is rendered in the example app below the TableCraft.
 // Tests navigate to http://localhost:5173 and interact with .ct-pagination.
 
 test.describe("Pagination", () => {

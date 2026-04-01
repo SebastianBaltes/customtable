@@ -1,7 +1,7 @@
 import { CellMeta, ColumnConfig, Cursor, Row, ValidationResult } from "./Types";
 import React, { useRef } from "react";
 import classNames from "./classNames";
-import { getCursorName } from "./TableEdit";
+import { getCursorName } from "./TableCraft";
 import { renderCell } from "./renderCell";
 import { throttledMouseMove } from "./useCursor";
 import { columnAlign, isDropdownType } from "./utils";

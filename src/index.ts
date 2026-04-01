@@ -1,5 +1,5 @@
 export * from "./core/Types";
-export { TableEdit } from "./core/TableEdit";
+export { TableCraft } from "./core/TableCraft";
 export { Pagination, DEFAULT_PAGE_SIZE_OPTIONS } from "./pagination/Pagination";
 export type { PaginationProps, PaginationLabels } from "./pagination/Pagination";
 export { StringEditor } from "./editors/StringEditor";
