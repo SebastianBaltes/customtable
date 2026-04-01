@@ -19,7 +19,7 @@ GridDbEditor sits between a rigid single-record form and a free-form spreadsheet
 
 > **[Full Demo](https://sebastianbaltes.github.io/react-grid-db-editor/)** — all features, async backend simulation, 8 themes
 >
-> **[Simple Demo](https://sebastianbaltes.github.io/react-grid-db-editor/simple.html)** — minimal setup, 10 columns, 5 rows
+> **[Simple Demo](https://sebastianbaltes.github.io/react-grid-db-editor/simple.html)** — minimal setup
 
 ---
 
