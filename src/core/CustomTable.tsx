@@ -93,6 +93,8 @@ interface IProps {
   onSelectionChange: (selection: SelectionInfo) => void;
   /** Enable the Search & Replace dialog (Ctrl+H). Default: false. */
   enableSearchReplace: boolean;
+  /** Enable column selection by clicking the column header area (not the label). Default: false. */
+  colSelection: boolean;
 }
 
 type CustomTableProps = IRequiredProps & Partial<IProps>;
@@ -125,6 +127,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     shakeRef,
     onSelectionChange,
     enableSearchReplace,
+    colSelection: colSelectionProp,
     columnWidths,
     onColumnResize,
   }: CustomTableProps) => {
@@ -1024,6 +1027,28 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       extraItems: extraContextMenuItems ?? [],
       contextStateRef,
       t,
+      enableSearchReplace,
+      onSearchReplace: () => setSearchReplaceOpen(true),
+      hasRows: () => displayRows.length > 0,
+      handleUndo,
+      handleRedo,
+      canUndo: undoRedo.canUndo,
+      canRedo: undoRedo.canRedo,
+      filterByValue: () => {
+        const { selectionStart } = cursorRef.current;
+        const col = columns[selectionStart.colIdx];
+        const row = displayRows[selectionStart.rowIdx];
+        if (col && row) {
+          const val = String(row[col.name] ?? "");
+          handleFilterChange(col.name, val);
+        }
+      },
+      clearFilter: () => {
+        Object.keys(effectiveFilters).forEach((colName) => {
+          if (effectiveFilters[colName]) handleFilterChange(colName, "");
+        });
+      },
+      hasActiveFilter: () => Object.values(effectiveFilters).some((v) => v.trim() !== ""),
     });
     const contextMenuVisibleRef = React.useRef(false);
     contextMenuVisibleRef.current = contextMenu.visible;
@@ -1062,6 +1087,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
             // Skip if the context menu or a dialog is open (rendered via portal outside the table DOM).
             if (contextMenuVisibleRef.current) return;
             if (document.querySelector(".editor-dialog-overlay")) return;
+            if (searchReplaceOpen) return;
             if (!e.currentTarget.contains(e.relatedTarget as Node)) {
               setCursorRef({
                 editing: false,
@@ -1077,12 +1103,31 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
           {stickyColumnsLefts.css != null && (
             <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
           )}
+          {columnWidths && Object.keys(columnWidths).length > 0 && (
+            <style dangerouslySetInnerHTML={{ __html: columns
+              .map((col, i) => columnWidths[col.name] != null
+                ? `#${tableId} th:nth-child(${i+1}),#${tableId} td:nth-child(${i+1}){max-width:${columnWidths[col.name]}px;overflow:hidden}`
+                : "")
+              .filter(Boolean)
+              .join("\n") }} />
+          )}
           <div
             ref={viewportRef}
             className="custom-table-viewport"
             onContextMenu={(event) => {
+              // Don't show context menu when a dialog is open
+              if (searchReplaceOpen || document.querySelector(".editor-dialog-overlay")) {
+                event.preventDefault();
+                return;
+              }
+              // Don't show context menu on header filter inputs
+              const target = event.target as HTMLElement;
+              if (target.closest(".col-filter-input, .col-filter-wrap, .col-header-label")) {
+                event.preventDefault();
+                return;
+              }
               // If right-clicked on a cell outside the current selection, select it first.
-              const td = (event.target as HTMLElement).closest<HTMLElement>("td[data-row-idx]");
+              const td = target.closest<HTMLElement>("td[data-row-idx]");
               if (td) {
                 const rowIdx = parseInt(td.dataset.rowIdx ?? "-1");
                 const colIdx = parseInt(td.dataset.colIdx ?? "-1");
@@ -1138,6 +1183,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
                 caption,
                 columnWidths,
                 onColumnResize,
+                colSelection: colSelectionProp,
               }}
               stickyPortal={
                 numberOfStickyColums === 0

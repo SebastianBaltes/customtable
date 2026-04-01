@@ -12,6 +12,16 @@ export interface UseContextMenuOptions {
   extraItems: CustomContextMenuItem[];
   contextStateRef: React.MutableRefObject<() => TableContextState>;
   t: TableTranslations;
+  enableSearchReplace?: boolean;
+  onSearchReplace?: () => void;
+  hasRows: () => boolean;
+  handleUndo: () => void;
+  handleRedo: () => void;
+  canUndo: () => boolean;
+  canRedo: () => boolean;
+  filterByValue: () => void;
+  clearFilter: () => void;
+  hasActiveFilter: () => boolean;
 }
 
 export function useContextMenu({
@@ -24,6 +34,16 @@ export function useContextMenu({
   extraItems,
   contextStateRef,
   t,
+  enableSearchReplace,
+  onSearchReplace,
+  hasRows,
+  handleUndo,
+  handleRedo,
+  canUndo,
+  canRedo,
+  filterByValue,
+  clearFilter,
+  hasActiveFilter,
 }: UseContextMenuOptions) {
   const [contextMenu, setContextMenu] = useState({ visible: false, position: { x: 0, y: 0 } });
 
@@ -37,22 +57,37 @@ export function useContextMenu({
     setContextMenu((prev) => (prev.visible ? { ...prev, visible: false } : prev));
   };
 
+  const noRows = contextMenu.visible && !hasRows();
+  const noUndo = contextMenu.visible && !canUndo();
+  const noRedo = contextMenu.visible && !canRedo();
+  const activeFilter = contextMenu.visible && hasActiveFilter();
+
   const builtInItems: ContextMenuItem[] = [
+    { label: t.Undo, shortcut: "Ctrl + Z", onClick: handleUndo, disabled: noUndo },
+    { label: t.Redo, shortcut: "Ctrl + Y", onClick: handleRedo, disabled: noRedo },
+    "---",
     { label: t["Insert row above"], onClick: handleInsertRowAbove },
     { label: t["Insert row below"], onClick: handleInsertRowBelow },
-    { label: t["Remove rows"], onClick: handleDeleteRows },
+    { label: t["Remove rows"], onClick: handleDeleteRows, disabled: noRows },
     "---",
     {
       label: t["Copy content"],
       shortcut: "Ctrl + C",
       onClick: () => { copySelection(); },
+      disabled: noRows,
     },
     {
       label: t["Paste content"],
       shortcut: "Ctrl + V",
       onClick: () => { pasteAtCursor(); },
     },
-    { label: t["Delete content"], shortcut: "Delete", onClick: deleteSelection },
+    { label: t["Delete content"], shortcut: "Delete", onClick: deleteSelection, disabled: noRows },
+    "---",
+    { label: t["Filter by value"], onClick: filterByValue, disabled: noRows },
+    { label: t["Clear filter"], onClick: clearFilter, disabled: !activeFilter },
+    ...(enableSearchReplace && onSearchReplace
+      ? ["---" as const, { label: t["Search & Replace"], shortcut: "Ctrl + H", onClick: onSearchReplace }]
+      : []),
   ];
 
   const mappedExtraItems: ContextMenuItem[] = extraItems.map((item) => {

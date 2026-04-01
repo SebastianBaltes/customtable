@@ -443,6 +443,7 @@ When an undo or redo action occurs, the component automatically calculates the d
 | `onColumnResize`        | `(colName: string, width: number) => void`        | —        | —                | Called when a column is resized via drag handle.                                                                  |
 | `onSelectionChange`     | `(selection: SelectionInfo) => void`              | —        | —                | Called when the cell selection range changes. Useful for showing aggregated values.                                |
 | `shakeRef`              | `MutableRefObject<(() => void) \| null>`          | —        | —                | Ref populated with a function to trigger the shake animation programmatically.                                    |
+| `colSelection`          | `boolean`                                         | —        | `false`          | Enable column selection by clicking the column header area (not the label). The label click always sorts.         |
 
 ### ColumnConfig\<T\>
 
@@ -470,7 +471,7 @@ interface ColumnConfig<T> {
   inputMask?: string;     // Input mask pattern: # = digit, A = letter, * = any char,
                           // all other chars are literal separators (e.g. "+## ### ########")
   align?: "left" | "right" | "center";  // Text alignment (Number defaults to "right")
-  comment?: string;       // Tooltip or description
+  headerTitle?: string;   // Tooltip shown on column header (HTML title attribute)
   filterable?: boolean;   // Set to false to hide the filter input (default: true)
   filterEditor?: FilterEditor;   // Custom filter component
   dialogTitle?: string;   // Title template for the textarea dialog editor

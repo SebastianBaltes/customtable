@@ -26,6 +26,7 @@ export const CustomColHeader = React.memo(
     textEllipsisLength,
     columnWidth,
     onColumnResize,
+    colSelection,
   }: {
     colIdx: number;
     cursorRef: React.MutableRefObject<Cursor>;
@@ -44,6 +45,7 @@ export const CustomColHeader = React.memo(
     textEllipsisLength?: number;
     columnWidth?: number;
     onColumnResize?: OnColumnResize;
+    colSelection?: boolean;
   }) => {
     const t = useContext(TranslationsContext);
     const { editing, selectionStart, selectionEnd } = cursorRef.current;
@@ -51,6 +53,7 @@ export const CustomColHeader = React.memo(
       colIdx >= Math.min(selectionStart.colIdx, selectionEnd.colIdx) &&
       colIdx <= Math.max(selectionStart.colIdx, selectionEnd.colIdx);
     const cursorName = getCursorName("col-", colHasCursor, editing);
+    const isColSelected = colSelection && cursorRef.current.colSelection && colHasCursor;
     const label = column.label ?? column.name;
 
     // Multi-sort: find this column's position and direction in a single pass
@@ -63,9 +66,6 @@ export const CustomColHeader = React.memo(
     const isInteractiveTarget = (el: HTMLElement) => {
       const tag = el.tagName;
       if (tag === "INPUT" || tag === "SELECT" || tag === "BUTTON") return true;
-      // Clicks on the sort label should not trigger column selection
-      if (el.closest(".col-header-label")) return true;
-      // Clicks on the resize handle should not trigger column selection
       if (el.closest(".col-resize-handle")) return true;
       return false;
     };
@@ -86,6 +86,8 @@ export const CustomColHeader = React.memo(
         const startWidth = th.getBoundingClientRect().width;
 
         resizeHandleRef.current?.classList.add("resizing");
+        const viewport = th.closest(".custom-table-viewport") as HTMLElement | null;
+        if (viewport) viewport.style.pointerEvents = "none";
         document.body.style.userSelect = "none";
         document.body.style.cursor = "col-resize";
 
@@ -96,6 +98,7 @@ export const CustomColHeader = React.memo(
 
         const onMouseUp = () => {
           resizeHandleRef.current?.classList.remove("resizing");
+          if (viewport) viewport.style.pointerEvents = "";
           document.body.style.userSelect = "";
           document.body.style.cursor = "";
           document.removeEventListener("mousemove", onMouseMove);
@@ -228,11 +231,12 @@ export const CustomColHeader = React.memo(
         ref={thRef}
         scope="col"
         aria-label={column.label ?? column.name}
-        style={columnWidth != null ? { minWidth: columnWidth } : undefined}
+        style={columnWidth != null ? { width: columnWidth, minWidth: columnWidth, maxWidth: columnWidth } : undefined}
         className={classNames(
           "col-header",
           sticky && "sticky",
           cursorName,
+          isColSelected && "col-selected",
           column.className,
           `col-type-${column.type}`,
           column.required && "col-required",
@@ -242,8 +246,10 @@ export const CustomColHeader = React.memo(
           align !== "left" && `cell-align-${align}`,
         )}
         onMouseDown={(event) => {
+          if (!colSelection) return;
           if (isInteractiveTarget(event.target as HTMLElement)) return;
-          if (column.selectable === false) return;
+          if ((event.target as HTMLElement).closest(".col-header-label")) return;
+          if (resizeHandleRef.current?.classList.contains("resizing")) return;
           setCursorRef({
             editing: false,
             filling: false,
@@ -254,6 +260,7 @@ export const CustomColHeader = React.memo(
           });
         }}
         onMouseMove={(event) => {
+          if (!colSelection) return;
           if (isInteractiveTarget(event.target as HTMLElement)) return;
           if (event.buttons === 1 && cursorRef.current.colSelection && !cursorRef.current.filling) {
             throttledMouseMove(setCursorRef, {

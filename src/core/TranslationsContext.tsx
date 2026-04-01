@@ -30,6 +30,16 @@ export interface TableTranslations {
   "Paste content": string;
   /** Context-menu item label. */
   "Delete content": string;
+  /** Context-menu item label. */
+  "Search & Replace": string;
+  /** Context-menu item label. */
+  Undo: string;
+  /** Context-menu item label. */
+  Redo: string;
+  /** Context-menu item label. */
+  "Filter by value": string;
+  /** Context-menu item label. */
+  "Clear filter": string;
   /** Boolean column filter option: truthy rows. */
   Yes: string;
   /** Boolean column filter option: falsy rows. */
@@ -49,6 +59,11 @@ export const DEFAULT_TRANSLATIONS: TableTranslations = {
   "Copy content": "Copy content",
   "Paste content": "Paste content",
   "Delete content": "Delete content",
+  "Search & Replace": "Search & Replace",
+  Undo: "Undo",
+  Redo: "Redo",
+  "Filter by value": "Filter by value",
+  "Clear filter": "Clear filter",
   Yes: "Yes",
   No: "No",
 };

@@ -1322,6 +1322,94 @@ test.describe("Context menu", () => {
 
     await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
   });
+
+  test("should not open context menu on column header filter right-click", async ({ page }) => {
+    const filterInput = page.locator("table thead th").nth(2).locator(".col-filter-input");
+    await filterInput.click({ button: "right" });
+    await page.waitForTimeout(100);
+
+    const contextMenu = page.locator(".context-menu");
+    await expect(contextMenu).not.toBeVisible();
+  });
+
+  test("should not open context menu when editor dialog is open", async ({ page }) => {
+    // Click on Description cell's pencil icon to open the textarea dialog
+    const descCell = page.locator("table tbody tr").first().locator("td.col-description");
+    await descCell.click();
+    await page.waitForTimeout(100);
+    const pencil = descCell.locator(".cell-popup-indicator");
+    await pencil.click({ force: true });
+    await page.waitForTimeout(200);
+
+    // Dialog should be open
+    await expect(page.locator(".editor-dialog-overlay")).toBeVisible();
+
+    // Right-click on the table viewport — context menu should NOT appear
+    await page.locator(".custom-table-viewport").click({ button: "right", position: { x: 10, y: 10 }, force: true });
+    await page.waitForTimeout(100);
+
+    const contextMenu = page.locator(".context-menu");
+    await expect(contextMenu).not.toBeVisible();
+  });
+
+  test("should show undo/redo in context menu with correct disabled state", async ({ page }) => {
+    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
+
+    // Before any edit, Undo should be disabled
+    await cell.click({ button: "right" });
+    const undoItem = page.locator(".context-menu-item").filter({ hasText: "Undo" });
+    await expect(undoItem).toHaveClass(/context-menu-item-disabled/);
+    const redoItem = page.locator(".context-menu-item").filter({ hasText: "Redo" });
+    await expect(redoItem).toHaveClass(/context-menu-item-disabled/);
+
+    // Close menu by clicking outside, make an edit, then check again
+    await page.locator(".custom-table").click();
+    await page.waitForTimeout(100);
+    await cell.click();
+    await page.keyboard.press("Delete");
+    await page.waitForTimeout(200);
+
+    await cell.click({ button: "right" });
+    const undoItemAfter = page.locator(".context-menu-item").filter({ hasText: "Undo" });
+    await expect(undoItemAfter).not.toHaveClass(/context-menu-item-disabled/);
+  });
+
+  test("should filter by cell value via context menu", async ({ page }) => {
+    const rowsBefore = await page.locator("table tbody tr").count();
+
+    // Right-click on a cell and select "Filter by value"
+    const cell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await cell.click({ button: "right" });
+
+    const filterItem = page.locator(".context-menu-item").filter({ hasText: "Filter by value" });
+    await expect(filterItem).toBeVisible();
+    await filterItem.click();
+    await page.waitForTimeout(300);
+
+    // Rows should be filtered (fewer than before)
+    const rowsAfter = await page.locator("table tbody tr").count();
+    expect(rowsAfter).toBeLessThan(rowsBefore);
+  });
+
+  test("should clear filter via context menu", async ({ page }) => {
+    // First apply a filter
+    const filterInput = page.locator("table thead th").first().locator(".col-filter-input");
+    await filterInput.fill("42");
+    await page.waitForTimeout(300);
+    const rowsFiltered = await page.locator("table tbody tr").count();
+
+    // Right-click and clear filter
+    const cell = page.locator("table tbody tr").first().locator("td").first();
+    await cell.click({ button: "right" });
+
+    const clearItem = page.locator(".context-menu-item").filter({ hasText: "Clear filter" });
+    await expect(clearItem).not.toHaveClass(/context-menu-item-disabled/);
+    await clearItem.click();
+    await page.waitForTimeout(300);
+
+    const rowsAfter = await page.locator("table tbody tr").count();
+    expect(rowsAfter).toBeGreaterThan(rowsFiltered);
+  });
 });
 
 // ============================================================================
@@ -4303,6 +4391,28 @@ test.describe("Column Resizing", () => {
     expect(newBox).toBeTruthy();
     expect(newBox!.width).toBeGreaterThan(initialWidth + 50);
   });
+
+  test("should allow resizing a column smaller than its content", async ({ page }) => {
+    const secondTh = page.locator("table thead th").nth(1);
+    const initialBox = await secondTh.boundingBox();
+    expect(initialBox).toBeTruthy();
+    const initialWidth = initialBox!.width;
+
+    // Drag the resize handle LEFT to make the column narrower
+    const resizeHandle = secondTh.locator(".col-resize-handle");
+    const handleBox = await resizeHandle.boundingBox();
+    expect(handleBox).toBeTruthy();
+
+    await page.mouse.move(handleBox!.x + handleBox!.width / 2, handleBox!.y + handleBox!.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(handleBox!.x - initialWidth + 50, handleBox!.y + handleBox!.height / 2, { steps: 5 });
+    await page.mouse.up();
+
+    // Width should have decreased (column can be smaller than content)
+    const newBox = await secondTh.boundingBox();
+    expect(newBox).toBeTruthy();
+    expect(newBox!.width).toBeLessThan(initialWidth);
+  });
 });
 
 // ============================================================================
@@ -4337,6 +4447,21 @@ test.describe("Search & Replace", () => {
     await table.focus();
     await page.keyboard.press("Control+h");
 
+    const dialog = page.locator(".search-replace-dialog");
+    await expect(dialog).toBeVisible({ timeout: 3000 });
+  });
+
+  test("should open search/replace dialog from context menu", async ({ page }) => {
+    // Right-click on a cell to open context menu
+    const cell = page.locator("table tbody tr").first().locator("td").nth(2);
+    await cell.click({ button: "right" });
+
+    // The context menu should show "Search & Replace"
+    const menuItem = page.locator(".context-menu-item", { hasText: "Search & Replace" });
+    await expect(menuItem).toBeVisible();
+
+    // Click it to open the dialog
+    await menuItem.click();
     const dialog = page.locator(".search-replace-dialog");
     await expect(dialog).toBeVisible({ timeout: 3000 });
   });
@@ -4528,54 +4653,60 @@ test.describe("Sticky column headers", () => {
 });
 
 // ============================================================================
-// Column selectable configuration
+// Column selection (colSelection prop)
 // ============================================================================
-test.describe("Column selectable", () => {
-  test("clicking a selectable column header should select from header to last row", async ({
+test.describe("Column selection (colSelection)", () => {
+  test("clicking column header area (not label) should select the entire column", async ({
     page,
   }) => {
-    // "First Name" (index 2) is selectable (default)
-    // Use mousedown on the th itself (not the label, which also triggers sort+reset)
+    // The example has colSelection enabled.
     const th = page.locator("table thead th").nth(2);
-    await th.dispatchEvent("mousedown", { button: 0 });
+    const filterInput = th.locator(".col-filter-input");
+    const thBox = await th.boundingBox();
+    const filterBox = await filterInput.boundingBox();
+    // Click between label and filter — header padding area (not on the label)
+    await page.mouse.click(thBox!.x + thBox!.width / 2, filterBox!.y - 2);
     await page.waitForTimeout(100);
 
-    // The selection rectangle should span from the header down
+    // The selection rectangle should be visible and span data rows
     const selRect = page.locator("#selection-rectangle");
     const selBox = await selRect.boundingBox();
-    const thBox = await th.boundingBox();
-
     expect(selBox).not.toBeNull();
-    expect(thBox).not.toBeNull();
-
-    // Selection top should be at or above the header top (covers the header)
-    expect(selBox!.y).toBeLessThanOrEqual(thBox!.y + 2);
-    // Selection should be tall (spanning many rows)
     expect(selBox!.height).toBeGreaterThan(200);
+
+    // The rectangle top (CSS top) should start at the first data row, not at the header.
+    // Read the CSS top value directly (pixel offset inside viewport).
+    const rectTop = await selRect.evaluate((el) => parseFloat(el.style.top));
+    const headerHeight = await th.evaluate((el) => el.getBoundingClientRect().height);
+    // The rectangle top must be >= the header height (it starts below the header)
+    expect(rectTop).toBeGreaterThanOrEqual(headerHeight - 2);
   });
 
-  test("clicking a non-selectable column header should NOT select the column", async ({
+  test("column header should get selection background when column is selected", async ({
     page,
   }) => {
-    // "Email" (index 4) has selectable: false
-    const table = page.locator(".custom-table");
-    await table.focus();
-
-    // First click somewhere else to establish a baseline cursor
-    await page.locator("table tbody tr").first().locator("td").nth(2).click();
+    const th = page.locator("table thead th").nth(2);
+    // Dispatch mousedown on th (not on label)
+    const thBox = await th.boundingBox();
+    const filterBox = await th.locator(".col-filter-input").boundingBox();
+    await page.mouse.click(thBox!.x + thBox!.width / 2, filterBox!.y - 2);
     await page.waitForTimeout(100);
 
-    // Now click the Email header
-    const emailHeader = page.locator("table thead th").nth(4);
-    await emailHeader.click();
-    await page.waitForTimeout(100);
+    // The th should have the col-selected class
+    await expect(th).toHaveClass(/col-selected/);
+  });
 
-    // The selection should NOT span all rows (column not selected)
-    const selRect = page.locator("#selection-rectangle");
-    const selBox = await selRect.boundingBox();
-    // Either no selection or a small single-cell selection, not a full column
-    if (selBox) {
-      expect(selBox.height).toBeLessThan(200);
-    }
+  test("clicking column header label should sort, not select column", async ({ page }) => {
+    // Click the label text — should trigger sort, not column selection
+    const headerLabel = page.locator("table thead th").nth(1).locator(".col-header-label");
+    await headerLabel.click();
+    await page.waitForTimeout(300);
+
+    // Sort indicator should appear
+    await expect(headerLabel).toContainText("▲");
+
+    // The th should NOT have col-selected class
+    const th = page.locator("table thead th").nth(1);
+    await expect(th).not.toHaveClass(/col-selected/);
   });
 });

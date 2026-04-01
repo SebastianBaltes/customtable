@@ -41,6 +41,7 @@ export const RowTable = React.memo(
     caption,
     columnWidths,
     onColumnResize,
+    colSelection,
   }: {
     tableId: string;
     tableRef: React.RefObject<HTMLTableElement>;
@@ -66,6 +67,7 @@ export const RowTable = React.memo(
     caption?: string;
     columnWidths?: Record<string, number>;
     onColumnResize?: OnColumnResize;
+    colSelection?: boolean;
   }) => {
     const resolvedGetRowKey = getRowKey ?? defaultRowKey;
     return (
@@ -104,6 +106,7 @@ export const RowTable = React.memo(
                   textEllipsisLength={textEllipsisLength}
                   columnWidth={columnWidths?.[column.name]}
                   onColumnResize={onColumnResize}
+                  colSelection={colSelection}
                 />
               );
             })}

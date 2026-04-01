@@ -1,27 +1,27 @@
 /*
- * Apple Numbers inspired — clean, warm gray headers,
- * alternating row stripes (gray / white), blue accent.
+ * Apple Numbers inspired — clean, minimal, white background,
+ * light gray headers, thin borders, blue accent.
  */
 
 :root {
   --ct-bg: #fff;
-  --ct-empty-area-bg: hsl(0, 0%, 92%);
+  --ct-empty-area-bg: #e8e8ed;
   --ct-text: #1d1d1f;
   --ct-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
 
   --ct-border: #d2d2d7;
-  --ct-border-light: #e5e5ea;
+  --ct-border-light: #e0e0e4;
 
-  --ct-header-bg: #e8e8ed;
-  --ct-header-border: #c7c7cc;
+  --ct-header-bg: #dadbde;
+  --ct-header-border: #bbbbc0;
   --ct-header-label: #3a3a3c;
 
   --ct-row-bg: #fff;
-  --ct-row-hover: #f2f2f7;
-  --ct-sticky-bg: #f2f2f7;
+  --ct-row-hover: #f0f5ff;
+  --ct-sticky-bg: #dadbde;
 
   --ct-selected-row-bg: #d4e4f7;
-  --ct-selected-col-bg: #d2d2d7;
+  --ct-selected-col-bg: #dce8f8;
   --ct-selected-cell-bg: #fff;
   --ct-selected-outline: #007aff;
   --ct-edited-outline: #007aff;
@@ -30,32 +30,32 @@
   --ct-dragger-bg: #007aff;
   --ct-dragger-border: #fff;
 
-  --ct-toolbar-bg: #f2f2f7;
-  --ct-toolbar-border: #d2d2d7;
+  --ct-toolbar-bg: #f5f5f7;
+  --ct-toolbar-border: #d5d5da;
   --ct-input-border: #c7c7cc;
   --ct-input-bg: #fff;
   --ct-button-bg: #fff;
   --ct-button-border: #c7c7cc;
-  --ct-button-hover: #e5e5ea;
+  --ct-button-hover: #e8e8ed;
 
   --ct-focus-outline: #007aff;
 
   --ct-ctx-bg: #fff;
-  --ct-ctx-border: #d2d2d7;
+  --ct-ctx-border: #d5d5da;
   --ct-ctx-shadow: rgba(0, 0, 0, 0.15);
   --ct-ctx-text: #1d1d1f;
-  --ct-ctx-hover: #e5e5ea;
+  --ct-ctx-hover: #e8e8ed;
   --ct-ctx-shortcut: #8e8e93;
 
   --ct-muted: #8e8e93;
   --ct-muted-light: #c7c7cc;
 
   --ct-dropdown-bg: #fff;
-  --ct-dropdown-border: #d2d2d7;
+  --ct-dropdown-border: #d5d5da;
   --ct-dropdown-shadow: rgba(0, 0, 0, 0.12);
   --ct-dropdown-hover: #f2f2f7;
   --ct-dropdown-selected: #d4e4f7;
-  --ct-dropdown-highlighted: #e5e5ea;
+  --ct-dropdown-highlighted: #e8e8ed;
   --ct-dropdown-both: #c5d8ed;
   --ct-dropdown-text: #1d1d1f;
   --ct-dropdown-placeholder: #8e8e93;
@@ -70,7 +70,7 @@
   --ct-dialog-overlay: rgba(0, 0, 0, 0.35);
   --ct-dialog-bg: #fff;
   --ct-dialog-shadow: rgba(0, 0, 0, 0.2);
-  --ct-dialog-border: #d2d2d7;
+  --ct-dialog-border: #d5d5da;
   --ct-dialog-title: #1d1d1f;
   --ct-dialog-close: #8e8e93;
   --ct-dialog-close-hover: #1d1d1f;
@@ -78,29 +78,15 @@
   --ct-dialog-btn-bg: #fff;
   --ct-dialog-btn-border: #c7c7cc;
   --ct-dialog-btn-text: #3a3a3c;
-  --ct-dialog-btn-hover: #e5e5ea;
+  --ct-dialog-btn-hover: #e8e8ed;
   --ct-dialog-save-bg: #007aff;
   --ct-dialog-save-hover: #0066d6;
-
-  /* Numbers-specific: alternating row stripes */
-  --ct-row-stripe: #f2f2f7;
 
   --ct-cell-error-bg: #fde8e8;
   --ct-cell-error-text: #bf2626;
   --ct-row-readonly-bg: #f5f5f7;
   --ct-row-readonly-text: #86868b;
   --ct-pencil-icon: "🖋";
-}
-
-
-/* Alternating row stripes */
-.custom-table {
-  tbody tr:nth-child(even) {
-    background-color: var(--ct-row-stripe);
-    & td.sticky {
-      background-color: var(--ct-row-stripe);
-    }
-  }
 }
 
 /* Cell-meta utility classes */

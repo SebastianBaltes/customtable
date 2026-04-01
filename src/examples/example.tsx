@@ -79,7 +79,6 @@ export const demoColumns: ColumnConfig<any>[] = [
     label: "Email",
     required: true,
     headerTitle: "Email address in the format user@example.com",
-    selectable: false,
   },
   {
     name: "department",
@@ -684,6 +683,7 @@ const App = () => {
           rows={displayRows}
           columns={effectiveColumns}
           numberOfStickyColums={1}
+          colSelection
           caption="Employee Data"
           textEllipsisLength={ellipsis ? 25 : undefined}
           onRowsChange={(newRows) => {

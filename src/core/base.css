@@ -149,6 +149,10 @@
     padding-right: 10px;
     padding-left: 5px;
     /* position: sticky (from thead th) provides the positioning context */
+
+    &.col-selected {
+      background-color: var(--ct-selected-col-bg, hsl(0, 0%, 90%));
+    }
   }
 
   .col-resize-handle {
@@ -256,10 +260,9 @@
   .col-header-label {
     cursor: pointer;
     white-space: nowrap;
-    /* only as wide as its text */
-    display: inline-block;
+    /* only as wide as its text, not stretched by parent's align-items: stretch */
+    align-self: center;
     padding: 0 0.25rem;
-    text-align: center;
   }
   .col-header-label:hover,
   .col-header-label:focus-visible {
@@ -324,6 +327,7 @@
     width: 100%;
     box-sizing: border-box;
     padding: 2px 4px;
+    font-size: 1rem;
     border-radius: 2px;
     font-family: inherit;
   }
@@ -698,6 +702,8 @@
   align-items: center;
   justify-content: center;
   z-index: 10000;
+  pointer-events: auto;
+  isolation: isolate;
 }
 
 .editor-dialog {
@@ -989,4 +995,10 @@
   padding: 5px 20px;
   cursor: pointer;
   white-space: nowrap;
+}
+
+.context-menu-item-disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
 }

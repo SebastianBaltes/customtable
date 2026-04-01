@@ -153,12 +153,6 @@ export interface ColumnConfig<T> {
   headerTitle?: string;
 
   /**
-   * Whether clicking the column header selects the entire column.
-   * Default: true.
-   */
-  selectable?: boolean;
-
-  /**
    * Number display format. Only meaningful for type "Number".
    */
   numberFormat?: NumberFormat;
@@ -382,6 +376,7 @@ export type ContextMenuItem =
       onClick: () => void;
       label: string;
       shortcut: string;
+      disabled: boolean;
     }>
   | "---";
 

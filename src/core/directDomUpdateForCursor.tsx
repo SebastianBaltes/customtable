@@ -33,7 +33,9 @@ export function directDomUpdateForCursor(
   const anyChange = colChange || rowChange || editChange || selectionChange || fillChange;
   if (!anyChange) return;
 
-  scrollToCellAddr(newCursor.fillEnd, numberOfStickyColums, refs.viewportRef, getCellElement);
+  if (!newCursor.colSelection) {
+    scrollToCellAddr(newCursor.fillEnd, numberOfStickyColums, refs.viewportRef, getCellElement);
+  }
 
   if (colChange || editChange || selectionChange) {
     range(oldCursor.selectionStart.colIdx, oldCursor.selectionEnd.colIdx).forEach((colIdx) => {
@@ -85,23 +87,28 @@ export function forceUpdateCursorRect(
   refs: CursorRefs,
   resolvedGetCell?: (addr: CellAddr | undefined) => HTMLTableCellElement | undefined,
 ) {
-  const { getCellElement: defaultGetCell, getColHeaderElement } = getCellAccessors(refs.tableRef);
-  const getCellElement = resolvedGetCell ?? defaultGetCell;
+  const getCellElement = resolvedGetCell ?? getCellAccessors(refs.tableRef).getCellElement;
   const viewport = refs.viewportRef.current;
 
   function updateRectangle(
     offsetParent: HTMLElement | null | undefined,
     rectRef: React.RefObject<HTMLDivElement>,
-    startCell: HTMLTableCellElement | null | undefined,
-    endCell: HTMLTableCellElement | null | undefined,
+    selectionStart: CellAddr | undefined,
+    selectionEnd: CellAddr | undefined,
     show: boolean,
   ) {
     const rect = rectRef.current;
     if (rect) {
-      if (startCell && endCell) {
-        setRectangleOverCells(viewport, offsetParent, rect, startCell, endCell);
+      if (selectionStart && selectionEnd) {
+        setRectangleOverCells(
+          viewport,
+          offsetParent,
+          rect,
+          getCellElement(selectionStart),
+          getCellElement(selectionEnd),
+        );
       }
-      rect.style.display = startCell && endCell && show ? "block" : "none";
+      rect.style.display = selectionStart && selectionEnd && show ? "block" : "none";
     }
   }
 
@@ -112,21 +119,12 @@ export function forceUpdateCursorRect(
     numberOfStickyColums,
   );
   const showSelection = !newCursor.editing;
-
-  // For column selection, extend the rectangle up to include the header
-  const selStartCell = newCursor.colSelection && selectionStart
-    ? getColHeaderElement(selectionStart.colIdx) ?? getCellElement(selectionStart)
-    : getCellElement(selectionStart);
-  const selStartStickyCell = newCursor.colSelection && selectionStartSticky
-    ? getColHeaderElement(selectionStartSticky.colIdx) ?? getCellElement(selectionStartSticky)
-    : getCellElement(selectionStartSticky);
-
-  updateRectangle(null, refs.selectionRectangleRef, selStartCell, getCellElement(selectionEnd), showSelection);
+  updateRectangle(null, refs.selectionRectangleRef, selectionStart, selectionEnd, showSelection);
   updateRectangle(
     stickyOffsetParent as HTMLElement,
     refs.selectionRectangleStickyRef,
-    selStartStickyCell,
-    getCellElement(selectionEndSticky),
+    selectionStartSticky,
+    selectionEndSticky,
     showSelection,
   );
 
@@ -137,12 +135,12 @@ export function forceUpdateCursorRect(
     numberOfStickyColums,
   );
   const showFill = !newCursor.editing && newCursor.filling && fillArea != null;
-  updateRectangle(null, refs.fillRectangleRef, getCellElement(fillStart), getCellElement(fillEnd), showFill);
+  updateRectangle(null, refs.fillRectangleRef, fillStart, fillEnd, showFill);
   updateRectangle(
     stickyOffsetParent as HTMLElement,
     refs.fillRectangleStickyRef,
-    getCellElement(fillStartSticky),
-    getCellElement(fillEndSticky),
+    fillStartSticky,
+    fillEndSticky,
     showFill,
   );
 }

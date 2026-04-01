@@ -44,11 +44,11 @@ export const ContextMenu = ({
           ) : (
             <div
               key={index}
-              onClick={() => {
+              onClick={item.disabled ? undefined : () => {
                 hideMenu();
                 item.onClick?.();
               }}
-              className="context-menu-item"
+              className={`context-menu-item${item.disabled ? " context-menu-item-disabled" : ""}`}
             >
               <span className="context-menu-label">{item.label}</span>
               <span className="context-menu-shortcut">{item.shortcut}</span>
