@@ -1,15 +1,17 @@
-# react-tablecraft
+<p align="center">
+  <img src="assets/logo.png" alt="react-tablecraft" width="360" />
+</p>
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)
-![React](https://img.shields.io/badge/React-18+-61dafb.svg)
-![gzip: ~25 kB](https://img.shields.io/badge/gzip-~25_kB-brightgreen.svg)
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License" />
+  <img src="https://img.shields.io/badge/TypeScript-Ready-blue.svg" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/React-17+-61dafb.svg" alt="React" />
+  <img src="https://img.shields.io/badge/gzip-~25_kB-brightgreen.svg" alt="gzip size" />
+</p>
 
 A schema-bound data grid for React — built for keyboard-driven bulk editing of structured datasets.
 
 TableCraft sits between a rigid single-record form and a free-form spreadsheet. It combines the speed of Excel-style interaction (arrow keys, fill drag, copy/paste, undo/redo) with the data integrity of a fixed schema and built-in async backend integration.
-
-<!-- TODO: Screenshot of the full demo showing the table with a few rows, theming, and the toolbar -->
 
 > **[Full Demo](https://sebastianbaltes.github.io/react-tablecraft/)** — all features, async backend simulation, 8 themes
 >
