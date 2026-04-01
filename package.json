@@ -2,16 +2,17 @@
   "name": "react-grid-db-editor",
   "version": "1.0.0",
   "description": "A powerful, flexible React table editor with sorting, filtering, inline editing, copy & paste, undo/redo, custom editors, column resizing, and more.",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/react-tablecraft.umd.js",
+  "module": "dist/react-tablecraft.mjs",
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+      "import": "./dist/react-tablecraft.mjs",
+      "require": "./dist/react-tablecraft.umd.js"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/style.css",
+    "./themes/*": "./dist/themes/*"
   },
   "files": [
     "dist",
@@ -19,7 +20,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.build.json && cp src/core/base.css dist/style.css",
+    "build": "rm -rf dist && vite build --config vite.lib.config.ts --outDir dist && tsc -p tsconfig.build.json --emitDeclarationOnly && cp src/core/base.css dist/style.css && cp -r src/examples/themes dist/themes",
     "build-release": "vite build --config vite.lib.config.ts && cp src/core/base.css release/style.css",
     "test": "jest",
     "test:e2e": "playwright test",

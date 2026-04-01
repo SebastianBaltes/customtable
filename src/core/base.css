@@ -970,6 +970,19 @@
   text-transform: uppercase;
 }
 
+.column-manager-sticky-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.column-manager-sticky-select {
+  font-size: 1rem;
+  padding: 2px 4px;
+}
+
 /* Context menu — top-level so it works in the body-portalled ContextMenu */
 .context-menu-portal {
   display: contents;

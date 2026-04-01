@@ -4552,6 +4552,48 @@ test.describe("Column Manager", () => {
     // Email column should no longer be visible
     await expect(emailHeader).not.toBeVisible();
   });
+
+  test("should change number of fixed columns via select", async ({ page }) => {
+    // Initially the first column (ID) should be sticky
+    const firstCell = page.locator("table tbody tr").first().locator("td").first();
+    await expect(firstCell).toHaveClass(/sticky/);
+
+    // Second column should NOT be sticky
+    const secondCell = page.locator("table tbody tr").first().locator("td").nth(1);
+    await expect(secondCell).not.toHaveClass(/sticky/);
+
+    // Open column manager
+    const columnsBtn = page.getByRole("button", { name: "Columns", exact: true });
+    await columnsBtn.click();
+
+    const dialog = page.locator(".column-manager-dialog");
+    await expect(dialog).toBeVisible();
+
+    // Change fixed columns to 2
+    const stickySelect = dialog.locator(".column-manager-sticky-select");
+    await stickySelect.selectOption("2");
+
+    // Close dialog
+    await dialog.locator(".search-replace-btn-primary", { hasText: "Done" }).click();
+
+    // Now both first and second columns should be sticky
+    await expect(firstCell).toHaveClass(/sticky/);
+    await expect(secondCell).toHaveClass(/sticky/);
+  });
+
+  test("should set fixed columns to none", async ({ page }) => {
+    // Open column manager
+    await page.getByRole("button", { name: "Columns", exact: true }).click();
+    const dialog = page.locator(".column-manager-dialog");
+
+    // Set to 0
+    await dialog.locator(".column-manager-sticky-select").selectOption("0");
+    await dialog.locator(".search-replace-btn-primary", { hasText: "Done" }).click();
+
+    // No columns should be sticky
+    const firstCell = page.locator("table tbody tr").first().locator("td").first();
+    await expect(firstCell).not.toHaveClass(/sticky/);
+  });
 });
 
 // ============================================================================

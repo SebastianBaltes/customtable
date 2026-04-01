@@ -18,6 +18,10 @@ export interface ColumnManagerProps {
   onHiddenColumnsChange: (hidden: Set<string>) => void;
   /** Called to reset order and visibility. */
   onReset: () => void;
+  /** Current number of sticky (fixed) columns. */
+  numberOfStickyColumns?: number;
+  /** Called when the user changes the number of sticky columns. */
+  onStickyColumnsChange?: (count: number) => void;
 }
 
 export const ColumnManagerDialog: React.FC<ColumnManagerProps> = ({
@@ -29,6 +33,8 @@ export const ColumnManagerDialog: React.FC<ColumnManagerProps> = ({
   hiddenColumns,
   onHiddenColumnsChange,
   onReset,
+  numberOfStickyColumns,
+  onStickyColumnsChange,
 }) => {
   const [dragIdx, setDragIdx] = useState<number | null>(null);
   const [dropIdx, setDropIdx] = useState<number | null>(null);
@@ -132,6 +138,20 @@ export const ColumnManagerDialog: React.FC<ColumnManagerProps> = ({
           >
             Reset
           </button>
+          {onStickyColumnsChange && (
+            <label className="column-manager-sticky-label">
+              Fixed columns
+              <select
+                className="column-manager-sticky-select"
+                value={numberOfStickyColumns ?? 0}
+                onChange={(e) => onStickyColumnsChange(Number(e.target.value))}
+              >
+                {Array.from({ length: Math.min(orderedNames.length, 6) + 1 }, (_, i) => (
+                  <option key={i} value={i}>{i === 0 ? "None" : String(i)}</option>
+                ))}
+              </select>
+            </label>
+          )}
           <span style={{ flex: 1 }} />
           <button className="search-replace-btn search-replace-btn-primary" onClick={onClose}>
             Done

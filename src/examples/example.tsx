@@ -438,6 +438,7 @@ const App = () => {
 
   // Ellipsis toggle (persisted)
   const [ellipsis, setEllipsis] = useLocalStorage("ct-ellipsis", true);
+  const [stickyColumns, setStickyColumns] = useLocalStorage("ct-sticky-columns", 1);
 
   // Pagination state
   const [page, setPage] = useState(1);
@@ -682,7 +683,7 @@ const App = () => {
         <TableCraft
           rows={displayRows}
           columns={effectiveColumns}
-          numberOfStickyColums={1}
+          numberOfStickyColums={stickyColumns}
           colSelection
           caption="Employee Data"
           textEllipsisLength={ellipsis ? 25 : undefined}
@@ -871,7 +872,10 @@ const App = () => {
           setColumnOrder([]);
           setHiddenColumnNames([]);
           setColumnWidths({});
+          setStickyColumns(1);
         }}
+        numberOfStickyColumns={stickyColumns}
+        onStickyColumnsChange={setStickyColumns}
       />
     </div>
   );
