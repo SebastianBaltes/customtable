@@ -97,13 +97,13 @@
 
 /* ---- Apply theme variables ---- */
 
-.custom-table {
+.table-edit {
   font-family: var(--ct-font);
   color: var(--ct-text);
   background: var(--ct-bg);
   border: 1px solid var(--ct-border-light);
 
-  .custom-table-toolbar {
+  .table-edit-toolbar {
     background-color: var(--ct-toolbar-bg);
     border-bottom: 1px solid var(--ct-toolbar-border);
   }
@@ -354,22 +354,22 @@
 }
 
 /* Cell-meta utility classes */
-.custom-table .cell-error {
+.table-edit .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.custom-table .cell-stale {
+.table-edit .cell-stale {
   background-color: var(--ct-cell-stale-bg);
   color: var(--ct-cell-stale-text);
 }
 
-.custom-table .cell-unsaved {
+.table-edit .cell-unsaved {
   background-color: hsl(30, 100%, 95%);
   border-left: 3px solid hsl(30, 100%, 50%);
 }
 
-.custom-table .row-readonly td {
+.table-edit .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }

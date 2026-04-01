@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * All user-visible strings emitted by CustomTable and its built-in editors.
+ * All user-visible strings emitted by TableEdit and its built-in editors.
  * Pass a `Partial<TableTranslations>` via the `translations` prop to override
  * any subset of strings.
  */

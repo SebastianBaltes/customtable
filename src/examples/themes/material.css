@@ -98,7 +98,7 @@
 /* ===== MUI Overrides ===== */
 
 /* Paper-like container with elevation-1 shadow */
-.custom-table {
+.table-edit {
   border: none;
   border-radius: 4px;
   box-shadow:
@@ -325,13 +325,13 @@
   }
 
   /* --- Spacing: more whitespace for Material density --- */
-  .custom-table-toolbar {
+  .table-edit-toolbar {
     padding: 10px 16px;
     gap: 10px;
   }
 
   /* --- Scrollbar: thin, subtle --- */
-  .custom-table-viewport {
+  .table-edit-viewport {
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 
@@ -594,12 +594,12 @@
 }
 
 /* Cell-meta utility classes */
-.custom-table .cell-error {
+.table-edit .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.custom-table .row-readonly td {
+.table-edit .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }

@@ -1,4 +1,4 @@
-# CustomTable
+# TableEdit
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)
@@ -6,11 +6,11 @@
 
 A powerful Schema-bound Data Grid for React, designed for high-efficiency bulk-editing of structured datasets.
 
-Unlike a free-form spreadsheet (like Excel), CustomTable is built specifically as a tabular CRUD interface for databases.
+Unlike a free-form spreadsheet (like Excel), TableEdit is built specifically as a tabular CRUD interface for databases.
 It combines the speed of keyboard-driven spreadsheet interaction with the data integrity of a fixed schema.
 It is the ideal middle ground between a rigid single-record form and a chaotic, unstructured spreadsheet.
 
-By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensures a pixel-perfect layout and seamless CSS styling. While ideal for small to medium datasets, it can easily handle larger data through standard pagination.
+By utilizing a native HTML `<table>` instead of virtualization, TableEdit ensures a pixel-perfect layout and seamless CSS styling. While ideal for small to medium datasets, it can easily handle larger data through standard pagination.
 
 > **Full Demo:** <https://sebastianbaltes.github.io/tableedit/> — all features, async backend simulation, 8 themes
 >
@@ -32,7 +32,7 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
   - [Async Callbacks & Rollback](#async-callbacks--rollback)
   - [Undo / Redo](#undo--redo)
 - [API Reference](#api-reference)
-  - [CustomTable Props](#customtable-props)
+  - [TableEdit Props](#customtable-props)
   - [ColumnConfig\<T\>](#columnconfigt)
   - [NumberFormat](#numberformat)
   - [Editor\<T\>](#editort)
@@ -67,8 +67,8 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
   - [E2E Tests (Playwright)](#e2e-tests-playwright)
   - [Project Structure](#project-structure)
 - [Theming](#theming)
-- [Comparison: CustomTable vs. Others](#comparison-customtable-vs-others)
-- [When to use CustomTable](#when-to-use-customtable)
+- [Comparison: TableEdit vs. Others](#comparison-customtable-vs-others)
+- [When to use TableEdit](#when-to-use-customtable)
 - [Performance](#performance)
   - [Implemented Optimizations](#implemented-optimizations)
   - [Evaluated but not Implemented](#evaluated-but-not-implemented)
@@ -137,7 +137,7 @@ By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensu
 
 ## Theming
 
-CustomTable ships with eight ready-made themes and a simple CSS-variable-based theming system that makes it easy to create your own.
+TableEdit ships with eight ready-made themes and a simple CSS-variable-based theming system that makes it easy to create your own.
 
 ### Built-in Themes
 
@@ -230,7 +230,7 @@ The package ships TypeScript sources and type declarations.
 
 ```tsx
 import React, { useState } from "react";
-import { CustomTable, ColumnConfig, Row } from "tableedit";
+import { TableEdit, ColumnConfig, Row } from "tableedit";
 // Import the default styles (or provide your own):
 import "tableedit/style.css";
 
@@ -256,7 +256,7 @@ export const App = () => {
   const [rows, setRows] = useState(initialRows);
 
   return (
-    <CustomTable
+    <TableEdit
       rows={rows}
       columns={columns}
       onRowsChange={setRows}
@@ -275,7 +275,7 @@ export const App = () => {
 
 ```mermaid
 flowchart TD
-  CT["CustomTable"]
+  CT["TableEdit"]
   RT["RowTable"]
   CCH["CustomColHeaderList"]
   CR["CustomRowList"]
@@ -293,12 +293,12 @@ flowchart TD
 
 ### Data Flow
 
-CustomTable follows the **Controlled Component** pattern. It does **not** own the data:
+TableEdit follows the **Controlled Component** pattern. It does **not** own the data:
 
 ```mermaid
 flowchart LR
   Parent[Parent App]
-  CT[CustomTable]
+  CT[TableEdit]
 
   Parent -- "rows (prop)" --> CT
   CT -- "onRowsChange(rows)" --> Parent
@@ -342,7 +342,7 @@ useEffect(() => {
   fetchFromBackend(sort, filters).then(setRows);
 }, [sort, filters]);
 
-<CustomTable
+<TableEdit
   rows={rows}
   columns={columns}
   onRowsChange={setRows}
@@ -390,7 +390,7 @@ const cellMeta: CellMetaMap = {
 3. On **reject**: the table **rolls back** to the row snapshot before the mutation.
 
 ```tsx
-<CustomTable
+<TableEdit
   // ...
   onUpdateRows={async (updatedRows) => {
     await fetch("/api/rows", {
@@ -413,7 +413,7 @@ When an undo or redo action occurs, the component automatically calculates the d
 
 ## API Reference
 
-### CustomTable Props
+### TableEdit Props
 
 | Prop                    | Type                                              | Required | Default          | Description                                                                                                       |
 | ----------------------- | ------------------------------------------------- | -------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- |
@@ -697,8 +697,8 @@ validate: (value) => {
 The `cell-error` and `cell-warning` classes are styled by each theme. You can override them in your own CSS:
 
 ```css
-.custom-table .cell-error  { background: #fdd; color: #900; }
-.custom-table .cell-warning { background: #ffe; color: #660; }
+.table-edit .cell-error  { background: #fdd; color: #900; }
+.table-edit .cell-warning { background: #ffe; color: #660; }
 ```
 
 > **Note:** If `cellMeta.title` is set for a cell, it takes priority over the validation message.
@@ -756,7 +756,7 @@ interface TableStatus {
 Combine with `loading` and `pendingSortColumn` for full backend feedback:
 
 ```tsx
-<CustomTable
+<TableEdit
   rows={rows}
   columns={columns}
   status={{ severity: "info", text: "Saving..." }}
@@ -831,8 +831,8 @@ const asyncState = useAsyncTableState({
   validateRows: (rows, keyFn) => ({}),  // Optional: returns CellMetaMap with errors
 });
 
-// Pass to CustomTable:
-<CustomTable
+// Pass to TableEdit:
+<TableEdit
   rows={asyncState.displayRows}
   sortConfig={asyncState.displaySortConfig}
   filters={asyncState.displayFilters}
@@ -855,7 +855,7 @@ const asyncState = useAsyncTableState({
 
 | Property | Type | Description |
 | --- | --- | --- |
-| `displayRows` | `Row[]` | Confirmed rows for CustomTable |
+| `displayRows` | `Row[]` | Confirmed rows for TableEdit |
 | `displaySortConfig` | `SortConfig` | Confirmed sort config |
 | `displayFilters` | `FilterState` | Confirmed filters |
 | `displayItems` | `Array<{row, origIdx}>` | Page items with index mapping |
@@ -876,7 +876,7 @@ const asyncState = useAsyncTableState({
 
 ### Shake Animation
 
-When an async callback (`onUpdateRows`, `onCreateRows`, `onDeleteRows`) rejects, CustomTable automatically:
+When an async callback (`onUpdateRows`, `onCreateRows`, `onDeleteRows`) rejects, TableEdit automatically:
 1. Rolls back the rows to the pre-mutation state
 2. Triggers a brief horizontal shake animation (0.4s) on the table container
 
@@ -885,7 +885,7 @@ This provides immediate visual feedback that an operation failed, without blocki
 The shake uses the CSS class `.shake` with `@keyframes ct-shake`. You can override the animation in your theme:
 
 ```css
-.custom-table.shake {
+.table-edit.shake {
   animation: ct-shake 0.4s ease-in-out;
 }
 ```
@@ -935,7 +935,7 @@ type CustomContextMenuItem =
 
 ## Pagination Component
 
-`Pagination` is a **standalone** component — it has no internal coupling to `CustomTable`. Use it to drive any paginated list or table, including `CustomTable`.
+`Pagination` is a **standalone** component — it has no internal coupling to `TableEdit`. Use it to drive any paginated list or table, including `TableEdit`.
 
 ```tsx
 import { Pagination } from "tableedit";
@@ -981,7 +981,7 @@ interface PaginationLabels {
 
 ### Pagination with filters spanning all rows
 
-When using `CustomTable` in **controlled filter/sort mode** alongside `Pagination`, filter the full dataset in the parent and pass `filteredSorted.length` as `totalRows`:
+When using `TableEdit` in **controlled filter/sort mode** alongside `Pagination`, filter the full dataset in the parent and pass `filteredSorted.length` as `totalRows`:
 
 ```tsx
 const filteredSorted = useMemo(() => {
@@ -1012,7 +1012,7 @@ const effectivePageSize = pageSize === 0 ? filteredSorted.length || 1 : pageSize
 const start = (page - 1) * effectivePageSize;
 const pageItems = filteredSorted.slice(start, start + effectivePageSize);
 
-<CustomTable
+<TableEdit
   rows={pageItems.map(i => i.row)}
   // pass pre-filtered data + same controlled filters (filter is idempotent)
   filters={filters}
@@ -1161,7 +1161,7 @@ Pass `columnWidths` and `onColumnResize` props to enable drag-to-resize:
 ```tsx
 const [widths, setWidths] = useState<Record<string, number>>({});
 
-<CustomTable
+<TableEdit
   columnWidths={widths}
   onColumnResize={(colName, width) => setWidths(prev => ({ ...prev, [colName]: width }))}
 />
@@ -1172,7 +1172,7 @@ A resize handle appears on the right edge of each column header. Minimum width: 
 ### Selection Range Listener
 
 ```tsx
-<CustomTable
+<TableEdit
   onSelectionChange={(sel) => {
     if (sel.hasSelection) {
       const { startRow, endRow, startCol, endCol } = sel.range;
@@ -1225,7 +1225,7 @@ const columns = [{ name: "color", type: "custom", editor: ColorEditor }];
 The built-in right-click menu can be extended with custom items via the `extraContextMenuItems` prop. Each item's `onClick` receives a `TableContextState` snapshot captured at the moment of the click.
 
 ```tsx
-import { CustomContextMenuItem, CustomTable } from "tableedit";
+import { CustomContextMenuItem, TableEdit } from "tableedit";
 
 const myItems: CustomContextMenuItem[] = [
   {
@@ -1248,7 +1248,7 @@ const myItems: CustomContextMenuItem[] = [
   },
 ];
 
-<CustomTable extraContextMenuItems={myItems} /* ... */ />;
+<TableEdit extraContextMenuItems={myItems} /* ... */ />;
 ```
 
 Custom items appear after a separator below the built-in items. Use `"---"` within your array to insert additional separators between your own entries.
@@ -1265,7 +1265,7 @@ Custom items appear after a separator below the built-in items. Use `"---"` with
 Pass a `Partial<TableTranslations>` to override any subset of built-in strings. Unspecified keys fall back to their English defaults.
 
 ```tsx
-<CustomTable
+<TableEdit
   translations={{
     "Create Rows": "Zeilen hinzufügen",
     "Remove rows": "Zeilen löschen",
@@ -1290,7 +1290,7 @@ The `TableTranslations` interface is exported and fully typesafe — the TypeScr
 
 ## Backend Integration Guide
 
-CustomTable is designed as a **view layer** for backend-managed data. The library provides building blocks; you compose them into a pattern that fits your backend.
+TableEdit is designed as a **view layer** for backend-managed data. The library provides building blocks; you compose them into a pattern that fits your backend.
 
 ### Architecture Overview
 
@@ -1303,7 +1303,7 @@ flowchart TB
     OP --> IT --> SS
   end
 
-  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta,\npendingSortColumn, ..."| CT["CustomTable"]
+  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta,\npendingSortColumn, ..."| CT["TableEdit"]
 
   CT -->|"onRowsChange\nonUpdateRows\nonSortChange\nonFilterChange"| app
 ```
@@ -1330,7 +1330,7 @@ useEffect(() => {
   });
 }, [sortConfig, filters]);
 
-<CustomTable
+<TableEdit
   rows={confirmedRows}           // confirmed data from backend
   sortConfig={confirmedSort}     // confirmed sort (deferred)
   onSortChange={setSortConfig}   // immediate: triggers fetch
@@ -1342,7 +1342,7 @@ useEffect(() => {
 />
 ```
 
-**Key principle:** Pass the **confirmed** `sortConfig` and `filters` to CustomTable (so it doesn't re-sort/re-filter old data), but update the **requested** state immediately (so `pendingSortColumn`/`pendingFilterColumns` show spinners).
+**Key principle:** Pass the **confirmed** `sortConfig` and `filters` to TableEdit (so it doesn't re-sort/re-filter old data), but update the **requested** state immediately (so `pendingSortColumn`/`pendingFilterColumns` show spinners).
 
 Filter inputs use an internal buffer (`CustomColHeader`) that preserves the user's typed text even when the controlled `filters` prop lags behind.
 
@@ -1446,7 +1446,7 @@ Theme the stale class with CSS variables:
   --ct-cell-stale-bg: hsl(40, 100%, 93%);
   --ct-cell-stale-text: hsl(30, 80%, 30%);
 }
-.custom-table .cell-stale {
+.table-edit .cell-stale {
   background-color: var(--ct-cell-stale-bg);
   color: var(--ct-cell-stale-text);
 }
@@ -1454,7 +1454,7 @@ Theme the stale class with CSS variables:
 
 ### 5. Error Handling & Rollback
 
-CustomTable's `withAsyncRollback` mechanism automatically restores the previous row state when an async callback rejects. Combine with the `status` prop for user feedback:
+TableEdit's `withAsyncRollback` mechanism automatically restores the previous row state when an async callback rejects. Combine with the `status` prop for user feedback:
 
 ```tsx
 const [status, setStatus] = useState<TableStatus>();
@@ -1466,7 +1466,7 @@ onUpdateRows={async (rows) => {
     setStatus({ severity: "ok", text: "Synced" });
   } catch (err) {
     setStatus({ severity: "error", text: err.message });
-    throw err;  // re-throw → CustomTable rolls back the rows
+    throw err;  // re-throw → TableEdit rolls back the rows
   }
 }}
 ```
@@ -1511,7 +1511,7 @@ onUpdateRows={async (rows) => {
 
 // Merge static + dynamic cellMeta
 const mergedMeta = { ...staticMeta, ...validationMeta, ...staleMeta };
-<CustomTable cellMeta={mergedMeta} ... />
+<TableEdit cellMeta={mergedMeta} ... />
 ```
 
 ### 7. Status Indicator
@@ -1644,7 +1644,7 @@ src/
 ├── core/
 │   ├── Types.ts                  — All TypeScript types/interfaces
 │   ├── TranslationsContext.tsx   — TableTranslations interface, context & defaults
-│   ├── CustomTable.tsx           — Main component
+│   ├── TableEdit.tsx           — Main component
 │   ├── RowTable.tsx              — Table rendering (<table>, <thead>, <tbody>)
 │   ├── CustomColHeader.tsx       — Column header (sort + filter)
 │   ├── CustomRow.tsx             — Row rendering (<tr>)
@@ -1692,19 +1692,19 @@ tests/
 
 ---
 
-## Comparison: CustomTable vs. Others
+## Comparison: TableEdit vs. Others
 
-While there are many grid libraries available, `CustomTable` occupies a unique niche. It is designed specifically for **structured data editing** (Database-first) rather than being a general-purpose spreadsheet clone or a read-only data viewer.
+While there are many grid libraries available, `TableEdit` occupies a unique niche. It is designed specifically for **structured data editing** (Database-first) rather than being a general-purpose spreadsheet clone or a read-only data viewer.
 
-### Why choose CustomTable?
+### Why choose TableEdit?
 
 1.  **Native Layout Engine:** By using a standard HTML `<table>`, we let the browser handle cell alignment and text wrapping. No more fighting with fixed-width virtualization bugs or complex CSS overrides.
 2.  **Built-in Data Integrity:** Features like **Async Rollback** and **Undo/Redo** are core primitives, not afterthoughts. You don't have to manually manage complex state snapshots when a backend update fails.
-3.  **Pro Features for Free:** Many "Enterprise" grids lock features like Range Selection, Fill Handle, or Undo/Redo behind expensive commercial licenses. `CustomTable` provides these out-of-the-box under the MIT license.
+3.  **Pro Features for Free:** Many "Enterprise" grids lock features like Range Selection, Fill Handle, or Undo/Redo behind expensive commercial licenses. `TableEdit` provides these out-of-the-box under the MIT license.
 
 ### Feature Comparison
 
-| Feature               | CustomTable         | Handsontable      | AG Grid (Community)  | TanStack Table |
+| Feature               | TableEdit         | Handsontable      | AG Grid (Community)  | TanStack Table |
 | :-------------------- | :------------------ | :---------------- | :------------------- | :------------- |
 | **Primary Goal**      | **DB Bulk-Editing** | Spreadsheet Clone | Enterprise Grid      | Headless Logic |
 | **Rendering**         | Native `<table>`    | Virtual DOM       | Virtual (Div/Canvas) | User-defined   |
@@ -1719,7 +1719,7 @@ While there are many grid libraries available, `CustomTable` occupies a unique n
 
 ---
 
-### When to use CustomTable
+### When to use TableEdit
 
 - Internal admin tools and back-office dashboards.
 - Applications where data follows a strict schema (Rows & Columns).
@@ -1736,7 +1736,7 @@ While there are many grid libraries available, `CustomTable` occupies a unique n
 
 ## Performance
 
-CustomTable is designed for small to medium datasets rendered as a native HTML `<table>`. The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`). The following targeted optimizations further reduce CPU load during interactive use.
+TableEdit is designed for small to medium datasets rendered as a native HTML `<table>`. The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`). The following targeted optimizations further reduce CPU load during interactive use.
 
 ### Implemented Optimizations
 
@@ -1747,7 +1747,7 @@ During selection-drag and fill-drag, `onMouseMove` events can fire 100+ times pe
 - Code: `throttledMouseMove()` in `useCursor.tsx`, used by `CustomCell.onMouseMove` and `CustomColHeader.onMouseMove`.
 
 **CSS Containment** (`base.css`)
-`contain: strict` on `.custom-table-viewport` and `contain: content` on `.cell` tell the browser that layout changes inside these elements cannot affect elements outside. This allows the browser to skip unnecessary reflow calculations on surrounding DOM.
+`contain: strict` on `.table-edit-viewport` and `contain: content` on `.cell` tell the browser that layout changes inside these elements cannot affect elements outside. This allows the browser to skip unnecessary reflow calculations on surrounding DOM.
 
 - Measured improvement: ~4% on isolated pages, more significant when the table is embedded in complex layouts.
 

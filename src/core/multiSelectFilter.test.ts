@@ -1,5 +1,5 @@
 /**
- * Unit tests for the filter matching logic in CustomTable.
+ * Unit tests for the filter matching logic in TableEdit.
  *
  * Filter value encoding:
  * - "\x00val1\nval2" → multi-select exact match (prefix \x00)
@@ -10,7 +10,7 @@
 const MULTI_SELECT_PREFIX = "\x00";
 const EMPTY_SENTINEL = "\x01empty\x01";
 
-/** Reproduce the filter predicate from CustomTable */
+/** Reproduce the filter predicate from TableEdit */
 function matchesFilter(filterVal: string, cellVal: unknown): boolean {
   // Multi-select filter: \x00 prefix + newline-separated exact match
   if (filterVal.startsWith(MULTI_SELECT_PREFIX)) {

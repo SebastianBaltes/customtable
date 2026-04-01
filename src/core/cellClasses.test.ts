@@ -1,5 +1,5 @@
 /**
- * Unit tests for the cell CSS class derivation logic in CustomCell.
+ * Unit tests for the cell CSS class derivation logic in TableCell.
  *
  * Tests cover:
  * - Validation classes (cell-error, cell-warning)
@@ -14,7 +14,7 @@
 import { ValidationResult } from "./Types";
 
 // ---------------------------------------------------------------------------
-// Reproduce the validation class derivation from CustomCell
+// Reproduce the validation class derivation from TableCell
 
 type ValidationOutcome = { validationClass: string | null; validationMessage: string | null };
 
@@ -32,7 +32,7 @@ function deriveValidation(
   };
 }
 
-// Reproduce the ellipsis detection from CustomCell
+// Reproduce the ellipsis detection from TableCell
 function isEllipsis(value: unknown, textEllipsisLength: number | undefined): boolean {
   return (
     textEllipsisLength != null &&
@@ -41,7 +41,7 @@ function isEllipsis(value: unknown, textEllipsisLength: number | undefined): boo
   );
 }
 
-// Reproduce read-only detection from CustomCell
+// Reproduce read-only detection from TableCell
 function isReadOnly(
   columnReadOnly: boolean | undefined,
   rowReadOnly: boolean | undefined,

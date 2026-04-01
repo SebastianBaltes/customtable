@@ -1,6 +1,6 @@
 import { CellAddr, Cursor } from "./Types";
 import React from "react";
-import { getCursorName } from "./CustomTable";
+import { getCursorName } from "./TableEdit";
 import { last, range } from "./utils";
 
 export interface CursorRefs {

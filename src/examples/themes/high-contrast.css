@@ -96,7 +96,7 @@
 
 /* ===== High Contrast Overrides ===== */
 
-.custom-table {
+.table-edit {
   border: 4px solid #000000;
 
   color: #000000;
@@ -423,17 +423,17 @@
   margin-bottom: 1rem;
 }
 
-.custom-table-toolbar {
+.table-edit-toolbar {
   border: none !important;
 }
 
 /* Cell-meta utility classes */
-.custom-table .cell-error {
+.table-edit .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.custom-table .row-readonly td {
+.table-edit .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }

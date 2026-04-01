@@ -1,12 +1,12 @@
 /**
- * Simple CustomTable Example
+ * Simple TableEdit Example
  *
  * Demonstrates the minimal setup: rows, columns, basic editing.
  * No async backend, no pagination, no column manager, no themes.
  */
 import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
-import { ColumnConfig, CustomTable, Row } from "../index";
+import { ColumnConfig, TableEdit, Row } from "../index";
 
 // --- Column definitions ---
 const columns: ColumnConfig<any>[] = [
@@ -98,7 +98,7 @@ const SimpleApp = () => {
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: "12px", margin: "12px 16px 0" }}>
-        <h2 style={{ margin: 0 }}>CustomTable — Simple Example</h2>
+        <h2 style={{ margin: 0 }}>TableEdit — Simple Example</h2>
         <a
           href="https://github.com/SebastianBaltes/customtable/blob/master/src/examples/example-simple.tsx"
           target="_blank"
@@ -112,7 +112,7 @@ const SimpleApp = () => {
         Minimal setup: editable cells, keyboard navigation, sort, filter, undo/redo.
       </p>
       <div style={{ flex: 1, position: "relative" }}>
-        <CustomTable
+        <TableEdit
           rows={rows}
           columns={columns}
           onRowsChange={setRows}

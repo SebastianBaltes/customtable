@@ -1,5 +1,5 @@
 /*
- * CustomTable — structural / layout base styles.
+ * TableEdit — structural / layout base styles.
  * No colors, backgrounds, shadows, or border-colors here.
  * Theme files provide visual appearance via CSS custom properties.
  */
@@ -16,7 +16,7 @@
   border: 0;
 }
 
-.custom-table {
+.table-edit {
   overflow: hidden;
   position: absolute;
   top: 0;
@@ -50,7 +50,7 @@
   }
 
   /* Toolbar */
-  .custom-table-toolbar {
+  .table-edit-toolbar {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -99,7 +99,7 @@
   }
 
   /* Viewport / scroll area */
-  .custom-table-viewport {
+  .table-edit-viewport {
     position: relative;
     flex: 1;
     overflow: auto;
@@ -114,7 +114,7 @@
     background-color: var(--ct-row-bg, var(--ct-bg));
   }
 
-  .custom-table-table {
+  .table-edit-table {
     width: 100%;
   }
 

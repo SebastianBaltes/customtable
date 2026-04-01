@@ -97,9 +97,9 @@ interface IProps {
   colSelection: boolean;
 }
 
-type CustomTableProps = IRequiredProps & Partial<IProps>;
+type TableEditProps = IRequiredProps & Partial<IProps>;
 
-export const CustomTable: React.FC<CustomTableProps> = React.memo(
+export const TableEdit: React.FC<TableEditProps> = React.memo(
   ({
     rows,
     columns,
@@ -130,7 +130,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     colSelection: colSelectionProp,
     columnWidths,
     onColumnResize,
-  }: CustomTableProps) => {
+  }: TableEditProps) => {
     const t = React.useMemo(() => resolveTranslations(translationsProp), [translationsProp]);
     const [tableId] = React.useState(() => `MkEu3ZWrGK${Math.floor(Math.random() * 1000000)}`);
 
@@ -292,7 +292,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
       fillRectangleStickyRef,
       setCursorRef,
       handleKeyDown: baseCursorKeyDown,
-      customTableRef,
+      tableEditRef,
     } = useCursor(displayRows, columns, numberOfStickyColums, onSelectionChange);
 
     const { stickyColumnsLefts } = useStickyColumnsLeftChecker(
@@ -325,7 +325,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
      * `snapshotRows` is the rows state before the mutation (for rollback).
      */
     const triggerShake = React.useCallback(() => {
-      const el = customTableRef.current as HTMLDivElement | null;
+      const el = tableEditRef.current as HTMLDivElement | null;
       if (!el) return;
       el.classList.remove("shake");
       // Force reflow so re-adding the class restarts the animation
@@ -336,7 +336,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
         el.removeEventListener("animationend", onEnd);
       };
       el.addEventListener("animationend", onEnd);
-    }, [customTableRef]);
+    }, [tableEditRef]);
 
     // Expose triggerShake to parent via ref
     React.useEffect(() => {
@@ -1064,9 +1064,9 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
     return (
       <TranslationsContext.Provider value={t}>
         <div
-          ref={customTableRef}
+          ref={tableEditRef}
           className={classNames(
-            "custom-table",
+            "table-edit",
             pending && "pending",
             loadingProp && "loading",
             textEllipsisLength && "has-ellipsis",
@@ -1113,7 +1113,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
           )}
           <div
             ref={viewportRef}
-            className="custom-table-viewport"
+            className="table-edit-viewport"
             onContextMenu={(event) => {
               // Don't show context menu when a dialog is open
               if (searchReplaceOpen || document.querySelector(".editor-dialog-overlay")) {
@@ -1228,7 +1228,7 @@ export const CustomTable: React.FC<CustomTableProps> = React.memo(
               />
             )}
           </div>
-          <div className="custom-table-toolbar">
+          <div className="table-edit-toolbar">
             <span>+</span>
             <input
               type="number"

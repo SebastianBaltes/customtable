@@ -10,9 +10,9 @@ import {
   RowMeta,
   SortConfig,
 } from "./Types";
-import { CustomColHeader } from "./CustomColHeader";
-import { CustomRow } from "./CustomRow";
-import { defaultRowKey } from "./CustomTable";
+import { ColHeader } from "./ColHeader";
+import { TableRow } from "./TableRow";
+import { defaultRowKey } from "./TableEdit";
 import classNames from "./classNames";
 
 export const RowTable = React.memo(
@@ -91,7 +91,7 @@ export const RowTable = React.memo(
           <tr>
             {columns.map((column, colIdx) => {
               return (
-                <CustomColHeader
+                <ColHeader
                   key={column.name}
                   {...{ colIdx, cursorRef, setCursorRef, column, rowsLength: rows.length }}
                   sticky={colIdx < numberOfStickyColums}
@@ -119,7 +119,7 @@ export const RowTable = React.memo(
             const rowMeta = rowMetaSlice?.row;
             const cellMetaForRow = rowMetaSlice?.cells;
             return (
-              <CustomRow
+              <TableRow
                 key={rk}
                 {...{
                   row,

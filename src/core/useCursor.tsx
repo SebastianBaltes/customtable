@@ -135,17 +135,17 @@ export function useCursor(
 
   const handleKeyDown = useCursorKeys(cursorRef, setCursorRef, rows, columns, tableRef);
 
-  const customTableRef = useRef(null);
+  const tableEditRef = useRef(null);
 
   useEffect(() => {
-    if (customTableRef.current) {
-      (customTableRef.current as HTMLDivElement).focus();
+    if (tableEditRef.current) {
+      (tableEditRef.current as HTMLDivElement).focus();
     }
   }, []);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      const el = customTableRef.current as HTMLElement | null;
+      const el = tableEditRef.current as HTMLElement | null;
       const target = e.target as HTMLElement | null;
       // Don't deselect when clicking inside the table or its context menu portal.
       if (
@@ -179,6 +179,6 @@ export function useCursor(
     fillRectangleStickyRef,
     setCursorRef,
     handleKeyDown,
-    customTableRef,
+    tableEditRef,
   };
 }

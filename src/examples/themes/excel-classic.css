@@ -91,7 +91,7 @@
 
 
 /* Excel-style checkboxes — classic Windows form controls */
-.custom-table {
+.table-edit {
   & input[type="checkbox"] {
     -webkit-appearance: none;
     appearance: none;
@@ -133,12 +133,12 @@
 }
 
 /* Cell-meta utility classes */
-.custom-table .cell-error {
+.table-edit .cell-error {
   background-color: var(--ct-cell-error-bg);
   color: var(--ct-cell-error-text);
 }
 
-.custom-table .row-readonly td {
+.table-edit .row-readonly td {
   background-color: var(--ct-row-readonly-bg);
   color: var(--ct-row-readonly-text);
 }
