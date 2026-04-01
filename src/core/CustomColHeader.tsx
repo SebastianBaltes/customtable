@@ -243,6 +243,7 @@ export const CustomColHeader = React.memo(
         )}
         onMouseDown={(event) => {
           if (isInteractiveTarget(event.target as HTMLElement)) return;
+          if (column.selectable === false) return;
           setCursorRef({
             editing: false,
             filling: false,
@@ -265,7 +266,7 @@ export const CustomColHeader = React.memo(
         }}
       >
         <div className="col-header-content">
-          <span className="col-header-label" onClick={handleSortClick}>
+          <span className="col-header-label" title={column.headerTitle} onClick={handleSortClick}>
             {label}
             {pendingSortColumn === column.name ? (
               <span className="col-sort-spinner" aria-label="loading" />

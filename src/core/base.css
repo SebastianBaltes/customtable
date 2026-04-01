@@ -105,13 +105,13 @@
     overflow: auto;
     display: grid;
     align-content: start;
-    contain: strict;
     background: var(--ct-empty-area-bg, hsl(0, 0%, 92%));
   }
 
   table {
     border-collapse: collapse;
     border: none;
+    background-color: var(--ct-row-bg, var(--ct-bg));
   }
 
   .custom-table-table {
@@ -148,7 +148,7 @@
   .col-header {
     padding-right: 10px;
     padding-left: 5px;
-    position: relative;
+    /* position: sticky (from thead th) provides the positioning context */
   }
 
   .col-resize-handle {

@@ -148,9 +148,15 @@ export interface ColumnConfig<T> {
   freeText?: boolean;
 
   /**
-   * Comment or description for the field.
+   * Tooltip text shown as HTML title attribute on the column header.
    */
-  comment?: string;
+  headerTitle?: string;
+
+  /**
+   * Whether clicking the column header selects the entire column.
+   * Default: true.
+   */
+  selectable?: boolean;
 
   /**
    * Number display format. Only meaningful for type "Number".
@@ -232,6 +238,7 @@ export interface ColumnConfig<T> {
    * "AA## #### #### #### #### ##" (IBAN).
    */
   inputMask?: string;
+
 }
 
 export type FilterEditorParams = {

@@ -4472,4 +4472,110 @@ test.describe("Empty area below rows", () => {
     expect(bgColor).not.toBe("rgba(0, 0, 0, 0)");
     expect(bgColor).not.toBe("rgb(255, 255, 255)");
   });
+
+  test("table cells should NOT have gray background", async ({ page }) => {
+    // Filter to get only a few rows
+    const filterInput = page.locator("table thead th").first().locator(".col-filter-input");
+    await filterInput.fill("42");
+    await page.waitForTimeout(200);
+
+    // The table itself should have a white (row-bg) background, not gray
+    const table = page.locator(".custom-table-viewport table");
+    const tableBg = await table.evaluate((el) => getComputedStyle(el).backgroundColor);
+
+    // Light theme: --ct-row-bg is white
+    expect(tableBg).toBe("rgb(255, 255, 255)");
+  });
+});
+
+// ============================================================================
+// Column header title tooltip (headerTitle)
+// ============================================================================
+test.describe("Column header title tooltip", () => {
+  test("should show headerTitle as title tooltip on column header", async ({ page }) => {
+    // "First Name" column (index 2) has headerTitle set
+    const firstNameLabel = page.locator("table thead th").nth(2).locator(".col-header-label");
+    await expect(firstNameLabel).toHaveAttribute("title", "First name of the person");
+  });
+
+  test("should show headerTitle tooltip on ID column header", async ({ page }) => {
+    // "ID" column (index 0) has headerTitle set
+    const idLabel = page.locator("table thead th").first().locator(".col-header-label");
+    await expect(idLabel).toHaveAttribute("title", "Unique internal row ID");
+  });
+});
+
+// ============================================================================
+// Sticky header after scroll
+// ============================================================================
+test.describe("Sticky column headers", () => {
+  test("thead should stay visible after scrolling down", async ({ page }) => {
+    const viewport = page.locator(".custom-table-viewport");
+    const th = page.locator("table thead th").first();
+
+    // Scroll the viewport down
+    await viewport.evaluate((el) => (el.scrollTop = 300));
+    await page.waitForTimeout(100);
+
+    const thBox = await th.boundingBox();
+    const vpBox = await viewport.boundingBox();
+
+    expect(thBox).not.toBeNull();
+    expect(vpBox).not.toBeNull();
+    // Header should remain at the top of the viewport
+    expect(Math.abs(thBox!.y - vpBox!.y)).toBeLessThan(5);
+  });
+});
+
+// ============================================================================
+// Column selectable configuration
+// ============================================================================
+test.describe("Column selectable", () => {
+  test("clicking a selectable column header should select from header to last row", async ({
+    page,
+  }) => {
+    // "First Name" (index 2) is selectable (default)
+    // Use mousedown on the th itself (not the label, which also triggers sort+reset)
+    const th = page.locator("table thead th").nth(2);
+    await th.dispatchEvent("mousedown", { button: 0 });
+    await page.waitForTimeout(100);
+
+    // The selection rectangle should span from the header down
+    const selRect = page.locator("#selection-rectangle");
+    const selBox = await selRect.boundingBox();
+    const thBox = await th.boundingBox();
+
+    expect(selBox).not.toBeNull();
+    expect(thBox).not.toBeNull();
+
+    // Selection top should be at or above the header top (covers the header)
+    expect(selBox!.y).toBeLessThanOrEqual(thBox!.y + 2);
+    // Selection should be tall (spanning many rows)
+    expect(selBox!.height).toBeGreaterThan(200);
+  });
+
+  test("clicking a non-selectable column header should NOT select the column", async ({
+    page,
+  }) => {
+    // "Email" (index 4) has selectable: false
+    const table = page.locator(".custom-table");
+    await table.focus();
+
+    // First click somewhere else to establish a baseline cursor
+    await page.locator("table tbody tr").first().locator("td").nth(2).click();
+    await page.waitForTimeout(100);
+
+    // Now click the Email header
+    const emailHeader = page.locator("table thead th").nth(4);
+    await emailHeader.click();
+    await page.waitForTimeout(100);
+
+    // The selection should NOT span all rows (column not selected)
+    const selRect = page.locator("#selection-rectangle");
+    const selBox = await selRect.boundingBox();
+    // Either no selection or a small single-cell selection, not a full column
+    if (selBox) {
+      expect(selBox.height).toBeLessThan(200);
+    }
+  });
 });
