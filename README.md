@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="react-grid-db-editor" width="360" />
+  <img src="assets/logo.jpeg" alt="react-grid-db-editor"/>
 </p>
 
 <p align="center">
