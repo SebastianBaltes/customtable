@@ -20,9 +20,6 @@ TableCraft sits between a rigid single-record form and a free-form spreadsheet. 
 > **[Full Demo](https://sebastianbaltes.github.io/react-tablecraft/)** — all features, async backend simulation, 8 themes
 >
 > **[Simple Demo](https://sebastianbaltes.github.io/react-tablecraft/simple.html)** — minimal setup, 10 columns, 5 rows
->
-
-https://github.com/SebastianBaltes/react-tablecraft/raw/master/assets/example-video.mp4
 
 ---
 
