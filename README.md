@@ -1,20 +1,18 @@
-# TableCraft
+# react-tablecraft
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)
 ![React](https://img.shields.io/badge/React-18+-61dafb.svg)
 
-A powerful Schema-bound Data Grid for React, designed for high-efficiency bulk-editing of structured datasets.
+A schema-bound data grid for React — built for keyboard-driven bulk editing of structured datasets.
 
-Unlike a free-form spreadsheet (like Excel), TableCraft is built specifically as a tabular CRUD interface for databases.
-It combines the speed of keyboard-driven spreadsheet interaction with the data integrity of a fixed schema.
-It is the ideal middle ground between a rigid single-record form and a chaotic, unstructured spreadsheet.
+TableCraft sits between a rigid single-record form and a free-form spreadsheet. It combines the speed of Excel-style interaction (arrow keys, fill drag, copy/paste, undo/redo) with the data integrity of a fixed schema and built-in async backend integration.
 
-By utilizing a native HTML `<table>` instead of virtualization, TableCraft ensures a pixel-perfect layout and seamless CSS styling. While ideal for small to medium datasets, it can easily handle larger data through standard pagination.
+<!-- TODO: Screenshot of the full demo showing the table with a few rows, theming, and the toolbar -->
 
-> **Full Demo:** <https://sebastianbaltes.github.io/react-tablecraft/> — all features, async backend simulation, 8 themes
+> **[Full Demo](https://sebastianbaltes.github.io/react-tablecraft/)** — all features, async backend simulation, 8 themes
 >
-> **Simple Demo:** <https://sebastianbaltes.github.io/react-tablecraft/simple.html> — minimal setup, 10 columns, 5 rows
+> **[Simple Demo](https://sebastianbaltes.github.io/react-tablecraft/simple.html)** — minimal setup, 10 columns, 5 rows
 
 ---
 
@@ -24,166 +22,77 @@ By utilizing a native HTML `<table>` instead of virtualization, TableCraft ensur
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Architecture](#architecture)
-  - [Component Tree](#component-tree)
-  - [Data Flow](#data-flow)
-  - [Cursor & Selection (Direct DOM Updates)](#cursor--selection-direct-dom-updates)
-  - [Filter & Sort (Controlled / Uncontrolled)](#filter--sort-controlled--uncontrolled)
-  - [Cell Meta State](#cell-meta-state)
-  - [Async Callbacks & Rollback](#async-callbacks--rollback)
-  - [Undo / Redo](#undo--redo)
 - [API Reference](#api-reference)
-  - [TableCraft Props](#customtable-props)
-  - [ColumnConfig\<T\>](#columnconfigt)
-  - [NumberFormat](#numberformat)
-  - [Editor\<T\>](#editort)
-  - [CellMetaMap / CellMeta / RowMeta](#cellmetamap--cellmeta--rowmeta)
-  - [SortConfig](#sortconfig)
-  - [FilterState](#filterstate)
-  - [TableTranslations](#tabletranslations)
-  - [CustomContextMenuItem & TableContextState](#customcontextmenuitem--tablecontextstate)
 - [Built-in Editors](#built-in-editors)
-  - [Number Editor](#number-editor)
-  - [Combobox & MultiCombobox](#combobox--multicombobox)
-  - [Boolean Editor](#boolean-editor)
 - [Custom Editors](#custom-editors)
-- [Extensible Context Menu](#extensible-context-menu)
+- [Theming](#theming)
 - [Internationalisation (i18n)](#internationalisation-i18n)
 - [Backend Integration Guide](#backend-integration-guide)
-  - [Controlled Sort & Filter → Backend Query](#1-controlled-sort--filter---backend-query)
-  - [Granular Change Events → Backend Mutations](#2-granular-change-events---backend-mutations)
-  - [Cell Meta for Error States](#3-cell-meta-for-error-states)
-- [Design Decisions](#design-decisions)
-  - [Native HTML Table (No Virtualisation)](#native-html-table-no-virtualisation)
-  - [Cursor via Direct DOM Manipulation](#cursor-via-direct-dom-manipulation)
-  - [Separation of Data and Meta State](#separation-of-data-and-meta-state)
-  - [Immutable Row Updates](#immutable-row-updates)
-  - [Optimistic Updates with Async Rollback](#optimistic-updates-with-async-rollback)
-- [Development](#development)
-  - [Prerequisites](#prerequisites)
-  - [Setup](#setup)
-  - [Dev Server](#dev-server)
-  - [Build Demo](#build-demo)
-  - [TypeScript Check](#typescript-check)
-  - [E2E Tests (Playwright)](#e2e-tests-playwright)
-  - [Project Structure](#project-structure)
-- [Theming](#theming)
-- [Comparison: TableCraft vs. Others](#comparison-customtable-vs-others)
-- [When to use TableCraft](#when-to-use-customtable)
+- [Comparison & When to Use](#comparison--when-to-use)
 - [Performance](#performance)
-  - [Implemented Optimizations](#implemented-optimizations)
-  - [Evaluated but not Implemented](#evaluated-but-not-implemented)
-  - [Profiling](#profiling)
-- [When to use something else](#when-to-use-something-else)
+- [Development](#development)
 - [License](#license)
 
 ---
 
 ## Features
 
-| Feature                           | Description                                                                                                 |
-| --------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| **Spreadsheet-style editing**     | Click or press Enter/F2 to edit, **Escape to cancel**                                                       |
-| **Keyboard navigation**           | Arrow keys, Tab, Home, End, Page Up/Down                                                                    |
-| **Multi-cell selection**          | Shift+Arrow for range selection, click-drag                                                                 |
-| **Ellipsis text display**         | Auto-truncate long text values with a configurable length                                                   |
-| **Fill drag**                     | Excel-style fill handle to copy values across cells                                                         |
-| **Copy & Paste**                  | Ctrl+C / Ctrl+V with tab-separated clipboard (Excel-compatible)                                             |
-| **Undo / Redo**                   | Ctrl+Z / Ctrl+Y with full row-snapshot stack                                                                |
-| **Multi-Sort**                    | Click column headers to sort; Shift+click to add secondary sort criteria with priority numbers              |
-| **Filtering**                     | Per-column text/select filter in each header; Boolean columns get a Yes/No select                           |
-| **Combobox filter**               | Columns with `selectOptions` get a checkbox-dropdown filter; type to narrow the list                        |
-| **Filterable flag**               | Set `filterable: false` on a column to hide its filter input entirely                                       |
-| **Custom filter editor**          | Supply a `filterEditor` component per column to replace the built-in filter input                           |
-| **Controlled filter/sort**        | Optionally control sort & filter state from outside for backend-driven data                                 |
-| **Row creation & deletion**       | Toolbar for row creation; context menu for insertion above/below and deletion                               |
-| **Multiple sticky columns**       | Any number of left-pinned columns                                                                           |
-| **Cell & Row meta state**         | Styles, CSS classes, title attributes, and disabled state per cell/row                                      |
-| **Async callbacks with rollback** | `onCreateRows`, `onUpdateRows`, `onDeleteRows` may return Promises; on rejection the table rolls back       |
-| **Number formatting**             | Locale-aware display with configurable decimal places, thousands separator, prefix/suffix                   |
-| **Cell alignment**                | Per-column `align` override; Number columns default to right-aligned                                        |
-| **Context menu**                  | Right-click menu with insert row, remove rows, copy, paste, delete content — right-click also selects cells |
-| **Extensible context menu**       | Add custom items that receive a full snapshot of the table state at click time                              |
-| **ARIA-conformant focus**         | Table initializes cursor to (0,0) on focus; deselects all cells on blur                                     |
-| **Combobox shows all options**    | Combobox popover shows all options on open; filters only when user types                                    |
-| **Combobox click-to-close**       | Clicking any option in a single-select Combobox commits and closes the popover                              |
-| **Combobox keyboard UX**          | Arrow keys navigate options, Enter selects, Space toggles (multi-select), free-text entry                   |
-| **Boolean keyboard UX**           | Enter on a selected Boolean cell toggles its value without entering edit mode                               |
-| **i18n / translations**           | All built-in UI strings are overridable via a typesafe `translations` prop                                  |
-| **Built-in editors**              | String, Number, Boolean, Combobox, MultiCombobox, Date, DateTime, Time, Duration, Color                     |
-| **Custom editors**                | Provide your own editor component per column                                                                |
-| **Validation**                    | Per-column `validate` function; result shown as `cell-error`/`cell-warning` class + tooltip                 |
-| **Automatic CSS classes**         | Cells and headers receive `col-type-*`, `col-required`, `col-readonly`, `cell-ellipsis` automatically       |
-| **Column `className`**            | Extra CSS class(es) on every `<th>` and `<td>` of a column via `ColumnConfig.className`                     |
-| **Theming**                       | 8 built-in themes; custom themes are plain CSS files with CSS custom properties                             |
-| **Theme pencil icon**             | Per-theme pencil icon for the textarea dialog via `--ct-pencil-icon` CSS variable                          |
-| **`useAsyncTableState` hook**     | Encapsulates deferred snapshots, optimistic edits, inflight tracking, stale detection, and status           |
-| **Shake animation on rollback**   | Table shakes briefly when an async operation fails and rows are rolled back                                 |
-| **Stale data detection**          | Cells changed by the server are marked `cell-stale` with a warning status                                  |
-| **Unsaved cell marking**          | Connection-error edits get `cell-unsaved` class; auto-retry with exponential backoff                       |
-| **`serverOwned` columns**         | Backend-owned columns (e.g. ID) always use server value during merge, ignoring inflight counters            |
-| **`wrap` column option**          | Allow text wrapping per column; all other columns default to `nowrap`                                       |
-| **Column resizing**               | Drag the right edge of column headers to resize; widths can be persisted in localStorage                    |
-| **Column reordering & hiding**    | Dialog for drag & drop column reordering and checkbox-based visibility toggles; persistable in localStorage |
-| **Selection range listener**      | `onSelectionChange` callback provides normalized selection range for aggregation (sum, count, average)      |
-| **Search & Replace (Ctrl+H)**     | Global dialog to find and replace text across the entire dataset or current selection; supports regex        |
-| **Input masking**                 | `inputMask` pattern on ColumnConfig constrains input during typing (e.g. phone numbers, IBAN, IP)          |
-| **Dependent dropdowns**           | `selectOptions` accepts `(row) => string[]` for dynamic options based on other cell values                  |
-| **Date/DateTime/Time editors**    | Locale-aware display via `Intl.DateTimeFormat` with native browser date/time pickers                       |
-| **Duration editor**               | Parses multiple formats (`2h 30m`, `PT2H30M`, `2:30`); normalizes to ISO 8601                              |
-| **Color editor**                  | Hex color input with swatch preview and native browser color picker                                         |
-| **Pagination**                    | Standalone `<Pagination>` component with sliding page window, configurable page sizes, loading spinner      |
+### Editing & Interaction
 
----
+- **Spreadsheet-style editing** — click, Enter, or F2 to edit; Escape to cancel
+- **Keyboard navigation** — arrow keys, Tab, Home/End, Page Up/Down
+- **Multi-cell selection** — Shift+Arrow for ranges, click-drag
+- **Column selection** — click column header area to select entire column (configurable via `colSelection` prop)
+- **Fill drag** — Excel-style fill handle to copy values across cells
+- **Copy & Paste** — Ctrl+C / Ctrl+V with tab-separated clipboard (Excel-compatible)
+- **Undo / Redo** — Ctrl+Z / Ctrl+Y with full row-snapshot history
+- **Search & Replace** — Ctrl+H with regex support, scoped to selection or full dataset (enable via `enableSearchReplace`)
+- **Context menu** — right-click for undo/redo, insert/remove rows, copy, paste, delete, filter by value, search & replace; extensible with custom items. Items are disabled when not applicable.
 
-## Theming
+### Schema & Validation
 
-TableCraft ships with eight ready-made themes and a simple CSS-variable-based theming system that makes it easy to create your own.
+- **10 built-in column types** — String, Number, Boolean, Combobox, MultiCombobox, Date, DateTime, Time, Duration, Color
+- **Custom editors** — plug in your own editor component per column
+- **Per-cell validation** — `validate` function with error/warning severity and tooltips
+- **Input masking** — pattern-based formatting (e.g. phone numbers, IBAN, IP addresses)
+- **Dependent dropdowns** — `selectOptions` as a function of the current row
+- **Number formatting** — locale-aware with configurable decimals, thousands separator, prefix/suffix
 
-### Built-in Themes
+### Layout & Display
 
-| Theme             | Description                                                                               |
-| ----------------- | ----------------------------------------------------------------------------------------- |
-| **Light**         | Clean, neutral default theme                                                              |
-| **Dark**          | Dark backgrounds, light text, styled scrollbars                                           |
-| **Excel Classic** | Traditional Microsoft Excel look — gray headers, green accents                            |
-| **Google Sheets** | White and blue, thin borders, Roboto-like font                                            |
-| **Material**      | MUI DataTable style — borderless cells, row dividers, elevation shadows, generous padding |
-| **Numbers**       | Apple Numbers style — alternating row stripes, subtle colors                              |
-| **Material 3**    | Material Design 3 (Material You) purple scheme, rounded surfaces                         |
-| **High Contrast** | Maximum readability — strong borders, bold colors, WCAG AAA contrast ratios              |
+- **Sticky columns** — any number of left-pinned columns via native CSS
+- **Sticky headers** — column headers remain visible when scrolling vertically
+- **Column resizing** — drag column header edges; columns can be made smaller than content; widths persistable to localStorage
+- **Column reordering & hiding** — drag-and-drop dialog with checkbox visibility toggles
+- **Text ellipsis** — configurable auto-truncation for long values
+- **Cell alignment** — per-column override; numbers right-aligned by default
+- **Text wrapping** — opt-in per column
+- **Empty area styling** — when few rows are displayed, the empty area below shows a distinct background color
 
-### Custom Themes
+### Sorting & Filtering
 
-A theme is just a CSS file that sets CSS custom properties on `:root`. The structural layout (positioning, flexbox, overflow, z-index) lives in `core/base.css` and never needs to change — a theme only controls the visual appearance: colors, borders, fonts, padding, shadows.
+- **Multi-sort** — click headers to sort; Shift+click for secondary criteria with priority numbers
+- **Per-column filters** — text input in each header; combobox dropdown for columns with options
+- **Filter by value** — right-click a cell to filter by its value; clear all filters from context menu
+- **Controlled or uncontrolled** — manage sort/filter state locally or drive it from your backend
+- **Custom filter editors** — replace the built-in filter UI per column
 
-```css
-/* my-theme.css */
-:root {
-  --ct-bg: #fff;
-  --ct-text: #333;
-  --ct-font: "My Font", sans-serif;
-  --ct-border: #ddd;
-  --ct-header-bg: #f5f5f5;
-  --ct-selected-outline: #0066cc;
-  --ct-pencil-icon: "✏️"; /* Icon shown on the textarea dialog button */
-  /* … see any built-in theme for the full list of variables */
-}
-```
+### Backend Integration
 
-#### `--ct-pencil-icon`
+- **Async callbacks with rollback** — `onCreateRows`, `onUpdateRows`, `onDeleteRows` return Promises; rejection rolls back automatically
+- **Optimistic updates** — changes appear instantly; inflight tracking prevents overwrites
+- **Stale data detection** — cells changed by the server are marked visually
+- **`useAsyncTableState` hook** — one hook for deferred snapshots, optimistic edits, inflight tracking, status derivation
+- **Cell meta state** — styles, CSS classes, tooltips, and disabled state per cell or row
 
-Each theme defines the pencil icon shown on the textarea-dialog trigger button via the `--ct-pencil-icon` CSS variable:
+### More
 
-| Theme(s) | Icon |
-| --- | --- |
-| Light, Dark | 🖉 |
-| Material, Material 3 | ✏️ |
-| Excel Classic, Google Sheets | 📝 |
-| Numbers, High Contrast | 🖋 |
-
-The fallback (when no theme sets the variable) is `✎`.
-
-To apply a theme, simply import or inject its CSS after `base.css`. The example app demonstrates runtime theme switching by injecting the selected theme's CSS into a `<style>` tag — but for most use cases a static CSS import is all you need.
+- **8 built-in themes** + simple CSS-variable-based custom theming
+- **i18n** — all UI strings overridable via typesafe `translations` prop
+- **Pagination** — standalone `<Pagination>` component, works with any list
+- **Selection range listener** — `onSelectionChange` for aggregation (sum, count, average)
+- **Header tooltips** — `headerTitle` per column for descriptive tooltips on column headers
+- **ARIA-conformant focus** — proper focus/blur behavior for accessibility
 
 ---
 
@@ -193,34 +102,7 @@ To apply a theme, simply import or inject its CSS after `base.css`. The example 
 npm install react-tablecraft
 ```
 
-**Peer dependencies:** `react >= 18`, `react-dom >= 18`
-
-## Dependencies
-
-Runtime dependencies (as shipped in package.json):
-
-- `react` ^18.2.0
-- `react-dom` ^18.2.0
-
-Dev dependencies used for development and building the demo:
-
-- `@playwright/test` ^1.58.2
-- `@types/jest` ^29.5.3
-- `@types/react` ^18.2.15
-- `@types/react-dom` ^18.2.7
-- `@vitejs/plugin-react` ^6.0.1
-- `prettier` ^3.0.0
-- `process` ^0.11.10
-- `react-test-renderer` ^18.2.0
-- `typescript` ^5.1.6
-- `vite` ^8.0.3
-
-Minimum tooling versions (recommended):
-
-- Node.js >= 18
-- npm >= 9
-
-These are the packages used in this repository and declared in `package.json`. When consuming the package as a dependency, only the runtime dependencies and peer dependencies are required in the host project.
+**Peer dependencies:** `react >= 17`, `react-dom >= 17`
 
 The package ships TypeScript sources and type declarations.
 
@@ -231,7 +113,6 @@ The package ships TypeScript sources and type declarations.
 ```tsx
 import React, { useState } from "react";
 import { TableCraft, ColumnConfig, Row } from "react-tablecraft";
-// Import the default styles (or provide your own):
 import "react-tablecraft/style.css";
 
 const columns: ColumnConfig<any>[] = [
@@ -240,7 +121,7 @@ const columns: ColumnConfig<any>[] = [
   {
     name: "salary",
     type: "Number",
-    numberFormat: { decimalPlaces: 2, thousandsSeparator: true, suffix: " €" },
+    numberFormat: { decimalPlaces: 2, thousandsSeparator: true, suffix: " EUR" },
   },
   { name: "role", type: "Combobox", selectOptions: ["Admin", "User", "Guest"] },
   { name: "active", type: "Boolean" },
@@ -262,6 +143,7 @@ export const App = () => {
       onRowsChange={setRows}
       rowKey={(row) => row.id}
       numberOfStickyColums={1}
+      enableSearchReplace
     />
   );
 };
@@ -270,6 +152,25 @@ export const App = () => {
 ---
 
 ## Architecture
+
+### Data Flow
+
+TableCraft is a **controlled component** — it does not own the data:
+
+```mermaid
+flowchart LR
+  Parent[Parent App]
+  CT[TableCraft]
+
+  Parent -- "rows (prop)" --> CT
+  CT -- "onRowsChange(rows)" --> Parent
+  Parent -.-> |"setRows (useState)"| Parent
+```
+
+Every mutation (cell edit, paste, fill drag, create/delete rows) produces a new `Row[]` array and calls:
+
+1. **`onRowsChange(newRows)`** — always called with the complete new array
+2. **`onUpdateRows` / `onCreateRows` / `onDeleteRows`** — called with only the affected rows, for targeted backend operations
 
 ### Component Tree
 
@@ -291,123 +192,15 @@ flowchart TD
   CT --> CM
 ```
 
-### Data Flow
+### Key Design Decisions
 
-TableCraft follows the **Controlled Component** pattern. It does **not** own the data:
-
-```mermaid
-flowchart LR
-  Parent[Parent App]
-  CT[TableCraft]
-
-  Parent -- "rows (prop)" --> CT
-  CT -- "onRowsChange(rows)" --> Parent
-  Parent -.-> |"setRows (useState)"| Parent
-```
-
-The diagram above illustrates the two-way data flow: data is passed down as props from the parent application, and any changes are reported back via the `onRowsChange` callback.
-Every data mutation inside the table (cell edit, paste, delete, fill drag, create rows, delete rows) produces a **new `Row[]` array** and calls:
-
-1. **`onRowsChange(newRows)`** — always called with the complete new array.
-2. **`onUpdateRows(changedRows)`** / **`onCreateRows(newRows)`** / **`onDeleteRows(removedRows)`** — called with only the affected rows, suitable for targeted backend operations.
-
-The table never mutates the `rows` prop directly. The parent must accept the new array via `onRowsChange` and feed it back.
-
-### Cursor & Selection (Direct DOM Updates)
-
-For performance, cursor movement does **not** trigger React re-renders. Instead, the `useCursor` hook maintains a mutable `cursorRef` and updates CSS classes directly on DOM elements via `directDomUpdateForCursor`. A React state re-render is only triggered when the editing state changes (to mount/unmount the editor component).
-
-The selection rectangle and fill rectangle are absolutely positioned `<div>` overlays whose positions are computed from the bounding rects of the underlying `<td>` elements.
-
-### Filter & Sort (Controlled / Uncontrolled)
-
-Filter and sort support two modes:
-
-**Uncontrolled (default):** The table manages `sortConfig` and `filters` internally. Filtering and sorting are computed client-side in a `useMemo` over the `rows` array.
-
-**Controlled:** Pass `sortConfig` and/or `filters` as props. In this mode:
-
-- The internal state is bypassed.
-- User interactions call `onSortChange(config)` / `onFilterChange(filters)` instead of setting local state.
-- The parent is responsible for performing the backend query and providing the resulting `rows`.
-
-```tsx
-// Controlled sort & filter example
-const [sort, setSort] = useState<SortConfig>(null);
-const [filters, setFilters] = useState<FilterState>({});
-const [rows, setRows] = useState<Row[]>([]);
-
-// Fetch from backend when sort/filter changes
-useEffect(() => {
-  fetchFromBackend(sort, filters).then(setRows);
-}, [sort, filters]);
-
-<TableCraft
-  rows={rows}
-  columns={columns}
-  onRowsChange={setRows}
-  sortConfig={sort}
-  onSortChange={setSort}
-  filters={filters}
-  onFilterChange={setFilters}
-/>;
-```
-
-### Cell Meta State
-
-The `cellMeta` prop provides a way to attach **styles, CSS classes, title attributes, and a disabled state** to individual cells or entire rows — without mixing this metadata into the row data.
-
-```tsx
-const cellMeta: CellMetaMap = {
-  "row-key-3": {
-    // Apply to the entire <tr>:
-    row: { style: { backgroundColor: "#fee" }, title: "This row has errors" },
-    cells: {
-      // Apply to a specific cell:
-      name: {
-        style: { backgroundColor: "#fdd" },
-        title: "Name is required",
-        className: "cell-error",
-      },
-      // Disable editing for a cell:
-      role: { disabled: true, title: "Cannot change role" },
-    },
-  },
-};
-```
-
-- **`row`** targets the `<tr>` element (uses the `RowMeta` type).
-- **`cells`** is a map of column names targeting the `<td>` element (uses the `CellMeta` type).
-- `disabled: true` prevents the cell from entering edit mode and blocks `onChange`.
-- The map is keyed by the value returned from the `rowKey` prop function.
-
-### Async Callbacks & Rollback
-
-`onCreateRows`, `onUpdateRows`, and `onDeleteRows` may return a **`Promise<void>`**. When they do:
-
-1. The table enters a **pending state** (`pointerEvents: none`, opacity reduced).
-2. On **resolve**: the pending state is cleared; the mutation is accepted.
-3. On **reject**: the table **rolls back** to the row snapshot before the mutation.
-
-```tsx
-<TableCraft
-  // ...
-  onUpdateRows={async (updatedRows) => {
-    await fetch("/api/rows", {
-      method: "PATCH",
-      body: JSON.stringify(updatedRows),
-    });
-    // On success: nothing to do — table already shows the new state.
-    // On failure: throw an error → table rolls back automatically.
-  }}
-/>
-```
-
-### Undo / Redo
-
-The `useUndoRedo` hook maintains two stacks of `Row[]` snapshots (undo and redo). Before every mutation, the current `rows` array is pushed onto the undo stack. `Ctrl+Z` pops the last snapshot and restores it; `Ctrl+Y` re-applies.
-
-When an undo or redo action occurs, the component automatically calculates the difference between the states and triggers the appropriate change callbacks (`onCreateRows`, `onUpdateRows`, `onDeleteRows`). It also fires the specific `onUndo` and `onRedo` callbacks if provided. All of these participate in the async rollback mechanism seamlessly, allowing you to transparently sync undo/redo actions with your backend.
+| Decision | Rationale |
+| --- | --- |
+| **Native `<table>` (no virtualization)** | Browser handles column widths, text wrapping, sticky positioning natively. Full CSS control. Screen-reader friendly. Trade-off: not suited for 5,000+ rows without pagination. |
+| **Cursor via direct DOM manipulation** | Arrow-key movement updates CSS classes directly — no React re-renders. State updates only trigger when entering/exiting edit mode. |
+| **Separate data and meta state** | `rows` is the business data; `cellMeta` is transient UI state (errors, disabled cells). They change independently. |
+| **Immutable row updates** | Every mutation creates a new array. Works with React reconciliation, enables undo snapshots, and keeps `onRowsChange` simple. |
+| **Optimistic updates with async rollback** | Changes appear instantly. If the backend rejects, the table rolls back and shakes briefly for visual feedback. |
 
 ---
 
@@ -415,35 +208,37 @@ When an undo or redo action occurs, the component automatically calculates the d
 
 ### TableCraft Props
 
-| Prop                    | Type                                              | Required | Default          | Description                                                                                                       |
-| ----------------------- | ------------------------------------------------- | -------- | ---------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `rows`                  | `Row[]`                                           | ✅       | —                | The data to display. Each row is a `Record<string, any>`.                                                         |
-| `columns`               | `ColumnConfig<any>[]`                             | ✅       | —                | Column definitions.                                                                                               |
-| `onRowsChange`          | `(rows: Row[]) => void`                           | —        | —                | Called with the full new rows array after every mutation.                                                         |
-| `onCreateRows`          | `(rows: Row[]) => void \| Promise<void>`          | —        | —                | Called with newly created rows. Reject to rollback.                                                               |
-| `onUpdateRows`          | `(rows: Row[]) => void \| Promise<void>`          | —        | —                | Called with updated rows. Reject to rollback.                                                                     |
-| `onDeleteRows`          | `(rows: Row[]) => void \| Promise<void>`          | —        | —                | Called with deleted rows. Reject to rollback.                                                                     |
-| `onUndo`                | `(recoveredRows: Row[]) => void \| Promise<void>` | —        | —                | Called specifically when an undo is performed. Reject to rollback.                                                |
-| `onRedo`                | `(recoveredRows: Row[]) => void \| Promise<void>` | —        | —                | Called specifically when a redo is performed. Reject to rollback.                                                 |
-| `rowKey`                | `(row: Row, index: number) => string`             | —        | `(_, i) => ""+i` | Stable key for each row. Used for React keys and `cellMeta` lookup.                                               |
-| `numberOfStickyColums`  | `number`                                          | —        | `0`              | Number of left-pinned (sticky) columns.                                                                           |
-| `sortConfig`            | `SortConfig`                                      | —        | _(internal)_     | Controlled sort state. Pass `undefined` for uncontrolled.                                                         |
-| `onSortChange`          | `(config: SortConfig) => void`                    | —        | —                | Called when the user changes the sort. Required when `sortConfig` is controlled.                                  |
-| `filters`               | `FilterState`                                     | —        | _(internal)_     | Controlled filter state. Pass `undefined` for uncontrolled.                                                       |
-| `onFilterChange`        | `(filters: FilterState) => void`                  | —        | —                | Called when the user changes a filter. Required when `filters` is controlled.                                     |
-| `cellMeta`              | `CellMetaMap`                                     | —        | —                | Meta information (styles, disabled, title) per cell/row.                                                          |
-| `textEllipsisLength`    | `number`                                          | —        | —                | Truncates long text to this length with ` [...]` in display mode.                                                 |
-| `translations`          | `Partial<TableTranslations>`                      | —        | English defaults | Override any built-in UI string. See [Internationalisation](#internationalisation-i18n).                          |
-| `extraContextMenuItems` | `CustomContextMenuItem[]`                         | —        | `[]`             | Custom entries appended to the right-click context menu. See [Extensible Context Menu](#extensible-context-menu). |
-| `status`                | `TableStatus`                                     | —        | —                | Status indicator in the toolbar. See [TableStatus](#tablestatus).                                                 |
-| `loading`               | `boolean`                                         | —        | `false`          | Shows loading spinners on active filters and sets `cursor: wait`.                                                 |
-| `pendingSortColumn`     | `string`                                          | —        | —                | Column name with a pending sort — shows a spinner instead of the sort arrow.                                      |
-| `pendingFilterColumns`  | `string[]`                                        | —        | —                | Column names with pending filter changes — shows spinners in the filter inputs.                                   |
-| `columnWidths`          | `Record<string, number>`                          | —        | —                | Map of column names to pixel widths for resizable columns.                                                        |
-| `onColumnResize`        | `(colName: string, width: number) => void`        | —        | —                | Called when a column is resized via drag handle.                                                                  |
-| `onSelectionChange`     | `(selection: SelectionInfo) => void`              | —        | —                | Called when the cell selection range changes. Useful for showing aggregated values.                                |
-| `shakeRef`              | `MutableRefObject<(() => void) \| null>`          | —        | —                | Ref populated with a function to trigger the shake animation programmatically.                                    |
-| `colSelection`          | `boolean`                                         | —        | `false`          | Enable column selection by clicking the column header area (not the label). The label click always sorts.         |
+| Prop | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `rows` | `Row[]` | yes | — | Data to display. Each row is a `Record<string, any>`. |
+| `columns` | `ColumnConfig<any>[]` | yes | — | Column definitions. |
+| `onRowsChange` | `(rows: Row[]) => void` | — | — | Called with the full new rows array after every mutation. |
+| `onCreateRows` | `(rows: Row[]) => void \| Promise<void>` | — | — | Called with newly created rows. Reject to rollback. |
+| `onUpdateRows` | `(rows: Row[]) => void \| Promise<void>` | — | — | Called with updated rows. Reject to rollback. |
+| `onDeleteRows` | `(rows: Row[]) => void \| Promise<void>` | — | — | Called with deleted rows. Reject to rollback. |
+| `onUndo` | `(recoveredRows: Row[]) => void \| Promise<void>` | — | — | Called on undo. Reject to rollback. |
+| `onRedo` | `(recoveredRows: Row[]) => void \| Promise<void>` | — | — | Called on redo. Reject to rollback. |
+| `rowKey` | `(row: Row, index: number) => string` | — | `(_, i) => ""+i` | Stable key for each row. |
+| `numberOfStickyColums` | `number` | — | `0` | Number of left-pinned columns. |
+| `colSelection` | `boolean` | — | `false` | Enable column selection by clicking the column header area (not the label). Label click always sorts. |
+| `enableSearchReplace` | `boolean` | — | `false` | Enable the Search & Replace dialog (Ctrl+H) and context menu entry. |
+| `sortConfig` | `SortConfig` | — | _(internal)_ | Controlled sort state. |
+| `onSortChange` | `(config: SortConfig) => void` | — | — | Called when the user changes sort. |
+| `filters` | `FilterState` | — | _(internal)_ | Controlled filter state. |
+| `onFilterChange` | `(filters: FilterState) => void` | — | — | Called when the user changes a filter. |
+| `cellMeta` | `CellMetaMap` | — | — | Styles, disabled state, tooltips per cell/row. |
+| `textEllipsisLength` | `number` | — | — | Truncate long text to this length with `[...]`. |
+| `translations` | `Partial<TableTranslations>` | — | English | Override built-in UI strings. |
+| `extraContextMenuItems` | `CustomContextMenuItem[]` | — | `[]` | Custom entries for the right-click menu. |
+| `caption` | `string` | — | — | Accessible caption (rendered as visually-hidden `<caption>` element). |
+| `status` | `TableStatus` | — | — | Status indicator in the toolbar (`ok` / `info` / `warning` / `error`). |
+| `loading` | `boolean` | — | `false` | Shows spinners on active filters; sets `cursor: wait`. |
+| `pendingSortColumn` | `string` | — | — | Shows a spinner instead of the sort arrow on this column. |
+| `pendingFilterColumns` | `string[]` | — | — | Shows spinners in these filter inputs. |
+| `columnWidths` | `Record<string, number>` | — | — | Column name to pixel width for resizable columns. |
+| `onColumnResize` | `(colName: string, width: number) => void` | — | — | Called on column resize. |
+| `onSelectionChange` | `(selection: SelectionInfo) => void` | — | — | Called when the selection range changes. |
+| `shakeRef` | `MutableRefObject<(() => void) \| null>` | — | — | Ref to trigger the shake animation programmatically. |
 
 ### ColumnConfig\<T\>
 
@@ -453,125 +248,105 @@ interface ColumnConfig<T> {
   type: string;           // "String" | "Number" | "Boolean" | "Combobox" | "MultiCombobox"
                           // | "Date" | "DateTime" | "Time" | "Duration" | "Color"
   label?: string;         // Display label (defaults to name)
-  readOnly?: boolean;     // Prevent editing
-  required?: boolean;     // Mark as required (adds col-required class)
-  editor?: Editor<T>;     // Custom editor component (overrides type-based lookup)
+  readOnly?: boolean;
+  required?: boolean;     // Adds col-required class
+  editor?: Editor<T>;     // Custom editor (overrides type-based lookup)
   selectOptions?: string[] | ((row: Row) => string[]);
-                          // Options for Combobox/MultiCombobox — static array or function for
-                          // dependent dropdowns (e.g. Country → City)
-  freeText?: boolean;     // Allow custom values in Combobox/MultiCombobox (default: true)
-  multiselect?: boolean;  // Enable multi-select mode (used internally by MultiCombobox)
-  enabledIf?: (row: Row) => boolean;  // Conditional enable
+                          // For Combobox/MultiCombobox — static or dynamic (dependent dropdowns)
+  freeText?: boolean;     // Allow values not in selectOptions (default: true)
+  multiselect?: boolean;  // Multi-select mode
+  enabledIf?: (row: Row) => boolean;
   validate?: (value: any) => boolean | ValidationResult;
-  numberFormat?: NumberFormat;      // Display & parse format for Number columns
-  dateFormat?: DateFormat;          // Display format for Date columns
-  dateTimeFormat?: DateTimeFormat;  // Display format for DateTime columns
-  timeFormat?: TimeFormat;          // Display format for Time columns
-  durationFormat?: DurationFormat;  // Display format for Duration columns
-  inputMask?: string;     // Input mask pattern: # = digit, A = letter, * = any char,
-                          // all other chars are literal separators (e.g. "+## ### ########")
-  align?: "left" | "right" | "center";  // Text alignment (Number defaults to "right")
+  numberFormat?: NumberFormat;
+  dateFormat?: DateFormat;
+  dateTimeFormat?: DateTimeFormat;
+  timeFormat?: TimeFormat;
+  durationFormat?: DurationFormat;
+  inputMask?: string;     // # = digit, A = letter, * = any; rest is literal
+  align?: "left" | "right" | "center";
   headerTitle?: string;   // Tooltip shown on column header (HTML title attribute)
-  filterable?: boolean;   // Set to false to hide the filter input (default: true)
-  filterEditor?: FilterEditor;   // Custom filter component
-  dialogTitle?: string;   // Title template for the textarea dialog editor
-  wrap?: boolean;         // Allow text wrapping (default: false = nowrap)
-  className?: string;     // Extra CSS class(es) applied to <th> and <td>
-  serverOwned?: boolean;  // Backend-owned — always overwritten during merge (default: false)
+  filterable?: boolean;   // Hide filter input (default: true)
+  filterEditor?: FilterEditor;
+  dialogTitle?: string;   // Title for textarea dialog editor
+  wrap?: boolean;         // Allow text wrapping (default: false)
+  className?: string;     // Extra CSS class(es) on <th> and <td>
+  serverOwned?: boolean;  // Always use backend value during merge (default: false)
 }
 ```
 
-### NumberFormat
+### Type Definitions
 
-Controls how `Number` columns are displayed and parsed. The raw JS `number` is always stored as-is in the row data; this only affects rendering.
+<details>
+<summary>NumberFormat</summary>
 
 ```ts
 interface NumberFormat {
-  decimalPlaces?: number; // Fixed decimal places (undefined = Intl default)
-  thousandsSeparator?: boolean; // Show thousands grouping separator (default: true)
-  locale?: string; // BCP 47 locale, e.g. "de-DE", "en-US" (default: browser locale)
-  prefix?: string; // Non-editable prefix, e.g. "$ " or "+ "
-  suffix?: string; // Non-editable suffix, e.g. " €" or " %"
+  decimalPlaces?: number;
+  thousandsSeparator?: boolean; // default: true
+  locale?: string;             // BCP 47, e.g. "de-DE"
+  prefix?: string;             // e.g. "$ "
+  suffix?: string;             // e.g. " EUR"
 }
 ```
 
-**Edit mode** shows the number as a formatted string (without prefix/suffix) in a `type="text"` input. Prefix and suffix are rendered as non-editable CSS `::before`/`::after` pseudo-elements. The input is parsed back on commit using the configured locale.
+</details>
 
-**Single-clicking** an already-selected Number cell enters edit mode and positions the text cursor at the exact click location.
-
-```tsx
-// Examples
-{ name: "salary",  type: "Number", numberFormat: { decimalPlaces: 2, thousandsSeparator: true, suffix: " €" } }
-{ name: "score",   type: "Number", numberFormat: { decimalPlaces: 1, thousandsSeparator: false } }
-{ name: "bonus",   type: "Number", numberFormat: { decimalPlaces: 0, prefix: "+ ", suffix: " €" } }
-{ name: "rate",    type: "Number", numberFormat: { locale: "de-DE", decimalPlaces: 2, suffix: " %" } }
-```
-
-### DateFormat / DateTimeFormat / TimeFormat / DurationFormat
+<details>
+<summary>DateFormat / DateTimeFormat / TimeFormat / DurationFormat</summary>
 
 ```ts
 interface DateFormat {
-  locale?: string;                          // BCP 47 locale (default: navigator.language)
-  dateStyle?: "full" | "long" | "medium" | "short";  // Intl.DateTimeFormat dateStyle
-  options?: Intl.DateTimeFormatOptions;     // Full override (takes precedence over dateStyle)
+  locale?: string;
+  dateStyle?: "full" | "long" | "medium" | "short";
+  options?: Intl.DateTimeFormatOptions;
 }
 
 interface DateTimeFormat {
   locale?: string;
-  dateStyle?: "full" | "long" | "medium" | "short";  // Default: "short"
-  timeStyle?: "full" | "long" | "medium" | "short";  // Default: "short"
+  dateStyle?: "full" | "long" | "medium" | "short";
+  timeStyle?: "full" | "long" | "medium" | "short";
   options?: Intl.DateTimeFormatOptions;
 }
 
 interface TimeFormat {
   locale?: string;
-  showSeconds?: boolean;                    // Include seconds in display (default: false)
-  hourCycle?: "h11" | "h12" | "h23" | "h24";  // Override Intl hour cycle
+  showSeconds?: boolean;
+  hourCycle?: "h11" | "h12" | "h23" | "h24";
 }
 
 interface DurationFormat {
-  style?: "short" | "long" | "iso";  // "short" → "2h 30m", "long" → "2 hours 30 minutes",
-                                     // "iso" → "PT2H30M" (default: "short")
+  style?: "short" | "long" | "iso"; // "short" = "2h 30m", "long" = "2 hours 30 minutes"
 }
 ```
 
-### SelectionInfo
+</details>
+
+<details>
+<summary>SortConfig / FilterState</summary>
 
 ```ts
-interface SelectionInfo {
-  range: { startRow: number; endRow: number; startCol: number; endCol: number };
-  hasSelection: boolean;  // false when cursor is at (-1, -1)
+interface SortCriterion {
+  column: string;
+  direction: "asc" | "desc";
 }
+type SortConfig = SortCriterion[] | null;
+
+type FilterState = Record<string, string>;
 ```
 
-### Editor\<T\>
+**Multi-sort interaction:** Click = single-sort. Shift+Click = add/cycle criterion. Priority numbers (1 2 3) appear next to sort arrows.
 
-A custom editor is a function component receiving `EditorParams<T>`:
+</details>
 
-```ts
-type EditorParams<T> = {
-  value: T;
-  row: Record<string, T>;
-  editing: boolean; // true when the cell is in edit mode
-  columnConfig: ColumnConfig<T>;
-  onChange: (value: T) => void;
-  textEllipsisLength?: number; // The table-level truncation setting
-  initialEditValue: string | null; // Character typed to open edit mode (e.g. "a"), or null
-};
-
-type Editor<T> = (params: EditorParams<T>) => JSX.Element;
-```
-
-`initialEditValue` is set when the user opens edit mode by typing a printable character directly. Use it to pre-fill the editor with that character so the keystroke is not lost.
-
-### CellMetaMap / CellMeta / RowMeta
+<details>
+<summary>CellMetaMap / CellMeta / RowMeta</summary>
 
 ```ts
 interface CellMeta {
   style?: React.CSSProperties;
   className?: string;
-  disabled?: boolean; // Blocks editing and onChange
-  title?: string; // HTML title attribute (tooltip)
+  disabled?: boolean;
+  title?: string;
 }
 
 interface RowMeta {
@@ -580,164 +355,63 @@ interface RowMeta {
   title?: string;
 }
 
-type CellMetaMap = Record<
-  string,
-  {
-    row?: RowMeta; // Applied to <tr>
-    cells?: Record<string, CellMeta>; // Applied to <td>, keyed by column name
-  }
->;
+type CellMetaMap = Record<string, {
+  row?: RowMeta;
+  cells?: Record<string, CellMeta>;
+}>;
 ```
 
-### SortConfig (Multi-Sort)
+The map is keyed by the value returned from `rowKey`.
 
-```ts
-interface SortCriterion {
-  column: string;
-  direction: "asc" | "desc";
-}
+</details>
 
-// Array of criteria — first entry is primary sort, subsequent entries are tie-breakers.
-// null or empty array = unsorted.
-type SortConfig = SortCriterion[] | null;
-```
-
-**Multi-sort interaction:**
-- **Click** a column header → single-sort by that column (replaces all criteria)
-- **Shift+Click** → add/cycle that column as an additional sort criterion
-- Priority numbers (¹²³) appear next to the sort arrows when multiple criteria are active
-- **Shift+Click** on an already-sorted column cycles asc → desc → remove
-
-### FilterState
-
-```ts
-type FilterState = Record<string, string>; // column name → filter text
-```
-
-### FilterEditor
-
-A custom filter component rendered in the column header instead of the built-in `<input>` or Boolean `<select>`:
-
-```ts
-type FilterEditorParams = {
-  value: string; // Current filter string
-  onChange: (value: string) => void;
-  column: ColumnConfig<any>;
-};
-
-type FilterEditor = (params: FilterEditorParams) => JSX.Element;
-```
-
-**Usage:**
-
-```tsx
-const MyRangeFilter: FilterEditor = ({ value, onChange }) => (
-  <input
-    type="number"
-    value={value}
-    placeholder="≥"
-    onChange={e => onChange(e.target.value)}
-    style={{ width: "100%" }}
-  />
-);
-
-{ name: "salary", type: "Number", filterEditor: MyRangeFilter }
-```
-
-### Combobox Filter (built-in, for selectOptions columns)
-
-When a column has `selectOptions`, the built-in filter automatically becomes a **checkbox-dropdown combobox** instead of a plain text input. The user can:
-
-- **Type** to narrow the list of options shown in the dropdown
-- **Check/uncheck** individual options — the filter matches rows where the cell value equals **any** of the checked values (exact match, OR logic)
-- Click **×** to clear all selections
-
-Empty-string values in `selectOptions` appear as *(leer)* in italics and are fully selectable.
-
-Internally the filter state encodes selected values as a newline-separated string. When multiple values are selected the matching is exact; when no values are selected the column is not filtered.
-
-```tsx
-{
-  name: "department",
-  type: "Combobox",
-  selectOptions: ["HR", "IT", "Sales", "Marketing"],
-  // → filter header shows a combobox with checkboxes
-}
-```
-
-### ValidationResult
-
-`ColumnConfig.validate` is called on the current cell value on every render. It may return:
-
-| Return value | CSS class on `<td>` | Tooltip |
-| --- | --- | --- |
-| `true` | — | — |
-| `false` | `cell-error` | — |
-| `{ severity: "error", message }` | `cell-error` | `message` |
-| `{ severity: "warning", message }` | `cell-warning` | `message` |
+<details>
+<summary>ValidationResult</summary>
 
 ```ts
 interface ValidationResult {
-  message: string; // Shown as the cell's title attribute (tooltip on hover)
+  message: string;
   severity: "warning" | "error";
 }
 ```
 
-```tsx
-// Example: required field + minimum length warning
-validate: (value) => {
-  if (value == null || value === "")
-    return { severity: "error", message: "This field is required" };
-  if (value.length < 3)
-    return { severity: "warning", message: "Should be at least 3 characters" };
-  return true;
+`validate` may return `true`, `false`, or a `ValidationResult`. Results apply `cell-error` / `cell-warning` CSS classes and set the tooltip.
+
+</details>
+
+<details>
+<summary>Editor&lt;T&gt;</summary>
+
+```ts
+type EditorParams<T> = {
+  value: T;
+  row: Record<string, T>;
+  editing: boolean;
+  columnConfig: ColumnConfig<T>;
+  onChange: (value: T) => void;
+  textEllipsisLength?: number;
+  initialEditValue: string | null; // Character typed to open edit mode
+};
+
+type Editor<T> = (params: EditorParams<T>) => JSX.Element;
+```
+
+</details>
+
+<details>
+<summary>SelectionInfo</summary>
+
+```ts
+interface SelectionInfo {
+  range: { startRow: number; endRow: number; startCol: number; endCol: number };
+  hasSelection: boolean;
 }
 ```
 
-The `cell-error` and `cell-warning` classes are styled by each theme. You can override them in your own CSS:
+</details>
 
-```css
-.table-craft .cell-error  { background: #fdd; color: #900; }
-.table-craft .cell-warning { background: #ffe; color: #660; }
-```
-
-> **Note:** If `cellMeta.title` is set for a cell, it takes priority over the validation message.
-
-### Automatic CSS Classes
-
-The following classes are applied automatically to `<th>` and/or `<td>` elements without any extra configuration:
-
-#### On `<th>` (column header) and `<td>` (data cell)
-
-| Class | Condition |
-| --- | --- |
-| `col-type-{type}` | Always — e.g. `col-type-String`, `col-type-Number`, `col-type-Boolean` |
-| `col-required` | `column.required === true` |
-| `col-readonly` | Cell is non-editable (column.readOnly, rowMeta.readOnly, or cellMeta.disabled) |
-| `col-wrap` | `column.wrap === true` (allows text wrapping; all cells are `nowrap` by default) |
-| `column.className` | Always — extra class(es) from the column config |
-
-#### On `<th>` only
-
-| Class | Condition |
-| --- | --- |
-| `col-ellipsis` | `textEllipsisLength` prop is set on the table |
-
-#### On `<td>` only
-
-| Class | Condition |
-| --- | --- |
-| `cell-disabled` | `cellMeta.disabled === true` |
-| `cell-error` | `validate()` returns `false` or `{ severity: "error" }` |
-| `cell-warning` | `validate()` returns `{ severity: "warning" }` |
-| `cell-ellipsis` | Cell value is a string that exceeds `textEllipsisLength` |
-| `cellMeta.className` | Always — extra class(es) from the cell meta map |
-
-These classes make it easy to target specific column types, states, or validation conditions purely in CSS without additional wrapper components.
-
-### TableStatus
-
-Optional status indicator shown in the toolbar (right-aligned, next to "Create Rows").
+<details>
+<summary>TableStatus</summary>
 
 ```ts
 interface TableStatus {
@@ -746,182 +420,53 @@ interface TableStatus {
 }
 ```
 
-| Severity    | Icon | Style |
-| ----------- | ---- | ----- |
-| `"ok"`      | ✓    | Green |
-| `"info"`    | ⟳ (spinner) | Blue, animated rotation |
-| `"warning"` | ⚠    | Orange |
-| `"error"`   | ⚠    | Red, bold |
-
-Combine with `loading` and `pendingSortColumn` for full backend feedback:
-
-```tsx
-<TableCraft
-  rows={rows}
-  columns={columns}
-  status={{ severity: "info", text: "Saving..." }}
-  loading={true}
-  pendingSortColumn="email"
-/>
-```
-
-- **`loading`**: shows a spinner inside active filter inputs and sets `cursor: wait` on the table
-- **`pendingSortColumn`**: replaces the sort arrow (▲/▼) with a spinner on the specified column
-- **`status`**: shows the status text with icon in the toolbar
-
-### InflightEditTracker
-
-Utility class for safely merging backend data with optimistic local edits. Prevents race conditions where a backend response overwrites a user edit that hasn't been confirmed yet.
-
-```ts
-import { InflightEditTracker } from "react-tablecraft";
-
-const tracker = new InflightEditTracker();
-
-// When the user commits an edit:
-tracker.trackEdit(rowKey, colName);       // counter++ for that cell
-
-// When the backend confirms the edit:
-tracker.resolveEdit(rowKey, colName);     // counter-- for that cell
-
-// When merging backend data with local state:
-const merged = tracker.mergeRows(
-  localRows,        // current optimistic rows
-  backendRows,      // rows from backend response
-  columns,          // ColumnConfig[] (checks serverOwned)
-  localKeyFn,       // (row, idx) => rowKey
-  backendKeyFn,     // (row, idx) => rowKey
-);
-```
-
-**Merge rules per cell:**
-
-| Condition | Result |
-| --- | --- |
-| `serverOwned: true` | Always use backend value (e.g. auto-generated ID, timestamps) |
-| Inflight counter > 0 | Keep local value (user edit not yet confirmed) |
-| Inflight counter === 0 | Use backend value |
-
-**Batch helpers:**
-
-```ts
-// Track all changed cells between two row snapshots at once:
-const batch = tracker.trackChanges(oldRows, newRows, columns, rowKeyFn);
-
-// Resolve a full batch when the backend confirms:
-tracker.resolveBatch(batch);
-```
-
-### useAsyncTableState Hook
-
-Encapsulates the complete async backend integration pattern in a single hook. Handles deferred snapshots, optimistic edits, inflight tracking, stale detection, and status derivation.
-
-```tsx
-import { useAsyncTableState } from "react-tablecraft";
-
-const asyncState = useAsyncTableState({
-  allRows,                          // Full dataset
-  columns,                          // ColumnConfig[] (for merge + serverOwned)
-  sortConfig, filters,              // Current user-requested sort/filter
-  rowKeyFn: (row, i) => row.id,    // Stable row key
-  pageItems, pageRows,              // Current page (with origIdx mapping)
-  totalFilteredRows,                // For pagination
-  delayMs: 2000,                    // Backend latency (0 = sync)
-  transformBackendRows: (rows) => rows, // Optional: server-side normalization
-  validateRows: (rows, keyFn) => ({}),  // Optional: returns CellMetaMap with errors
-});
-
-// Pass to TableCraft:
-<TableCraft
-  rows={asyncState.displayRows}
-  sortConfig={asyncState.displaySortConfig}
-  filters={asyncState.displayFilters}
-  status={asyncState.status}
-  loading={asyncState.loading}
-  pendingSortColumn={asyncState.pendingSortColumn}
-  pendingFilterColumns={asyncState.pendingFilterColumns}
-  cellMeta={{ ...staticMeta, ...asyncState.asyncCellMeta }}
-  onRowsChange={(newRows) => {
-    asyncState.handleRowsChange(newRows);
-    setAllRows(mapBackToSource(newRows));
-  }}
-  onUpdateRows={asyncState.handleUpdateRows}
-  onCreateRows={() => asyncState.handleAsyncOp("create")}
-  onDeleteRows={() => asyncState.handleAsyncOp("delete")}
-/>
-```
-
-**Returned state & callbacks:**
-
-| Property | Type | Description |
+| Severity | Icon | Use case |
 | --- | --- | --- |
-| `displayRows` | `Row[]` | Confirmed rows for TableCraft |
-| `displaySortConfig` | `SortConfig` | Confirmed sort config |
-| `displayFilters` | `FilterState` | Confirmed filters |
-| `displayItems` | `Array<{row, origIdx}>` | Page items with index mapping |
-| `displayTotalFilteredRows` | `number` | For pagination |
-| `status` | `TableStatus \| undefined` | Auto-derived: ok / info / warning / error |
-| `loading` | `boolean` | Deferred load in progress |
-| `pendingSortColumn` | `string \| undefined` | For sort spinner |
-| `pendingFilterColumns` | `string[] \| undefined` | For filter spinners |
-| `asyncCellMeta` | `CellMetaMap` | Merged validation + stale + unsaved meta |
-| `handleRowsChange` | `(rows) => void` | Optimistic patch + inflight tracking |
-| `handleUpdateRows` | `(rows) => Promise` | Batch resolve + validation |
-| `handleAsyncOp` | `(label) => Promise` | Generic async operation |
-| `setError` | `(msg) => void` | Set custom error message |
-| `markCellsUnsaved` | `(cells) => void` | Mark cells as unsaved (connection error) |
-| `consumeLastBatch` | `() => batch` | Get tracked changes for custom onUpdateRows |
-| `resolveBatch` | `(batch) => void` | Resolve inflight counters |
-| `clearAsyncMeta` | `() => void` | Clear all async meta state |
+| `ok` | check | All data synced |
+| `info` | spinner | Request in flight |
+| `warning` | warning | Stale data detected |
+| `error` | warning (red) | Operation failed |
 
-### Shake Animation
+</details>
 
-When an async callback (`onUpdateRows`, `onCreateRows`, `onDeleteRows`) rejects, TableCraft automatically:
-1. Rolls back the rows to the pre-mutation state
-2. Triggers a brief horizontal shake animation (0.4s) on the table container
-
-This provides immediate visual feedback that an operation failed, without blocking the UI. The `cell-error` class from `status` provides the textual explanation.
-
-The shake uses the CSS class `.shake` with `@keyframes ct-shake`. You can override the animation in your theme:
-
-```css
-.table-craft.shake {
-  animation: ct-shake 0.4s ease-in-out;
-}
-```
-
-### TableTranslations
-
-All built-in UI strings exposed as a typesafe interface. Pass a `Partial<TableTranslations>` to override any subset:
+<details>
+<summary>TableTranslations</summary>
 
 ```ts
 interface TableTranslations {
-  "Create Rows": string; // Toolbar button
-  "Enter or select...": string; // Single-select combobox placeholder
-  "Filter or add value...": string; // Multi-select combobox placeholder
-  "-- select --": string; // Combobox display when nothing is selected (freeText: false)
-  "Press Enter to save": string; // Combobox empty-list hint (single)
-  "Press Enter to add": string; // Combobox empty-list hint (multi)
-  "Insert row above": string; // Context menu
-  "Insert row below": string; // Context menu
-  "Remove rows": string; // Context menu
-  "Copy content": string; // Context menu
-  "Paste content": string; // Context menu
-  "Delete content": string; // Context menu
-  Yes: string; // Boolean column filter option (truthy)
-  No: string; // Boolean column filter option (falsy)
+  "Create Rows": string;
+  "Enter or select...": string;
+  "Filter or add value...": string;
+  "-- select --": string;
+  "Press Enter to save": string;
+  "Press Enter to add": string;
+  "Insert row above": string;
+  "Insert row below": string;
+  "Remove rows": string;
+  "Copy content": string;
+  "Paste content": string;
+  "Delete content": string;
+  "Search & Replace": string;
+  Undo: string;
+  Redo: string;
+  "Filter by value": string;
+  "Clear filter": string;
+  Yes: string;
+  No: string;
 }
 ```
 
-### CustomContextMenuItem & TableContextState
+</details>
+
+<details>
+<summary>CustomContextMenuItem & TableContextState</summary>
 
 ```ts
-/** State snapshot passed to custom context-menu handlers at click time. */
 interface TableContextState {
   selectionRange: { startRow: number; endRow: number; startCol: number; endCol: number };
-  selectedRows: Row[]; // rows within the selection (display order)
-  displayRows: Row[]; // all visible rows (after filtering/sorting)
-  rows: Row[]; // all original rows (unfiltered)
+  selectedRows: Row[];
+  displayRows: Row[];
+  rows: Row[];
   columns: ColumnConfig<any>[];
   cellMeta?: CellMetaMap;
 }
@@ -931,213 +476,68 @@ type CustomContextMenuItem =
   | "---";
 ```
 
----
+</details>
 
-## Pagination Component
+### Automatic CSS Classes
 
-`Pagination` is a **standalone** component — it has no internal coupling to `TableCraft`. Use it to drive any paginated list or table, including `TableCraft`.
+Cells and headers receive these classes automatically:
 
-```tsx
-import { Pagination } from "react-tablecraft";
-
-<Pagination
-  totalRows={300}
-  page={currentPage}
-  pageSize={pageSize}
-  onPageChange={setPage}
-  onPageSizeChange={(ps) => {
-    setPageSize(ps);
-    setPage(1);
-  }}
-/>;
-```
-
-### PaginationProps
-
-| Prop               | Type                         | Default                         | Description                                                                                          |
-| ------------------ | ---------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `totalRows`        | `number`                     | ✅                              | Total number of rows (used to compute page count). When filters are active, pass the filtered count. |
-| `page`             | `number`                     | ✅                              | Current 1-based page number.                                                                         |
-| `pageSize`         | `number`                     | ✅                              | Current page size. `0` means "all rows".                                                             |
-| `onPageChange`     | `(page: number) => void`     | ✅                              | Called when a page button is clicked.                                                                |
-| `onPageSizeChange` | `(pageSize: number) => void` | ✅                              | Called when the page-size select changes.                                                            |
-| `pageSizeOptions`  | `number[]`                   | `[10,25,50,100,250,500,1000,0]` | Available page-size options. `0` is rendered as the "all" label.                                     |
-| `maxVisiblePages`  | `number`                     | `20`                            | Max page buttons before collapsing to `…`.                                                           |
-| `labels`           | `Partial<PaginationLabels>`  | —                               | Override display strings.                                                                            |
-| `className`        | `string`                     | —                               | Additional CSS class on the root element.                                                            |
-
-### PaginationLabels
-
-```ts
-interface PaginationLabels {
-  page: string; // default: "Page"
-  of: string; // default: "of"
-  rows: string; // default: "rows"
-  with: string; // default: "with"
-  rowsPerPage: string; // default: "rows per page"
-  all: string; // default: "All"  — label for pageSize === 0
-}
-```
-
-### Pagination with filters spanning all rows
-
-When using `TableCraft` in **controlled filter/sort mode** alongside `Pagination`, filter the full dataset in the parent and pass `filteredSorted.length` as `totalRows`:
-
-```tsx
-const filteredSorted = useMemo(() => {
-  let result = allRows.map((row, origIdx) => ({ row, origIdx }));
-  const active = Object.entries(filters).filter(([, v]) => v.trim() !== "");
-  if (active.length) {
-    result = result.filter(({ row }) =>
-      active.every(([col, val]) =>
-        String(row[col] ?? "").toLowerCase().includes(val.toLowerCase())
-      )
-    );
-  }
-  if (sortConfig) {
-    const { column, direction } = sortConfig;
-    result.sort((a, b) => {
-      const av = a.row[column], bv = b.row[column];
-      if (av == null && bv == null) return 0;
-      if (av == null) return 1;
-      if (bv == null) return -1;
-      const cmp = String(av).localeCompare(String(bv), undefined, { numeric: true });
-      return direction === "asc" ? cmp : -cmp;
-    });
-  }
-  return result;
-}, [allRows, filters, sortConfig]);
-
-const effectivePageSize = pageSize === 0 ? filteredSorted.length || 1 : pageSize;
-const start = (page - 1) * effectivePageSize;
-const pageItems = filteredSorted.slice(start, start + effectivePageSize);
-
-<TableCraft
-  rows={pageItems.map(i => i.row)}
-  // pass pre-filtered data + same controlled filters (filter is idempotent)
-  filters={filters}
-  sortConfig={sortConfig}
-  ...
-/>
-<Pagination totalRows={filteredSorted.length} page={page} pageSize={pageSize} ... />
-```
+| Class | Applied to | Condition |
+| --- | --- | --- |
+| `col-type-{type}` | `<th>`, `<td>` | Always (e.g. `col-type-Number`) |
+| `col-required` | `<th>`, `<td>` | `required: true` |
+| `col-readonly` | `<th>`, `<td>` | readOnly / disabled |
+| `col-wrap` | `<th>`, `<td>` | `wrap: true` |
+| `col-selected` | `<th>` | Column is selected (via `colSelection`) |
+| `cell-error` | `<td>` | Validation error |
+| `cell-warning` | `<td>` | Validation warning |
+| `cell-ellipsis` | `<td>` | Text exceeds `textEllipsisLength` |
+| `cell-disabled` | `<td>` | `cellMeta.disabled` |
 
 ---
 
 ## Built-in Editors
 
-| Type              | Editor                | Behaviour                                                                                    |
-| ----------------- | --------------------- | -------------------------------------------------------------------------------------------- |
-| `"String"`        | `StringEditor`        | `<input type="text">`. Supports `inputMask` for pattern-based formatting.                    |
-| `"Number"`        | `NumberEditor`        | Locale-aware formatted text input. See [Number Editor](#number-editor).                      |
-| `"Boolean"`       | `BooleanEditor`       | Checkbox — always interactive. Enter on a selected cell toggles without entering edit mode.  |
-| `"Combobox"`      | `ComboboxEditor`      | Searchable single-select dropdown. See [Combobox & MultiCombobox](#combobox--multicombobox). |
-| `"MultiCombobox"` | `MultiComboboxEditor` | Multi-select variant of Combobox.                                                            |
-| `"Date"`          | `DateEditor`          | Free-text + native date picker. Display via `Intl.DateTimeFormat`. Internal: `YYYY-MM-DD`.   |
-| `"DateTime"`      | `DateTimeEditor`      | Free-text + native datetime picker. Internal: ISO datetime string.                           |
-| `"Time"`          | `TimeEditor`          | Free-text + native time picker. Internal: `HH:mm` or `HH:mm:ss`.                            |
-| `"Duration"`      | `DurationEditor`      | Free-text with multiple format parsing. Internal: ISO 8601 (`PT2H30M`).                      |
-| `"Color"`         | `ColorEditor`         | Hex text input + native color picker + swatch preview. Internal: `#rrggbb`.                  |
+| Type | Behaviour |
+| --- | --- |
+| **String** | Text input. Supports `inputMask` for pattern-based formatting. |
+| **Number** | Locale-aware formatted input. Right-aligned by default. Prefix/suffix via CSS pseudo-elements. |
+| **Boolean** | Always-visible checkbox. Enter toggles without entering edit mode. |
+| **Combobox** | Searchable single-select dropdown. `freeText` allows custom values. |
+| **MultiCombobox** | Multi-select variant with checkboxes. Each toggle commits immediately. |
+| **Date** | Free-text + native date picker. Internal: `YYYY-MM-DD`. Display via `Intl.DateTimeFormat`. |
+| **DateTime** | Free-text + native datetime picker. Internal: ISO datetime string. |
+| **Time** | Free-text + native time picker. Parses 12h and 24h formats. |
+| **Duration** | Multi-format parser (`2h 30m`, `2:30`, `PT2H30M`). Normalizes to ISO 8601. |
+| **Color** | Hex input with swatch preview + native color picker. |
 
-The editor is resolved in `renderCell.tsx`:
+### Number Editor Details
 
-1. `columnConfig.editor` (custom) — if provided, used directly
-2. `editorMap.get(columnConfig.type)` — built-in lookup
-3. `StringEditor` — fallback
+In edit mode, prefix/suffix are rendered as CSS `::before`/`::after` decorations. Single-clicking an already-selected cell places the cursor at the click position. Typing a digit opens edit mode with that character pre-filled.
 
-### Number Editor
+### Combobox Keyboard Contract
 
-Number cells are **right-aligned** by default. In display mode the value is formatted using `Intl.NumberFormat` according to the column's `NumberFormat` config. Prefix/suffix are rendered as non-editable decorations.
-
-In edit mode:
-
-- A `type="text"` input shows the numeric part only (no prefix/suffix).
-- Prefix/suffix are shown via CSS `::before`/`::after` on a wrapper element.
-- The value is parsed back locale-awarely on commit.
-- **Single-clicking** an already-selected cell places the text cursor at the exact click position (canvas text-measurement).
-- **Typing a digit** while a cell is selected opens edit mode and pre-fills that character.
-- **Enter/F2/double-click** opens edit mode and selects all text for quick replacement.
-
-### Combobox & MultiCombobox
-
-Both editor types share the same dropdown component. Cells show a `▾` indicator in the right margin; clicking within 2 rem of the right edge opens the dropdown directly.
-
-**Keyboard contract while the dropdown is open:**
-
-| Key                                   | Single-select                          | Multi-select                                    |
-| ------------------------------------- | -------------------------------------- | ----------------------------------------------- |
-| `ArrowDown` / `ArrowUp`               | Move option highlight                  | Move option highlight                           |
-| `Enter` (option highlighted)          | Select option, advance to next row     | Toggle option, commit, advance to next row      |
-| `Enter` (no highlight, input empty)   | Commit typed text, advance to next row | Commit selection, advance to next row           |
-| `Enter` (no highlight, text in input) | Commit typed text                      | Add as custom entry, stay in edit mode          |
-| `Space`                               | —                                      | Toggle highlighted option (no immediate commit) |
-| `Tab`                                 | Commit and advance to next cell        | Commit and advance to next cell                 |
-| `Escape`                              | Exit edit mode, discard changes        | Exit edit mode, discard changes                 |
-
-**`freeText` option** (default: `true`): when `true`, the user may type values not present in `selectOptions`. The typed text can be committed as a custom entry. Set to `false` to restrict input to the predefined option list only.
-
-**Multi-select immediate commit:** Every checkbox toggle in a multi-select dropdown is committed immediately. This means ESC, blur, or clicking outside all preserve the current state — no changes are lost.
-
-### Boolean Editor
-
-The checkbox is always rendered and clickable. Additionally:
-
-- **Enter** on a selected (non-editing) Boolean cell toggles the value and keeps the cell selected.
-- **Tab** navigates to the next cell without stealing focus to external page checkboxes.
-
-### Date, DateTime & Time Editors
-
-These editors combine a free-text `<input>` with a native browser picker button:
-
-- **Date** — Internal format: `YYYY-MM-DD`. Displays via `Intl.DateTimeFormat` with configurable `dateFormat: { locale?, dateStyle?, options? }`. Parses ISO, EU (`DD.MM.YYYY`, `DD/MM/YYYY`) and natural Date constructor formats.
-- **DateTime** — Internal format: ISO datetime string (`2024-03-15T14:30:00Z`). Configurable via `dateTimeFormat: { locale?, dateStyle?, timeStyle?, options? }`.
-- **Time** — Internal format: `HH:mm` or `HH:mm:ss`. Configurable via `timeFormat: { locale?, showSeconds?, hourCycle? }`. Parses 12h (`2:30 PM`) and 24h formats.
-
-The picker button (📅/🕒) calls `showPicker()` on a hidden native `<input type="date|datetime-local|time">`. Free-text entry is always available as fallback.
-
-### Duration Editor
-
-Parses and normalizes multiple duration formats:
-
-| Input Format | Example | Internal (ISO 8601) |
+| Key | Single-select | Multi-select |
 | --- | --- | --- |
-| Short | `2h 30m` | `PT2H30M` |
-| Colon | `2:30` | `PT2H30M` |
-| ISO 8601 | `PT2H30M` | `PT2H30M` |
-| Minutes only | `150m` | `PT2H30M` |
-
-Display format configurable via `durationFormat: { style: "short" | "long" | "iso" }`.
-
-### Color Editor
-
-Renders a color swatch (16×16 rounded square) next to the hex value in display mode. In edit mode:
-
-- Free-text hex input (auto-normalizes: `f00` → `#ff0000`, `FF0000` → `#ff0000`)
-- Clicking the swatch opens the native browser color picker (`<input type="color">`)
-- Invalid hex values are preserved as free text
+| Arrow Up/Down | Move highlight | Move highlight |
+| Enter (highlighted) | Select, advance to next row | Toggle, commit, advance |
+| Enter (no highlight) | Commit typed text | Add as custom entry |
+| Space | — | Toggle highlighted option |
+| Tab | Commit, advance to next cell | Commit, advance to next cell |
+| Escape | Discard changes | Discard changes |
 
 ### Input Masking
 
-The `inputMask` property on `ColumnConfig` enables pattern-based input formatting:
-
 ```ts
 { name: "phone", type: "String", inputMask: "+## ### ########" }
-{ name: "ip",    type: "String", inputMask: "###.###.###.###" }
 { name: "iban",  type: "String", inputMask: "AA## #### #### #### #### ##" }
 ```
 
-**Mask characters:** `#` = digit, `A` = letter, `*` = any character. All other characters are literal separators inserted automatically as the user types. The masked value is what gets stored.
+`#` = digit, `A` = letter, `*` = any character. All other characters are literal separators.
 
 ### Dependent Dropdowns
 
-`selectOptions` accepts a function for dynamic options based on other cell values:
-
 ```ts
-{
-  name: "country",
-  type: "Combobox",
-  selectOptions: ["Germany", "France", "Austria"],
-},
 {
   name: "city",
   type: "Combobox",
@@ -1148,149 +548,106 @@ The `inputMask` property on `ColumnConfig` enables pattern-based input formattin
     };
     return cities[row.country] ?? [];
   },
-  freeText: true,
 }
 ```
-
-The filter dropdown in the column header automatically collects all options from all rows.
-
-### Column Resizing
-
-Pass `columnWidths` and `onColumnResize` props to enable drag-to-resize:
-
-```tsx
-const [widths, setWidths] = useState<Record<string, number>>({});
-
-<TableCraft
-  columnWidths={widths}
-  onColumnResize={(colName, width) => setWidths(prev => ({ ...prev, [colName]: width }))}
-/>
-```
-
-A resize handle appears on the right edge of each column header. Minimum width: 40px.
-
-### Selection Range Listener
-
-```tsx
-<TableCraft
-  onSelectionChange={(sel) => {
-    if (sel.hasSelection) {
-      const { startRow, endRow, startCol, endCol } = sel.range;
-      // Compute aggregations over the selected range
-    }
-  }}
-/>
-```
-
-The `SelectionInfo` type provides a normalized range (start ≤ end) and a `hasSelection` flag.
-
-### Search & Replace
-
-Press **Ctrl+H** to open the Search & Replace dialog. Features:
-
-- **Scope:** entire dataset or current selection only
-- **Match case** toggle
-- **Regex** toggle — when enabled, the search string is treated as a regular expression
-- Read-only columns and read-only rows are skipped
-- Supports undo — replacements can be reversed with Ctrl+Z
 
 ---
 
 ## Custom Editors
 
-```tsx
-import { Editor } from "react-tablecraft";
+Provide your own editor component per column:
 
-const ColorEditor: Editor<string> = ({ value, editing, onChange }) => {
-  if (!editing) return <span style={{ color: value }}>{value}</span>;
+```tsx
+const RatingEditor: Editor<number> = ({ value, editing, onChange }) => {
+  if (!editing) return <span>{"*".repeat(value || 0)}</span>;
   return (
     <input
-      type="color"
-      value={value || "#000000"}
-      onChange={(e) => onChange(e.target.value)}
-      onKeyDown={(e) => e.stopPropagation()} // important — prevent table key handling
+      type="range"
+      min={0} max={5}
+      value={value || 0}
+      onChange={(e) => onChange(Number(e.target.value))}
+      onKeyDown={(e) => e.stopPropagation()} // prevent table key handling
     />
   );
 };
 
-const columns = [{ name: "color", type: "custom", editor: ColorEditor }];
+const columns = [{ name: "rating", type: "custom", editor: RatingEditor }];
 ```
 
-> **Important:** Always call `e.stopPropagation()` on `onKeyDown` inside your editor to prevent the table's global keyboard handler from intercepting key events that belong to your editor. Allow Enter and Tab to bubble through so the table can commit/navigate.
+> **Important:** Call `e.stopPropagation()` on `onKeyDown` inside your editor to prevent the table's keyboard handler from intercepting events. Let Enter and Tab bubble through so the table can commit/navigate.
 
 ---
 
-## Extensible Context Menu
+## Theming
 
-The built-in right-click menu can be extended with custom items via the `extraContextMenuItems` prop. Each item's `onClick` receives a `TableContextState` snapshot captured at the moment of the click.
+TableCraft ships with 8 themes and a CSS-variable-based theming system.
 
-```tsx
-import { CustomContextMenuItem, TableCraft } from "react-tablecraft";
+<!-- TODO: Screenshot showing 2-3 different themes side by side -->
 
-const myItems: CustomContextMenuItem[] = [
-  {
-    label: "Export selection as CSV",
-    onClick: ({ selectedRows, columns }) => {
-      const header = columns.map((c) => c.label ?? c.name).join(",");
-      const body = selectedRows
-        .map((r) => columns.map((c) => r[c.name] ?? "").join(","))
-        .join("\n");
-      console.log(header + "\n" + body);
-    },
-  },
-  "---",
-  {
-    label: "Mark as reviewed",
-    shortcut: "Ctrl+M",
-    onClick: ({ selectedRows }) => {
-      selectedRows.forEach((r) => markReviewed(r.id));
-    },
-  },
-];
+### Built-in Themes
 
-<TableCraft extraContextMenuItems={myItems} /* ... */ />;
+| Theme | Description |
+| --- | --- |
+| **Light** | Clean, neutral default |
+| **Dark** | Dark backgrounds, styled scrollbars |
+| **Excel Classic** | Traditional Excel — gray headers, green accents |
+| **Google Sheets** | White and blue, thin borders |
+| **Material** | MUI DataTable style — borderless cells, elevation shadows |
+| **Numbers** | Apple Numbers — clean, strong gray headers |
+| **Material 3** | Material You — purple scheme, rounded surfaces |
+| **High Contrast** | WCAG AAA contrast ratios, strong borders |
+
+### Custom Themes
+
+A theme is a CSS file that sets custom properties on `:root`. The structural layout lives in `core/base.css` and never needs to change.
+
+```css
+/* my-theme.css */
+:root {
+  --ct-bg: #fff;
+  --ct-text: #333;
+  --ct-font: "My Font", sans-serif;
+  --ct-border: #ddd;
+  --ct-header-bg: #f5f5f5;
+  --ct-selected-outline: #0066cc;
+  /* see any built-in theme for the full list of variables */
+}
 ```
 
-Custom items appear after a separator below the built-in items. Use `"---"` within your array to insert additional separators between your own entries.
-
-**Context menu selection behaviour:**
-
-- **Right-clicking a cell outside the current selection** automatically selects that cell before opening the menu — so `selectedRows` always reflects the intended target.
-- **Left-clicking any cell while the menu is open** closes the menu and selects the clicked cell.
+Import your theme CSS after `base.css`. The demo app demonstrates runtime theme switching, but a static CSS import works for most use cases.
 
 ---
 
 ## Internationalisation (i18n)
 
-Pass a `Partial<TableTranslations>` to override any subset of built-in strings. Unspecified keys fall back to their English defaults.
+All built-in UI strings are overridable via the typesafe `translations` prop:
 
 ```tsx
 <TableCraft
   translations={{
-    "Create Rows": "Zeilen hinzufügen",
-    "Remove rows": "Zeilen löschen",
-    "Insert row above": "Zeile darüber einfügen",
-    "Insert row below": "Zeile darunter einfügen",
+    "Create Rows": "Zeilen hinzufuegen",
+    "Remove rows": "Zeilen loeschen",
+    "Insert row above": "Zeile darueber einfuegen",
+    "Insert row below": "Zeile darunter einfuegen",
     "Copy content": "Inhalt kopieren",
-    "Paste content": "Inhalt einfügen",
-    "Delete content": "Inhalt löschen",
-    "Enter or select...": "Eingabe oder Auswahl…",
-    "Filter or add value...": "Filtern oder neuer Wert…",
-    "-- select --": "-- auswählen --",
-    "Press Enter to save": "Enter drücken zum Speichern",
-    "Press Enter to add": "Enter drücken zum Hinzufügen",
+    "Paste content": "Inhalt einfuegen",
+    "Delete content": "Inhalt loeschen",
+    Undo: "Rueckgaengig",
+    Redo: "Wiederherstellen",
+    "Search & Replace": "Suchen & Ersetzen",
+    "Filter by value": "Nach Wert filtern",
+    "Clear filter": "Filter loeschen",
   }}
-  /* ... */
 />
 ```
 
-The `TableTranslations` interface is exported and fully typesafe — the TypeScript compiler will flag unknown or misspelled keys.
+Unspecified keys fall back to English defaults. The `TableTranslations` interface is exported — TypeScript flags unknown or misspelled keys at compile time.
 
 ---
 
 ## Backend Integration Guide
 
-TableCraft is designed as a **view layer** for backend-managed data. The library provides building blocks; you compose them into a pattern that fits your backend.
+TableCraft is designed as a view layer for backend-managed data. It provides building blocks you compose into your own integration pattern.
 
 ### Architecture Overview
 
@@ -1303,190 +660,136 @@ flowchart TB
     OP --> IT --> SS
   end
 
-  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta,\npendingSortColumn, ..."| CT["TableCraft"]
-
+  SS -->|"rows, sortConfig, filters,\nstatus, loading, cellMeta"| CT["TableCraft"]
   CT -->|"onRowsChange\nonUpdateRows\nonSortChange\nonFilterChange"| app
 ```
 
-### 1. Deferred Snapshot Pattern (Sort & Filter Latency)
+### Controlled Sort & Filter
 
-Sort and filter changes should not update the table data instantly when the backend handles the query. Use a **deferred snapshot** that only updates after the backend responds.
+Pass `sortConfig` and `filters` as props to let the backend handle queries. The table calls `onSortChange` / `onFilterChange` instead of filtering locally.
 
 ```tsx
-import { SortConfig, FilterState, Row } from "react-tablecraft";
-
-// "What the user requested" vs "what the backend confirmed"
-const [sortConfig, setSortConfig] = useState<SortConfig>(null);
+const [sort, setSort] = useState<SortConfig>(null);
 const [filters, setFilters] = useState<FilterState>({});
-const [confirmedRows, setConfirmedRows] = useState<Row[]>([]);
-const [loading, setLoading] = useState(false);
+const [rows, setRows] = useState<Row[]>([]);
 
-// Fetch from backend when sort/filter changes
 useEffect(() => {
-  setLoading(true);
-  api.fetchRows({ sort: sortConfig, filters }).then((rows) => {
-    setConfirmedRows(rows);
-    setLoading(false);
-  });
-}, [sortConfig, filters]);
+  fetchFromBackend(sort, filters).then(setRows);
+}, [sort, filters]);
 
 <TableCraft
-  rows={confirmedRows}           // confirmed data from backend
-  sortConfig={confirmedSort}     // confirmed sort (deferred)
-  onSortChange={setSortConfig}   // immediate: triggers fetch
-  filters={confirmedFilters}     // confirmed filters (deferred)
-  onFilterChange={setFilters}    // immediate: triggers fetch
-  loading={loading}
-  pendingSortColumn={...}        // derived from requested vs confirmed
-  pendingFilterColumns={...}     // derived from requested vs confirmed
+  rows={rows}
+  columns={columns}
+  onRowsChange={setRows}
+  sortConfig={sort}
+  onSortChange={setSort}
+  filters={filters}
+  onFilterChange={setFilters}
 />
 ```
 
-**Key principle:** Pass the **confirmed** `sortConfig` and `filters` to TableCraft (so it doesn't re-sort/re-filter old data), but update the **requested** state immediately (so `pendingSortColumn`/`pendingFilterColumns` show spinners).
+**Key principle:** Pass the **confirmed** sort/filter to TableCraft (so it doesn't re-sort old data), but update the **requested** state immediately (so spinners show via `pendingSortColumn` / `pendingFilterColumns`).
 
-Filter inputs use an internal buffer (`ColHeader`) that preserves the user's typed text even when the controlled `filters` prop lags behind.
+### Async Callbacks & Rollback
 
-### 2. Optimistic Edits with Inflight Tracking
-
-When a user edits a cell, show the change immediately. Track which cells have unconfirmed changes so backend data doesn't overwrite them.
+`onCreateRows`, `onUpdateRows`, and `onDeleteRows` may return a `Promise<void>`. On rejection, the table rolls back to the pre-mutation state and shakes briefly for visual feedback.
 
 ```tsx
-import { InflightEditTracker, Row, ColumnConfig } from "react-tablecraft";
-
-const trackerRef = useRef(new InflightEditTracker());
-const lastBatchRef = useRef<Array<{ rowKey: string; colName: string }>>([]);
-
-// In onRowsChange: track changed cells + optimistic patch
-onRowsChange={(newRows) => {
-  // 1. Track which cells changed (increments inflight counters)
-  lastBatchRef.current = trackerRef.current.trackChanges(
-    displayRows, newRows, columns,
-    (_, i) => getRowKey(i),
-  );
-
-  // 2. Update the confirmed snapshot immediately (optimistic)
-  setConfirmed(prev => ({
-    ...prev,
-    rows: newRows,
-    items: prev.items.map((item, i) => ({ ...item, row: newRows[i] })),
-  }));
-
-  // 3. Persist to the authoritative data store
-  setAllRows(updated);
-}}
-
-// In onUpdateRows: resolve counters when backend confirms
-onUpdateRows={(updatedRows) => {
-  const batch = [...lastBatchRef.current];
-  lastBatchRef.current = [];
-  return api.updateRows(updatedRows).then(() => {
-    trackerRef.current.resolveBatch(batch);  // counter-- for each cell
-  });
-}}
+<TableCraft
+  onUpdateRows={async (updatedRows) => {
+    await fetch("/api/rows", { method: "PATCH", body: JSON.stringify(updatedRows) });
+    // On success: nothing to do — table already shows the new state.
+    // On failure: throw -> table rolls back automatically.
+  }}
+/>
 ```
 
-### 3. Merging Backend Data with Local Edits
+### InflightEditTracker
 
-When the backend responds with fresh data, merge it using `InflightEditTracker.mergeRows()`. This protects in-progress edits from being overwritten.
+Prevents race conditions where a backend response overwrites a user edit that hasn't been confirmed yet.
 
-```tsx
-// In the deferred snapshot effect:
-const mergedRows = tracker.mergeRows(
-  localRows,      // current optimistic rows
-  backendRows,    // rows from backend response
-  columns,        // ColumnConfig[] — checks serverOwned
-  localKeyFn,     // (row, idx) => rowKey
-  backendKeyFn,   // (row, idx) => rowKey
-);
+```ts
+import { InflightEditTracker } from "react-tablecraft";
+
+const tracker = new InflightEditTracker();
+
+// Track which cells changed (increments per-cell counter):
+const batch = tracker.trackChanges(oldRows, newRows, columns, rowKeyFn);
+
+// When the backend confirms:
+tracker.resolveBatch(batch);
+
+// Merge backend data with local state (respects inflight counters + serverOwned):
+const merged = tracker.mergeRows(localRows, backendRows, columns, localKeyFn, backendKeyFn);
 ```
 
 **Merge rules per cell:**
 
-| `serverOwned` | Inflight counter | Result |
-|---|---|---|
-| `true` | any | Backend value (always) |
-| `false` | > 0 | Local value (user edit pending) |
-| `false` | 0 | Backend value |
+| Condition | Result |
+| --- | --- |
+| `serverOwned: true` | Always use backend value |
+| Inflight counter > 0 | Keep local value (edit pending) |
+| Inflight counter === 0 | Use backend value |
 
-Mark backend-owned columns (auto-generated IDs, timestamps, computed fields) with `serverOwned: true` in the column config:
+### useAsyncTableState Hook
 
-```tsx
-{ name: "id", type: "Number", readOnly: true, serverOwned: true }
-{ name: "updatedAt", type: "String", readOnly: true, serverOwned: true }
-```
-
-### 4. Stale Data Detection
-
-After merging, detect cells where the backend changed a value the user didn't edit. Mark them visually so the user knows the data was modified externally (e.g. by another user or a server-side computation).
+Encapsulates all of the above in a single hook — deferred snapshots, optimistic edits, inflight tracking, stale detection, and status derivation:
 
 ```tsx
-// Compare pre-merge and post-merge by ROW KEY (not array index!)
-const prevByKey = new Map(prev.rows.map((r, i) => [getRowKey(i), r]));
+import { useAsyncTableState } from "react-tablecraft";
 
-mergedRows.forEach((row, i) => {
-  const rowKey = getRowKey(i);
-  const prevRow = prevByKey.get(rowKey);
-  for (const col of columns) {
-    if (col.serverOwned) continue;
-    if (prevRow[col.name] !== row[col.name] && tracker.getCount(rowKey, col.name) === 0) {
-      // Cell changed by backend, user has no pending edit → stale
-      staleMeta[rowKey].cells[col.name] = {
-        className: "cell-stale",
-        title: `Server changed: "${row[col.name]}"`,
-      };
-    }
-  }
+const asyncState = useAsyncTableState({
+  allRows, columns, sortConfig, filters,
+  rowKeyFn: (row) => row.id,
+  pageItems, pageRows, totalFilteredRows,
+  delayMs: 2000,
 });
+
+<TableCraft
+  rows={asyncState.displayRows}
+  sortConfig={asyncState.displaySortConfig}
+  filters={asyncState.displayFilters}
+  status={asyncState.status}
+  loading={asyncState.loading}
+  cellMeta={{ ...staticMeta, ...asyncState.asyncCellMeta }}
+  onRowsChange={asyncState.handleRowsChange}
+  onUpdateRows={asyncState.handleUpdateRows}
+  onCreateRows={() => asyncState.handleAsyncOp("create")}
+  onDeleteRows={() => asyncState.handleAsyncOp("delete")}
+/>
 ```
 
-Theme the stale class with CSS variables:
+<details>
+<summary>Full list of returned properties</summary>
 
-```css
-:root {
-  --ct-cell-stale-bg: hsl(40, 100%, 93%);
-  --ct-cell-stale-text: hsl(30, 80%, 30%);
-}
-.table-craft .cell-stale {
-  background-color: var(--ct-cell-stale-bg);
-  color: var(--ct-cell-stale-text);
-}
-```
+| Property | Type | Description |
+| --- | --- | --- |
+| `displayRows` | `Row[]` | Confirmed rows |
+| `displaySortConfig` | `SortConfig` | Confirmed sort |
+| `displayFilters` | `FilterState` | Confirmed filters |
+| `displayItems` | `Array<{row, origIdx}>` | Page items with index mapping |
+| `displayTotalFilteredRows` | `number` | For pagination |
+| `status` | `TableStatus \| undefined` | Auto-derived status |
+| `loading` | `boolean` | Deferred load in progress |
+| `pendingSortColumn` | `string \| undefined` | For sort spinner |
+| `pendingFilterColumns` | `string[] \| undefined` | For filter spinners |
+| `asyncCellMeta` | `CellMetaMap` | Merged validation + stale + unsaved meta |
+| `handleRowsChange` | `(rows) => void` | Optimistic patch + inflight tracking |
+| `handleUpdateRows` | `(rows) => Promise` | Batch resolve + validation |
+| `handleAsyncOp` | `(label) => Promise` | Generic async operation |
+| `setError` | `(msg) => void` | Set custom error message |
+| `markCellsUnsaved` | `(cells) => void` | Mark cells as unsaved |
+| `consumeLastBatch` | `() => batch` | Get tracked changes |
+| `resolveBatch` | `(batch) => void` | Resolve inflight counters |
+| `clearAsyncMeta` | `() => void` | Clear all async meta state |
 
-### 5. Error Handling & Rollback
+</details>
 
-TableCraft's `withAsyncRollback` mechanism automatically restores the previous row state when an async callback rejects. Combine with the `status` prop for user feedback:
+### Backend Validation via cellMeta
+
+When the backend returns field-level errors, apply them as dynamic `cellMeta`:
 
 ```tsx
-const [status, setStatus] = useState<TableStatus>();
-
-onUpdateRows={async (rows) => {
-  setStatus({ severity: "info", text: "Saving..." });
-  try {
-    await api.updateRows(rows);
-    setStatus({ severity: "ok", text: "Synced" });
-  } catch (err) {
-    setStatus({ severity: "error", text: err.message });
-    throw err;  // re-throw → TableCraft rolls back the rows
-  }
-}}
-```
-
-**Error types and recommended handling:**
-
-| Error type | Example | Recommended action |
-|---|---|---|
-| Network error | Connection refused | Auto-retry (1–2 attempts, exponential backoff), then show error |
-| Server error (5xx) | Internal server error | Show error, rollback. User can retry manually |
-| Validation error (4xx) | "Email is invalid" | Keep data, apply `cellMeta` with `cell-error` class + tooltip |
-| Conflict (409) | Concurrent edit | Merge + mark stale cells |
-
-### 6. Backend Validation via cellMeta
-
-When the backend returns field-level validation errors, apply them as dynamic `cellMeta`. The errors remain visible while the user continues editing other cells.
-
-```tsx
-const [validationMeta, setValidationMeta] = useState<CellMetaMap>({});
-
 onUpdateRows={async (rows) => {
   const response = await api.updateRows(rows);
   if (response.validationErrors) {
@@ -1503,276 +806,191 @@ onUpdateRows={async (rows) => {
       };
     }
     setValidationMeta(meta);
-  } else {
-    // Clear errors for successfully validated rows
-    setValidationMeta({});
   }
 }}
-
-// Merge static + dynamic cellMeta
-const mergedMeta = { ...staticMeta, ...validationMeta, ...staleMeta };
-<TableCraft cellMeta={mergedMeta} ... />
 ```
 
-### 7. Status Indicator
+### Demo Modes
 
-The `status` prop renders a status indicator in the toolbar. Use it to show the current sync state:
+The included example app (`src/examples/example.tsx`) demonstrates all integration patterns:
 
-```tsx
-const status = useMemo(() => {
-  if (lastError) return { severity: "error", text: lastError };
-  if (loading) return { severity: "info", text: "Loading..." };
-  if (staleCount > 0) return { severity: "warning", text: `${staleCount} stale cell(s)` };
-  return { severity: "ok", text: "Synced" };
-}, [lastError, loading, staleCount]);
-```
-
-| Severity | Visual | When |
-|---|---|---|
-| `ok` | ✓ green | All data synced |
-| `info` | ⟳ spinner | Request in flight |
-| `warning` | ⚠ orange | Stale data detected |
-| `error` | ⚠ red | Operation failed |
-
-### Complete Example
-
-The included example app (`src/examples/example.tsx`) demonstrates all of these patterns with 7 switchable modes:
-
-| Mode | What it demonstrates |
-|---|---|
-| Local (sync) | Baseline — no async, instant everything |
+| Mode | Demonstrates |
+| --- | --- |
+| Local (sync) | Baseline — no async |
 | Backend (100 ms) | Realistic fast backend |
-| Backend (2 s) | Slow backend — visible spinners and deferred snapshots |
-| Error (2 s) | Server errors → rollback after delay |
-| Connection error | Network failure → auto-retry → rollback |
-| Validation (2 s) | Backend returns field-level errors via cellMeta |
-| Stale (2 s) | Backend normalizes data → stale cell detection |
+| Backend (2 s) | Slow backend — visible spinners, deferred snapshots |
+| Error (2 s) | Server errors with rollback |
+| Connection error | Network failure with auto-retry |
+| Validation (2 s) | Field-level backend validation via cellMeta |
+| Stale (2 s) | Server-side data normalization with stale detection |
 
 ---
 
-## Design Decisions
+## Pagination
 
-### Native HTML Table (No Virtualisation)
+`Pagination` is a standalone component — no coupling to `TableCraft`. Use it with any paginated list.
 
-The component renders a real `<table>` element. This means:
+```tsx
+import { Pagination } from "react-tablecraft";
 
-- **Pro:** The browser handles column width calculation, text wrapping, and all layout natively — no complex width measurement code.
-- **Pro:** Full CSS control; standard table styling works out of the box.
-- **Pro:** Sticky columns use native `position: sticky` on `<td>` and `<th>`.
-- **Pro:** Standard browser features are preserved — e.g. "Print to PDF" keeps the table layout intact.
-- **Pro:** Accessibility-friendly by default — native `<table>` elements work well with screen readers.
-- **Con:** Not suitable for tens of thousands of rows. Use pagination at the application level for large datasets.
+<Pagination
+  totalRows={300}
+  page={currentPage}
+  pageSize={pageSize}
+  onPageChange={setPage}
+  onPageSizeChange={(ps) => { setPageSize(ps); setPage(1); }}
+/>
+```
 
-### Cursor via Direct DOM Manipulation
+<details>
+<summary>PaginationProps</summary>
 
-Moving the cursor with arrow keys must feel instant. Re-rendering the entire table on every keypress would be too slow. Therefore:
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `totalRows` | `number` | required | Total row count (pass filtered count when filters are active). |
+| `page` | `number` | required | Current 1-based page. |
+| `pageSize` | `number` | required | Current page size. `0` = all rows. |
+| `onPageChange` | `(page: number) => void` | required | Page button clicked. |
+| `onPageSizeChange` | `(pageSize: number) => void` | required | Page size changed. |
+| `pageSizeOptions` | `number[]` | `[10,25,50,100,250,500,1000,0]` | Available sizes. `0` renders as "All". |
+| `maxVisiblePages` | `number` | `20` | Max page buttons before collapsing. |
+| `labels` | `Partial<PaginationLabels>` | — | Override display strings. |
+| `className` | `string` | — | Additional CSS class. |
 
-- `cursorRef` is a **mutable ref**, not state.
-- `directDomUpdateForCursor` applies CSS class changes and positions the selection overlay directly on the DOM.
-- A React state update (`setEditingCell`) is only triggered when the editing state changes, to mount/unmount the actual editor component.
+</details>
 
-### Separation of Data and Meta State
+---
 
-Row data (`rows`) and presentation metadata (`cellMeta`) are deliberately separate:
+## Extensible Context Menu
 
-- Row data is the source of truth for business logic.
-- `cellMeta` is transient UI state (error highlighting, disabled cells) that can change independently.
-- The `cellMeta` map is keyed by `rowKey` output, making it stable across sort/filter changes.
+Add custom items to the right-click menu via `extraContextMenuItems`. Each item receives a full `TableContextState` snapshot.
 
-### Immutable Row Updates
+```tsx
+const myItems: CustomContextMenuItem[] = [
+  {
+    label: "Export selection as CSV",
+    onClick: ({ selectedRows, columns }) => {
+      const header = columns.map((c) => c.label ?? c.name).join(",");
+      const body = selectedRows
+        .map((r) => columns.map((c) => r[c.name] ?? "").join(","))
+        .join("\n");
+      navigator.clipboard.writeText(header + "\n" + body);
+    },
+  },
+  "---",
+  {
+    label: "Mark as reviewed",
+    shortcut: "Ctrl+M",
+    onClick: ({ selectedRows }) => selectedRows.forEach((r) => markReviewed(r.id)),
+  },
+];
 
-Every mutation creates a new `Row[]` array with shallow-copied rows for the changed entries. This is intentional:
+<TableCraft extraContextMenuItems={myItems} />
+```
 
-- Works with React's reconciliation (reference equality checks).
-- `onRowsChange` always receives a fresh array that can be directly set as state.
-- The old array is preserved for undo snapshots.
+### Built-in Context Menu Items
 
-### Optimistic Updates with Async Rollback
+The context menu includes these items by default:
 
-The table applies changes immediately (optimistic update) and only rolls back if the async callback rejects. This provides the best UX: the user sees changes instantly, and errors are handled gracefully.
+| Item | Shortcut | Disabled when |
+| --- | --- | --- |
+| Undo | Ctrl+Z | No undo history |
+| Redo | Ctrl+Y | No redo history |
+| Insert row above | | |
+| Insert row below | | |
+| Remove rows | | No rows |
+| Copy content | Ctrl+C | No rows |
+| Paste content | Ctrl+V | |
+| Delete content | Delete | No rows |
+| Filter by value | | No rows |
+| Clear filter | | No active filter |
+| Search & Replace | Ctrl+H | Only when `enableSearchReplace` |
+
+The context menu does not appear when an editor dialog is open or when right-clicking on column header filter inputs. Custom items appear after a separator below the built-in items.
+
+---
+
+## Comparison & When to Use
+
+| Feature | TableCraft | Handsontable | AG Grid (Community) | TanStack Table |
+| :--- | :--- | :--- | :--- | :--- |
+| **Primary goal** | **DB bulk editing** | Spreadsheet clone | Enterprise grid | Headless logic |
+| **Rendering** | Native `<table>` | Virtual DOM | Virtual (div/canvas) | User-defined |
+| **Undo / Redo** | Built-in | Pro only | Manual | Manual |
+| **Async Rollback** | Built-in | Manual | Manual | Manual |
+| **Range Selection** | Included | Included | Enterprise only | Manual |
+| **Sticky Columns** | Native CSS | JS-based | JS-based | Manual |
+| **i18n** | Built-in | Included | Included | Manual |
+| **License** | **MIT** | Commercial | MIT / Commercial | MIT |
+
+### When to use TableCraft
+
+- Internal admin tools, back-office dashboards, data management UIs
+- Data with a fixed schema (rows and columns)
+- Users editing 10-500 rows at once, or any size with pagination
+- Projects that sync changes to an API with minimal boilerplate
+
+### When to use something else
+
+- **5,000+ rows without pagination** — use a virtualized grid (AG Grid, Glide Data Grid)
+- **Free-form data** with arbitrary columns or formulas — use Handsontable or Luckysheet
+- **Complete UI control** with only the logic — use TanStack Table (headless)
+
+---
+
+## Performance
+
+The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation. Additional optimizations:
+
+- **RAF-throttled mousemove** — during drag operations, mouse events are batched to 60/s via `requestAnimationFrame`
+- **CSS containment** — `contain: content` on cells limits reflow scope
+- **GPU compositing** — `will-change` on selection/fill overlays promotes them to compositing layers
 
 ---
 
 ## Development
 
-### Prerequisites
-
-- Node.js ≥ 18
-- npm ≥ 9
-
 ### Setup
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/SebastianBaltes/react-tablecraft.git
 cd react-tablecraft
 npm install
 ```
+
+**Requirements:** Node.js >= 18, npm >= 9
 
 ### Dev Server
 
 ```bash
 npm start
-# Full example:   http://localhost:5173/
-# Simple example: http://localhost:5173/simple.html
+# Full demo:   http://localhost:5173/
+# Simple demo: http://localhost:5173/simple.html
 ```
 
-### Build Demo
+### Build & Test
 
 ```bash
-npm run build-demo
-# Output in docs/
-```
-
-### TypeScript Check
-
-```bash
-npx tsc --noEmit
-```
-
-### E2E Tests (Playwright)
-
-```bash
-npx playwright install   # first time only
-npm run test:e2e
+npm run build               # Library build (dist/)
+npm run build-demo          # Demo build (docs/)
+npm run build-release       # Minified release (release/)
+npx tsc --noEmit            # Type check
+npx playwright install      # First time only
+npm run test:e2e            # Playwright E2E tests
 ```
 
 ### Project Structure
 
 ```
 src/
-├── index.ts                      — Public API exports
-├── core/
-│   ├── Types.ts                  — All TypeScript types/interfaces
-│   ├── TranslationsContext.tsx   — TableTranslations interface, context & defaults
-│   ├── TableCraft.tsx           — Main component
-│   ├── RowTable.tsx              — Table rendering (<table>, <thead>, <tbody>)
-│   ├── ColHeader.tsx       — Column header (sort + filter)
-│   ├── TableRow.tsx             — Row rendering (<tr>)
-│   ├── TableCell.tsx            — Cell rendering (<td>)
-│   ├── ContextMenu.tsx           — Right-click context menu component
-│   ├── renderCell.tsx            — Editor resolution
-│   ├── EditorMap.tsx             — Built-in editor registry
-│   ├── useCursor.tsx             — Cursor state management
-│   ├── useCursorKeys.tsx         — Keyboard navigation
-│   ├── useContextMenu.tsx        — Context menu state & item building
-│   ├── directDomUpdateForCursor.tsx — Direct DOM updates for cursor
-│   ├── InflightEditTracker.ts    — Per-cell edit counter for optimistic merge
-│   ├── useAsyncTableState.ts    — Hook: deferred snapshots, optimistic edits, stale detection
-│   ├── ComboboxFilter.tsx        — Checkbox-dropdown filter for selectOptions columns
-│   ├── useUndoRedo.ts            — Undo/Redo stack
-│   ├── useGridResizeChecker.ts
-│   ├── useStickColumnLeftsChecker.ts
-│   ├── usePositionInsideViewport.tsx
-│   └── useWindowSize.tsx
-├── editors/
-│   ├── StringEditor.tsx          — Text input with optional inputMask
-│   ├── NumberEditor.tsx          — Locale-aware formatted number input
-│   ├── BooleanEditor.tsx
-│   ├── ComboboxEditor.tsx
-│   ├── MultiComboboxEditor.tsx
-│   ├── DropdownEditor.tsx        — Shared dropdown UI for Combobox/MultiCombobox
-│   ├── DateEditor.tsx            — Date with native picker
-│   ├── DateTimeEditor.tsx        — DateTime with native picker
-│   ├── TimeEditor.tsx            — Time with native picker
-│   ├── DurationEditor.tsx        — Duration with multi-format parser
-│   ├── ColorEditor.tsx           — Color with swatch + native picker
-│   └── TextareaDialogEditor.tsx  — Multi-line text in a dialog
-├── pagination/
-│   └── Pagination.tsx            — Standalone pagination component
-└── examples/
-    ├── example.tsx               — Full demo (all features, async backend, themes)
-    ├── example-simple.tsx         — Simple demo (minimal setup, 5 rows)
-    ├── example-data.json         — Demo data (300 rows)
-    ├── index.html                — Full demo entry
-    ├── simple.html               — Simple demo entry
-    └── styles.css                — Default stylesheet
+  index.ts                  — Public API exports
+  core/                     — Main component, cursor, context menu, async state
+  editors/                  — All built-in editor components
+  pagination/               — Standalone Pagination component
+  examples/                 — Demo apps and sample data
 tests/
-└── customtable.spec.ts           — Playwright E2E tests (232 tests)
+  customtable.spec.ts       — Playwright E2E tests
 ```
-
----
-
-## Comparison: TableCraft vs. Others
-
-While there are many grid libraries available, `TableCraft` occupies a unique niche. It is designed specifically for **structured data editing** (Database-first) rather than being a general-purpose spreadsheet clone or a read-only data viewer.
-
-### Why choose TableCraft?
-
-1.  **Native Layout Engine:** By using a standard HTML `<table>`, we let the browser handle cell alignment and text wrapping. No more fighting with fixed-width virtualization bugs or complex CSS overrides.
-2.  **Built-in Data Integrity:** Features like **Async Rollback** and **Undo/Redo** are core primitives, not afterthoughts. You don't have to manually manage complex state snapshots when a backend update fails.
-3.  **Pro Features for Free:** Many "Enterprise" grids lock features like Range Selection, Fill Handle, or Undo/Redo behind expensive commercial licenses. `TableCraft` provides these out-of-the-box under the MIT license.
-
-### Feature Comparison
-
-| Feature               | TableCraft         | Handsontable      | AG Grid (Community)  | TanStack Table |
-| :-------------------- | :------------------ | :---------------- | :------------------- | :------------- |
-| **Primary Goal**      | **DB Bulk-Editing** | Spreadsheet Clone | Enterprise Grid      | Headless Logic |
-| **Rendering**         | Native `<table>`    | Virtual DOM       | Virtual (Div/Canvas) | User-defined   |
-| **Undo / Redo**       | ✅ **Built-in**     | 💰 (Pro only)     | ❌ (Manual)          | ❌ (Manual)    |
-| **Async Rollback**    | ✅ **Built-in**     | ❌ (Manual)       | ❌ (Manual)          | ❌ (Manual)    |
-| **Range Selection**   | ✅ Included         | ✅ Included       | 💰 (Enterprise)      | ❌ (Manual)    |
-| **Sticky Columns**    | ✅ Native CSS       | ✅ JS-based       | ✅ JS-based          | ❌ (Manual)    |
-| **Number Formatting** | ✅ Locale-aware     | ✅ Included       | ✅ Included          | ❌ (Manual)    |
-| **i18n**              | ✅ **Built-in**     | ✅ Included       | ✅ Included          | ❌ (Manual)    |
-| **Learning Curve**    | **Low**             | High              | High                 | Medium         |
-| **License**           | **MIT**             | Commercial / SaaS | MIT / Commercial     | MIT            |
-
----
-
-### When to use TableCraft
-
-- Internal admin tools and back-office dashboards.
-- Applications where data follows a strict schema (Rows & Columns).
-- Scenarios where users need to edit 10–500 rows at once with high efficiency or where pagination is an option.
-- Projects where you want to sync changes to an API with minimal boilerplate.
-
-### When to use something else
-
-- **Massive Datasets:** If you need to render >5,000 rows at once, use a virtualized grid like **AG Grid** or **Glide Data Grid**.
-- **Free-form Data:** If your users need to add arbitrary columns or write complex formulas, use **Handsontable** or **Luckysheet**.
-- **Complete UI Control:** If you want to build the entire UI from scratch and only need the math, use **TanStack Table**.
-
----
-
-## Performance
-
-TableCraft is designed for small to medium datasets rendered as a native HTML `<table>`. The cursor/selection system bypasses React re-renders entirely via direct DOM manipulation (`classList`, `style`). The following targeted optimizations further reduce CPU load during interactive use.
-
-### Implemented Optimizations
-
-**RAF-throttled Mousemove** (`useCursor.tsx`)
-During selection-drag and fill-drag, `onMouseMove` events can fire 100+ times per second. Each event would trigger `setCursorRef` → `directDomUpdateForCursor` → `getBoundingClientRect` (forced reflow). A shared `requestAnimationFrame` dispatcher batches these updates to at most once per frame (60/s). The visual result is identical since the browser renders at 60 FPS anyway.
-
-- Measured improvement: **86% less CPU time** during drag operations (130ms → 18ms for 300 events on a 101x30 table).
-- Code: `throttledMouseMove()` in `useCursor.tsx`, used by `TableCell.onMouseMove` and `ColHeader.onMouseMove`.
-
-**CSS Containment** (`base.css`)
-`contain: strict` on `.table-craft-viewport` and `contain: content` on `.cell` tell the browser that layout changes inside these elements cannot affect elements outside. This allows the browser to skip unnecessary reflow calculations on surrounding DOM.
-
-- Measured improvement: ~4% on isolated pages, more significant when the table is embedded in complex layouts.
-
-**GPU Compositing Hint** (`base.css`)
-`will-change: top, left, width, height` on `.selection-rectangle` and `.fill-rectangle` promotes these frequently-repositioned overlays to their own compositing layer, avoiding repaints of underlying cells.
-
-### Evaluated but not Implemented
-
-The following optimizations were prototyped, benchmarked, and deliberately rejected due to unfavorable complexity/benefit ratio:
-
-**Event Delegation** (moving mouse handlers from individual cells to `<tbody>`/`<thead>`)
-Would reduce ~12,000 React handler props to 6. However, React already delegates events internally — the "12,000 handlers" are closures, not DOM listeners. The delegated version required duplicating cell interaction logic (readOnly checks, dropdown zone detection, cellMeta lookups) in `RowTable`, making it fragile. The memory savings were not measurable in practice.
-
-**Cell Position Cache** (caching `getBoundingClientRect` results during drag)
-Would eliminate redundant reflow calls during drag. However, with RAF-throttling already in place, only ~7-10 BCR calls remain per drag operation (down from 250+ without throttling). The cache reduced this to ~5-7 — a marginal improvement that added lifecycle complexity (`startDragCache`/`clearDragCache`).
-
-**editingCell State Isolation** (replacing React state with a ref + portal)
-Would eliminate `React.memo` comparison overhead on 300+ rows when entering/exiting edit mode. Not implemented because the current approach already filters out most re-renders via `React.memo`, and the complexity of managing a portal-based editor injection is high.
-
-**Row/Column Highlight Overlay** (replacing `classList` operations with overlay divs)
-Would reduce N classList operations to 2 style updates. Not implemented because classList is already fast for typical table sizes, and the overlay approach introduces complexity around sticky column clipping.
-
-### Profiling
-
-For detailed analysis methodology and benchmark procedures, see `PERFORMANCE_REPORT.md`.
 
 ---
 
