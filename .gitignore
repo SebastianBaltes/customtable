@@ -1,5 +1,6 @@
 .parcel-cache/
 dist/
+release/
 node_modules/
 *.log
 .claude/worktrees/

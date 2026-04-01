@@ -1,33 +1,58 @@
 {
-  "name": "customtable",
-  "version": "0.0.1",
-  "description": "A powerful and flexible table editor component built with React and TypeScript. It includes comprehensive customization options such as sorting, search fields, custom renderers and editors, right-click menus, scrolling, cell and range selection, copy & paste functionality, and validation. It utilizes the Tailwind CSS framework for modern and responsive styling. Includes unit tests and an interface for data store access.",
+  "name": "tableedit",
+  "version": "1.0.0",
+  "description": "A powerful, flexible React table editor with sorting, filtering, inline editing, copy & paste, undo/redo, custom editors, column resizing, and more.",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && cp src/core/base.css dist/style.css",
+    "build-release": "vite build --config vite.lib.config.ts && cp src/core/base.css release/style.css",
     "test": "jest",
     "test:e2e": "playwright test",
     "start": "vite",
     "build-demo": "vite build",
-    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\""
+    "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SebastianBaltes/signalstate.git"
+    "url": "git+https://github.com/SebastianBaltes/tableedit.git"
   },
   "keywords": [
     "react",
-    "state",
-    "mutable",
-    "signal"
+    "table",
+    "editor",
+    "datagrid",
+    "spreadsheet",
+    "inline-editing",
+    "sorting",
+    "filtering",
+    "typescript"
   ],
   "author": "Sebastian Baltes <sebastian.l.baltes@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SebastianBaltes/signalstate/issues"
+    "url": "https://github.com/SebastianBaltes/tableedit/issues"
   },
-  "homepage": "https://github.com/SebastianBaltes/signalstate#readme",
+  "homepage": "https://sebastianbaltes.github.io/tableedit/",
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
   "devDependencies": {
     "jest": "^29.6.0",
     "ts-jest": "^29.1.0",
@@ -39,12 +64,10 @@
     "@vitejs/plugin-react": "^6.0.1",
     "prettier": "^3.0.0",
     "process": "^0.11.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-test-renderer": "^18.2.0",
     "typescript": "^5.1.6",
     "vite": "^8.0.3"
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
   }
 }

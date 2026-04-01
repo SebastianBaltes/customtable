@@ -12,9 +12,9 @@ It is the ideal middle ground between a rigid single-record form and a chaotic, 
 
 By utilizing a native HTML `<table>` instead of virtualization, CustomTable ensures a pixel-perfect layout and seamless CSS styling. While ideal for small to medium datasets, it can easily handle larger data through standard pagination.
 
-> **Full Demo:** <https://sebastianbaltes.github.io/customtable/> — all features, async backend simulation, 8 themes
+> **Full Demo:** <https://sebastianbaltes.github.io/tableedit/> — all features, async backend simulation, 8 themes
 >
-> **Simple Demo:** <https://sebastianbaltes.github.io/customtable/simple.html> — minimal setup, 10 columns, 5 rows
+> **Simple Demo:** <https://sebastianbaltes.github.io/tableedit/simple.html> — minimal setup, 10 columns, 5 rows
 
 ---
 
@@ -190,7 +190,7 @@ To apply a theme, simply import or inject its CSS after `base.css`. The example 
 ## Installation
 
 ```bash
-npm install customtable
+npm install tableedit
 ```
 
 **Peer dependencies:** `react >= 18`, `react-dom >= 18`
@@ -230,9 +230,9 @@ The package ships TypeScript sources and type declarations.
 
 ```tsx
 import React, { useState } from "react";
-import { CustomTable, ColumnConfig, Row } from "customtable";
+import { CustomTable, ColumnConfig, Row } from "tableedit";
 // Import the default styles (or provide your own):
-import "customtable/src/examples/styles.css";
+import "tableedit/style.css";
 
 const columns: ColumnConfig<any>[] = [
   { name: "id", type: "Number", readOnly: true, numberFormat: { decimalPlaces: 0 } },
@@ -774,7 +774,7 @@ Combine with `loading` and `pendingSortColumn` for full backend feedback:
 Utility class for safely merging backend data with optimistic local edits. Prevents race conditions where a backend response overwrites a user edit that hasn't been confirmed yet.
 
 ```ts
-import { InflightEditTracker } from "customtable";
+import { InflightEditTracker } from "tableedit";
 
 const tracker = new InflightEditTracker();
 
@@ -817,7 +817,7 @@ tracker.resolveBatch(batch);
 Encapsulates the complete async backend integration pattern in a single hook. Handles deferred snapshots, optimistic edits, inflight tracking, stale detection, and status derivation.
 
 ```tsx
-import { useAsyncTableState } from "customtable";
+import { useAsyncTableState } from "tableedit";
 
 const asyncState = useAsyncTableState({
   allRows,                          // Full dataset
@@ -938,7 +938,7 @@ type CustomContextMenuItem =
 `Pagination` is a **standalone** component — it has no internal coupling to `CustomTable`. Use it to drive any paginated list or table, including `CustomTable`.
 
 ```tsx
-import { Pagination } from "customtable";
+import { Pagination } from "tableedit";
 
 <Pagination
   totalRows={300}
@@ -1199,7 +1199,7 @@ Press **Ctrl+H** to open the Search & Replace dialog. Features:
 ## Custom Editors
 
 ```tsx
-import { Editor } from "customtable";
+import { Editor } from "tableedit";
 
 const ColorEditor: Editor<string> = ({ value, editing, onChange }) => {
   if (!editing) return <span style={{ color: value }}>{value}</span>;
@@ -1225,7 +1225,7 @@ const columns = [{ name: "color", type: "custom", editor: ColorEditor }];
 The built-in right-click menu can be extended with custom items via the `extraContextMenuItems` prop. Each item's `onClick` receives a `TableContextState` snapshot captured at the moment of the click.
 
 ```tsx
-import { CustomContextMenuItem, CustomTable } from "customtable";
+import { CustomContextMenuItem, CustomTable } from "tableedit";
 
 const myItems: CustomContextMenuItem[] = [
   {
@@ -1313,7 +1313,7 @@ flowchart TB
 Sort and filter changes should not update the table data instantly when the backend handles the query. Use a **deferred snapshot** that only updates after the backend responds.
 
 ```tsx
-import { SortConfig, FilterState, Row } from "customtable";
+import { SortConfig, FilterState, Row } from "tableedit";
 
 // "What the user requested" vs "what the backend confirmed"
 const [sortConfig, setSortConfig] = useState<SortConfig>(null);
@@ -1351,7 +1351,7 @@ Filter inputs use an internal buffer (`CustomColHeader`) that preserves the user
 When a user edits a cell, show the change immediately. Track which cells have unconfirmed changes so backend data doesn't overwrite them.
 
 ```tsx
-import { InflightEditTracker, Row, ColumnConfig } from "customtable";
+import { InflightEditTracker, Row, ColumnConfig } from "tableedit";
 
 const trackerRef = useRef(new InflightEditTracker());
 const lastBatchRef = useRef<Array<{ rowKey: string; colName: string }>>([]);
@@ -1604,7 +1604,7 @@ The table applies changes immediately (optimistic update) and only rolls back if
 
 ```bash
 git clone <repo-url>
-cd customtable
+cd tableedit
 npm install
 ```
 
