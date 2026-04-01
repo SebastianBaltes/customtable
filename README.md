@@ -3,6 +3,7 @@
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)
 ![React](https://img.shields.io/badge/React-18+-61dafb.svg)
+![gzip: ~25 kB](https://img.shields.io/badge/gzip-~25_kB-brightgreen.svg)
 
 A schema-bound data grid for React — built for keyboard-driven bulk editing of structured datasets.
 
