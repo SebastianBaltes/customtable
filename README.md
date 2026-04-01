@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="react-tablecraft" width="360" />
+  <img src="assets/logo.png" alt="@sebastianbaltes/react-tablecraft" width="360" />
 </p>
 
 <p align="center">
@@ -106,7 +106,7 @@ TableCraft sits between a rigid single-record form and a free-form spreadsheet. 
 ## Installation
 
 ```bash
-npm install react-tablecraft
+npm install @sebastianbaltes/react-tablecraft
 ```
 
 **Peer dependencies:** `react >= 17`, `react-dom >= 17`
@@ -123,8 +123,8 @@ The package ships TypeScript sources and type declarations.
 
 ```tsx
 import React, { useState } from "react";
-import { TableCraft, ColumnConfig, Row } from "react-tablecraft";
-import "react-tablecraft/style.css";
+import { TableCraft, ColumnConfig, Row } from "@sebastianbaltes/react-tablecraft";
+import "@sebastianbaltes/react-tablecraft/style.css";
 
 const columns: ColumnConfig<any>[] = [
   { name: "id", type: "Number", readOnly: true, numberFormat: { decimalPlaces: 0 } },
@@ -718,7 +718,7 @@ useEffect(() => {
 Prevents race conditions where a backend response overwrites a user edit that hasn't been confirmed yet.
 
 ```ts
-import { InflightEditTracker } from "react-tablecraft";
+import { InflightEditTracker } from "@sebastianbaltes/react-tablecraft";
 
 const tracker = new InflightEditTracker();
 
@@ -745,7 +745,7 @@ const merged = tracker.mergeRows(localRows, backendRows, columns, localKeyFn, ba
 Encapsulates all of the above in a single hook — deferred snapshots, optimistic edits, inflight tracking, stale detection, and status derivation:
 
 ```tsx
-import { useAsyncTableState } from "react-tablecraft";
+import { useAsyncTableState } from "@sebastianbaltes/react-tablecraft";
 
 const asyncState = useAsyncTableState({
   allRows, columns, sortConfig, filters,
@@ -840,7 +840,7 @@ The included example app (`src/examples/example.tsx`) demonstrates all integrati
 `Pagination` is a standalone component — no coupling to `TableCraft`. Use it with any paginated list.
 
 ```tsx
-import { Pagination } from "react-tablecraft";
+import { Pagination } from "@sebastianbaltes/react-tablecraft";
 
 <Pagination
   totalRows={300}
