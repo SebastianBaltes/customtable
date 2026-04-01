@@ -13,9 +13,15 @@ A schema-bound data grid for React — built for keyboard-driven bulk editing of
 
 TableCraft sits between a rigid single-record form and a free-form spreadsheet. It combines the speed of Excel-style interaction (arrow keys, fill drag, copy/paste, undo/redo) with the data integrity of a fixed schema and built-in async backend integration.
 
+<p align="center">
+  <img src="assets/screenshot-full-demo.png" alt="Full demo — Light theme, backend mode, sorting, filtering" width="800" />
+</p>
+
 > **[Full Demo](https://sebastianbaltes.github.io/react-tablecraft/)** — all features, async backend simulation, 8 themes
 >
 > **[Simple Demo](https://sebastianbaltes.github.io/react-tablecraft/simple.html)** — minimal setup, 10 columns, 5 rows
+>
+> **[Demo Video](assets/example-video.webm)** — keyboard navigation, editing, drag-to-fill, themes
 
 ---
 
@@ -112,6 +118,10 @@ The package ships TypeScript sources and type declarations.
 ---
 
 ## Quick Start
+
+<p align="center">
+  <img src="assets/screenshot-simple.png" alt="Simple example — minimal setup" width="800" />
+</p>
 
 ```tsx
 import React, { useState } from "react";
@@ -584,8 +594,6 @@ const columns = [{ name: "rating", type: "custom", editor: RatingEditor }];
 ## Theming
 
 TableCraft ships with 8 themes and a CSS-variable-based theming system.
-
-<!-- TODO: Screenshot showing 2-3 different themes side by side -->
 
 ### Built-in Themes
 
