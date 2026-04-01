@@ -277,9 +277,9 @@ export const App = () => {
 flowchart TD
   CT["TableEdit"]
   RT["RowTable"]
-  CCH["CustomColHeaderList"]
-  CR["CustomRowList"]
-  CC["CustomCellList"]
+  CCH["ColHeaderList"]
+  CR["TableRowList"]
+  CC["TableCellList"]
   RC["renderCell()"]
   CM["ContextMenu"]
 
@@ -1344,7 +1344,7 @@ useEffect(() => {
 
 **Key principle:** Pass the **confirmed** `sortConfig` and `filters` to TableEdit (so it doesn't re-sort/re-filter old data), but update the **requested** state immediately (so `pendingSortColumn`/`pendingFilterColumns` show spinners).
 
-Filter inputs use an internal buffer (`CustomColHeader`) that preserves the user's typed text even when the controlled `filters` prop lags behind.
+Filter inputs use an internal buffer (`ColHeader`) that preserves the user's typed text even when the controlled `filters` prop lags behind.
 
 ### 2. Optimistic Edits with Inflight Tracking
 
@@ -1646,9 +1646,9 @@ src/
 │   ├── TranslationsContext.tsx   — TableTranslations interface, context & defaults
 │   ├── TableEdit.tsx           — Main component
 │   ├── RowTable.tsx              — Table rendering (<table>, <thead>, <tbody>)
-│   ├── CustomColHeader.tsx       — Column header (sort + filter)
-│   ├── CustomRow.tsx             — Row rendering (<tr>)
-│   ├── CustomCell.tsx            — Cell rendering (<td>)
+│   ├── ColHeader.tsx       — Column header (sort + filter)
+│   ├── TableRow.tsx             — Row rendering (<tr>)
+│   ├── TableCell.tsx            — Cell rendering (<td>)
 │   ├── ContextMenu.tsx           — Right-click context menu component
 │   ├── renderCell.tsx            — Editor resolution
 │   ├── EditorMap.tsx             — Built-in editor registry
@@ -1744,7 +1744,7 @@ TableEdit is designed for small to medium datasets rendered as a native HTML `<t
 During selection-drag and fill-drag, `onMouseMove` events can fire 100+ times per second. Each event would trigger `setCursorRef` → `directDomUpdateForCursor` → `getBoundingClientRect` (forced reflow). A shared `requestAnimationFrame` dispatcher batches these updates to at most once per frame (60/s). The visual result is identical since the browser renders at 60 FPS anyway.
 
 - Measured improvement: **86% less CPU time** during drag operations (130ms → 18ms for 300 events on a 101x30 table).
-- Code: `throttledMouseMove()` in `useCursor.tsx`, used by `CustomCell.onMouseMove` and `CustomColHeader.onMouseMove`.
+- Code: `throttledMouseMove()` in `useCursor.tsx`, used by `TableCell.onMouseMove` and `ColHeader.onMouseMove`.
 
 **CSS Containment** (`base.css`)
 `contain: strict` on `.table-edit-viewport` and `contain: content` on `.cell` tell the browser that layout changes inside these elements cannot affect elements outside. This allows the browser to skip unnecessary reflow calculations on surrounding DOM.
