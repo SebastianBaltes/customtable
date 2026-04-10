@@ -53,6 +53,8 @@ export const DateTimeEditor: Editor<string> = ({
   columnConfig,
   onChange,
   initialEditValue,
+  onEnterEditMode,
+  readOnly,
 }) => {
   const fmt = columnConfig.dateTimeFormat;
   const pickerRef = useRef<HTMLInputElement>(null);
@@ -102,10 +104,12 @@ export const DateTimeEditor: Editor<string> = ({
         className="cell-editor-picker-btn"
         tabIndex={-1}
         onMouseDown={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          if (!editing && onEnterEditMode) onEnterEditMode();
-          try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
+          if (!readOnly) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!editing && onEnterEditMode) onEnterEditMode();
+            try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
+          }
         }}
         aria-label="Open date/time picker"
       >
