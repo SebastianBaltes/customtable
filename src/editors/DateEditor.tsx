@@ -56,6 +56,8 @@ export const DateEditor: Editor<string> = ({
   columnConfig,
   onChange,
   initialEditValue,
+  readOnly,
+  onEnterEditMode,
 }) => {
   const fmt = columnConfig.dateFormat;
   const pickerRef = useRef<HTMLInputElement>(null);
@@ -66,35 +68,41 @@ export const DateEditor: Editor<string> = ({
       editing,
       initialEditValue,
       onCommit: (val) => onChange(parseDateInput(val)),
+      transformValue: (val) => val === initialEditValue ? val : formatDate(val, fmt),
     });
-
-  if (!editing) {
-    return <span>{formatDate(value, fmt)}</span>;
-  }
 
   return (
     <span className="date-editor-wrapper">
-      <input
-        ref={inputRef}
-        type="text"
-        className="cell-editor-input"
-        autoComplete="off"
-        data-lpignore="true"
-        value={localValue}
-        onChange={(e) => setLocalValue(e.target.value)}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-      />
+      {editing ? (
+        <input
+          ref={inputRef}
+          type="text"
+          className="cell-editor-input"
+          autoComplete="off"
+          data-lpignore="true"
+          value={localValue}
+          onChange={(e) => setLocalValue(e.target.value)}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+        />
+      ) : (
+        <span className="cell-editor-display-text">{formatDate(value, fmt)}</span>
+      )}
       <input
         ref={pickerRef}
         type="date"
         className="cell-editor-picker-hidden"
         tabIndex={-1}
-        value={/^\d{4}-\d{2}-\d{2}$/.test(localValue) ? localValue : ""}
+        value={
+          (() => {
+            const parsed = parseDateInput(localValue);
+            return /^\d{4}-\d{2}-\d{2}$/.test(parsed) ? parsed : "";
+          })()
+        }
         onChange={(e) => {
           const v = e.target.value;
           if (v) {
-            setLocalValue(v);
+            setLocalValue(formatDate(v, fmt));
             onChange(v);
           }
         }}
@@ -104,9 +112,12 @@ export const DateEditor: Editor<string> = ({
         className="cell-editor-picker-btn"
         tabIndex={-1}
         onMouseDown={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
+          if (!readOnly) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!editing && onEnterEditMode) onEnterEditMode();
+            try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
+          }
         }}
         aria-label="Open date picker"
       >

@@ -1086,6 +1086,38 @@ test.describe("Copy & Paste", () => {
     await expect(cell).toContainText("PastedValue");
   });
 
+  test("should copy and paste into MultiCombobox and parse correctly", async ({ page }) => {
+    await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
+
+    const table = page.locator(".grid-db-editor");
+    await table.focus();
+
+    // Navigate to skills column (index 6)
+    for (let i = 0; i < 6; i++) {
+      await page.keyboard.press("ArrowRight");
+    }
+    await page.waitForTimeout(100);
+
+    // Write a comma-separated value to clipboard
+    await page.evaluate(() => navigator.clipboard.writeText("React, Python, Docker"));
+    await page.waitForTimeout(100);
+
+    // Paste into cell (0,6)
+    await page.keyboard.press("Control+v");
+    await page.waitForTimeout(400);
+
+    // The MultiComboboxEditor formats array as comma-separated string with spaces for the title
+    const cell = page.locator("table tbody tr").first().locator("td").nth(6);
+    await expect(cell).toHaveAttribute("title", "React, Python, Docker");
+
+    // Copy it back to see if it copies as "React, Python, Docker" or "React,Python,Docker"
+    // String(["React", "Python", "Docker"]) is "React,Python,Docker"
+    await page.keyboard.press("Control+c");
+    await page.waitForTimeout(200);
+    const clipboardText = await page.evaluate(() => navigator.clipboard.readText());
+    expect(clipboardText).toBe("React,Python,Docker");
+  });
+
   test("should log onUpdateRows to console on paste", async ({ page }) => {
     await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
 

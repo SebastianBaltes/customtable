@@ -12,6 +12,8 @@ export const TextareaDialogEditor: Editor<string> = ({
   onRequestClose,
   textEllipsisLength,
   initialEditValue,
+  readOnly,
+  onEnterEditMode,
 }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogValue, setDialogValue] = useState(value ?? "");
@@ -52,6 +54,10 @@ export const TextareaDialogEditor: Editor<string> = ({
     : columnConfig.label ?? columnConfig.name;
 
   const handleSave = () => {
+    if (readOnly) {
+      handleCancel();
+      return;
+    }
     onChange(dialogValue);
     setDialogOpen(false);
     onRequestClose?.();
@@ -70,7 +76,7 @@ export const TextareaDialogEditor: Editor<string> = ({
       : displayText;
 
   // --- Inline editing mode (double-click / Enter / typing) ---
-  if (editing && !dialogOpen) {
+  if (editing && !dialogOpen && !readOnly) {
     return (
       <>
         <input
@@ -137,6 +143,7 @@ export const TextareaDialogEditor: Editor<string> = ({
                 ref={textareaRef}
                 className="editor-dialog-input"
                 value={dialogValue}
+                disabled={readOnly}
                 onChange={(e) => setDialogValue(e.target.value)}
                 onKeyDown={(e) => {
                   if (e.key === "Escape") {
@@ -146,14 +153,16 @@ export const TextareaDialogEditor: Editor<string> = ({
                 }}
               />
               <div className="editor-dialog-footer">
-                <button className="editor-dialog-btn editor-dialog-btn-save" onClick={handleSave}>
-                  Save
-                </button>
+                {!readOnly && (
+                  <button className="editor-dialog-btn editor-dialog-btn-save" onClick={handleSave}>
+                    Save
+                  </button>
+                )}
                 <button
                   className="editor-dialog-btn editor-dialog-btn-cancel"
                   onClick={handleCancel}
                 >
-                  Cancel
+                  {readOnly ? "Close" : "Cancel"}
                 </button>
               </div>
             </div>

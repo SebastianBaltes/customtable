@@ -35,7 +35,7 @@ export const ColHeader = React.memo(
     rowsLength: number;
     sticky: boolean;
     sortConfig: SortConfig;
-    onSortChange: (config: SortConfig) => void;
+    onSortChange: (config: SortConfig, colIdx?: number) => void;
     filterValue: string;
     onFilterChange: (value: string) => void;
     filterOptions?: string[];
@@ -135,24 +135,24 @@ export const ColHeader = React.memo(
       if (event.shiftKey) {
         // Shift+click: add/cycle this column as additional sort criterion
         if (existing === -1) {
-          onSortChange([...current, { column: column.name, direction: "asc" }]);
+          onSortChange([...current, { column: column.name, direction: "asc" }], colIdx);
         } else if (current[existing].direction === "asc") {
           const next = [...current];
           next[existing] = { column: column.name, direction: "desc" };
-          onSortChange(next);
+          onSortChange(next, colIdx);
         } else {
           // Remove this column from multi-sort
           const next = current.filter((_, i) => i !== existing);
-          onSortChange(next.length > 0 ? next : null);
+          onSortChange(next.length > 0 ? next : null, colIdx);
         }
       } else {
         // Regular click: single-sort (replaces all)
         if (!isSorted) {
-          onSortChange([{ column: column.name, direction: "asc" }]);
+          onSortChange([{ column: column.name, direction: "asc" }], colIdx);
         } else if (sortDirection === "asc") {
-          onSortChange([{ column: column.name, direction: "desc" }]);
+          onSortChange([{ column: column.name, direction: "desc" }], colIdx);
         } else {
-          onSortChange(null);
+          onSortChange(null, colIdx);
         }
       }
     };

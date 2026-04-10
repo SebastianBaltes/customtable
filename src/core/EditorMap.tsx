@@ -8,6 +8,7 @@ import { DateTimeEditor } from "../editors/DateTimeEditor";
 import { TimeEditor } from "../editors/TimeEditor";
 import { DurationEditor } from "../editors/DurationEditor";
 import { ColorEditor } from "../editors/ColorEditor";
+import { UrlEditor } from "../editors/UrlEditor";
 import { Editor } from "./Types";
 
 const editorMap = new Map<string, Editor<any>>();
@@ -22,5 +23,6 @@ editorMap.set("DateTime", DateTimeEditor);
 editorMap.set("Time", TimeEditor);
 editorMap.set("Duration", DurationEditor);
 editorMap.set("Color", ColorEditor);
+editorMap.set("Url", UrlEditor);
 
 export { editorMap };

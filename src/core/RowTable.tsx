@@ -54,7 +54,7 @@ export const RowTable = React.memo(
     onCellChange: (rowIdx: number, colName: string, value: any) => void;
     editingCell: CellAddr | null;
     sortConfig: SortConfig;
-    onSortChange: (config: SortConfig) => void;
+    onSortChange: (config: SortConfig, colIdx?: number) => void;
     filters: Record<string, string>;
     onFilterChange: (colName: string, value: string) => void;
     filterOptionsMap?: Record<string, string[]>;

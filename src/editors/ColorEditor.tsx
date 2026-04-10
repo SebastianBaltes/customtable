@@ -36,6 +36,8 @@ export const ColorEditor: Editor<string> = ({
   columnConfig,
   onChange,
   initialEditValue,
+  readOnly,
+  onEnterEditMode,
 }) => {
   const pickerRef = useRef<HTMLInputElement>(null);
 
@@ -47,19 +49,8 @@ export const ColorEditor: Editor<string> = ({
       onCommit: (val) => onChange(normalizeHex(val)),
     });
 
-  const swatchColor = isValidHex(localValue) ? localValue : (isValidHex(value ?? "") ? value! : undefined);
-
-  if (!editing) {
-    const displayHex = value ?? "";
-    return (
-      <span className="color-editor-display">
-        {isValidHex(displayHex) && (
-          <span className="color-swatch" style={{ backgroundColor: displayHex }} />
-        )}
-        <span>{displayHex}</span>
-      </span>
-    );
-  }
+  const displayHex = value ?? "";
+  const swatchColor = isValidHex(localValue) ? localValue : (isValidHex(displayHex) ? displayHex : undefined);
 
   return (
     <span className="color-editor-wrapper">
@@ -67,22 +58,29 @@ export const ColorEditor: Editor<string> = ({
         className="color-swatch color-swatch-clickable"
         style={{ backgroundColor: swatchColor ?? "#ffffff" }}
         onMouseDown={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
+          if (!readOnly) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!editing && onEnterEditMode) onEnterEditMode();
+            try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
+          }
         }}
       />
-      <input
-        ref={inputRef}
-        type="text"
-        className="cell-editor-input"
-        autoComplete="off"
-        data-lpignore="true"
-        value={localValue}
-        onChange={(e) => setLocalValue(e.target.value)}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-      />
+      {editing ? (
+        <input
+          ref={inputRef}
+          type="text"
+          className="cell-editor-input"
+          autoComplete="off"
+          data-lpignore="true"
+          value={localValue}
+          onChange={(e) => setLocalValue(e.target.value)}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+        />
+      ) : (
+        <span>{displayHex}</span>
+      )}
       <input
         ref={pickerRef}
         type="color"

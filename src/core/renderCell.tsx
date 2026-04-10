@@ -12,6 +12,8 @@ export const renderCell = (
   textEllipsisLength?: number,
   initialEditValue: string | null = null,
   onRequestClose?: () => void,
+  readOnly?: boolean,
+  onEnterEditMode?: () => void,
 ): JSX.Element => {
   const editor = columnConfig.editor ?? editorMap.get(columnConfig.type) ?? StringEditor;
   return editor({
@@ -23,5 +25,7 @@ export const renderCell = (
     onRequestClose,
     textEllipsisLength,
     initialEditValue,
+    readOnly,
+    onEnterEditMode,
   });
 };

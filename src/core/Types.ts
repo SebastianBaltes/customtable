@@ -287,6 +287,8 @@ export type EditorParams<T> = {
   onRequestClose?: () => void;
   textEllipsisLength?: number;
   initialEditValue: string | null;
+  readOnly?: boolean;
+  onEnterEditMode?: () => void;
 };
 
 export type Editor<T> = (params: EditorParams<T>) => JSX.Element;

@@ -56,6 +56,8 @@ export const TimeEditor: Editor<string> = ({
   columnConfig,
   onChange,
   initialEditValue,
+  readOnly,
+  onEnterEditMode,
 }) => {
   const fmt = columnConfig.timeFormat;
   const pickerRef = useRef<HTMLInputElement>(null);
@@ -66,36 +68,42 @@ export const TimeEditor: Editor<string> = ({
       editing,
       initialEditValue,
       onCommit: (val) => onChange(parseTimeInput(val, fmt?.showSeconds)),
+      transformValue: (val) => val === initialEditValue ? val : formatTime(val, fmt),
     });
-
-  if (!editing) {
-    return <span>{formatTime(value, fmt)}</span>;
-  }
 
   return (
     <span className="date-editor-wrapper">
-      <input
-        ref={inputRef}
-        type="text"
-        className="cell-editor-input"
-        autoComplete="off"
-        data-lpignore="true"
-        value={localValue}
-        onChange={(e) => setLocalValue(e.target.value)}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-      />
+      {editing ? (
+        <input
+          ref={inputRef}
+          type="text"
+          className="cell-editor-input"
+          autoComplete="off"
+          data-lpignore="true"
+          value={localValue}
+          onChange={(e) => setLocalValue(e.target.value)}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+        />
+      ) : (
+        <span className="cell-editor-display-text">{formatTime(value, fmt)}</span>
+      )}
       <input
         ref={pickerRef}
         type="time"
         className="cell-editor-picker-hidden"
         tabIndex={-1}
         step={fmt?.showSeconds ? 1 : 60}
-        value={/^\d{1,2}:\d{2}/.test(localValue) ? localValue : ""}
+        value={
+          (() => {
+            const parsed = parseTimeInput(localValue, fmt?.showSeconds);
+            return /^\d{1,2}:\d{2}/.test(parsed) ? parsed : "";
+          })()
+        }
         onChange={(e) => {
           const v = e.target.value;
           if (v) {
-            setLocalValue(v);
+            setLocalValue(formatTime(v, fmt));
             onChange(v);
           }
         }}
@@ -105,9 +113,12 @@ export const TimeEditor: Editor<string> = ({
         className="cell-editor-picker-btn"
         tabIndex={-1}
         onMouseDown={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
+          if (!readOnly) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!editing && onEnterEditMode) onEnterEditMode();
+            try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
+          }
         }}
         aria-label="Open time picker"
       >

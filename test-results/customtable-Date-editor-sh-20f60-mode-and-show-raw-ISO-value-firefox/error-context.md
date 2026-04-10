@@ -1,0 +1,19606 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - link "</> View Source" [ref=e5] [cursor=pointer]:
+      - /url: https://github.com/SebastianBaltes/customtable/blob/master/src/examples/example.tsx
+    - generic [ref=e6]: "Theme:"
+    - combobox [ref=e7] [cursor=pointer]:
+      - option "Light" [selected]
+      - option "Dark"
+      - option "Excel Classic"
+      - option "Google Sheets"
+      - option "Material"
+      - option "Material 3"
+      - option "Numbers"
+      - option "High Contrast"
+    - generic [ref=e8]: "Mode:"
+    - combobox [ref=e9] [cursor=pointer]:
+      - option "Local (sync)" [selected]
+      - option "Backend (100 ms)"
+      - option "Backend (2 s)"
+      - option "Error (2 s)"
+      - option "Connection error"
+      - option "Validation (2 s)"
+      - option "Stale (2 s)"
+  - generic [ref=e11]:
+    - table "Employee Data" [ref=e13]:
+      - caption [ref=e14]: Employee Data
+      - rowgroup [ref=e15]:
+        - row "ID System Key First Name Last Name Email Department Skills Description Active Salary Hire Date Manager Office Location Phone Employee Number Employment Status Role Team Last Login Score Bonus Contract Type Country City Postal Code Address LinkedIn GitHub Date of Birth Emergency Contact Check-In Shift Color" [ref=e16]:
+          - columnheader "ID" [ref=e17]:
+            - generic [ref=e18]:
+              - generic "Unique internal row ID" [ref=e19] [cursor=pointer]: ID
+              - textbox [ref=e21]
+          - columnheader "System Key" [ref=e23]:
+            - generic [ref=e24]:
+              - generic "Internal system key (10-50 characters)" [ref=e25] [cursor=pointer]: System Key
+              - textbox [ref=e27]
+          - columnheader "First Name" [ref=e29]:
+            - generic [ref=e30]:
+              - generic "First name of the person" [ref=e31] [cursor=pointer]: First Name
+              - textbox [ref=e33]
+          - columnheader "Last Name" [ref=e35]:
+            - generic [ref=e36]:
+              - generic "Last name of the person" [ref=e37] [cursor=pointer]: Last Name
+              - textbox [ref=e39]
+          - columnheader "Email" [ref=e41]:
+            - generic [ref=e42]:
+              - generic "Email address in the format user@example.com" [ref=e43] [cursor=pointer]: Email
+              - textbox [ref=e45]
+          - columnheader "Department" [ref=e47]:
+            - generic [ref=e48]:
+              - generic "Department / organizational unit" [ref=e49] [cursor=pointer]: Department
+              - textbox [ref=e52]
+          - columnheader "Skills" [ref=e54]:
+            - generic [ref=e55]:
+              - generic "Skills / competencies (multiple selection)" [ref=e56] [cursor=pointer]: Skills
+              - textbox [ref=e59]
+          - columnheader "Description" [ref=e61]:
+            - generic [ref=e62]:
+              - generic "Free text / long description (0-1000 characters)" [ref=e63] [cursor=pointer]: Description
+              - textbox [ref=e65]
+          - columnheader "Active" [ref=e67]:
+            - generic [ref=e68]:
+              - generic "Whether the person is active in the company" [ref=e69] [cursor=pointer]: Active
+              - combobox [ref=e71]:
+                - option [selected]
+                - option "Yes"
+                - option "No"
+          - columnheader "Salary" [ref=e73]:
+            - generic [ref=e74]:
+              - generic "Annual salary in EUR" [ref=e75] [cursor=pointer]: Salary
+              - textbox [ref=e77]
+          - columnheader "Hire Date" [ref=e79]:
+            - generic [ref=e80]:
+              - generic "Hire date (YYYY-MM-DD)" [ref=e81] [cursor=pointer]: Hire Date
+              - textbox [ref=e83]
+          - columnheader "Manager" [ref=e85]:
+            - generic [ref=e86]:
+              - generic "Name of the direct manager" [ref=e87] [cursor=pointer]: Manager
+              - textbox [ref=e89]
+          - columnheader "Office Location" [ref=e91]:
+            - generic [ref=e92]:
+              - generic "Location or office" [ref=e93] [cursor=pointer]: Office Location
+              - textbox [ref=e95]
+          - columnheader "Phone" [ref=e97]:
+            - generic [ref=e98]:
+              - generic "Phone number (international format)" [ref=e99] [cursor=pointer]: Phone
+              - textbox [ref=e101]
+          - columnheader "Employee Number" [ref=e103]:
+            - generic [ref=e104]:
+              - generic "Company-internal employee number" [ref=e105] [cursor=pointer]: Employee Number
+              - textbox [ref=e107]
+          - columnheader "Employment Status" [ref=e109]:
+            - generic [ref=e110]:
+              - generic "Employment status (e.g. Active, On Leave)" [ref=e111] [cursor=pointer]: Employment Status
+              - textbox [ref=e113]
+          - columnheader "Role" [ref=e115]:
+            - generic [ref=e116]:
+              - generic "Job title / role in the company" [ref=e117] [cursor=pointer]: Role
+              - textbox [ref=e119]
+          - columnheader "Team" [ref=e121]:
+            - generic [ref=e122]:
+              - generic "Team name or unit" [ref=e123] [cursor=pointer]: Team
+              - textbox [ref=e125]
+          - columnheader "Last Login" [ref=e127]:
+            - generic [ref=e128]:
+              - generic "Last login timestamp (ISO)" [ref=e129] [cursor=pointer]: Last Login
+              - textbox [ref=e131]
+          - columnheader "Score" [ref=e133]:
+            - generic [ref=e134]:
+              - generic "Rating value (0-5)" [ref=e135] [cursor=pointer]: Score
+              - textbox [ref=e137]
+          - columnheader "Bonus" [ref=e139]:
+            - generic [ref=e140]:
+              - generic "Variable bonus payments in EUR" [ref=e141] [cursor=pointer]: Bonus
+              - textbox [ref=e143]
+          - columnheader "Contract Type" [ref=e145]:
+            - generic [ref=e146]:
+              - generic "Type of contract (Permanent/Temporary/etc.)" [ref=e147] [cursor=pointer]: Contract Type
+              - textbox [ref=e149]
+          - columnheader "Country" [ref=e151]:
+            - generic [ref=e152]:
+              - generic "Country of residence or workplace" [ref=e153] [cursor=pointer]: Country
+              - textbox [ref=e156]
+          - columnheader "City" [ref=e158]:
+            - generic [ref=e159]:
+              - generic "City (dependent on Country)" [ref=e160] [cursor=pointer]: City
+              - textbox [ref=e163]
+          - columnheader "Postal Code" [ref=e165]:
+            - generic [ref=e166]:
+              - generic "Postal code" [ref=e167] [cursor=pointer]: Postal Code
+              - textbox [ref=e169]
+          - columnheader "Address" [ref=e171]:
+            - generic [ref=e172]:
+              - generic "Street and house number" [ref=e173] [cursor=pointer]: Address
+              - textbox [ref=e175]
+          - columnheader "LinkedIn" [ref=e177]:
+            - generic [ref=e178]:
+              - generic "LinkedIn profile URL" [ref=e179] [cursor=pointer]: LinkedIn
+              - textbox [ref=e181]
+          - columnheader "GitHub" [ref=e183]:
+            - generic [ref=e184]:
+              - generic "GitHub profile URL" [ref=e185] [cursor=pointer]: GitHub
+              - textbox [ref=e187]
+          - columnheader "Date of Birth" [ref=e189]:
+            - generic [ref=e190]:
+              - generic "Date of birth (YYYY-MM-DD)" [ref=e191] [cursor=pointer]: Date of Birth
+              - textbox [ref=e193]
+          - columnheader "Emergency Contact" [ref=e195]:
+            - generic [ref=e196]:
+              - generic "Emergency contact (name + phone)" [ref=e197] [cursor=pointer]: Emergency Contact
+              - textbox [ref=e199]
+          - columnheader "Check-In" [ref=e201]:
+            - generic [ref=e202]:
+              - generic "Daily check-in time" [ref=e203] [cursor=pointer]: Check-In
+              - textbox [ref=e205]
+          - columnheader "Shift" [ref=e207]:
+            - generic [ref=e208]:
+              - generic "Standard shift duration" [ref=e209] [cursor=pointer]: Shift
+              - textbox [ref=e211]
+          - columnheader "Color" [ref=e213]:
+            - generic [ref=e214]:
+              - generic "Team / brand color" [ref=e215] [cursor=pointer]: Color
+              - textbox [ref=e217]
+      - rowgroup [ref=e219]:
+        - row "Row 0" [ref=e220]:
+          - cell "1" [ref=e221]
+          - cell "2ahYgqh2jbbm6ZY" [ref=e222]
+          - cell "Frank" [ref=e223]
+          - cell "Schneider" [ref=e224]
+          - cell "frank.schneider@example.c [...]" [ref=e225]
+          - cell "Legal" [ref=e226]:
+            - text: Legal
+            - generic: ▾
+          - cell "React, Docker, SQL, Figma" [ref=e227]:
+            - text: React, Docker, SQL, Figma
+            - generic: ▾
+          - cell [ref=e228]:
+            - generic [ref=e229] [cursor=pointer]: 🖉
+          - cell [ref=e230]:
+            - checkbox [checked] [ref=e231]
+          - cell "0.00 €" [ref=e232]
+          - cell "Jul 24, 2022 2022-07-24 Open date picker" [ref=e233]:
+            - generic [ref=e234]:
+              - textbox [active] [ref=e235]: Jul 24, 2022
+              - textbox: 2022-07-24
+              - button "Open date picker" [ref=e236] [cursor=pointer]: 📅
+          - cell "Ian Fischer" [ref=e237]
+          - cell "Cologne Office" [ref=e238]
+          - cell "+19 226 555721" [ref=e239]
+          - cell "EMP00001" [ref=e240]
+          - cell "Active" [ref=e241]
+          - cell "Data Analyst" [ref=e242]
+          - cell [ref=e243]
+          - cell "Jul 25, 2021, 2:18 PM 2021-07-25T14:18 Open date/time picker" [ref=e244]:
+            - generic [ref=e245]:
+              - text: Jul 25, 2021, 2:18 PM
+              - textbox: 2021-07-25T14:18
+              - button "Open date/time picker" [ref=e246] [cursor=pointer]: 📅
+          - cell "1.97" [ref=e247]
+          - cell "+ 0 €" [ref=e248]
+          - cell "Intern" [ref=e249]
+          - cell "Netherlands" [ref=e250]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Frankfurt" [ref=e251]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell [ref=e252]
+          - cell [ref=e253]
+          - cell "https://www.linkedin.com/in/frankschneider 🔗" [ref=e254]:
+            - generic [ref=e255]:
+              - generic [ref=e256]: https://www.linkedin.com/in/frankschneider
+              - button "🔗" [ref=e257] [cursor=pointer]
+          - cell [ref=e258]
+          - cell "August 14, 1985 1985-08-14 Open date picker" [ref=e260]:
+            - generic [ref=e261]:
+              - text: August 14, 1985
+              - textbox: 1985-08-14
+              - button "Open date picker" [ref=e262] [cursor=pointer]: 📅
+          - cell [ref=e263]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e264]:
+            - generic [ref=e265]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e266] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e267]:
+            - generic [ref=e268]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e269]':
+            - generic [ref=e270]:
+              - generic [ref=e272]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 1" [ref=e273]:
+          - cell "2" [ref=e274]
+          - cell "uHkPZCj8K1feeUDuqX" [ref=e275]
+          - cell "Charlie" [ref=e276]
+          - cell "Müller" [ref=e277]
+          - cell [ref=e278]
+          - cell "Finance" [ref=e279]:
+            - text: Finance
+            - generic: ▾
+          - cell [ref=e280]:
+            - generic: ▾
+          - cell "ea et dolore Lorem dolor [...]" [ref=e281]:
+            - text: ea et dolore Lorem dolor [...]
+            - generic [ref=e282] [cursor=pointer]: 🖉
+          - cell [ref=e283]:
+            - checkbox [checked] [ref=e284]
+          - cell "70,464.00 €" [ref=e285]
+          - cell "Aug 7, 2022 2022-08-07 Open date picker" [ref=e286]:
+            - generic [ref=e287]:
+              - text: Aug 7, 2022
+              - textbox: 2022-08-07
+              - button "Open date picker" [ref=e288] [cursor=pointer]: 📅
+          - cell "Ian Meyer" [ref=e289]
+          - cell "Remote" [ref=e290]
+          - cell "+19 714 265209" [ref=e291]
+          - cell "EMP00002" [ref=e292]
+          - cell "Probation" [ref=e293]
+          - cell "QA Engineer" [ref=e294]
+          - cell "Tools" [ref=e295]
+          - cell "Sep 18, 2020, 9:33 PM 2020-09-18T21:33 Open date/time picker" [ref=e296]:
+            - generic [ref=e297]:
+              - text: Sep 18, 2020, 9:33 PM
+              - textbox: 2020-09-18T21:33
+              - button "Open date/time picker" [ref=e298] [cursor=pointer]: 📅
+          - cell "1.84" [ref=e299]
+          - cell "+ 692 €" [ref=e300]
+          - cell "Permanent" [ref=e301]
+          - cell "Germany" [ref=e302]:
+            - text: Germany
+            - generic: ▾
+          - cell "Frankfurt" [ref=e303]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "85345" [ref=e304]
+          - cell "129 Example Street" [ref=e305]
+          - cell [ref=e306]
+          - cell [ref=e308]
+          - cell "May 6, 1972 1972-05-06 Open date picker" [ref=e310]:
+            - generic [ref=e311]:
+              - text: May 6, 1972
+              - textbox: 1972-05-06
+              - button "Open date picker" [ref=e312] [cursor=pointer]: 📅
+          - cell "Diana Müller (+1453805356 [...]" [ref=e313]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e314]:
+            - generic [ref=e315]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e316] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e317]:
+            - generic [ref=e318]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e319]':
+            - generic [ref=e320]:
+              - generic [ref=e322]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 2" [ref=e323]:
+          - cell "3" [ref=e324]
+          - cell "yLCp--jTibA4jYFzf8U3KWBH" [ref=e325]
+          - cell "Ian" [ref=e326]
+          - cell "Weber" [ref=e327]
+          - cell "ian.weber@example.com" [ref=e328]
+          - cell "Sales" [ref=e329]:
+            - text: Sales
+            - generic: ▾
+          - cell "Python" [ref=e330]:
+            - text: Python
+            - generic: ▾
+          - cell "eirmod aliquyam rebum. St [...]" [ref=e331]:
+            - text: eirmod aliquyam rebum. St [...]
+            - generic [ref=e332] [cursor=pointer]: 🖉
+          - cell [ref=e333]:
+            - checkbox [checked] [ref=e334]
+          - cell "52,866.00 €" [ref=e335]
+          - cell "Jul 13, 2010 2010-07-13 Open date picker" [ref=e336]:
+            - generic [ref=e337]:
+              - text: Jul 13, 2010
+              - textbox: 2010-07-13
+              - button "Open date picker" [ref=e338] [cursor=pointer]: 📅
+          - cell "Ian Schmidt" [ref=e339]
+          - cell [ref=e340]
+          - cell [ref=e341]
+          - cell "EMP00003" [ref=e342]
+          - cell "Active" [ref=e343]
+          - cell "QA Engineer" [ref=e344]
+          - cell "Tools" [ref=e345]
+          - cell "Aug 28, 2024, 3:03 PM 2024-08-28T15:03 Open date/time picker" [ref=e346]:
+            - generic [ref=e347]:
+              - text: Aug 28, 2024, 3:03 PM
+              - textbox: 2024-08-28T15:03
+              - button "Open date/time picker" [ref=e348] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e349]
+          - cell "+ 11,898 €" [ref=e350]
+          - cell "Intern" [ref=e351]
+          - cell "Germany" [ref=e352]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e353]:
+            - text: Munich
+            - generic: ▾
+          - cell "67904" [ref=e354]
+          - cell [ref=e355]
+          - cell [ref=e356]
+          - cell [ref=e358]
+          - cell "May 6, 1993 1993-05-06 Open date picker" [ref=e360]:
+            - generic [ref=e361]:
+              - text: May 6, 1993
+              - textbox: 1993-05-06
+              - button "Open date picker" [ref=e362] [cursor=pointer]: 📅
+          - cell [ref=e363]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e364]:
+            - generic [ref=e365]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e366] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e367]:
+            - generic [ref=e368]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e369]':
+            - generic [ref=e370]:
+              - generic [ref=e372]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 3" [ref=e373]:
+          - cell "4" [ref=e374]
+          - cell "BhEWXUCsm1Vq-L-" [ref=e375]
+          - cell "Grace" [ref=e376]
+          - cell "Meyer" [ref=e377]
+          - cell "grace.meyer@example.com" [ref=e378]
+          - cell "Sales" [ref=e379]:
+            - text: Sales
+            - generic: ▾
+          - cell [ref=e380]:
+            - generic: ▾
+          - cell "ipsum vero erat, Stet dia [...]" [ref=e381]:
+            - text: ipsum vero erat, Stet dia [...]
+            - generic [ref=e382] [cursor=pointer]: 🖉
+          - cell [ref=e383]:
+            - checkbox [checked] [ref=e384]
+          - cell "95,054.00 €" [ref=e385]
+          - cell "Apr 9, 2021 2021-04-09 Open date picker" [ref=e386]:
+            - generic [ref=e387]:
+              - text: Apr 9, 2021
+              - textbox: 2021-04-09
+              - button "Open date picker" [ref=e388] [cursor=pointer]: 📅
+          - cell "Alice Meyer" [ref=e389]
+          - cell [ref=e390]
+          - cell "+49 658 312808" [ref=e391]
+          - cell "EMP00004" [ref=e392]
+          - cell "Probation" [ref=e393]
+          - cell "QA Engineer" [ref=e394]
+          - cell "Platform" [ref=e395]
+          - cell "Jun 18, 2023, 9:13 AM 2023-06-18T09:13 Open date/time picker" [ref=e396]:
+            - generic [ref=e397]:
+              - text: Jun 18, 2023, 9:13 AM
+              - textbox: 2023-06-18T09:13
+              - button "Open date/time picker" [ref=e398] [cursor=pointer]: 📅
+          - cell "0.46" [ref=e399]
+          - cell "+ 2,875 €" [ref=e400]
+          - cell "Contractor" [ref=e401]
+          - cell "France" [ref=e402]:
+            - text: France
+            - generic: ▾
+          - cell "Stuttgart" [ref=e403]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "42371" [ref=e404]
+          - cell "191 Example Street" [ref=e405]
+          - cell "https://www.linkedin.com/in/gracemeyer 🔗" [ref=e406]:
+            - generic [ref=e407]:
+              - generic [ref=e408]: https://www.linkedin.com/in/gracemeyer
+              - button "🔗" [ref=e409] [cursor=pointer]
+          - cell [ref=e410]
+          - cell "Open date picker" [ref=e412]:
+            - generic [ref=e413]:
+              - textbox
+              - button "Open date picker" [ref=e415] [cursor=pointer]: 📅
+          - cell "Bob Fischer (+11699286041 [...]" [ref=e416]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e417]:
+            - generic [ref=e418]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e419] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e420]:
+            - generic [ref=e421]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e422]':
+            - generic [ref=e423]:
+              - generic [ref=e425]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 4" [ref=e426]:
+          - cell "5" [ref=e427]
+          - cell [ref=e428]
+          - cell "Ian" [ref=e429]
+          - cell "Fischer" [ref=e430]
+          - cell "ian.fischer@example.com" [ref=e431]
+          - cell "Sales" [ref=e432]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript" [ref=e433]:
+            - text: TypeScript
+            - generic: ▾
+          - cell "sed eirmod eirmod aliquya [...]" [ref=e434]:
+            - text: sed eirmod eirmod aliquya [...]
+            - generic [ref=e435] [cursor=pointer]: 🖉
+          - cell [ref=e436]:
+            - checkbox [checked] [ref=e437]
+          - cell "51,528.00 €" [ref=e438]
+          - cell "Apr 27, 2006 2006-04-27 Open date picker" [ref=e439]:
+            - generic [ref=e440]:
+              - text: Apr 27, 2006
+              - textbox: 2006-04-27
+              - button "Open date picker" [ref=e441] [cursor=pointer]: 📅
+          - cell "Ian Meyer" [ref=e442]
+          - cell "Remote" [ref=e443]
+          - cell "+49 195 112731" [ref=e444]
+          - cell "EMP00005" [ref=e445]
+          - cell "On Leave" [ref=e446]
+          - cell "Designer" [ref=e447]
+          - cell [ref=e448]
+          - cell "Open date/time picker" [ref=e449]:
+            - generic [ref=e450]:
+              - textbox
+              - button "Open date/time picker" [ref=e452] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e453]
+          - cell "+ 0 €" [ref=e454]
+          - cell [ref=e455]
+          - cell "Netherlands" [ref=e456]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Frankfurt" [ref=e457]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "17130" [ref=e458]
+          - cell "129 Example Street" [ref=e459]
+          - cell "https://www.linkedin.com/in/ianfischer 🔗" [ref=e460]:
+            - generic [ref=e461]:
+              - generic [ref=e462]: https://www.linkedin.com/in/ianfischer
+              - button "🔗" [ref=e463] [cursor=pointer]
+          - cell [ref=e464]
+          - cell "December 26, 1974 1974-12-26 Open date picker" [ref=e466]:
+            - generic [ref=e467]:
+              - text: December 26, 1974
+              - textbox: 1974-12-26
+              - button "Open date picker" [ref=e468] [cursor=pointer]: 📅
+          - cell [ref=e469]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e470]:
+            - generic [ref=e471]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e472] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e473]:
+            - generic [ref=e474]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e475]':
+            - generic [ref=e476]:
+              - generic [ref=e478]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 5" [ref=e479]:
+          - cell "6" [ref=e480]
+          - cell "hpWU1GaH8oOQgMafSYpoF7Xf8 [...]" [ref=e481]
+          - cell "Diana" [ref=e482]
+          - cell "Fischer" [ref=e483]
+          - cell "diana.fischer@example.com" [ref=e484]
+          - cell "Legal" [ref=e485]:
+            - text: Legal
+            - generic: ▾
+          - cell "TypeScript, Java" [ref=e486]:
+            - text: TypeScript, Java
+            - generic: ▾
+          - cell "duo ipsum At duo rebum. e [...]" [ref=e487]:
+            - text: duo ipsum At duo rebum. e [...]
+            - generic [ref=e488] [cursor=pointer]: 🖉
+          - cell [ref=e489]:
+            - checkbox [checked] [ref=e490]
+          - cell "41,170.00 €" [ref=e491]
+          - cell "Jun 27, 2009 2009-06-27 Open date picker" [ref=e492]:
+            - generic [ref=e493]:
+              - text: Jun 27, 2009
+              - textbox: 2009-06-27
+              - button "Open date picker" [ref=e494] [cursor=pointer]: 📅
+          - cell "Julia Weber" [ref=e495]
+          - cell [ref=e496]
+          - cell "+14 139 867534" [ref=e497]
+          - cell "EMP00006" [ref=e498]
+          - cell "Terminated" [ref=e499]
+          - cell "Designer" [ref=e500]
+          - cell "Web" [ref=e501]
+          - cell "Open date/time picker" [ref=e502]:
+            - generic [ref=e503]:
+              - textbox
+              - button "Open date/time picker" [ref=e505] [cursor=pointer]: 📅
+          - cell "1.11" [ref=e506]
+          - cell "+ 0 €" [ref=e507]
+          - cell "Permanent" [ref=e508]
+          - cell [ref=e509]:
+            - generic: ▾
+          - cell "Stuttgart" [ref=e510]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "16483" [ref=e511]
+          - cell "55 Example Street" [ref=e512]
+          - cell [ref=e513]
+          - cell [ref=e515]
+          - cell "Open date picker" [ref=e517]:
+            - generic [ref=e518]:
+              - textbox
+              - button "Open date picker" [ref=e520] [cursor=pointer]: 📅
+          - cell [ref=e521]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e522]:
+            - generic [ref=e523]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e524] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e525]:
+            - generic [ref=e526]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e527]':
+            - generic [ref=e528]:
+              - generic [ref=e530]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 6" [ref=e531]:
+          - cell "7" [ref=e532]
+          - cell "oggd4w7sdf" [ref=e533]
+          - cell "Alice" [ref=e534]
+          - cell "Wagner" [ref=e535]
+          - cell "alice.wagner@example.com" [ref=e536]
+          - cell "Legal" [ref=e537]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java, Docker, Python, SQL" [ref=e538]:
+            - text: Java, Docker, Python, SQL
+            - generic: ▾
+          - cell "duo clita labore nonumy u [...]" [ref=e539]:
+            - text: duo clita labore nonumy u [...]
+            - generic [ref=e540] [cursor=pointer]: 🖉
+          - cell [ref=e541]:
+            - checkbox [checked] [ref=e542]
+          - cell "97,530.00 €" [ref=e543]
+          - cell "Dec 1, 2017 2017-12-01 Open date picker" [ref=e544]:
+            - generic [ref=e545]:
+              - text: Dec 1, 2017
+              - textbox: 2017-12-01
+              - button "Open date picker" [ref=e546] [cursor=pointer]: 📅
+          - cell "Grace Fischer" [ref=e547]
+          - cell "Cologne Office" [ref=e548]
+          - cell [ref=e549]
+          - cell "EMP00007" [ref=e550]
+          - cell "Probation" [ref=e551]
+          - cell "Data Analyst" [ref=e552]
+          - cell "Mobile" [ref=e553]
+          - cell "Nov 3, 2022, 7:43 PM 2022-11-03T19:43 Open date/time picker" [ref=e554]:
+            - generic [ref=e555]:
+              - text: Nov 3, 2022, 7:43 PM
+              - textbox: 2022-11-03T19:43
+              - button "Open date/time picker" [ref=e556] [cursor=pointer]: 📅
+          - cell "2.95" [ref=e557]
+          - cell "+ 11,660 €" [ref=e558]
+          - cell "Contractor" [ref=e559]
+          - cell "France" [ref=e560]:
+            - text: France
+            - generic: ▾
+          - cell "Munich" [ref=e561]:
+            - text: Munich
+            - generic: ▾
+          - cell "76068" [ref=e562]
+          - cell [ref=e563]
+          - cell [ref=e564]
+          - cell [ref=e566]
+          - cell "April 5, 1988 1988-04-05 Open date picker" [ref=e568]:
+            - generic [ref=e569]:
+              - text: April 5, 1988
+              - textbox: 1988-04-05
+              - button "Open date picker" [ref=e570] [cursor=pointer]: 📅
+          - cell "Hannah Müller (+491542219 [...]" [ref=e571]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e572]:
+            - generic [ref=e573]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e574] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e575]:
+            - generic [ref=e576]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e577]':
+            - generic [ref=e578]:
+              - generic [ref=e580]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 7" [ref=e581]:
+          - cell "8" [ref=e582]
+          - cell "sfbOumLhQJ1AguwKCUJ" [ref=e583]
+          - cell "Diana" [ref=e584]
+          - cell "Becker" [ref=e585]
+          - cell "diana.becker@example.com" [ref=e586]
+          - cell "Legal" [ref=e587]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e588]:
+            - generic: ▾
+          - cell "duo ea tempor consetetur [...]" [ref=e589]:
+            - text: duo ea tempor consetetur [...]
+            - generic [ref=e590] [cursor=pointer]: 🖉
+          - cell [ref=e591]:
+            - checkbox [checked] [ref=e592]
+          - cell "63,465.00 €" [ref=e593]
+          - cell "Feb 19, 2017 2017-02-19 Open date picker" [ref=e594]:
+            - generic [ref=e595]:
+              - text: Feb 19, 2017
+              - textbox: 2017-02-19
+              - button "Open date picker" [ref=e596] [cursor=pointer]: 📅
+          - cell "Grace Becker" [ref=e597]
+          - cell "Berlin HQ" [ref=e598]
+          - cell "+18 607 316406" [ref=e599]
+          - cell "EMP00008" [ref=e600]
+          - cell "Terminated" [ref=e601]
+          - cell "DevOps Engineer" [ref=e602]
+          - cell "Mobile" [ref=e603]
+          - cell "Aug 18, 2020, 3:34 AM 2020-08-18T03:34 Open date/time picker" [ref=e604]:
+            - generic [ref=e605]:
+              - text: Aug 18, 2020, 3:34 AM
+              - textbox: 2020-08-18T03:34
+              - button "Open date/time picker" [ref=e606] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e607]
+          - cell "+ 3,265 €" [ref=e608]
+          - cell "Permanent" [ref=e609]
+          - cell "UK" [ref=e610]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e611]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e612]
+          - cell "74 Example Street" [ref=e613]
+          - cell [ref=e614]
+          - cell [ref=e616]
+          - cell "June 18, 1975 1975-06-18 Open date picker" [ref=e618]:
+            - generic [ref=e619]:
+              - text: June 18, 1975
+              - textbox: 1975-06-18
+              - button "Open date picker" [ref=e620] [cursor=pointer]: 📅
+          - cell "Frank Müller (+4955030552 [...]" [ref=e621]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e622]:
+            - generic [ref=e623]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e624] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e625]:
+            - generic [ref=e626]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e627]':
+            - generic [ref=e628]:
+              - generic [ref=e630]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 8" [ref=e631]:
+          - cell "9" [ref=e632]
+          - cell "wvDPSQcOYJsO-UQnbejPUfVkM [...]" [ref=e633]
+          - cell "Diana" [ref=e634]
+          - cell "Schmidt" [ref=e635]
+          - cell "diana.schmidt@example.com" [ref=e636]
+          - cell "Legal" [ref=e637]:
+            - text: Legal
+            - generic: ▾
+          - cell "Figma, Python, Java" [ref=e638]:
+            - text: Figma, Python, Java
+            - generic: ▾
+          - cell "sadipscing sed clita elit [...]" [ref=e639]:
+            - text: sadipscing sed clita elit [...]
+            - generic [ref=e640] [cursor=pointer]: 🖉
+          - cell [ref=e641]:
+            - checkbox [checked] [ref=e642]
+          - cell "99,099.00 €" [ref=e643]
+          - cell "Aug 23, 2018 2018-08-23 Open date picker" [ref=e644]:
+            - generic [ref=e645]:
+              - text: Aug 23, 2018
+              - textbox: 2018-08-23
+              - button "Open date picker" [ref=e646] [cursor=pointer]: 📅
+          - cell "Charlie Becker" [ref=e647]
+          - cell "Hamburg Office" [ref=e648]
+          - cell "+49 292 789114" [ref=e649]
+          - cell "EMP00009" [ref=e650]
+          - cell "Terminated" [ref=e651]
+          - cell "QA Engineer" [ref=e652]
+          - cell "Tools" [ref=e653]
+          - cell "Apr 16, 2022, 7:54 PM 2022-04-16T19:54 Open date/time picker" [ref=e654]:
+            - generic [ref=e655]:
+              - text: Apr 16, 2022, 7:54 PM
+              - textbox: 2022-04-16T19:54
+              - button "Open date/time picker" [ref=e656] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e657]
+          - cell "+ 7,291 €" [ref=e658]
+          - cell "Permanent" [ref=e659]
+          - cell "Netherlands" [ref=e660]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Stuttgart" [ref=e661]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "97929" [ref=e662]
+          - cell "195 Example Street" [ref=e663]
+          - cell [ref=e664]
+          - cell "https://github.com/dianaschmidt 🔗" [ref=e666]:
+            - generic [ref=e667]:
+              - generic [ref=e668]: https://github.com/dianaschmidt
+              - button "🔗" [ref=e669] [cursor=pointer]
+          - cell "Open date picker" [ref=e670]:
+            - generic [ref=e671]:
+              - textbox
+              - button "Open date picker" [ref=e673] [cursor=pointer]: 📅
+          - cell [ref=e674]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e675]:
+            - generic [ref=e676]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e677] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e678]:
+            - generic [ref=e679]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e680]':
+            - generic [ref=e681]:
+              - generic [ref=e683]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 9" [ref=e684]:
+          - cell "10" [ref=e685]
+          - cell "2__S77RwZLUVoy9NldIdlvIRS" [ref=e686]
+          - cell "Eva" [ref=e687]
+          - cell "Müller" [ref=e688]
+          - cell "eva.müller@example.com" [ref=e689]
+          - cell "Marketing" [ref=e690]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Java, AWS, Python" [ref=e691]:
+            - text: Java, AWS, Python
+            - generic: ▾
+          - cell "nonumy sanctus diam ipsum [...]" [ref=e692]:
+            - text: nonumy sanctus diam ipsum [...]
+            - generic [ref=e693] [cursor=pointer]: 🖉
+          - cell [ref=e694]:
+            - checkbox [checked] [ref=e695]
+          - cell "0.00 €" [ref=e696]
+          - cell "Open date picker" [ref=e697]:
+            - generic [ref=e698]:
+              - textbox
+              - button "Open date picker" [ref=e700] [cursor=pointer]: 📅
+          - cell [ref=e701]
+          - cell "Berlin HQ" [ref=e702]
+          - cell "+49 173 513953" [ref=e703]
+          - cell "EMP00010" [ref=e704]
+          - cell "Probation" [ref=e705]
+          - cell "Software Engineer" [ref=e706]
+          - cell "Tools" [ref=e707]
+          - cell "Open date/time picker" [ref=e708]:
+            - generic [ref=e709]:
+              - textbox
+              - button "Open date/time picker" [ref=e711] [cursor=pointer]: 📅
+          - cell "4.30" [ref=e712]
+          - cell "+ 0 €" [ref=e713]
+          - cell "Contractor" [ref=e714]
+          - cell "UK" [ref=e715]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e716]:
+            - text: Cologne
+            - generic: ▾
+          - cell "86760" [ref=e717]
+          - cell "66 Example Street" [ref=e718]
+          - cell [ref=e719]
+          - cell [ref=e721]
+          - cell "February 27, 1997 1997-02-27 Open date picker" [ref=e723]:
+            - generic [ref=e724]:
+              - text: February 27, 1997
+              - textbox: 1997-02-27
+              - button "Open date picker" [ref=e725] [cursor=pointer]: 📅
+          - cell [ref=e726]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e727]:
+            - generic [ref=e728]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e729] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e730]:
+            - generic [ref=e731]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e732]':
+            - generic [ref=e733]:
+              - generic [ref=e735]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 10" [ref=e736]:
+          - cell "11" [ref=e737]
+          - cell "2iFnW5-yyJfJYCSJE0sIlw8cP [...]" [ref=e738]
+          - cell [ref=e739]
+          - cell "Fischer" [ref=e740]
+          - cell "alice.fischer@example.com" [ref=e741]
+          - cell [ref=e742]:
+            - generic: ▾
+          - cell [ref=e743]:
+            - generic: ▾
+          - cell "erat, sanctus dolore et d [...]" [ref=e744]:
+            - text: erat, sanctus dolore et d [...]
+            - generic [ref=e745] [cursor=pointer]: 🖉
+          - cell [ref=e746]:
+            - checkbox [checked] [ref=e747]
+          - cell "84,288.00 €" [ref=e748]
+          - cell "Nov 18, 2018 2018-11-18 Open date picker" [ref=e749]:
+            - generic [ref=e750]:
+              - text: Nov 18, 2018
+              - textbox: 2018-11-18
+              - button "Open date picker" [ref=e751] [cursor=pointer]: 📅
+          - cell [ref=e752]
+          - cell "Hamburg Office" [ref=e753]
+          - cell "+18 281 469780" [ref=e754]
+          - cell "EMP00011" [ref=e755]
+          - cell "Active" [ref=e756]
+          - cell "Product Manager" [ref=e757]
+          - cell "Growth" [ref=e758]
+          - cell "May 21, 2024, 6:04 AM 2024-05-21T06:04 Open date/time picker" [ref=e759]:
+            - generic [ref=e760]:
+              - text: May 21, 2024, 6:04 AM
+              - textbox: 2024-05-21T06:04
+              - button "Open date/time picker" [ref=e761] [cursor=pointer]: 📅
+          - cell "4.12" [ref=e762]
+          - cell "+ 11,837 €" [ref=e763]
+          - cell "Intern" [ref=e764]
+          - cell "France" [ref=e765]:
+            - text: France
+            - generic: ▾
+          - cell [ref=e766]:
+            - generic: ▾
+          - cell "96236" [ref=e767]
+          - cell "132 Example Street" [ref=e768]
+          - cell [ref=e769]
+          - cell [ref=e771]
+          - cell "Open date picker" [ref=e773]:
+            - generic [ref=e774]:
+              - textbox
+              - button "Open date picker" [ref=e776] [cursor=pointer]: 📅
+          - cell "Frank Meyer (+49346161977 [...]" [ref=e777]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e778]:
+            - generic [ref=e779]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e780] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e781]:
+            - generic [ref=e782]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e783]':
+            - generic [ref=e784]:
+              - generic [ref=e786]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 11" [ref=e787]:
+          - cell "12" [ref=e788]
+          - cell "vdiJ0UI_QU8de0IhCtHaU0Gwg [...]" [ref=e789]
+          - cell "Bob" [ref=e790]
+          - cell "Becker" [ref=e791]
+          - cell "bob.becker@example.com" [ref=e792]
+          - cell "Legal" [ref=e793]:
+            - text: Legal
+            - generic: ▾
+          - cell "React, TypeScript, Python" [ref=e794]:
+            - text: React, TypeScript, Python
+            - generic: ▾
+          - cell "eos et voluptua. kasd Ste [...]" [ref=e795]:
+            - text: eos et voluptua. kasd Ste [...]
+            - generic [ref=e796] [cursor=pointer]: 🖉
+          - cell [ref=e797]:
+            - checkbox [checked] [ref=e798]
+          - cell "43,580.00 €" [ref=e799]
+          - cell "May 21, 2005 2005-05-21 Open date picker" [ref=e800]:
+            - generic [ref=e801]:
+              - text: May 21, 2005
+              - textbox: 2005-05-21
+              - button "Open date picker" [ref=e802] [cursor=pointer]: 📅
+          - cell "Bob Müller" [ref=e803]
+          - cell "Hamburg Office" [ref=e804]
+          - cell "+49 758 838650" [ref=e805]
+          - cell "EMP00012" [ref=e806]
+          - cell "Probation" [ref=e807]
+          - cell "QA Engineer" [ref=e808]
+          - cell "Core" [ref=e809]
+          - cell "Open date/time picker" [ref=e810]:
+            - generic [ref=e811]:
+              - textbox
+              - button "Open date/time picker" [ref=e813] [cursor=pointer]: 📅
+          - cell "3.44" [ref=e814]
+          - cell "+ 3,785 €" [ref=e815]
+          - cell "Permanent" [ref=e816]
+          - cell "Netherlands" [ref=e817]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e818]:
+            - generic: ▾
+          - cell "12609" [ref=e819]
+          - cell "98 Example Street" [ref=e820]
+          - cell "https://www.linkedin.com/in/bobbecker 🔗" [ref=e821]:
+            - generic [ref=e822]:
+              - generic [ref=e823]: https://www.linkedin.com/in/bobbecker
+              - button "🔗" [ref=e824] [cursor=pointer]
+          - cell "https://github.com/bobbecker 🔗" [ref=e825]:
+            - generic [ref=e826]:
+              - generic [ref=e827]: https://github.com/bobbecker
+              - button "🔗" [ref=e828] [cursor=pointer]
+          - cell "December 22, 1997 1997-12-22 Open date picker" [ref=e829]:
+            - generic [ref=e830]:
+              - text: December 22, 1997
+              - textbox: 1997-12-22
+              - button "Open date picker" [ref=e831] [cursor=pointer]: 📅
+          - cell [ref=e832]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e833]:
+            - generic [ref=e834]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e835] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e836]:
+            - generic [ref=e837]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e838]':
+            - generic [ref=e839]:
+              - generic [ref=e841]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 12" [ref=e842]:
+          - cell "13" [ref=e843]
+          - cell "VDjN9O_ga-KDp8pIUpyB7Aw2" [ref=e844]
+          - cell "Diana" [ref=e845]
+          - cell "Müller" [ref=e846]
+          - cell "diana.müller@example.com" [ref=e847]
+          - cell [ref=e848]:
+            - generic: ▾
+          - cell [ref=e849]:
+            - generic: ▾
+          - cell [ref=e850]:
+            - generic [ref=e851] [cursor=pointer]: 🖉
+          - cell [ref=e852]:
+            - checkbox [checked] [ref=e853]
+          - cell "78,493.00 €" [ref=e854]
+          - cell "Oct 12, 2011 2011-10-12 Open date picker" [ref=e855]:
+            - generic [ref=e856]:
+              - text: Oct 12, 2011
+              - textbox: 2011-10-12
+              - button "Open date picker" [ref=e857] [cursor=pointer]: 📅
+          - cell "Charlie Meyer" [ref=e858]
+          - cell "Munich Office" [ref=e859]
+          - cell [ref=e860]
+          - cell "EMP00013" [ref=e861]
+          - cell "Probation" [ref=e862]
+          - cell "Software Engineer" [ref=e863]
+          - cell "Mobile" [ref=e864]
+          - cell "Jan 16, 2020, 12:48 PM 2020-01-16T12:48 Open date/time picker" [ref=e865]:
+            - generic [ref=e866]:
+              - text: Jan 16, 2020, 12:48 PM
+              - textbox: 2020-01-16T12:48
+              - button "Open date/time picker" [ref=e867] [cursor=pointer]: 📅
+          - cell "2.56" [ref=e868]
+          - cell "+ 2,049 €" [ref=e869]
+          - cell "Intern" [ref=e870]
+          - cell "France" [ref=e871]:
+            - text: France
+            - generic: ▾
+          - cell "Frankfurt" [ref=e872]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "86551" [ref=e873]
+          - cell "122 Example Street" [ref=e874]
+          - cell [ref=e875]
+          - cell [ref=e877]
+          - cell "Open date picker" [ref=e879]:
+            - generic [ref=e880]:
+              - textbox
+              - button "Open date picker" [ref=e882] [cursor=pointer]: 📅
+          - cell [ref=e883]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e884]:
+            - generic [ref=e885]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e886] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e887]:
+            - generic [ref=e888]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e889]':
+            - generic [ref=e890]:
+              - generic [ref=e892]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 13" [ref=e893]:
+          - cell "14" [ref=e894]
+          - cell "W3jchlVufGNq49q" [ref=e895]
+          - cell [ref=e896]
+          - cell "Weber" [ref=e897]
+          - cell "bob.weber@example.com" [ref=e898]
+          - cell "HR" [ref=e899]:
+            - text: HR
+            - generic: ▾
+          - cell "Figma, Java" [ref=e900]:
+            - text: Figma, Java
+            - generic: ▾
+          - cell [ref=e901]:
+            - generic [ref=e902] [cursor=pointer]: 🖉
+          - cell [ref=e903]:
+            - checkbox [checked] [ref=e904]
+          - cell "75,056.00 €" [ref=e905]
+          - cell "Jul 12, 2017 2017-07-12 Open date picker" [ref=e906]:
+            - generic [ref=e907]:
+              - text: Jul 12, 2017
+              - textbox: 2017-07-12
+              - button "Open date picker" [ref=e908] [cursor=pointer]: 📅
+          - cell "Ian Schmidt" [ref=e909]
+          - cell "Cologne Office" [ref=e910]
+          - cell [ref=e911]
+          - cell "EMP00014" [ref=e912]
+          - cell "On Leave" [ref=e913]
+          - cell "Software Engineer" [ref=e914]
+          - cell "Mobile" [ref=e915]
+          - cell "May 18, 2022, 4:01 PM 2022-05-18T16:01 Open date/time picker" [ref=e916]:
+            - generic [ref=e917]:
+              - text: May 18, 2022, 4:01 PM
+              - textbox: 2022-05-18T16:01
+              - button "Open date/time picker" [ref=e918] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e919]
+          - cell "+ 0 €" [ref=e920]
+          - cell "Intern" [ref=e921]
+          - cell "USA" [ref=e922]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e923]:
+            - text: Munich
+            - generic: ▾
+          - cell "29494" [ref=e924]
+          - cell "174 Example Street" [ref=e925]
+          - cell [ref=e926]
+          - cell [ref=e928]
+          - cell "September 2, 1985 1985-09-02 Open date picker" [ref=e930]:
+            - generic [ref=e931]:
+              - text: September 2, 1985
+              - textbox: 1985-09-02
+              - button "Open date picker" [ref=e932] [cursor=pointer]: 📅
+          - cell [ref=e933]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e934]:
+            - generic [ref=e935]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e936] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e937]:
+            - generic [ref=e938]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e939]':
+            - generic [ref=e940]:
+              - generic [ref=e942]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 14" [ref=e943]:
+          - cell "15" [ref=e944]
+          - cell "PHn4_9Y-6OxV3Pm" [ref=e945]
+          - cell "Ian" [ref=e946]
+          - cell "Schneider" [ref=e947]
+          - cell "ian.schneider@example.com" [ref=e948]
+          - cell "Legal" [ref=e949]:
+            - text: Legal
+            - generic: ▾
+          - cell "AWS, TypeScript" [ref=e950]:
+            - text: AWS, TypeScript
+            - generic: ▾
+          - cell "aliquyam vero no tempor e [...]" [ref=e951]:
+            - text: aliquyam vero no tempor e [...]
+            - generic [ref=e952] [cursor=pointer]: 🖉
+          - cell [ref=e953]:
+            - checkbox [checked] [ref=e954]
+          - cell "71,839.00 €" [ref=e955]
+          - cell "Oct 2, 2018 2018-10-02 Open date picker" [ref=e956]:
+            - generic [ref=e957]:
+              - text: Oct 2, 2018
+              - textbox: 2018-10-02
+              - button "Open date picker" [ref=e958] [cursor=pointer]: 📅
+          - cell [ref=e959]
+          - cell [ref=e960]
+          - cell "+15 141 834451" [ref=e961]
+          - cell "EMP00015" [ref=e962]
+          - cell "Active" [ref=e963]
+          - cell "QA Engineer" [ref=e964]
+          - cell "Core" [ref=e965]
+          - cell "Open date/time picker" [ref=e966]:
+            - generic [ref=e967]:
+              - textbox
+              - button "Open date/time picker" [ref=e969] [cursor=pointer]: 📅
+          - cell "1.73" [ref=e970]
+          - cell "+ 4,488 €" [ref=e971]
+          - cell "Intern" [ref=e972]
+          - cell "USA" [ref=e973]:
+            - text: USA
+            - generic: ▾
+          - cell "Frankfurt" [ref=e974]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "43137" [ref=e975]
+          - cell [ref=e976]
+          - cell [ref=e977]
+          - cell [ref=e979]
+          - cell "May 15, 1995 1995-05-15 Open date picker" [ref=e981]:
+            - generic [ref=e982]:
+              - text: May 15, 1995
+              - textbox: 1995-05-15
+              - button "Open date picker" [ref=e983] [cursor=pointer]: 📅
+          - cell "Alice Müller (+1131779124 [...]" [ref=e984]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e985]:
+            - generic [ref=e986]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e987] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e988]:
+            - generic [ref=e989]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e990]':
+            - generic [ref=e991]:
+              - generic [ref=e993]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 15" [ref=e994]:
+          - cell "16" [ref=e995]
+          - cell "mPXpJXrkR6iub8vBd" [ref=e996]
+          - cell "Hannah" [ref=e997]
+          - cell "Schmidt" [ref=e998]
+          - cell "hannah.schmidt@example.co [...]" [ref=e999]
+          - cell "Legal" [ref=e1000]:
+            - text: Legal
+            - generic: ▾
+          - cell "Figma, React, TypeScript, [...]" [ref=e1001]:
+            - text: Figma, React, TypeScript, [...]
+            - generic: ▾
+          - cell "ea kasd sadipscing et kas [...]" [ref=e1002]:
+            - text: ea kasd sadipscing et kas [...]
+            - generic [ref=e1003] [cursor=pointer]: 🖉
+          - cell [ref=e1004]:
+            - checkbox [checked] [ref=e1005]
+          - cell "0.00 €" [ref=e1006]
+          - cell "Feb 21, 2023 2023-02-21 Open date picker" [ref=e1007]:
+            - generic [ref=e1008]:
+              - text: Feb 21, 2023
+              - textbox: 2023-02-21
+              - button "Open date picker" [ref=e1009] [cursor=pointer]: 📅
+          - cell "Ian Schneider" [ref=e1010]
+          - cell [ref=e1011]
+          - cell "+13 554 400621" [ref=e1012]
+          - cell "EMP00016" [ref=e1013]
+          - cell "Active" [ref=e1014]
+          - cell "QA Engineer" [ref=e1015]
+          - cell "Tools" [ref=e1016]
+          - cell "Dec 7, 2021, 3:53 PM 2021-12-07T15:53 Open date/time picker" [ref=e1017]:
+            - generic [ref=e1018]:
+              - text: Dec 7, 2021, 3:53 PM
+              - textbox: 2021-12-07T15:53
+              - button "Open date/time picker" [ref=e1019] [cursor=pointer]: 📅
+          - cell "2.05" [ref=e1020]
+          - cell "+ 13,961 €" [ref=e1021]
+          - cell "Intern" [ref=e1022]
+          - cell "UK" [ref=e1023]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e1024]:
+            - generic: ▾
+          - cell [ref=e1025]
+          - cell [ref=e1026]
+          - cell [ref=e1027]
+          - cell [ref=e1029]
+          - cell "April 11, 1988 1988-04-11 Open date picker" [ref=e1031]:
+            - generic [ref=e1032]:
+              - text: April 11, 1988
+              - textbox: 1988-04-11
+              - button "Open date picker" [ref=e1033] [cursor=pointer]: 📅
+          - cell "Diana Wagner (+4942245287 [...]" [ref=e1034]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e1035]:
+            - generic [ref=e1036]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e1037] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e1038]:
+            - generic [ref=e1039]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e1040]':
+            - generic [ref=e1041]:
+              - generic [ref=e1043]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 16" [ref=e1044]:
+          - cell "17" [ref=e1045]
+          - cell "4CPHDp2wAsqgL9ULZe8mfXgYj [...]" [ref=e1046]
+          - cell "Diana" [ref=e1047]
+          - cell "Schneider" [ref=e1048]
+          - cell "diana.schneider@example.c [...]" [ref=e1049]
+          - cell [ref=e1050]:
+            - generic: ▾
+          - cell "Java, Figma, AWS, SQL" [ref=e1051]:
+            - text: Java, Figma, AWS, SQL
+            - generic: ▾
+          - cell "Lorem et rebum. accusam n [...]" [ref=e1052]:
+            - text: Lorem et rebum. accusam n [...]
+            - generic [ref=e1053] [cursor=pointer]: 🖉
+          - cell [ref=e1054]:
+            - checkbox [checked] [ref=e1055]
+          - cell "0.00 €" [ref=e1056]
+          - cell "Aug 29, 2010 2010-08-29 Open date picker" [ref=e1057]:
+            - generic [ref=e1058]:
+              - text: Aug 29, 2010
+              - textbox: 2010-08-29
+              - button "Open date picker" [ref=e1059] [cursor=pointer]: 📅
+          - cell [ref=e1060]
+          - cell "Remote" [ref=e1061]
+          - cell "+49 409 558601" [ref=e1062]
+          - cell "EMP00017" [ref=e1063]
+          - cell "On Leave" [ref=e1064]
+          - cell "Product Manager" [ref=e1065]
+          - cell "Mobile" [ref=e1066]
+          - cell "Jun 1, 2024, 7:44 PM 2024-06-01T19:44 Open date/time picker" [ref=e1067]:
+            - generic [ref=e1068]:
+              - text: Jun 1, 2024, 7:44 PM
+              - textbox: 2024-06-01T19:44
+              - button "Open date/time picker" [ref=e1069] [cursor=pointer]: 📅
+          - cell "2.99" [ref=e1070]
+          - cell "+ 0 €" [ref=e1071]
+          - cell "Permanent" [ref=e1072]
+          - cell "France" [ref=e1073]:
+            - text: France
+            - generic: ▾
+          - cell "Munich" [ref=e1074]:
+            - text: Munich
+            - generic: ▾
+          - cell "31503" [ref=e1075]
+          - cell "131 Example Street" [ref=e1076]
+          - cell [ref=e1077]
+          - cell [ref=e1079]
+          - cell "June 25, 1998 1998-06-25 Open date picker" [ref=e1081]:
+            - generic [ref=e1082]:
+              - text: June 25, 1998
+              - textbox: 1998-06-25
+              - button "Open date picker" [ref=e1083] [cursor=pointer]: 📅
+          - cell [ref=e1084]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e1085]:
+            - generic [ref=e1086]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e1087] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e1088]:
+            - generic [ref=e1089]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e1090]':
+            - generic [ref=e1091]:
+              - generic [ref=e1093]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 17" [ref=e1094]:
+          - cell "18" [ref=e1095]
+          - cell "xgmMSJdPzcP6v" [ref=e1096]
+          - cell "Diana" [ref=e1097]
+          - cell "Meyer" [ref=e1098]
+          - cell "diana.meyer@example.com" [ref=e1099]
+          - cell [ref=e1100]:
+            - generic: ▾
+          - cell [ref=e1101]:
+            - generic: ▾
+          - cell "ea nonumy amet, rebum. es [...]" [ref=e1102]:
+            - text: ea nonumy amet, rebum. es [...]
+            - generic [ref=e1103] [cursor=pointer]: 🖉
+          - cell [ref=e1104]:
+            - checkbox [checked] [ref=e1105]
+          - cell "67,302.00 €" [ref=e1106]
+          - cell "Oct 24, 2024 2024-10-24 Open date picker" [ref=e1107]:
+            - generic [ref=e1108]:
+              - text: Oct 24, 2024
+              - textbox: 2024-10-24
+              - button "Open date picker" [ref=e1109] [cursor=pointer]: 📅
+          - cell "Bob Müller" [ref=e1110]
+          - cell "Munich Office" [ref=e1111]
+          - cell "+49 848 456257" [ref=e1112]
+          - cell "EMP00018" [ref=e1113]
+          - cell "Active" [ref=e1114]
+          - cell "Designer" [ref=e1115]
+          - cell "Mobile" [ref=e1116]
+          - cell "Nov 4, 2024, 7:22 AM 2024-11-04T07:22 Open date/time picker" [ref=e1117]:
+            - generic [ref=e1118]:
+              - text: Nov 4, 2024, 7:22 AM
+              - textbox: 2024-11-04T07:22
+              - button "Open date/time picker" [ref=e1119] [cursor=pointer]: 📅
+          - cell "0.04" [ref=e1120]
+          - cell "+ 10,533 €" [ref=e1121]
+          - cell "Temporary" [ref=e1122]
+          - cell "USA" [ref=e1123]:
+            - text: USA
+            - generic: ▾
+          - cell "Stuttgart" [ref=e1124]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "28353" [ref=e1125]
+          - cell [ref=e1126]
+          - cell [ref=e1127]
+          - cell "https://github.com/dianameyer 🔗" [ref=e1129]:
+            - generic [ref=e1130]:
+              - generic [ref=e1131]: https://github.com/dianameyer
+              - button "🔗" [ref=e1132] [cursor=pointer]
+          - cell "February 13, 1996 1996-02-13 Open date picker" [ref=e1133]:
+            - generic [ref=e1134]:
+              - text: February 13, 1996
+              - textbox: 1996-02-13
+              - button "Open date picker" [ref=e1135] [cursor=pointer]: 📅
+          - cell "Charlie Fischer (+4969545 [...]" [ref=e1136]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e1137]:
+            - generic [ref=e1138]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e1139] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e1140]:
+            - generic [ref=e1141]: 5h
+          - 'cell "#10b981 #10b981" [ref=e1142]':
+            - generic [ref=e1143]:
+              - generic [ref=e1145]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 18" [ref=e1146]:
+          - cell "19" [ref=e1147]
+          - cell "wzHrgCc3cCDXTut4Qs" [ref=e1148]
+          - cell [ref=e1149]
+          - cell "Schmidt" [ref=e1150]
+          - cell "hannah.schmidt@example.co [...]" [ref=e1151]
+          - cell "Sales" [ref=e1152]:
+            - text: Sales
+            - generic: ▾
+          - cell "Docker" [ref=e1153]:
+            - text: Docker
+            - generic: ▾
+          - cell "clita ea diam duo sit et [...]" [ref=e1154]:
+            - text: clita ea diam duo sit et [...]
+            - generic [ref=e1155] [cursor=pointer]: 🖉
+          - cell [ref=e1156]:
+            - checkbox [checked] [ref=e1157]
+          - cell "69,104.00 €" [ref=e1158]
+          - cell "Oct 15, 2006 2006-10-15 Open date picker" [ref=e1159]:
+            - generic [ref=e1160]:
+              - text: Oct 15, 2006
+              - textbox: 2006-10-15
+              - button "Open date picker" [ref=e1161] [cursor=pointer]: 📅
+          - cell "Julia Müller" [ref=e1162]
+          - cell "Remote" [ref=e1163]
+          - cell "+49 885 805520" [ref=e1164]
+          - cell "EMP00019" [ref=e1165]
+          - cell "Terminated" [ref=e1166]
+          - cell [ref=e1167]
+          - cell [ref=e1168]
+          - cell "Sep 25, 2020, 7:44 PM 2020-09-25T19:44 Open date/time picker" [ref=e1169]:
+            - generic [ref=e1170]:
+              - text: Sep 25, 2020, 7:44 PM
+              - textbox: 2020-09-25T19:44
+              - button "Open date/time picker" [ref=e1171] [cursor=pointer]: 📅
+          - cell "0.64" [ref=e1172]
+          - cell "+ 0 €" [ref=e1173]
+          - cell "Contractor" [ref=e1174]
+          - cell "USA" [ref=e1175]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e1176]:
+            - text: Munich
+            - generic: ▾
+          - cell "70081" [ref=e1177]
+          - cell "76 Example Street" [ref=e1178]
+          - cell [ref=e1179]
+          - cell "https://github.com/hannahschmidt 🔗" [ref=e1181]:
+            - generic [ref=e1182]:
+              - generic [ref=e1183]: https://github.com/hannahschmidt
+              - button "🔗" [ref=e1184] [cursor=pointer]
+          - cell "July 2, 1976 1976-07-02 Open date picker" [ref=e1185]:
+            - generic [ref=e1186]:
+              - text: July 2, 1976
+              - textbox: 1976-07-02
+              - button "Open date picker" [ref=e1187] [cursor=pointer]: 📅
+          - cell "Charlie Meyer (+498154830 [...]" [ref=e1188]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e1189]:
+            - generic [ref=e1190]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e1191] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e1192]:
+            - generic [ref=e1193]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e1194]':
+            - generic [ref=e1195]:
+              - generic [ref=e1197]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 19" [ref=e1198]:
+          - cell "20" [ref=e1199]
+          - cell "6e2gYg0BuO7jXI" [ref=e1200]
+          - cell "Bob" [ref=e1201]
+          - cell "Meyer" [ref=e1202]
+          - cell "bob.meyer@example.com" [ref=e1203]
+          - cell [ref=e1204]:
+            - generic: ▾
+          - cell "Figma, Docker, Java, Pyth [...]" [ref=e1205]:
+            - text: Figma, Docker, Java, Pyth [...]
+            - generic: ▾
+          - cell [ref=e1206]:
+            - generic [ref=e1207] [cursor=pointer]: 🖉
+          - cell [ref=e1208]:
+            - checkbox [checked] [ref=e1209]
+          - cell "50,236.00 €" [ref=e1210]
+          - cell "Jan 31, 2014 2014-01-31 Open date picker" [ref=e1211]:
+            - generic [ref=e1212]:
+              - text: Jan 31, 2014
+              - textbox: 2014-01-31
+              - button "Open date picker" [ref=e1213] [cursor=pointer]: 📅
+          - cell "Alice Wagner" [ref=e1214]
+          - cell "Hamburg Office" [ref=e1215]
+          - cell "+19 938 895933" [ref=e1216]
+          - cell "EMP00020" [ref=e1217]
+          - cell "Probation" [ref=e1218]
+          - cell "Designer" [ref=e1219]
+          - cell "Mobile" [ref=e1220]
+          - cell "Aug 2, 2021, 1:33 PM 2021-08-02T13:33 Open date/time picker" [ref=e1221]:
+            - generic [ref=e1222]:
+              - text: Aug 2, 2021, 1:33 PM
+              - textbox: 2021-08-02T13:33
+              - button "Open date/time picker" [ref=e1223] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e1224]
+          - cell "+ 552 €" [ref=e1225]
+          - cell [ref=e1226]
+          - cell "USA" [ref=e1227]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e1228]:
+            - text: Munich
+            - generic: ▾
+          - cell "32092" [ref=e1229]
+          - cell "102 Example Street" [ref=e1230]
+          - cell [ref=e1231]
+          - cell [ref=e1233]
+          - cell "Open date picker" [ref=e1235]:
+            - generic [ref=e1236]:
+              - textbox
+              - button "Open date picker" [ref=e1238] [cursor=pointer]: 📅
+          - cell [ref=e1239]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e1240]:
+            - generic [ref=e1241]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e1242] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e1243]:
+            - generic [ref=e1244]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e1245]':
+            - generic [ref=e1246]:
+              - generic [ref=e1248]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 20" [ref=e1249]:
+          - cell "21" [ref=e1250]
+          - cell "j_IBn3RVTo" [ref=e1251]
+          - cell "Eva" [ref=e1252]
+          - cell "Becker" [ref=e1253]
+          - cell "eva.becker@example.com" [ref=e1254]
+          - cell "IT" [ref=e1255]:
+            - text: IT
+            - generic: ▾
+          - cell "SQL, Java, Python" [ref=e1256]:
+            - text: SQL, Java, Python
+            - generic: ▾
+          - cell "erat, est. et voluptua. A [...]" [ref=e1257]:
+            - text: erat, est. et voluptua. A [...]
+            - generic [ref=e1258] [cursor=pointer]: 🖉
+          - cell [ref=e1259]:
+            - checkbox [checked] [ref=e1260]
+          - cell "79,858.00 €" [ref=e1261]
+          - cell "Jan 7, 2013 2013-01-07 Open date picker" [ref=e1262]:
+            - generic [ref=e1263]:
+              - text: Jan 7, 2013
+              - textbox: 2013-01-07
+              - button "Open date picker" [ref=e1264] [cursor=pointer]: 📅
+          - cell "Charlie Meyer" [ref=e1265]
+          - cell "Hamburg Office" [ref=e1266]
+          - cell "+17 106 225649" [ref=e1267]
+          - cell "EMP00021" [ref=e1268]
+          - cell "Active" [ref=e1269]
+          - cell "QA Engineer" [ref=e1270]
+          - cell "Core" [ref=e1271]
+          - cell "Jun 28, 2024, 11:15 PM 2024-06-28T23:15 Open date/time picker" [ref=e1272]:
+            - generic [ref=e1273]:
+              - text: Jun 28, 2024, 11:15 PM
+              - textbox: 2024-06-28T23:15
+              - button "Open date/time picker" [ref=e1274] [cursor=pointer]: 📅
+          - cell "3.47" [ref=e1275]
+          - cell "+ 100 €" [ref=e1276]
+          - cell "Permanent" [ref=e1277]
+          - cell "Germany" [ref=e1278]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e1279]:
+            - text: Munich
+            - generic: ▾
+          - cell "68468" [ref=e1280]
+          - cell "191 Example Street" [ref=e1281]
+          - cell [ref=e1282]
+          - cell [ref=e1284]
+          - cell "March 24, 1997 1997-03-24 Open date picker" [ref=e1286]:
+            - generic [ref=e1287]:
+              - text: March 24, 1997
+              - textbox: 1997-03-24
+              - button "Open date picker" [ref=e1288] [cursor=pointer]: 📅
+          - cell "Charlie Weber (+497503030 [...]" [ref=e1289]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e1290]:
+            - generic [ref=e1291]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e1292] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e1293]:
+            - generic [ref=e1294]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e1295]':
+            - generic [ref=e1296]:
+              - generic [ref=e1298]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 21" [ref=e1299]:
+          - cell "22" [ref=e1300]
+          - cell "YThcRxsnz5SwtQGFnsW4OADDp [...]" [ref=e1301]
+          - cell "Charlie" [ref=e1302]
+          - cell "Becker" [ref=e1303]
+          - cell "charlie.becker@example.co [...]" [ref=e1304]
+          - cell "Legal" [ref=e1305]:
+            - text: Legal
+            - generic: ▾
+          - cell "SQL, Java" [ref=e1306]:
+            - text: SQL, Java
+            - generic: ▾
+          - cell [ref=e1307]:
+            - generic [ref=e1308] [cursor=pointer]: 🖉
+          - cell [ref=e1309]:
+            - checkbox [checked] [ref=e1310]
+          - cell "64,735.00 €" [ref=e1311]
+          - cell "Apr 2, 2015 2015-04-02 Open date picker" [ref=e1312]:
+            - generic [ref=e1313]:
+              - text: Apr 2, 2015
+              - textbox: 2015-04-02
+              - button "Open date picker" [ref=e1314] [cursor=pointer]: 📅
+          - cell "Alice Schneider" [ref=e1315]
+          - cell "Hamburg Office" [ref=e1316]
+          - cell "+49 765 808821" [ref=e1317]
+          - cell "EMP00022" [ref=e1318]
+          - cell "Terminated" [ref=e1319]
+          - cell "Software Engineer" [ref=e1320]
+          - cell "Growth" [ref=e1321]
+          - cell "Mar 3, 2022, 8:46 AM 2022-03-03T08:46 Open date/time picker" [ref=e1322]:
+            - generic [ref=e1323]:
+              - text: Mar 3, 2022, 8:46 AM
+              - textbox: 2022-03-03T08:46
+              - button "Open date/time picker" [ref=e1324] [cursor=pointer]: 📅
+          - cell "0.20" [ref=e1325]
+          - cell "+ 10,761 €" [ref=e1326]
+          - cell "Permanent" [ref=e1327]
+          - cell "Germany" [ref=e1328]:
+            - text: Germany
+            - generic: ▾
+          - cell "Frankfurt" [ref=e1329]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "11099" [ref=e1330]
+          - cell "146 Example Street" [ref=e1331]
+          - cell "https://www.linkedin.com/in/charliebecker 🔗" [ref=e1332]:
+            - generic [ref=e1333]:
+              - generic [ref=e1334]: https://www.linkedin.com/in/charliebecker
+              - button "🔗" [ref=e1335] [cursor=pointer]
+          - cell [ref=e1336]
+          - cell "February 21, 1990 1990-02-21 Open date picker" [ref=e1338]:
+            - generic [ref=e1339]:
+              - text: February 21, 1990
+              - textbox: 1990-02-21
+              - button "Open date picker" [ref=e1340] [cursor=pointer]: 📅
+          - cell [ref=e1341]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e1342]:
+            - generic [ref=e1343]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e1344] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e1345]:
+            - generic [ref=e1346]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e1347]':
+            - generic [ref=e1348]:
+              - generic [ref=e1350]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 22" [ref=e1351]:
+          - cell "23" [ref=e1352]
+          - cell "Gd9KNb-iMACpPSm8YjVnKYvo5 [...]" [ref=e1353]
+          - cell "Frank" [ref=e1354]
+          - cell "Schmidt" [ref=e1355]
+          - cell [ref=e1356]
+          - cell "Marketing" [ref=e1357]:
+            - text: Marketing
+            - generic: ▾
+          - cell "TypeScript, Java, React, [...]" [ref=e1358]:
+            - text: TypeScript, Java, React, [...]
+            - generic: ▾
+          - cell [ref=e1359]:
+            - generic [ref=e1360] [cursor=pointer]: 🖉
+          - cell [ref=e1361]:
+            - checkbox [checked] [ref=e1362]
+          - cell "83,629.00 €" [ref=e1363]
+          - cell "May 15, 2021 2021-05-15 Open date picker" [ref=e1364]:
+            - generic [ref=e1365]:
+              - text: May 15, 2021
+              - textbox: 2021-05-15
+              - button "Open date picker" [ref=e1366] [cursor=pointer]: 📅
+          - cell "Grace Schmidt" [ref=e1367]
+          - cell "Hamburg Office" [ref=e1368]
+          - cell "+49 985 831324" [ref=e1369]
+          - cell "EMP00023" [ref=e1370]
+          - cell "Active" [ref=e1371]
+          - cell "Product Manager" [ref=e1372]
+          - cell "Core" [ref=e1373]
+          - cell "Jul 4, 2024, 2:10 AM 2024-07-04T02:10 Open date/time picker" [ref=e1374]:
+            - generic [ref=e1375]:
+              - text: Jul 4, 2024, 2:10 AM
+              - textbox: 2024-07-04T02:10
+              - button "Open date/time picker" [ref=e1376] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e1377]
+          - cell "+ 0 €" [ref=e1378]
+          - cell "Intern" [ref=e1379]
+          - cell "UK" [ref=e1380]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e1381]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e1382]
+          - cell "173 Example Street" [ref=e1383]
+          - cell [ref=e1384]
+          - cell [ref=e1386]
+          - cell "November 1, 1969 1969-11-01 Open date picker" [ref=e1388]:
+            - generic [ref=e1389]:
+              - text: November 1, 1969
+              - textbox: 1969-11-01
+              - button "Open date picker" [ref=e1390] [cursor=pointer]: 📅
+          - cell [ref=e1391]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e1392]:
+            - generic [ref=e1393]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e1394] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e1395]:
+            - generic [ref=e1396]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e1397]':
+            - generic [ref=e1398]:
+              - generic [ref=e1400]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 23" [ref=e1401]:
+          - cell "24" [ref=e1402]
+          - cell "SQBqZe3JtrJblUwSPy0" [ref=e1403]
+          - cell "Julia" [ref=e1404]
+          - cell "Müller" [ref=e1405]
+          - cell "julia.müller@example.com" [ref=e1406]
+          - cell "Legal" [ref=e1407]:
+            - text: Legal
+            - generic: ▾
+          - cell "Figma, Python, Java, AWS" [ref=e1408]:
+            - text: Figma, Python, Java, AWS
+            - generic: ▾
+          - cell "no sed eos ipsum et Lorem [...]" [ref=e1409]:
+            - text: no sed eos ipsum et Lorem [...]
+            - generic [ref=e1410] [cursor=pointer]: 🖉
+          - cell [ref=e1411]:
+            - checkbox [checked] [ref=e1412]
+          - cell "44,079.00 €" [ref=e1413]
+          - cell "Mar 30, 2021 2021-03-30 Open date picker" [ref=e1414]:
+            - generic [ref=e1415]:
+              - text: Mar 30, 2021
+              - textbox: 2021-03-30
+              - button "Open date picker" [ref=e1416] [cursor=pointer]: 📅
+          - cell "Frank Meyer" [ref=e1417]
+          - cell "Berlin HQ" [ref=e1418]
+          - cell "+19 219 759101" [ref=e1419]
+          - cell "EMP00024" [ref=e1420]
+          - cell "Probation" [ref=e1421]
+          - cell "Product Manager" [ref=e1422]
+          - cell "Core" [ref=e1423]
+          - cell "Open date/time picker" [ref=e1424]:
+            - generic [ref=e1425]:
+              - textbox
+              - button "Open date/time picker" [ref=e1427] [cursor=pointer]: 📅
+          - cell "1.66" [ref=e1428]
+          - cell "+ 12,895 €" [ref=e1429]
+          - cell "Temporary" [ref=e1430]
+          - cell "Netherlands" [ref=e1431]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Cologne" [ref=e1432]:
+            - text: Cologne
+            - generic: ▾
+          - cell "47658" [ref=e1433]
+          - cell [ref=e1434]
+          - cell [ref=e1435]
+          - cell [ref=e1437]
+          - cell "February 21, 1974 1974-02-21 Open date picker" [ref=e1439]:
+            - generic [ref=e1440]:
+              - text: February 21, 1974
+              - textbox: 1974-02-21
+              - button "Open date picker" [ref=e1441] [cursor=pointer]: 📅
+          - cell [ref=e1442]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e1443]:
+            - generic [ref=e1444]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e1445] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e1446]:
+            - generic [ref=e1447]: 4h
+          - 'cell "#f97316 #f97316" [ref=e1448]':
+            - generic [ref=e1449]:
+              - generic [ref=e1451]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 24" [ref=e1452]:
+          - cell "25" [ref=e1453]
+          - cell "u76mHJ9Ps04vhmMOalmgTpsnO [...]" [ref=e1454]
+          - cell "Frank" [ref=e1455]
+          - cell [ref=e1456]
+          - cell [ref=e1457]
+          - cell "Sales" [ref=e1458]:
+            - text: Sales
+            - generic: ▾
+          - cell "SQL" [ref=e1459]:
+            - text: SQL
+            - generic: ▾
+          - cell "magna nonumy magna accusa [...]" [ref=e1460]:
+            - text: magna nonumy magna accusa [...]
+            - generic [ref=e1461] [cursor=pointer]: 🖉
+          - cell [ref=e1462]:
+            - checkbox [checked] [ref=e1463]
+          - cell "0.00 €" [ref=e1464]
+          - cell "Dec 20, 2011 2011-12-20 Open date picker" [ref=e1465]:
+            - generic [ref=e1466]:
+              - text: Dec 20, 2011
+              - textbox: 2011-12-20
+              - button "Open date picker" [ref=e1467] [cursor=pointer]: 📅
+          - cell [ref=e1468]
+          - cell "Remote" [ref=e1469]
+          - cell [ref=e1470]
+          - cell "EMP00025" [ref=e1471]
+          - cell "Probation" [ref=e1472]
+          - cell "Product Manager" [ref=e1473]
+          - cell "Growth" [ref=e1474]
+          - cell "Oct 20, 2021, 12:24 AM 2021-10-20T00:24 Open date/time picker" [ref=e1475]:
+            - generic [ref=e1476]:
+              - text: Oct 20, 2021, 12:24 AM
+              - textbox: 2021-10-20T00:24
+              - button "Open date/time picker" [ref=e1477] [cursor=pointer]: 📅
+          - cell "2.37" [ref=e1478]
+          - cell "+ 2,915 €" [ref=e1479]
+          - cell "Intern" [ref=e1480]
+          - cell "Germany" [ref=e1481]:
+            - text: Germany
+            - generic: ▾
+          - cell "Hamburg" [ref=e1482]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e1483]
+          - cell "87 Example Street" [ref=e1484]
+          - cell [ref=e1485]
+          - cell [ref=e1487]
+          - cell "January 14, 2000 2000-01-14 Open date picker" [ref=e1489]:
+            - generic [ref=e1490]:
+              - text: January 14, 2000
+              - textbox: 2000-01-14
+              - button "Open date picker" [ref=e1491] [cursor=pointer]: 📅
+          - cell [ref=e1492]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e1493]:
+            - generic [ref=e1494]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e1495] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e1496]:
+            - generic [ref=e1497]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e1498]':
+            - generic [ref=e1499]:
+              - generic [ref=e1501]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 25" [ref=e1502]:
+          - cell "26" [ref=e1503]
+          - cell "LB6HlFzRCcKSBX_tm__KpK4bx [...]" [ref=e1504]
+          - cell "Ian" [ref=e1505]
+          - cell "Wagner" [ref=e1506]
+          - cell "ian.wagner@example.com" [ref=e1507]
+          - cell "Sales" [ref=e1508]:
+            - text: Sales
+            - generic: ▾
+          - cell "Python" [ref=e1509]:
+            - text: Python
+            - generic: ▾
+          - cell "accusam gubergren, volupt [...]" [ref=e1510]:
+            - text: accusam gubergren, volupt [...]
+            - generic [ref=e1511] [cursor=pointer]: 🖉
+          - cell [ref=e1512]:
+            - checkbox [ref=e1513]
+          - cell "81,286.00 €" [ref=e1514]
+          - cell "Oct 19, 2009 2009-10-19 Open date picker" [ref=e1515]:
+            - generic [ref=e1516]:
+              - text: Oct 19, 2009
+              - textbox: 2009-10-19
+              - button "Open date picker" [ref=e1517] [cursor=pointer]: 📅
+          - cell "Alice Weber" [ref=e1518]
+          - cell "Berlin HQ" [ref=e1519]
+          - cell "+49 769 660377" [ref=e1520]
+          - cell "EMP00026" [ref=e1521]
+          - cell "Terminated" [ref=e1522]
+          - cell "Designer" [ref=e1523]
+          - cell "Platform" [ref=e1524]
+          - cell "Open date/time picker" [ref=e1525]:
+            - generic [ref=e1526]:
+              - textbox
+              - button "Open date/time picker" [ref=e1528] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e1529]
+          - cell "+ 7,356 €" [ref=e1530]
+          - cell "Permanent" [ref=e1531]
+          - cell "Germany" [ref=e1532]:
+            - text: Germany
+            - generic: ▾
+          - cell "Frankfurt" [ref=e1533]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "37718" [ref=e1534]
+          - cell [ref=e1535]
+          - cell [ref=e1536]
+          - cell [ref=e1538]
+          - cell "Open date picker" [ref=e1540]:
+            - generic [ref=e1541]:
+              - textbox
+              - button "Open date picker" [ref=e1543] [cursor=pointer]: 📅
+          - cell "Julia Fischer (+161113616 [...]" [ref=e1544]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e1545]:
+            - generic [ref=e1546]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e1547] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e1548]:
+            - generic [ref=e1549]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e1550]':
+            - generic [ref=e1551]:
+              - generic [ref=e1553]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 26" [ref=e1554]:
+          - cell "27" [ref=e1555]
+          - cell "idH1Ubd38l8VmUmn2zt34q" [ref=e1556]
+          - cell "Diana" [ref=e1557]
+          - cell "Fischer" [ref=e1558]
+          - cell [ref=e1559]
+          - cell "Legal" [ref=e1560]:
+            - text: Legal
+            - generic: ▾
+          - cell "AWS, Figma, TypeScript, D [...]" [ref=e1561]:
+            - text: AWS, Figma, TypeScript, D [...]
+            - generic: ▾
+          - cell "no et takimata et eirmod [...]" [ref=e1562]:
+            - text: no et takimata et eirmod [...]
+            - generic [ref=e1563] [cursor=pointer]: 🖉
+          - cell [ref=e1564]:
+            - checkbox [ref=e1565]
+          - cell "54,797.00 €" [ref=e1566]
+          - cell "Jun 3, 2020 2020-06-03 Open date picker" [ref=e1567]:
+            - generic [ref=e1568]:
+              - text: Jun 3, 2020
+              - textbox: 2020-06-03
+              - button "Open date picker" [ref=e1569] [cursor=pointer]: 📅
+          - cell "Diana Wagner" [ref=e1570]
+          - cell "Hamburg Office" [ref=e1571]
+          - cell "+49 842 436336" [ref=e1572]
+          - cell "EMP00027" [ref=e1573]
+          - cell "Active" [ref=e1574]
+          - cell "Software Engineer" [ref=e1575]
+          - cell "Growth" [ref=e1576]
+          - cell "Jul 29, 2024, 10:34 AM 2024-07-29T10:34 Open date/time picker" [ref=e1577]:
+            - generic [ref=e1578]:
+              - text: Jul 29, 2024, 10:34 AM
+              - textbox: 2024-07-29T10:34
+              - button "Open date/time picker" [ref=e1579] [cursor=pointer]: 📅
+          - cell "4.43" [ref=e1580]
+          - cell "+ 2,835 €" [ref=e1581]
+          - cell "Permanent" [ref=e1582]
+          - cell "Germany" [ref=e1583]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e1584]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "94431" [ref=e1585]
+          - cell "197 Example Street" [ref=e1586]
+          - cell [ref=e1587]
+          - cell [ref=e1589]
+          - cell "Open date picker" [ref=e1591]:
+            - generic [ref=e1592]:
+              - textbox
+              - button "Open date picker" [ref=e1594] [cursor=pointer]: 📅
+          - cell [ref=e1595]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e1596]:
+            - generic [ref=e1597]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e1598] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e1599]:
+            - generic [ref=e1600]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e1601]':
+            - generic [ref=e1602]:
+              - generic [ref=e1604]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 27" [ref=e1605]:
+          - cell "28" [ref=e1606]
+          - cell "iFn-yaUxWcuqGffbonSLbBaS- [...]" [ref=e1607]
+          - cell "Julia" [ref=e1608]
+          - cell "Schneider" [ref=e1609]
+          - cell "julia.schneider@example.c [...]" [ref=e1610]
+          - cell "Legal" [ref=e1611]:
+            - text: Legal
+            - generic: ▾
+          - cell "SQL" [ref=e1612]:
+            - text: SQL
+            - generic: ▾
+          - cell [ref=e1613]:
+            - generic [ref=e1614] [cursor=pointer]: 🖉
+          - cell [ref=e1615]:
+            - checkbox [ref=e1616]
+          - cell "76,512.00 €" [ref=e1617]
+          - cell "Apr 19, 2016 2016-04-19 Open date picker" [ref=e1618]:
+            - generic [ref=e1619]:
+              - text: Apr 19, 2016
+              - textbox: 2016-04-19
+              - button "Open date picker" [ref=e1620] [cursor=pointer]: 📅
+          - cell "Ian Schmidt" [ref=e1621]
+          - cell "Munich Office" [ref=e1622]
+          - cell "+16 150 491812" [ref=e1623]
+          - cell "EMP00028" [ref=e1624]
+          - cell "Probation" [ref=e1625]
+          - cell "QA Engineer" [ref=e1626]
+          - cell "Tools" [ref=e1627]
+          - cell "Mar 3, 2024, 8:08 PM 2024-03-03T20:08 Open date/time picker" [ref=e1628]:
+            - generic [ref=e1629]:
+              - text: Mar 3, 2024, 8:08 PM
+              - textbox: 2024-03-03T20:08
+              - button "Open date/time picker" [ref=e1630] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e1631]
+          - cell "+ 88 €" [ref=e1632]
+          - cell "Permanent" [ref=e1633]
+          - cell "Spain" [ref=e1634]:
+            - text: Spain
+            - generic: ▾
+          - cell "Munich" [ref=e1635]:
+            - text: Munich
+            - generic: ▾
+          - cell "90998" [ref=e1636]
+          - cell "193 Example Street" [ref=e1637]
+          - cell [ref=e1638]
+          - cell [ref=e1640]
+          - cell "March 14, 1994 1994-03-14 Open date picker" [ref=e1642]:
+            - generic [ref=e1643]:
+              - text: March 14, 1994
+              - textbox: 1994-03-14
+              - button "Open date picker" [ref=e1644] [cursor=pointer]: 📅
+          - cell [ref=e1645]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e1646]:
+            - generic [ref=e1647]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e1648] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e1649]:
+            - generic [ref=e1650]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e1651]':
+            - generic [ref=e1652]:
+              - generic [ref=e1654]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 28" [ref=e1655]:
+          - cell "29" [ref=e1656]
+          - cell "WzrSFimO9gmEKLrr7vrLkYZ8p [...]" [ref=e1657]
+          - cell "Ian" [ref=e1658]
+          - cell "Meyer" [ref=e1659]
+          - cell [ref=e1660]
+          - cell "Sales" [ref=e1661]:
+            - text: Sales
+            - generic: ▾
+          - cell "Docker" [ref=e1662]:
+            - text: Docker
+            - generic: ▾
+          - cell [ref=e1663]:
+            - generic [ref=e1664] [cursor=pointer]: 🖉
+          - cell [ref=e1665]:
+            - checkbox [checked] [ref=e1666]
+          - cell "95,408.00 €" [ref=e1667]
+          - cell "Jul 3, 2008 2008-07-03 Open date picker" [ref=e1668]:
+            - generic [ref=e1669]:
+              - text: Jul 3, 2008
+              - textbox: 2008-07-03
+              - button "Open date picker" [ref=e1670] [cursor=pointer]: 📅
+          - cell "Grace Schmidt" [ref=e1671]
+          - cell "Hamburg Office" [ref=e1672]
+          - cell "+49 333 204834" [ref=e1673]
+          - cell "EMP00029" [ref=e1674]
+          - cell "Active" [ref=e1675]
+          - cell "Product Manager" [ref=e1676]
+          - cell [ref=e1677]
+          - cell "Jan 22, 2021, 1:09 AM 2021-01-22T01:09 Open date/time picker" [ref=e1678]:
+            - generic [ref=e1679]:
+              - text: Jan 22, 2021, 1:09 AM
+              - textbox: 2021-01-22T01:09
+              - button "Open date/time picker" [ref=e1680] [cursor=pointer]: 📅
+          - cell "3.73" [ref=e1681]
+          - cell "+ 4,315 €" [ref=e1682]
+          - cell "Contractor" [ref=e1683]
+          - cell "Spain" [ref=e1684]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e1685]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "75262" [ref=e1686]
+          - cell [ref=e1687]
+          - cell [ref=e1688]
+          - cell [ref=e1690]
+          - cell "Open date picker" [ref=e1692]:
+            - generic [ref=e1693]:
+              - textbox
+              - button "Open date picker" [ref=e1695] [cursor=pointer]: 📅
+          - cell "Frank Schmidt (+492280379 [...]" [ref=e1696]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e1697]:
+            - generic [ref=e1698]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e1699] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e1700]:
+            - generic [ref=e1701]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e1702]':
+            - generic [ref=e1703]:
+              - generic [ref=e1705]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 29" [ref=e1706]:
+          - cell "30" [ref=e1707]
+          - cell [ref=e1708]
+          - cell "Ian" [ref=e1709]
+          - cell "Meyer" [ref=e1710]
+          - cell "ian.meyer@example.com" [ref=e1711]
+          - cell [ref=e1712]:
+            - generic: ▾
+          - cell "Java, Figma, AWS" [ref=e1713]:
+            - text: Java, Figma, AWS
+            - generic: ▾
+          - cell "At ut sit invidunt dolore [...]" [ref=e1714]:
+            - text: At ut sit invidunt dolore [...]
+            - generic [ref=e1715] [cursor=pointer]: 🖉
+          - cell [ref=e1716]:
+            - checkbox [checked] [ref=e1717]
+          - cell "0.00 €" [ref=e1718]
+          - cell "Mar 12, 2014 2014-03-12 Open date picker" [ref=e1719]:
+            - generic [ref=e1720]:
+              - text: Mar 12, 2014
+              - textbox: 2014-03-12
+              - button "Open date picker" [ref=e1721] [cursor=pointer]: 📅
+          - cell "Eva Meyer" [ref=e1722]
+          - cell "Remote" [ref=e1723]
+          - cell "+49 125 233096" [ref=e1724]
+          - cell "EMP00030" [ref=e1725]
+          - cell "On Leave" [ref=e1726]
+          - cell "Data Analyst" [ref=e1727]
+          - cell "Mobile" [ref=e1728]
+          - cell "Jan 21, 2024, 8:51 AM 2024-01-21T08:51 Open date/time picker" [ref=e1729]:
+            - generic [ref=e1730]:
+              - text: Jan 21, 2024, 8:51 AM
+              - textbox: 2024-01-21T08:51
+              - button "Open date/time picker" [ref=e1731] [cursor=pointer]: 📅
+          - cell "2.39" [ref=e1732]
+          - cell "+ 0 €" [ref=e1733]
+          - cell "Intern" [ref=e1734]
+          - cell "Netherlands" [ref=e1735]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Berlin" [ref=e1736]:
+            - text: Berlin
+            - generic: ▾
+          - cell "94320" [ref=e1737]
+          - cell "158 Example Street" [ref=e1738]
+          - cell "https://www.linkedin.com/in/ianmeyer 🔗" [ref=e1739]:
+            - generic [ref=e1740]:
+              - generic [ref=e1741]: https://www.linkedin.com/in/ianmeyer
+              - button "🔗" [ref=e1742] [cursor=pointer]
+          - cell [ref=e1743]
+          - cell "Open date picker" [ref=e1745]:
+            - generic [ref=e1746]:
+              - textbox
+              - button "Open date picker" [ref=e1748] [cursor=pointer]: 📅
+          - cell "Ian Schneider (+499586095 [...]" [ref=e1749]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e1750]:
+            - generic [ref=e1751]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e1752] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e1753]:
+            - generic [ref=e1754]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e1755]':
+            - generic [ref=e1756]:
+              - generic [ref=e1758]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 30" [ref=e1759]:
+          - cell "31" [ref=e1760]
+          - cell "BqstS_ptelxz-5UfNDzsgka2j [...]" [ref=e1761]
+          - cell "Eva" [ref=e1762]
+          - cell [ref=e1763]
+          - cell "eva.müller@example.com" [ref=e1764]
+          - cell [ref=e1765]:
+            - generic: ▾
+          - cell [ref=e1766]:
+            - generic: ▾
+          - cell "Lorem et vero no clita la [...]" [ref=e1767]:
+            - text: Lorem et vero no clita la [...]
+            - generic [ref=e1768] [cursor=pointer]: 🖉
+          - cell [ref=e1769]:
+            - checkbox [ref=e1770]
+          - cell "0.00 €" [ref=e1771]
+          - cell "Feb 18, 2013 2013-02-18 Open date picker" [ref=e1772]:
+            - generic [ref=e1773]:
+              - text: Feb 18, 2013
+              - textbox: 2013-02-18
+              - button "Open date picker" [ref=e1774] [cursor=pointer]: 📅
+          - cell "Frank Schneider" [ref=e1775]
+          - cell [ref=e1776]
+          - cell "+49 508 869555" [ref=e1777]
+          - cell "EMP00031" [ref=e1778]
+          - cell "On Leave" [ref=e1779]
+          - cell "Software Engineer" [ref=e1780]
+          - cell "Tools" [ref=e1781]
+          - cell "Open date/time picker" [ref=e1782]:
+            - generic [ref=e1783]:
+              - textbox
+              - button "Open date/time picker" [ref=e1785] [cursor=pointer]: 📅
+          - cell "4.15" [ref=e1786]
+          - cell "+ 3,585 €" [ref=e1787]
+          - cell "Contractor" [ref=e1788]
+          - cell "UK" [ref=e1789]:
+            - text: UK
+            - generic: ▾
+          - cell "Frankfurt" [ref=e1790]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "77635" [ref=e1791]
+          - cell "199 Example Street" [ref=e1792]
+          - cell [ref=e1793]
+          - cell [ref=e1795]
+          - cell "Open date picker" [ref=e1797]:
+            - generic [ref=e1798]:
+              - textbox
+              - button "Open date picker" [ref=e1800] [cursor=pointer]: 📅
+          - cell [ref=e1801]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e1802]:
+            - generic [ref=e1803]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e1804] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e1805]:
+            - generic [ref=e1806]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e1807]':
+            - generic [ref=e1808]:
+              - generic [ref=e1810]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 31" [ref=e1811]:
+          - cell "32" [ref=e1812]
+          - cell "8BXtTICcmoHnWoDHXz8f2" [ref=e1813]
+          - cell "Diana" [ref=e1814]
+          - cell "Meyer" [ref=e1815]
+          - cell "diana.meyer@example.com" [ref=e1816]
+          - cell "Marketing" [ref=e1817]:
+            - text: Marketing
+            - generic: ▾
+          - cell [ref=e1818]:
+            - generic: ▾
+          - cell "et tempor est. diam sit e [...]" [ref=e1819]:
+            - text: et tempor est. diam sit e [...]
+            - generic [ref=e1820] [cursor=pointer]: 🖉
+          - cell [ref=e1821]:
+            - checkbox [checked] [ref=e1822]
+          - cell "0.00 €" [ref=e1823]
+          - cell "Jul 21, 2019 2019-07-21 Open date picker" [ref=e1824]:
+            - generic [ref=e1825]:
+              - text: Jul 21, 2019
+              - textbox: 2019-07-21
+              - button "Open date picker" [ref=e1826] [cursor=pointer]: 📅
+          - cell "Julia Weber" [ref=e1827]
+          - cell "Hamburg Office" [ref=e1828]
+          - cell "+49 572 734662" [ref=e1829]
+          - cell "EMP00032" [ref=e1830]
+          - cell "On Leave" [ref=e1831]
+          - cell "DevOps Engineer" [ref=e1832]
+          - cell "Platform" [ref=e1833]
+          - cell "Open date/time picker" [ref=e1834]:
+            - generic [ref=e1835]:
+              - textbox
+              - button "Open date/time picker" [ref=e1837] [cursor=pointer]: 📅
+          - cell "0.04" [ref=e1838]
+          - cell "+ 13,219 €" [ref=e1839]
+          - cell "Contractor" [ref=e1840]
+          - cell "Netherlands" [ref=e1841]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Stuttgart" [ref=e1842]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "99823" [ref=e1843]
+          - cell [ref=e1844]
+          - cell [ref=e1845]
+          - cell [ref=e1847]
+          - cell "Open date picker" [ref=e1849]:
+            - generic [ref=e1850]:
+              - textbox
+              - button "Open date picker" [ref=e1852] [cursor=pointer]: 📅
+          - cell [ref=e1853]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e1854]:
+            - generic [ref=e1855]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e1856] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e1857]:
+            - generic [ref=e1858]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e1859]':
+            - generic [ref=e1860]:
+              - generic [ref=e1862]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 32" [ref=e1863]:
+          - cell "33" [ref=e1864]
+          - cell "lMtT6yIS-Y5QXckvdfraOHEji [...]" [ref=e1865]
+          - cell "Julia" [ref=e1866]
+          - cell [ref=e1867]
+          - cell "julia.schneider@example.c [...]" [ref=e1868]
+          - cell "Sales" [ref=e1869]:
+            - text: Sales
+            - generic: ▾
+          - cell "React, TypeScript, Python" [ref=e1870]:
+            - text: React, TypeScript, Python
+            - generic: ▾
+          - cell [ref=e1871]:
+            - generic [ref=e1872] [cursor=pointer]: 🖉
+          - cell [ref=e1873]:
+            - checkbox [checked] [ref=e1874]
+          - cell "87,107.00 €" [ref=e1875]
+          - cell "Jul 24, 2021 2021-07-24 Open date picker" [ref=e1876]:
+            - generic [ref=e1877]:
+              - text: Jul 24, 2021
+              - textbox: 2021-07-24
+              - button "Open date picker" [ref=e1878] [cursor=pointer]: 📅
+          - cell "Charlie Fischer" [ref=e1879]
+          - cell "Hamburg Office" [ref=e1880]
+          - cell "+11 818 962672" [ref=e1881]
+          - cell "EMP00033" [ref=e1882]
+          - cell "Active" [ref=e1883]
+          - cell "Product Manager" [ref=e1884]
+          - cell "Tools" [ref=e1885]
+          - cell "Mar 19, 2021, 9:52 PM 2021-03-19T21:52 Open date/time picker" [ref=e1886]:
+            - generic [ref=e1887]:
+              - text: Mar 19, 2021, 9:52 PM
+              - textbox: 2021-03-19T21:52
+              - button "Open date/time picker" [ref=e1888] [cursor=pointer]: 📅
+          - cell "2.10" [ref=e1889]
+          - cell "+ 1,187 €" [ref=e1890]
+          - cell "Contractor" [ref=e1891]
+          - cell "Spain" [ref=e1892]:
+            - text: Spain
+            - generic: ▾
+          - cell "Munich" [ref=e1893]:
+            - text: Munich
+            - generic: ▾
+          - cell "19587" [ref=e1894]
+          - cell "116 Example Street" [ref=e1895]
+          - cell [ref=e1896]
+          - cell [ref=e1898]
+          - cell "January 23, 1987 1987-01-23 Open date picker" [ref=e1900]:
+            - generic [ref=e1901]:
+              - text: January 23, 1987
+              - textbox: 1987-01-23
+              - button "Open date picker" [ref=e1902] [cursor=pointer]: 📅
+          - cell "Eva Weber (+14273374543)" [ref=e1903]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e1904]:
+            - generic [ref=e1905]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e1906] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e1907]:
+            - generic [ref=e1908]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e1909]':
+            - generic [ref=e1910]:
+              - generic [ref=e1912]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 33" [ref=e1913]:
+          - cell "34" [ref=e1914]
+          - cell "Q6HiQbyV62u" [ref=e1915]
+          - cell "Grace" [ref=e1916]
+          - cell "Becker" [ref=e1917]
+          - cell "grace.becker@example.com" [ref=e1918]
+          - cell "Sales" [ref=e1919]:
+            - text: Sales
+            - generic: ▾
+          - cell "AWS, Python" [ref=e1920]:
+            - text: AWS, Python
+            - generic: ▾
+          - cell [ref=e1921]:
+            - generic [ref=e1922] [cursor=pointer]: 🖉
+          - cell [ref=e1923]:
+            - checkbox [checked] [ref=e1924]
+          - cell "80,188.00 €" [ref=e1925]
+          - cell "Open date picker" [ref=e1926]:
+            - generic [ref=e1927]:
+              - textbox
+              - button "Open date picker" [ref=e1929] [cursor=pointer]: 📅
+          - cell "Alice Meyer" [ref=e1930]
+          - cell "Remote" [ref=e1931]
+          - cell "+12 674 951930" [ref=e1932]
+          - cell "EMP00034" [ref=e1933]
+          - cell "Probation" [ref=e1934]
+          - cell "Designer" [ref=e1935]
+          - cell "Platform" [ref=e1936]
+          - cell "Sep 23, 2020, 7:03 PM 2020-09-23T19:03 Open date/time picker" [ref=e1937]:
+            - generic [ref=e1938]:
+              - text: Sep 23, 2020, 7:03 PM
+              - textbox: 2020-09-23T19:03
+              - button "Open date/time picker" [ref=e1939] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e1940]
+          - cell "+ 6,963 €" [ref=e1941]
+          - cell "Intern" [ref=e1942]
+          - cell "UK" [ref=e1943]:
+            - text: UK
+            - generic: ▾
+          - cell "Hamburg" [ref=e1944]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "44857" [ref=e1945]
+          - cell "149 Example Street" [ref=e1946]
+          - cell [ref=e1947]
+          - cell [ref=e1949]
+          - cell "May 26, 1972 1972-05-26 Open date picker" [ref=e1951]:
+            - generic [ref=e1952]:
+              - text: May 26, 1972
+              - textbox: 1972-05-26
+              - button "Open date picker" [ref=e1953] [cursor=pointer]: 📅
+          - cell [ref=e1954]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e1955]:
+            - generic [ref=e1956]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e1957] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e1958]:
+            - generic [ref=e1959]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e1960]':
+            - generic [ref=e1961]:
+              - generic [ref=e1963]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 34" [ref=e1964]:
+          - cell "35" [ref=e1965]
+          - cell "DPMntwpRO8b5zRwiCGZ" [ref=e1966]
+          - cell "Diana" [ref=e1967]
+          - cell "Müller" [ref=e1968]
+          - cell "diana.müller@example.com" [ref=e1969]
+          - cell "HR" [ref=e1970]:
+            - text: HR
+            - generic: ▾
+          - cell "TypeScript, Java, Figma" [ref=e1971]:
+            - text: TypeScript, Java, Figma
+            - generic: ▾
+          - cell [ref=e1972]:
+            - generic [ref=e1973] [cursor=pointer]: 🖉
+          - cell [ref=e1974]:
+            - checkbox [checked] [ref=e1975]
+          - cell "50,779.00 €" [ref=e1976]
+          - cell "May 30, 2018 2018-05-30 Open date picker" [ref=e1977]:
+            - generic [ref=e1978]:
+              - text: May 30, 2018
+              - textbox: 2018-05-30
+              - button "Open date picker" [ref=e1979] [cursor=pointer]: 📅
+          - cell [ref=e1980]
+          - cell "Cologne Office" [ref=e1981]
+          - cell "+49 157 603013" [ref=e1982]
+          - cell "EMP00035" [ref=e1983]
+          - cell "Probation" [ref=e1984]
+          - cell "Software Engineer" [ref=e1985]
+          - cell "Platform" [ref=e1986]
+          - cell "Mar 17, 2020, 7:40 AM 2020-03-17T07:40 Open date/time picker" [ref=e1987]:
+            - generic [ref=e1988]:
+              - text: Mar 17, 2020, 7:40 AM
+              - textbox: 2020-03-17T07:40
+              - button "Open date/time picker" [ref=e1989] [cursor=pointer]: 📅
+          - cell "2.77" [ref=e1990]
+          - cell "+ 0 €" [ref=e1991]
+          - cell "Permanent" [ref=e1992]
+          - cell "Germany" [ref=e1993]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e1994]:
+            - text: Munich
+            - generic: ▾
+          - cell "35705" [ref=e1995]
+          - cell [ref=e1996]
+          - cell [ref=e1997]
+          - cell [ref=e1999]
+          - cell "Open date picker" [ref=e2001]:
+            - generic [ref=e2002]:
+              - textbox
+              - button "Open date picker" [ref=e2004] [cursor=pointer]: 📅
+          - cell [ref=e2005]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e2006]:
+            - generic [ref=e2007]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e2008] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e2009]:
+            - generic [ref=e2010]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e2011]':
+            - generic [ref=e2012]:
+              - generic [ref=e2014]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 35" [ref=e2015]:
+          - cell "36" [ref=e2016]
+          - cell "DXLnJKxlpuN16qGDQPBVv2NiU [...]" [ref=e2017]
+          - cell "Eva" [ref=e2018]
+          - cell "Becker" [ref=e2019]
+          - cell "eva.becker@example.com" [ref=e2020]
+          - cell "Marketing" [ref=e2021]:
+            - text: Marketing
+            - generic: ▾
+          - cell "React, Docker, TypeScript" [ref=e2022]:
+            - text: React, Docker, TypeScript
+            - generic: ▾
+          - cell "amet, erat, est. ipsum co [...]" [ref=e2023]:
+            - text: amet, erat, est. ipsum co [...]
+            - generic [ref=e2024] [cursor=pointer]: 🖉
+          - cell [ref=e2025]:
+            - checkbox [checked] [ref=e2026]
+          - cell "67,487.00 €" [ref=e2027]
+          - cell "Nov 17, 2019 2019-11-17 Open date picker" [ref=e2028]:
+            - generic [ref=e2029]:
+              - text: Nov 17, 2019
+              - textbox: 2019-11-17
+              - button "Open date picker" [ref=e2030] [cursor=pointer]: 📅
+          - cell "Ian Becker" [ref=e2031]
+          - cell "Berlin HQ" [ref=e2032]
+          - cell "+13 950 900975" [ref=e2033]
+          - cell "EMP00036" [ref=e2034]
+          - cell "Active" [ref=e2035]
+          - cell "Designer" [ref=e2036]
+          - cell "Web" [ref=e2037]
+          - cell "Oct 26, 2023, 1:26 PM 2023-10-26T13:26 Open date/time picker" [ref=e2038]:
+            - generic [ref=e2039]:
+              - text: Oct 26, 2023, 1:26 PM
+              - textbox: 2023-10-26T13:26
+              - button "Open date/time picker" [ref=e2040] [cursor=pointer]: 📅
+          - cell "1.91" [ref=e2041]
+          - cell "+ 0 €" [ref=e2042]
+          - cell "Contractor" [ref=e2043]
+          - cell "UK" [ref=e2044]:
+            - text: UK
+            - generic: ▾
+          - cell "Munich" [ref=e2045]:
+            - text: Munich
+            - generic: ▾
+          - cell "47485" [ref=e2046]
+          - cell [ref=e2047]
+          - cell "https://www.linkedin.com/in/evabecker 🔗" [ref=e2048]:
+            - generic [ref=e2049]:
+              - generic [ref=e2050]: https://www.linkedin.com/in/evabecker
+              - button "🔗" [ref=e2051] [cursor=pointer]
+          - cell [ref=e2052]
+          - cell "Open date picker" [ref=e2054]:
+            - generic [ref=e2055]:
+              - textbox
+              - button "Open date picker" [ref=e2057] [cursor=pointer]: 📅
+          - cell [ref=e2058]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e2059]:
+            - generic [ref=e2060]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e2061] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e2062]:
+            - generic [ref=e2063]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e2064]':
+            - generic [ref=e2065]:
+              - generic [ref=e2067]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 36" [ref=e2068]:
+          - cell "37" [ref=e2069]
+          - cell "ygT367X2P51B0NNhge41MPZ2w [...]" [ref=e2070]
+          - cell "Eva" [ref=e2071]
+          - cell "Weber" [ref=e2072]
+          - cell "eva.weber@example.com" [ref=e2073]
+          - cell "IT" [ref=e2074]:
+            - text: IT
+            - generic: ▾
+          - cell "SQL" [ref=e2075]:
+            - text: SQL
+            - generic: ▾
+          - cell "justo et accusam sit invi [...]" [ref=e2076]:
+            - text: justo et accusam sit invi [...]
+            - generic [ref=e2077] [cursor=pointer]: 🖉
+          - cell [ref=e2078]:
+            - checkbox [checked] [ref=e2079]
+          - cell "91,542.00 €" [ref=e2080]
+          - cell "Dec 7, 2017 2017-12-07 Open date picker" [ref=e2081]:
+            - generic [ref=e2082]:
+              - text: Dec 7, 2017
+              - textbox: 2017-12-07
+              - button "Open date picker" [ref=e2083] [cursor=pointer]: 📅
+          - cell "Eva Weber" [ref=e2084]
+          - cell [ref=e2085]
+          - cell "+13 531 201427" [ref=e2086]
+          - cell "EMP00037" [ref=e2087]
+          - cell "Terminated" [ref=e2088]
+          - cell "Software Engineer" [ref=e2089]
+          - cell "Core" [ref=e2090]
+          - cell "Jan 11, 2021, 12:18 AM 2021-01-11T00:18 Open date/time picker" [ref=e2091]:
+            - generic [ref=e2092]:
+              - text: Jan 11, 2021, 12:18 AM
+              - textbox: 2021-01-11T00:18
+              - button "Open date/time picker" [ref=e2093] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e2094]
+          - cell "+ 11,536 €" [ref=e2095]
+          - cell "Temporary" [ref=e2096]
+          - cell "Spain" [ref=e2097]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e2098]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "98060" [ref=e2099]
+          - cell "37 Example Street" [ref=e2100]
+          - cell [ref=e2101]
+          - cell [ref=e2103]
+          - cell "February 27, 1979 1979-02-27 Open date picker" [ref=e2105]:
+            - generic [ref=e2106]:
+              - text: February 27, 1979
+              - textbox: 1979-02-27
+              - button "Open date picker" [ref=e2107] [cursor=pointer]: 📅
+          - cell "Bob Schneider (+195439688 [...]" [ref=e2108]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e2109]:
+            - generic [ref=e2110]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e2111] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e2112]:
+            - generic [ref=e2113]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e2114]':
+            - generic [ref=e2115]:
+              - generic [ref=e2117]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 37" [ref=e2118]:
+          - cell "38" [ref=e2119]
+          - cell "FWUZ_wszetqm2H" [ref=e2120]
+          - cell "Grace" [ref=e2121]
+          - cell "Schmidt" [ref=e2122]
+          - cell "grace.schmidt@example.com" [ref=e2123]
+          - cell "Legal" [ref=e2124]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e2125]:
+            - generic: ▾
+          - cell "eirmod accusam sea sit ta [...]" [ref=e2126]:
+            - text: eirmod accusam sea sit ta [...]
+            - generic [ref=e2127] [cursor=pointer]: 🖉
+          - cell [ref=e2128]:
+            - checkbox [ref=e2129]
+          - cell "98,151.00 €" [ref=e2130]
+          - cell "Feb 15, 2018 2018-02-15 Open date picker" [ref=e2131]:
+            - generic [ref=e2132]:
+              - text: Feb 15, 2018
+              - textbox: 2018-02-15
+              - button "Open date picker" [ref=e2133] [cursor=pointer]: 📅
+          - cell "Diana Meyer" [ref=e2134]
+          - cell "Remote" [ref=e2135]
+          - cell "+17 459 260213" [ref=e2136]
+          - cell "EMP00038" [ref=e2137]
+          - cell "Probation" [ref=e2138]
+          - cell [ref=e2139]
+          - cell "Core" [ref=e2140]
+          - cell "Open date/time picker" [ref=e2141]:
+            - generic [ref=e2142]:
+              - textbox
+              - button "Open date/time picker" [ref=e2144] [cursor=pointer]: 📅
+          - cell "0.34" [ref=e2145]
+          - cell "+ 10,278 €" [ref=e2146]
+          - cell [ref=e2147]
+          - cell "France" [ref=e2148]:
+            - text: France
+            - generic: ▾
+          - cell "Cologne" [ref=e2149]:
+            - text: Cologne
+            - generic: ▾
+          - cell "17382" [ref=e2150]
+          - cell "169 Example Street" [ref=e2151]
+          - cell "https://www.linkedin.com/in/graceschmidt 🔗" [ref=e2152]:
+            - generic [ref=e2153]:
+              - generic [ref=e2154]: https://www.linkedin.com/in/graceschmidt
+              - button "🔗" [ref=e2155] [cursor=pointer]
+          - cell [ref=e2156]
+          - cell "Open date picker" [ref=e2158]:
+            - generic [ref=e2159]:
+              - textbox
+              - button "Open date picker" [ref=e2161] [cursor=pointer]: 📅
+          - cell [ref=e2162]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e2163]:
+            - generic [ref=e2164]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e2165] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e2166]:
+            - generic [ref=e2167]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e2168]':
+            - generic [ref=e2169]:
+              - generic [ref=e2171]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 38" [ref=e2172]:
+          - cell "39" [ref=e2173]
+          - cell "VZpSue9cKnNueVWJfUDboz_" [ref=e2174]
+          - cell "Alice" [ref=e2175]
+          - cell "Fischer" [ref=e2176]
+          - cell "alice.fischer@example.com" [ref=e2177]
+          - cell "Legal" [ref=e2178]:
+            - text: Legal
+            - generic: ▾
+          - cell "Docker, SQL, React" [ref=e2179]:
+            - text: Docker, SQL, React
+            - generic: ▾
+          - cell "vero justo ea gubergren, [...]" [ref=e2180]:
+            - text: vero justo ea gubergren, [...]
+            - generic [ref=e2181] [cursor=pointer]: 🖉
+          - cell [ref=e2182]:
+            - checkbox [checked] [ref=e2183]
+          - cell "92,988.00 €" [ref=e2184]
+          - cell "Sep 2, 2022 2022-09-02 Open date picker" [ref=e2185]:
+            - generic [ref=e2186]:
+              - text: Sep 2, 2022
+              - textbox: 2022-09-02
+              - button "Open date picker" [ref=e2187] [cursor=pointer]: 📅
+          - cell "Charlie Müller" [ref=e2188]
+          - cell "Munich Office" [ref=e2189]
+          - cell "+49 564 017236" [ref=e2190]
+          - cell "EMP00039" [ref=e2191]
+          - cell "On Leave" [ref=e2192]
+          - cell [ref=e2193]
+          - cell "Platform" [ref=e2194]
+          - cell "Open date/time picker" [ref=e2195]:
+            - generic [ref=e2196]:
+              - textbox
+              - button "Open date/time picker" [ref=e2198] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e2199]
+          - cell "+ 0 €" [ref=e2200]
+          - cell "Intern" [ref=e2201]
+          - cell "Spain" [ref=e2202]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e2203]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "70430" [ref=e2204]
+          - cell "102 Example Street" [ref=e2205]
+          - cell "https://www.linkedin.com/in/alicefischer 🔗" [ref=e2206]:
+            - generic [ref=e2207]:
+              - generic [ref=e2208]: https://www.linkedin.com/in/alicefischer
+              - button "🔗" [ref=e2209] [cursor=pointer]
+          - cell [ref=e2210]
+          - cell "October 18, 1993 1993-10-18 Open date picker" [ref=e2212]:
+            - generic [ref=e2213]:
+              - text: October 18, 1993
+              - textbox: 1993-10-18
+              - button "Open date picker" [ref=e2214] [cursor=pointer]: 📅
+          - cell "Ian Becker (+49996794769)" [ref=e2215]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e2216]:
+            - generic [ref=e2217]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e2218] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e2219]:
+            - generic [ref=e2220]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e2221]':
+            - generic [ref=e2222]:
+              - generic [ref=e2224]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 39" [ref=e2225]:
+          - cell "40" [ref=e2226]
+          - cell "BMd4T9NJz_1Kz6QtlVe0Aes6h [...]" [ref=e2227]
+          - cell "Charlie" [ref=e2228]
+          - cell "Wagner" [ref=e2229]
+          - cell "charlie.wagner@example.co [...]" [ref=e2230]
+          - cell [ref=e2231]:
+            - generic: ▾
+          - cell "Docker" [ref=e2232]:
+            - text: Docker
+            - generic: ▾
+          - cell [ref=e2233]:
+            - generic [ref=e2234] [cursor=pointer]: 🖉
+          - cell [ref=e2235]:
+            - checkbox [checked] [ref=e2236]
+          - cell "75,578.00 €" [ref=e2237]
+          - cell "Apr 19, 2020 2020-04-19 Open date picker" [ref=e2238]:
+            - generic [ref=e2239]:
+              - text: Apr 19, 2020
+              - textbox: 2020-04-19
+              - button "Open date picker" [ref=e2240] [cursor=pointer]: 📅
+          - cell "Grace Meyer" [ref=e2241]
+          - cell "Hamburg Office" [ref=e2242]
+          - cell "+18 784 373081" [ref=e2243]
+          - cell "EMP00040" [ref=e2244]
+          - cell "Probation" [ref=e2245]
+          - cell "Software Engineer" [ref=e2246]
+          - cell "Tools" [ref=e2247]
+          - cell "Jan 8, 2022, 1:22 PM 2022-01-08T13:22 Open date/time picker" [ref=e2248]:
+            - generic [ref=e2249]:
+              - text: Jan 8, 2022, 1:22 PM
+              - textbox: 2022-01-08T13:22
+              - button "Open date/time picker" [ref=e2250] [cursor=pointer]: 📅
+          - cell "0.77" [ref=e2251]
+          - cell "+ 0 €" [ref=e2252]
+          - cell "Contractor" [ref=e2253]
+          - cell "USA" [ref=e2254]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e2255]:
+            - text: Munich
+            - generic: ▾
+          - cell "77801" [ref=e2256]
+          - cell [ref=e2257]
+          - cell [ref=e2258]
+          - cell [ref=e2260]
+          - cell "May 10, 1991 1991-05-10 Open date picker" [ref=e2262]:
+            - generic [ref=e2263]:
+              - text: May 10, 1991
+              - textbox: 1991-05-10
+              - button "Open date picker" [ref=e2264] [cursor=pointer]: 📅
+          - cell [ref=e2265]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e2266]:
+            - generic [ref=e2267]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e2268] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e2269]:
+            - generic [ref=e2270]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e2271]':
+            - generic [ref=e2272]:
+              - generic [ref=e2274]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 40" [ref=e2275]:
+          - cell "41" [ref=e2276]
+          - cell [ref=e2277]
+          - cell "Charlie" [ref=e2278]
+          - cell "Schneider" [ref=e2279]
+          - cell "charlie.schneider@example [...]" [ref=e2280]
+          - cell "IT" [ref=e2281]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e2282]:
+            - generic: ▾
+          - cell [ref=e2283]:
+            - generic [ref=e2284] [cursor=pointer]: 🖉
+          - cell [ref=e2285]:
+            - checkbox [checked] [ref=e2286]
+          - cell "53,567.00 €" [ref=e2287]
+          - cell "Nov 24, 2020 2020-11-24 Open date picker" [ref=e2288]:
+            - generic [ref=e2289]:
+              - text: Nov 24, 2020
+              - textbox: 2020-11-24
+              - button "Open date picker" [ref=e2290] [cursor=pointer]: 📅
+          - cell "Bob Schneider" [ref=e2291]
+          - cell "Remote" [ref=e2292]
+          - cell "+49 707 594823" [ref=e2293]
+          - cell "EMP00041" [ref=e2294]
+          - cell "On Leave" [ref=e2295]
+          - cell "QA Engineer" [ref=e2296]
+          - cell "Platform" [ref=e2297]
+          - cell "Open date/time picker" [ref=e2298]:
+            - generic [ref=e2299]:
+              - textbox
+              - button "Open date/time picker" [ref=e2301] [cursor=pointer]: 📅
+          - cell "4.52" [ref=e2302]
+          - cell "+ 3,325 €" [ref=e2303]
+          - cell "Contractor" [ref=e2304]
+          - cell [ref=e2305]:
+            - generic: ▾
+          - cell "Munich" [ref=e2306]:
+            - text: Munich
+            - generic: ▾
+          - cell "25314" [ref=e2307]
+          - cell "97 Example Street" [ref=e2308]
+          - cell [ref=e2309]
+          - cell [ref=e2311]
+          - cell "May 28, 1993 1993-05-28 Open date picker" [ref=e2313]:
+            - generic [ref=e2314]:
+              - text: May 28, 1993
+              - textbox: 1993-05-28
+              - button "Open date picker" [ref=e2315] [cursor=pointer]: 📅
+          - cell "Julia Schneider (+1121735 [...]" [ref=e2316]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e2317]:
+            - generic [ref=e2318]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e2319] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e2320]:
+            - generic [ref=e2321]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e2322]':
+            - generic [ref=e2323]:
+              - generic [ref=e2325]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 41" [ref=e2326]:
+          - cell "42" [ref=e2327]
+          - cell "hQXU3j6SWGlZtMkFYnc_4yYG_ [...]" [ref=e2328]
+          - cell "Hannah" [ref=e2329]
+          - cell "Weber" [ref=e2330]
+          - cell "hannah.weber@example.com" [ref=e2331]
+          - cell "Sales" [ref=e2332]:
+            - text: Sales
+            - generic: ▾
+          - cell "Python, React, Figma, Typ [...]" [ref=e2333]:
+            - text: Python, React, Figma, Typ [...]
+            - generic: ▾
+          - cell "Lorem voluptua. tempor ma [...]" [ref=e2334]:
+            - text: Lorem voluptua. tempor ma [...]
+            - generic [ref=e2335] [cursor=pointer]: 🖉
+          - cell [ref=e2336]:
+            - checkbox [checked] [ref=e2337]
+          - cell "52,033.00 €" [ref=e2338]
+          - cell "Jun 9, 2010 2010-06-09 Open date picker" [ref=e2339]:
+            - generic [ref=e2340]:
+              - text: Jun 9, 2010
+              - textbox: 2010-06-09
+              - button "Open date picker" [ref=e2341] [cursor=pointer]: 📅
+          - cell "Eva Wagner" [ref=e2342]
+          - cell "Hamburg Office" [ref=e2343]
+          - cell "+16 718 002675" [ref=e2344]
+          - cell "EMP00042" [ref=e2345]
+          - cell "Terminated" [ref=e2346]
+          - cell "Designer" [ref=e2347]
+          - cell "Growth" [ref=e2348]
+          - cell "Open date/time picker" [ref=e2349]:
+            - generic [ref=e2350]:
+              - textbox
+              - button "Open date/time picker" [ref=e2352] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e2353]
+          - cell "+ 0 €" [ref=e2354]
+          - cell "Temporary" [ref=e2355]
+          - cell "France" [ref=e2356]:
+            - text: France
+            - generic: ▾
+          - cell "Munich" [ref=e2357]:
+            - text: Munich
+            - generic: ▾
+          - cell "79789" [ref=e2358]
+          - cell "138 Example Street" [ref=e2359]
+          - cell [ref=e2360]
+          - cell [ref=e2362]
+          - cell "July 28, 1985 1985-07-28 Open date picker" [ref=e2364]:
+            - generic [ref=e2365]:
+              - text: July 28, 1985
+              - textbox: 1985-07-28
+              - button "Open date picker" [ref=e2366] [cursor=pointer]: 📅
+          - cell [ref=e2367]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e2368]:
+            - generic [ref=e2369]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e2370] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e2371]:
+            - generic [ref=e2372]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e2373]':
+            - generic [ref=e2374]:
+              - generic [ref=e2376]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 42" [ref=e2377]:
+          - cell "43" [ref=e2378]
+          - cell "E8bgdWEdgYHGqSvWi3I2mHQI2 [...]" [ref=e2379]
+          - cell "Julia" [ref=e2380]
+          - cell "Fischer" [ref=e2381]
+          - cell "julia.fischer@example.com" [ref=e2382]
+          - cell "Legal" [ref=e2383]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java" [ref=e2384]:
+            - text: Java
+            - generic: ▾
+          - cell "takimata nonumy et At ea [...]" [ref=e2385]:
+            - text: takimata nonumy et At ea [...]
+            - generic [ref=e2386] [cursor=pointer]: 🖉
+          - cell [ref=e2387]:
+            - checkbox [checked] [ref=e2388]
+          - cell "0.00 €" [ref=e2389]
+          - cell "Dec 22, 2024 2024-12-22 Open date picker" [ref=e2390]:
+            - generic [ref=e2391]:
+              - text: Dec 22, 2024
+              - textbox: 2024-12-22
+              - button "Open date picker" [ref=e2392] [cursor=pointer]: 📅
+          - cell "Charlie Weber" [ref=e2393]
+          - cell "Berlin HQ" [ref=e2394]
+          - cell "+49 860 614923" [ref=e2395]
+          - cell "EMP00043" [ref=e2396]
+          - cell "Probation" [ref=e2397]
+          - cell "Product Manager" [ref=e2398]
+          - cell "Platform" [ref=e2399]
+          - cell "Open date/time picker" [ref=e2400]:
+            - generic [ref=e2401]:
+              - textbox
+              - button "Open date/time picker" [ref=e2403] [cursor=pointer]: 📅
+          - cell "1.63" [ref=e2404]
+          - cell "+ 12,175 €" [ref=e2405]
+          - cell "Contractor" [ref=e2406]
+          - cell "France" [ref=e2407]:
+            - text: France
+            - generic: ▾
+          - cell "Cologne" [ref=e2408]:
+            - text: Cologne
+            - generic: ▾
+          - cell "12193" [ref=e2409]
+          - cell [ref=e2410]
+          - cell [ref=e2411]
+          - cell [ref=e2413]
+          - cell "Open date picker" [ref=e2415]:
+            - generic [ref=e2416]:
+              - textbox
+              - button "Open date picker" [ref=e2418] [cursor=pointer]: 📅
+          - cell "Frank Wagner (+1968178669 [...]" [ref=e2419]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e2420]:
+            - generic [ref=e2421]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e2422] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e2423]:
+            - generic [ref=e2424]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e2425]':
+            - generic [ref=e2426]:
+              - generic [ref=e2428]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 43" [ref=e2429]:
+          - cell "44" [ref=e2430]
+          - cell "SZ6rMY8T_g2mTvbAHTb9j1N7F [...]" [ref=e2431]
+          - cell "Ian" [ref=e2432]
+          - cell "Becker" [ref=e2433]
+          - cell "ian.becker@example.com" [ref=e2434]
+          - cell "IT" [ref=e2435]:
+            - text: IT
+            - generic: ▾
+          - cell "SQL, Python" [ref=e2436]:
+            - text: SQL, Python
+            - generic: ▾
+          - cell "voluptua. et sed eos sed [...]" [ref=e2437]:
+            - text: voluptua. et sed eos sed [...]
+            - generic [ref=e2438] [cursor=pointer]: 🖉
+          - cell [ref=e2439]:
+            - checkbox [checked] [ref=e2440]
+          - cell "64,065.00 €" [ref=e2441]
+          - cell "Oct 13, 2021 2021-10-13 Open date picker" [ref=e2442]:
+            - generic [ref=e2443]:
+              - text: Oct 13, 2021
+              - textbox: 2021-10-13
+              - button "Open date picker" [ref=e2444] [cursor=pointer]: 📅
+          - cell [ref=e2445]
+          - cell "Hamburg Office" [ref=e2446]
+          - cell [ref=e2447]
+          - cell "EMP00044" [ref=e2448]
+          - cell "Probation" [ref=e2449]
+          - cell [ref=e2450]
+          - cell "Tools" [ref=e2451]
+          - cell "Sep 30, 2021, 12:15 AM 2021-09-30T00:15 Open date/time picker" [ref=e2452]:
+            - generic [ref=e2453]:
+              - text: Sep 30, 2021, 12:15 AM
+              - textbox: 2021-09-30T00:15
+              - button "Open date/time picker" [ref=e2454] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e2455]
+          - cell "+ 0 €" [ref=e2456]
+          - cell [ref=e2457]
+          - cell [ref=e2458]:
+            - generic: ▾
+          - cell "Cologne" [ref=e2459]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e2460]
+          - cell "92 Example Street" [ref=e2461]
+          - cell [ref=e2462]
+          - cell "https://github.com/ianbecker 🔗" [ref=e2464]:
+            - generic [ref=e2465]:
+              - generic [ref=e2466]: https://github.com/ianbecker
+              - button "🔗" [ref=e2467] [cursor=pointer]
+          - cell "Open date picker" [ref=e2468]:
+            - generic [ref=e2469]:
+              - textbox
+              - button "Open date picker" [ref=e2471] [cursor=pointer]: 📅
+          - cell [ref=e2472]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e2473]:
+            - generic [ref=e2474]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e2475] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e2476]:
+            - generic [ref=e2477]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e2478]':
+            - generic [ref=e2479]:
+              - generic [ref=e2481]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 44" [ref=e2482]:
+          - cell "45" [ref=e2483]
+          - cell "fcgp1_EmtJWl-EZYOq5Pq" [ref=e2484]
+          - cell "Hannah" [ref=e2485]
+          - cell "Schneider" [ref=e2486]
+          - cell "hannah.schneider@example. [...]" [ref=e2487]
+          - cell "Marketing" [ref=e2488]:
+            - text: Marketing
+            - generic: ▾
+          - cell "React" [ref=e2489]:
+            - text: React
+            - generic: ▾
+          - cell [ref=e2490]:
+            - generic [ref=e2491] [cursor=pointer]: 🖉
+          - cell [ref=e2492]:
+            - checkbox [ref=e2493]
+          - cell "40,049.00 €" [ref=e2494]
+          - cell "Open date picker" [ref=e2495]:
+            - generic [ref=e2496]:
+              - textbox
+              - button "Open date picker" [ref=e2498] [cursor=pointer]: 📅
+          - cell "Hannah Becker" [ref=e2499]
+          - cell "Munich Office" [ref=e2500]
+          - cell "+49 671 144528" [ref=e2501]
+          - cell "EMP00045" [ref=e2502]
+          - cell "Active" [ref=e2503]
+          - cell "Data Analyst" [ref=e2504]
+          - cell "Core" [ref=e2505]
+          - cell "Open date/time picker" [ref=e2506]:
+            - generic [ref=e2507]:
+              - textbox
+              - button "Open date/time picker" [ref=e2509] [cursor=pointer]: 📅
+          - cell "4.37" [ref=e2510]
+          - cell "+ 13,525 €" [ref=e2511]
+          - cell [ref=e2512]
+          - cell "USA" [ref=e2513]:
+            - text: USA
+            - generic: ▾
+          - cell [ref=e2514]:
+            - generic: ▾
+          - cell "94285" [ref=e2515]
+          - cell "4 Example Street" [ref=e2516]
+          - cell [ref=e2517]
+          - cell [ref=e2519]
+          - cell "Open date picker" [ref=e2521]:
+            - generic [ref=e2522]:
+              - textbox
+              - button "Open date picker" [ref=e2524] [cursor=pointer]: 📅
+          - cell "Diana Weber (+49163375219 [...]" [ref=e2525]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e2526]:
+            - generic [ref=e2527]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e2528] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e2529]:
+            - generic [ref=e2530]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e2531]':
+            - generic [ref=e2532]:
+              - generic [ref=e2534]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 45" [ref=e2535]:
+          - cell "46" [ref=e2536]
+          - cell "OF0aHfRWqLcYM8Ugnvf5cX6k8 [...]" [ref=e2537]
+          - cell "Grace" [ref=e2538]
+          - cell "Müller" [ref=e2539]
+          - cell "grace.müller@example.com" [ref=e2540]
+          - cell "Marketing" [ref=e2541]:
+            - text: Marketing
+            - generic: ▾
+          - cell "SQL, AWS, React" [ref=e2542]:
+            - text: SQL, AWS, React
+            - generic: ▾
+          - cell "voluptua. diam magna ut e [...]" [ref=e2543]:
+            - text: voluptua. diam magna ut e [...]
+            - generic [ref=e2544] [cursor=pointer]: 🖉
+          - cell [ref=e2545]:
+            - checkbox [checked] [ref=e2546]
+          - cell "78,022.00 €" [ref=e2547]
+          - cell "Nov 20, 2006 2006-11-20 Open date picker" [ref=e2548]:
+            - generic [ref=e2549]:
+              - text: Nov 20, 2006
+              - textbox: 2006-11-20
+              - button "Open date picker" [ref=e2550] [cursor=pointer]: 📅
+          - cell "Alice Schneider" [ref=e2551]
+          - cell "Berlin HQ" [ref=e2552]
+          - cell "+49 641 973306" [ref=e2553]
+          - cell "EMP00046" [ref=e2554]
+          - cell "Active" [ref=e2555]
+          - cell "Software Engineer" [ref=e2556]
+          - cell "Tools" [ref=e2557]
+          - cell "Open date/time picker" [ref=e2558]:
+            - generic [ref=e2559]:
+              - textbox
+              - button "Open date/time picker" [ref=e2561] [cursor=pointer]: 📅
+          - cell "1.11" [ref=e2562]
+          - cell "+ 10,547 €" [ref=e2563]
+          - cell "Intern" [ref=e2564]
+          - cell "Spain" [ref=e2565]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e2566]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "55908" [ref=e2567]
+          - cell "139 Example Street" [ref=e2568]
+          - cell [ref=e2569]
+          - cell [ref=e2571]
+          - cell "August 14, 1994 1994-08-14 Open date picker" [ref=e2573]:
+            - generic [ref=e2574]:
+              - text: August 14, 1994
+              - textbox: 1994-08-14
+              - button "Open date picker" [ref=e2575] [cursor=pointer]: 📅
+          - cell "Julia Schneider (+1694055 [...]" [ref=e2576]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e2577]:
+            - generic [ref=e2578]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e2579] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e2580]:
+            - generic [ref=e2581]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e2582]':
+            - generic [ref=e2583]:
+              - generic [ref=e2585]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 46" [ref=e2586]:
+          - cell "47" [ref=e2587]
+          - cell "fCxcopDwDvyOOcje-4xY3nJH6 [...]" [ref=e2588]
+          - cell "Hannah" [ref=e2589]
+          - cell "Schneider" [ref=e2590]
+          - cell "hannah.schneider@example. [...]" [ref=e2591]
+          - cell "Legal" [ref=e2592]:
+            - text: Legal
+            - generic: ▾
+          - cell "Figma, Docker" [ref=e2593]:
+            - text: Figma, Docker
+            - generic: ▾
+          - cell [ref=e2594]:
+            - generic [ref=e2595] [cursor=pointer]: 🖉
+          - cell [ref=e2596]:
+            - checkbox [checked] [ref=e2597]
+          - cell "43,339.00 €" [ref=e2598]
+          - cell "May 31, 2007 2007-05-31 Open date picker" [ref=e2599]:
+            - generic [ref=e2600]:
+              - text: May 31, 2007
+              - textbox: 2007-05-31
+              - button "Open date picker" [ref=e2601] [cursor=pointer]: 📅
+          - cell "Eva Schmidt" [ref=e2602]
+          - cell "Hamburg Office" [ref=e2603]
+          - cell [ref=e2604]
+          - cell "EMP00047" [ref=e2605]
+          - cell "Probation" [ref=e2606]
+          - cell "Designer" [ref=e2607]
+          - cell "Web" [ref=e2608]
+          - cell "Aug 26, 2020, 8:31 PM 2020-08-26T20:31 Open date/time picker" [ref=e2609]:
+            - generic [ref=e2610]:
+              - text: Aug 26, 2020, 8:31 PM
+              - textbox: 2020-08-26T20:31
+              - button "Open date/time picker" [ref=e2611] [cursor=pointer]: 📅
+          - cell "4.92" [ref=e2612]
+          - cell "+ 0 €" [ref=e2613]
+          - cell "Permanent" [ref=e2614]
+          - cell "France" [ref=e2615]:
+            - text: France
+            - generic: ▾
+          - cell "Berlin" [ref=e2616]:
+            - text: Berlin
+            - generic: ▾
+          - cell "69467" [ref=e2617]
+          - cell "27 Example Street" [ref=e2618]
+          - cell [ref=e2619]
+          - cell "https://github.com/hannahschneider 🔗" [ref=e2621]:
+            - generic [ref=e2622]:
+              - generic [ref=e2623]: https://github.com/hannahschneider
+              - button "🔗" [ref=e2624] [cursor=pointer]
+          - cell "May 4, 1994 1994-05-04 Open date picker" [ref=e2625]:
+            - generic [ref=e2626]:
+              - text: May 4, 1994
+              - textbox: 1994-05-04
+              - button "Open date picker" [ref=e2627] [cursor=pointer]: 📅
+          - cell [ref=e2628]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e2629]:
+            - generic [ref=e2630]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e2631] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e2632]:
+            - generic [ref=e2633]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e2634]':
+            - generic [ref=e2635]:
+              - generic [ref=e2637]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 47" [ref=e2638]:
+          - cell "48" [ref=e2639]
+          - cell "ktxnJeoJxmCmQAR2Zr" [ref=e2640]
+          - cell "Eva" [ref=e2641]
+          - cell "Fischer" [ref=e2642]
+          - cell "eva.fischer@example.com" [ref=e2643]
+          - cell "IT" [ref=e2644]:
+            - text: IT
+            - generic: ▾
+          - cell "SQL, Python, TypeScript, [...]" [ref=e2645]:
+            - text: SQL, Python, TypeScript, [...]
+            - generic: ▾
+          - cell [ref=e2646]:
+            - generic [ref=e2647] [cursor=pointer]: 🖉
+          - cell [ref=e2648]:
+            - checkbox [checked] [ref=e2649]
+          - cell "73,583.00 €" [ref=e2650]
+          - cell "Open date picker" [ref=e2651]:
+            - generic [ref=e2652]:
+              - textbox
+              - button "Open date picker" [ref=e2654] [cursor=pointer]: 📅
+          - cell "Eva Wagner" [ref=e2655]
+          - cell "Munich Office" [ref=e2656]
+          - cell "+16 279 854812" [ref=e2657]
+          - cell "EMP00048" [ref=e2658]
+          - cell "Probation" [ref=e2659]
+          - cell "Product Manager" [ref=e2660]
+          - cell "Platform" [ref=e2661]
+          - cell "Oct 2, 2022, 1:04 PM 2022-10-02T13:04 Open date/time picker" [ref=e2662]:
+            - generic [ref=e2663]:
+              - text: Oct 2, 2022, 1:04 PM
+              - textbox: 2022-10-02T13:04
+              - button "Open date/time picker" [ref=e2664] [cursor=pointer]: 📅
+          - cell "0.99" [ref=e2665]
+          - cell "+ 0 €" [ref=e2666]
+          - cell "Intern" [ref=e2667]
+          - cell "Germany" [ref=e2668]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e2669]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "68105" [ref=e2670]
+          - cell "104 Example Street" [ref=e2671]
+          - cell [ref=e2672]
+          - cell [ref=e2674]
+          - cell "September 14, 1987 1987-09-14 Open date picker" [ref=e2676]:
+            - generic [ref=e2677]:
+              - text: September 14, 1987
+              - textbox: 1987-09-14
+              - button "Open date picker" [ref=e2678] [cursor=pointer]: 📅
+          - cell [ref=e2679]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e2680]:
+            - generic [ref=e2681]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e2682] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e2683]:
+            - generic [ref=e2684]: 5h
+          - 'cell "#10b981 #10b981" [ref=e2685]':
+            - generic [ref=e2686]:
+              - generic [ref=e2688]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 48" [ref=e2689]:
+          - cell "49" [ref=e2690]
+          - cell "udbAT_w6PXZVTzaz5sJa" [ref=e2691]
+          - cell "Alice" [ref=e2692]
+          - cell "Schneider" [ref=e2693]
+          - cell "alice.schneider@example.c [...]" [ref=e2694]
+          - cell "Marketing" [ref=e2695]:
+            - text: Marketing
+            - generic: ▾
+          - cell [ref=e2696]:
+            - generic: ▾
+          - cell "ipsum consetetur ea elitr [...]" [ref=e2697]:
+            - text: ipsum consetetur ea elitr [...]
+            - generic [ref=e2698] [cursor=pointer]: 🖉
+          - cell [ref=e2699]:
+            - checkbox [checked] [ref=e2700]
+          - cell "81,399.00 €" [ref=e2701]
+          - cell "Aug 30, 2006 2006-08-30 Open date picker" [ref=e2702]:
+            - generic [ref=e2703]:
+              - text: Aug 30, 2006
+              - textbox: 2006-08-30
+              - button "Open date picker" [ref=e2704] [cursor=pointer]: 📅
+          - cell "Diana Weber" [ref=e2705]
+          - cell "Berlin HQ" [ref=e2706]
+          - cell [ref=e2707]
+          - cell "EMP00049" [ref=e2708]
+          - cell "Terminated" [ref=e2709]
+          - cell "Data Analyst" [ref=e2710]
+          - cell "Web" [ref=e2711]
+          - cell "Sep 19, 2022, 6:54 PM 2022-09-19T18:54 Open date/time picker" [ref=e2712]:
+            - generic [ref=e2713]:
+              - text: Sep 19, 2022, 6:54 PM
+              - textbox: 2022-09-19T18:54
+              - button "Open date/time picker" [ref=e2714] [cursor=pointer]: 📅
+          - cell "1.38" [ref=e2715]
+          - cell "+ 13,325 €" [ref=e2716]
+          - cell "Intern" [ref=e2717]
+          - cell "Spain" [ref=e2718]:
+            - text: Spain
+            - generic: ▾
+          - cell "Munich" [ref=e2719]:
+            - text: Munich
+            - generic: ▾
+          - cell "80315" [ref=e2720]
+          - cell "78 Example Street" [ref=e2721]
+          - cell [ref=e2722]
+          - cell [ref=e2724]
+          - cell "July 4, 1965 1965-07-04 Open date picker" [ref=e2726]:
+            - generic [ref=e2727]:
+              - text: July 4, 1965
+              - textbox: 1965-07-04
+              - button "Open date picker" [ref=e2728] [cursor=pointer]: 📅
+          - cell [ref=e2729]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e2730]:
+            - generic [ref=e2731]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e2732] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e2733]:
+            - generic [ref=e2734]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e2735]':
+            - generic [ref=e2736]:
+              - generic [ref=e2738]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 49" [ref=e2739]:
+          - cell "50" [ref=e2740]
+          - cell "BpIs8GsXfaBZZADHp4" [ref=e2741]
+          - cell "Frank" [ref=e2742]
+          - cell "Meyer" [ref=e2743]
+          - cell [ref=e2744]
+          - cell "IT" [ref=e2745]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e2746]:
+            - generic: ▾
+          - cell [ref=e2747]:
+            - generic [ref=e2748] [cursor=pointer]: 🖉
+          - cell [ref=e2749]:
+            - checkbox [checked] [ref=e2750]
+          - cell "83,061.00 €" [ref=e2751]
+          - cell "Nov 2, 2011 2011-11-02 Open date picker" [ref=e2752]:
+            - generic [ref=e2753]:
+              - text: Nov 2, 2011
+              - textbox: 2011-11-02
+              - button "Open date picker" [ref=e2754] [cursor=pointer]: 📅
+          - cell "Frank Wagner" [ref=e2755]
+          - cell "Munich Office" [ref=e2756]
+          - cell "+17 712 241413" [ref=e2757]
+          - cell "EMP00050" [ref=e2758]
+          - cell "Active" [ref=e2759]
+          - cell "Designer" [ref=e2760]
+          - cell "Web" [ref=e2761]
+          - cell "Open date/time picker" [ref=e2762]:
+            - generic [ref=e2763]:
+              - textbox
+              - button "Open date/time picker" [ref=e2765] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e2766]
+          - cell "+ 0 €" [ref=e2767]
+          - cell [ref=e2768]
+          - cell "Germany" [ref=e2769]:
+            - text: Germany
+            - generic: ▾
+          - cell "Cologne" [ref=e2770]:
+            - text: Cologne
+            - generic: ▾
+          - cell "74027" [ref=e2771]
+          - cell "135 Example Street" [ref=e2772]
+          - cell [ref=e2773]
+          - cell [ref=e2775]
+          - cell "Open date picker" [ref=e2777]:
+            - generic [ref=e2778]:
+              - textbox
+              - button "Open date picker" [ref=e2780] [cursor=pointer]: 📅
+          - cell "Grace Schmidt (+493203982 [...]" [ref=e2781]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e2782]:
+            - generic [ref=e2783]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e2784] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e2785]:
+            - generic [ref=e2786]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e2787]':
+            - generic [ref=e2788]:
+              - generic [ref=e2790]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 50" [ref=e2791]:
+          - cell "51" [ref=e2792]
+          - cell "zK0X12uzPYB7ivbPMp" [ref=e2793]
+          - cell "Ian" [ref=e2794]
+          - cell [ref=e2795]
+          - cell "ian.wagner@example.com" [ref=e2796]
+          - cell "Finance" [ref=e2797]:
+            - text: Finance
+            - generic: ▾
+          - cell [ref=e2798]:
+            - generic: ▾
+          - cell "ipsum no sadipscing sit e [...]" [ref=e2799]:
+            - text: ipsum no sadipscing sit e [...]
+            - generic [ref=e2800] [cursor=pointer]: 🖉
+          - cell [ref=e2801]:
+            - checkbox [checked] [ref=e2802]
+          - cell "0.00 €" [ref=e2803]
+          - cell "Dec 6, 2024 2024-12-06 Open date picker" [ref=e2804]:
+            - generic [ref=e2805]:
+              - text: Dec 6, 2024
+              - textbox: 2024-12-06
+              - button "Open date picker" [ref=e2806] [cursor=pointer]: 📅
+          - cell "Grace Fischer" [ref=e2807]
+          - cell "Hamburg Office" [ref=e2808]
+          - cell [ref=e2809]
+          - cell "EMP00051" [ref=e2810]
+          - cell "Terminated" [ref=e2811]
+          - cell "Product Manager" [ref=e2812]
+          - cell "Tools" [ref=e2813]
+          - cell "May 22, 2023, 8:24 AM 2023-05-22T08:24 Open date/time picker" [ref=e2814]:
+            - generic [ref=e2815]:
+              - text: May 22, 2023, 8:24 AM
+              - textbox: 2023-05-22T08:24
+              - button "Open date/time picker" [ref=e2816] [cursor=pointer]: 📅
+          - cell "2.84" [ref=e2817]
+          - cell "+ 4,840 €" [ref=e2818]
+          - cell [ref=e2819]
+          - cell "Spain" [ref=e2820]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e2821]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "54305" [ref=e2822]
+          - cell "149 Example Street" [ref=e2823]
+          - cell [ref=e2824]
+          - cell [ref=e2826]
+          - cell "March 27, 1990 1990-03-27 Open date picker" [ref=e2828]:
+            - generic [ref=e2829]:
+              - text: March 27, 1990
+              - textbox: 1990-03-27
+              - button "Open date picker" [ref=e2830] [cursor=pointer]: 📅
+          - cell [ref=e2831]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e2832]:
+            - generic [ref=e2833]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e2834] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e2835]:
+            - generic [ref=e2836]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e2837]':
+            - generic [ref=e2838]:
+              - generic [ref=e2840]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 51" [ref=e2841]:
+          - cell "52" [ref=e2842]
+          - cell "aLrIal5xUFPUELcEfMGtNCxYl [...]" [ref=e2843]
+          - cell [ref=e2844]
+          - cell "Wagner" [ref=e2845]
+          - cell "julia.wagner@example.com" [ref=e2846]
+          - cell "Marketing" [ref=e2847]:
+            - text: Marketing
+            - generic: ▾
+          - cell "SQL, AWS, Java" [ref=e2848]:
+            - text: SQL, AWS, Java
+            - generic: ▾
+          - cell "sed ea vero voluptua. mag [...]" [ref=e2849]:
+            - text: sed ea vero voluptua. mag [...]
+            - generic [ref=e2850] [cursor=pointer]: 🖉
+          - cell [ref=e2851]:
+            - checkbox [checked] [ref=e2852]
+          - cell "45,587.00 €" [ref=e2853]
+          - cell "May 26, 2019 2019-05-26 Open date picker" [ref=e2854]:
+            - generic [ref=e2855]:
+              - text: May 26, 2019
+              - textbox: 2019-05-26
+              - button "Open date picker" [ref=e2856] [cursor=pointer]: 📅
+          - cell "Charlie Schneider" [ref=e2857]
+          - cell "Berlin HQ" [ref=e2858]
+          - cell "+49 760 453984" [ref=e2859]
+          - cell "EMP00052" [ref=e2860]
+          - cell "Terminated" [ref=e2861]
+          - cell "DevOps Engineer" [ref=e2862]
+          - cell "Core" [ref=e2863]
+          - cell "Open date/time picker" [ref=e2864]:
+            - generic [ref=e2865]:
+              - textbox
+              - button "Open date/time picker" [ref=e2867] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e2868]
+          - cell "+ 0 €" [ref=e2869]
+          - cell "Temporary" [ref=e2870]
+          - cell "Germany" [ref=e2871]:
+            - text: Germany
+            - generic: ▾
+          - cell "Cologne" [ref=e2872]:
+            - text: Cologne
+            - generic: ▾
+          - cell "33023" [ref=e2873]
+          - cell [ref=e2874]
+          - cell "https://www.linkedin.com/in/juliawagner 🔗" [ref=e2875]:
+            - generic [ref=e2876]:
+              - generic [ref=e2877]: https://www.linkedin.com/in/juliawagner
+              - button "🔗" [ref=e2878] [cursor=pointer]
+          - cell [ref=e2879]
+          - cell "Open date picker" [ref=e2881]:
+            - generic [ref=e2882]:
+              - textbox
+              - button "Open date picker" [ref=e2884] [cursor=pointer]: 📅
+          - cell "Grace Wagner (+1624406900 [...]" [ref=e2885]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e2886]:
+            - generic [ref=e2887]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e2888] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e2889]:
+            - generic [ref=e2890]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e2891]':
+            - generic [ref=e2892]:
+              - generic [ref=e2894]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 52" [ref=e2895]:
+          - cell "53" [ref=e2896]
+          - cell "zD_dyuQLXu" [ref=e2897]
+          - cell "Julia" [ref=e2898]
+          - cell "Müller" [ref=e2899]
+          - cell "julia.müller@example.com" [ref=e2900]
+          - cell "IT" [ref=e2901]:
+            - text: IT
+            - generic: ▾
+          - cell "TypeScript, AWS, Figma, J [...]" [ref=e2902]:
+            - text: TypeScript, AWS, Figma, J [...]
+            - generic: ▾
+          - cell "no magna magna ut ea diam [...]" [ref=e2903]:
+            - text: no magna magna ut ea diam [...]
+            - generic [ref=e2904] [cursor=pointer]: 🖉
+          - cell [ref=e2905]:
+            - checkbox [checked] [ref=e2906]
+          - cell "48,222.00 €" [ref=e2907]
+          - cell "Oct 17, 2005 2005-10-17 Open date picker" [ref=e2908]:
+            - generic [ref=e2909]:
+              - text: Oct 17, 2005
+              - textbox: 2005-10-17
+              - button "Open date picker" [ref=e2910] [cursor=pointer]: 📅
+          - cell [ref=e2911]
+          - cell "Munich Office" [ref=e2912]
+          - cell [ref=e2913]
+          - cell "EMP00053" [ref=e2914]
+          - cell "Probation" [ref=e2915]
+          - cell "DevOps Engineer" [ref=e2916]
+          - cell "Core" [ref=e2917]
+          - cell "Aug 13, 2022, 9:50 AM 2022-08-13T09:50 Open date/time picker" [ref=e2918]:
+            - generic [ref=e2919]:
+              - text: Aug 13, 2022, 9:50 AM
+              - textbox: 2022-08-13T09:50
+              - button "Open date/time picker" [ref=e2920] [cursor=pointer]: 📅
+          - cell "4.67" [ref=e2921]
+          - cell "+ 2,749 €" [ref=e2922]
+          - cell [ref=e2923]
+          - cell "Germany" [ref=e2924]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e2925]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "96058" [ref=e2926]
+          - cell "156 Example Street" [ref=e2927]
+          - cell [ref=e2928]
+          - cell "https://github.com/juliamüller 🔗" [ref=e2930]:
+            - generic [ref=e2931]:
+              - generic [ref=e2932]: https://github.com/juliamüller
+              - button "🔗" [ref=e2933] [cursor=pointer]
+          - cell "Open date picker" [ref=e2934]:
+            - generic [ref=e2935]:
+              - textbox
+              - button "Open date picker" [ref=e2937] [cursor=pointer]: 📅
+          - cell [ref=e2938]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e2939]:
+            - generic [ref=e2940]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e2941] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e2942]:
+            - generic [ref=e2943]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e2944]':
+            - generic [ref=e2945]:
+              - generic [ref=e2947]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 53" [ref=e2948]:
+          - cell "54" [ref=e2949]
+          - cell "_mZ7crPPGVGkDODlTc5AcPWTf [...]" [ref=e2950]
+          - cell "Julia" [ref=e2951]
+          - cell [ref=e2952]
+          - cell "julia.weber@example.com" [ref=e2953]
+          - cell "Sales" [ref=e2954]:
+            - text: Sales
+            - generic: ▾
+          - cell "Docker, SQL, Java, AWS" [ref=e2955]:
+            - text: Docker, SQL, Java, AWS
+            - generic: ▾
+          - cell "sed rebum. sadipscing eli [...]" [ref=e2956]:
+            - text: sed rebum. sadipscing eli [...]
+            - generic [ref=e2957] [cursor=pointer]: 🖉
+          - cell [ref=e2958]:
+            - checkbox [checked] [ref=e2959]
+          - cell "88,987.00 €" [ref=e2960]
+          - cell "Jan 5, 2019 2019-01-05 Open date picker" [ref=e2961]:
+            - generic [ref=e2962]:
+              - text: Jan 5, 2019
+              - textbox: 2019-01-05
+              - button "Open date picker" [ref=e2963] [cursor=pointer]: 📅
+          - cell "Ian Müller" [ref=e2964]
+          - cell "Munich Office" [ref=e2965]
+          - cell "+49 314 198329" [ref=e2966]
+          - cell "EMP00054" [ref=e2967]
+          - cell [ref=e2968]
+          - cell "Data Analyst" [ref=e2969]
+          - cell "Tools" [ref=e2970]
+          - cell "Open date/time picker" [ref=e2971]:
+            - generic [ref=e2972]:
+              - textbox
+              - button "Open date/time picker" [ref=e2974] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e2975]
+          - cell "+ 7,494 €" [ref=e2976]
+          - cell [ref=e2977]
+          - cell "Netherlands" [ref=e2978]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Frankfurt" [ref=e2979]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "11239" [ref=e2980]
+          - cell "7 Example Street" [ref=e2981]
+          - cell [ref=e2982]
+          - cell "https://github.com/juliaweber 🔗" [ref=e2984]:
+            - generic [ref=e2985]:
+              - generic [ref=e2986]: https://github.com/juliaweber
+              - button "🔗" [ref=e2987] [cursor=pointer]
+          - cell "January 3, 1967 1967-01-03 Open date picker" [ref=e2988]:
+            - generic [ref=e2989]:
+              - text: January 3, 1967
+              - textbox: 1967-01-03
+              - button "Open date picker" [ref=e2990] [cursor=pointer]: 📅
+          - cell "Hannah Meyer (+4925433418 [...]" [ref=e2991]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e2992]:
+            - generic [ref=e2993]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e2994] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e2995]:
+            - generic [ref=e2996]: 4h
+          - 'cell "#f97316 #f97316" [ref=e2997]':
+            - generic [ref=e2998]:
+              - generic [ref=e3000]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 54" [ref=e3001]:
+          - cell "55" [ref=e3002]
+          - cell "2uDyCuYyUvlzEreYMGFTSFE1w [...]" [ref=e3003]
+          - cell "Alice" [ref=e3004]
+          - cell "Becker" [ref=e3005]
+          - cell "alice.becker@example.com" [ref=e3006]
+          - cell [ref=e3007]:
+            - generic: ▾
+          - cell "Java, SQL, Python, TypeSc [...]" [ref=e3008]:
+            - text: Java, SQL, Python, TypeSc [...]
+            - generic: ▾
+          - cell "eirmod diam et dolores se [...]" [ref=e3009]:
+            - text: eirmod diam et dolores se [...]
+            - generic [ref=e3010] [cursor=pointer]: 🖉
+          - cell [ref=e3011]:
+            - checkbox [checked] [ref=e3012]
+          - cell "72,873.00 €" [ref=e3013]
+          - cell "Apr 13, 2022 2022-04-13 Open date picker" [ref=e3014]:
+            - generic [ref=e3015]:
+              - text: Apr 13, 2022
+              - textbox: 2022-04-13
+              - button "Open date picker" [ref=e3016] [cursor=pointer]: 📅
+          - cell "Bob Fischer" [ref=e3017]
+          - cell "Remote" [ref=e3018]
+          - cell "+49 353 482439" [ref=e3019]
+          - cell "EMP00055" [ref=e3020]
+          - cell "Terminated" [ref=e3021]
+          - cell [ref=e3022]
+          - cell "Core" [ref=e3023]
+          - cell "Nov 5, 2020, 5:37 AM 2020-11-05T05:37 Open date/time picker" [ref=e3024]:
+            - generic [ref=e3025]:
+              - text: Nov 5, 2020, 5:37 AM
+              - textbox: 2020-11-05T05:37
+              - button "Open date/time picker" [ref=e3026] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e3027]
+          - cell "+ 0 €" [ref=e3028]
+          - cell "Contractor" [ref=e3029]
+          - cell "Germany" [ref=e3030]:
+            - text: Germany
+            - generic: ▾
+          - cell "Berlin" [ref=e3031]:
+            - text: Berlin
+            - generic: ▾
+          - cell "49843" [ref=e3032]
+          - cell "18 Example Street" [ref=e3033]
+          - cell "https://www.linkedin.com/in/alicebecker 🔗" [ref=e3034]:
+            - generic [ref=e3035]:
+              - generic [ref=e3036]: https://www.linkedin.com/in/alicebecker
+              - button "🔗" [ref=e3037] [cursor=pointer]
+          - cell "https://github.com/alicebecker 🔗" [ref=e3038]:
+            - generic [ref=e3039]:
+              - generic [ref=e3040]: https://github.com/alicebecker
+              - button "🔗" [ref=e3041] [cursor=pointer]
+          - cell "May 5, 1987 1987-05-05 Open date picker" [ref=e3042]:
+            - generic [ref=e3043]:
+              - text: May 5, 1987
+              - textbox: 1987-05-05
+              - button "Open date picker" [ref=e3044] [cursor=pointer]: 📅
+          - cell [ref=e3045]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e3046]:
+            - generic [ref=e3047]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e3048] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e3049]:
+            - generic [ref=e3050]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e3051]':
+            - generic [ref=e3052]:
+              - generic [ref=e3054]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 55" [ref=e3055]:
+          - cell "56" [ref=e3056]
+          - cell "QY3yp2DFClhOsjI6C" [ref=e3057]
+          - cell "Charlie" [ref=e3058]
+          - cell "Weber" [ref=e3059]
+          - cell "charlie.weber@example.com" [ref=e3060]
+          - cell "Legal" [ref=e3061]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e3062]:
+            - generic: ▾
+          - cell "ipsum elitr, et aliquyam" [ref=e3063]:
+            - text: ipsum elitr, et aliquyam
+            - generic [ref=e3064] [cursor=pointer]: 🖉
+          - cell [ref=e3065]:
+            - checkbox [checked] [ref=e3066]
+          - cell "91,734.00 €" [ref=e3067]
+          - cell "Feb 23, 2013 2013-02-23 Open date picker" [ref=e3068]:
+            - generic [ref=e3069]:
+              - text: Feb 23, 2013
+              - textbox: 2013-02-23
+              - button "Open date picker" [ref=e3070] [cursor=pointer]: 📅
+          - cell "Ian Fischer" [ref=e3071]
+          - cell [ref=e3072]
+          - cell "+19 470 854137" [ref=e3073]
+          - cell "EMP00056" [ref=e3074]
+          - cell "Terminated" [ref=e3075]
+          - cell "DevOps Engineer" [ref=e3076]
+          - cell "Core" [ref=e3077]
+          - cell "Feb 23, 2024, 10:38 AM 2024-02-23T10:38 Open date/time picker" [ref=e3078]:
+            - generic [ref=e3079]:
+              - text: Feb 23, 2024, 10:38 AM
+              - textbox: 2024-02-23T10:38
+              - button "Open date/time picker" [ref=e3080] [cursor=pointer]: 📅
+          - cell "4.32" [ref=e3081]
+          - cell "+ 3,872 €" [ref=e3082]
+          - cell [ref=e3083]
+          - cell "UK" [ref=e3084]:
+            - text: UK
+            - generic: ▾
+          - cell "Hamburg" [ref=e3085]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "25972" [ref=e3086]
+          - cell "100 Example Street" [ref=e3087]
+          - cell [ref=e3088]
+          - cell [ref=e3090]
+          - cell "Open date picker" [ref=e3092]:
+            - generic [ref=e3093]:
+              - textbox
+              - button "Open date picker" [ref=e3095] [cursor=pointer]: 📅
+          - cell "Grace Fischer (+199723519 [...]" [ref=e3096]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e3097]:
+            - generic [ref=e3098]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e3099] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e3100]:
+            - generic [ref=e3101]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e3102]':
+            - generic [ref=e3103]:
+              - generic [ref=e3105]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 56" [ref=e3106]:
+          - cell "57" [ref=e3107]
+          - cell "kUD7Nfi5SL7Qg-g6_2QPndrLZ [...]" [ref=e3108]
+          - cell "Alice" [ref=e3109]
+          - cell "Schmidt" [ref=e3110]
+          - cell "alice.schmidt@example.com" [ref=e3111]
+          - cell "Marketing" [ref=e3112]:
+            - text: Marketing
+            - generic: ▾
+          - cell "React, TypeScript, AWS" [ref=e3113]:
+            - text: React, TypeScript, AWS
+            - generic: ▾
+          - cell "invidunt sanctus erat, in [...]" [ref=e3114]:
+            - text: invidunt sanctus erat, in [...]
+            - generic [ref=e3115] [cursor=pointer]: 🖉
+          - cell [ref=e3116]:
+            - checkbox [ref=e3117]
+          - cell "0.00 €" [ref=e3118]
+          - cell "Feb 11, 2023 2023-02-11 Open date picker" [ref=e3119]:
+            - generic [ref=e3120]:
+              - text: Feb 11, 2023
+              - textbox: 2023-02-11
+              - button "Open date picker" [ref=e3121] [cursor=pointer]: 📅
+          - cell "Alice Müller" [ref=e3122]
+          - cell [ref=e3123]
+          - cell [ref=e3124]
+          - cell "EMP00057" [ref=e3125]
+          - cell "Active" [ref=e3126]
+          - cell "Designer" [ref=e3127]
+          - cell "Core" [ref=e3128]
+          - cell "Oct 23, 2023, 8:55 PM 2023-10-23T20:55 Open date/time picker" [ref=e3129]:
+            - generic [ref=e3130]:
+              - text: Oct 23, 2023, 8:55 PM
+              - textbox: 2023-10-23T20:55
+              - button "Open date/time picker" [ref=e3131] [cursor=pointer]: 📅
+          - cell "3.06" [ref=e3132]
+          - cell "+ 142 €" [ref=e3133]
+          - cell "Intern" [ref=e3134]
+          - cell "Netherlands" [ref=e3135]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Berlin" [ref=e3136]:
+            - text: Berlin
+            - generic: ▾
+          - cell "71385" [ref=e3137]
+          - cell [ref=e3138]
+          - cell [ref=e3139]
+          - cell [ref=e3141]
+          - cell "January 29, 1979 1979-01-29 Open date picker" [ref=e3143]:
+            - generic [ref=e3144]:
+              - text: January 29, 1979
+              - textbox: 1979-01-29
+              - button "Open date picker" [ref=e3145] [cursor=pointer]: 📅
+          - cell [ref=e3146]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e3147]:
+            - generic [ref=e3148]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e3149] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e3150]:
+            - generic [ref=e3151]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e3152]':
+            - generic [ref=e3153]:
+              - generic [ref=e3155]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 57" [ref=e3156]:
+          - cell "58" [ref=e3157]
+          - cell "rOsm3HEL55V_o52U_R9CYG5SS [...]" [ref=e3158]
+          - cell "Alice" [ref=e3159]
+          - cell [ref=e3160]
+          - cell "alice.becker@example.com" [ref=e3161]
+          - cell "Finance" [ref=e3162]:
+            - text: Finance
+            - generic: ▾
+          - cell "React, Docker" [ref=e3163]:
+            - text: React, Docker
+            - generic: ▾
+          - cell [ref=e3164]:
+            - generic [ref=e3165] [cursor=pointer]: 🖉
+          - cell [ref=e3166]:
+            - checkbox [checked] [ref=e3167]
+          - cell "67,150.00 €" [ref=e3168]
+          - cell "Oct 20, 2012 2012-10-20 Open date picker" [ref=e3169]:
+            - generic [ref=e3170]:
+              - text: Oct 20, 2012
+              - textbox: 2012-10-20
+              - button "Open date picker" [ref=e3171] [cursor=pointer]: 📅
+          - cell "Alice Schmidt" [ref=e3172]
+          - cell "Hamburg Office" [ref=e3173]
+          - cell "+49 491 257696" [ref=e3174]
+          - cell "EMP00058" [ref=e3175]
+          - cell "On Leave" [ref=e3176]
+          - cell "QA Engineer" [ref=e3177]
+          - cell "Web" [ref=e3178]
+          - cell "Jul 2, 2023, 8:44 AM 2023-07-02T08:44 Open date/time picker" [ref=e3179]:
+            - generic [ref=e3180]:
+              - text: Jul 2, 2023, 8:44 AM
+              - textbox: 2023-07-02T08:44
+              - button "Open date/time picker" [ref=e3181] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e3182]
+          - cell "+ 0 €" [ref=e3183]
+          - cell "Contractor" [ref=e3184]
+          - cell "France" [ref=e3185]:
+            - text: France
+            - generic: ▾
+          - cell [ref=e3186]:
+            - generic: ▾
+          - cell "41094" [ref=e3187]
+          - cell "121 Example Street" [ref=e3188]
+          - cell [ref=e3189]
+          - cell [ref=e3191]
+          - cell "Open date picker" [ref=e3193]:
+            - generic [ref=e3194]:
+              - textbox
+              - button "Open date picker" [ref=e3196] [cursor=pointer]: 📅
+          - cell [ref=e3197]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e3198]:
+            - generic [ref=e3199]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e3200] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e3201]:
+            - generic [ref=e3202]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e3203]':
+            - generic [ref=e3204]:
+              - generic [ref=e3206]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 58" [ref=e3207]:
+          - cell "59" [ref=e3208]
+          - cell "734AMAK5_ZBW6haY9" [ref=e3209]
+          - cell "Eva" [ref=e3210]
+          - cell "Fischer" [ref=e3211]
+          - cell "eva.fischer@example.com" [ref=e3212]
+          - cell "Finance" [ref=e3213]:
+            - text: Finance
+            - generic: ▾
+          - cell "React, TypeScript, Figma" [ref=e3214]:
+            - text: React, TypeScript, Figma
+            - generic: ▾
+          - cell [ref=e3215]:
+            - generic [ref=e3216] [cursor=pointer]: 🖉
+          - cell [ref=e3217]:
+            - checkbox [checked] [ref=e3218]
+          - cell "56,119.00 €" [ref=e3219]
+          - cell "Aug 17, 2012 2012-08-17 Open date picker" [ref=e3220]:
+            - generic [ref=e3221]:
+              - text: Aug 17, 2012
+              - textbox: 2012-08-17
+              - button "Open date picker" [ref=e3222] [cursor=pointer]: 📅
+          - cell "Charlie Becker" [ref=e3223]
+          - cell "Remote" [ref=e3224]
+          - cell "+11 575 103138" [ref=e3225]
+          - cell "EMP00059" [ref=e3226]
+          - cell "Active" [ref=e3227]
+          - cell "Product Manager" [ref=e3228]
+          - cell "Platform" [ref=e3229]
+          - cell "May 26, 2024, 3:48 AM 2024-05-26T03:48 Open date/time picker" [ref=e3230]:
+            - generic [ref=e3231]:
+              - text: May 26, 2024, 3:48 AM
+              - textbox: 2024-05-26T03:48
+              - button "Open date/time picker" [ref=e3232] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e3233]
+          - cell "+ 0 €" [ref=e3234]
+          - cell [ref=e3235]
+          - cell "Germany" [ref=e3236]:
+            - text: Germany
+            - generic: ▾
+          - cell "Cologne" [ref=e3237]:
+            - text: Cologne
+            - generic: ▾
+          - cell "89665" [ref=e3238]
+          - cell "143 Example Street" [ref=e3239]
+          - cell [ref=e3240]
+          - cell [ref=e3242]
+          - cell "Open date picker" [ref=e3244]:
+            - generic [ref=e3245]:
+              - textbox
+              - button "Open date picker" [ref=e3247] [cursor=pointer]: 📅
+          - cell [ref=e3248]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e3249]:
+            - generic [ref=e3250]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e3251] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e3252]:
+            - generic [ref=e3253]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e3254]':
+            - generic [ref=e3255]:
+              - generic [ref=e3257]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 59" [ref=e3258]:
+          - cell "60" [ref=e3259]
+          - cell "UyD0f9P_fh" [ref=e3260]
+          - cell "Charlie" [ref=e3261]
+          - cell "Becker" [ref=e3262]
+          - cell "charlie.becker@example.co [...]" [ref=e3263]
+          - cell "HR" [ref=e3264]:
+            - text: HR
+            - generic: ▾
+          - cell "TypeScript, Python, Docke [...]" [ref=e3265]:
+            - text: TypeScript, Python, Docke [...]
+            - generic: ▾
+          - cell [ref=e3266]:
+            - generic [ref=e3267] [cursor=pointer]: 🖉
+          - cell [ref=e3268]:
+            - checkbox [checked] [ref=e3269]
+          - cell "47,492.00 €" [ref=e3270]
+          - cell "Mar 11, 2007 2007-03-11 Open date picker" [ref=e3271]:
+            - generic [ref=e3272]:
+              - text: Mar 11, 2007
+              - textbox: 2007-03-11
+              - button "Open date picker" [ref=e3273] [cursor=pointer]: 📅
+          - cell [ref=e3274]
+          - cell "Berlin HQ" [ref=e3275]
+          - cell [ref=e3276]
+          - cell "EMP00060" [ref=e3277]
+          - cell "On Leave" [ref=e3278]
+          - cell "QA Engineer" [ref=e3279]
+          - cell "Growth" [ref=e3280]
+          - cell "Oct 18, 2024, 3:03 AM 2024-10-18T03:03 Open date/time picker" [ref=e3281]:
+            - generic [ref=e3282]:
+              - text: Oct 18, 2024, 3:03 AM
+              - textbox: 2024-10-18T03:03
+              - button "Open date/time picker" [ref=e3283] [cursor=pointer]: 📅
+          - cell "2.35" [ref=e3284]
+          - cell "+ 0 €" [ref=e3285]
+          - cell "Temporary" [ref=e3286]
+          - cell "Germany" [ref=e3287]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e3288]:
+            - text: Munich
+            - generic: ▾
+          - cell "87333" [ref=e3289]
+          - cell "77 Example Street" [ref=e3290]
+          - cell [ref=e3291]
+          - cell [ref=e3293]
+          - cell "Open date picker" [ref=e3295]:
+            - generic [ref=e3296]:
+              - textbox
+              - button "Open date picker" [ref=e3298] [cursor=pointer]: 📅
+          - cell [ref=e3299]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e3300]:
+            - generic [ref=e3301]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e3302] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e3303]:
+            - generic [ref=e3304]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e3305]':
+            - generic [ref=e3306]:
+              - generic [ref=e3308]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 60" [ref=e3309]:
+          - cell "61" [ref=e3310]
+          - cell [ref=e3311]
+          - cell "Hannah" [ref=e3312]
+          - cell "Schmidt" [ref=e3313]
+          - cell "hannah.schmidt@example.co [...]" [ref=e3314]
+          - cell [ref=e3315]:
+            - generic: ▾
+          - cell "TypeScript, Java, SQL" [ref=e3316]:
+            - text: TypeScript, Java, SQL
+            - generic: ▾
+          - cell "tempor clita tempor At do [...]" [ref=e3317]:
+            - text: tempor clita tempor At do [...]
+            - generic [ref=e3318] [cursor=pointer]: 🖉
+          - cell [ref=e3319]:
+            - checkbox [checked] [ref=e3320]
+          - cell "64,218.00 €" [ref=e3321]
+          - cell "Apr 25, 2010 2010-04-25 Open date picker" [ref=e3322]:
+            - generic [ref=e3323]:
+              - text: Apr 25, 2010
+              - textbox: 2010-04-25
+              - button "Open date picker" [ref=e3324] [cursor=pointer]: 📅
+          - cell "Bob Schneider" [ref=e3325]
+          - cell "Remote" [ref=e3326]
+          - cell "+18 790 679765" [ref=e3327]
+          - cell "EMP00061" [ref=e3328]
+          - cell "Active" [ref=e3329]
+          - cell "QA Engineer" [ref=e3330]
+          - cell "Mobile" [ref=e3331]
+          - cell "Aug 27, 2021, 1:08 PM 2021-08-27T13:08 Open date/time picker" [ref=e3332]:
+            - generic [ref=e3333]:
+              - text: Aug 27, 2021, 1:08 PM
+              - textbox: 2021-08-27T13:08
+              - button "Open date/time picker" [ref=e3334] [cursor=pointer]: 📅
+          - cell "3.01" [ref=e3335]
+          - cell "+ 14,456 €" [ref=e3336]
+          - cell [ref=e3337]
+          - cell "UK" [ref=e3338]:
+            - text: UK
+            - generic: ▾
+          - cell "Frankfurt" [ref=e3339]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "52635" [ref=e3340]
+          - cell [ref=e3341]
+          - cell [ref=e3342]
+          - cell [ref=e3344]
+          - cell "Open date picker" [ref=e3346]:
+            - generic [ref=e3347]:
+              - textbox
+              - button "Open date picker" [ref=e3349] [cursor=pointer]: 📅
+          - cell "Alice Müller (+4968588993 [...]" [ref=e3350]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e3351]:
+            - generic [ref=e3352]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e3353] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e3354]:
+            - generic [ref=e3355]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e3356]':
+            - generic [ref=e3357]:
+              - generic [ref=e3359]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 61" [ref=e3360]:
+          - cell "62" [ref=e3361]
+          - cell "AOCW-g8ri-VRz8YjF03k0vpHN [...]" [ref=e3362]
+          - cell "Eva" [ref=e3363]
+          - cell "Fischer" [ref=e3364]
+          - cell "eva.fischer@example.com" [ref=e3365]
+          - cell "IT" [ref=e3366]:
+            - text: IT
+            - generic: ▾
+          - cell "Docker, Figma, Java" [ref=e3367]:
+            - text: Docker, Figma, Java
+            - generic: ▾
+          - cell "Lorem voluptua. sed et At [...]" [ref=e3368]:
+            - text: Lorem voluptua. sed et At [...]
+            - generic [ref=e3369] [cursor=pointer]: 🖉
+          - cell [ref=e3370]:
+            - checkbox [ref=e3371]
+          - cell "86,980.00 €" [ref=e3372]
+          - cell "Feb 14, 2014 2014-02-14 Open date picker" [ref=e3373]:
+            - generic [ref=e3374]:
+              - text: Feb 14, 2014
+              - textbox: 2014-02-14
+              - button "Open date picker" [ref=e3375] [cursor=pointer]: 📅
+          - cell "Eva Wagner" [ref=e3376]
+          - cell [ref=e3377]
+          - cell "+15 386 793546" [ref=e3378]
+          - cell "EMP00062" [ref=e3379]
+          - cell "Terminated" [ref=e3380]
+          - cell "QA Engineer" [ref=e3381]
+          - cell [ref=e3382]
+          - cell "Apr 14, 2023, 8:36 PM 2023-04-14T20:36 Open date/time picker" [ref=e3383]:
+            - generic [ref=e3384]:
+              - text: Apr 14, 2023, 8:36 PM
+              - textbox: 2023-04-14T20:36
+              - button "Open date/time picker" [ref=e3385] [cursor=pointer]: 📅
+          - cell "3.25" [ref=e3386]
+          - cell "+ 0 €" [ref=e3387]
+          - cell "Temporary" [ref=e3388]
+          - cell "Spain" [ref=e3389]:
+            - text: Spain
+            - generic: ▾
+          - cell [ref=e3390]:
+            - generic: ▾
+          - cell [ref=e3391]
+          - cell [ref=e3392]
+          - cell [ref=e3393]
+          - cell [ref=e3395]
+          - cell "September 9, 1982 1982-09-09 Open date picker" [ref=e3397]:
+            - generic [ref=e3398]:
+              - text: September 9, 1982
+              - textbox: 1982-09-09
+              - button "Open date picker" [ref=e3399] [cursor=pointer]: 📅
+          - cell [ref=e3400]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e3401]:
+            - generic [ref=e3402]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e3403] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e3404]:
+            - generic [ref=e3405]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e3406]':
+            - generic [ref=e3407]:
+              - generic [ref=e3409]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 62" [ref=e3410]:
+          - cell "63" [ref=e3411]
+          - cell "OBmUsJHsSA2HeOQUcTOzIWTft [...]" [ref=e3412]
+          - cell "Frank" [ref=e3413]
+          - cell "Becker" [ref=e3414]
+          - cell "frank.becker@example.com" [ref=e3415]
+          - cell "Finance" [ref=e3416]:
+            - text: Finance
+            - generic: ▾
+          - cell "React, AWS, TypeScript" [ref=e3417]:
+            - text: React, AWS, TypeScript
+            - generic: ▾
+          - cell [ref=e3418]:
+            - generic [ref=e3419] [cursor=pointer]: 🖉
+          - cell [ref=e3420]:
+            - checkbox [checked] [ref=e3421]
+          - cell "64,753.00 €" [ref=e3422]
+          - cell "Nov 13, 2022 2022-11-13 Open date picker" [ref=e3423]:
+            - generic [ref=e3424]:
+              - text: Nov 13, 2022
+              - textbox: 2022-11-13
+              - button "Open date picker" [ref=e3425] [cursor=pointer]: 📅
+          - cell [ref=e3426]
+          - cell [ref=e3427]
+          - cell "+49 206 017328" [ref=e3428]
+          - cell "EMP00063" [ref=e3429]
+          - cell "On Leave" [ref=e3430]
+          - cell "Software Engineer" [ref=e3431]
+          - cell [ref=e3432]
+          - cell "Open date/time picker" [ref=e3433]:
+            - generic [ref=e3434]:
+              - textbox
+              - button "Open date/time picker" [ref=e3436] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e3437]
+          - cell "+ 4,458 €" [ref=e3438]
+          - cell "Temporary" [ref=e3439]
+          - cell "UK" [ref=e3440]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e3441]:
+            - text: Cologne
+            - generic: ▾
+          - cell "16689" [ref=e3442]
+          - cell "111 Example Street" [ref=e3443]
+          - cell "https://www.linkedin.com/in/frankbecker 🔗" [ref=e3444]:
+            - generic [ref=e3445]:
+              - generic [ref=e3446]: https://www.linkedin.com/in/frankbecker
+              - button "🔗" [ref=e3447] [cursor=pointer]
+          - cell [ref=e3448]
+          - cell "April 2, 1978 1978-04-02 Open date picker" [ref=e3450]:
+            - generic [ref=e3451]:
+              - text: April 2, 1978
+              - textbox: 1978-04-02
+              - button "Open date picker" [ref=e3452] [cursor=pointer]: 📅
+          - cell "Bob Wagner (+49407481848)" [ref=e3453]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e3454]:
+            - generic [ref=e3455]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e3456] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e3457]:
+            - generic [ref=e3458]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e3459]':
+            - generic [ref=e3460]:
+              - generic [ref=e3462]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 63" [ref=e3463]:
+          - cell "64" [ref=e3464]
+          - cell "QU9l6GV1-F_XJ" [ref=e3465]
+          - cell "Eva" [ref=e3466]
+          - cell "Becker" [ref=e3467]
+          - cell "eva.becker@example.com" [ref=e3468]
+          - cell [ref=e3469]:
+            - generic: ▾
+          - cell "React, Java, Figma, Docke [...]" [ref=e3470]:
+            - text: React, Java, Figma, Docke [...]
+            - generic: ▾
+          - cell [ref=e3471]:
+            - generic [ref=e3472] [cursor=pointer]: 🖉
+          - cell [ref=e3473]:
+            - checkbox [checked] [ref=e3474]
+          - cell "79,283.00 €" [ref=e3475]
+          - cell "Nov 22, 2009 2009-11-22 Open date picker" [ref=e3476]:
+            - generic [ref=e3477]:
+              - text: Nov 22, 2009
+              - textbox: 2009-11-22
+              - button "Open date picker" [ref=e3478] [cursor=pointer]: 📅
+          - cell "Julia Schneider" [ref=e3479]
+          - cell "Remote" [ref=e3480]
+          - cell "+14 818 602066" [ref=e3481]
+          - cell "EMP00064" [ref=e3482]
+          - cell "Probation" [ref=e3483]
+          - cell "QA Engineer" [ref=e3484]
+          - cell [ref=e3485]
+          - cell "Apr 1, 2023, 2:28 PM 2023-04-01T14:28 Open date/time picker" [ref=e3486]:
+            - generic [ref=e3487]:
+              - text: Apr 1, 2023, 2:28 PM
+              - textbox: 2023-04-01T14:28
+              - button "Open date/time picker" [ref=e3488] [cursor=pointer]: 📅
+          - cell "0.69" [ref=e3489]
+          - cell "+ 14,437 €" [ref=e3490]
+          - cell "Intern" [ref=e3491]
+          - cell "Netherlands" [ref=e3492]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Munich" [ref=e3493]:
+            - text: Munich
+            - generic: ▾
+          - cell "73950" [ref=e3494]
+          - cell [ref=e3495]
+          - cell "https://www.linkedin.com/in/evabecker 🔗" [ref=e3496]:
+            - generic [ref=e3497]:
+              - generic [ref=e3498]: https://www.linkedin.com/in/evabecker
+              - button "🔗" [ref=e3499] [cursor=pointer]
+          - cell [ref=e3500]
+          - cell "June 14, 1992 1992-06-14 Open date picker" [ref=e3502]:
+            - generic [ref=e3503]:
+              - text: June 14, 1992
+              - textbox: 1992-06-14
+              - button "Open date picker" [ref=e3504] [cursor=pointer]: 📅
+          - cell [ref=e3505]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e3506]:
+            - generic [ref=e3507]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e3508] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e3509]:
+            - generic [ref=e3510]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e3511]':
+            - generic [ref=e3512]:
+              - generic [ref=e3514]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 64" [ref=e3515]:
+          - cell "65" [ref=e3516]
+          - cell "gADAyx1F1-A-DpKEn1J" [ref=e3517]
+          - cell "Hannah" [ref=e3518]
+          - cell "Becker" [ref=e3519]
+          - cell "hannah.becker@example.com" [ref=e3520]
+          - cell "Sales" [ref=e3521]:
+            - text: Sales
+            - generic: ▾
+          - cell "Docker, Java" [ref=e3522]:
+            - text: Docker, Java
+            - generic: ▾
+          - cell "et est. dolore est. diam [...]" [ref=e3523]:
+            - text: et est. dolore est. diam [...]
+            - generic [ref=e3524] [cursor=pointer]: 🖉
+          - cell [ref=e3525]:
+            - checkbox [ref=e3526]
+          - cell "53,658.00 €" [ref=e3527]
+          - cell "Jan 29, 2009 2009-01-29 Open date picker" [ref=e3528]:
+            - generic [ref=e3529]:
+              - text: Jan 29, 2009
+              - textbox: 2009-01-29
+              - button "Open date picker" [ref=e3530] [cursor=pointer]: 📅
+          - cell "Eva Becker" [ref=e3531]
+          - cell "Berlin HQ" [ref=e3532]
+          - cell "+49 516 430651" [ref=e3533]
+          - cell "EMP00065" [ref=e3534]
+          - cell [ref=e3535]
+          - cell "QA Engineer" [ref=e3536]
+          - cell "Growth" [ref=e3537]
+          - cell "Open date/time picker" [ref=e3538]:
+            - generic [ref=e3539]:
+              - textbox
+              - button "Open date/time picker" [ref=e3541] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e3542]
+          - cell "+ 12,258 €" [ref=e3543]
+          - cell [ref=e3544]
+          - cell "Netherlands" [ref=e3545]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Cologne" [ref=e3546]:
+            - text: Cologne
+            - generic: ▾
+          - cell "78742" [ref=e3547]
+          - cell "72 Example Street" [ref=e3548]
+          - cell [ref=e3549]
+          - cell [ref=e3551]
+          - cell "Open date picker" [ref=e3553]:
+            - generic [ref=e3554]:
+              - textbox
+              - button "Open date picker" [ref=e3556] [cursor=pointer]: 📅
+          - cell "Eva Becker (+49183075052)" [ref=e3557]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e3558]:
+            - generic [ref=e3559]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e3560] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e3561]:
+            - generic [ref=e3562]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e3563]':
+            - generic [ref=e3564]:
+              - generic [ref=e3566]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 65" [ref=e3567]:
+          - cell "66" [ref=e3568]
+          - cell "LRAARB7_rEmSPOrNM96caJ7b8 [...]" [ref=e3569]
+          - cell "Grace" [ref=e3570]
+          - cell "Meyer" [ref=e3571]
+          - cell "grace.meyer@example.com" [ref=e3572]
+          - cell "HR" [ref=e3573]:
+            - text: HR
+            - generic: ▾
+          - cell "SQL, Java, Python, TypeSc [...]" [ref=e3574]:
+            - text: SQL, Java, Python, TypeSc [...]
+            - generic: ▾
+          - cell "vero et et eirmod voluptu [...]" [ref=e3575]:
+            - text: vero et et eirmod voluptu [...]
+            - generic [ref=e3576] [cursor=pointer]: 🖉
+          - cell [ref=e3577]:
+            - checkbox [checked] [ref=e3578]
+          - cell "87,058.00 €" [ref=e3579]
+          - cell "Jun 13, 2019 2019-06-13 Open date picker" [ref=e3580]:
+            - generic [ref=e3581]:
+              - text: Jun 13, 2019
+              - textbox: 2019-06-13
+              - button "Open date picker" [ref=e3582] [cursor=pointer]: 📅
+          - cell "Ian Meyer" [ref=e3583]
+          - cell "Hamburg Office" [ref=e3584]
+          - cell "+49 113 267690" [ref=e3585]
+          - cell "EMP00066" [ref=e3586]
+          - cell "Probation" [ref=e3587]
+          - cell "DevOps Engineer" [ref=e3588]
+          - cell "Web" [ref=e3589]
+          - cell "Sep 13, 2023, 5:46 PM 2023-09-13T17:46 Open date/time picker" [ref=e3590]:
+            - generic [ref=e3591]:
+              - text: Sep 13, 2023, 5:46 PM
+              - textbox: 2023-09-13T17:46
+              - button "Open date/time picker" [ref=e3592] [cursor=pointer]: 📅
+          - cell "0.24" [ref=e3593]
+          - cell "+ 5,193 €" [ref=e3594]
+          - cell [ref=e3595]
+          - cell "France" [ref=e3596]:
+            - text: France
+            - generic: ▾
+          - cell "Berlin" [ref=e3597]:
+            - text: Berlin
+            - generic: ▾
+          - cell "69524" [ref=e3598]
+          - cell "27 Example Street" [ref=e3599]
+          - cell "https://www.linkedin.com/in/gracemeyer 🔗" [ref=e3600]:
+            - generic [ref=e3601]:
+              - generic [ref=e3602]: https://www.linkedin.com/in/gracemeyer
+              - button "🔗" [ref=e3603] [cursor=pointer]
+          - cell [ref=e3604]
+          - cell "Open date picker" [ref=e3606]:
+            - generic [ref=e3607]:
+              - textbox
+              - button "Open date picker" [ref=e3609] [cursor=pointer]: 📅
+          - cell [ref=e3610]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e3611]:
+            - generic [ref=e3612]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e3613] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e3614]:
+            - generic [ref=e3615]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e3616]':
+            - generic [ref=e3617]:
+              - generic [ref=e3619]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 66" [ref=e3620]:
+          - cell "67" [ref=e3621]
+          - cell "kOFdZ21K7K-MYCYJFS0" [ref=e3622]
+          - cell "Grace" [ref=e3623]
+          - cell "Meyer" [ref=e3624]
+          - cell "grace.meyer@example.com" [ref=e3625]
+          - cell "HR" [ref=e3626]:
+            - text: HR
+            - generic: ▾
+          - cell [ref=e3627]:
+            - generic: ▾
+          - cell "rebum. Lorem Stet duo lab [...]" [ref=e3628]:
+            - text: rebum. Lorem Stet duo lab [...]
+            - generic [ref=e3629] [cursor=pointer]: 🖉
+          - cell [ref=e3630]:
+            - checkbox [checked] [ref=e3631]
+          - cell "61,278.00 €" [ref=e3632]
+          - cell "Aug 7, 2006 2006-08-07 Open date picker" [ref=e3633]:
+            - generic [ref=e3634]:
+              - text: Aug 7, 2006
+              - textbox: 2006-08-07
+              - button "Open date picker" [ref=e3635] [cursor=pointer]: 📅
+          - cell "Hannah Schneider" [ref=e3636]
+          - cell "Cologne Office" [ref=e3637]
+          - cell "+18 368 240073" [ref=e3638]
+          - cell "EMP00067" [ref=e3639]
+          - cell "Terminated" [ref=e3640]
+          - cell "QA Engineer" [ref=e3641]
+          - cell "Tools" [ref=e3642]
+          - cell "Open date/time picker" [ref=e3643]:
+            - generic [ref=e3644]:
+              - textbox
+              - button "Open date/time picker" [ref=e3646] [cursor=pointer]: 📅
+          - cell "2.58" [ref=e3647]
+          - cell "+ 0 €" [ref=e3648]
+          - cell "Permanent" [ref=e3649]
+          - cell "Netherlands" [ref=e3650]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Frankfurt" [ref=e3651]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "46897" [ref=e3652]
+          - cell "1 Example Street" [ref=e3653]
+          - cell [ref=e3654]
+          - cell [ref=e3656]
+          - cell "December 24, 1966 1966-12-24 Open date picker" [ref=e3658]:
+            - generic [ref=e3659]:
+              - text: December 24, 1966
+              - textbox: 1966-12-24
+              - button "Open date picker" [ref=e3660] [cursor=pointer]: 📅
+          - cell "Bob Schneider (+498506398 [...]" [ref=e3661]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e3662]:
+            - generic [ref=e3663]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e3664] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e3665]:
+            - generic [ref=e3666]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e3667]':
+            - generic [ref=e3668]:
+              - generic [ref=e3670]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 67" [ref=e3671]:
+          - cell "68" [ref=e3672]
+          - cell "KpWL8ZD-0qH9YLhIbvnWu" [ref=e3673]
+          - cell "Hannah" [ref=e3674]
+          - cell "Müller" [ref=e3675]
+          - cell "hannah.müller@example.com" [ref=e3676]
+          - cell "HR" [ref=e3677]:
+            - text: HR
+            - generic: ▾
+          - cell "SQL" [ref=e3678]:
+            - text: SQL
+            - generic: ▾
+          - cell "nonumy dolore Lorem dolor [...]" [ref=e3679]:
+            - text: nonumy dolore Lorem dolor [...]
+            - generic [ref=e3680] [cursor=pointer]: 🖉
+          - cell [ref=e3681]:
+            - checkbox [checked] [ref=e3682]
+          - cell "0.00 €" [ref=e3683]
+          - cell "Nov 4, 2015 2015-11-04 Open date picker" [ref=e3684]:
+            - generic [ref=e3685]:
+              - text: Nov 4, 2015
+              - textbox: 2015-11-04
+              - button "Open date picker" [ref=e3686] [cursor=pointer]: 📅
+          - cell "Diana Becker" [ref=e3687]
+          - cell "Berlin HQ" [ref=e3688]
+          - cell "+13 975 689734" [ref=e3689]
+          - cell "EMP00068" [ref=e3690]
+          - cell "Terminated" [ref=e3691]
+          - cell "DevOps Engineer" [ref=e3692]
+          - cell "Web" [ref=e3693]
+          - cell "Apr 15, 2020, 5:24 PM 2020-04-15T17:24 Open date/time picker" [ref=e3694]:
+            - generic [ref=e3695]:
+              - text: Apr 15, 2020, 5:24 PM
+              - textbox: 2020-04-15T17:24
+              - button "Open date/time picker" [ref=e3696] [cursor=pointer]: 📅
+          - cell "2.55" [ref=e3697]
+          - cell "+ 1,233 €" [ref=e3698]
+          - cell "Permanent" [ref=e3699]
+          - cell "USA" [ref=e3700]:
+            - text: USA
+            - generic: ▾
+          - cell "Hamburg" [ref=e3701]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e3702]
+          - cell "170 Example Street" [ref=e3703]
+          - cell "https://www.linkedin.com/in/hannahmüller 🔗" [ref=e3704]:
+            - generic [ref=e3705]:
+              - generic [ref=e3706]: https://www.linkedin.com/in/hannahmüller
+              - button "🔗" [ref=e3707] [cursor=pointer]
+          - cell [ref=e3708]
+          - cell "August 9, 1968 1968-08-09 Open date picker" [ref=e3710]:
+            - generic [ref=e3711]:
+              - text: August 9, 1968
+              - textbox: 1968-08-09
+              - button "Open date picker" [ref=e3712] [cursor=pointer]: 📅
+          - cell [ref=e3713]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e3714]:
+            - generic [ref=e3715]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e3716] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e3717]:
+            - generic [ref=e3718]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e3719]':
+            - generic [ref=e3720]:
+              - generic [ref=e3722]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 68" [ref=e3723]:
+          - cell "69" [ref=e3724]
+          - cell [ref=e3725]
+          - cell "Bob" [ref=e3726]
+          - cell "Fischer" [ref=e3727]
+          - cell "bob.fischer@example.com" [ref=e3728]
+          - cell "HR" [ref=e3729]:
+            - text: HR
+            - generic: ▾
+          - cell "Figma, React, AWS, TypeSc [...]" [ref=e3730]:
+            - text: Figma, React, AWS, TypeSc [...]
+            - generic: ▾
+          - cell "accusam et et gubergren, [...]" [ref=e3731]:
+            - text: accusam et et gubergren, [...]
+            - generic [ref=e3732] [cursor=pointer]: 🖉
+          - cell [ref=e3733]:
+            - checkbox [ref=e3734]
+          - cell "65,841.00 €" [ref=e3735]
+          - cell "Oct 17, 2015 2015-10-17 Open date picker" [ref=e3736]:
+            - generic [ref=e3737]:
+              - text: Oct 17, 2015
+              - textbox: 2015-10-17
+              - button "Open date picker" [ref=e3738] [cursor=pointer]: 📅
+          - cell "Ian Meyer" [ref=e3739]
+          - cell "Remote" [ref=e3740]
+          - cell "+49 576 759254" [ref=e3741]
+          - cell "EMP00069" [ref=e3742]
+          - cell "Probation" [ref=e3743]
+          - cell "Designer" [ref=e3744]
+          - cell "Web" [ref=e3745]
+          - cell "Open date/time picker" [ref=e3746]:
+            - generic [ref=e3747]:
+              - textbox
+              - button "Open date/time picker" [ref=e3749] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e3750]
+          - cell "+ 13,316 €" [ref=e3751]
+          - cell "Permanent" [ref=e3752]
+          - cell "France" [ref=e3753]:
+            - text: France
+            - generic: ▾
+          - cell "Berlin" [ref=e3754]:
+            - text: Berlin
+            - generic: ▾
+          - cell "75680" [ref=e3755]
+          - cell [ref=e3756]
+          - cell "https://www.linkedin.com/in/bobfischer 🔗" [ref=e3757]:
+            - generic [ref=e3758]:
+              - generic [ref=e3759]: https://www.linkedin.com/in/bobfischer
+              - button "🔗" [ref=e3760] [cursor=pointer]
+          - cell [ref=e3761]
+          - cell "July 9, 1979 1979-07-09 Open date picker" [ref=e3763]:
+            - generic [ref=e3764]:
+              - text: July 9, 1979
+              - textbox: 1979-07-09
+              - button "Open date picker" [ref=e3765] [cursor=pointer]: 📅
+          - cell "Diana Fischer (+141430110 [...]" [ref=e3766]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e3767]:
+            - generic [ref=e3768]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e3769] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e3770]:
+            - generic [ref=e3771]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e3772]':
+            - generic [ref=e3773]:
+              - generic [ref=e3775]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 69" [ref=e3776]:
+          - cell "70" [ref=e3777]
+          - cell "CPInPdijmWNI4pd8o0oldWmRR [...]" [ref=e3778]
+          - cell "Hannah" [ref=e3779]
+          - cell "Fischer" [ref=e3780]
+          - cell "hannah.fischer@example.co [...]" [ref=e3781]
+          - cell [ref=e3782]:
+            - generic: ▾
+          - cell "React" [ref=e3783]:
+            - text: React
+            - generic: ▾
+          - cell "no dolore justo justo no [...]" [ref=e3784]:
+            - text: no dolore justo justo no [...]
+            - generic [ref=e3785] [cursor=pointer]: 🖉
+          - cell [ref=e3786]:
+            - checkbox [checked] [ref=e3787]
+          - cell "74,343.00 €" [ref=e3788]
+          - cell "May 17, 2011 2011-05-17 Open date picker" [ref=e3789]:
+            - generic [ref=e3790]:
+              - text: May 17, 2011
+              - textbox: 2011-05-17
+              - button "Open date picker" [ref=e3791] [cursor=pointer]: 📅
+          - cell "Hannah Wagner" [ref=e3792]
+          - cell "Hamburg Office" [ref=e3793]
+          - cell "+13 845 854957" [ref=e3794]
+          - cell "EMP00070" [ref=e3795]
+          - cell "On Leave" [ref=e3796]
+          - cell "Product Manager" [ref=e3797]
+          - cell "Growth" [ref=e3798]
+          - cell "Mar 20, 2020, 2:36 PM 2020-03-20T14:36 Open date/time picker" [ref=e3799]:
+            - generic [ref=e3800]:
+              - text: Mar 20, 2020, 2:36 PM
+              - textbox: 2020-03-20T14:36
+              - button "Open date/time picker" [ref=e3801] [cursor=pointer]: 📅
+          - cell "2.23" [ref=e3802]
+          - cell "+ 0 €" [ref=e3803]
+          - cell [ref=e3804]
+          - cell [ref=e3805]:
+            - generic: ▾
+          - cell [ref=e3806]:
+            - generic: ▾
+          - cell "24073" [ref=e3807]
+          - cell "110 Example Street" [ref=e3808]
+          - cell [ref=e3809]
+          - cell "https://github.com/hannahfischer 🔗" [ref=e3811]:
+            - generic [ref=e3812]:
+              - generic [ref=e3813]: https://github.com/hannahfischer
+              - button "🔗" [ref=e3814] [cursor=pointer]
+          - cell "December 11, 1980 1980-12-11 Open date picker" [ref=e3815]:
+            - generic [ref=e3816]:
+              - text: December 11, 1980
+              - textbox: 1980-12-11
+              - button "Open date picker" [ref=e3817] [cursor=pointer]: 📅
+          - cell "Hannah Müller (+493163481 [...]" [ref=e3818]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e3819]:
+            - generic [ref=e3820]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e3821] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e3822]:
+            - generic [ref=e3823]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e3824]':
+            - generic [ref=e3825]:
+              - generic [ref=e3827]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 70" [ref=e3828]:
+          - cell "71" [ref=e3829]
+          - cell "CcmXn1MDode6BMv5Muv6" [ref=e3830]
+          - cell "Julia" [ref=e3831]
+          - cell "Schneider" [ref=e3832]
+          - cell "julia.schneider@example.c [...]" [ref=e3833]
+          - cell "IT" [ref=e3834]:
+            - text: IT
+            - generic: ▾
+          - cell "Docker, AWS, SQL" [ref=e3835]:
+            - text: Docker, AWS, SQL
+            - generic: ▾
+          - cell "est. dolore dolores amet, [...]" [ref=e3836]:
+            - text: est. dolore dolores amet, [...]
+            - generic [ref=e3837] [cursor=pointer]: 🖉
+          - cell [ref=e3838]:
+            - checkbox [checked] [ref=e3839]
+          - cell "80,129.00 €" [ref=e3840]
+          - cell "Mar 16, 2023 2023-03-16 Open date picker" [ref=e3841]:
+            - generic [ref=e3842]:
+              - text: Mar 16, 2023
+              - textbox: 2023-03-16
+              - button "Open date picker" [ref=e3843] [cursor=pointer]: 📅
+          - cell "Bob Müller" [ref=e3844]
+          - cell "Remote" [ref=e3845]
+          - cell "+49 662 976840" [ref=e3846]
+          - cell "EMP00071" [ref=e3847]
+          - cell "Terminated" [ref=e3848]
+          - cell "Designer" [ref=e3849]
+          - cell [ref=e3850]
+          - cell "Dec 4, 2023, 5:44 PM 2023-12-04T17:44 Open date/time picker" [ref=e3851]:
+            - generic [ref=e3852]:
+              - text: Dec 4, 2023, 5:44 PM
+              - textbox: 2023-12-04T17:44
+              - button "Open date/time picker" [ref=e3853] [cursor=pointer]: 📅
+          - cell "4.73" [ref=e3854]
+          - cell "+ 0 €" [ref=e3855]
+          - cell "Contractor" [ref=e3856]
+          - cell "Spain" [ref=e3857]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e3858]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "62306" [ref=e3859]
+          - cell "101 Example Street" [ref=e3860]
+          - cell [ref=e3861]
+          - cell [ref=e3863]
+          - cell "Open date picker" [ref=e3865]:
+            - generic [ref=e3866]:
+              - textbox
+              - button "Open date picker" [ref=e3868] [cursor=pointer]: 📅
+          - cell [ref=e3869]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e3870]:
+            - generic [ref=e3871]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e3872] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e3873]:
+            - generic [ref=e3874]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e3875]':
+            - generic [ref=e3876]:
+              - generic [ref=e3878]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 71" [ref=e3879]:
+          - cell "72" [ref=e3880]
+          - cell "DgrKyQXZX116_YJZvCengBf0j [...]" [ref=e3881]
+          - cell "Julia" [ref=e3882]
+          - cell "Weber" [ref=e3883]
+          - cell "julia.weber@example.com" [ref=e3884]
+          - cell "Finance" [ref=e3885]:
+            - text: Finance
+            - generic: ▾
+          - cell "React, Docker, AWS, TypeS [...]" [ref=e3886]:
+            - text: React, Docker, AWS, TypeS [...]
+            - generic: ▾
+          - cell "accusam consetetur dolore [...]" [ref=e3887]:
+            - text: accusam consetetur dolore [...]
+            - generic [ref=e3888] [cursor=pointer]: 🖉
+          - cell [ref=e3889]:
+            - checkbox [checked] [ref=e3890]
+          - cell "46,137.00 €" [ref=e3891]
+          - cell "Mar 7, 2011 2011-03-07 Open date picker" [ref=e3892]:
+            - generic [ref=e3893]:
+              - text: Mar 7, 2011
+              - textbox: 2011-03-07
+              - button "Open date picker" [ref=e3894] [cursor=pointer]: 📅
+          - cell "Alice Meyer" [ref=e3895]
+          - cell "Remote" [ref=e3896]
+          - cell "+49 794 447331" [ref=e3897]
+          - cell "EMP00072" [ref=e3898]
+          - cell "On Leave" [ref=e3899]
+          - cell "Product Manager" [ref=e3900]
+          - cell [ref=e3901]
+          - cell "Open date/time picker" [ref=e3902]:
+            - generic [ref=e3903]:
+              - textbox
+              - button "Open date/time picker" [ref=e3905] [cursor=pointer]: 📅
+          - cell "0.99" [ref=e3906]
+          - cell "+ 11,037 €" [ref=e3907]
+          - cell "Intern" [ref=e3908]
+          - cell "Spain" [ref=e3909]:
+            - text: Spain
+            - generic: ▾
+          - cell "Munich" [ref=e3910]:
+            - text: Munich
+            - generic: ▾
+          - cell [ref=e3911]
+          - cell "59 Example Street" [ref=e3912]
+          - cell "https://www.linkedin.com/in/juliaweber 🔗" [ref=e3913]:
+            - generic [ref=e3914]:
+              - generic [ref=e3915]: https://www.linkedin.com/in/juliaweber
+              - button "🔗" [ref=e3916] [cursor=pointer]
+          - cell [ref=e3917]
+          - cell "January 27, 1967 1967-01-27 Open date picker" [ref=e3919]:
+            - generic [ref=e3920]:
+              - text: January 27, 1967
+              - textbox: 1967-01-27
+              - button "Open date picker" [ref=e3921] [cursor=pointer]: 📅
+          - cell "Bob Müller (+18385989776)" [ref=e3922]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e3923]:
+            - generic [ref=e3924]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e3925] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e3926]:
+            - generic [ref=e3927]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e3928]':
+            - generic [ref=e3929]:
+              - generic [ref=e3931]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 72" [ref=e3932]:
+          - cell "73" [ref=e3933]
+          - cell [ref=e3934]
+          - cell "Julia" [ref=e3935]
+          - cell "Fischer" [ref=e3936]
+          - cell "julia.fischer@example.com" [ref=e3937]
+          - cell [ref=e3938]:
+            - generic: ▾
+          - cell [ref=e3939]:
+            - generic: ▾
+          - cell "consetetur duo amet, dolo [...]" [ref=e3940]:
+            - text: consetetur duo amet, dolo [...]
+            - generic [ref=e3941] [cursor=pointer]: 🖉
+          - cell [ref=e3942]:
+            - checkbox [checked] [ref=e3943]
+          - cell "0.00 €" [ref=e3944]
+          - cell "Mar 19, 2018 2018-03-19 Open date picker" [ref=e3945]:
+            - generic [ref=e3946]:
+              - text: Mar 19, 2018
+              - textbox: 2018-03-19
+              - button "Open date picker" [ref=e3947] [cursor=pointer]: 📅
+          - cell [ref=e3948]
+          - cell "Berlin HQ" [ref=e3949]
+          - cell "+16 900 100848" [ref=e3950]
+          - cell "EMP00073" [ref=e3951]
+          - cell "Active" [ref=e3952]
+          - cell "Designer" [ref=e3953]
+          - cell "Growth" [ref=e3954]
+          - cell "Open date/time picker" [ref=e3955]:
+            - generic [ref=e3956]:
+              - textbox
+              - button "Open date/time picker" [ref=e3958] [cursor=pointer]: 📅
+          - cell "4.96" [ref=e3959]
+          - cell "+ 0 €" [ref=e3960]
+          - cell "Permanent" [ref=e3961]
+          - cell [ref=e3962]:
+            - generic: ▾
+          - cell "Munich" [ref=e3963]:
+            - text: Munich
+            - generic: ▾
+          - cell "60294" [ref=e3964]
+          - cell "158 Example Street" [ref=e3965]
+          - cell [ref=e3966]
+          - cell [ref=e3968]
+          - cell "April 7, 1978 1978-04-07 Open date picker" [ref=e3970]:
+            - generic [ref=e3971]:
+              - text: April 7, 1978
+              - textbox: 1978-04-07
+              - button "Open date picker" [ref=e3972] [cursor=pointer]: 📅
+          - cell [ref=e3973]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e3974]:
+            - generic [ref=e3975]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e3976] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e3977]:
+            - generic [ref=e3978]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e3979]':
+            - generic [ref=e3980]:
+              - generic [ref=e3982]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 73" [ref=e3983]:
+          - cell "74" [ref=e3984]
+          - cell "FwjZFdzaivbZcDSD8f6Of1s3T [...]" [ref=e3985]
+          - cell "Grace" [ref=e3986]
+          - cell "Weber" [ref=e3987]
+          - cell "grace.weber@example.com" [ref=e3988]
+          - cell [ref=e3989]:
+            - generic: ▾
+          - cell "React, TypeScript" [ref=e3990]:
+            - text: React, TypeScript
+            - generic: ▾
+          - cell "dolores dolores elitr, la [...]" [ref=e3991]:
+            - text: dolores dolores elitr, la [...]
+            - generic [ref=e3992] [cursor=pointer]: 🖉
+          - cell [ref=e3993]:
+            - checkbox [checked] [ref=e3994]
+          - cell "72,273.00 €" [ref=e3995]
+          - cell "Sep 2, 2011 2011-09-02 Open date picker" [ref=e3996]:
+            - generic [ref=e3997]:
+              - text: Sep 2, 2011
+              - textbox: 2011-09-02
+              - button "Open date picker" [ref=e3998] [cursor=pointer]: 📅
+          - cell [ref=e3999]
+          - cell "Hamburg Office" [ref=e4000]
+          - cell "+49 259 870950" [ref=e4001]
+          - cell "EMP00074" [ref=e4002]
+          - cell "Active" [ref=e4003]
+          - cell [ref=e4004]
+          - cell "Growth" [ref=e4005]
+          - cell "Nov 18, 2024, 6:49 PM 2024-11-18T18:49 Open date/time picker" [ref=e4006]:
+            - generic [ref=e4007]:
+              - text: Nov 18, 2024, 6:49 PM
+              - textbox: 2024-11-18T18:49
+              - button "Open date/time picker" [ref=e4008] [cursor=pointer]: 📅
+          - cell "2.50" [ref=e4009]
+          - cell "+ 7,389 €" [ref=e4010]
+          - cell "Contractor" [ref=e4011]
+          - cell "USA" [ref=e4012]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e4013]:
+            - text: Munich
+            - generic: ▾
+          - cell "64212" [ref=e4014]
+          - cell "73 Example Street" [ref=e4015]
+          - cell [ref=e4016]
+          - cell [ref=e4018]
+          - cell "Open date picker" [ref=e4020]:
+            - generic [ref=e4021]:
+              - textbox
+              - button "Open date picker" [ref=e4023] [cursor=pointer]: 📅
+          - cell [ref=e4024]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e4025]:
+            - generic [ref=e4026]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e4027] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e4028]:
+            - generic [ref=e4029]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e4030]':
+            - generic [ref=e4031]:
+              - generic [ref=e4033]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 74" [ref=e4034]:
+          - cell "75" [ref=e4035]
+          - cell "Q4GxdghO3U5tCobrMG" [ref=e4036]
+          - cell "Frank" [ref=e4037]
+          - cell "Schneider" [ref=e4038]
+          - cell "frank.schneider@example.c [...]" [ref=e4039]
+          - cell [ref=e4040]:
+            - generic: ▾
+          - cell "TypeScript" [ref=e4041]:
+            - text: TypeScript
+            - generic: ▾
+          - cell "dolores diam dolores eirm [...]" [ref=e4042]:
+            - text: dolores diam dolores eirm [...]
+            - generic [ref=e4043] [cursor=pointer]: 🖉
+          - cell [ref=e4044]:
+            - checkbox [checked] [ref=e4045]
+          - cell "48,989.00 €" [ref=e4046]
+          - cell "Feb 29, 2012 2012-02-29 Open date picker" [ref=e4047]:
+            - generic [ref=e4048]:
+              - text: Feb 29, 2012
+              - textbox: 2012-02-29
+              - button "Open date picker" [ref=e4049] [cursor=pointer]: 📅
+          - cell "Grace Schneider" [ref=e4050]
+          - cell "Cologne Office" [ref=e4051]
+          - cell "+15 412 773565" [ref=e4052]
+          - cell "EMP00075" [ref=e4053]
+          - cell "Probation" [ref=e4054]
+          - cell "Software Engineer" [ref=e4055]
+          - cell [ref=e4056]
+          - cell "Jun 4, 2022, 1:01 PM 2022-06-04T13:01 Open date/time picker" [ref=e4057]:
+            - generic [ref=e4058]:
+              - text: Jun 4, 2022, 1:01 PM
+              - textbox: 2022-06-04T13:01
+              - button "Open date/time picker" [ref=e4059] [cursor=pointer]: 📅
+          - cell "2.91" [ref=e4060]
+          - cell "+ 0 €" [ref=e4061]
+          - cell "Permanent" [ref=e4062]
+          - cell "USA" [ref=e4063]:
+            - text: USA
+            - generic: ▾
+          - cell "Berlin" [ref=e4064]:
+            - text: Berlin
+            - generic: ▾
+          - cell "86997" [ref=e4065]
+          - cell "166 Example Street" [ref=e4066]
+          - cell [ref=e4067]
+          - cell [ref=e4069]
+          - cell "Open date picker" [ref=e4071]:
+            - generic [ref=e4072]:
+              - textbox
+              - button "Open date picker" [ref=e4074] [cursor=pointer]: 📅
+          - cell "Ian Weber (+49553666152)" [ref=e4075]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e4076]:
+            - generic [ref=e4077]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e4078] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e4079]:
+            - generic [ref=e4080]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e4081]':
+            - generic [ref=e4082]:
+              - generic [ref=e4084]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 75" [ref=e4085]:
+          - cell "76" [ref=e4086]
+          - cell "GuheiNl4sXlO55N_eDVlx3ktY [...]" [ref=e4087]
+          - cell "Julia" [ref=e4088]
+          - cell "Schneider" [ref=e4089]
+          - cell "julia.schneider@example.c [...]" [ref=e4090]
+          - cell "IT" [ref=e4091]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e4092]:
+            - generic: ▾
+          - cell "Lorem nonumy gubergren, c [...]" [ref=e4093]:
+            - text: Lorem nonumy gubergren, c [...]
+            - generic [ref=e4094] [cursor=pointer]: 🖉
+          - cell [ref=e4095]:
+            - checkbox [ref=e4096]
+          - cell "42,169.00 €" [ref=e4097]
+          - cell "Jul 19, 2023 2023-07-19 Open date picker" [ref=e4098]:
+            - generic [ref=e4099]:
+              - text: Jul 19, 2023
+              - textbox: 2023-07-19
+              - button "Open date picker" [ref=e4100] [cursor=pointer]: 📅
+          - cell "Alice Müller" [ref=e4101]
+          - cell [ref=e4102]
+          - cell "+19 942 078364" [ref=e4103]
+          - cell "EMP00076" [ref=e4104]
+          - cell "Active" [ref=e4105]
+          - cell [ref=e4106]
+          - cell "Tools" [ref=e4107]
+          - cell "Oct 2, 2022, 3:21 AM 2022-10-02T03:21 Open date/time picker" [ref=e4108]:
+            - generic [ref=e4109]:
+              - text: Oct 2, 2022, 3:21 AM
+              - textbox: 2022-10-02T03:21
+              - button "Open date/time picker" [ref=e4110] [cursor=pointer]: 📅
+          - cell "1.34" [ref=e4111]
+          - cell "+ 3,601 €" [ref=e4112]
+          - cell "Temporary" [ref=e4113]
+          - cell "France" [ref=e4114]:
+            - text: France
+            - generic: ▾
+          - cell "Stuttgart" [ref=e4115]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "89980" [ref=e4116]
+          - cell "48 Example Street" [ref=e4117]
+          - cell [ref=e4118]
+          - cell "https://github.com/juliaschneider 🔗" [ref=e4120]:
+            - generic [ref=e4121]:
+              - generic [ref=e4122]: https://github.com/juliaschneider
+              - button "🔗" [ref=e4123] [cursor=pointer]
+          - cell "Open date picker" [ref=e4124]:
+            - generic [ref=e4125]:
+              - textbox
+              - button "Open date picker" [ref=e4127] [cursor=pointer]: 📅
+          - cell "Charlie Weber (+174360911 [...]" [ref=e4128]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e4129]:
+            - generic [ref=e4130]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e4131] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e4132]:
+            - generic [ref=e4133]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e4134]':
+            - generic [ref=e4135]:
+              - generic [ref=e4137]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 76" [ref=e4138]:
+          - cell "77" [ref=e4139]
+          - cell "9e5ljd9dX4ny0jU19TyOMVF_R [...]" [ref=e4140]
+          - cell "Alice" [ref=e4141]
+          - cell "Wagner" [ref=e4142]
+          - cell "alice.wagner@example.com" [ref=e4143]
+          - cell "Sales" [ref=e4144]:
+            - text: Sales
+            - generic: ▾
+          - cell [ref=e4145]:
+            - generic: ▾
+          - cell [ref=e4146]:
+            - generic [ref=e4147] [cursor=pointer]: 🖉
+          - cell [ref=e4148]:
+            - checkbox [checked] [ref=e4149]
+          - cell "94,831.00 €" [ref=e4150]
+          - cell "May 8, 2017 2017-05-08 Open date picker" [ref=e4151]:
+            - generic [ref=e4152]:
+              - text: May 8, 2017
+              - textbox: 2017-05-08
+              - button "Open date picker" [ref=e4153] [cursor=pointer]: 📅
+          - cell "Bob Weber" [ref=e4154]
+          - cell "Hamburg Office" [ref=e4155]
+          - cell "+49 856 168023" [ref=e4156]
+          - cell "EMP00077" [ref=e4157]
+          - cell [ref=e4158]
+          - cell "Software Engineer" [ref=e4159]
+          - cell "Core" [ref=e4160]
+          - cell "Nov 17, 2021, 6:12 AM 2021-11-17T06:12 Open date/time picker" [ref=e4161]:
+            - generic [ref=e4162]:
+              - text: Nov 17, 2021, 6:12 AM
+              - textbox: 2021-11-17T06:12
+              - button "Open date/time picker" [ref=e4163] [cursor=pointer]: 📅
+          - cell "3.79" [ref=e4164]
+          - cell "+ 0 €" [ref=e4165]
+          - cell "Permanent" [ref=e4166]
+          - cell "USA" [ref=e4167]:
+            - text: USA
+            - generic: ▾
+          - cell "Berlin" [ref=e4168]:
+            - text: Berlin
+            - generic: ▾
+          - cell "87494" [ref=e4169]
+          - cell "15 Example Street" [ref=e4170]
+          - cell [ref=e4171]
+          - cell [ref=e4173]
+          - cell "July 10, 1999 1999-07-10 Open date picker" [ref=e4175]:
+            - generic [ref=e4176]:
+              - text: July 10, 1999
+              - textbox: 1999-07-10
+              - button "Open date picker" [ref=e4177] [cursor=pointer]: 📅
+          - cell [ref=e4178]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e4179]:
+            - generic [ref=e4180]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e4181] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e4182]:
+            - generic [ref=e4183]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e4184]':
+            - generic [ref=e4185]:
+              - generic [ref=e4187]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 77" [ref=e4188]:
+          - cell "78" [ref=e4189]
+          - cell "APw0Zou6PtPlNgChtJkCm7ilb [...]" [ref=e4190]
+          - cell "Frank" [ref=e4191]
+          - cell "Becker" [ref=e4192]
+          - cell "frank.becker@example.com" [ref=e4193]
+          - cell "HR" [ref=e4194]:
+            - text: HR
+            - generic: ▾
+          - cell "Docker" [ref=e4195]:
+            - text: Docker
+            - generic: ▾
+          - cell "magna sea sed amet, sit s [...]" [ref=e4196]:
+            - text: magna sea sed amet, sit s [...]
+            - generic [ref=e4197] [cursor=pointer]: 🖉
+          - cell [ref=e4198]:
+            - checkbox [checked] [ref=e4199]
+          - cell "0.00 €" [ref=e4200]
+          - cell "Nov 9, 2013 2013-11-09 Open date picker" [ref=e4201]:
+            - generic [ref=e4202]:
+              - text: Nov 9, 2013
+              - textbox: 2013-11-09
+              - button "Open date picker" [ref=e4203] [cursor=pointer]: 📅
+          - cell "Julia Wagner" [ref=e4204]
+          - cell "Remote" [ref=e4205]
+          - cell "+49 181 233699" [ref=e4206]
+          - cell "EMP00078" [ref=e4207]
+          - cell [ref=e4208]
+          - cell "Software Engineer" [ref=e4209]
+          - cell "Growth" [ref=e4210]
+          - cell "Jan 19, 2021, 8:10 AM 2021-01-19T08:10 Open date/time picker" [ref=e4211]:
+            - generic [ref=e4212]:
+              - text: Jan 19, 2021, 8:10 AM
+              - textbox: 2021-01-19T08:10
+              - button "Open date/time picker" [ref=e4213] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e4214]
+          - cell "+ 5,597 €" [ref=e4215]
+          - cell [ref=e4216]
+          - cell "USA" [ref=e4217]:
+            - text: USA
+            - generic: ▾
+          - cell "Hamburg" [ref=e4218]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "96805" [ref=e4219]
+          - cell "3 Example Street" [ref=e4220]
+          - cell [ref=e4221]
+          - cell [ref=e4223]
+          - cell "May 17, 1977 1977-05-17 Open date picker" [ref=e4225]:
+            - generic [ref=e4226]:
+              - text: May 17, 1977
+              - textbox: 1977-05-17
+              - button "Open date picker" [ref=e4227] [cursor=pointer]: 📅
+          - cell "Eva Becker (+49657460262)" [ref=e4228]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e4229]:
+            - generic [ref=e4230]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e4231] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e4232]:
+            - generic [ref=e4233]: 5h
+          - 'cell "#10b981 #10b981" [ref=e4234]':
+            - generic [ref=e4235]:
+              - generic [ref=e4237]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 78" [ref=e4238]:
+          - cell "79" [ref=e4239]
+          - cell "eqf5Jjv6k5oGjnja6WNaXUdhB [...]" [ref=e4240]
+          - cell "Alice" [ref=e4241]
+          - cell "Wagner" [ref=e4242]
+          - cell "alice.wagner@example.com" [ref=e4243]
+          - cell "Finance" [ref=e4244]:
+            - text: Finance
+            - generic: ▾
+          - cell "SQL" [ref=e4245]:
+            - text: SQL
+            - generic: ▾
+          - cell [ref=e4246]:
+            - generic [ref=e4247] [cursor=pointer]: 🖉
+          - cell [ref=e4248]:
+            - checkbox [checked] [ref=e4249]
+          - cell "74,648.00 €" [ref=e4250]
+          - cell "Sep 14, 2023 2023-09-14 Open date picker" [ref=e4251]:
+            - generic [ref=e4252]:
+              - text: Sep 14, 2023
+              - textbox: 2023-09-14
+              - button "Open date picker" [ref=e4253] [cursor=pointer]: 📅
+          - cell "Hannah Becker" [ref=e4254]
+          - cell "Munich Office" [ref=e4255]
+          - cell "+15 960 195648" [ref=e4256]
+          - cell "EMP00079" [ref=e4257]
+          - cell "On Leave" [ref=e4258]
+          - cell "QA Engineer" [ref=e4259]
+          - cell "Core" [ref=e4260]
+          - cell "Open date/time picker" [ref=e4261]:
+            - generic [ref=e4262]:
+              - textbox
+              - button "Open date/time picker" [ref=e4264] [cursor=pointer]: 📅
+          - cell "1.01" [ref=e4265]
+          - cell "+ 3,972 €" [ref=e4266]
+          - cell [ref=e4267]
+          - cell "Germany" [ref=e4268]:
+            - text: Germany
+            - generic: ▾
+          - cell "Hamburg" [ref=e4269]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e4270]
+          - cell [ref=e4271]
+          - cell "https://www.linkedin.com/in/alicewagner 🔗" [ref=e4272]:
+            - generic [ref=e4273]:
+              - generic [ref=e4274]: https://www.linkedin.com/in/alicewagner
+              - button "🔗" [ref=e4275] [cursor=pointer]
+          - cell [ref=e4276]
+          - cell "Open date picker" [ref=e4278]:
+            - generic [ref=e4279]:
+              - textbox
+              - button "Open date picker" [ref=e4281] [cursor=pointer]: 📅
+          - cell [ref=e4282]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e4283]:
+            - generic [ref=e4284]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e4285] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e4286]:
+            - generic [ref=e4287]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e4288]':
+            - generic [ref=e4289]:
+              - generic [ref=e4291]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 79" [ref=e4292]:
+          - cell "80" [ref=e4293]
+          - cell "lQgMgougeT" [ref=e4294]
+          - cell "Bob" [ref=e4295]
+          - cell "Becker" [ref=e4296]
+          - cell "bob.becker@example.com" [ref=e4297]
+          - cell [ref=e4298]:
+            - generic: ▾
+          - cell "AWS, Python, Figma, TypeS [...]" [ref=e4299]:
+            - text: AWS, Python, Figma, TypeS [...]
+            - generic: ▾
+          - cell "ipsum et magna amet, sea [...]" [ref=e4300]:
+            - text: ipsum et magna amet, sea [...]
+            - generic [ref=e4301] [cursor=pointer]: 🖉
+          - cell [ref=e4302]:
+            - checkbox [checked] [ref=e4303]
+          - cell "0.00 €" [ref=e4304]
+          - cell "Jun 20, 2016 2016-06-20 Open date picker" [ref=e4305]:
+            - generic [ref=e4306]:
+              - text: Jun 20, 2016
+              - textbox: 2016-06-20
+              - button "Open date picker" [ref=e4307] [cursor=pointer]: 📅
+          - cell "Julia Becker" [ref=e4308]
+          - cell [ref=e4309]
+          - cell [ref=e4310]
+          - cell "EMP00080" [ref=e4311]
+          - cell "Probation" [ref=e4312]
+          - cell "Data Analyst" [ref=e4313]
+          - cell "Core" [ref=e4314]
+          - cell "Open date/time picker" [ref=e4315]:
+            - generic [ref=e4316]:
+              - textbox
+              - button "Open date/time picker" [ref=e4318] [cursor=pointer]: 📅
+          - cell "2.35" [ref=e4319]
+          - cell "+ 0 €" [ref=e4320]
+          - cell [ref=e4321]
+          - cell "Spain" [ref=e4322]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e4323]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e4324]
+          - cell "102 Example Street" [ref=e4325]
+          - cell "https://www.linkedin.com/in/bobbecker 🔗" [ref=e4326]:
+            - generic [ref=e4327]:
+              - generic [ref=e4328]: https://www.linkedin.com/in/bobbecker
+              - button "🔗" [ref=e4329] [cursor=pointer]
+          - cell [ref=e4330]
+          - cell "Open date picker" [ref=e4332]:
+            - generic [ref=e4333]:
+              - textbox
+              - button "Open date picker" [ref=e4335] [cursor=pointer]: 📅
+          - cell [ref=e4336]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e4337]:
+            - generic [ref=e4338]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e4339] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e4340]:
+            - generic [ref=e4341]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e4342]':
+            - generic [ref=e4343]:
+              - generic [ref=e4345]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 80" [ref=e4346]:
+          - cell "81" [ref=e4347]
+          - cell "qZtowRqiswvu5Cel3Uo1VvVd3 [...]" [ref=e4348]
+          - cell [ref=e4349]
+          - cell "Wagner" [ref=e4350]
+          - cell [ref=e4351]
+          - cell "Marketing" [ref=e4352]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Java, Python, TypeScript, [...]" [ref=e4353]:
+            - text: Java, Python, TypeScript, [...]
+            - generic: ▾
+          - cell "sed Stet tempor sanctus i [...]" [ref=e4354]:
+            - text: sed Stet tempor sanctus i [...]
+            - generic [ref=e4355] [cursor=pointer]: 🖉
+          - cell [ref=e4356]:
+            - checkbox [checked] [ref=e4357]
+          - cell "79,827.00 €" [ref=e4358]
+          - cell "Sep 16, 2009 2009-09-16 Open date picker" [ref=e4359]:
+            - generic [ref=e4360]:
+              - text: Sep 16, 2009
+              - textbox: 2009-09-16
+              - button "Open date picker" [ref=e4361] [cursor=pointer]: 📅
+          - cell "Hannah Wagner" [ref=e4362]
+          - cell "Munich Office" [ref=e4363]
+          - cell [ref=e4364]
+          - cell "EMP00081" [ref=e4365]
+          - cell "Terminated" [ref=e4366]
+          - cell [ref=e4367]
+          - cell "Growth" [ref=e4368]
+          - cell "Aug 18, 2021, 9:10 PM 2021-08-18T21:10 Open date/time picker" [ref=e4369]:
+            - generic [ref=e4370]:
+              - text: Aug 18, 2021, 9:10 PM
+              - textbox: 2021-08-18T21:10
+              - button "Open date/time picker" [ref=e4371] [cursor=pointer]: 📅
+          - cell "1.99" [ref=e4372]
+          - cell "+ 7,879 €" [ref=e4373]
+          - cell "Temporary" [ref=e4374]
+          - cell "UK" [ref=e4375]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e4376]:
+            - generic: ▾
+          - cell "93059" [ref=e4377]
+          - cell "83 Example Street" [ref=e4378]
+          - cell "https://www.linkedin.com/in/charliewagner 🔗" [ref=e4379]:
+            - generic [ref=e4380]:
+              - generic [ref=e4381]: https://www.linkedin.com/in/charliewagner
+              - button "🔗" [ref=e4382] [cursor=pointer]
+          - cell [ref=e4383]
+          - cell "November 1, 1974 1974-11-01 Open date picker" [ref=e4385]:
+            - generic [ref=e4386]:
+              - text: November 1, 1974
+              - textbox: 1974-11-01
+              - button "Open date picker" [ref=e4387] [cursor=pointer]: 📅
+          - cell "Hannah Wagner (+145369584 [...]" [ref=e4388]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e4389]:
+            - generic [ref=e4390]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e4391] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e4392]:
+            - generic [ref=e4393]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e4394]':
+            - generic [ref=e4395]:
+              - generic [ref=e4397]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 81" [ref=e4398]:
+          - cell "82" [ref=e4399]
+          - cell "K7wpc6vkv02WPw8agp0JxEkCX [...]" [ref=e4400]
+          - cell "Hannah" [ref=e4401]
+          - cell "Schneider" [ref=e4402]
+          - cell "hannah.schneider@example. [...]" [ref=e4403]
+          - cell "HR" [ref=e4404]:
+            - text: HR
+            - generic: ▾
+          - cell "Python" [ref=e4405]:
+            - text: Python
+            - generic: ▾
+          - cell "sanctus voluptua. sea sad [...]" [ref=e4406]:
+            - text: sanctus voluptua. sea sad [...]
+            - generic [ref=e4407] [cursor=pointer]: 🖉
+          - cell [ref=e4408]:
+            - checkbox [checked] [ref=e4409]
+          - cell "97,376.00 €" [ref=e4410]
+          - cell "Oct 17, 2020 2020-10-17 Open date picker" [ref=e4411]:
+            - generic [ref=e4412]:
+              - text: Oct 17, 2020
+              - textbox: 2020-10-17
+              - button "Open date picker" [ref=e4413] [cursor=pointer]: 📅
+          - cell "Alice Becker" [ref=e4414]
+          - cell "Berlin HQ" [ref=e4415]
+          - cell "+49 814 544613" [ref=e4416]
+          - cell "EMP00082" [ref=e4417]
+          - cell "Terminated" [ref=e4418]
+          - cell [ref=e4419]
+          - cell "Web" [ref=e4420]
+          - cell "Nov 26, 2024, 7:07 PM 2024-11-26T19:07 Open date/time picker" [ref=e4421]:
+            - generic [ref=e4422]:
+              - text: Nov 26, 2024, 7:07 PM
+              - textbox: 2024-11-26T19:07
+              - button "Open date/time picker" [ref=e4423] [cursor=pointer]: 📅
+          - cell "2.69" [ref=e4424]
+          - cell "+ 0 €" [ref=e4425]
+          - cell "Contractor" [ref=e4426]
+          - cell "Netherlands" [ref=e4427]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e4428]:
+            - generic: ▾
+          - cell [ref=e4429]
+          - cell "1 Example Street" [ref=e4430]
+          - cell "https://www.linkedin.com/in/hannahschneider 🔗" [ref=e4431]:
+            - generic [ref=e4432]:
+              - generic [ref=e4433]: https://www.linkedin.com/in/hannahschneider
+              - button "🔗" [ref=e4434] [cursor=pointer]
+          - cell [ref=e4435]
+          - cell "January 22, 1995 1995-01-22 Open date picker" [ref=e4437]:
+            - generic [ref=e4438]:
+              - text: January 22, 1995
+              - textbox: 1995-01-22
+              - button "Open date picker" [ref=e4439] [cursor=pointer]: 📅
+          - cell "Alice Becker (+4939402277 [...]" [ref=e4440]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e4441]:
+            - generic [ref=e4442]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e4443] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e4444]:
+            - generic [ref=e4445]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e4446]':
+            - generic [ref=e4447]:
+              - generic [ref=e4449]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 82" [ref=e4450]:
+          - cell "83" [ref=e4451]
+          - cell "6zJNZWQIq6whkh6K2TL9gh8" [ref=e4452]
+          - cell "Eva" [ref=e4453]
+          - cell "Schneider" [ref=e4454]
+          - cell "eva.schneider@example.com" [ref=e4455]
+          - cell "Legal" [ref=e4456]:
+            - text: Legal
+            - generic: ▾
+          - cell "React" [ref=e4457]:
+            - text: React
+            - generic: ▾
+          - cell "magna voluptua. justo et [...]" [ref=e4458]:
+            - text: magna voluptua. justo et [...]
+            - generic [ref=e4459] [cursor=pointer]: 🖉
+          - cell [ref=e4460]:
+            - checkbox [ref=e4461]
+          - cell "70,563.00 €" [ref=e4462]
+          - cell "Feb 6, 2015 2015-02-06 Open date picker" [ref=e4463]:
+            - generic [ref=e4464]:
+              - text: Feb 6, 2015
+              - textbox: 2015-02-06
+              - button "Open date picker" [ref=e4465] [cursor=pointer]: 📅
+          - cell "Julia Weber" [ref=e4466]
+          - cell "Remote" [ref=e4467]
+          - cell "+49 254 170814" [ref=e4468]
+          - cell "EMP00083" [ref=e4469]
+          - cell "On Leave" [ref=e4470]
+          - cell "QA Engineer" [ref=e4471]
+          - cell [ref=e4472]
+          - cell "Jan 13, 2023, 11:25 AM 2023-01-13T11:25 Open date/time picker" [ref=e4473]:
+            - generic [ref=e4474]:
+              - text: Jan 13, 2023, 11:25 AM
+              - textbox: 2023-01-13T11:25
+              - button "Open date/time picker" [ref=e4475] [cursor=pointer]: 📅
+          - cell "0.73" [ref=e4476]
+          - cell "+ 13,010 €" [ref=e4477]
+          - cell "Permanent" [ref=e4478]
+          - cell "France" [ref=e4479]:
+            - text: France
+            - generic: ▾
+          - cell "Berlin" [ref=e4480]:
+            - text: Berlin
+            - generic: ▾
+          - cell [ref=e4481]
+          - cell "168 Example Street" [ref=e4482]
+          - cell [ref=e4483]
+          - cell "https://github.com/evaschneider 🔗" [ref=e4485]:
+            - generic [ref=e4486]:
+              - generic [ref=e4487]: https://github.com/evaschneider
+              - button "🔗" [ref=e4488] [cursor=pointer]
+          - cell "Open date picker" [ref=e4489]:
+            - generic [ref=e4490]:
+              - textbox
+              - button "Open date picker" [ref=e4492] [cursor=pointer]: 📅
+          - cell "Hannah Meyer (+1258879493 [...]" [ref=e4493]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e4494]:
+            - generic [ref=e4495]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e4496] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e4497]:
+            - generic [ref=e4498]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e4499]':
+            - generic [ref=e4500]:
+              - generic [ref=e4502]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 83" [ref=e4503]:
+          - cell "84" [ref=e4504]
+          - cell "ueiKrW1yXYf7HKT1v2GX9txAz [...]" [ref=e4505]
+          - cell "Hannah" [ref=e4506]
+          - cell "Meyer" [ref=e4507]
+          - cell "hannah.meyer@example.com" [ref=e4508]
+          - cell "HR" [ref=e4509]:
+            - text: HR
+            - generic: ▾
+          - cell "Java" [ref=e4510]:
+            - text: Java
+            - generic: ▾
+          - cell [ref=e4511]:
+            - generic [ref=e4512] [cursor=pointer]: 🖉
+          - cell [ref=e4513]:
+            - checkbox [ref=e4514]
+          - cell "67,632.00 €" [ref=e4515]
+          - cell "Apr 11, 2009 2009-04-11 Open date picker" [ref=e4516]:
+            - generic [ref=e4517]:
+              - text: Apr 11, 2009
+              - textbox: 2009-04-11
+              - button "Open date picker" [ref=e4518] [cursor=pointer]: 📅
+          - cell [ref=e4519]
+          - cell "Hamburg Office" [ref=e4520]
+          - cell "+13 653 136111" [ref=e4521]
+          - cell "EMP00084" [ref=e4522]
+          - cell "On Leave" [ref=e4523]
+          - cell [ref=e4524]
+          - cell "Mobile" [ref=e4525]
+          - cell "Jul 10, 2022, 8:35 AM 2022-07-10T08:35 Open date/time picker" [ref=e4526]:
+            - generic [ref=e4527]:
+              - text: Jul 10, 2022, 8:35 AM
+              - textbox: 2022-07-10T08:35
+              - button "Open date/time picker" [ref=e4528] [cursor=pointer]: 📅
+          - cell "0.60" [ref=e4529]
+          - cell "+ 0 €" [ref=e4530]
+          - cell "Permanent" [ref=e4531]
+          - cell "Germany" [ref=e4532]:
+            - text: Germany
+            - generic: ▾
+          - cell "Cologne" [ref=e4533]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e4534]
+          - cell [ref=e4535]
+          - cell "https://www.linkedin.com/in/hannahmeyer 🔗" [ref=e4536]:
+            - generic [ref=e4537]:
+              - generic [ref=e4538]: https://www.linkedin.com/in/hannahmeyer
+              - button "🔗" [ref=e4539] [cursor=pointer]
+          - cell "https://github.com/hannahmeyer 🔗" [ref=e4540]:
+            - generic [ref=e4541]:
+              - generic [ref=e4542]: https://github.com/hannahmeyer
+              - button "🔗" [ref=e4543] [cursor=pointer]
+          - cell "September 8, 1997 1997-09-08 Open date picker" [ref=e4544]:
+            - generic [ref=e4545]:
+              - text: September 8, 1997
+              - textbox: 1997-09-08
+              - button "Open date picker" [ref=e4546] [cursor=pointer]: 📅
+          - cell [ref=e4547]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e4548]:
+            - generic [ref=e4549]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e4550] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e4551]:
+            - generic [ref=e4552]: 4h
+          - 'cell "#f97316 #f97316" [ref=e4553]':
+            - generic [ref=e4554]:
+              - generic [ref=e4556]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 84" [ref=e4557]:
+          - cell "85" [ref=e4558]
+          - cell "isLyvyKd0n4qjC4sLI0f_U-Px [...]" [ref=e4559]
+          - cell "Alice" [ref=e4560]
+          - cell "Fischer" [ref=e4561]
+          - cell "alice.fischer@example.com" [ref=e4562]
+          - cell [ref=e4563]:
+            - generic: ▾
+          - cell "React, TypeScript, Python" [ref=e4564]:
+            - text: React, TypeScript, Python
+            - generic: ▾
+          - cell "dolor labore erat, elitr, [...]" [ref=e4565]:
+            - text: dolor labore erat, elitr, [...]
+            - generic [ref=e4566] [cursor=pointer]: 🖉
+          - cell [ref=e4567]:
+            - checkbox [checked] [ref=e4568]
+          - cell "0.00 €" [ref=e4569]
+          - cell "Open date picker" [ref=e4570]:
+            - generic [ref=e4571]:
+              - textbox
+              - button "Open date picker" [ref=e4573] [cursor=pointer]: 📅
+          - cell "Ian Wagner" [ref=e4574]
+          - cell [ref=e4575]
+          - cell "+14 756 040629" [ref=e4576]
+          - cell "EMP00085" [ref=e4577]
+          - cell "Terminated" [ref=e4578]
+          - cell "DevOps Engineer" [ref=e4579]
+          - cell "Mobile" [ref=e4580]
+          - cell "Dec 11, 2024, 11:32 AM 2024-12-11T11:32 Open date/time picker" [ref=e4581]:
+            - generic [ref=e4582]:
+              - text: Dec 11, 2024, 11:32 AM
+              - textbox: 2024-12-11T11:32
+              - button "Open date/time picker" [ref=e4583] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e4584]
+          - cell "+ 5,561 €" [ref=e4585]
+          - cell [ref=e4586]
+          - cell "France" [ref=e4587]:
+            - text: France
+            - generic: ▾
+          - cell "Frankfurt" [ref=e4588]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "32643" [ref=e4589]
+          - cell "132 Example Street" [ref=e4590]
+          - cell [ref=e4591]
+          - cell "https://github.com/alicefischer 🔗" [ref=e4593]:
+            - generic [ref=e4594]:
+              - generic [ref=e4595]: https://github.com/alicefischer
+              - button "🔗" [ref=e4596] [cursor=pointer]
+          - cell "Open date picker" [ref=e4597]:
+            - generic [ref=e4598]:
+              - textbox
+              - button "Open date picker" [ref=e4600] [cursor=pointer]: 📅
+          - cell "Frank Weber (+17769734571 [...]" [ref=e4601]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e4602]:
+            - generic [ref=e4603]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e4604] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e4605]:
+            - generic [ref=e4606]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e4607]':
+            - generic [ref=e4608]:
+              - generic [ref=e4610]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 85" [ref=e4611]:
+          - cell "86" [ref=e4612]
+          - cell "rIeAyZBdbqqH0wy1a6sU5hMqW [...]" [ref=e4613]
+          - cell "Bob" [ref=e4614]
+          - cell "Müller" [ref=e4615]
+          - cell "bob.müller@example.com" [ref=e4616]
+          - cell "Sales" [ref=e4617]:
+            - text: Sales
+            - generic: ▾
+          - cell "React, SQL, TypeScript, D [...]" [ref=e4618]:
+            - text: React, SQL, TypeScript, D [...]
+            - generic: ▾
+          - cell "ut aliquyam accusam accus [...]" [ref=e4619]:
+            - text: ut aliquyam accusam accus [...]
+            - generic [ref=e4620] [cursor=pointer]: 🖉
+          - cell [ref=e4621]:
+            - checkbox [checked] [ref=e4622]
+          - cell "54,032.00 €" [ref=e4623]
+          - cell "Aug 30, 2017 2017-08-30 Open date picker" [ref=e4624]:
+            - generic [ref=e4625]:
+              - text: Aug 30, 2017
+              - textbox: 2017-08-30
+              - button "Open date picker" [ref=e4626] [cursor=pointer]: 📅
+          - cell [ref=e4627]
+          - cell "Cologne Office" [ref=e4628]
+          - cell "+49 666 107541" [ref=e4629]
+          - cell "EMP00086" [ref=e4630]
+          - cell "Probation" [ref=e4631]
+          - cell "DevOps Engineer" [ref=e4632]
+          - cell [ref=e4633]
+          - cell "Open date/time picker" [ref=e4634]:
+            - generic [ref=e4635]:
+              - textbox
+              - button "Open date/time picker" [ref=e4637] [cursor=pointer]: 📅
+          - cell "3.25" [ref=e4638]
+          - cell "+ 0 €" [ref=e4639]
+          - cell "Contractor" [ref=e4640]
+          - cell "UK" [ref=e4641]:
+            - text: UK
+            - generic: ▾
+          - cell "Berlin" [ref=e4642]:
+            - text: Berlin
+            - generic: ▾
+          - cell "71453" [ref=e4643]
+          - cell [ref=e4644]
+          - cell [ref=e4645]
+          - cell "https://github.com/bobmüller 🔗" [ref=e4647]:
+            - generic [ref=e4648]:
+              - generic [ref=e4649]: https://github.com/bobmüller
+              - button "🔗" [ref=e4650] [cursor=pointer]
+          - cell "July 18, 1972 1972-07-18 Open date picker" [ref=e4651]:
+            - generic [ref=e4652]:
+              - text: July 18, 1972
+              - textbox: 1972-07-18
+              - button "Open date picker" [ref=e4653] [cursor=pointer]: 📅
+          - cell "Charlie Müller (+18355631 [...]" [ref=e4654]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e4655]:
+            - generic [ref=e4656]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e4657] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e4658]:
+            - generic [ref=e4659]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e4660]':
+            - generic [ref=e4661]:
+              - generic [ref=e4663]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 86" [ref=e4664]:
+          - cell "87" [ref=e4665]
+          - cell "YXKDUkH7kBPB7lW" [ref=e4666]
+          - cell "Ian" [ref=e4667]
+          - cell "Wagner" [ref=e4668]
+          - cell "ian.wagner@example.com" [ref=e4669]
+          - cell "Marketing" [ref=e4670]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Docker" [ref=e4671]:
+            - text: Docker
+            - generic: ▾
+          - cell "sed elitr, kasd dolore et [...]" [ref=e4672]:
+            - text: sed elitr, kasd dolore et [...]
+            - generic [ref=e4673] [cursor=pointer]: 🖉
+          - cell [ref=e4674]:
+            - checkbox [checked] [ref=e4675]
+          - cell "55,514.00 €" [ref=e4676]
+          - cell "Apr 28, 2013 2013-04-28 Open date picker" [ref=e4677]:
+            - generic [ref=e4678]:
+              - text: Apr 28, 2013
+              - textbox: 2013-04-28
+              - button "Open date picker" [ref=e4679] [cursor=pointer]: 📅
+          - cell "Bob Becker" [ref=e4680]
+          - cell "Berlin HQ" [ref=e4681]
+          - cell "+18 354 337852" [ref=e4682]
+          - cell "EMP00087" [ref=e4683]
+          - cell "Active" [ref=e4684]
+          - cell [ref=e4685]
+          - cell "Growth" [ref=e4686]
+          - cell "Oct 13, 2022, 3:29 PM 2022-10-13T15:29 Open date/time picker" [ref=e4687]:
+            - generic [ref=e4688]:
+              - text: Oct 13, 2022, 3:29 PM
+              - textbox: 2022-10-13T15:29
+              - button "Open date/time picker" [ref=e4689] [cursor=pointer]: 📅
+          - cell "0.06" [ref=e4690]
+          - cell "+ 0 €" [ref=e4691]
+          - cell "Contractor" [ref=e4692]
+          - cell "USA" [ref=e4693]:
+            - text: USA
+            - generic: ▾
+          - cell "Hamburg" [ref=e4694]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "21438" [ref=e4695]
+          - cell "45 Example Street" [ref=e4696]
+          - cell [ref=e4697]
+          - cell [ref=e4699]
+          - cell "December 21, 1976 1976-12-21 Open date picker" [ref=e4701]:
+            - generic [ref=e4702]:
+              - text: December 21, 1976
+              - textbox: 1976-12-21
+              - button "Open date picker" [ref=e4703] [cursor=pointer]: 📅
+          - cell [ref=e4704]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e4705]:
+            - generic [ref=e4706]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e4707] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e4708]:
+            - generic [ref=e4709]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e4710]':
+            - generic [ref=e4711]:
+              - generic [ref=e4713]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 87" [ref=e4714]:
+          - cell "88" [ref=e4715]
+          - cell "b4S8ZwzCj8WgGkyB0dtwIUhZq [...]" [ref=e4716]
+          - cell "Eva" [ref=e4717]
+          - cell "Wagner" [ref=e4718]
+          - cell "eva.wagner@example.com" [ref=e4719]
+          - cell "Sales" [ref=e4720]:
+            - text: Sales
+            - generic: ▾
+          - cell "AWS, SQL, Docker" [ref=e4721]:
+            - text: AWS, SQL, Docker
+            - generic: ▾
+          - cell [ref=e4722]:
+            - generic [ref=e4723] [cursor=pointer]: 🖉
+          - cell [ref=e4724]:
+            - checkbox [ref=e4725]
+          - cell "49,674.00 €" [ref=e4726]
+          - cell "Aug 20, 2008 2008-08-20 Open date picker" [ref=e4727]:
+            - generic [ref=e4728]:
+              - text: Aug 20, 2008
+              - textbox: 2008-08-20
+              - button "Open date picker" [ref=e4729] [cursor=pointer]: 📅
+          - cell "Grace Fischer" [ref=e4730]
+          - cell [ref=e4731]
+          - cell "+49 968 788274" [ref=e4732]
+          - cell "EMP00088" [ref=e4733]
+          - cell "Terminated" [ref=e4734]
+          - cell "DevOps Engineer" [ref=e4735]
+          - cell "Web" [ref=e4736]
+          - cell "Oct 8, 2020, 1:44 AM 2020-10-08T01:44 Open date/time picker" [ref=e4737]:
+            - generic [ref=e4738]:
+              - text: Oct 8, 2020, 1:44 AM
+              - textbox: 2020-10-08T01:44
+              - button "Open date/time picker" [ref=e4739] [cursor=pointer]: 📅
+          - cell "3.68" [ref=e4740]
+          - cell "+ 0 €" [ref=e4741]
+          - cell "Permanent" [ref=e4742]
+          - cell "USA" [ref=e4743]:
+            - text: USA
+            - generic: ▾
+          - cell "Stuttgart" [ref=e4744]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "13880" [ref=e4745]
+          - cell "56 Example Street" [ref=e4746]
+          - cell [ref=e4747]
+          - cell [ref=e4749]
+          - cell "April 1, 1977 1977-04-01 Open date picker" [ref=e4751]:
+            - generic [ref=e4752]:
+              - text: April 1, 1977
+              - textbox: 1977-04-01
+              - button "Open date picker" [ref=e4753] [cursor=pointer]: 📅
+          - cell "Charlie Fischer (+1923695 [...]" [ref=e4754]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e4755]:
+            - generic [ref=e4756]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e4757] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e4758]:
+            - generic [ref=e4759]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e4760]':
+            - generic [ref=e4761]:
+              - generic [ref=e4763]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 88" [ref=e4764]:
+          - cell "89" [ref=e4765]
+          - cell "cr0bIdgnI_7or-7jzLRnkEdzf [...]" [ref=e4766]
+          - cell "Bob" [ref=e4767]
+          - cell "Becker" [ref=e4768]
+          - cell "bob.becker@example.com" [ref=e4769]
+          - cell "Finance" [ref=e4770]:
+            - text: Finance
+            - generic: ▾
+          - cell "Figma, Java, SQL" [ref=e4771]:
+            - text: Figma, Java, SQL
+            - generic: ▾
+          - cell "justo diam et est. clita [...]" [ref=e4772]:
+            - text: justo diam et est. clita [...]
+            - generic [ref=e4773] [cursor=pointer]: 🖉
+          - cell [ref=e4774]:
+            - checkbox [checked] [ref=e4775]
+          - cell "72,510.00 €" [ref=e4776]
+          - cell "Dec 18, 2008 2008-12-18 Open date picker" [ref=e4777]:
+            - generic [ref=e4778]:
+              - text: Dec 18, 2008
+              - textbox: 2008-12-18
+              - button "Open date picker" [ref=e4779] [cursor=pointer]: 📅
+          - cell "Julia Schmidt" [ref=e4780]
+          - cell "Hamburg Office" [ref=e4781]
+          - cell [ref=e4782]
+          - cell "EMP00089" [ref=e4783]
+          - cell "Terminated" [ref=e4784]
+          - cell "QA Engineer" [ref=e4785]
+          - cell "Core" [ref=e4786]
+          - cell "Oct 30, 2024, 4:23 PM 2024-10-30T16:23 Open date/time picker" [ref=e4787]:
+            - generic [ref=e4788]:
+              - text: Oct 30, 2024, 4:23 PM
+              - textbox: 2024-10-30T16:23
+              - button "Open date/time picker" [ref=e4789] [cursor=pointer]: 📅
+          - cell "1.16" [ref=e4790]
+          - cell "+ 11,209 €" [ref=e4791]
+          - cell "Contractor" [ref=e4792]
+          - cell "Germany" [ref=e4793]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e4794]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "93847" [ref=e4795]
+          - cell "139 Example Street" [ref=e4796]
+          - cell [ref=e4797]
+          - cell [ref=e4799]
+          - cell "March 25, 1997 1997-03-25 Open date picker" [ref=e4801]:
+            - generic [ref=e4802]:
+              - text: March 25, 1997
+              - textbox: 1997-03-25
+              - button "Open date picker" [ref=e4803] [cursor=pointer]: 📅
+          - cell [ref=e4804]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e4805]:
+            - generic [ref=e4806]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e4807] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e4808]:
+            - generic [ref=e4809]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e4810]':
+            - generic [ref=e4811]:
+              - generic [ref=e4813]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 89" [ref=e4814]:
+          - cell "90" [ref=e4815]
+          - cell "njgkIl8bWif9yc0Zt_3aC" [ref=e4816]
+          - cell "Julia" [ref=e4817]
+          - cell "Weber" [ref=e4818]
+          - cell "julia.weber@example.com" [ref=e4819]
+          - cell "Finance" [ref=e4820]:
+            - text: Finance
+            - generic: ▾
+          - cell [ref=e4821]:
+            - generic: ▾
+          - cell "vero consetetur magna san [...]" [ref=e4822]:
+            - text: vero consetetur magna san [...]
+            - generic [ref=e4823] [cursor=pointer]: 🖉
+          - cell [ref=e4824]:
+            - checkbox [checked] [ref=e4825]
+          - cell "81,401.00 €" [ref=e4826]
+          - cell "Sep 1, 2022 2022-09-01 Open date picker" [ref=e4827]:
+            - generic [ref=e4828]:
+              - text: Sep 1, 2022
+              - textbox: 2022-09-01
+              - button "Open date picker" [ref=e4829] [cursor=pointer]: 📅
+          - cell [ref=e4830]
+          - cell "Remote" [ref=e4831]
+          - cell "+49 872 915580" [ref=e4832]
+          - cell "EMP00090" [ref=e4833]
+          - cell "Terminated" [ref=e4834]
+          - cell "Product Manager" [ref=e4835]
+          - cell "Platform" [ref=e4836]
+          - cell "Open date/time picker" [ref=e4837]:
+            - generic [ref=e4838]:
+              - textbox
+              - button "Open date/time picker" [ref=e4840] [cursor=pointer]: 📅
+          - cell "3.36" [ref=e4841]
+          - cell "+ 344 €" [ref=e4842]
+          - cell "Temporary" [ref=e4843]
+          - cell "USA" [ref=e4844]:
+            - text: USA
+            - generic: ▾
+          - cell [ref=e4845]:
+            - generic: ▾
+          - cell "69095" [ref=e4846]
+          - cell "175 Example Street" [ref=e4847]
+          - cell [ref=e4848]
+          - cell [ref=e4850]
+          - cell "Open date picker" [ref=e4852]:
+            - generic [ref=e4853]:
+              - textbox
+              - button "Open date picker" [ref=e4855] [cursor=pointer]: 📅
+          - cell [ref=e4856]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e4857]:
+            - generic [ref=e4858]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e4859] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e4860]:
+            - generic [ref=e4861]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e4862]':
+            - generic [ref=e4863]:
+              - generic [ref=e4865]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 90" [ref=e4866]:
+          - cell "91" [ref=e4867]
+          - cell "2ud4T7ObFjfU6" [ref=e4868]
+          - cell "Diana" [ref=e4869]
+          - cell "Weber" [ref=e4870]
+          - cell "diana.weber@example.com" [ref=e4871]
+          - cell "Marketing" [ref=e4872]:
+            - text: Marketing
+            - generic: ▾
+          - cell "SQL" [ref=e4873]:
+            - text: SQL
+            - generic: ▾
+          - cell "duo ea et dolore rebum. s [...]" [ref=e4874]:
+            - text: duo ea et dolore rebum. s [...]
+            - generic [ref=e4875] [cursor=pointer]: 🖉
+          - cell [ref=e4876]:
+            - checkbox [checked] [ref=e4877]
+          - cell "42,241.00 €" [ref=e4878]
+          - cell "Feb 15, 2011 2011-02-15 Open date picker" [ref=e4879]:
+            - generic [ref=e4880]:
+              - text: Feb 15, 2011
+              - textbox: 2011-02-15
+              - button "Open date picker" [ref=e4881] [cursor=pointer]: 📅
+          - cell [ref=e4882]
+          - cell "Berlin HQ" [ref=e4883]
+          - cell [ref=e4884]
+          - cell "EMP00091" [ref=e4885]
+          - cell "Active" [ref=e4886]
+          - cell "Designer" [ref=e4887]
+          - cell "Core" [ref=e4888]
+          - cell "Jan 21, 2020, 2:00 AM 2020-01-21T02:00 Open date/time picker" [ref=e4889]:
+            - generic [ref=e4890]:
+              - text: Jan 21, 2020, 2:00 AM
+              - textbox: 2020-01-21T02:00
+              - button "Open date/time picker" [ref=e4891] [cursor=pointer]: 📅
+          - cell "0.05" [ref=e4892]
+          - cell "+ 4,505 €" [ref=e4893]
+          - cell "Temporary" [ref=e4894]
+          - cell "USA" [ref=e4895]:
+            - text: USA
+            - generic: ▾
+          - cell "Frankfurt" [ref=e4896]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "55675" [ref=e4897]
+          - cell "10 Example Street" [ref=e4898]
+          - cell [ref=e4899]
+          - cell [ref=e4901]
+          - cell "March 1, 1996 1996-03-01 Open date picker" [ref=e4903]:
+            - generic [ref=e4904]:
+              - text: March 1, 1996
+              - textbox: 1996-03-01
+              - button "Open date picker" [ref=e4905] [cursor=pointer]: 📅
+          - cell [ref=e4906]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e4907]:
+            - generic [ref=e4908]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e4909] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e4910]:
+            - generic [ref=e4911]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e4912]':
+            - generic [ref=e4913]:
+              - generic [ref=e4915]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 91" [ref=e4916]:
+          - cell "92" [ref=e4917]
+          - cell "_LsTdwa2MODGi" [ref=e4918]
+          - cell "Charlie" [ref=e4919]
+          - cell [ref=e4920]
+          - cell "charlie.fischer@example.c [...]" [ref=e4921]
+          - cell [ref=e4922]:
+            - generic: ▾
+          - cell "React" [ref=e4923]:
+            - text: React
+            - generic: ▾
+          - cell [ref=e4924]:
+            - generic [ref=e4925] [cursor=pointer]: 🖉
+          - cell [ref=e4926]:
+            - checkbox [ref=e4927]
+          - cell "83,551.00 €" [ref=e4928]
+          - cell "Dec 19, 2008 2008-12-19 Open date picker" [ref=e4929]:
+            - generic [ref=e4930]:
+              - text: Dec 19, 2008
+              - textbox: 2008-12-19
+              - button "Open date picker" [ref=e4931] [cursor=pointer]: 📅
+          - cell "Alice Schmidt" [ref=e4932]
+          - cell "Munich Office" [ref=e4933]
+          - cell [ref=e4934]
+          - cell "EMP00092" [ref=e4935]
+          - cell "Terminated" [ref=e4936]
+          - cell "QA Engineer" [ref=e4937]
+          - cell "Growth" [ref=e4938]
+          - cell "Feb 25, 2020, 9:10 PM 2020-02-25T21:10 Open date/time picker" [ref=e4939]:
+            - generic [ref=e4940]:
+              - text: Feb 25, 2020, 9:10 PM
+              - textbox: 2020-02-25T21:10
+              - button "Open date/time picker" [ref=e4941] [cursor=pointer]: 📅
+          - cell "1.76" [ref=e4942]
+          - cell "+ 7,844 €" [ref=e4943]
+          - cell "Intern" [ref=e4944]
+          - cell "Spain" [ref=e4945]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e4946]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "36922" [ref=e4947]
+          - cell "111 Example Street" [ref=e4948]
+          - cell [ref=e4949]
+          - cell "https://github.com/charliefischer 🔗" [ref=e4951]:
+            - generic [ref=e4952]:
+              - generic [ref=e4953]: https://github.com/charliefischer
+              - button "🔗" [ref=e4954] [cursor=pointer]
+          - cell "May 13, 1998 1998-05-13 Open date picker" [ref=e4955]:
+            - generic [ref=e4956]:
+              - text: May 13, 1998
+              - textbox: 1998-05-13
+              - button "Open date picker" [ref=e4957] [cursor=pointer]: 📅
+          - cell [ref=e4958]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e4959]:
+            - generic [ref=e4960]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e4961] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e4962]:
+            - generic [ref=e4963]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e4964]':
+            - generic [ref=e4965]:
+              - generic [ref=e4967]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 92" [ref=e4968]:
+          - cell "93" [ref=e4969]
+          - cell "SYrVx99pw6-2GZb8lcIAaGryr [...]" [ref=e4970]
+          - cell "Eva" [ref=e4971]
+          - cell "Schmidt" [ref=e4972]
+          - cell "eva.schmidt@example.com" [ref=e4973]
+          - cell "Legal" [ref=e4974]:
+            - text: Legal
+            - generic: ▾
+          - cell "Figma, TypeScript" [ref=e4975]:
+            - text: Figma, TypeScript
+            - generic: ▾
+          - cell [ref=e4976]:
+            - generic [ref=e4977] [cursor=pointer]: 🖉
+          - cell [ref=e4978]:
+            - checkbox [checked] [ref=e4979]
+          - cell "0.00 €" [ref=e4980]
+          - cell "Mar 16, 2008 2008-03-16 Open date picker" [ref=e4981]:
+            - generic [ref=e4982]:
+              - text: Mar 16, 2008
+              - textbox: 2008-03-16
+              - button "Open date picker" [ref=e4983] [cursor=pointer]: 📅
+          - cell "Frank Fischer" [ref=e4984]
+          - cell [ref=e4985]
+          - cell [ref=e4986]
+          - cell "EMP00093" [ref=e4987]
+          - cell "On Leave" [ref=e4988]
+          - cell "Designer" [ref=e4989]
+          - cell [ref=e4990]
+          - cell "Open date/time picker" [ref=e4991]:
+            - generic [ref=e4992]:
+              - textbox
+              - button "Open date/time picker" [ref=e4994] [cursor=pointer]: 📅
+          - cell "3.64" [ref=e4995]
+          - cell "+ 11,417 €" [ref=e4996]
+          - cell "Temporary" [ref=e4997]
+          - cell "Germany" [ref=e4998]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e4999]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "85775" [ref=e5000]
+          - cell "89 Example Street" [ref=e5001]
+          - cell [ref=e5002]
+          - cell [ref=e5004]
+          - cell "August 9, 1985 1985-08-09 Open date picker" [ref=e5006]:
+            - generic [ref=e5007]:
+              - text: August 9, 1985
+              - textbox: 1985-08-09
+              - button "Open date picker" [ref=e5008] [cursor=pointer]: 📅
+          - cell "Bob Schmidt (+49338466767 [...]" [ref=e5009]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e5010]:
+            - generic [ref=e5011]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e5012] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e5013]:
+            - generic [ref=e5014]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e5015]':
+            - generic [ref=e5016]:
+              - generic [ref=e5018]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 93" [ref=e5019]:
+          - cell "94" [ref=e5020]
+          - cell "hmse-X-nhsaUAYlLb5OFhuTTu [...]" [ref=e5021]
+          - cell "Bob" [ref=e5022]
+          - cell "Schneider" [ref=e5023]
+          - cell "bob.schneider@example.com" [ref=e5024]
+          - cell "IT" [ref=e5025]:
+            - text: IT
+            - generic: ▾
+          - cell "TypeScript, Figma" [ref=e5026]:
+            - text: TypeScript, Figma
+            - generic: ▾
+          - cell "dolore dolores et vero se [...]" [ref=e5027]:
+            - text: dolore dolores et vero se [...]
+            - generic [ref=e5028] [cursor=pointer]: 🖉
+          - cell [ref=e5029]:
+            - checkbox [ref=e5030]
+          - cell "90,771.00 €" [ref=e5031]
+          - cell "Nov 20, 2017 2017-11-20 Open date picker" [ref=e5032]:
+            - generic [ref=e5033]:
+              - text: Nov 20, 2017
+              - textbox: 2017-11-20
+              - button "Open date picker" [ref=e5034] [cursor=pointer]: 📅
+          - cell [ref=e5035]
+          - cell [ref=e5036]
+          - cell "+11 358 345970" [ref=e5037]
+          - cell "EMP00094" [ref=e5038]
+          - cell "On Leave" [ref=e5039]
+          - cell "QA Engineer" [ref=e5040]
+          - cell [ref=e5041]
+          - cell "Open date/time picker" [ref=e5042]:
+            - generic [ref=e5043]:
+              - textbox
+              - button "Open date/time picker" [ref=e5045] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e5046]
+          - cell "+ 966 €" [ref=e5047]
+          - cell "Contractor" [ref=e5048]
+          - cell "UK" [ref=e5049]:
+            - text: UK
+            - generic: ▾
+          - cell "Hamburg" [ref=e5050]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "36198" [ref=e5051]
+          - cell "175 Example Street" [ref=e5052]
+          - cell [ref=e5053]
+          - cell [ref=e5055]
+          - cell "July 22, 1985 1985-07-22 Open date picker" [ref=e5057]:
+            - generic [ref=e5058]:
+              - text: July 22, 1985
+              - textbox: 1985-07-22
+              - button "Open date picker" [ref=e5059] [cursor=pointer]: 📅
+          - cell [ref=e5060]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e5061]:
+            - generic [ref=e5062]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e5063] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e5064]:
+            - generic [ref=e5065]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e5066]':
+            - generic [ref=e5067]:
+              - generic [ref=e5069]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 94" [ref=e5070]:
+          - cell "95" [ref=e5071]
+          - cell "7oMUS7C7ziaI36PBjMyEvx" [ref=e5072]
+          - cell "Hannah" [ref=e5073]
+          - cell "Wagner" [ref=e5074]
+          - cell "hannah.wagner@example.com" [ref=e5075]
+          - cell "IT" [ref=e5076]:
+            - text: IT
+            - generic: ▾
+          - cell "React, Python, SQL" [ref=e5077]:
+            - text: React, Python, SQL
+            - generic: ▾
+          - cell "eos dolore clita gubergre [...]" [ref=e5078]:
+            - text: eos dolore clita gubergre [...]
+            - generic [ref=e5079] [cursor=pointer]: 🖉
+          - cell [ref=e5080]:
+            - checkbox [checked] [ref=e5081]
+          - cell "52,462.00 €" [ref=e5082]
+          - cell "Oct 3, 2021 2021-10-03 Open date picker" [ref=e5083]:
+            - generic [ref=e5084]:
+              - text: Oct 3, 2021
+              - textbox: 2021-10-03
+              - button "Open date picker" [ref=e5085] [cursor=pointer]: 📅
+          - cell "Alice Wagner" [ref=e5086]
+          - cell [ref=e5087]
+          - cell "+49 742 238376" [ref=e5088]
+          - cell "EMP00095" [ref=e5089]
+          - cell "On Leave" [ref=e5090]
+          - cell "Designer" [ref=e5091]
+          - cell "Platform" [ref=e5092]
+          - cell "Open date/time picker" [ref=e5093]:
+            - generic [ref=e5094]:
+              - textbox
+              - button "Open date/time picker" [ref=e5096] [cursor=pointer]: 📅
+          - cell "1.98" [ref=e5097]
+          - cell "+ 5,853 €" [ref=e5098]
+          - cell "Permanent" [ref=e5099]
+          - cell "USA" [ref=e5100]:
+            - text: USA
+            - generic: ▾
+          - cell "Cologne" [ref=e5101]:
+            - text: Cologne
+            - generic: ▾
+          - cell "62140" [ref=e5102]
+          - cell "59 Example Street" [ref=e5103]
+          - cell [ref=e5104]
+          - cell [ref=e5106]
+          - cell "September 30, 1992 1992-09-30 Open date picker" [ref=e5108]:
+            - generic [ref=e5109]:
+              - text: September 30, 1992
+              - textbox: 1992-09-30
+              - button "Open date picker" [ref=e5110] [cursor=pointer]: 📅
+          - cell [ref=e5111]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e5112]:
+            - generic [ref=e5113]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e5114] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e5115]:
+            - generic [ref=e5116]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e5117]':
+            - generic [ref=e5118]:
+              - generic [ref=e5120]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 95" [ref=e5121]:
+          - cell "96" [ref=e5122]
+          - cell "O1WQxUxoS4IzOM3UXS_lMjUpP [...]" [ref=e5123]
+          - cell [ref=e5124]
+          - cell "Schneider" [ref=e5125]
+          - cell "ian.schneider@example.com" [ref=e5126]
+          - cell [ref=e5127]:
+            - generic: ▾
+          - cell [ref=e5128]:
+            - generic: ▾
+          - cell [ref=e5129]:
+            - generic [ref=e5130] [cursor=pointer]: 🖉
+          - cell [ref=e5131]:
+            - checkbox [checked] [ref=e5132]
+          - cell "56,850.00 €" [ref=e5133]
+          - cell "Open date picker" [ref=e5134]:
+            - generic [ref=e5135]:
+              - textbox
+              - button "Open date picker" [ref=e5137] [cursor=pointer]: 📅
+          - cell "Charlie Weber" [ref=e5138]
+          - cell "Hamburg Office" [ref=e5139]
+          - cell "+49 983 443944" [ref=e5140]
+          - cell "EMP00096" [ref=e5141]
+          - cell "On Leave" [ref=e5142]
+          - cell "Product Manager" [ref=e5143]
+          - cell "Mobile" [ref=e5144]
+          - cell "Mar 15, 2024, 10:48 PM 2024-03-15T22:48 Open date/time picker" [ref=e5145]:
+            - generic [ref=e5146]:
+              - text: Mar 15, 2024, 10:48 PM
+              - textbox: 2024-03-15T22:48
+              - button "Open date/time picker" [ref=e5147] [cursor=pointer]: 📅
+          - cell "2.53" [ref=e5148]
+          - cell "+ 2,149 €" [ref=e5149]
+          - cell "Contractor" [ref=e5150]
+          - cell "Netherlands" [ref=e5151]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Stuttgart" [ref=e5152]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e5153]
+          - cell "68 Example Street" [ref=e5154]
+          - cell [ref=e5155]
+          - cell "https://github.com/ianschneider 🔗" [ref=e5157]:
+            - generic [ref=e5158]:
+              - generic [ref=e5159]: https://github.com/ianschneider
+              - button "🔗" [ref=e5160] [cursor=pointer]
+          - cell "June 29, 1987 1987-06-29 Open date picker" [ref=e5161]:
+            - generic [ref=e5162]:
+              - text: June 29, 1987
+              - textbox: 1987-06-29
+              - button "Open date picker" [ref=e5163] [cursor=pointer]: 📅
+          - cell [ref=e5164]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e5165]:
+            - generic [ref=e5166]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e5167] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e5168]:
+            - generic [ref=e5169]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e5170]':
+            - generic [ref=e5171]:
+              - generic [ref=e5173]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 96" [ref=e5174]:
+          - cell "97" [ref=e5175]
+          - cell "4v3KRYXosS2D" [ref=e5176]
+          - cell "Grace" [ref=e5177]
+          - cell [ref=e5178]
+          - cell "grace.wagner@example.com" [ref=e5179]
+          - cell "Finance" [ref=e5180]:
+            - text: Finance
+            - generic: ▾
+          - cell "AWS, React, TypeScript, S [...]" [ref=e5181]:
+            - text: AWS, React, TypeScript, S [...]
+            - generic: ▾
+          - cell "Stet vero At ipsum invidu [...]" [ref=e5182]:
+            - text: Stet vero At ipsum invidu [...]
+            - generic [ref=e5183] [cursor=pointer]: 🖉
+          - cell [ref=e5184]:
+            - checkbox [checked] [ref=e5185]
+          - cell "61,074.00 €" [ref=e5186]
+          - cell "Sep 5, 2007 2007-09-05 Open date picker" [ref=e5187]:
+            - generic [ref=e5188]:
+              - text: Sep 5, 2007
+              - textbox: 2007-09-05
+              - button "Open date picker" [ref=e5189] [cursor=pointer]: 📅
+          - cell "Charlie Müller" [ref=e5190]
+          - cell "Remote" [ref=e5191]
+          - cell "+49 198 154556" [ref=e5192]
+          - cell "EMP00097" [ref=e5193]
+          - cell "Active" [ref=e5194]
+          - cell "DevOps Engineer" [ref=e5195]
+          - cell "Growth" [ref=e5196]
+          - cell "Open date/time picker" [ref=e5197]:
+            - generic [ref=e5198]:
+              - textbox
+              - button "Open date/time picker" [ref=e5200] [cursor=pointer]: 📅
+          - cell "4.51" [ref=e5201]
+          - cell "+ 0 €" [ref=e5202]
+          - cell "Permanent" [ref=e5203]
+          - cell "Spain" [ref=e5204]:
+            - text: Spain
+            - generic: ▾
+          - cell [ref=e5205]:
+            - generic: ▾
+          - cell "88192" [ref=e5206]
+          - cell "159 Example Street" [ref=e5207]
+          - cell [ref=e5208]
+          - cell "https://github.com/gracewagner 🔗" [ref=e5210]:
+            - generic [ref=e5211]:
+              - generic [ref=e5212]: https://github.com/gracewagner
+              - button "🔗" [ref=e5213] [cursor=pointer]
+          - cell "Open date picker" [ref=e5214]:
+            - generic [ref=e5215]:
+              - textbox
+              - button "Open date picker" [ref=e5217] [cursor=pointer]: 📅
+          - cell [ref=e5218]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e5219]:
+            - generic [ref=e5220]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e5221] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e5222]:
+            - generic [ref=e5223]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e5224]':
+            - generic [ref=e5225]:
+              - generic [ref=e5227]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 97" [ref=e5228]:
+          - cell "98" [ref=e5229]
+          - cell "yVEvgqsmDcRSkcn-HF" [ref=e5230]
+          - cell "Eva" [ref=e5231]
+          - cell "Schneider" [ref=e5232]
+          - cell "eva.schneider@example.com" [ref=e5233]
+          - cell "Sales" [ref=e5234]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript, Figma, React, [...]" [ref=e5235]:
+            - text: TypeScript, Figma, React, [...]
+            - generic: ▾
+          - cell "clita et elitr, et sit cl [...]" [ref=e5236]:
+            - text: clita et elitr, et sit cl [...]
+            - generic [ref=e5237] [cursor=pointer]: 🖉
+          - cell [ref=e5238]:
+            - checkbox [checked] [ref=e5239]
+          - cell "53,194.00 €" [ref=e5240]
+          - cell "Open date picker" [ref=e5241]:
+            - generic [ref=e5242]:
+              - textbox
+              - button "Open date picker" [ref=e5244] [cursor=pointer]: 📅
+          - cell "Julia Schmidt" [ref=e5245]
+          - cell "Berlin HQ" [ref=e5246]
+          - cell [ref=e5247]
+          - cell "EMP00098" [ref=e5248]
+          - cell "Probation" [ref=e5249]
+          - cell "DevOps Engineer" [ref=e5250]
+          - cell "Core" [ref=e5251]
+          - cell "Dec 6, 2020, 8:41 AM 2020-12-06T08:41 Open date/time picker" [ref=e5252]:
+            - generic [ref=e5253]:
+              - text: Dec 6, 2020, 8:41 AM
+              - textbox: 2020-12-06T08:41
+              - button "Open date/time picker" [ref=e5254] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e5255]
+          - cell "+ 9,131 €" [ref=e5256]
+          - cell [ref=e5257]
+          - cell "UK" [ref=e5258]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e5259]:
+            - generic: ▾
+          - cell "78440" [ref=e5260]
+          - cell [ref=e5261]
+          - cell "https://www.linkedin.com/in/evaschneider 🔗" [ref=e5262]:
+            - generic [ref=e5263]:
+              - generic [ref=e5264]: https://www.linkedin.com/in/evaschneider
+              - button "🔗" [ref=e5265] [cursor=pointer]
+          - cell "https://github.com/evaschneider 🔗" [ref=e5266]:
+            - generic [ref=e5267]:
+              - generic [ref=e5268]: https://github.com/evaschneider
+              - button "🔗" [ref=e5269] [cursor=pointer]
+          - cell "Open date picker" [ref=e5270]:
+            - generic [ref=e5271]:
+              - textbox
+              - button "Open date picker" [ref=e5273] [cursor=pointer]: 📅
+          - cell [ref=e5274]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e5275]:
+            - generic [ref=e5276]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e5277] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e5278]:
+            - generic [ref=e5279]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e5280]':
+            - generic [ref=e5281]:
+              - generic [ref=e5283]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 98" [ref=e5284]:
+          - cell "99" [ref=e5285]
+          - cell "Sx9G2EBnyyKj8OCwfND4iWOrg [...]" [ref=e5286]
+          - cell "Charlie" [ref=e5287]
+          - cell "Müller" [ref=e5288]
+          - cell "charlie.müller@example.co [...]" [ref=e5289]
+          - cell "Sales" [ref=e5290]:
+            - text: Sales
+            - generic: ▾
+          - cell "Figma, Java, SQL" [ref=e5291]:
+            - text: Figma, Java, SQL
+            - generic: ▾
+          - cell "aliquyam sed invidunt ea [...]" [ref=e5292]:
+            - text: aliquyam sed invidunt ea [...]
+            - generic [ref=e5293] [cursor=pointer]: 🖉
+          - cell [ref=e5294]:
+            - checkbox [checked] [ref=e5295]
+          - cell "69,513.00 €" [ref=e5296]
+          - cell "Mar 26, 2016 2016-03-26 Open date picker" [ref=e5297]:
+            - generic [ref=e5298]:
+              - text: Mar 26, 2016
+              - textbox: 2016-03-26
+              - button "Open date picker" [ref=e5299] [cursor=pointer]: 📅
+          - cell "Diana Schneider" [ref=e5300]
+          - cell "Remote" [ref=e5301]
+          - cell "+12 434 308411" [ref=e5302]
+          - cell "EMP00099" [ref=e5303]
+          - cell "On Leave" [ref=e5304]
+          - cell "Software Engineer" [ref=e5305]
+          - cell [ref=e5306]
+          - cell "Open date/time picker" [ref=e5307]:
+            - generic [ref=e5308]:
+              - textbox
+              - button "Open date/time picker" [ref=e5310] [cursor=pointer]: 📅
+          - cell "1.64" [ref=e5311]
+          - cell "+ 4,474 €" [ref=e5312]
+          - cell "Permanent" [ref=e5313]
+          - cell "USA" [ref=e5314]:
+            - text: USA
+            - generic: ▾
+          - cell "Frankfurt" [ref=e5315]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "83997" [ref=e5316]
+          - cell [ref=e5317]
+          - cell [ref=e5318]
+          - cell [ref=e5320]
+          - cell "Open date picker" [ref=e5322]:
+            - generic [ref=e5323]:
+              - textbox
+              - button "Open date picker" [ref=e5325] [cursor=pointer]: 📅
+          - cell [ref=e5326]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e5327]:
+            - generic [ref=e5328]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e5329] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e5330]:
+            - generic [ref=e5331]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e5332]':
+            - generic [ref=e5333]:
+              - generic [ref=e5335]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 99" [ref=e5336]:
+          - cell "100" [ref=e5337]
+          - cell "HZlVUSIyBBatsqj0z7xcIEgqK [...]" [ref=e5338]
+          - cell "Julia" [ref=e5339]
+          - cell "Schneider" [ref=e5340]
+          - cell [ref=e5341]
+          - cell [ref=e5342]:
+            - generic: ▾
+          - cell [ref=e5343]:
+            - generic: ▾
+          - cell "sit et amet, diam takimat [...]" [ref=e5344]:
+            - text: sit et amet, diam takimat [...]
+            - generic [ref=e5345] [cursor=pointer]: 🖉
+          - cell [ref=e5346]:
+            - checkbox [checked] [ref=e5347]
+          - cell "0.00 €" [ref=e5348]
+          - cell "Feb 29, 2024 2024-02-29 Open date picker" [ref=e5349]:
+            - generic [ref=e5350]:
+              - text: Feb 29, 2024
+              - textbox: 2024-02-29
+              - button "Open date picker" [ref=e5351] [cursor=pointer]: 📅
+          - cell "Bob Müller" [ref=e5352]
+          - cell "Munich Office" [ref=e5353]
+          - cell "+15 343 906837" [ref=e5354]
+          - cell "EMP00100" [ref=e5355]
+          - cell "On Leave" [ref=e5356]
+          - cell "Data Analyst" [ref=e5357]
+          - cell "Web" [ref=e5358]
+          - cell "Open date/time picker" [ref=e5359]:
+            - generic [ref=e5360]:
+              - textbox
+              - button "Open date/time picker" [ref=e5362] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e5363]
+          - cell "+ 11,135 €" [ref=e5364]
+          - cell "Permanent" [ref=e5365]
+          - cell "Spain" [ref=e5366]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e5367]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "37904" [ref=e5368]
+          - cell "104 Example Street" [ref=e5369]
+          - cell [ref=e5370]
+          - cell [ref=e5372]
+          - cell "Open date picker" [ref=e5374]:
+            - generic [ref=e5375]:
+              - textbox
+              - button "Open date picker" [ref=e5377] [cursor=pointer]: 📅
+          - cell [ref=e5378]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e5379]:
+            - generic [ref=e5380]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e5381] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e5382]:
+            - generic [ref=e5383]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e5384]':
+            - generic [ref=e5385]:
+              - generic [ref=e5387]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 100" [ref=e5388]:
+          - cell "101" [ref=e5389]
+          - cell [ref=e5390]
+          - cell "Grace" [ref=e5391]
+          - cell "Fischer" [ref=e5392]
+          - cell "grace.fischer@example.com" [ref=e5393]
+          - cell "Sales" [ref=e5394]:
+            - text: Sales
+            - generic: ▾
+          - cell "Figma, Python, Docker, Ty [...]" [ref=e5395]:
+            - text: Figma, Python, Docker, Ty [...]
+            - generic: ▾
+          - cell [ref=e5396]:
+            - generic [ref=e5397] [cursor=pointer]: 🖉
+          - cell [ref=e5398]:
+            - checkbox [checked] [ref=e5399]
+          - cell "56,035.00 €" [ref=e5400]
+          - cell "Jul 3, 2011 2011-07-03 Open date picker" [ref=e5401]:
+            - generic [ref=e5402]:
+              - text: Jul 3, 2011
+              - textbox: 2011-07-03
+              - button "Open date picker" [ref=e5403] [cursor=pointer]: 📅
+          - cell "Ian Fischer" [ref=e5404]
+          - cell [ref=e5405]
+          - cell "+49 253 178514" [ref=e5406]
+          - cell "EMP00101" [ref=e5407]
+          - cell "Probation" [ref=e5408]
+          - cell [ref=e5409]
+          - cell "Mobile" [ref=e5410]
+          - cell "Nov 22, 2023, 10:46 AM 2023-11-22T10:46 Open date/time picker" [ref=e5411]:
+            - generic [ref=e5412]:
+              - text: Nov 22, 2023, 10:46 AM
+              - textbox: 2023-11-22T10:46
+              - button "Open date/time picker" [ref=e5413] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e5414]
+          - cell "+ 7,115 €" [ref=e5415]
+          - cell "Temporary" [ref=e5416]
+          - cell "Spain" [ref=e5417]:
+            - text: Spain
+            - generic: ▾
+          - cell "Munich" [ref=e5418]:
+            - text: Munich
+            - generic: ▾
+          - cell "38138" [ref=e5419]
+          - cell "169 Example Street" [ref=e5420]
+          - cell "https://www.linkedin.com/in/gracefischer 🔗" [ref=e5421]:
+            - generic [ref=e5422]:
+              - generic [ref=e5423]: https://www.linkedin.com/in/gracefischer
+              - button "🔗" [ref=e5424] [cursor=pointer]
+          - cell "https://github.com/gracefischer 🔗" [ref=e5425]:
+            - generic [ref=e5426]:
+              - generic [ref=e5427]: https://github.com/gracefischer
+              - button "🔗" [ref=e5428] [cursor=pointer]
+          - cell "Open date picker" [ref=e5429]:
+            - generic [ref=e5430]:
+              - textbox
+              - button "Open date picker" [ref=e5432] [cursor=pointer]: 📅
+          - cell [ref=e5433]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e5434]:
+            - generic [ref=e5435]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e5436] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e5437]:
+            - generic [ref=e5438]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e5439]':
+            - generic [ref=e5440]:
+              - generic [ref=e5442]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 101" [ref=e5443]:
+          - cell "102" [ref=e5444]
+          - cell [ref=e5445]
+          - cell "Diana" [ref=e5446]
+          - cell "Fischer" [ref=e5447]
+          - cell "diana.fischer@example.com" [ref=e5448]
+          - cell "HR" [ref=e5449]:
+            - text: HR
+            - generic: ▾
+          - cell "SQL" [ref=e5450]:
+            - text: SQL
+            - generic: ▾
+          - cell "Lorem et sit est. voluptu [...]" [ref=e5451]:
+            - text: Lorem et sit est. voluptu [...]
+            - generic [ref=e5452] [cursor=pointer]: 🖉
+          - cell [ref=e5453]:
+            - checkbox [checked] [ref=e5454]
+          - cell "40,014.00 €" [ref=e5455]
+          - cell "Open date picker" [ref=e5456]:
+            - generic [ref=e5457]:
+              - textbox
+              - button "Open date picker" [ref=e5459] [cursor=pointer]: 📅
+          - cell "Alice Schmidt" [ref=e5460]
+          - cell "Cologne Office" [ref=e5461]
+          - cell "+19 518 429108" [ref=e5462]
+          - cell "EMP00102" [ref=e5463]
+          - cell "On Leave" [ref=e5464]
+          - cell "Product Manager" [ref=e5465]
+          - cell "Core" [ref=e5466]
+          - cell "Open date/time picker" [ref=e5467]:
+            - generic [ref=e5468]:
+              - textbox
+              - button "Open date/time picker" [ref=e5470] [cursor=pointer]: 📅
+          - cell "3.40" [ref=e5471]
+          - cell "+ 0 €" [ref=e5472]
+          - cell "Temporary" [ref=e5473]
+          - cell "UK" [ref=e5474]:
+            - text: UK
+            - generic: ▾
+          - cell "Munich" [ref=e5475]:
+            - text: Munich
+            - generic: ▾
+          - cell [ref=e5476]
+          - cell "89 Example Street" [ref=e5477]
+          - cell [ref=e5478]
+          - cell [ref=e5480]
+          - cell "August 13, 1974 1974-08-13 Open date picker" [ref=e5482]:
+            - generic [ref=e5483]:
+              - text: August 13, 1974
+              - textbox: 1974-08-13
+              - button "Open date picker" [ref=e5484] [cursor=pointer]: 📅
+          - cell "Bob Wagner (+49952906774)" [ref=e5485]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e5486]:
+            - generic [ref=e5487]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e5488] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e5489]:
+            - generic [ref=e5490]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e5491]':
+            - generic [ref=e5492]:
+              - generic [ref=e5494]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 102" [ref=e5495]:
+          - cell "103" [ref=e5496]
+          - cell "SYCMvg8sSwj3F66OPzaOAjK" [ref=e5497]
+          - cell "Julia" [ref=e5498]
+          - cell "Meyer" [ref=e5499]
+          - cell "julia.meyer@example.com" [ref=e5500]
+          - cell "Legal" [ref=e5501]:
+            - text: Legal
+            - generic: ▾
+          - cell "Python, React" [ref=e5502]:
+            - text: Python, React
+            - generic: ▾
+          - cell [ref=e5503]:
+            - generic [ref=e5504] [cursor=pointer]: 🖉
+          - cell [ref=e5505]:
+            - checkbox [checked] [ref=e5506]
+          - cell "93,504.00 €" [ref=e5507]
+          - cell "Mar 14, 2014 2014-03-14 Open date picker" [ref=e5508]:
+            - generic [ref=e5509]:
+              - text: Mar 14, 2014
+              - textbox: 2014-03-14
+              - button "Open date picker" [ref=e5510] [cursor=pointer]: 📅
+          - cell [ref=e5511]
+          - cell "Munich Office" [ref=e5512]
+          - cell [ref=e5513]
+          - cell "EMP00103" [ref=e5514]
+          - cell "Active" [ref=e5515]
+          - cell "Designer" [ref=e5516]
+          - cell "Platform" [ref=e5517]
+          - cell "May 20, 2022, 2:17 PM 2022-05-20T14:17 Open date/time picker" [ref=e5518]:
+            - generic [ref=e5519]:
+              - text: May 20, 2022, 2:17 PM
+              - textbox: 2022-05-20T14:17
+              - button "Open date/time picker" [ref=e5520] [cursor=pointer]: 📅
+          - cell "1.77" [ref=e5521]
+          - cell "+ 0 €" [ref=e5522]
+          - cell "Permanent" [ref=e5523]
+          - cell "France" [ref=e5524]:
+            - text: France
+            - generic: ▾
+          - cell "Stuttgart" [ref=e5525]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e5526]
+          - cell "117 Example Street" [ref=e5527]
+          - cell [ref=e5528]
+          - cell "https://github.com/juliameyer 🔗" [ref=e5530]:
+            - generic [ref=e5531]:
+              - generic [ref=e5532]: https://github.com/juliameyer
+              - button "🔗" [ref=e5533] [cursor=pointer]
+          - cell "August 2, 1970 1970-08-02 Open date picker" [ref=e5534]:
+            - generic [ref=e5535]:
+              - text: August 2, 1970
+              - textbox: 1970-08-02
+              - button "Open date picker" [ref=e5536] [cursor=pointer]: 📅
+          - cell "Hannah Becker (+494354519 [...]" [ref=e5537]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e5538]:
+            - generic [ref=e5539]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e5540] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e5541]:
+            - generic [ref=e5542]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e5543]':
+            - generic [ref=e5544]:
+              - generic [ref=e5546]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 103" [ref=e5547]:
+          - cell "104" [ref=e5548]
+          - cell "XcdSjbaFQwZkMSjtNrlwpLpxF" [ref=e5549]
+          - cell "Bob" [ref=e5550]
+          - cell "Schneider" [ref=e5551]
+          - cell "bob.schneider@example.com" [ref=e5552]
+          - cell [ref=e5553]:
+            - generic: ▾
+          - cell [ref=e5554]:
+            - generic: ▾
+          - cell [ref=e5555]:
+            - generic [ref=e5556] [cursor=pointer]: 🖉
+          - cell [ref=e5557]:
+            - checkbox [ref=e5558]
+          - cell "0.00 €" [ref=e5559]
+          - cell "Jul 26, 2017 2017-07-26 Open date picker" [ref=e5560]:
+            - generic [ref=e5561]:
+              - text: Jul 26, 2017
+              - textbox: 2017-07-26
+              - button "Open date picker" [ref=e5562] [cursor=pointer]: 📅
+          - cell "Hannah Schneider" [ref=e5563]
+          - cell "Hamburg Office" [ref=e5564]
+          - cell "+49 303 321167" [ref=e5565]
+          - cell "EMP00104" [ref=e5566]
+          - cell [ref=e5567]
+          - cell "DevOps Engineer" [ref=e5568]
+          - cell "Tools" [ref=e5569]
+          - cell "Open date/time picker" [ref=e5570]:
+            - generic [ref=e5571]:
+              - textbox
+              - button "Open date/time picker" [ref=e5573] [cursor=pointer]: 📅
+          - cell "3.63" [ref=e5574]
+          - cell "+ 0 €" [ref=e5575]
+          - cell "Intern" [ref=e5576]
+          - cell "Germany" [ref=e5577]:
+            - text: Germany
+            - generic: ▾
+          - cell "Cologne" [ref=e5578]:
+            - text: Cologne
+            - generic: ▾
+          - cell "96598" [ref=e5579]
+          - cell "61 Example Street" [ref=e5580]
+          - cell [ref=e5581]
+          - cell "https://github.com/bobschneider 🔗" [ref=e5583]:
+            - generic [ref=e5584]:
+              - generic [ref=e5585]: https://github.com/bobschneider
+              - button "🔗" [ref=e5586] [cursor=pointer]
+          - cell "Open date picker" [ref=e5587]:
+            - generic [ref=e5588]:
+              - textbox
+              - button "Open date picker" [ref=e5590] [cursor=pointer]: 📅
+          - cell "Hannah Meyer (+1105491347 [...]" [ref=e5591]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e5592]:
+            - generic [ref=e5593]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e5594] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e5595]:
+            - generic [ref=e5596]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e5597]':
+            - generic [ref=e5598]:
+              - generic [ref=e5600]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 104" [ref=e5601]:
+          - cell "105" [ref=e5602]
+          - cell "91voSQb78RqMN0YXSZ2TvL-jE [...]" [ref=e5603]
+          - cell "Charlie" [ref=e5604]
+          - cell "Meyer" [ref=e5605]
+          - cell [ref=e5606]
+          - cell "Finance" [ref=e5607]:
+            - text: Finance
+            - generic: ▾
+          - cell "Figma, AWS, TypeScript, R [...]" [ref=e5608]:
+            - text: Figma, AWS, TypeScript, R [...]
+            - generic: ▾
+          - cell [ref=e5609]:
+            - generic [ref=e5610] [cursor=pointer]: 🖉
+          - cell [ref=e5611]:
+            - checkbox [ref=e5612]
+          - cell "56,257.00 €" [ref=e5613]
+          - cell "Jun 21, 2008 2008-06-21 Open date picker" [ref=e5614]:
+            - generic [ref=e5615]:
+              - text: Jun 21, 2008
+              - textbox: 2008-06-21
+              - button "Open date picker" [ref=e5616] [cursor=pointer]: 📅
+          - cell "Bob Becker" [ref=e5617]
+          - cell "Remote" [ref=e5618]
+          - cell "+11 668 354437" [ref=e5619]
+          - cell "EMP00105" [ref=e5620]
+          - cell "Probation" [ref=e5621]
+          - cell "Product Manager" [ref=e5622]
+          - cell "Mobile" [ref=e5623]
+          - cell "Jan 22, 2022, 5:37 AM 2022-01-22T05:37 Open date/time picker" [ref=e5624]:
+            - generic [ref=e5625]:
+              - text: Jan 22, 2022, 5:37 AM
+              - textbox: 2022-01-22T05:37
+              - button "Open date/time picker" [ref=e5626] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e5627]
+          - cell "+ 0 €" [ref=e5628]
+          - cell "Intern" [ref=e5629]
+          - cell "Spain" [ref=e5630]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e5631]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "24905" [ref=e5632]
+          - cell "143 Example Street" [ref=e5633]
+          - cell [ref=e5634]
+          - cell "https://github.com/charliemeyer 🔗" [ref=e5636]:
+            - generic [ref=e5637]:
+              - generic [ref=e5638]: https://github.com/charliemeyer
+              - button "🔗" [ref=e5639] [cursor=pointer]
+          - cell "April 17, 1986 1986-04-17 Open date picker" [ref=e5640]:
+            - generic [ref=e5641]:
+              - text: April 17, 1986
+              - textbox: 1986-04-17
+              - button "Open date picker" [ref=e5642] [cursor=pointer]: 📅
+          - cell [ref=e5643]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e5644]:
+            - generic [ref=e5645]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e5646] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e5647]:
+            - generic [ref=e5648]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e5649]':
+            - generic [ref=e5650]:
+              - generic [ref=e5652]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 105" [ref=e5653]:
+          - cell "106" [ref=e5654]
+          - cell "xx1vPWFYBYkq3R" [ref=e5655]
+          - cell "Hannah" [ref=e5656]
+          - cell "Wagner" [ref=e5657]
+          - cell "hannah.wagner@example.com" [ref=e5658]
+          - cell [ref=e5659]:
+            - generic: ▾
+          - cell [ref=e5660]:
+            - generic: ▾
+          - cell [ref=e5661]:
+            - generic [ref=e5662] [cursor=pointer]: 🖉
+          - cell [ref=e5663]:
+            - checkbox [ref=e5664]
+          - cell "83,425.00 €" [ref=e5665]
+          - cell "Dec 9, 2009 2009-12-09 Open date picker" [ref=e5666]:
+            - generic [ref=e5667]:
+              - text: Dec 9, 2009
+              - textbox: 2009-12-09
+              - button "Open date picker" [ref=e5668] [cursor=pointer]: 📅
+          - cell [ref=e5669]
+          - cell "Munich Office" [ref=e5670]
+          - cell "+49 324 908423" [ref=e5671]
+          - cell "EMP00106" [ref=e5672]
+          - cell "Terminated" [ref=e5673]
+          - cell "Designer" [ref=e5674]
+          - cell "Core" [ref=e5675]
+          - cell "Aug 17, 2024, 8:53 PM 2024-08-17T20:53 Open date/time picker" [ref=e5676]:
+            - generic [ref=e5677]:
+              - text: Aug 17, 2024, 8:53 PM
+              - textbox: 2024-08-17T20:53
+              - button "Open date/time picker" [ref=e5678] [cursor=pointer]: 📅
+          - cell "2.96" [ref=e5679]
+          - cell "+ 0 €" [ref=e5680]
+          - cell "Temporary" [ref=e5681]
+          - cell "Spain" [ref=e5682]:
+            - text: Spain
+            - generic: ▾
+          - cell [ref=e5683]:
+            - generic: ▾
+          - cell "92753" [ref=e5684]
+          - cell "53 Example Street" [ref=e5685]
+          - cell "https://www.linkedin.com/in/hannahwagner 🔗" [ref=e5686]:
+            - generic [ref=e5687]:
+              - generic [ref=e5688]: https://www.linkedin.com/in/hannahwagner
+              - button "🔗" [ref=e5689] [cursor=pointer]
+          - cell [ref=e5690]
+          - cell "Open date picker" [ref=e5692]:
+            - generic [ref=e5693]:
+              - textbox
+              - button "Open date picker" [ref=e5695] [cursor=pointer]: 📅
+          - cell [ref=e5696]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e5697]:
+            - generic [ref=e5698]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e5699] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e5700]:
+            - generic [ref=e5701]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e5702]':
+            - generic [ref=e5703]:
+              - generic [ref=e5705]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 106" [ref=e5706]:
+          - cell "107" [ref=e5707]
+          - cell "qvtWO5_4uM-gJGKP_pLfI8LwG [...]" [ref=e5708]
+          - cell "Grace" [ref=e5709]
+          - cell "Becker" [ref=e5710]
+          - cell "grace.becker@example.com" [ref=e5711]
+          - cell "Sales" [ref=e5712]:
+            - text: Sales
+            - generic: ▾
+          - cell "React, Docker" [ref=e5713]:
+            - text: React, Docker
+            - generic: ▾
+          - cell [ref=e5714]:
+            - generic [ref=e5715] [cursor=pointer]: 🖉
+          - cell [ref=e5716]:
+            - checkbox [ref=e5717]
+          - cell "56,389.00 €" [ref=e5718]
+          - cell "Apr 13, 2021 2021-04-13 Open date picker" [ref=e5719]:
+            - generic [ref=e5720]:
+              - text: Apr 13, 2021
+              - textbox: 2021-04-13
+              - button "Open date picker" [ref=e5721] [cursor=pointer]: 📅
+          - cell "Alice Becker" [ref=e5722]
+          - cell [ref=e5723]
+          - cell "+49 171 343580" [ref=e5724]
+          - cell "EMP00107" [ref=e5725]
+          - cell "Terminated" [ref=e5726]
+          - cell "Software Engineer" [ref=e5727]
+          - cell "Mobile" [ref=e5728]
+          - cell "Jan 25, 2022, 12:04 PM 2022-01-25T12:04 Open date/time picker" [ref=e5729]:
+            - generic [ref=e5730]:
+              - text: Jan 25, 2022, 12:04 PM
+              - textbox: 2022-01-25T12:04
+              - button "Open date/time picker" [ref=e5731] [cursor=pointer]: 📅
+          - cell "1.77" [ref=e5732]
+          - cell "+ 0 €" [ref=e5733]
+          - cell [ref=e5734]
+          - cell "UK" [ref=e5735]:
+            - text: UK
+            - generic: ▾
+          - cell "Berlin" [ref=e5736]:
+            - text: Berlin
+            - generic: ▾
+          - cell "56006" [ref=e5737]
+          - cell "56 Example Street" [ref=e5738]
+          - cell [ref=e5739]
+          - cell [ref=e5741]
+          - cell "Open date picker" [ref=e5743]:
+            - generic [ref=e5744]:
+              - textbox
+              - button "Open date picker" [ref=e5746] [cursor=pointer]: 📅
+          - cell [ref=e5747]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e5748]:
+            - generic [ref=e5749]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e5750] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e5751]:
+            - generic [ref=e5752]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e5753]':
+            - generic [ref=e5754]:
+              - generic [ref=e5756]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 107" [ref=e5757]:
+          - cell "108" [ref=e5758]
+          - cell "OJ1OFhl2qbwbCbp6oOXhstYIX [...]" [ref=e5759]
+          - cell "Hannah" [ref=e5760]
+          - cell "Fischer" [ref=e5761]
+          - cell "hannah.fischer@example.co [...]" [ref=e5762]
+          - cell "IT" [ref=e5763]:
+            - text: IT
+            - generic: ▾
+          - cell "Python, AWS, Java, React" [ref=e5764]:
+            - text: Python, AWS, Java, React
+            - generic: ▾
+          - cell [ref=e5765]:
+            - generic [ref=e5766] [cursor=pointer]: 🖉
+          - cell [ref=e5767]:
+            - checkbox [checked] [ref=e5768]
+          - cell "62,009.00 €" [ref=e5769]
+          - cell "Dec 14, 2013 2013-12-14 Open date picker" [ref=e5770]:
+            - generic [ref=e5771]:
+              - text: Dec 14, 2013
+              - textbox: 2013-12-14
+              - button "Open date picker" [ref=e5772] [cursor=pointer]: 📅
+          - cell "Alice Meyer" [ref=e5773]
+          - cell "Berlin HQ" [ref=e5774]
+          - cell "+16 138 774403" [ref=e5775]
+          - cell "EMP00108" [ref=e5776]
+          - cell "Terminated" [ref=e5777]
+          - cell "Product Manager" [ref=e5778]
+          - cell [ref=e5779]
+          - cell "Open date/time picker" [ref=e5780]:
+            - generic [ref=e5781]:
+              - textbox
+              - button "Open date/time picker" [ref=e5783] [cursor=pointer]: 📅
+          - cell "3.70" [ref=e5784]
+          - cell "+ 13,569 €" [ref=e5785]
+          - cell "Permanent" [ref=e5786]
+          - cell "France" [ref=e5787]:
+            - text: France
+            - generic: ▾
+          - cell "Frankfurt" [ref=e5788]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "55923" [ref=e5789]
+          - cell "170 Example Street" [ref=e5790]
+          - cell [ref=e5791]
+          - cell [ref=e5793]
+          - cell "May 1, 1980 1980-05-01 Open date picker" [ref=e5795]:
+            - generic [ref=e5796]:
+              - text: May 1, 1980
+              - textbox: 1980-05-01
+              - button "Open date picker" [ref=e5797] [cursor=pointer]: 📅
+          - cell [ref=e5798]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e5799]:
+            - generic [ref=e5800]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e5801] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e5802]:
+            - generic [ref=e5803]: 5h
+          - 'cell "#10b981 #10b981" [ref=e5804]':
+            - generic [ref=e5805]:
+              - generic [ref=e5807]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 108" [ref=e5808]:
+          - cell "109" [ref=e5809]
+          - cell "2T3p5MG1vvUKx21PweoGVIUUs [...]" [ref=e5810]
+          - cell "Frank" [ref=e5811]
+          - cell "Schneider" [ref=e5812]
+          - cell "frank.schneider@example.c [...]" [ref=e5813]
+          - cell "Sales" [ref=e5814]:
+            - text: Sales
+            - generic: ▾
+          - cell "Figma" [ref=e5815]:
+            - text: Figma
+            - generic: ▾
+          - cell "et Stet invidunt labore e [...]" [ref=e5816]:
+            - text: et Stet invidunt labore e [...]
+            - generic [ref=e5817] [cursor=pointer]: 🖉
+          - cell [ref=e5818]:
+            - checkbox [checked] [ref=e5819]
+          - cell "89,220.00 €" [ref=e5820]
+          - cell "Jun 8, 2017 2017-06-08 Open date picker" [ref=e5821]:
+            - generic [ref=e5822]:
+              - text: Jun 8, 2017
+              - textbox: 2017-06-08
+              - button "Open date picker" [ref=e5823] [cursor=pointer]: 📅
+          - cell [ref=e5824]
+          - cell "Hamburg Office" [ref=e5825]
+          - cell "+49 227 131180" [ref=e5826]
+          - cell "EMP00109" [ref=e5827]
+          - cell "Terminated" [ref=e5828]
+          - cell "Product Manager" [ref=e5829]
+          - cell [ref=e5830]
+          - cell "Jul 25, 2021, 5:53 AM 2021-07-25T05:53 Open date/time picker" [ref=e5831]:
+            - generic [ref=e5832]:
+              - text: Jul 25, 2021, 5:53 AM
+              - textbox: 2021-07-25T05:53
+              - button "Open date/time picker" [ref=e5833] [cursor=pointer]: 📅
+          - cell "3.58" [ref=e5834]
+          - cell "+ 14,630 €" [ref=e5835]
+          - cell "Permanent" [ref=e5836]
+          - cell "UK" [ref=e5837]:
+            - text: UK
+            - generic: ▾
+          - cell "Stuttgart" [ref=e5838]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "38392" [ref=e5839]
+          - cell [ref=e5840]
+          - cell "https://www.linkedin.com/in/frankschneider 🔗" [ref=e5841]:
+            - generic [ref=e5842]:
+              - generic [ref=e5843]: https://www.linkedin.com/in/frankschneider
+              - button "🔗" [ref=e5844] [cursor=pointer]
+          - cell [ref=e5845]
+          - cell "July 4, 1976 1976-07-04 Open date picker" [ref=e5847]:
+            - generic [ref=e5848]:
+              - text: July 4, 1976
+              - textbox: 1976-07-04
+              - button "Open date picker" [ref=e5849] [cursor=pointer]: 📅
+          - cell "Frank Schmidt (+494217183 [...]" [ref=e5850]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e5851]:
+            - generic [ref=e5852]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e5853] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e5854]:
+            - generic [ref=e5855]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e5856]':
+            - generic [ref=e5857]:
+              - generic [ref=e5859]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 109" [ref=e5860]:
+          - cell "110" [ref=e5861]
+          - cell "ffchXHkh1r_Ae15PhxdvqfR4e [...]" [ref=e5862]
+          - cell "Bob" [ref=e5863]
+          - cell "Weber" [ref=e5864]
+          - cell "bob.weber@example.com" [ref=e5865]
+          - cell [ref=e5866]:
+            - generic: ▾
+          - cell "SQL, React, Figma, AWS" [ref=e5867]:
+            - text: SQL, React, Figma, AWS
+            - generic: ▾
+          - cell "et erat, erat, voluptua. [...]" [ref=e5868]:
+            - text: et erat, erat, voluptua. [...]
+            - generic [ref=e5869] [cursor=pointer]: 🖉
+          - cell [ref=e5870]:
+            - checkbox [checked] [ref=e5871]
+          - cell "65,542.00 €" [ref=e5872]
+          - cell "May 7, 2005 2005-05-07 Open date picker" [ref=e5873]:
+            - generic [ref=e5874]:
+              - text: May 7, 2005
+              - textbox: 2005-05-07
+              - button "Open date picker" [ref=e5875] [cursor=pointer]: 📅
+          - cell "Julia Schmidt" [ref=e5876]
+          - cell [ref=e5877]
+          - cell "+49 350 669925" [ref=e5878]
+          - cell "EMP00110" [ref=e5879]
+          - cell [ref=e5880]
+          - cell "Product Manager" [ref=e5881]
+          - cell "Mobile" [ref=e5882]
+          - cell "Jan 28, 2020, 11:06 PM 2020-01-28T23:06 Open date/time picker" [ref=e5883]:
+            - generic [ref=e5884]:
+              - text: Jan 28, 2020, 11:06 PM
+              - textbox: 2020-01-28T23:06
+              - button "Open date/time picker" [ref=e5885] [cursor=pointer]: 📅
+          - cell "3.68" [ref=e5886]
+          - cell "+ 0 €" [ref=e5887]
+          - cell [ref=e5888]
+          - cell "Spain" [ref=e5889]:
+            - text: Spain
+            - generic: ▾
+          - cell "Cologne" [ref=e5890]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e5891]
+          - cell "115 Example Street" [ref=e5892]
+          - cell [ref=e5893]
+          - cell [ref=e5895]
+          - cell "Open date picker" [ref=e5897]:
+            - generic [ref=e5898]:
+              - textbox
+              - button "Open date picker" [ref=e5900] [cursor=pointer]: 📅
+          - cell "Charlie Fischer (+1346471 [...]" [ref=e5901]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e5902]:
+            - generic [ref=e5903]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e5904] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e5905]:
+            - generic [ref=e5906]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e5907]':
+            - generic [ref=e5908]:
+              - generic [ref=e5910]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 110" [ref=e5911]:
+          - cell "111" [ref=e5912]
+          - cell "DmCjJ0zY4e-eI4" [ref=e5913]
+          - cell "Ian" [ref=e5914]
+          - cell "Schmidt" [ref=e5915]
+          - cell "ian.schmidt@example.com" [ref=e5916]
+          - cell [ref=e5917]:
+            - generic: ▾
+          - cell "Java, AWS, Python" [ref=e5918]:
+            - text: Java, AWS, Python
+            - generic: ▾
+          - cell "consetetur vero Lorem sad [...]" [ref=e5919]:
+            - text: consetetur vero Lorem sad [...]
+            - generic [ref=e5920] [cursor=pointer]: 🖉
+          - cell [ref=e5921]:
+            - checkbox [checked] [ref=e5922]
+          - cell "41,164.00 €" [ref=e5923]
+          - cell "May 28, 2013 2013-05-28 Open date picker" [ref=e5924]:
+            - generic [ref=e5925]:
+              - text: May 28, 2013
+              - textbox: 2013-05-28
+              - button "Open date picker" [ref=e5926] [cursor=pointer]: 📅
+          - cell [ref=e5927]
+          - cell [ref=e5928]
+          - cell [ref=e5929]
+          - cell "EMP00111" [ref=e5930]
+          - cell "Active" [ref=e5931]
+          - cell "Data Analyst" [ref=e5932]
+          - cell "Web" [ref=e5933]
+          - cell "Jun 4, 2023, 7:35 AM 2023-06-04T07:35 Open date/time picker" [ref=e5934]:
+            - generic [ref=e5935]:
+              - text: Jun 4, 2023, 7:35 AM
+              - textbox: 2023-06-04T07:35
+              - button "Open date/time picker" [ref=e5936] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e5937]
+          - cell "+ 11,883 €" [ref=e5938]
+          - cell "Temporary" [ref=e5939]
+          - cell "UK" [ref=e5940]:
+            - text: UK
+            - generic: ▾
+          - cell "Berlin" [ref=e5941]:
+            - text: Berlin
+            - generic: ▾
+          - cell [ref=e5942]
+          - cell "165 Example Street" [ref=e5943]
+          - cell [ref=e5944]
+          - cell [ref=e5946]
+          - cell "Open date picker" [ref=e5948]:
+            - generic [ref=e5949]:
+              - textbox
+              - button "Open date picker" [ref=e5951] [cursor=pointer]: 📅
+          - cell [ref=e5952]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e5953]:
+            - generic [ref=e5954]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e5955] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e5956]:
+            - generic [ref=e5957]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e5958]':
+            - generic [ref=e5959]:
+              - generic [ref=e5961]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 111" [ref=e5962]:
+          - cell "112" [ref=e5963]
+          - cell "2OLWl3aKR06tEonnGbM9o2j0t [...]" [ref=e5964]
+          - cell "Hannah" [ref=e5965]
+          - cell "Schmidt" [ref=e5966]
+          - cell "hannah.schmidt@example.co [...]" [ref=e5967]
+          - cell "Sales" [ref=e5968]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript" [ref=e5969]:
+            - text: TypeScript
+            - generic: ▾
+          - cell [ref=e5970]:
+            - generic [ref=e5971] [cursor=pointer]: 🖉
+          - cell [ref=e5972]:
+            - checkbox [checked] [ref=e5973]
+          - cell "54,321.00 €" [ref=e5974]
+          - cell "Open date picker" [ref=e5975]:
+            - generic [ref=e5976]:
+              - textbox
+              - button "Open date picker" [ref=e5978] [cursor=pointer]: 📅
+          - cell "Alice Wagner" [ref=e5979]
+          - cell "Remote" [ref=e5980]
+          - cell "+49 989 973914" [ref=e5981]
+          - cell "EMP00112" [ref=e5982]
+          - cell [ref=e5983]
+          - cell "QA Engineer" [ref=e5984]
+          - cell "Tools" [ref=e5985]
+          - cell "Apr 25, 2024, 12:29 AM 2024-04-25T00:29 Open date/time picker" [ref=e5986]:
+            - generic [ref=e5987]:
+              - text: Apr 25, 2024, 12:29 AM
+              - textbox: 2024-04-25T00:29
+              - button "Open date/time picker" [ref=e5988] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e5989]
+          - cell "+ 0 €" [ref=e5990]
+          - cell "Contractor" [ref=e5991]
+          - cell "UK" [ref=e5992]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e5993]:
+            - generic: ▾
+          - cell [ref=e5994]
+          - cell [ref=e5995]
+          - cell "https://www.linkedin.com/in/hannahschmidt 🔗" [ref=e5996]:
+            - generic [ref=e5997]:
+              - generic [ref=e5998]: https://www.linkedin.com/in/hannahschmidt
+              - button "🔗" [ref=e5999] [cursor=pointer]
+          - cell "https://github.com/hannahschmidt 🔗" [ref=e6000]:
+            - generic [ref=e6001]:
+              - generic [ref=e6002]: https://github.com/hannahschmidt
+              - button "🔗" [ref=e6003] [cursor=pointer]
+          - cell "October 5, 1990 1990-10-05 Open date picker" [ref=e6004]:
+            - generic [ref=e6005]:
+              - text: October 5, 1990
+              - textbox: 1990-10-05
+              - button "Open date picker" [ref=e6006] [cursor=pointer]: 📅
+          - cell "Julia Schneider (+1130628 [...]" [ref=e6007]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e6008]:
+            - generic [ref=e6009]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e6010] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e6011]:
+            - generic [ref=e6012]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e6013]':
+            - generic [ref=e6014]:
+              - generic [ref=e6016]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 112" [ref=e6017]:
+          - cell "113" [ref=e6018]
+          - cell "yMPcu3gU9zXZlGvq8qoCqysRP [...]" [ref=e6019]
+          - cell "Bob" [ref=e6020]
+          - cell "Schmidt" [ref=e6021]
+          - cell "bob.schmidt@example.com" [ref=e6022]
+          - cell [ref=e6023]:
+            - generic: ▾
+          - cell "Figma, React" [ref=e6024]:
+            - text: Figma, React
+            - generic: ▾
+          - cell "nonumy sadipscing dolore [...]" [ref=e6025]:
+            - text: nonumy sadipscing dolore [...]
+            - generic [ref=e6026] [cursor=pointer]: 🖉
+          - cell [ref=e6027]:
+            - checkbox [checked] [ref=e6028]
+          - cell "50,949.00 €" [ref=e6029]
+          - cell "Dec 10, 2012 2012-12-10 Open date picker" [ref=e6030]:
+            - generic [ref=e6031]:
+              - text: Dec 10, 2012
+              - textbox: 2012-12-10
+              - button "Open date picker" [ref=e6032] [cursor=pointer]: 📅
+          - cell "Grace Becker" [ref=e6033]
+          - cell "Cologne Office" [ref=e6034]
+          - cell "+49 806 509887" [ref=e6035]
+          - cell "EMP00113" [ref=e6036]
+          - cell "Probation" [ref=e6037]
+          - cell "Data Analyst" [ref=e6038]
+          - cell "Tools" [ref=e6039]
+          - cell "Jul 5, 2021, 6:35 PM 2021-07-05T18:35 Open date/time picker" [ref=e6040]:
+            - generic [ref=e6041]:
+              - text: Jul 5, 2021, 6:35 PM
+              - textbox: 2021-07-05T18:35
+              - button "Open date/time picker" [ref=e6042] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e6043]
+          - cell "+ 7,604 €" [ref=e6044]
+          - cell "Contractor" [ref=e6045]
+          - cell "Netherlands" [ref=e6046]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Hamburg" [ref=e6047]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "68010" [ref=e6048]
+          - cell [ref=e6049]
+          - cell [ref=e6050]
+          - cell "https://github.com/bobschmidt 🔗" [ref=e6052]:
+            - generic [ref=e6053]:
+              - generic [ref=e6054]: https://github.com/bobschmidt
+              - button "🔗" [ref=e6055] [cursor=pointer]
+          - cell "Open date picker" [ref=e6056]:
+            - generic [ref=e6057]:
+              - textbox
+              - button "Open date picker" [ref=e6059] [cursor=pointer]: 📅
+          - cell [ref=e6060]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e6061]:
+            - generic [ref=e6062]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e6063] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e6064]:
+            - generic [ref=e6065]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e6066]':
+            - generic [ref=e6067]:
+              - generic [ref=e6069]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 113" [ref=e6070]:
+          - cell "114" [ref=e6071]
+          - cell "5xUQ-p-OUUOmuvrs5zoYraF-H [...]" [ref=e6072]
+          - cell "Ian" [ref=e6073]
+          - cell "Weber" [ref=e6074]
+          - cell "ian.weber@example.com" [ref=e6075]
+          - cell "Marketing" [ref=e6076]:
+            - text: Marketing
+            - generic: ▾
+          - cell [ref=e6077]:
+            - generic: ▾
+          - cell [ref=e6078]:
+            - generic [ref=e6079] [cursor=pointer]: 🖉
+          - cell [ref=e6080]:
+            - checkbox [ref=e6081]
+          - cell "97,620.00 €" [ref=e6082]
+          - cell "Jul 29, 2024 2024-07-29 Open date picker" [ref=e6083]:
+            - generic [ref=e6084]:
+              - text: Jul 29, 2024
+              - textbox: 2024-07-29
+              - button "Open date picker" [ref=e6085] [cursor=pointer]: 📅
+          - cell "Frank Weber" [ref=e6086]
+          - cell "Hamburg Office" [ref=e6087]
+          - cell "+49 224 007879" [ref=e6088]
+          - cell "EMP00114" [ref=e6089]
+          - cell "Probation" [ref=e6090]
+          - cell "DevOps Engineer" [ref=e6091]
+          - cell "Web" [ref=e6092]
+          - cell "Dec 26, 2021, 5:51 AM 2021-12-26T05:51 Open date/time picker" [ref=e6093]:
+            - generic [ref=e6094]:
+              - text: Dec 26, 2021, 5:51 AM
+              - textbox: 2021-12-26T05:51
+              - button "Open date/time picker" [ref=e6095] [cursor=pointer]: 📅
+          - cell "1.87" [ref=e6096]
+          - cell "+ 13,685 €" [ref=e6097]
+          - cell "Permanent" [ref=e6098]
+          - cell "France" [ref=e6099]:
+            - text: France
+            - generic: ▾
+          - cell "Munich" [ref=e6100]:
+            - text: Munich
+            - generic: ▾
+          - cell "27971" [ref=e6101]
+          - cell [ref=e6102]
+          - cell [ref=e6103]
+          - cell "https://github.com/ianweber 🔗" [ref=e6105]:
+            - generic [ref=e6106]:
+              - generic [ref=e6107]: https://github.com/ianweber
+              - button "🔗" [ref=e6108] [cursor=pointer]
+          - cell "June 23, 1974 1974-06-23 Open date picker" [ref=e6109]:
+            - generic [ref=e6110]:
+              - text: June 23, 1974
+              - textbox: 1974-06-23
+              - button "Open date picker" [ref=e6111] [cursor=pointer]: 📅
+          - cell [ref=e6112]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e6113]:
+            - generic [ref=e6114]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e6115] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e6116]:
+            - generic [ref=e6117]: 4h
+          - 'cell "#f97316 #f97316" [ref=e6118]':
+            - generic [ref=e6119]:
+              - generic [ref=e6121]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 114" [ref=e6122]:
+          - cell "115" [ref=e6123]
+          - cell "IkkNQTUhn8NLdwT3lKuRX5JP1 [...]" [ref=e6124]
+          - cell "Eva" [ref=e6125]
+          - cell "Fischer" [ref=e6126]
+          - cell [ref=e6127]
+          - cell "HR" [ref=e6128]:
+            - text: HR
+            - generic: ▾
+          - cell "Docker" [ref=e6129]:
+            - text: Docker
+            - generic: ▾
+          - cell "et labore diam justo duo [...]" [ref=e6130]:
+            - text: et labore diam justo duo [...]
+            - generic [ref=e6131] [cursor=pointer]: 🖉
+          - cell [ref=e6132]:
+            - checkbox [checked] [ref=e6133]
+          - cell "85,758.00 €" [ref=e6134]
+          - cell "Nov 20, 2010 2010-11-20 Open date picker" [ref=e6135]:
+            - generic [ref=e6136]:
+              - text: Nov 20, 2010
+              - textbox: 2010-11-20
+              - button "Open date picker" [ref=e6137] [cursor=pointer]: 📅
+          - cell [ref=e6138]
+          - cell "Remote" [ref=e6139]
+          - cell [ref=e6140]
+          - cell "EMP00115" [ref=e6141]
+          - cell "On Leave" [ref=e6142]
+          - cell "Software Engineer" [ref=e6143]
+          - cell [ref=e6144]
+          - cell "Jan 30, 2024, 7:15 AM 2024-01-30T07:15 Open date/time picker" [ref=e6145]:
+            - generic [ref=e6146]:
+              - text: Jan 30, 2024, 7:15 AM
+              - textbox: 2024-01-30T07:15
+              - button "Open date/time picker" [ref=e6147] [cursor=pointer]: 📅
+          - cell "4.00" [ref=e6148]
+          - cell "+ 9,096 €" [ref=e6149]
+          - cell "Permanent" [ref=e6150]
+          - cell "Netherlands" [ref=e6151]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Berlin" [ref=e6152]:
+            - text: Berlin
+            - generic: ▾
+          - cell "61779" [ref=e6153]
+          - cell [ref=e6154]
+          - cell [ref=e6155]
+          - cell [ref=e6157]
+          - cell "May 6, 1996 1996-05-06 Open date picker" [ref=e6159]:
+            - generic [ref=e6160]:
+              - text: May 6, 1996
+              - textbox: 1996-05-06
+              - button "Open date picker" [ref=e6161] [cursor=pointer]: 📅
+          - cell "Julia Wagner (+4929480399 [...]" [ref=e6162]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e6163]:
+            - generic [ref=e6164]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e6165] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e6166]:
+            - generic [ref=e6167]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e6168]':
+            - generic [ref=e6169]:
+              - generic [ref=e6171]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 115" [ref=e6172]:
+          - cell "116" [ref=e6173]
+          - cell "dmEcqaUE7bxC5wH7DJZ_4BC" [ref=e6174]
+          - cell "Charlie" [ref=e6175]
+          - cell "Schmidt" [ref=e6176]
+          - cell "charlie.schmidt@example.c [...]" [ref=e6177]
+          - cell [ref=e6178]:
+            - generic: ▾
+          - cell "React" [ref=e6179]:
+            - text: React
+            - generic: ▾
+          - cell "et diam sit amet, takimat [...]" [ref=e6180]:
+            - text: et diam sit amet, takimat [...]
+            - generic [ref=e6181] [cursor=pointer]: 🖉
+          - cell [ref=e6182]:
+            - checkbox [checked] [ref=e6183]
+          - cell "73,413.00 €" [ref=e6184]
+          - cell "Apr 29, 2020 2020-04-29 Open date picker" [ref=e6185]:
+            - generic [ref=e6186]:
+              - text: Apr 29, 2020
+              - textbox: 2020-04-29
+              - button "Open date picker" [ref=e6187] [cursor=pointer]: 📅
+          - cell [ref=e6188]
+          - cell "Berlin HQ" [ref=e6189]
+          - cell "+19 384 220764" [ref=e6190]
+          - cell "EMP00116" [ref=e6191]
+          - cell "On Leave" [ref=e6192]
+          - cell "Data Analyst" [ref=e6193]
+          - cell "Web" [ref=e6194]
+          - cell "Open date/time picker" [ref=e6195]:
+            - generic [ref=e6196]:
+              - textbox
+              - button "Open date/time picker" [ref=e6198] [cursor=pointer]: 📅
+          - cell "1.52" [ref=e6199]
+          - cell "+ 1,027 €" [ref=e6200]
+          - cell "Intern" [ref=e6201]
+          - cell "USA" [ref=e6202]:
+            - text: USA
+            - generic: ▾
+          - cell "Frankfurt" [ref=e6203]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "42244" [ref=e6204]
+          - cell [ref=e6205]
+          - cell [ref=e6206]
+          - cell [ref=e6208]
+          - cell "July 5, 1981 1981-07-05 Open date picker" [ref=e6210]:
+            - generic [ref=e6211]:
+              - text: July 5, 1981
+              - textbox: 1981-07-05
+              - button "Open date picker" [ref=e6212] [cursor=pointer]: 📅
+          - cell [ref=e6213]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e6214]:
+            - generic [ref=e6215]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e6216] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e6217]:
+            - generic [ref=e6218]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e6219]':
+            - generic [ref=e6220]:
+              - generic [ref=e6222]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 116" [ref=e6223]:
+          - cell "117" [ref=e6224]
+          - cell "Lsp1YVkmDp7l-WQk_Z2h49VLv [...]" [ref=e6225]
+          - cell "Grace" [ref=e6226]
+          - cell [ref=e6227]
+          - cell "grace.müller@example.com" [ref=e6228]
+          - cell "IT" [ref=e6229]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e6230]:
+            - generic: ▾
+          - cell [ref=e6231]:
+            - generic [ref=e6232] [cursor=pointer]: 🖉
+          - cell [ref=e6233]:
+            - checkbox [checked] [ref=e6234]
+          - cell "81,398.00 €" [ref=e6235]
+          - cell "Jan 3, 2022 2022-01-03 Open date picker" [ref=e6236]:
+            - generic [ref=e6237]:
+              - text: Jan 3, 2022
+              - textbox: 2022-01-03
+              - button "Open date picker" [ref=e6238] [cursor=pointer]: 📅
+          - cell "Julia Becker" [ref=e6239]
+          - cell "Remote" [ref=e6240]
+          - cell "+49 696 209376" [ref=e6241]
+          - cell "EMP00117" [ref=e6242]
+          - cell "Active" [ref=e6243]
+          - cell "Data Analyst" [ref=e6244]
+          - cell "Core" [ref=e6245]
+          - cell "Nov 14, 2022, 10:38 PM 2022-11-14T22:38 Open date/time picker" [ref=e6246]:
+            - generic [ref=e6247]:
+              - text: Nov 14, 2022, 10:38 PM
+              - textbox: 2022-11-14T22:38
+              - button "Open date/time picker" [ref=e6248] [cursor=pointer]: 📅
+          - cell "4.30" [ref=e6249]
+          - cell "+ 0 €" [ref=e6250]
+          - cell "Intern" [ref=e6251]
+          - cell "Germany" [ref=e6252]:
+            - text: Germany
+            - generic: ▾
+          - cell "Berlin" [ref=e6253]:
+            - text: Berlin
+            - generic: ▾
+          - cell "71532" [ref=e6254]
+          - cell [ref=e6255]
+          - cell [ref=e6256]
+          - cell "https://github.com/gracemüller 🔗" [ref=e6258]:
+            - generic [ref=e6259]:
+              - generic [ref=e6260]: https://github.com/gracemüller
+              - button "🔗" [ref=e6261] [cursor=pointer]
+          - cell "November 28, 1977 1977-11-28 Open date picker" [ref=e6262]:
+            - generic [ref=e6263]:
+              - text: November 28, 1977
+              - textbox: 1977-11-28
+              - button "Open date picker" [ref=e6264] [cursor=pointer]: 📅
+          - cell [ref=e6265]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e6266]:
+            - generic [ref=e6267]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e6268] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e6269]:
+            - generic [ref=e6270]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e6271]':
+            - generic [ref=e6272]:
+              - generic [ref=e6274]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 117" [ref=e6275]:
+          - cell "118" [ref=e6276]
+          - cell "_ymGbewdVs3wbeGp3nMFrfJvJ [...]" [ref=e6277]
+          - cell "Grace" [ref=e6278]
+          - cell "Becker" [ref=e6279]
+          - cell "grace.becker@example.com" [ref=e6280]
+          - cell "IT" [ref=e6281]:
+            - text: IT
+            - generic: ▾
+          - cell "Docker, AWS, TypeScript, [...]" [ref=e6282]:
+            - text: Docker, AWS, TypeScript, [...]
+            - generic: ▾
+          - cell "ut aliquyam dolores nonum [...]" [ref=e6283]:
+            - text: ut aliquyam dolores nonum [...]
+            - generic [ref=e6284] [cursor=pointer]: 🖉
+          - cell [ref=e6285]:
+            - checkbox [checked] [ref=e6286]
+          - cell "81,389.00 €" [ref=e6287]
+          - cell "Sep 19, 2016 2016-09-19 Open date picker" [ref=e6288]:
+            - generic [ref=e6289]:
+              - text: Sep 19, 2016
+              - textbox: 2016-09-19
+              - button "Open date picker" [ref=e6290] [cursor=pointer]: 📅
+          - cell "Frank Schneider" [ref=e6291]
+          - cell [ref=e6292]
+          - cell "+16 558 412791" [ref=e6293]
+          - cell "EMP00118" [ref=e6294]
+          - cell "Active" [ref=e6295]
+          - cell "Designer" [ref=e6296]
+          - cell [ref=e6297]
+          - cell "Open date/time picker" [ref=e6298]:
+            - generic [ref=e6299]:
+              - textbox
+              - button "Open date/time picker" [ref=e6301] [cursor=pointer]: 📅
+          - cell "0.89" [ref=e6302]
+          - cell "+ 14,084 €" [ref=e6303]
+          - cell "Intern" [ref=e6304]
+          - cell "Spain" [ref=e6305]:
+            - text: Spain
+            - generic: ▾
+          - cell [ref=e6306]:
+            - generic: ▾
+          - cell "71904" [ref=e6307]
+          - cell "98 Example Street" [ref=e6308]
+          - cell [ref=e6309]
+          - cell [ref=e6311]
+          - cell "May 4, 1989 1989-05-04 Open date picker" [ref=e6313]:
+            - generic [ref=e6314]:
+              - text: May 4, 1989
+              - textbox: 1989-05-04
+              - button "Open date picker" [ref=e6315] [cursor=pointer]: 📅
+          - cell "Hannah Fischer (+19602611 [...]" [ref=e6316]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e6317]:
+            - generic [ref=e6318]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e6319] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e6320]:
+            - generic [ref=e6321]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e6322]':
+            - generic [ref=e6323]:
+              - generic [ref=e6325]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 118" [ref=e6326]:
+          - cell "119" [ref=e6327]
+          - cell [ref=e6328]
+          - cell "Ian" [ref=e6329]
+          - cell "Schneider" [ref=e6330]
+          - cell "ian.schneider@example.com" [ref=e6331]
+          - cell "HR" [ref=e6332]:
+            - text: HR
+            - generic: ▾
+          - cell [ref=e6333]:
+            - generic: ▾
+          - cell "dolor nonumy aliquyam lab [...]" [ref=e6334]:
+            - text: dolor nonumy aliquyam lab [...]
+            - generic [ref=e6335] [cursor=pointer]: 🖉
+          - cell [ref=e6336]:
+            - checkbox [checked] [ref=e6337]
+          - cell "77,922.00 €" [ref=e6338]
+          - cell "Open date picker" [ref=e6339]:
+            - generic [ref=e6340]:
+              - textbox
+              - button "Open date picker" [ref=e6342] [cursor=pointer]: 📅
+          - cell "Charlie Schmidt" [ref=e6343]
+          - cell "Hamburg Office" [ref=e6344]
+          - cell "+16 832 904591" [ref=e6345]
+          - cell "EMP00119" [ref=e6346]
+          - cell "Active" [ref=e6347]
+          - cell "Product Manager" [ref=e6348]
+          - cell "Platform" [ref=e6349]
+          - cell "Oct 5, 2023, 4:58 PM 2023-10-05T16:58 Open date/time picker" [ref=e6350]:
+            - generic [ref=e6351]:
+              - text: Oct 5, 2023, 4:58 PM
+              - textbox: 2023-10-05T16:58
+              - button "Open date/time picker" [ref=e6352] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e6353]
+          - cell "+ 11,432 €" [ref=e6354]
+          - cell [ref=e6355]
+          - cell "Spain" [ref=e6356]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e6357]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "55222" [ref=e6358]
+          - cell [ref=e6359]
+          - cell [ref=e6360]
+          - cell [ref=e6362]
+          - cell "April 28, 1987 1987-04-28 Open date picker" [ref=e6364]:
+            - generic [ref=e6365]:
+              - text: April 28, 1987
+              - textbox: 1987-04-28
+              - button "Open date picker" [ref=e6366] [cursor=pointer]: 📅
+          - cell [ref=e6367]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e6368]:
+            - generic [ref=e6369]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e6370] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e6371]:
+            - generic [ref=e6372]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e6373]':
+            - generic [ref=e6374]:
+              - generic [ref=e6376]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 119" [ref=e6377]:
+          - cell "120" [ref=e6378]
+          - cell "YA5R_CYCFObJnp4V6PYH" [ref=e6379]
+          - cell "Grace" [ref=e6380]
+          - cell "Meyer" [ref=e6381]
+          - cell "grace.meyer@example.com" [ref=e6382]
+          - cell "Sales" [ref=e6383]:
+            - text: Sales
+            - generic: ▾
+          - cell "SQL, TypeScript, Figma" [ref=e6384]:
+            - text: SQL, TypeScript, Figma
+            - generic: ▾
+          - cell "sed invidunt sit consetet [...]" [ref=e6385]:
+            - text: sed invidunt sit consetet [...]
+            - generic [ref=e6386] [cursor=pointer]: 🖉
+          - cell [ref=e6387]:
+            - checkbox [checked] [ref=e6388]
+          - cell "73,330.00 €" [ref=e6389]
+          - cell "May 18, 2013 2013-05-18 Open date picker" [ref=e6390]:
+            - generic [ref=e6391]:
+              - text: May 18, 2013
+              - textbox: 2013-05-18
+              - button "Open date picker" [ref=e6392] [cursor=pointer]: 📅
+          - cell "Charlie Wagner" [ref=e6393]
+          - cell "Hamburg Office" [ref=e6394]
+          - cell "+49 647 019818" [ref=e6395]
+          - cell "EMP00120" [ref=e6396]
+          - cell "On Leave" [ref=e6397]
+          - cell "QA Engineer" [ref=e6398]
+          - cell [ref=e6399]
+          - cell "Open date/time picker" [ref=e6400]:
+            - generic [ref=e6401]:
+              - textbox
+              - button "Open date/time picker" [ref=e6403] [cursor=pointer]: 📅
+          - cell "3.06" [ref=e6404]
+          - cell "+ 0 €" [ref=e6405]
+          - cell [ref=e6406]
+          - cell "France" [ref=e6407]:
+            - text: France
+            - generic: ▾
+          - cell "Hamburg" [ref=e6408]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "99131" [ref=e6409]
+          - cell "172 Example Street" [ref=e6410]
+          - cell [ref=e6411]
+          - cell [ref=e6413]
+          - cell "April 20, 1965 1965-04-20 Open date picker" [ref=e6415]:
+            - generic [ref=e6416]:
+              - text: April 20, 1965
+              - textbox: 1965-04-20
+              - button "Open date picker" [ref=e6417] [cursor=pointer]: 📅
+          - cell [ref=e6418]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e6419]:
+            - generic [ref=e6420]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e6421] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e6422]:
+            - generic [ref=e6423]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e6424]':
+            - generic [ref=e6425]:
+              - generic [ref=e6427]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 120" [ref=e6428]:
+          - cell "121" [ref=e6429]
+          - cell [ref=e6430]
+          - cell "Ian" [ref=e6431]
+          - cell "Fischer" [ref=e6432]
+          - cell "ian.fischer@example.com" [ref=e6433]
+          - cell "Legal" [ref=e6434]:
+            - text: Legal
+            - generic: ▾
+          - cell "Docker, React, Figma, Typ [...]" [ref=e6435]:
+            - text: Docker, React, Figma, Typ [...]
+            - generic: ▾
+          - cell "kasd dolor duo sadi" [ref=e6436]:
+            - text: kasd dolor duo sadi
+            - generic [ref=e6437] [cursor=pointer]: 🖉
+          - cell [ref=e6438]:
+            - checkbox [checked] [ref=e6439]
+          - cell "49,900.00 €" [ref=e6440]
+          - cell "Oct 30, 2008 2008-10-30 Open date picker" [ref=e6441]:
+            - generic [ref=e6442]:
+              - text: Oct 30, 2008
+              - textbox: 2008-10-30
+              - button "Open date picker" [ref=e6443] [cursor=pointer]: 📅
+          - cell "Frank Wagner" [ref=e6444]
+          - cell "Cologne Office" [ref=e6445]
+          - cell "+49 839 822251" [ref=e6446]
+          - cell "EMP00121" [ref=e6447]
+          - cell [ref=e6448]
+          - cell "Data Analyst" [ref=e6449]
+          - cell [ref=e6450]
+          - cell "May 29, 2022, 9:28 AM 2022-05-29T09:28 Open date/time picker" [ref=e6451]:
+            - generic [ref=e6452]:
+              - text: May 29, 2022, 9:28 AM
+              - textbox: 2022-05-29T09:28
+              - button "Open date/time picker" [ref=e6453] [cursor=pointer]: 📅
+          - cell "4.51" [ref=e6454]
+          - cell "+ 1,311 €" [ref=e6455]
+          - cell "Intern" [ref=e6456]
+          - cell "Spain" [ref=e6457]:
+            - text: Spain
+            - generic: ▾
+          - cell "Berlin" [ref=e6458]:
+            - text: Berlin
+            - generic: ▾
+          - cell "85408" [ref=e6459]
+          - cell [ref=e6460]
+          - cell "https://www.linkedin.com/in/ianfischer 🔗" [ref=e6461]:
+            - generic [ref=e6462]:
+              - generic [ref=e6463]: https://www.linkedin.com/in/ianfischer
+              - button "🔗" [ref=e6464] [cursor=pointer]
+          - cell [ref=e6465]
+          - cell "February 16, 1966 1966-02-16 Open date picker" [ref=e6467]:
+            - generic [ref=e6468]:
+              - text: February 16, 1966
+              - textbox: 1966-02-16
+              - button "Open date picker" [ref=e6469] [cursor=pointer]: 📅
+          - cell "Bob Meyer (+49499029387)" [ref=e6470]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e6471]:
+            - generic [ref=e6472]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e6473] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e6474]:
+            - generic [ref=e6475]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e6476]':
+            - generic [ref=e6477]:
+              - generic [ref=e6479]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 121" [ref=e6480]:
+          - cell "122" [ref=e6481]
+          - cell "W7EaEWj3UgN6EKGvn6g8fHu65 [...]" [ref=e6482]
+          - cell "Eva" [ref=e6483]
+          - cell "Fischer" [ref=e6484]
+          - cell "eva.fischer@example.com" [ref=e6485]
+          - cell "Legal" [ref=e6486]:
+            - text: Legal
+            - generic: ▾
+          - cell "AWS, Figma, SQL" [ref=e6487]:
+            - text: AWS, Figma, SQL
+            - generic: ▾
+          - cell "amet, Lorem" [ref=e6488]:
+            - text: amet, Lorem
+            - generic [ref=e6489] [cursor=pointer]: 🖉
+          - cell [ref=e6490]:
+            - checkbox [checked] [ref=e6491]
+          - cell "44,417.00 €" [ref=e6492]
+          - cell "Jul 4, 2014 2014-07-04 Open date picker" [ref=e6493]:
+            - generic [ref=e6494]:
+              - text: Jul 4, 2014
+              - textbox: 2014-07-04
+              - button "Open date picker" [ref=e6495] [cursor=pointer]: 📅
+          - cell "Hannah Becker" [ref=e6496]
+          - cell "Cologne Office" [ref=e6497]
+          - cell "+49 740 905586" [ref=e6498]
+          - cell "EMP00122" [ref=e6499]
+          - cell "On Leave" [ref=e6500]
+          - cell "QA Engineer" [ref=e6501]
+          - cell "Mobile" [ref=e6502]
+          - cell "Open date/time picker" [ref=e6503]:
+            - generic [ref=e6504]:
+              - textbox
+              - button "Open date/time picker" [ref=e6506] [cursor=pointer]: 📅
+          - cell "3.46" [ref=e6507]
+          - cell "+ 9,567 €" [ref=e6508]
+          - cell "Contractor" [ref=e6509]
+          - cell [ref=e6510]:
+            - generic: ▾
+          - cell "Berlin" [ref=e6511]:
+            - text: Berlin
+            - generic: ▾
+          - cell [ref=e6512]
+          - cell "152 Example Street" [ref=e6513]
+          - cell [ref=e6514]
+          - cell [ref=e6516]
+          - cell "December 7, 1972 1972-12-07 Open date picker" [ref=e6518]:
+            - generic [ref=e6519]:
+              - text: December 7, 1972
+              - textbox: 1972-12-07
+              - button "Open date picker" [ref=e6520] [cursor=pointer]: 📅
+          - cell "Diana Weber (+49377366778 [...]" [ref=e6521]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e6522]:
+            - generic [ref=e6523]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e6524] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e6525]:
+            - generic [ref=e6526]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e6527]':
+            - generic [ref=e6528]:
+              - generic [ref=e6530]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 122" [ref=e6531]:
+          - cell "123" [ref=e6532]
+          - cell "vZnEWLdcXK_ho7_1iQoksgXAr [...]" [ref=e6533]
+          - cell "Grace" [ref=e6534]
+          - cell "Becker" [ref=e6535]
+          - cell "grace.becker@example.com" [ref=e6536]
+          - cell "IT" [ref=e6537]:
+            - text: IT
+            - generic: ▾
+          - cell "React" [ref=e6538]:
+            - text: React
+            - generic: ▾
+          - cell "elitr, duo clita amet, du [...]" [ref=e6539]:
+            - text: elitr, duo clita amet, du [...]
+            - generic [ref=e6540] [cursor=pointer]: 🖉
+          - cell [ref=e6541]:
+            - checkbox [checked] [ref=e6542]
+          - cell "0.00 €" [ref=e6543]
+          - cell "Nov 30, 2016 2016-11-30 Open date picker" [ref=e6544]:
+            - generic [ref=e6545]:
+              - text: Nov 30, 2016
+              - textbox: 2016-11-30
+              - button "Open date picker" [ref=e6546] [cursor=pointer]: 📅
+          - cell "Hannah Meyer" [ref=e6547]
+          - cell "Munich Office" [ref=e6548]
+          - cell "+49 252 168696" [ref=e6549]
+          - cell "EMP00123" [ref=e6550]
+          - cell "Terminated" [ref=e6551]
+          - cell "Product Manager" [ref=e6552]
+          - cell "Growth" [ref=e6553]
+          - cell "Feb 17, 2021, 8:05 AM 2021-02-17T08:05 Open date/time picker" [ref=e6554]:
+            - generic [ref=e6555]:
+              - text: Feb 17, 2021, 8:05 AM
+              - textbox: 2021-02-17T08:05
+              - button "Open date/time picker" [ref=e6556] [cursor=pointer]: 📅
+          - cell "3.69" [ref=e6557]
+          - cell "+ 12,246 €" [ref=e6558]
+          - cell "Temporary" [ref=e6559]
+          - cell "Netherlands" [ref=e6560]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Munich" [ref=e6561]:
+            - text: Munich
+            - generic: ▾
+          - cell "52577" [ref=e6562]
+          - cell "12 Example Street" [ref=e6563]
+          - cell [ref=e6564]
+          - cell [ref=e6566]
+          - cell "Open date picker" [ref=e6568]:
+            - generic [ref=e6569]:
+              - textbox
+              - button "Open date picker" [ref=e6571] [cursor=pointer]: 📅
+          - cell "Grace Weber (+49759400214 [...]" [ref=e6572]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e6573]:
+            - generic [ref=e6574]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e6575] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e6576]:
+            - generic [ref=e6577]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e6578]':
+            - generic [ref=e6579]:
+              - generic [ref=e6581]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 123" [ref=e6582]:
+          - cell "124" [ref=e6583]
+          - cell "KRQyv-D9z79O8HDCwGIPMsovj [...]" [ref=e6584]
+          - cell "Diana" [ref=e6585]
+          - cell "Becker" [ref=e6586]
+          - cell "diana.becker@example.com" [ref=e6587]
+          - cell "Sales" [ref=e6588]:
+            - text: Sales
+            - generic: ▾
+          - cell "SQL, Figma, Java" [ref=e6589]:
+            - text: SQL, Figma, Java
+            - generic: ▾
+          - cell "ipsum takimata tempor no [...]" [ref=e6590]:
+            - text: ipsum takimata tempor no [...]
+            - generic [ref=e6591] [cursor=pointer]: 🖉
+          - cell [ref=e6592]:
+            - checkbox [checked] [ref=e6593]
+          - cell "76,456.00 €" [ref=e6594]
+          - cell "Jun 18, 2020 2020-06-18 Open date picker" [ref=e6595]:
+            - generic [ref=e6596]:
+              - text: Jun 18, 2020
+              - textbox: 2020-06-18
+              - button "Open date picker" [ref=e6597] [cursor=pointer]: 📅
+          - cell "Diana Schneider" [ref=e6598]
+          - cell [ref=e6599]
+          - cell "+13 628 668599" [ref=e6600]
+          - cell "EMP00124" [ref=e6601]
+          - cell "Probation" [ref=e6602]
+          - cell "DevOps Engineer" [ref=e6603]
+          - cell "Platform" [ref=e6604]
+          - cell "Jan 2, 2021, 1:15 AM 2021-01-02T01:15 Open date/time picker" [ref=e6605]:
+            - generic [ref=e6606]:
+              - text: Jan 2, 2021, 1:15 AM
+              - textbox: 2021-01-02T01:15
+              - button "Open date/time picker" [ref=e6607] [cursor=pointer]: 📅
+          - cell "2.66" [ref=e6608]
+          - cell "+ 4,858 €" [ref=e6609]
+          - cell "Contractor" [ref=e6610]
+          - cell "USA" [ref=e6611]:
+            - text: USA
+            - generic: ▾
+          - cell "Stuttgart" [ref=e6612]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "78086" [ref=e6613]
+          - cell "15 Example Street" [ref=e6614]
+          - cell [ref=e6615]
+          - cell [ref=e6617]
+          - cell "January 1, 1973 1973-01-01 Open date picker" [ref=e6619]:
+            - generic [ref=e6620]:
+              - text: January 1, 1973
+              - textbox: 1973-01-01
+              - button "Open date picker" [ref=e6621] [cursor=pointer]: 📅
+          - cell [ref=e6622]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e6623]:
+            - generic [ref=e6624]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e6625] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e6626]:
+            - generic [ref=e6627]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e6628]':
+            - generic [ref=e6629]:
+              - generic [ref=e6631]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 124" [ref=e6632]:
+          - cell "125" [ref=e6633]
+          - cell "OiJKJ2opwFWR7AKgTOELiFnCx [...]" [ref=e6634]
+          - cell "Eva" [ref=e6635]
+          - cell "Wagner" [ref=e6636]
+          - cell "eva.wagner@example.com" [ref=e6637]
+          - cell "Marketing" [ref=e6638]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Python, Docker" [ref=e6639]:
+            - text: Python, Docker
+            - generic: ▾
+          - cell "justo dolore rebum. sit e [...]" [ref=e6640]:
+            - text: justo dolore rebum. sit e [...]
+            - generic [ref=e6641] [cursor=pointer]: 🖉
+          - cell [ref=e6642]:
+            - checkbox [checked] [ref=e6643]
+          - cell "43,123.00 €" [ref=e6644]
+          - cell "Dec 27, 2012 2012-12-27 Open date picker" [ref=e6645]:
+            - generic [ref=e6646]:
+              - text: Dec 27, 2012
+              - textbox: 2012-12-27
+              - button "Open date picker" [ref=e6647] [cursor=pointer]: 📅
+          - cell "Charlie Wagner" [ref=e6648]
+          - cell "Munich Office" [ref=e6649]
+          - cell "+49 435 961481" [ref=e6650]
+          - cell "EMP00125" [ref=e6651]
+          - cell "On Leave" [ref=e6652]
+          - cell [ref=e6653]
+          - cell "Platform" [ref=e6654]
+          - cell "Open date/time picker" [ref=e6655]:
+            - generic [ref=e6656]:
+              - textbox
+              - button "Open date/time picker" [ref=e6658] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e6659]
+          - cell "+ 0 €" [ref=e6660]
+          - cell [ref=e6661]
+          - cell "USA" [ref=e6662]:
+            - text: USA
+            - generic: ▾
+          - cell "Hamburg" [ref=e6663]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "11649" [ref=e6664]
+          - cell "48 Example Street" [ref=e6665]
+          - cell [ref=e6666]
+          - cell [ref=e6668]
+          - cell "October 21, 1980 1980-10-21 Open date picker" [ref=e6670]:
+            - generic [ref=e6671]:
+              - text: October 21, 1980
+              - textbox: 1980-10-21
+              - button "Open date picker" [ref=e6672] [cursor=pointer]: 📅
+          - cell [ref=e6673]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e6674]:
+            - generic [ref=e6675]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e6676] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e6677]:
+            - generic [ref=e6678]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e6679]':
+            - generic [ref=e6680]:
+              - generic [ref=e6682]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 125" [ref=e6683]:
+          - cell "126" [ref=e6684]
+          - cell "VEEC27wzfbsMh1iha4tTY4jI6 [...]" [ref=e6685]
+          - cell "Frank" [ref=e6686]
+          - cell "Schmidt" [ref=e6687]
+          - cell "frank.schmidt@example.com" [ref=e6688]
+          - cell "Finance" [ref=e6689]:
+            - text: Finance
+            - generic: ▾
+          - cell "Figma, Python" [ref=e6690]:
+            - text: Figma, Python
+            - generic: ▾
+          - cell "et sed aliquyam ut ea lab [...]" [ref=e6691]:
+            - text: et sed aliquyam ut ea lab [...]
+            - generic [ref=e6692] [cursor=pointer]: 🖉
+          - cell [ref=e6693]:
+            - checkbox [ref=e6694]
+          - cell "89,622.00 €" [ref=e6695]
+          - cell "Jul 20, 2010 2010-07-20 Open date picker" [ref=e6696]:
+            - generic [ref=e6697]:
+              - text: Jul 20, 2010
+              - textbox: 2010-07-20
+              - button "Open date picker" [ref=e6698] [cursor=pointer]: 📅
+          - cell "Bob Meyer" [ref=e6699]
+          - cell "Munich Office" [ref=e6700]
+          - cell "+49 248 685738" [ref=e6701]
+          - cell "EMP00126" [ref=e6702]
+          - cell "On Leave" [ref=e6703]
+          - cell "DevOps Engineer" [ref=e6704]
+          - cell [ref=e6705]
+          - cell "Open date/time picker" [ref=e6706]:
+            - generic [ref=e6707]:
+              - textbox
+              - button "Open date/time picker" [ref=e6709] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e6710]
+          - cell "+ 10,465 €" [ref=e6711]
+          - cell "Intern" [ref=e6712]
+          - cell "UK" [ref=e6713]:
+            - text: UK
+            - generic: ▾
+          - cell "Frankfurt" [ref=e6714]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "63683" [ref=e6715]
+          - cell "74 Example Street" [ref=e6716]
+          - cell "https://www.linkedin.com/in/frankschmidt 🔗" [ref=e6717]:
+            - generic [ref=e6718]:
+              - generic [ref=e6719]: https://www.linkedin.com/in/frankschmidt
+              - button "🔗" [ref=e6720] [cursor=pointer]
+          - cell "https://github.com/frankschmidt 🔗" [ref=e6721]:
+            - generic [ref=e6722]:
+              - generic [ref=e6723]: https://github.com/frankschmidt
+              - button "🔗" [ref=e6724] [cursor=pointer]
+          - cell "January 10, 1994 1994-01-10 Open date picker" [ref=e6725]:
+            - generic [ref=e6726]:
+              - text: January 10, 1994
+              - textbox: 1994-01-10
+              - button "Open date picker" [ref=e6727] [cursor=pointer]: 📅
+          - cell "Eva Müller (+49675316859)" [ref=e6728]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e6729]:
+            - generic [ref=e6730]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e6731] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e6732]:
+            - generic [ref=e6733]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e6734]':
+            - generic [ref=e6735]:
+              - generic [ref=e6737]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 126" [ref=e6738]:
+          - cell "127" [ref=e6739]
+          - cell "wwDJAZ97HBXz8rqO7" [ref=e6740]
+          - cell "Charlie" [ref=e6741]
+          - cell "Schmidt" [ref=e6742]
+          - cell "charlie.schmidt@example.c [...]" [ref=e6743]
+          - cell "HR" [ref=e6744]:
+            - text: HR
+            - generic: ▾
+          - cell "React, Figma, AWS" [ref=e6745]:
+            - text: React, Figma, AWS
+            - generic: ▾
+          - cell [ref=e6746]:
+            - generic [ref=e6747] [cursor=pointer]: 🖉
+          - cell [ref=e6748]:
+            - checkbox [checked] [ref=e6749]
+          - cell "0.00 €" [ref=e6750]
+          - cell "Sep 27, 2008 2008-09-27 Open date picker" [ref=e6751]:
+            - generic [ref=e6752]:
+              - text: Sep 27, 2008
+              - textbox: 2008-09-27
+              - button "Open date picker" [ref=e6753] [cursor=pointer]: 📅
+          - cell "Eva Weber" [ref=e6754]
+          - cell "Berlin HQ" [ref=e6755]
+          - cell "+11 107 122237" [ref=e6756]
+          - cell "EMP00127" [ref=e6757]
+          - cell "Active" [ref=e6758]
+          - cell [ref=e6759]
+          - cell "Core" [ref=e6760]
+          - cell "Sep 12, 2021, 2:10 PM 2021-09-12T14:10 Open date/time picker" [ref=e6761]:
+            - generic [ref=e6762]:
+              - text: Sep 12, 2021, 2:10 PM
+              - textbox: 2021-09-12T14:10
+              - button "Open date/time picker" [ref=e6763] [cursor=pointer]: 📅
+          - cell "0.69" [ref=e6764]
+          - cell "+ 0 €" [ref=e6765]
+          - cell "Permanent" [ref=e6766]
+          - cell "USA" [ref=e6767]:
+            - text: USA
+            - generic: ▾
+          - cell [ref=e6768]:
+            - generic: ▾
+          - cell "54507" [ref=e6769]
+          - cell "7 Example Street" [ref=e6770]
+          - cell [ref=e6771]
+          - cell [ref=e6773]
+          - cell "March 18, 1974 1974-03-18 Open date picker" [ref=e6775]:
+            - generic [ref=e6776]:
+              - text: March 18, 1974
+              - textbox: 1974-03-18
+              - button "Open date picker" [ref=e6777] [cursor=pointer]: 📅
+          - cell [ref=e6778]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e6779]:
+            - generic [ref=e6780]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e6781] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e6782]:
+            - generic [ref=e6783]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e6784]':
+            - generic [ref=e6785]:
+              - generic [ref=e6787]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 127" [ref=e6788]:
+          - cell "128" [ref=e6789]
+          - cell "DVteYjKBGhfAaWR17HzWIpduz [...]" [ref=e6790]
+          - cell "Julia" [ref=e6791]
+          - cell "Schmidt" [ref=e6792]
+          - cell "julia.schmidt@example.com" [ref=e6793]
+          - cell "Finance" [ref=e6794]:
+            - text: Finance
+            - generic: ▾
+          - cell "Figma" [ref=e6795]:
+            - text: Figma
+            - generic: ▾
+          - cell [ref=e6796]:
+            - generic [ref=e6797] [cursor=pointer]: 🖉
+          - cell [ref=e6798]:
+            - checkbox [checked] [ref=e6799]
+          - cell "64,376.00 €" [ref=e6800]
+          - cell "Apr 18, 2015 2015-04-18 Open date picker" [ref=e6801]:
+            - generic [ref=e6802]:
+              - text: Apr 18, 2015
+              - textbox: 2015-04-18
+              - button "Open date picker" [ref=e6803] [cursor=pointer]: 📅
+          - cell "Charlie Müller" [ref=e6804]
+          - cell [ref=e6805]
+          - cell [ref=e6806]
+          - cell "EMP00128" [ref=e6807]
+          - cell "On Leave" [ref=e6808]
+          - cell "DevOps Engineer" [ref=e6809]
+          - cell "Web" [ref=e6810]
+          - cell "Sep 25, 2023, 2:28 AM 2023-09-25T02:28 Open date/time picker" [ref=e6811]:
+            - generic [ref=e6812]:
+              - text: Sep 25, 2023, 2:28 AM
+              - textbox: 2023-09-25T02:28
+              - button "Open date/time picker" [ref=e6813] [cursor=pointer]: 📅
+          - cell "1.62" [ref=e6814]
+          - cell "+ 2,583 €" [ref=e6815]
+          - cell "Contractor" [ref=e6816]
+          - cell "USA" [ref=e6817]:
+            - text: USA
+            - generic: ▾
+          - cell "Berlin" [ref=e6818]:
+            - text: Berlin
+            - generic: ▾
+          - cell "20055" [ref=e6819]
+          - cell "130 Example Street" [ref=e6820]
+          - cell [ref=e6821]
+          - cell [ref=e6823]
+          - cell "Open date picker" [ref=e6825]:
+            - generic [ref=e6826]:
+              - textbox
+              - button "Open date picker" [ref=e6828] [cursor=pointer]: 📅
+          - cell "Diana Meyer (+17468837528 [...]" [ref=e6829]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e6830]:
+            - generic [ref=e6831]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e6832] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e6833]:
+            - generic [ref=e6834]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e6835]':
+            - generic [ref=e6836]:
+              - generic [ref=e6838]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 128" [ref=e6839]:
+          - cell "129" [ref=e6840]
+          - cell "RUS5UA00Ituy9s3Iz9URJIyLx [...]" [ref=e6841]
+          - cell "Bob" [ref=e6842]
+          - cell "Wagner" [ref=e6843]
+          - cell "bob.wagner@example.com" [ref=e6844]
+          - cell [ref=e6845]:
+            - generic: ▾
+          - cell "Docker, React, TypeScript [...]" [ref=e6846]:
+            - text: Docker, React, TypeScript [...]
+            - generic: ▾
+          - cell "voluptua. justo amet, san [...]" [ref=e6847]:
+            - text: voluptua. justo amet, san [...]
+            - generic [ref=e6848] [cursor=pointer]: 🖉
+          - cell [ref=e6849]:
+            - checkbox [checked] [ref=e6850]
+          - cell "98,902.00 €" [ref=e6851]
+          - cell "Open date picker" [ref=e6852]:
+            - generic [ref=e6853]:
+              - textbox
+              - button "Open date picker" [ref=e6855] [cursor=pointer]: 📅
+          - cell "Hannah Schneider" [ref=e6856]
+          - cell "Remote" [ref=e6857]
+          - cell "+49 326 213130" [ref=e6858]
+          - cell "EMP00129" [ref=e6859]
+          - cell "Active" [ref=e6860]
+          - cell "DevOps Engineer" [ref=e6861]
+          - cell "Tools" [ref=e6862]
+          - cell "Open date/time picker" [ref=e6863]:
+            - generic [ref=e6864]:
+              - textbox
+              - button "Open date/time picker" [ref=e6866] [cursor=pointer]: 📅
+          - cell "2.42" [ref=e6867]
+          - cell "+ 2,082 €" [ref=e6868]
+          - cell "Intern" [ref=e6869]
+          - cell "France" [ref=e6870]:
+            - text: France
+            - generic: ▾
+          - cell [ref=e6871]:
+            - generic: ▾
+          - cell "48979" [ref=e6872]
+          - cell [ref=e6873]
+          - cell [ref=e6874]
+          - cell [ref=e6876]
+          - cell "October 14, 1971 1971-10-14 Open date picker" [ref=e6878]:
+            - generic [ref=e6879]:
+              - text: October 14, 1971
+              - textbox: 1971-10-14
+              - button "Open date picker" [ref=e6880] [cursor=pointer]: 📅
+          - cell [ref=e6881]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e6882]:
+            - generic [ref=e6883]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e6884] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e6885]:
+            - generic [ref=e6886]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e6887]':
+            - generic [ref=e6888]:
+              - generic [ref=e6890]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 129" [ref=e6891]:
+          - cell "130" [ref=e6892]
+          - cell [ref=e6893]
+          - cell "Frank" [ref=e6894]
+          - cell "Fischer" [ref=e6895]
+          - cell "frank.fischer@example.com" [ref=e6896]
+          - cell "IT" [ref=e6897]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e6898]:
+            - generic: ▾
+          - cell [ref=e6899]:
+            - generic [ref=e6900] [cursor=pointer]: 🖉
+          - cell [ref=e6901]:
+            - checkbox [checked] [ref=e6902]
+          - cell "40,148.00 €" [ref=e6903]
+          - cell "Oct 13, 2020 2020-10-13 Open date picker" [ref=e6904]:
+            - generic [ref=e6905]:
+              - text: Oct 13, 2020
+              - textbox: 2020-10-13
+              - button "Open date picker" [ref=e6906] [cursor=pointer]: 📅
+          - cell "Ian Wagner" [ref=e6907]
+          - cell "Cologne Office" [ref=e6908]
+          - cell "+15 769 987265" [ref=e6909]
+          - cell "EMP00130" [ref=e6910]
+          - cell "On Leave" [ref=e6911]
+          - cell "Software Engineer" [ref=e6912]
+          - cell "Core" [ref=e6913]
+          - cell "May 12, 2020, 12:32 PM 2020-05-12T12:32 Open date/time picker" [ref=e6914]:
+            - generic [ref=e6915]:
+              - text: May 12, 2020, 12:32 PM
+              - textbox: 2020-05-12T12:32
+              - button "Open date/time picker" [ref=e6916] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e6917]
+          - cell "+ 13,884 €" [ref=e6918]
+          - cell "Temporary" [ref=e6919]
+          - cell "UK" [ref=e6920]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e6921]:
+            - text: Cologne
+            - generic: ▾
+          - cell "58272" [ref=e6922]
+          - cell [ref=e6923]
+          - cell [ref=e6924]
+          - cell [ref=e6926]
+          - cell "September 4, 1972 1972-09-04 Open date picker" [ref=e6928]:
+            - generic [ref=e6929]:
+              - text: September 4, 1972
+              - textbox: 1972-09-04
+              - button "Open date picker" [ref=e6930] [cursor=pointer]: 📅
+          - cell "Ian Wagner (+49881283072)" [ref=e6931]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e6932]:
+            - generic [ref=e6933]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e6934] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e6935]:
+            - generic [ref=e6936]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e6937]':
+            - generic [ref=e6938]:
+              - generic [ref=e6940]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 130" [ref=e6941]:
+          - cell "131" [ref=e6942]
+          - cell "QXfZwyU8ohHyNkgGn4YKl55c7 [...]" [ref=e6943]
+          - cell "Grace" [ref=e6944]
+          - cell "Meyer" [ref=e6945]
+          - cell "grace.meyer@example.com" [ref=e6946]
+          - cell "Sales" [ref=e6947]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript, React" [ref=e6948]:
+            - text: TypeScript, React
+            - generic: ▾
+          - cell "dolore elitr, ea takimata [...]" [ref=e6949]:
+            - text: dolore elitr, ea takimata [...]
+            - generic [ref=e6950] [cursor=pointer]: 🖉
+          - cell [ref=e6951]:
+            - checkbox [checked] [ref=e6952]
+          - cell "69,109.00 €" [ref=e6953]
+          - cell "Sep 3, 2012 2012-09-03 Open date picker" [ref=e6954]:
+            - generic [ref=e6955]:
+              - text: Sep 3, 2012
+              - textbox: 2012-09-03
+              - button "Open date picker" [ref=e6956] [cursor=pointer]: 📅
+          - cell [ref=e6957]
+          - cell "Berlin HQ" [ref=e6958]
+          - cell "+17 167 684336" [ref=e6959]
+          - cell "EMP00131" [ref=e6960]
+          - cell "Terminated" [ref=e6961]
+          - cell "Software Engineer" [ref=e6962]
+          - cell "Core" [ref=e6963]
+          - cell "Open date/time picker" [ref=e6964]:
+            - generic [ref=e6965]:
+              - textbox
+              - button "Open date/time picker" [ref=e6967] [cursor=pointer]: 📅
+          - cell "4.38" [ref=e6968]
+          - cell "+ 4,196 €" [ref=e6969]
+          - cell "Intern" [ref=e6970]
+          - cell "Spain" [ref=e6971]:
+            - text: Spain
+            - generic: ▾
+          - cell "Berlin" [ref=e6972]:
+            - text: Berlin
+            - generic: ▾
+          - cell [ref=e6973]
+          - cell "120 Example Street" [ref=e6974]
+          - cell [ref=e6975]
+          - cell [ref=e6977]
+          - cell "September 25, 1965 1965-09-25 Open date picker" [ref=e6979]:
+            - generic [ref=e6980]:
+              - text: September 25, 1965
+              - textbox: 1965-09-25
+              - button "Open date picker" [ref=e6981] [cursor=pointer]: 📅
+          - cell [ref=e6982]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e6983]:
+            - generic [ref=e6984]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e6985] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e6986]:
+            - generic [ref=e6987]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e6988]':
+            - generic [ref=e6989]:
+              - generic [ref=e6991]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 131" [ref=e6992]:
+          - cell "132" [ref=e6993]
+          - cell "MytzINzlpB2ad-93LVBs" [ref=e6994]
+          - cell "Hannah" [ref=e6995]
+          - cell "Müller" [ref=e6996]
+          - cell "hannah.müller@example.com" [ref=e6997]
+          - cell [ref=e6998]:
+            - generic: ▾
+          - cell [ref=e6999]:
+            - generic: ▾
+          - cell "clita et ut dolore ut dia [...]" [ref=e7000]:
+            - text: clita et ut dolore ut dia [...]
+            - generic [ref=e7001] [cursor=pointer]: 🖉
+          - cell [ref=e7002]:
+            - checkbox [checked] [ref=e7003]
+          - cell "82,450.00 €" [ref=e7004]
+          - cell "May 16, 2012 2012-05-16 Open date picker" [ref=e7005]:
+            - generic [ref=e7006]:
+              - text: May 16, 2012
+              - textbox: 2012-05-16
+              - button "Open date picker" [ref=e7007] [cursor=pointer]: 📅
+          - cell [ref=e7008]
+          - cell "Munich Office" [ref=e7009]
+          - cell [ref=e7010]
+          - cell "EMP00132" [ref=e7011]
+          - cell "Active" [ref=e7012]
+          - cell "Product Manager" [ref=e7013]
+          - cell "Web" [ref=e7014]
+          - cell "Open date/time picker" [ref=e7015]:
+            - generic [ref=e7016]:
+              - textbox
+              - button "Open date/time picker" [ref=e7018] [cursor=pointer]: 📅
+          - cell "1.30" [ref=e7019]
+          - cell "+ 0 €" [ref=e7020]
+          - cell "Contractor" [ref=e7021]
+          - cell "USA" [ref=e7022]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e7023]:
+            - text: Munich
+            - generic: ▾
+          - cell "26585" [ref=e7024]
+          - cell "173 Example Street" [ref=e7025]
+          - cell [ref=e7026]
+          - cell "https://github.com/hannahmüller 🔗" [ref=e7028]:
+            - generic [ref=e7029]:
+              - generic [ref=e7030]: https://github.com/hannahmüller
+              - button "🔗" [ref=e7031] [cursor=pointer]
+          - cell "October 30, 1969 1969-10-30 Open date picker" [ref=e7032]:
+            - generic [ref=e7033]:
+              - text: October 30, 1969
+              - textbox: 1969-10-30
+              - button "Open date picker" [ref=e7034] [cursor=pointer]: 📅
+          - cell [ref=e7035]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e7036]:
+            - generic [ref=e7037]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e7038] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e7039]:
+            - generic [ref=e7040]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e7041]':
+            - generic [ref=e7042]:
+              - generic [ref=e7044]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 132" [ref=e7045]:
+          - cell "133" [ref=e7046]
+          - cell "9isIgCZLL6lQcJ6auGavxdqii [...]" [ref=e7047]
+          - cell "Frank" [ref=e7048]
+          - cell "Schneider" [ref=e7049]
+          - cell "frank.schneider@example.c [...]" [ref=e7050]
+          - cell "Finance" [ref=e7051]:
+            - text: Finance
+            - generic: ▾
+          - cell "React, TypeScript, Python" [ref=e7052]:
+            - text: React, TypeScript, Python
+            - generic: ▾
+          - cell "tempor diam ea dolores do [...]" [ref=e7053]:
+            - text: tempor diam ea dolores do [...]
+            - generic [ref=e7054] [cursor=pointer]: 🖉
+          - cell [ref=e7055]:
+            - checkbox [checked] [ref=e7056]
+          - cell "57,871.00 €" [ref=e7057]
+          - cell "Apr 10, 2016 2016-04-10 Open date picker" [ref=e7058]:
+            - generic [ref=e7059]:
+              - text: Apr 10, 2016
+              - textbox: 2016-04-10
+              - button "Open date picker" [ref=e7060] [cursor=pointer]: 📅
+          - cell [ref=e7061]
+          - cell "Remote" [ref=e7062]
+          - cell "+49 656 055856" [ref=e7063]
+          - cell "EMP00133" [ref=e7064]
+          - cell "Active" [ref=e7065]
+          - cell "DevOps Engineer" [ref=e7066]
+          - cell "Web" [ref=e7067]
+          - cell "Oct 28, 2021, 8:14 PM 2021-10-28T20:14 Open date/time picker" [ref=e7068]:
+            - generic [ref=e7069]:
+              - text: Oct 28, 2021, 8:14 PM
+              - textbox: 2021-10-28T20:14
+              - button "Open date/time picker" [ref=e7070] [cursor=pointer]: 📅
+          - cell "2.63" [ref=e7071]
+          - cell "+ 6,062 €" [ref=e7072]
+          - cell "Temporary" [ref=e7073]
+          - cell "USA" [ref=e7074]:
+            - text: USA
+            - generic: ▾
+          - cell [ref=e7075]:
+            - generic: ▾
+          - cell [ref=e7076]
+          - cell "84 Example Street" [ref=e7077]
+          - cell [ref=e7078]
+          - cell "https://github.com/frankschneider 🔗" [ref=e7080]:
+            - generic [ref=e7081]:
+              - generic [ref=e7082]: https://github.com/frankschneider
+              - button "🔗" [ref=e7083] [cursor=pointer]
+          - cell "April 3, 1976 1976-04-03 Open date picker" [ref=e7084]:
+            - generic [ref=e7085]:
+              - text: April 3, 1976
+              - textbox: 1976-04-03
+              - button "Open date picker" [ref=e7086] [cursor=pointer]: 📅
+          - cell [ref=e7087]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e7088]:
+            - generic [ref=e7089]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e7090] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e7091]:
+            - generic [ref=e7092]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e7093]':
+            - generic [ref=e7094]:
+              - generic [ref=e7096]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 133" [ref=e7097]:
+          - cell "134" [ref=e7098]
+          - cell "3-bLFJO1fk2eQpj3wQOFT9ioS [...]" [ref=e7099]
+          - cell "Hannah" [ref=e7100]
+          - cell "Becker" [ref=e7101]
+          - cell "hannah.becker@example.com" [ref=e7102]
+          - cell "Sales" [ref=e7103]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript, SQL" [ref=e7104]:
+            - text: TypeScript, SQL
+            - generic: ▾
+          - cell "nonumy consetetur et ea e [...]" [ref=e7105]:
+            - text: nonumy consetetur et ea e [...]
+            - generic [ref=e7106] [cursor=pointer]: 🖉
+          - cell [ref=e7107]:
+            - checkbox [checked] [ref=e7108]
+          - cell "89,423.00 €" [ref=e7109]
+          - cell "Nov 26, 2009 2009-11-26 Open date picker" [ref=e7110]:
+            - generic [ref=e7111]:
+              - text: Nov 26, 2009
+              - textbox: 2009-11-26
+              - button "Open date picker" [ref=e7112] [cursor=pointer]: 📅
+          - cell "Grace Meyer" [ref=e7113]
+          - cell "Remote" [ref=e7114]
+          - cell "+49 991 179505" [ref=e7115]
+          - cell "EMP00134" [ref=e7116]
+          - cell "Active" [ref=e7117]
+          - cell "DevOps Engineer" [ref=e7118]
+          - cell [ref=e7119]
+          - cell "Apr 15, 2024, 1:17 PM 2024-04-15T13:17 Open date/time picker" [ref=e7120]:
+            - generic [ref=e7121]:
+              - text: Apr 15, 2024, 1:17 PM
+              - textbox: 2024-04-15T13:17
+              - button "Open date/time picker" [ref=e7122] [cursor=pointer]: 📅
+          - cell "4.15" [ref=e7123]
+          - cell "+ 9,713 €" [ref=e7124]
+          - cell "Temporary" [ref=e7125]
+          - cell "Germany" [ref=e7126]:
+            - text: Germany
+            - generic: ▾
+          - cell [ref=e7127]:
+            - generic: ▾
+          - cell "71222" [ref=e7128]
+          - cell "196 Example Street" [ref=e7129]
+          - cell "https://www.linkedin.com/in/hannahbecker 🔗" [ref=e7130]:
+            - generic [ref=e7131]:
+              - generic [ref=e7132]: https://www.linkedin.com/in/hannahbecker
+              - button "🔗" [ref=e7133] [cursor=pointer]
+          - cell "https://github.com/hannahbecker 🔗" [ref=e7134]:
+            - generic [ref=e7135]:
+              - generic [ref=e7136]: https://github.com/hannahbecker
+              - button "🔗" [ref=e7137] [cursor=pointer]
+          - cell "January 8, 1982 1982-01-08 Open date picker" [ref=e7138]:
+            - generic [ref=e7139]:
+              - text: January 8, 1982
+              - textbox: 1982-01-08
+              - button "Open date picker" [ref=e7140] [cursor=pointer]: 📅
+          - cell [ref=e7141]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e7142]:
+            - generic [ref=e7143]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e7144] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e7145]:
+            - generic [ref=e7146]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e7147]':
+            - generic [ref=e7148]:
+              - generic [ref=e7150]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 134" [ref=e7151]:
+          - cell "135" [ref=e7152]
+          - cell "Q1yt0ikT46D9iqX5R_GZS" [ref=e7153]
+          - cell "Diana" [ref=e7154]
+          - cell "Müller" [ref=e7155]
+          - cell "diana.müller@example.com" [ref=e7156]
+          - cell "Marketing" [ref=e7157]:
+            - text: Marketing
+            - generic: ▾
+          - cell [ref=e7158]:
+            - generic: ▾
+          - cell "eos dolor gubergren, eos [...]" [ref=e7159]:
+            - text: eos dolor gubergren, eos [...]
+            - generic [ref=e7160] [cursor=pointer]: 🖉
+          - cell [ref=e7161]:
+            - checkbox [checked] [ref=e7162]
+          - cell "83,968.00 €" [ref=e7163]
+          - cell "Jun 23, 2007 2007-06-23 Open date picker" [ref=e7164]:
+            - generic [ref=e7165]:
+              - text: Jun 23, 2007
+              - textbox: 2007-06-23
+              - button "Open date picker" [ref=e7166] [cursor=pointer]: 📅
+          - cell "Alice Schneider" [ref=e7167]
+          - cell "Hamburg Office" [ref=e7168]
+          - cell [ref=e7169]
+          - cell "EMP00135" [ref=e7170]
+          - cell "Terminated" [ref=e7171]
+          - cell "QA Engineer" [ref=e7172]
+          - cell "Core" [ref=e7173]
+          - cell "Aug 15, 2023, 2:58 PM 2023-08-15T14:58 Open date/time picker" [ref=e7174]:
+            - generic [ref=e7175]:
+              - text: Aug 15, 2023, 2:58 PM
+              - textbox: 2023-08-15T14:58
+              - button "Open date/time picker" [ref=e7176] [cursor=pointer]: 📅
+          - cell "4.36" [ref=e7177]
+          - cell "+ 10,349 €" [ref=e7178]
+          - cell "Intern" [ref=e7179]
+          - cell "Netherlands" [ref=e7180]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Hamburg" [ref=e7181]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "24065" [ref=e7182]
+          - cell "133 Example Street" [ref=e7183]
+          - cell "https://www.linkedin.com/in/dianamüller 🔗" [ref=e7184]:
+            - generic [ref=e7185]:
+              - generic [ref=e7186]: https://www.linkedin.com/in/dianamüller
+              - button "🔗" [ref=e7187] [cursor=pointer]
+          - cell [ref=e7188]
+          - cell "Open date picker" [ref=e7190]:
+            - generic [ref=e7191]:
+              - textbox
+              - button "Open date picker" [ref=e7193] [cursor=pointer]: 📅
+          - cell [ref=e7194]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e7195]:
+            - generic [ref=e7196]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e7197] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e7198]:
+            - generic [ref=e7199]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e7200]':
+            - generic [ref=e7201]:
+              - generic [ref=e7203]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 135" [ref=e7204]:
+          - cell "136" [ref=e7205]
+          - cell "ZJsmAW7nraMKFZrYpb3n3Pgd7 [...]" [ref=e7206]
+          - cell "Julia" [ref=e7207]
+          - cell "Meyer" [ref=e7208]
+          - cell "julia.meyer@example.com" [ref=e7209]
+          - cell "IT" [ref=e7210]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e7211]:
+            - generic: ▾
+          - cell [ref=e7212]:
+            - generic [ref=e7213] [cursor=pointer]: 🖉
+          - cell [ref=e7214]:
+            - checkbox [checked] [ref=e7215]
+          - cell "0.00 €" [ref=e7216]
+          - cell "Jan 20, 2024 2024-01-20 Open date picker" [ref=e7217]:
+            - generic [ref=e7218]:
+              - text: Jan 20, 2024
+              - textbox: 2024-01-20
+              - button "Open date picker" [ref=e7219] [cursor=pointer]: 📅
+          - cell "Alice Schmidt" [ref=e7220]
+          - cell "Cologne Office" [ref=e7221]
+          - cell "+49 578 925584" [ref=e7222]
+          - cell "EMP00136" [ref=e7223]
+          - cell "On Leave" [ref=e7224]
+          - cell [ref=e7225]
+          - cell [ref=e7226]
+          - cell "Sep 24, 2021, 4:17 AM 2021-09-24T04:17 Open date/time picker" [ref=e7227]:
+            - generic [ref=e7228]:
+              - text: Sep 24, 2021, 4:17 AM
+              - textbox: 2021-09-24T04:17
+              - button "Open date/time picker" [ref=e7229] [cursor=pointer]: 📅
+          - cell "4.81" [ref=e7230]
+          - cell "+ 0 €" [ref=e7231]
+          - cell "Temporary" [ref=e7232]
+          - cell "UK" [ref=e7233]:
+            - text: UK
+            - generic: ▾
+          - cell "Stuttgart" [ref=e7234]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "47392" [ref=e7235]
+          - cell "174 Example Street" [ref=e7236]
+          - cell [ref=e7237]
+          - cell [ref=e7239]
+          - cell "Open date picker" [ref=e7241]:
+            - generic [ref=e7242]:
+              - textbox
+              - button "Open date picker" [ref=e7244] [cursor=pointer]: 📅
+          - cell "Eva Becker (+49690571363)" [ref=e7245]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e7246]:
+            - generic [ref=e7247]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e7248] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e7249]:
+            - generic [ref=e7250]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e7251]':
+            - generic [ref=e7252]:
+              - generic [ref=e7254]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 136" [ref=e7255]:
+          - cell "137" [ref=e7256]
+          - cell "jZZ7oHLvyicmaKyvCWOnY" [ref=e7257]
+          - cell "Hannah" [ref=e7258]
+          - cell "Meyer" [ref=e7259]
+          - cell "hannah.meyer@example.com" [ref=e7260]
+          - cell "Finance" [ref=e7261]:
+            - text: Finance
+            - generic: ▾
+          - cell "TypeScript, Docker, Java" [ref=e7262]:
+            - text: TypeScript, Docker, Java
+            - generic: ▾
+          - cell [ref=e7263]:
+            - generic [ref=e7264] [cursor=pointer]: 🖉
+          - cell [ref=e7265]:
+            - checkbox [checked] [ref=e7266]
+          - cell "70,994.00 €" [ref=e7267]
+          - cell "Apr 28, 2019 2019-04-28 Open date picker" [ref=e7268]:
+            - generic [ref=e7269]:
+              - text: Apr 28, 2019
+              - textbox: 2019-04-28
+              - button "Open date picker" [ref=e7270] [cursor=pointer]: 📅
+          - cell "Bob Fischer" [ref=e7271]
+          - cell "Cologne Office" [ref=e7272]
+          - cell "+49 472 153486" [ref=e7273]
+          - cell "EMP00137" [ref=e7274]
+          - cell "On Leave" [ref=e7275]
+          - cell "QA Engineer" [ref=e7276]
+          - cell "Tools" [ref=e7277]
+          - cell "Apr 5, 2023, 8:35 PM 2023-04-05T20:35 Open date/time picker" [ref=e7278]:
+            - generic [ref=e7279]:
+              - text: Apr 5, 2023, 8:35 PM
+              - textbox: 2023-04-05T20:35
+              - button "Open date/time picker" [ref=e7280] [cursor=pointer]: 📅
+          - cell "4.35" [ref=e7281]
+          - cell "+ 0 €" [ref=e7282]
+          - cell "Temporary" [ref=e7283]
+          - cell "Spain" [ref=e7284]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e7285]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "34811" [ref=e7286]
+          - cell "164 Example Street" [ref=e7287]
+          - cell [ref=e7288]
+          - cell [ref=e7290]
+          - cell "November 8, 1989 1989-11-08 Open date picker" [ref=e7292]:
+            - generic [ref=e7293]:
+              - text: November 8, 1989
+              - textbox: 1989-11-08
+              - button "Open date picker" [ref=e7294] [cursor=pointer]: 📅
+          - cell "Julia Becker (+4945309961 [...]" [ref=e7295]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e7296]:
+            - generic [ref=e7297]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e7298] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e7299]:
+            - generic [ref=e7300]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e7301]':
+            - generic [ref=e7302]:
+              - generic [ref=e7304]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 137" [ref=e7305]:
+          - cell "138" [ref=e7306]
+          - cell "XtVl-0_yzZNWxlrIsnnpurCdP [...]" [ref=e7307]
+          - cell "Charlie" [ref=e7308]
+          - cell "Schneider" [ref=e7309]
+          - cell "charlie.schneider@example [...]" [ref=e7310]
+          - cell [ref=e7311]:
+            - generic: ▾
+          - cell [ref=e7312]:
+            - generic: ▾
+          - cell "takimata diam no dolores [...]" [ref=e7313]:
+            - text: takimata diam no dolores [...]
+            - generic [ref=e7314] [cursor=pointer]: 🖉
+          - cell [ref=e7315]:
+            - checkbox [ref=e7316]
+          - cell "45,441.00 €" [ref=e7317]
+          - cell "Jan 28, 2011 2011-01-28 Open date picker" [ref=e7318]:
+            - generic [ref=e7319]:
+              - text: Jan 28, 2011
+              - textbox: 2011-01-28
+              - button "Open date picker" [ref=e7320] [cursor=pointer]: 📅
+          - cell "Hannah Schneider" [ref=e7321]
+          - cell [ref=e7322]
+          - cell "+49 874 256402" [ref=e7323]
+          - cell "EMP00138" [ref=e7324]
+          - cell "Terminated" [ref=e7325]
+          - cell "Designer" [ref=e7326]
+          - cell "Core" [ref=e7327]
+          - cell "Open date/time picker" [ref=e7328]:
+            - generic [ref=e7329]:
+              - textbox
+              - button "Open date/time picker" [ref=e7331] [cursor=pointer]: 📅
+          - cell "1.12" [ref=e7332]
+          - cell "+ 13,525 €" [ref=e7333]
+          - cell "Contractor" [ref=e7334]
+          - cell "France" [ref=e7335]:
+            - text: France
+            - generic: ▾
+          - cell "Frankfurt" [ref=e7336]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "19564" [ref=e7337]
+          - cell [ref=e7338]
+          - cell [ref=e7339]
+          - cell [ref=e7341]
+          - cell "Open date picker" [ref=e7343]:
+            - generic [ref=e7344]:
+              - textbox
+              - button "Open date picker" [ref=e7346] [cursor=pointer]: 📅
+          - cell "Diana Schmidt (+136167617 [...]" [ref=e7347]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e7348]:
+            - generic [ref=e7349]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e7350] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e7351]:
+            - generic [ref=e7352]: 5h
+          - 'cell "#10b981 #10b981" [ref=e7353]':
+            - generic [ref=e7354]:
+              - generic [ref=e7356]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 138" [ref=e7357]:
+          - cell "139" [ref=e7358]
+          - cell "Ss5ITz1rdzhmc0d0l3kfU7jsz [...]" [ref=e7359]
+          - cell "Grace" [ref=e7360]
+          - cell "Wagner" [ref=e7361]
+          - cell "grace.wagner@example.com" [ref=e7362]
+          - cell "Finance" [ref=e7363]:
+            - text: Finance
+            - generic: ▾
+          - cell [ref=e7364]:
+            - generic: ▾
+          - cell "labore ut eirmod nonumy d [...]" [ref=e7365]:
+            - text: labore ut eirmod nonumy d [...]
+            - generic [ref=e7366] [cursor=pointer]: 🖉
+          - cell [ref=e7367]:
+            - checkbox [ref=e7368]
+          - cell "56,926.00 €" [ref=e7369]
+          - cell "Jun 20, 2010 2010-06-20 Open date picker" [ref=e7370]:
+            - generic [ref=e7371]:
+              - text: Jun 20, 2010
+              - textbox: 2010-06-20
+              - button "Open date picker" [ref=e7372] [cursor=pointer]: 📅
+          - cell "Alice Weber" [ref=e7373]
+          - cell "Munich Office" [ref=e7374]
+          - cell [ref=e7375]
+          - cell "EMP00139" [ref=e7376]
+          - cell "Terminated" [ref=e7377]
+          - cell "Software Engineer" [ref=e7378]
+          - cell "Web" [ref=e7379]
+          - cell "Jul 24, 2024, 4:15 PM 2024-07-24T16:15 Open date/time picker" [ref=e7380]:
+            - generic [ref=e7381]:
+              - text: Jul 24, 2024, 4:15 PM
+              - textbox: 2024-07-24T16:15
+              - button "Open date/time picker" [ref=e7382] [cursor=pointer]: 📅
+          - cell "3.88" [ref=e7383]
+          - cell "+ 4,989 €" [ref=e7384]
+          - cell [ref=e7385]
+          - cell "Germany" [ref=e7386]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e7387]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "57274" [ref=e7388]
+          - cell "75 Example Street" [ref=e7389]
+          - cell "https://www.linkedin.com/in/gracewagner 🔗" [ref=e7390]:
+            - generic [ref=e7391]:
+              - generic [ref=e7392]: https://www.linkedin.com/in/gracewagner
+              - button "🔗" [ref=e7393] [cursor=pointer]
+          - cell [ref=e7394]
+          - cell "Open date picker" [ref=e7396]:
+            - generic [ref=e7397]:
+              - textbox
+              - button "Open date picker" [ref=e7399] [cursor=pointer]: 📅
+          - cell "Diana Schneider (+4952480 [...]" [ref=e7400]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e7401]:
+            - generic [ref=e7402]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e7403] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e7404]:
+            - generic [ref=e7405]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e7406]':
+            - generic [ref=e7407]:
+              - generic [ref=e7409]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 139" [ref=e7410]:
+          - cell "140" [ref=e7411]
+          - cell "vOmhbEW1CUkK7AqvU3AKWlyHN [...]" [ref=e7412]
+          - cell "Eva" [ref=e7413]
+          - cell "Meyer" [ref=e7414]
+          - cell "eva.meyer@example.com" [ref=e7415]
+          - cell "IT" [ref=e7416]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e7417]:
+            - generic: ▾
+          - cell "diam magna sadipscing vol [...]" [ref=e7418]:
+            - text: diam magna sadipscing vol [...]
+            - generic [ref=e7419] [cursor=pointer]: 🖉
+          - cell [ref=e7420]:
+            - checkbox [checked] [ref=e7421]
+          - cell "0.00 €" [ref=e7422]
+          - cell "Dec 9, 2023 2023-12-09 Open date picker" [ref=e7423]:
+            - generic [ref=e7424]:
+              - text: Dec 9, 2023
+              - textbox: 2023-12-09
+              - button "Open date picker" [ref=e7425] [cursor=pointer]: 📅
+          - cell "Bob Weber" [ref=e7426]
+          - cell "Cologne Office" [ref=e7427]
+          - cell "+49 114 550481" [ref=e7428]
+          - cell "EMP00140" [ref=e7429]
+          - cell "Active" [ref=e7430]
+          - cell "QA Engineer" [ref=e7431]
+          - cell "Platform" [ref=e7432]
+          - cell "Feb 28, 2024, 12:16 AM 2024-02-28T00:16 Open date/time picker" [ref=e7433]:
+            - generic [ref=e7434]:
+              - text: Feb 28, 2024, 12:16 AM
+              - textbox: 2024-02-28T00:16
+              - button "Open date/time picker" [ref=e7435] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e7436]
+          - cell "+ 7,331 €" [ref=e7437]
+          - cell "Contractor" [ref=e7438]
+          - cell "UK" [ref=e7439]:
+            - text: UK
+            - generic: ▾
+          - cell "Munich" [ref=e7440]:
+            - text: Munich
+            - generic: ▾
+          - cell "42406" [ref=e7441]
+          - cell "149 Example Street" [ref=e7442]
+          - cell [ref=e7443]
+          - cell [ref=e7445]
+          - cell "Open date picker" [ref=e7447]:
+            - generic [ref=e7448]:
+              - textbox
+              - button "Open date picker" [ref=e7450] [cursor=pointer]: 📅
+          - cell [ref=e7451]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e7452]:
+            - generic [ref=e7453]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e7454] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e7455]:
+            - generic [ref=e7456]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e7457]':
+            - generic [ref=e7458]:
+              - generic [ref=e7460]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 140" [ref=e7461]:
+          - cell "141" [ref=e7462]
+          - cell "msl-8Vr1BpdVgIqTrVOtoyyF7 [...]" [ref=e7463]
+          - cell "Julia" [ref=e7464]
+          - cell "Fischer" [ref=e7465]
+          - cell [ref=e7466]
+          - cell "Legal" [ref=e7467]:
+            - text: Legal
+            - generic: ▾
+          - cell "Python, Java, TypeScript" [ref=e7468]:
+            - text: Python, Java, TypeScript
+            - generic: ▾
+          - cell [ref=e7469]:
+            - generic [ref=e7470] [cursor=pointer]: 🖉
+          - cell [ref=e7471]:
+            - checkbox [checked] [ref=e7472]
+          - cell "0.00 €" [ref=e7473]
+          - cell "Oct 12, 2013 2013-10-12 Open date picker" [ref=e7474]:
+            - generic [ref=e7475]:
+              - text: Oct 12, 2013
+              - textbox: 2013-10-12
+              - button "Open date picker" [ref=e7476] [cursor=pointer]: 📅
+          - cell "Eva Fischer" [ref=e7477]
+          - cell [ref=e7478]
+          - cell [ref=e7479]
+          - cell "EMP00141" [ref=e7480]
+          - cell "Active" [ref=e7481]
+          - cell "Software Engineer" [ref=e7482]
+          - cell "Growth" [ref=e7483]
+          - cell "Open date/time picker" [ref=e7484]:
+            - generic [ref=e7485]:
+              - textbox
+              - button "Open date/time picker" [ref=e7487] [cursor=pointer]: 📅
+          - cell "3.16" [ref=e7488]
+          - cell "+ 0 €" [ref=e7489]
+          - cell "Temporary" [ref=e7490]
+          - cell "Germany" [ref=e7491]:
+            - text: Germany
+            - generic: ▾
+          - cell [ref=e7492]:
+            - generic: ▾
+          - cell "18738" [ref=e7493]
+          - cell [ref=e7494]
+          - cell [ref=e7495]
+          - cell [ref=e7497]
+          - cell "April 1, 1970 1970-04-01 Open date picker" [ref=e7499]:
+            - generic [ref=e7500]:
+              - text: April 1, 1970
+              - textbox: 1970-04-01
+              - button "Open date picker" [ref=e7501] [cursor=pointer]: 📅
+          - cell "Diana Becker (+4919885276 [...]" [ref=e7502]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e7503]:
+            - generic [ref=e7504]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e7505] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e7506]:
+            - generic [ref=e7507]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e7508]':
+            - generic [ref=e7509]:
+              - generic [ref=e7511]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 141" [ref=e7512]:
+          - cell "142" [ref=e7513]
+          - cell "D_76zcRJSbYnqgvjDfuqyNUX- [...]" [ref=e7514]
+          - cell "Ian" [ref=e7515]
+          - cell "Meyer" [ref=e7516]
+          - cell "ian.meyer@example.com" [ref=e7517]
+          - cell "Sales" [ref=e7518]:
+            - text: Sales
+            - generic: ▾
+          - cell "Docker, TypeScript" [ref=e7519]:
+            - text: Docker, TypeScript
+            - generic: ▾
+          - cell "accusam no ea erat, accus [...]" [ref=e7520]:
+            - text: accusam no ea erat, accus [...]
+            - generic [ref=e7521] [cursor=pointer]: 🖉
+          - cell [ref=e7522]:
+            - checkbox [checked] [ref=e7523]
+          - cell "67,633.00 €" [ref=e7524]
+          - cell "May 4, 2006 2006-05-04 Open date picker" [ref=e7525]:
+            - generic [ref=e7526]:
+              - text: May 4, 2006
+              - textbox: 2006-05-04
+              - button "Open date picker" [ref=e7527] [cursor=pointer]: 📅
+          - cell "Alice Schmidt" [ref=e7528]
+          - cell "Remote" [ref=e7529]
+          - cell [ref=e7530]
+          - cell "EMP00142" [ref=e7531]
+          - cell "Active" [ref=e7532]
+          - cell "Software Engineer" [ref=e7533]
+          - cell "Platform" [ref=e7534]
+          - cell "Apr 4, 2023, 11:49 PM 2023-04-04T23:49 Open date/time picker" [ref=e7535]:
+            - generic [ref=e7536]:
+              - text: Apr 4, 2023, 11:49 PM
+              - textbox: 2023-04-04T23:49
+              - button "Open date/time picker" [ref=e7537] [cursor=pointer]: 📅
+          - cell "1.40" [ref=e7538]
+          - cell "+ 14,254 €" [ref=e7539]
+          - cell "Contractor" [ref=e7540]
+          - cell "Germany" [ref=e7541]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e7542]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e7543]
+          - cell "17 Example Street" [ref=e7544]
+          - cell [ref=e7545]
+          - cell [ref=e7547]
+          - cell "April 1, 1995 1995-04-01 Open date picker" [ref=e7549]:
+            - generic [ref=e7550]:
+              - text: April 1, 1995
+              - textbox: 1995-04-01
+              - button "Open date picker" [ref=e7551] [cursor=pointer]: 📅
+          - cell [ref=e7552]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e7553]:
+            - generic [ref=e7554]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e7555] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e7556]:
+            - generic [ref=e7557]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e7558]':
+            - generic [ref=e7559]:
+              - generic [ref=e7561]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 142" [ref=e7562]:
+          - cell "143" [ref=e7563]
+          - cell "iQ0ve8CMtNcZWCwA43WXNb57m [...]" [ref=e7564]
+          - cell "Julia" [ref=e7565]
+          - cell "Schneider" [ref=e7566]
+          - cell "julia.schneider@example.c [...]" [ref=e7567]
+          - cell "Finance" [ref=e7568]:
+            - text: Finance
+            - generic: ▾
+          - cell "React, Python, AWS" [ref=e7569]:
+            - text: React, Python, AWS
+            - generic: ▾
+          - cell [ref=e7570]:
+            - generic [ref=e7571] [cursor=pointer]: 🖉
+          - cell [ref=e7572]:
+            - checkbox [checked] [ref=e7573]
+          - cell "59,561.00 €" [ref=e7574]
+          - cell "Feb 14, 2015 2015-02-14 Open date picker" [ref=e7575]:
+            - generic [ref=e7576]:
+              - text: Feb 14, 2015
+              - textbox: 2015-02-14
+              - button "Open date picker" [ref=e7577] [cursor=pointer]: 📅
+          - cell "Grace Wagner" [ref=e7578]
+          - cell "Berlin HQ" [ref=e7579]
+          - cell "+49 167 254438" [ref=e7580]
+          - cell "EMP00143" [ref=e7581]
+          - cell "Active" [ref=e7582]
+          - cell "DevOps Engineer" [ref=e7583]
+          - cell "Growth" [ref=e7584]
+          - cell "Open date/time picker" [ref=e7585]:
+            - generic [ref=e7586]:
+              - textbox
+              - button "Open date/time picker" [ref=e7588] [cursor=pointer]: 📅
+          - cell "1.50" [ref=e7589]
+          - cell "+ 9,421 €" [ref=e7590]
+          - cell "Permanent" [ref=e7591]
+          - cell "Spain" [ref=e7592]:
+            - text: Spain
+            - generic: ▾
+          - cell "Stuttgart" [ref=e7593]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "51919" [ref=e7594]
+          - cell "168 Example Street" [ref=e7595]
+          - cell [ref=e7596]
+          - cell [ref=e7598]
+          - cell "June 2, 1970 1970-06-02 Open date picker" [ref=e7600]:
+            - generic [ref=e7601]:
+              - text: June 2, 1970
+              - textbox: 1970-06-02
+              - button "Open date picker" [ref=e7602] [cursor=pointer]: 📅
+          - cell [ref=e7603]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e7604]:
+            - generic [ref=e7605]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e7606] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e7607]:
+            - generic [ref=e7608]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e7609]':
+            - generic [ref=e7610]:
+              - generic [ref=e7612]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 143" [ref=e7613]:
+          - cell "144" [ref=e7614]
+          - cell "NIrjvO4XuBlQjBrV40H" [ref=e7615]
+          - cell "Ian" [ref=e7616]
+          - cell "Schmidt" [ref=e7617]
+          - cell "ian.schmidt@example.com" [ref=e7618]
+          - cell "IT" [ref=e7619]:
+            - text: IT
+            - generic: ▾
+          - cell "Figma, Python, TypeScript [...]" [ref=e7620]:
+            - text: Figma, Python, TypeScript [...]
+            - generic: ▾
+          - cell "et ea et clita consetetur [...]" [ref=e7621]:
+            - text: et ea et clita consetetur [...]
+            - generic [ref=e7622] [cursor=pointer]: 🖉
+          - cell [ref=e7623]:
+            - checkbox [checked] [ref=e7624]
+          - cell "0.00 €" [ref=e7625]
+          - cell "Feb 1, 2015 2015-02-01 Open date picker" [ref=e7626]:
+            - generic [ref=e7627]:
+              - text: Feb 1, 2015
+              - textbox: 2015-02-01
+              - button "Open date picker" [ref=e7628] [cursor=pointer]: 📅
+          - cell "Diana Becker" [ref=e7629]
+          - cell "Berlin HQ" [ref=e7630]
+          - cell "+19 507 327686" [ref=e7631]
+          - cell "EMP00144" [ref=e7632]
+          - cell "Probation" [ref=e7633]
+          - cell "Product Manager" [ref=e7634]
+          - cell [ref=e7635]
+          - cell "Open date/time picker" [ref=e7636]:
+            - generic [ref=e7637]:
+              - textbox
+              - button "Open date/time picker" [ref=e7639] [cursor=pointer]: 📅
+          - cell "2.00" [ref=e7640]
+          - cell "+ 0 €" [ref=e7641]
+          - cell "Permanent" [ref=e7642]
+          - cell "USA" [ref=e7643]:
+            - text: USA
+            - generic: ▾
+          - cell "Stuttgart" [ref=e7644]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "83566" [ref=e7645]
+          - cell "17 Example Street" [ref=e7646]
+          - cell [ref=e7647]
+          - cell [ref=e7649]
+          - cell "November 12, 1991 1991-11-12 Open date picker" [ref=e7651]:
+            - generic [ref=e7652]:
+              - text: November 12, 1991
+              - textbox: 1991-11-12
+              - button "Open date picker" [ref=e7653] [cursor=pointer]: 📅
+          - cell [ref=e7654]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e7655]:
+            - generic [ref=e7656]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e7657] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e7658]:
+            - generic [ref=e7659]: 4h
+          - 'cell "#f97316 #f97316" [ref=e7660]':
+            - generic [ref=e7661]:
+              - generic [ref=e7663]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 144" [ref=e7664]:
+          - cell "145" [ref=e7665]
+          - cell "jfPQREwWf5_fhccFO5PGy-OeG [...]" [ref=e7666]
+          - cell "Eva" [ref=e7667]
+          - cell "Fischer" [ref=e7668]
+          - cell "eva.fischer@example.com" [ref=e7669]
+          - cell "IT" [ref=e7670]:
+            - text: IT
+            - generic: ▾
+          - cell "Python" [ref=e7671]:
+            - text: Python
+            - generic: ▾
+          - cell [ref=e7672]:
+            - generic [ref=e7673] [cursor=pointer]: 🖉
+          - cell [ref=e7674]:
+            - checkbox [checked] [ref=e7675]
+          - cell "0.00 €" [ref=e7676]
+          - cell "Dec 11, 2024 2024-12-11 Open date picker" [ref=e7677]:
+            - generic [ref=e7678]:
+              - text: Dec 11, 2024
+              - textbox: 2024-12-11
+              - button "Open date picker" [ref=e7679] [cursor=pointer]: 📅
+          - cell "Alice Weber" [ref=e7680]
+          - cell "Munich Office" [ref=e7681]
+          - cell "+16 857 606572" [ref=e7682]
+          - cell "EMP00145" [ref=e7683]
+          - cell "Active" [ref=e7684]
+          - cell "DevOps Engineer" [ref=e7685]
+          - cell "Platform" [ref=e7686]
+          - cell "Apr 20, 2022, 12:55 PM 2022-04-20T12:55 Open date/time picker" [ref=e7687]:
+            - generic [ref=e7688]:
+              - text: Apr 20, 2022, 12:55 PM
+              - textbox: 2022-04-20T12:55
+              - button "Open date/time picker" [ref=e7689] [cursor=pointer]: 📅
+          - cell "1.35" [ref=e7690]
+          - cell "+ 0 €" [ref=e7691]
+          - cell "Permanent" [ref=e7692]
+          - cell "Netherlands" [ref=e7693]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Munich" [ref=e7694]:
+            - text: Munich
+            - generic: ▾
+          - cell "30827" [ref=e7695]
+          - cell "181 Example Street" [ref=e7696]
+          - cell "https://www.linkedin.com/in/evafischer 🔗" [ref=e7697]:
+            - generic [ref=e7698]:
+              - generic [ref=e7699]: https://www.linkedin.com/in/evafischer
+              - button "🔗" [ref=e7700] [cursor=pointer]
+          - cell "https://github.com/evafischer 🔗" [ref=e7701]:
+            - generic [ref=e7702]:
+              - generic [ref=e7703]: https://github.com/evafischer
+              - button "🔗" [ref=e7704] [cursor=pointer]
+          - cell "December 24, 1975 1975-12-24 Open date picker" [ref=e7705]:
+            - generic [ref=e7706]:
+              - text: December 24, 1975
+              - textbox: 1975-12-24
+              - button "Open date picker" [ref=e7707] [cursor=pointer]: 📅
+          - cell [ref=e7708]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e7709]:
+            - generic [ref=e7710]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e7711] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e7712]:
+            - generic [ref=e7713]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e7714]':
+            - generic [ref=e7715]:
+              - generic [ref=e7717]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 145" [ref=e7718]:
+          - cell "146" [ref=e7719]
+          - cell "1LmZd54MJ6pg3t5wytiNhncEs" [ref=e7720]
+          - cell "Alice" [ref=e7721]
+          - cell "Schmidt" [ref=e7722]
+          - cell [ref=e7723]
+          - cell "Legal" [ref=e7724]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e7725]:
+            - generic: ▾
+          - cell [ref=e7726]:
+            - generic [ref=e7727] [cursor=pointer]: 🖉
+          - cell [ref=e7728]:
+            - checkbox [checked] [ref=e7729]
+          - cell "43,897.00 €" [ref=e7730]
+          - cell "May 2, 2014 2014-05-02 Open date picker" [ref=e7731]:
+            - generic [ref=e7732]:
+              - text: May 2, 2014
+              - textbox: 2014-05-02
+              - button "Open date picker" [ref=e7733] [cursor=pointer]: 📅
+          - cell "Eva Weber" [ref=e7734]
+          - cell [ref=e7735]
+          - cell "+17 065 060639" [ref=e7736]
+          - cell "EMP00146" [ref=e7737]
+          - cell [ref=e7738]
+          - cell "Software Engineer" [ref=e7739]
+          - cell "Platform" [ref=e7740]
+          - cell "Sep 4, 2023, 9:27 PM 2023-09-04T21:27 Open date/time picker" [ref=e7741]:
+            - generic [ref=e7742]:
+              - text: Sep 4, 2023, 9:27 PM
+              - textbox: 2023-09-04T21:27
+              - button "Open date/time picker" [ref=e7743] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e7744]
+          - cell "+ 0 €" [ref=e7745]
+          - cell "Permanent" [ref=e7746]
+          - cell "Germany" [ref=e7747]:
+            - text: Germany
+            - generic: ▾
+          - cell "Berlin" [ref=e7748]:
+            - text: Berlin
+            - generic: ▾
+          - cell "57996" [ref=e7749]
+          - cell [ref=e7750]
+          - cell [ref=e7751]
+          - cell [ref=e7753]
+          - cell "March 16, 1988 1988-03-16 Open date picker" [ref=e7755]:
+            - generic [ref=e7756]:
+              - text: March 16, 1988
+              - textbox: 1988-03-16
+              - button "Open date picker" [ref=e7757] [cursor=pointer]: 📅
+          - cell "Hannah Weber (+1608747217 [...]" [ref=e7758]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e7759]:
+            - generic [ref=e7760]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e7761] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e7762]:
+            - generic [ref=e7763]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e7764]':
+            - generic [ref=e7765]:
+              - generic [ref=e7767]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 146" [ref=e7768]:
+          - cell "147" [ref=e7769]
+          - cell "YAsRrC5GOK2r2lM1L7mgE6Zu9 [...]" [ref=e7770]
+          - cell "Alice" [ref=e7771]
+          - cell "Becker" [ref=e7772]
+          - cell "alice.becker@example.com" [ref=e7773]
+          - cell [ref=e7774]:
+            - generic: ▾
+          - cell "SQL, Python" [ref=e7775]:
+            - text: SQL, Python
+            - generic: ▾
+          - cell [ref=e7776]:
+            - generic [ref=e7777] [cursor=pointer]: 🖉
+          - cell [ref=e7778]:
+            - checkbox [checked] [ref=e7779]
+          - cell "69,846.00 €" [ref=e7780]
+          - cell "Open date picker" [ref=e7781]:
+            - generic [ref=e7782]:
+              - textbox
+              - button "Open date picker" [ref=e7784] [cursor=pointer]: 📅
+          - cell "Frank Schmidt" [ref=e7785]
+          - cell "Hamburg Office" [ref=e7786]
+          - cell "+49 735 815801" [ref=e7787]
+          - cell "EMP00147" [ref=e7788]
+          - cell "Terminated" [ref=e7789]
+          - cell "QA Engineer" [ref=e7790]
+          - cell "Platform" [ref=e7791]
+          - cell "Sep 23, 2023, 9:26 AM 2023-09-23T09:26 Open date/time picker" [ref=e7792]:
+            - generic [ref=e7793]:
+              - text: Sep 23, 2023, 9:26 AM
+              - textbox: 2023-09-23T09:26
+              - button "Open date/time picker" [ref=e7794] [cursor=pointer]: 📅
+          - cell "0.48" [ref=e7795]
+          - cell "+ 13,704 €" [ref=e7796]
+          - cell "Permanent" [ref=e7797]
+          - cell "Germany" [ref=e7798]:
+            - text: Germany
+            - generic: ▾
+          - cell "Cologne" [ref=e7799]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e7800]
+          - cell [ref=e7801]
+          - cell [ref=e7802]
+          - cell [ref=e7804]
+          - cell "Open date picker" [ref=e7806]:
+            - generic [ref=e7807]:
+              - textbox
+              - button "Open date picker" [ref=e7809] [cursor=pointer]: 📅
+          - cell [ref=e7810]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e7811]:
+            - generic [ref=e7812]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e7813] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e7814]:
+            - generic [ref=e7815]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e7816]':
+            - generic [ref=e7817]:
+              - generic [ref=e7819]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 147" [ref=e7820]:
+          - cell "148" [ref=e7821]
+          - cell "2P9NgllpmY1zh4fO17FYuIAgv [...]" [ref=e7822]
+          - cell "Frank" [ref=e7823]
+          - cell "Weber" [ref=e7824]
+          - cell "frank.weber@example.com" [ref=e7825]
+          - cell "Legal" [ref=e7826]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java, React, TypeScript, [...]" [ref=e7827]:
+            - text: Java, React, TypeScript, [...]
+            - generic: ▾
+          - cell "magna" [ref=e7828]:
+            - text: magna
+            - generic [ref=e7829] [cursor=pointer]: 🖉
+          - cell [ref=e7830]:
+            - checkbox [checked] [ref=e7831]
+          - cell "89,705.00 €" [ref=e7832]
+          - cell "Nov 24, 2022 2022-11-24 Open date picker" [ref=e7833]:
+            - generic [ref=e7834]:
+              - text: Nov 24, 2022
+              - textbox: 2022-11-24
+              - button "Open date picker" [ref=e7835] [cursor=pointer]: 📅
+          - cell "Grace Schmidt" [ref=e7836]
+          - cell "Hamburg Office" [ref=e7837]
+          - cell [ref=e7838]
+          - cell "EMP00148" [ref=e7839]
+          - cell "Terminated" [ref=e7840]
+          - cell "Product Manager" [ref=e7841]
+          - cell "Growth" [ref=e7842]
+          - cell "Jan 6, 2022, 8:45 PM 2022-01-06T20:45 Open date/time picker" [ref=e7843]:
+            - generic [ref=e7844]:
+              - text: Jan 6, 2022, 8:45 PM
+              - textbox: 2022-01-06T20:45
+              - button "Open date/time picker" [ref=e7845] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e7846]
+          - cell "+ 5,999 €" [ref=e7847]
+          - cell "Contractor" [ref=e7848]
+          - cell "Spain" [ref=e7849]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e7850]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell [ref=e7851]
+          - cell "34 Example Street" [ref=e7852]
+          - cell [ref=e7853]
+          - cell [ref=e7855]
+          - cell "Open date picker" [ref=e7857]:
+            - generic [ref=e7858]:
+              - textbox
+              - button "Open date picker" [ref=e7860] [cursor=pointer]: 📅
+          - cell "Diana Müller (+1502801690 [...]" [ref=e7861]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e7862]:
+            - generic [ref=e7863]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e7864] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e7865]:
+            - generic [ref=e7866]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e7867]':
+            - generic [ref=e7868]:
+              - generic [ref=e7870]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 148" [ref=e7871]:
+          - cell "149" [ref=e7872]
+          - cell "y0Snf0vOOZZk3Q9VOoIOnB0N_ [...]" [ref=e7873]
+          - cell "Julia" [ref=e7874]
+          - cell [ref=e7875]
+          - cell "julia.wagner@example.com" [ref=e7876]
+          - cell "Legal" [ref=e7877]:
+            - text: Legal
+            - generic: ▾
+          - cell "React" [ref=e7878]:
+            - text: React
+            - generic: ▾
+          - cell [ref=e7879]:
+            - generic [ref=e7880] [cursor=pointer]: 🖉
+          - cell [ref=e7881]:
+            - checkbox [checked] [ref=e7882]
+          - cell "57,714.00 €" [ref=e7883]
+          - cell "Jun 18, 2020 2020-06-18 Open date picker" [ref=e7884]:
+            - generic [ref=e7885]:
+              - text: Jun 18, 2020
+              - textbox: 2020-06-18
+              - button "Open date picker" [ref=e7886] [cursor=pointer]: 📅
+          - cell [ref=e7887]
+          - cell "Munich Office" [ref=e7888]
+          - cell [ref=e7889]
+          - cell "EMP00149" [ref=e7890]
+          - cell "On Leave" [ref=e7891]
+          - cell "Data Analyst" [ref=e7892]
+          - cell "Mobile" [ref=e7893]
+          - cell "Oct 1, 2020, 7:00 AM 2020-10-01T07:00 Open date/time picker" [ref=e7894]:
+            - generic [ref=e7895]:
+              - text: Oct 1, 2020, 7:00 AM
+              - textbox: 2020-10-01T07:00
+              - button "Open date/time picker" [ref=e7896] [cursor=pointer]: 📅
+          - cell "1.68" [ref=e7897]
+          - cell "+ 13,499 €" [ref=e7898]
+          - cell "Permanent" [ref=e7899]
+          - cell "Netherlands" [ref=e7900]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Hamburg" [ref=e7901]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "52902" [ref=e7902]
+          - cell "68 Example Street" [ref=e7903]
+          - cell [ref=e7904]
+          - cell [ref=e7906]
+          - cell "July 8, 1983 1983-07-08 Open date picker" [ref=e7908]:
+            - generic [ref=e7909]:
+              - text: July 8, 1983
+              - textbox: 1983-07-08
+              - button "Open date picker" [ref=e7910] [cursor=pointer]: 📅
+          - cell [ref=e7911]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e7912]:
+            - generic [ref=e7913]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e7914] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e7915]:
+            - generic [ref=e7916]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e7917]':
+            - generic [ref=e7918]:
+              - generic [ref=e7920]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 149" [ref=e7921]:
+          - cell "150" [ref=e7922]
+          - cell "12QG-vYbI5xLcJ9xAFArop3iV [...]" [ref=e7923]
+          - cell "Diana" [ref=e7924]
+          - cell "Fischer" [ref=e7925]
+          - cell "diana.fischer@example.com" [ref=e7926]
+          - cell "IT" [ref=e7927]:
+            - text: IT
+            - generic: ▾
+          - cell "AWS, React, Docker" [ref=e7928]:
+            - text: AWS, React, Docker
+            - generic: ▾
+          - cell [ref=e7929]:
+            - generic [ref=e7930] [cursor=pointer]: 🖉
+          - cell [ref=e7931]:
+            - checkbox [checked] [ref=e7932]
+          - cell "55,849.00 €" [ref=e7933]
+          - cell "Dec 5, 2016 2016-12-05 Open date picker" [ref=e7934]:
+            - generic [ref=e7935]:
+              - text: Dec 5, 2016
+              - textbox: 2016-12-05
+              - button "Open date picker" [ref=e7936] [cursor=pointer]: 📅
+          - cell "Charlie Meyer" [ref=e7937]
+          - cell "Remote" [ref=e7938]
+          - cell [ref=e7939]
+          - cell "EMP00150" [ref=e7940]
+          - cell "Probation" [ref=e7941]
+          - cell "Software Engineer" [ref=e7942]
+          - cell "Web" [ref=e7943]
+          - cell "Open date/time picker" [ref=e7944]:
+            - generic [ref=e7945]:
+              - textbox
+              - button "Open date/time picker" [ref=e7947] [cursor=pointer]: 📅
+          - cell "4.63" [ref=e7948]
+          - cell "+ 6,520 €" [ref=e7949]
+          - cell "Contractor" [ref=e7950]
+          - cell [ref=e7951]:
+            - generic: ▾
+          - cell "Frankfurt" [ref=e7952]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "90772" [ref=e7953]
+          - cell [ref=e7954]
+          - cell [ref=e7955]
+          - cell [ref=e7957]
+          - cell "Open date picker" [ref=e7959]:
+            - generic [ref=e7960]:
+              - textbox
+              - button "Open date picker" [ref=e7962] [cursor=pointer]: 📅
+          - cell [ref=e7963]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e7964]:
+            - generic [ref=e7965]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e7966] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e7967]:
+            - generic [ref=e7968]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e7969]':
+            - generic [ref=e7970]:
+              - generic [ref=e7972]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 150" [ref=e7973]:
+          - cell "151" [ref=e7974]
+          - cell "eVx7NKOTvksWVzKk5eRlcAbG" [ref=e7975]
+          - cell "Charlie" [ref=e7976]
+          - cell "Müller" [ref=e7977]
+          - cell "charlie.müller@example.co [...]" [ref=e7978]
+          - cell "Legal" [ref=e7979]:
+            - text: Legal
+            - generic: ▾
+          - cell "TypeScript, Java, AWS, Re [...]" [ref=e7980]:
+            - text: TypeScript, Java, AWS, Re [...]
+            - generic: ▾
+          - cell [ref=e7981]:
+            - generic [ref=e7982] [cursor=pointer]: 🖉
+          - cell [ref=e7983]:
+            - checkbox [checked] [ref=e7984]
+          - cell "82,772.00 €" [ref=e7985]
+          - cell "Jun 19, 2011 2011-06-19 Open date picker" [ref=e7986]:
+            - generic [ref=e7987]:
+              - text: Jun 19, 2011
+              - textbox: 2011-06-19
+              - button "Open date picker" [ref=e7988] [cursor=pointer]: 📅
+          - cell "Diana Fischer" [ref=e7989]
+          - cell [ref=e7990]
+          - cell "+11 639 550101" [ref=e7991]
+          - cell "EMP00151" [ref=e7992]
+          - cell "Terminated" [ref=e7993]
+          - cell "Software Engineer" [ref=e7994]
+          - cell "Growth" [ref=e7995]
+          - cell "Mar 10, 2023, 10:29 PM 2023-03-10T22:29 Open date/time picker" [ref=e7996]:
+            - generic [ref=e7997]:
+              - text: Mar 10, 2023, 10:29 PM
+              - textbox: 2023-03-10T22:29
+              - button "Open date/time picker" [ref=e7998] [cursor=pointer]: 📅
+          - cell "0.30" [ref=e7999]
+          - cell "+ 10,643 €" [ref=e8000]
+          - cell "Permanent" [ref=e8001]
+          - cell "UK" [ref=e8002]:
+            - text: UK
+            - generic: ▾
+          - cell "Munich" [ref=e8003]:
+            - text: Munich
+            - generic: ▾
+          - cell "75014" [ref=e8004]
+          - cell [ref=e8005]
+          - cell [ref=e8006]
+          - cell [ref=e8008]
+          - cell "June 26, 1982 1982-06-26 Open date picker" [ref=e8010]:
+            - generic [ref=e8011]:
+              - text: June 26, 1982
+              - textbox: 1982-06-26
+              - button "Open date picker" [ref=e8012] [cursor=pointer]: 📅
+          - cell [ref=e8013]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e8014]:
+            - generic [ref=e8015]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e8016] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e8017]:
+            - generic [ref=e8018]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e8019]':
+            - generic [ref=e8020]:
+              - generic [ref=e8022]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 151" [ref=e8023]:
+          - cell "152" [ref=e8024]
+          - cell "jCOMSMkelrslI9P_6cdn9T8Na [...]" [ref=e8025]
+          - cell "Charlie" [ref=e8026]
+          - cell "Meyer" [ref=e8027]
+          - cell "charlie.meyer@example.com" [ref=e8028]
+          - cell "HR" [ref=e8029]:
+            - text: HR
+            - generic: ▾
+          - cell "React, TypeScript" [ref=e8030]:
+            - text: React, TypeScript
+            - generic: ▾
+          - cell [ref=e8031]:
+            - generic [ref=e8032] [cursor=pointer]: 🖉
+          - cell [ref=e8033]:
+            - checkbox [checked] [ref=e8034]
+          - cell "44,781.00 €" [ref=e8035]
+          - cell "Feb 26, 2010 2010-02-26 Open date picker" [ref=e8036]:
+            - generic [ref=e8037]:
+              - text: Feb 26, 2010
+              - textbox: 2010-02-26
+              - button "Open date picker" [ref=e8038] [cursor=pointer]: 📅
+          - cell "Bob Schneider" [ref=e8039]
+          - cell "Remote" [ref=e8040]
+          - cell "+49 520 546660" [ref=e8041]
+          - cell "EMP00152" [ref=e8042]
+          - cell "Active" [ref=e8043]
+          - cell "Software Engineer" [ref=e8044]
+          - cell "Platform" [ref=e8045]
+          - cell "Open date/time picker" [ref=e8046]:
+            - generic [ref=e8047]:
+              - textbox
+              - button "Open date/time picker" [ref=e8049] [cursor=pointer]: 📅
+          - cell "0.45" [ref=e8050]
+          - cell "+ 6,794 €" [ref=e8051]
+          - cell "Contractor" [ref=e8052]
+          - cell [ref=e8053]:
+            - generic: ▾
+          - cell [ref=e8054]:
+            - generic: ▾
+          - cell "79827" [ref=e8055]
+          - cell "71 Example Street" [ref=e8056]
+          - cell [ref=e8057]
+          - cell [ref=e8059]
+          - cell "May 22, 1973 1973-05-22 Open date picker" [ref=e8061]:
+            - generic [ref=e8062]:
+              - text: May 22, 1973
+              - textbox: 1973-05-22
+              - button "Open date picker" [ref=e8063] [cursor=pointer]: 📅
+          - cell [ref=e8064]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e8065]:
+            - generic [ref=e8066]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e8067] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e8068]:
+            - generic [ref=e8069]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e8070]':
+            - generic [ref=e8071]:
+              - generic [ref=e8073]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 152" [ref=e8074]:
+          - cell "153" [ref=e8075]
+          - cell "OSTkDU0f2AzFOWYxBqc-0p_aA [...]" [ref=e8076]
+          - cell "Hannah" [ref=e8077]
+          - cell "Becker" [ref=e8078]
+          - cell "hannah.becker@example.com" [ref=e8079]
+          - cell "Marketing" [ref=e8080]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Docker, Figma" [ref=e8081]:
+            - text: Docker, Figma
+            - generic: ▾
+          - cell [ref=e8082]:
+            - generic [ref=e8083] [cursor=pointer]: 🖉
+          - cell [ref=e8084]:
+            - checkbox [checked] [ref=e8085]
+          - cell "81,304.00 €" [ref=e8086]
+          - cell "Dec 22, 2024 2024-12-22 Open date picker" [ref=e8087]:
+            - generic [ref=e8088]:
+              - text: Dec 22, 2024
+              - textbox: 2024-12-22
+              - button "Open date picker" [ref=e8089] [cursor=pointer]: 📅
+          - cell "Charlie Schneider" [ref=e8090]
+          - cell "Remote" [ref=e8091]
+          - cell "+16 399 145913" [ref=e8092]
+          - cell "EMP00153" [ref=e8093]
+          - cell "Active" [ref=e8094]
+          - cell "QA Engineer" [ref=e8095]
+          - cell "Mobile" [ref=e8096]
+          - cell "Apr 27, 2024, 12:39 PM 2024-04-27T12:39 Open date/time picker" [ref=e8097]:
+            - generic [ref=e8098]:
+              - text: Apr 27, 2024, 12:39 PM
+              - textbox: 2024-04-27T12:39
+              - button "Open date/time picker" [ref=e8099] [cursor=pointer]: 📅
+          - cell "3.97" [ref=e8100]
+          - cell "+ 5,231 €" [ref=e8101]
+          - cell [ref=e8102]
+          - cell "Spain" [ref=e8103]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e8104]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "15702" [ref=e8105]
+          - cell "60 Example Street" [ref=e8106]
+          - cell [ref=e8107]
+          - cell [ref=e8109]
+          - cell "May 11, 1974 1974-05-11 Open date picker" [ref=e8111]:
+            - generic [ref=e8112]:
+              - text: May 11, 1974
+              - textbox: 1974-05-11
+              - button "Open date picker" [ref=e8113] [cursor=pointer]: 📅
+          - cell [ref=e8114]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e8115]:
+            - generic [ref=e8116]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e8117] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e8118]:
+            - generic [ref=e8119]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e8120]':
+            - generic [ref=e8121]:
+              - generic [ref=e8123]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 153" [ref=e8124]:
+          - cell "154" [ref=e8125]
+          - cell "XqZuNtq8BdluGp57RkXv4A8oS [...]" [ref=e8126]
+          - cell "Bob" [ref=e8127]
+          - cell "Wagner" [ref=e8128]
+          - cell "bob.wagner@example.com" [ref=e8129]
+          - cell "Marketing" [ref=e8130]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Docker, Figma, AWS" [ref=e8131]:
+            - text: Docker, Figma, AWS
+            - generic: ▾
+          - cell "invidunt duo no sea justo [...]" [ref=e8132]:
+            - text: invidunt duo no sea justo [...]
+            - generic [ref=e8133] [cursor=pointer]: 🖉
+          - cell [ref=e8134]:
+            - checkbox [checked] [ref=e8135]
+          - cell "96,271.00 €" [ref=e8136]
+          - cell "Nov 26, 2007 2007-11-26 Open date picker" [ref=e8137]:
+            - generic [ref=e8138]:
+              - text: Nov 26, 2007
+              - textbox: 2007-11-26
+              - button "Open date picker" [ref=e8139] [cursor=pointer]: 📅
+          - cell "Bob Meyer" [ref=e8140]
+          - cell [ref=e8141]
+          - cell "+49 672 390673" [ref=e8142]
+          - cell "EMP00154" [ref=e8143]
+          - cell [ref=e8144]
+          - cell "Data Analyst" [ref=e8145]
+          - cell [ref=e8146]
+          - cell "Aug 29, 2021, 1:09 AM 2021-08-29T01:09 Open date/time picker" [ref=e8147]:
+            - generic [ref=e8148]:
+              - text: Aug 29, 2021, 1:09 AM
+              - textbox: 2021-08-29T01:09
+              - button "Open date/time picker" [ref=e8149] [cursor=pointer]: 📅
+          - cell "0.19" [ref=e8150]
+          - cell "+ 6,839 €" [ref=e8151]
+          - cell "Intern" [ref=e8152]
+          - cell "Spain" [ref=e8153]:
+            - text: Spain
+            - generic: ▾
+          - cell "Berlin" [ref=e8154]:
+            - text: Berlin
+            - generic: ▾
+          - cell "12008" [ref=e8155]
+          - cell [ref=e8156]
+          - cell "https://www.linkedin.com/in/bobwagner 🔗" [ref=e8157]:
+            - generic [ref=e8158]:
+              - generic [ref=e8159]: https://www.linkedin.com/in/bobwagner
+              - button "🔗" [ref=e8160] [cursor=pointer]
+          - cell [ref=e8161]
+          - cell "April 21, 1987 1987-04-21 Open date picker" [ref=e8163]:
+            - generic [ref=e8164]:
+              - text: April 21, 1987
+              - textbox: 1987-04-21
+              - button "Open date picker" [ref=e8165] [cursor=pointer]: 📅
+          - cell [ref=e8166]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e8167]:
+            - generic [ref=e8168]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e8169] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e8170]:
+            - generic [ref=e8171]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e8172]':
+            - generic [ref=e8173]:
+              - generic [ref=e8175]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 154" [ref=e8176]:
+          - cell "155" [ref=e8177]
+          - cell "WEa3EJD3ylJbUidixj0W3rUn1 [...]" [ref=e8178]
+          - cell "Eva" [ref=e8179]
+          - cell [ref=e8180]
+          - cell "eva.schneider@example.com" [ref=e8181]
+          - cell "HR" [ref=e8182]:
+            - text: HR
+            - generic: ▾
+          - cell "Docker, React, AWS, Pytho [...]" [ref=e8183]:
+            - text: Docker, React, AWS, Pytho [...]
+            - generic: ▾
+          - cell "duo sanctus diam volu" [ref=e8184]:
+            - text: duo sanctus diam volu
+            - generic [ref=e8185] [cursor=pointer]: 🖉
+          - cell [ref=e8186]:
+            - checkbox [checked] [ref=e8187]
+          - cell "99,983.00 €" [ref=e8188]
+          - cell "Mar 4, 2020 2020-03-04 Open date picker" [ref=e8189]:
+            - generic [ref=e8190]:
+              - text: Mar 4, 2020
+              - textbox: 2020-03-04
+              - button "Open date picker" [ref=e8191] [cursor=pointer]: 📅
+          - cell "Alice Schmidt" [ref=e8192]
+          - cell [ref=e8193]
+          - cell "+18 257 131389" [ref=e8194]
+          - cell "EMP00155" [ref=e8195]
+          - cell "Active" [ref=e8196]
+          - cell [ref=e8197]
+          - cell "Growth" [ref=e8198]
+          - cell "Open date/time picker" [ref=e8199]:
+            - generic [ref=e8200]:
+              - textbox
+              - button "Open date/time picker" [ref=e8202] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e8203]
+          - cell "+ 0 €" [ref=e8204]
+          - cell "Contractor" [ref=e8205]
+          - cell "USA" [ref=e8206]:
+            - text: USA
+            - generic: ▾
+          - cell "Stuttgart" [ref=e8207]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e8208]
+          - cell [ref=e8209]
+          - cell [ref=e8210]
+          - cell [ref=e8212]
+          - cell "December 21, 1998 1998-12-21 Open date picker" [ref=e8214]:
+            - generic [ref=e8215]:
+              - text: December 21, 1998
+              - textbox: 1998-12-21
+              - button "Open date picker" [ref=e8216] [cursor=pointer]: 📅
+          - cell [ref=e8217]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e8218]:
+            - generic [ref=e8219]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e8220] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e8221]:
+            - generic [ref=e8222]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e8223]':
+            - generic [ref=e8224]:
+              - generic [ref=e8226]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 155" [ref=e8227]:
+          - cell "156" [ref=e8228]
+          - cell "zlITiB9042ISXS1F" [ref=e8229]
+          - cell "Ian" [ref=e8230]
+          - cell "Fischer" [ref=e8231]
+          - cell "ian.fischer@example.com" [ref=e8232]
+          - cell "HR" [ref=e8233]:
+            - text: HR
+            - generic: ▾
+          - cell "Docker, React, TypeScript [...]" [ref=e8234]:
+            - text: Docker, React, TypeScript [...]
+            - generic: ▾
+          - cell "vero no vero labore labor [...]" [ref=e8235]:
+            - text: vero no vero labore labor [...]
+            - generic [ref=e8236] [cursor=pointer]: 🖉
+          - cell [ref=e8237]:
+            - checkbox [checked] [ref=e8238]
+          - cell "96,385.00 €" [ref=e8239]
+          - cell "May 6, 2016 2016-05-06 Open date picker" [ref=e8240]:
+            - generic [ref=e8241]:
+              - text: May 6, 2016
+              - textbox: 2016-05-06
+              - button "Open date picker" [ref=e8242] [cursor=pointer]: 📅
+          - cell "Bob Wagner" [ref=e8243]
+          - cell "Hamburg Office" [ref=e8244]
+          - cell [ref=e8245]
+          - cell "EMP00156" [ref=e8246]
+          - cell "On Leave" [ref=e8247]
+          - cell "Software Engineer" [ref=e8248]
+          - cell "Core" [ref=e8249]
+          - cell "Open date/time picker" [ref=e8250]:
+            - generic [ref=e8251]:
+              - textbox
+              - button "Open date/time picker" [ref=e8253] [cursor=pointer]: 📅
+          - cell "0.80" [ref=e8254]
+          - cell "+ 10,182 €" [ref=e8255]
+          - cell "Intern" [ref=e8256]
+          - cell "UK" [ref=e8257]:
+            - text: UK
+            - generic: ▾
+          - cell "Frankfurt" [ref=e8258]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell [ref=e8259]
+          - cell [ref=e8260]
+          - cell "https://www.linkedin.com/in/ianfischer 🔗" [ref=e8261]:
+            - generic [ref=e8262]:
+              - generic [ref=e8263]: https://www.linkedin.com/in/ianfischer
+              - button "🔗" [ref=e8264] [cursor=pointer]
+          - cell "https://github.com/ianfischer 🔗" [ref=e8265]:
+            - generic [ref=e8266]:
+              - generic [ref=e8267]: https://github.com/ianfischer
+              - button "🔗" [ref=e8268] [cursor=pointer]
+          - cell "Open date picker" [ref=e8269]:
+            - generic [ref=e8270]:
+              - textbox
+              - button "Open date picker" [ref=e8272] [cursor=pointer]: 📅
+          - cell "Ian Wagner (+11403603135)" [ref=e8273]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e8274]:
+            - generic [ref=e8275]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e8276] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e8277]:
+            - generic [ref=e8278]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e8279]':
+            - generic [ref=e8280]:
+              - generic [ref=e8282]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 156" [ref=e8283]:
+          - cell "157" [ref=e8284]
+          - cell "Pnn_dpbPFnNhCzgG-BmCTseMZ" [ref=e8285]
+          - cell "Ian" [ref=e8286]
+          - cell "Meyer" [ref=e8287]
+          - cell [ref=e8288]
+          - cell "Legal" [ref=e8289]:
+            - text: Legal
+            - generic: ▾
+          - cell "React, TypeScript, Python" [ref=e8290]:
+            - text: React, TypeScript, Python
+            - generic: ▾
+          - cell [ref=e8291]:
+            - generic [ref=e8292] [cursor=pointer]: 🖉
+          - cell [ref=e8293]:
+            - checkbox [checked] [ref=e8294]
+          - cell "60,120.00 €" [ref=e8295]
+          - cell "Oct 30, 2018 2018-10-30 Open date picker" [ref=e8296]:
+            - generic [ref=e8297]:
+              - text: Oct 30, 2018
+              - textbox: 2018-10-30
+              - button "Open date picker" [ref=e8298] [cursor=pointer]: 📅
+          - cell "Grace Becker" [ref=e8299]
+          - cell "Cologne Office" [ref=e8300]
+          - cell "+49 677 307235" [ref=e8301]
+          - cell "EMP00157" [ref=e8302]
+          - cell "Active" [ref=e8303]
+          - cell "Designer" [ref=e8304]
+          - cell [ref=e8305]
+          - cell "Jan 5, 2020, 2:57 PM 2020-01-05T14:57 Open date/time picker" [ref=e8306]:
+            - generic [ref=e8307]:
+              - text: Jan 5, 2020, 2:57 PM
+              - textbox: 2020-01-05T14:57
+              - button "Open date/time picker" [ref=e8308] [cursor=pointer]: 📅
+          - cell "2.97" [ref=e8309]
+          - cell "+ 5,847 €" [ref=e8310]
+          - cell "Contractor" [ref=e8311]
+          - cell "Germany" [ref=e8312]:
+            - text: Germany
+            - generic: ▾
+          - cell [ref=e8313]:
+            - generic: ▾
+          - cell [ref=e8314]
+          - cell [ref=e8315]
+          - cell [ref=e8316]
+          - cell "https://github.com/ianmeyer 🔗" [ref=e8318]:
+            - generic [ref=e8319]:
+              - generic [ref=e8320]: https://github.com/ianmeyer
+              - button "🔗" [ref=e8321] [cursor=pointer]
+          - cell "December 6, 1988 1988-12-06 Open date picker" [ref=e8322]:
+            - generic [ref=e8323]:
+              - text: December 6, 1988
+              - textbox: 1988-12-06
+              - button "Open date picker" [ref=e8324] [cursor=pointer]: 📅
+          - cell [ref=e8325]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e8326]:
+            - generic [ref=e8327]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e8328] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e8329]:
+            - generic [ref=e8330]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e8331]':
+            - generic [ref=e8332]:
+              - generic [ref=e8334]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 157" [ref=e8335]:
+          - cell "158" [ref=e8336]
+          - cell "0jwk9GnV4oZGSOGx9-a2DF_ih [...]" [ref=e8337]
+          - cell "Bob" [ref=e8338]
+          - cell "Schneider" [ref=e8339]
+          - cell "bob.schneider@example.com" [ref=e8340]
+          - cell "Marketing" [ref=e8341]:
+            - text: Marketing
+            - generic: ▾
+          - cell "SQL, AWS, TypeScript, Rea [...]" [ref=e8342]:
+            - text: SQL, AWS, TypeScript, Rea [...]
+            - generic: ▾
+          - cell "aliquyam accusam duo temp [...]" [ref=e8343]:
+            - text: aliquyam accusam duo temp [...]
+            - generic [ref=e8344] [cursor=pointer]: 🖉
+          - cell [ref=e8345]:
+            - checkbox [checked] [ref=e8346]
+          - cell "79,007.00 €" [ref=e8347]
+          - cell "Feb 13, 2024 2024-02-13 Open date picker" [ref=e8348]:
+            - generic [ref=e8349]:
+              - text: Feb 13, 2024
+              - textbox: 2024-02-13
+              - button "Open date picker" [ref=e8350] [cursor=pointer]: 📅
+          - cell "Grace Meyer" [ref=e8351]
+          - cell [ref=e8352]
+          - cell "+11 503 469805" [ref=e8353]
+          - cell "EMP00158" [ref=e8354]
+          - cell [ref=e8355]
+          - cell "DevOps Engineer" [ref=e8356]
+          - cell "Core" [ref=e8357]
+          - cell "Aug 20, 2023, 11:24 AM 2023-08-20T11:24 Open date/time picker" [ref=e8358]:
+            - generic [ref=e8359]:
+              - text: Aug 20, 2023, 11:24 AM
+              - textbox: 2023-08-20T11:24
+              - button "Open date/time picker" [ref=e8360] [cursor=pointer]: 📅
+          - cell "2.41" [ref=e8361]
+          - cell "+ 1,562 €" [ref=e8362]
+          - cell "Contractor" [ref=e8363]
+          - cell "Germany" [ref=e8364]:
+            - text: Germany
+            - generic: ▾
+          - cell "Frankfurt" [ref=e8365]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "41441" [ref=e8366]
+          - cell "28 Example Street" [ref=e8367]
+          - cell [ref=e8368]
+          - cell [ref=e8370]
+          - cell "August 6, 1967 1967-08-06 Open date picker" [ref=e8372]:
+            - generic [ref=e8373]:
+              - text: August 6, 1967
+              - textbox: 1967-08-06
+              - button "Open date picker" [ref=e8374] [cursor=pointer]: 📅
+          - cell "Eva Fischer (+19651911646 [...]" [ref=e8375]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e8376]:
+            - generic [ref=e8377]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e8378] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e8379]:
+            - generic [ref=e8380]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e8381]':
+            - generic [ref=e8382]:
+              - generic [ref=e8384]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 158" [ref=e8385]:
+          - cell "159" [ref=e8386]
+          - cell "Qbu-CnCMmmQieyOYjJsqOSJp7 [...]" [ref=e8387]
+          - cell "Diana" [ref=e8388]
+          - cell "Schmidt" [ref=e8389]
+          - cell "diana.schmidt@example.com" [ref=e8390]
+          - cell "Sales" [ref=e8391]:
+            - text: Sales
+            - generic: ▾
+          - cell "AWS, React" [ref=e8392]:
+            - text: AWS, React
+            - generic: ▾
+          - cell [ref=e8393]:
+            - generic [ref=e8394] [cursor=pointer]: 🖉
+          - cell [ref=e8395]:
+            - checkbox [ref=e8396]
+          - cell "52,153.00 €" [ref=e8397]
+          - cell "Aug 16, 2023 2023-08-16 Open date picker" [ref=e8398]:
+            - generic [ref=e8399]:
+              - text: Aug 16, 2023
+              - textbox: 2023-08-16
+              - button "Open date picker" [ref=e8400] [cursor=pointer]: 📅
+          - cell "Grace Meyer" [ref=e8401]
+          - cell [ref=e8402]
+          - cell "+11 285 996227" [ref=e8403]
+          - cell "EMP00159" [ref=e8404]
+          - cell "Terminated" [ref=e8405]
+          - cell "Designer" [ref=e8406]
+          - cell "Platform" [ref=e8407]
+          - cell "Open date/time picker" [ref=e8408]:
+            - generic [ref=e8409]:
+              - textbox
+              - button "Open date/time picker" [ref=e8411] [cursor=pointer]: 📅
+          - cell "2.91" [ref=e8412]
+          - cell "+ 0 €" [ref=e8413]
+          - cell "Temporary" [ref=e8414]
+          - cell "Netherlands" [ref=e8415]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Munich" [ref=e8416]:
+            - text: Munich
+            - generic: ▾
+          - cell "28361" [ref=e8417]
+          - cell "24 Example Street" [ref=e8418]
+          - cell [ref=e8419]
+          - cell [ref=e8421]
+          - cell "November 11, 1982 1982-11-11 Open date picker" [ref=e8423]:
+            - generic [ref=e8424]:
+              - text: November 11, 1982
+              - textbox: 1982-11-11
+              - button "Open date picker" [ref=e8425] [cursor=pointer]: 📅
+          - cell [ref=e8426]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e8427]:
+            - generic [ref=e8428]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e8429] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e8430]:
+            - generic [ref=e8431]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e8432]':
+            - generic [ref=e8433]:
+              - generic [ref=e8435]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 159" [ref=e8436]:
+          - cell "160" [ref=e8437]
+          - cell "e_nbiGEXrFajkmWcb9pZ5kcCg [...]" [ref=e8438]
+          - cell "Hannah" [ref=e8439]
+          - cell "Fischer" [ref=e8440]
+          - cell "hannah.fischer@example.co [...]" [ref=e8441]
+          - cell [ref=e8442]:
+            - generic: ▾
+          - cell "TypeScript, React, Figma, [...]" [ref=e8443]:
+            - text: TypeScript, React, Figma, [...]
+            - generic: ▾
+          - cell "gubergren, eirmod dolor t [...]" [ref=e8444]:
+            - text: gubergren, eirmod dolor t [...]
+            - generic [ref=e8445] [cursor=pointer]: 🖉
+          - cell [ref=e8446]:
+            - checkbox [checked] [ref=e8447]
+          - cell "94,745.00 €" [ref=e8448]
+          - cell "Oct 27, 2016 2016-10-27 Open date picker" [ref=e8449]:
+            - generic [ref=e8450]:
+              - text: Oct 27, 2016
+              - textbox: 2016-10-27
+              - button "Open date picker" [ref=e8451] [cursor=pointer]: 📅
+          - cell "Hannah Müller" [ref=e8452]
+          - cell "Munich Office" [ref=e8453]
+          - cell [ref=e8454]
+          - cell "EMP00160" [ref=e8455]
+          - cell "Active" [ref=e8456]
+          - cell "Software Engineer" [ref=e8457]
+          - cell "Web" [ref=e8458]
+          - cell "Nov 8, 2022, 1:32 AM 2022-11-08T01:32 Open date/time picker" [ref=e8459]:
+            - generic [ref=e8460]:
+              - text: Nov 8, 2022, 1:32 AM
+              - textbox: 2022-11-08T01:32
+              - button "Open date/time picker" [ref=e8461] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e8462]
+          - cell "+ 0 €" [ref=e8463]
+          - cell "Permanent" [ref=e8464]
+          - cell "Germany" [ref=e8465]:
+            - text: Germany
+            - generic: ▾
+          - cell "Frankfurt" [ref=e8466]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "11318" [ref=e8467]
+          - cell "4 Example Street" [ref=e8468]
+          - cell [ref=e8469]
+          - cell [ref=e8471]
+          - cell "December 11, 1984 1984-12-11 Open date picker" [ref=e8473]:
+            - generic [ref=e8474]:
+              - text: December 11, 1984
+              - textbox: 1984-12-11
+              - button "Open date picker" [ref=e8475] [cursor=pointer]: 📅
+          - cell [ref=e8476]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e8477]:
+            - generic [ref=e8478]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e8479] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e8480]:
+            - generic [ref=e8481]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e8482]':
+            - generic [ref=e8483]:
+              - generic [ref=e8485]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 160" [ref=e8486]:
+          - cell "161" [ref=e8487]
+          - cell "Us16cmcSXbOA" [ref=e8488]
+          - cell "Alice" [ref=e8489]
+          - cell "Weber" [ref=e8490]
+          - cell [ref=e8491]
+          - cell "IT" [ref=e8492]:
+            - text: IT
+            - generic: ▾
+          - cell "Java, Python, AWS" [ref=e8493]:
+            - text: Java, Python, AWS
+            - generic: ▾
+          - cell "aliquyam diam eos takimat [...]" [ref=e8494]:
+            - text: aliquyam diam eos takimat [...]
+            - generic [ref=e8495] [cursor=pointer]: 🖉
+          - cell [ref=e8496]:
+            - checkbox [checked] [ref=e8497]
+          - cell "99,740.00 €" [ref=e8498]
+          - cell "Open date picker" [ref=e8499]:
+            - generic [ref=e8500]:
+              - textbox
+              - button "Open date picker" [ref=e8502] [cursor=pointer]: 📅
+          - cell "Bob Schneider" [ref=e8503]
+          - cell "Berlin HQ" [ref=e8504]
+          - cell [ref=e8505]
+          - cell "EMP00161" [ref=e8506]
+          - cell "Terminated" [ref=e8507]
+          - cell "Software Engineer" [ref=e8508]
+          - cell "Core" [ref=e8509]
+          - cell "Open date/time picker" [ref=e8510]:
+            - generic [ref=e8511]:
+              - textbox
+              - button "Open date/time picker" [ref=e8513] [cursor=pointer]: 📅
+          - cell "2.52" [ref=e8514]
+          - cell "+ 0 €" [ref=e8515]
+          - cell "Intern" [ref=e8516]
+          - cell "USA" [ref=e8517]:
+            - text: USA
+            - generic: ▾
+          - cell "Cologne" [ref=e8518]:
+            - text: Cologne
+            - generic: ▾
+          - cell "63717" [ref=e8519]
+          - cell "178 Example Street" [ref=e8520]
+          - cell [ref=e8521]
+          - cell [ref=e8523]
+          - cell "Open date picker" [ref=e8525]:
+            - generic [ref=e8526]:
+              - textbox
+              - button "Open date picker" [ref=e8528] [cursor=pointer]: 📅
+          - cell "Charlie Schmidt (+4921720 [...]" [ref=e8529]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e8530]:
+            - generic [ref=e8531]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e8532] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e8533]:
+            - generic [ref=e8534]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e8535]':
+            - generic [ref=e8536]:
+              - generic [ref=e8538]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 161" [ref=e8539]:
+          - cell "162" [ref=e8540]
+          - cell "tYnkyLT4q1QywyVGzy1LsOk8k [...]" [ref=e8541]
+          - cell "Eva" [ref=e8542]
+          - cell "Becker" [ref=e8543]
+          - cell "eva.becker@example.com" [ref=e8544]
+          - cell "Marketing" [ref=e8545]:
+            - text: Marketing
+            - generic: ▾
+          - cell "SQL, Docker, AWS, Java" [ref=e8546]:
+            - text: SQL, Docker, AWS, Java
+            - generic: ▾
+          - cell "sanctus vero ea sed sadip [...]" [ref=e8547]:
+            - text: sanctus vero ea sed sadip [...]
+            - generic [ref=e8548] [cursor=pointer]: 🖉
+          - cell [ref=e8549]:
+            - checkbox [checked] [ref=e8550]
+          - cell "0.00 €" [ref=e8551]
+          - cell "Aug 19, 2016 2016-08-19 Open date picker" [ref=e8552]:
+            - generic [ref=e8553]:
+              - text: Aug 19, 2016
+              - textbox: 2016-08-19
+              - button "Open date picker" [ref=e8554] [cursor=pointer]: 📅
+          - cell "Eva Fischer" [ref=e8555]
+          - cell "Remote" [ref=e8556]
+          - cell [ref=e8557]
+          - cell "EMP00162" [ref=e8558]
+          - cell "Active" [ref=e8559]
+          - cell "Product Manager" [ref=e8560]
+          - cell [ref=e8561]
+          - cell "May 2, 2021, 8:30 PM 2021-05-02T20:30 Open date/time picker" [ref=e8562]:
+            - generic [ref=e8563]:
+              - text: May 2, 2021, 8:30 PM
+              - textbox: 2021-05-02T20:30
+              - button "Open date/time picker" [ref=e8564] [cursor=pointer]: 📅
+          - cell "1.60" [ref=e8565]
+          - cell "+ 5,870 €" [ref=e8566]
+          - cell "Contractor" [ref=e8567]
+          - cell "Spain" [ref=e8568]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e8569]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "88055" [ref=e8570]
+          - cell "155 Example Street" [ref=e8571]
+          - cell [ref=e8572]
+          - cell "https://github.com/evabecker 🔗" [ref=e8574]:
+            - generic [ref=e8575]:
+              - generic [ref=e8576]: https://github.com/evabecker
+              - button "🔗" [ref=e8577] [cursor=pointer]
+          - cell "June 28, 1969 1969-06-28 Open date picker" [ref=e8578]:
+            - generic [ref=e8579]:
+              - text: June 28, 1969
+              - textbox: 1969-06-28
+              - button "Open date picker" [ref=e8580] [cursor=pointer]: 📅
+          - cell [ref=e8581]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e8582]:
+            - generic [ref=e8583]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e8584] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e8585]:
+            - generic [ref=e8586]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e8587]':
+            - generic [ref=e8588]:
+              - generic [ref=e8590]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 162" [ref=e8591]:
+          - cell "163" [ref=e8592]
+          - cell "wHBBVJhMO7IVwOXoyDcNCkjmH" [ref=e8593]
+          - cell "Julia" [ref=e8594]
+          - cell "Fischer" [ref=e8595]
+          - cell "julia.fischer@example.com" [ref=e8596]
+          - cell [ref=e8597]:
+            - generic: ▾
+          - cell "Python" [ref=e8598]:
+            - text: Python
+            - generic: ▾
+          - cell "no sit justo dolor ea gub [...]" [ref=e8599]:
+            - text: no sit justo dolor ea gub [...]
+            - generic [ref=e8600] [cursor=pointer]: 🖉
+          - cell [ref=e8601]:
+            - checkbox [checked] [ref=e8602]
+          - cell "44,106.00 €" [ref=e8603]
+          - cell "Jul 29, 2021 2021-07-29 Open date picker" [ref=e8604]:
+            - generic [ref=e8605]:
+              - text: Jul 29, 2021
+              - textbox: 2021-07-29
+              - button "Open date picker" [ref=e8606] [cursor=pointer]: 📅
+          - cell "Eva Weber" [ref=e8607]
+          - cell "Cologne Office" [ref=e8608]
+          - cell "+49 729 938097" [ref=e8609]
+          - cell "EMP00163" [ref=e8610]
+          - cell "Probation" [ref=e8611]
+          - cell "Product Manager" [ref=e8612]
+          - cell "Tools" [ref=e8613]
+          - cell "Open date/time picker" [ref=e8614]:
+            - generic [ref=e8615]:
+              - textbox
+              - button "Open date/time picker" [ref=e8617] [cursor=pointer]: 📅
+          - cell "1.84" [ref=e8618]
+          - cell "+ 10,065 €" [ref=e8619]
+          - cell "Permanent" [ref=e8620]
+          - cell [ref=e8621]:
+            - generic: ▾
+          - cell "Hamburg" [ref=e8622]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "76089" [ref=e8623]
+          - cell "168 Example Street" [ref=e8624]
+          - cell "https://www.linkedin.com/in/juliafischer 🔗" [ref=e8625]:
+            - generic [ref=e8626]:
+              - generic [ref=e8627]: https://www.linkedin.com/in/juliafischer
+              - button "🔗" [ref=e8628] [cursor=pointer]
+          - cell [ref=e8629]
+          - cell "November 4, 1990 1990-11-04 Open date picker" [ref=e8631]:
+            - generic [ref=e8632]:
+              - text: November 4, 1990
+              - textbox: 1990-11-04
+              - button "Open date picker" [ref=e8633] [cursor=pointer]: 📅
+          - cell [ref=e8634]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e8635]:
+            - generic [ref=e8636]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e8637] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e8638]:
+            - generic [ref=e8639]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e8640]':
+            - generic [ref=e8641]:
+              - generic [ref=e8643]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 163" [ref=e8644]:
+          - cell "164" [ref=e8645]
+          - cell "mwv2sJ67WH-Y" [ref=e8646]
+          - cell "Julia" [ref=e8647]
+          - cell "Schmidt" [ref=e8648]
+          - cell "julia.schmidt@example.com" [ref=e8649]
+          - cell [ref=e8650]:
+            - generic: ▾
+          - cell "SQL, AWS, Figma, Docker" [ref=e8651]:
+            - text: SQL, AWS, Figma, Docker
+            - generic: ▾
+          - cell "elitr, sadipscing sadipsc [...]" [ref=e8652]:
+            - text: elitr, sadipscing sadipsc [...]
+            - generic [ref=e8653] [cursor=pointer]: 🖉
+          - cell [ref=e8654]:
+            - checkbox [checked] [ref=e8655]
+          - cell "0.00 €" [ref=e8656]
+          - cell "Aug 28, 2013 2013-08-28 Open date picker" [ref=e8657]:
+            - generic [ref=e8658]:
+              - text: Aug 28, 2013
+              - textbox: 2013-08-28
+              - button "Open date picker" [ref=e8659] [cursor=pointer]: 📅
+          - cell [ref=e8660]
+          - cell "Berlin HQ" [ref=e8661]
+          - cell [ref=e8662]
+          - cell "EMP00164" [ref=e8663]
+          - cell "On Leave" [ref=e8664]
+          - cell "DevOps Engineer" [ref=e8665]
+          - cell "Platform" [ref=e8666]
+          - cell "Open date/time picker" [ref=e8667]:
+            - generic [ref=e8668]:
+              - textbox
+              - button "Open date/time picker" [ref=e8670] [cursor=pointer]: 📅
+          - cell "0.25" [ref=e8671]
+          - cell "+ 0 €" [ref=e8672]
+          - cell [ref=e8673]
+          - cell "Spain" [ref=e8674]:
+            - text: Spain
+            - generic: ▾
+          - cell "Stuttgart" [ref=e8675]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "58342" [ref=e8676]
+          - cell "89 Example Street" [ref=e8677]
+          - cell [ref=e8678]
+          - cell "https://github.com/juliaschmidt 🔗" [ref=e8680]:
+            - generic [ref=e8681]:
+              - generic [ref=e8682]: https://github.com/juliaschmidt
+              - button "🔗" [ref=e8683] [cursor=pointer]
+          - cell "Open date picker" [ref=e8684]:
+            - generic [ref=e8685]:
+              - textbox
+              - button "Open date picker" [ref=e8687] [cursor=pointer]: 📅
+          - cell [ref=e8688]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e8689]:
+            - generic [ref=e8690]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e8691] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e8692]:
+            - generic [ref=e8693]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e8694]':
+            - generic [ref=e8695]:
+              - generic [ref=e8697]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 164" [ref=e8698]:
+          - cell "165" [ref=e8699]
+          - cell "vkLaQ8FdfjPt0irqaeoX1g8ZC [...]" [ref=e8700]
+          - cell "Frank" [ref=e8701]
+          - cell "Meyer" [ref=e8702]
+          - cell "frank.meyer@example.com" [ref=e8703]
+          - cell [ref=e8704]:
+            - generic: ▾
+          - cell "Python, Java, SQL, React" [ref=e8705]:
+            - text: Python, Java, SQL, React
+            - generic: ▾
+          - cell [ref=e8706]:
+            - generic [ref=e8707] [cursor=pointer]: 🖉
+          - cell [ref=e8708]:
+            - checkbox [ref=e8709]
+          - cell "49,983.00 €" [ref=e8710]
+          - cell "May 2, 2013 2013-05-02 Open date picker" [ref=e8711]:
+            - generic [ref=e8712]:
+              - text: May 2, 2013
+              - textbox: 2013-05-02
+              - button "Open date picker" [ref=e8713] [cursor=pointer]: 📅
+          - cell [ref=e8714]
+          - cell "Hamburg Office" [ref=e8715]
+          - cell "+49 921 279861" [ref=e8716]
+          - cell "EMP00165" [ref=e8717]
+          - cell "On Leave" [ref=e8718]
+          - cell "Software Engineer" [ref=e8719]
+          - cell "Web" [ref=e8720]
+          - cell "Jan 4, 2024, 5:23 AM 2024-01-04T05:23 Open date/time picker" [ref=e8721]:
+            - generic [ref=e8722]:
+              - text: Jan 4, 2024, 5:23 AM
+              - textbox: 2024-01-04T05:23
+              - button "Open date/time picker" [ref=e8723] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e8724]
+          - cell "+ 1,725 €" [ref=e8725]
+          - cell [ref=e8726]
+          - cell "UK" [ref=e8727]:
+            - text: UK
+            - generic: ▾
+          - cell "Hamburg" [ref=e8728]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "88057" [ref=e8729]
+          - cell "15 Example Street" [ref=e8730]
+          - cell [ref=e8731]
+          - cell [ref=e8733]
+          - cell "Open date picker" [ref=e8735]:
+            - generic [ref=e8736]:
+              - textbox
+              - button "Open date picker" [ref=e8738] [cursor=pointer]: 📅
+          - cell [ref=e8739]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e8740]:
+            - generic [ref=e8741]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e8742] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e8743]:
+            - generic [ref=e8744]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e8745]':
+            - generic [ref=e8746]:
+              - generic [ref=e8748]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 165" [ref=e8749]:
+          - cell "166" [ref=e8750]
+          - cell "Ez5QOw1PQ9buW4zra9LxCMJtf [...]" [ref=e8751]
+          - cell "Hannah" [ref=e8752]
+          - cell "Müller" [ref=e8753]
+          - cell "hannah.müller@example.com" [ref=e8754]
+          - cell [ref=e8755]:
+            - generic: ▾
+          - cell "React, Python" [ref=e8756]:
+            - text: React, Python
+            - generic: ▾
+          - cell "At amet, invidunt sea no [...]" [ref=e8757]:
+            - text: At amet, invidunt sea no [...]
+            - generic [ref=e8758] [cursor=pointer]: 🖉
+          - cell [ref=e8759]:
+            - checkbox [checked] [ref=e8760]
+          - cell "62,386.00 €" [ref=e8761]
+          - cell "May 23, 2007 2007-05-23 Open date picker" [ref=e8762]:
+            - generic [ref=e8763]:
+              - text: May 23, 2007
+              - textbox: 2007-05-23
+              - button "Open date picker" [ref=e8764] [cursor=pointer]: 📅
+          - cell "Eva Schneider" [ref=e8765]
+          - cell "Munich Office" [ref=e8766]
+          - cell "+19 640 352569" [ref=e8767]
+          - cell "EMP00166" [ref=e8768]
+          - cell "Active" [ref=e8769]
+          - cell "Product Manager" [ref=e8770]
+          - cell "Mobile" [ref=e8771]
+          - cell "Open date/time picker" [ref=e8772]:
+            - generic [ref=e8773]:
+              - textbox
+              - button "Open date/time picker" [ref=e8775] [cursor=pointer]: 📅
+          - cell "4.88" [ref=e8776]
+          - cell "+ 466 €" [ref=e8777]
+          - cell "Contractor" [ref=e8778]
+          - cell "USA" [ref=e8779]:
+            - text: USA
+            - generic: ▾
+          - cell "Frankfurt" [ref=e8780]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "67195" [ref=e8781]
+          - cell "158 Example Street" [ref=e8782]
+          - cell [ref=e8783]
+          - cell [ref=e8785]
+          - cell "Open date picker" [ref=e8787]:
+            - generic [ref=e8788]:
+              - textbox
+              - button "Open date picker" [ref=e8790] [cursor=pointer]: 📅
+          - cell "Alice Meyer (+19265654651 [...]" [ref=e8791]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e8792]:
+            - generic [ref=e8793]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e8794] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e8795]:
+            - generic [ref=e8796]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e8797]':
+            - generic [ref=e8798]:
+              - generic [ref=e8800]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 166" [ref=e8801]:
+          - cell "167" [ref=e8802]
+          - cell "QoNISg9LPXH8AnYHK8" [ref=e8803]
+          - cell "Grace" [ref=e8804]
+          - cell "Becker" [ref=e8805]
+          - cell "grace.becker@example.com" [ref=e8806]
+          - cell "Finance" [ref=e8807]:
+            - text: Finance
+            - generic: ▾
+          - cell "Java, Python" [ref=e8808]:
+            - text: Java, Python
+            - generic: ▾
+          - cell "sanctus ipsum erat, dolor [...]" [ref=e8809]:
+            - text: sanctus ipsum erat, dolor [...]
+            - generic [ref=e8810] [cursor=pointer]: 🖉
+          - cell [ref=e8811]:
+            - checkbox [checked] [ref=e8812]
+          - cell "65,189.00 €" [ref=e8813]
+          - cell "Nov 11, 2021 2021-11-11 Open date picker" [ref=e8814]:
+            - generic [ref=e8815]:
+              - text: Nov 11, 2021
+              - textbox: 2021-11-11
+              - button "Open date picker" [ref=e8816] [cursor=pointer]: 📅
+          - cell "Eva Schmidt" [ref=e8817]
+          - cell "Remote" [ref=e8818]
+          - cell "+11 996 564576" [ref=e8819]
+          - cell "EMP00167" [ref=e8820]
+          - cell "Probation" [ref=e8821]
+          - cell "DevOps Engineer" [ref=e8822]
+          - cell "Growth" [ref=e8823]
+          - cell "Jan 8, 2024, 12:34 AM 2024-01-08T00:34 Open date/time picker" [ref=e8824]:
+            - generic [ref=e8825]:
+              - text: Jan 8, 2024, 12:34 AM
+              - textbox: 2024-01-08T00:34
+              - button "Open date/time picker" [ref=e8826] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e8827]
+          - cell "+ 0 €" [ref=e8828]
+          - cell "Contractor" [ref=e8829]
+          - cell "UK" [ref=e8830]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e8831]:
+            - generic: ▾
+          - cell "55336" [ref=e8832]
+          - cell "48 Example Street" [ref=e8833]
+          - cell [ref=e8834]
+          - cell [ref=e8836]
+          - cell "April 18, 1994 1994-04-18 Open date picker" [ref=e8838]:
+            - generic [ref=e8839]:
+              - text: April 18, 1994
+              - textbox: 1994-04-18
+              - button "Open date picker" [ref=e8840] [cursor=pointer]: 📅
+          - cell [ref=e8841]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e8842]:
+            - generic [ref=e8843]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e8844] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e8845]:
+            - generic [ref=e8846]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e8847]':
+            - generic [ref=e8848]:
+              - generic [ref=e8850]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 167" [ref=e8851]:
+          - cell "168" [ref=e8852]
+          - cell "0dqwFa0VGmAL-U" [ref=e8853]
+          - cell "Frank" [ref=e8854]
+          - cell "Wagner" [ref=e8855]
+          - cell "frank.wagner@example.com" [ref=e8856]
+          - cell [ref=e8857]:
+            - generic: ▾
+          - cell "Figma, AWS" [ref=e8858]:
+            - text: Figma, AWS
+            - generic: ▾
+          - cell "At tempor sed accusam non [...]" [ref=e8859]:
+            - text: At tempor sed accusam non [...]
+            - generic [ref=e8860] [cursor=pointer]: 🖉
+          - cell [ref=e8861]:
+            - checkbox [ref=e8862]
+          - cell "44,476.00 €" [ref=e8863]
+          - cell "Mar 23, 2022 2022-03-23 Open date picker" [ref=e8864]:
+            - generic [ref=e8865]:
+              - text: Mar 23, 2022
+              - textbox: 2022-03-23
+              - button "Open date picker" [ref=e8866] [cursor=pointer]: 📅
+          - cell [ref=e8867]
+          - cell "Berlin HQ" [ref=e8868]
+          - cell [ref=e8869]
+          - cell "EMP00168" [ref=e8870]
+          - cell "Active" [ref=e8871]
+          - cell "Data Analyst" [ref=e8872]
+          - cell [ref=e8873]
+          - cell "Aug 1, 2020, 3:07 PM 2020-08-01T15:07 Open date/time picker" [ref=e8874]:
+            - generic [ref=e8875]:
+              - text: Aug 1, 2020, 3:07 PM
+              - textbox: 2020-08-01T15:07
+              - button "Open date/time picker" [ref=e8876] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e8877]
+          - cell "+ 0 €" [ref=e8878]
+          - cell "Temporary" [ref=e8879]
+          - cell "USA" [ref=e8880]:
+            - text: USA
+            - generic: ▾
+          - cell [ref=e8881]:
+            - generic: ▾
+          - cell "49200" [ref=e8882]
+          - cell [ref=e8883]
+          - cell "https://www.linkedin.com/in/frankwagner 🔗" [ref=e8884]:
+            - generic [ref=e8885]:
+              - generic [ref=e8886]: https://www.linkedin.com/in/frankwagner
+              - button "🔗" [ref=e8887] [cursor=pointer]
+          - cell [ref=e8888]
+          - cell "Open date picker" [ref=e8890]:
+            - generic [ref=e8891]:
+              - textbox
+              - button "Open date picker" [ref=e8893] [cursor=pointer]: 📅
+          - cell "Eva Meyer (+19403532211)" [ref=e8894]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e8895]:
+            - generic [ref=e8896]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e8897] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e8898]:
+            - generic [ref=e8899]: 5h
+          - 'cell "#10b981 #10b981" [ref=e8900]':
+            - generic [ref=e8901]:
+              - generic [ref=e8903]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 168" [ref=e8904]:
+          - cell "169" [ref=e8905]
+          - cell "_qesoC322pfLVqPj8OPICz9n_ [...]" [ref=e8906]
+          - cell "Grace" [ref=e8907]
+          - cell "Schneider" [ref=e8908]
+          - cell "grace.schneider@example.c [...]" [ref=e8909]
+          - cell "Finance" [ref=e8910]:
+            - text: Finance
+            - generic: ▾
+          - cell [ref=e8911]:
+            - generic: ▾
+          - cell "et sed et et ea aliquyam [...]" [ref=e8912]:
+            - text: et sed et et ea aliquyam [...]
+            - generic [ref=e8913] [cursor=pointer]: 🖉
+          - cell [ref=e8914]:
+            - checkbox [checked] [ref=e8915]
+          - cell "57,821.00 €" [ref=e8916]
+          - cell "Sep 28, 2009 2009-09-28 Open date picker" [ref=e8917]:
+            - generic [ref=e8918]:
+              - text: Sep 28, 2009
+              - textbox: 2009-09-28
+              - button "Open date picker" [ref=e8919] [cursor=pointer]: 📅
+          - cell "Diana Müller" [ref=e8920]
+          - cell "Berlin HQ" [ref=e8921]
+          - cell [ref=e8922]
+          - cell "EMP00169" [ref=e8923]
+          - cell "Active" [ref=e8924]
+          - cell "QA Engineer" [ref=e8925]
+          - cell "Tools" [ref=e8926]
+          - cell "Open date/time picker" [ref=e8927]:
+            - generic [ref=e8928]:
+              - textbox
+              - button "Open date/time picker" [ref=e8930] [cursor=pointer]: 📅
+          - cell "4.61" [ref=e8931]
+          - cell "+ 10,522 €" [ref=e8932]
+          - cell "Permanent" [ref=e8933]
+          - cell [ref=e8934]:
+            - generic: ▾
+          - cell "Berlin" [ref=e8935]:
+            - text: Berlin
+            - generic: ▾
+          - cell "17159" [ref=e8936]
+          - cell "76 Example Street" [ref=e8937]
+          - cell [ref=e8938]
+          - cell "https://github.com/graceschneider 🔗" [ref=e8940]:
+            - generic [ref=e8941]:
+              - generic [ref=e8942]: https://github.com/graceschneider
+              - button "🔗" [ref=e8943] [cursor=pointer]
+          - cell "June 11, 1974 1974-06-11 Open date picker" [ref=e8944]:
+            - generic [ref=e8945]:
+              - text: June 11, 1974
+              - textbox: 1974-06-11
+              - button "Open date picker" [ref=e8946] [cursor=pointer]: 📅
+          - cell "Ian Meyer (+17579250176)" [ref=e8947]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e8948]:
+            - generic [ref=e8949]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e8950] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e8951]:
+            - generic [ref=e8952]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e8953]':
+            - generic [ref=e8954]:
+              - generic [ref=e8956]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 169" [ref=e8957]:
+          - cell "170" [ref=e8958]
+          - cell "O_bebWfnd5MrCXqZbo9ooh" [ref=e8959]
+          - cell "Grace" [ref=e8960]
+          - cell "Meyer" [ref=e8961]
+          - cell [ref=e8962]
+          - cell "Marketing" [ref=e8963]:
+            - text: Marketing
+            - generic: ▾
+          - cell [ref=e8964]:
+            - generic: ▾
+          - cell "Lorem ea kasd ea gubergre [...]" [ref=e8965]:
+            - text: Lorem ea kasd ea gubergre [...]
+            - generic [ref=e8966] [cursor=pointer]: 🖉
+          - cell [ref=e8967]:
+            - checkbox [ref=e8968]
+          - cell "91,162.00 €" [ref=e8969]
+          - cell "Jul 30, 2021 2021-07-30 Open date picker" [ref=e8970]:
+            - generic [ref=e8971]:
+              - text: Jul 30, 2021
+              - textbox: 2021-07-30
+              - button "Open date picker" [ref=e8972] [cursor=pointer]: 📅
+          - cell "Bob Weber" [ref=e8973]
+          - cell [ref=e8974]
+          - cell "+17 113 644214" [ref=e8975]
+          - cell "EMP00170" [ref=e8976]
+          - cell "On Leave" [ref=e8977]
+          - cell "Product Manager" [ref=e8978]
+          - cell [ref=e8979]
+          - cell "Nov 30, 2021, 5:45 PM 2021-11-30T17:45 Open date/time picker" [ref=e8980]:
+            - generic [ref=e8981]:
+              - text: Nov 30, 2021, 5:45 PM
+              - textbox: 2021-11-30T17:45
+              - button "Open date/time picker" [ref=e8982] [cursor=pointer]: 📅
+          - cell "0.65" [ref=e8983]
+          - cell "+ 0 €" [ref=e8984]
+          - cell "Temporary" [ref=e8985]
+          - cell "Germany" [ref=e8986]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e8987]:
+            - text: Munich
+            - generic: ▾
+          - cell [ref=e8988]
+          - cell "82 Example Street" [ref=e8989]
+          - cell "https://www.linkedin.com/in/gracemeyer 🔗" [ref=e8990]:
+            - generic [ref=e8991]:
+              - generic [ref=e8992]: https://www.linkedin.com/in/gracemeyer
+              - button "🔗" [ref=e8993] [cursor=pointer]
+          - cell [ref=e8994]
+          - cell "Open date picker" [ref=e8996]:
+            - generic [ref=e8997]:
+              - textbox
+              - button "Open date picker" [ref=e8999] [cursor=pointer]: 📅
+          - cell [ref=e9000]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e9001]:
+            - generic [ref=e9002]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e9003] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e9004]:
+            - generic [ref=e9005]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e9006]':
+            - generic [ref=e9007]:
+              - generic [ref=e9009]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 170" [ref=e9010]:
+          - cell "171" [ref=e9011]
+          - cell "LYtL-bmfbP16Zv" [ref=e9012]
+          - cell "Frank" [ref=e9013]
+          - cell "Becker" [ref=e9014]
+          - cell "frank.becker@example.com" [ref=e9015]
+          - cell "Legal" [ref=e9016]:
+            - text: Legal
+            - generic: ▾
+          - cell "React, SQL, TypeScript" [ref=e9017]:
+            - text: React, SQL, TypeScript
+            - generic: ▾
+          - cell [ref=e9018]:
+            - generic [ref=e9019] [cursor=pointer]: 🖉
+          - cell [ref=e9020]:
+            - checkbox [checked] [ref=e9021]
+          - cell "60,304.00 €" [ref=e9022]
+          - cell "Jul 22, 2009 2009-07-22 Open date picker" [ref=e9023]:
+            - generic [ref=e9024]:
+              - text: Jul 22, 2009
+              - textbox: 2009-07-22
+              - button "Open date picker" [ref=e9025] [cursor=pointer]: 📅
+          - cell "Grace Wagner" [ref=e9026]
+          - cell "Hamburg Office" [ref=e9027]
+          - cell "+49 830 399643" [ref=e9028]
+          - cell "EMP00171" [ref=e9029]
+          - cell "Probation" [ref=e9030]
+          - cell "Product Manager" [ref=e9031]
+          - cell "Platform" [ref=e9032]
+          - cell "May 25, 2020, 12:29 AM 2020-05-25T00:29 Open date/time picker" [ref=e9033]:
+            - generic [ref=e9034]:
+              - text: May 25, 2020, 12:29 AM
+              - textbox: 2020-05-25T00:29
+              - button "Open date/time picker" [ref=e9035] [cursor=pointer]: 📅
+          - cell "0.67" [ref=e9036]
+          - cell "+ 0 €" [ref=e9037]
+          - cell [ref=e9038]
+          - cell "Netherlands" [ref=e9039]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e9040]:
+            - generic: ▾
+          - cell "37031" [ref=e9041]
+          - cell "37 Example Street" [ref=e9042]
+          - cell [ref=e9043]
+          - cell [ref=e9045]
+          - cell "August 21, 1967 1967-08-21 Open date picker" [ref=e9047]:
+            - generic [ref=e9048]:
+              - text: August 21, 1967
+              - textbox: 1967-08-21
+              - button "Open date picker" [ref=e9049] [cursor=pointer]: 📅
+          - cell [ref=e9050]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e9051]:
+            - generic [ref=e9052]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e9053] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e9054]:
+            - generic [ref=e9055]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e9056]':
+            - generic [ref=e9057]:
+              - generic [ref=e9059]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 171" [ref=e9060]:
+          - cell "172" [ref=e9061]
+          - cell "mcXW4cgHMr" [ref=e9062]
+          - cell "Eva" [ref=e9063]
+          - cell "Meyer" [ref=e9064]
+          - cell "eva.meyer@example.com" [ref=e9065]
+          - cell "Sales" [ref=e9066]:
+            - text: Sales
+            - generic: ▾
+          - cell "Java, AWS, Python, Figma" [ref=e9067]:
+            - text: Java, AWS, Python, Figma
+            - generic: ▾
+          - cell "sit kasd vero kasd conset [...]" [ref=e9068]:
+            - text: sit kasd vero kasd conset [...]
+            - generic [ref=e9069] [cursor=pointer]: 🖉
+          - cell [ref=e9070]:
+            - checkbox [checked] [ref=e9071]
+          - cell "56,297.00 €" [ref=e9072]
+          - cell "Oct 15, 2013 2013-10-15 Open date picker" [ref=e9073]:
+            - generic [ref=e9074]:
+              - text: Oct 15, 2013
+              - textbox: 2013-10-15
+              - button "Open date picker" [ref=e9075] [cursor=pointer]: 📅
+          - cell "Alice Fischer" [ref=e9076]
+          - cell "Cologne Office" [ref=e9077]
+          - cell "+11 773 599790" [ref=e9078]
+          - cell "EMP00172" [ref=e9079]
+          - cell "Probation" [ref=e9080]
+          - cell "Software Engineer" [ref=e9081]
+          - cell "Platform" [ref=e9082]
+          - cell "Open date/time picker" [ref=e9083]:
+            - generic [ref=e9084]:
+              - textbox
+              - button "Open date/time picker" [ref=e9086] [cursor=pointer]: 📅
+          - cell "2.21" [ref=e9087]
+          - cell "+ 12,044 €" [ref=e9088]
+          - cell "Temporary" [ref=e9089]
+          - cell "Netherlands" [ref=e9090]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Hamburg" [ref=e9091]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e9092]
+          - cell [ref=e9093]
+          - cell [ref=e9094]
+          - cell [ref=e9096]
+          - cell "Open date picker" [ref=e9098]:
+            - generic [ref=e9099]:
+              - textbox
+              - button "Open date picker" [ref=e9101] [cursor=pointer]: 📅
+          - cell [ref=e9102]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e9103]:
+            - generic [ref=e9104]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e9105] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e9106]:
+            - generic [ref=e9107]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e9108]':
+            - generic [ref=e9109]:
+              - generic [ref=e9111]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 172" [ref=e9112]:
+          - cell "173" [ref=e9113]
+          - cell [ref=e9114]
+          - cell "Eva" [ref=e9115]
+          - cell "Schmidt" [ref=e9116]
+          - cell "eva.schmidt@example.com" [ref=e9117]
+          - cell "Sales" [ref=e9118]:
+            - text: Sales
+            - generic: ▾
+          - cell "Figma, TypeScript, Java" [ref=e9119]:
+            - text: Figma, TypeScript, Java
+            - generic: ▾
+          - cell "no dolor ut ea Stet rebum [...]" [ref=e9120]:
+            - text: no dolor ut ea Stet rebum [...]
+            - generic [ref=e9121] [cursor=pointer]: 🖉
+          - cell [ref=e9122]:
+            - checkbox [checked] [ref=e9123]
+          - cell "65,724.00 €" [ref=e9124]
+          - cell "Apr 3, 2024 2024-04-03 Open date picker" [ref=e9125]:
+            - generic [ref=e9126]:
+              - text: Apr 3, 2024
+              - textbox: 2024-04-03
+              - button "Open date picker" [ref=e9127] [cursor=pointer]: 📅
+          - cell "Grace Meyer" [ref=e9128]
+          - cell "Remote" [ref=e9129]
+          - cell "+11 773 723554" [ref=e9130]
+          - cell "EMP00173" [ref=e9131]
+          - cell [ref=e9132]
+          - cell "Designer" [ref=e9133]
+          - cell "Platform" [ref=e9134]
+          - cell "Jul 28, 2021, 6:59 AM 2021-07-28T06:59 Open date/time picker" [ref=e9135]:
+            - generic [ref=e9136]:
+              - text: Jul 28, 2021, 6:59 AM
+              - textbox: 2021-07-28T06:59
+              - button "Open date/time picker" [ref=e9137] [cursor=pointer]: 📅
+          - cell "2.70" [ref=e9138]
+          - cell "+ 0 €" [ref=e9139]
+          - cell "Contractor" [ref=e9140]
+          - cell "Spain" [ref=e9141]:
+            - text: Spain
+            - generic: ▾
+          - cell "Stuttgart" [ref=e9142]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e9143]
+          - cell "149 Example Street" [ref=e9144]
+          - cell "https://www.linkedin.com/in/evaschmidt 🔗" [ref=e9145]:
+            - generic [ref=e9146]:
+              - generic [ref=e9147]: https://www.linkedin.com/in/evaschmidt
+              - button "🔗" [ref=e9148] [cursor=pointer]
+          - cell [ref=e9149]
+          - cell "December 25, 1977 1977-12-25 Open date picker" [ref=e9151]:
+            - generic [ref=e9152]:
+              - text: December 25, 1977
+              - textbox: 1977-12-25
+              - button "Open date picker" [ref=e9153] [cursor=pointer]: 📅
+          - cell [ref=e9154]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e9155]:
+            - generic [ref=e9156]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e9157] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e9158]:
+            - generic [ref=e9159]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e9160]':
+            - generic [ref=e9161]:
+              - generic [ref=e9163]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 173" [ref=e9164]:
+          - cell "174" [ref=e9165]
+          - cell "wcT5_ZktUCcdSB3fYLP3wuIm5 [...]" [ref=e9166]
+          - cell "Bob" [ref=e9167]
+          - cell "Schmidt" [ref=e9168]
+          - cell "bob.schmidt@example.com" [ref=e9169]
+          - cell "Sales" [ref=e9170]:
+            - text: Sales
+            - generic: ▾
+          - cell [ref=e9171]:
+            - generic: ▾
+          - cell "rebum. diam vero et sadip [...]" [ref=e9172]:
+            - text: rebum. diam vero et sadip [...]
+            - generic [ref=e9173] [cursor=pointer]: 🖉
+          - cell [ref=e9174]:
+            - checkbox [checked] [ref=e9175]
+          - cell "0.00 €" [ref=e9176]
+          - cell "Aug 8, 2014 2014-08-08 Open date picker" [ref=e9177]:
+            - generic [ref=e9178]:
+              - text: Aug 8, 2014
+              - textbox: 2014-08-08
+              - button "Open date picker" [ref=e9179] [cursor=pointer]: 📅
+          - cell [ref=e9180]
+          - cell "Remote" [ref=e9181]
+          - cell "+11 271 608550" [ref=e9182]
+          - cell "EMP00174" [ref=e9183]
+          - cell "On Leave" [ref=e9184]
+          - cell [ref=e9185]
+          - cell "Mobile" [ref=e9186]
+          - cell "Aug 30, 2023, 9:17 AM 2023-08-30T09:17 Open date/time picker" [ref=e9187]:
+            - generic [ref=e9188]:
+              - text: Aug 30, 2023, 9:17 AM
+              - textbox: 2023-08-30T09:17
+              - button "Open date/time picker" [ref=e9189] [cursor=pointer]: 📅
+          - cell "2.90" [ref=e9190]
+          - cell "+ 0 €" [ref=e9191]
+          - cell [ref=e9192]
+          - cell "France" [ref=e9193]:
+            - text: France
+            - generic: ▾
+          - cell "Hamburg" [ref=e9194]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e9195]
+          - cell [ref=e9196]
+          - cell [ref=e9197]
+          - cell [ref=e9199]
+          - cell "September 23, 1985 1985-09-23 Open date picker" [ref=e9201]:
+            - generic [ref=e9202]:
+              - text: September 23, 1985
+              - textbox: 1985-09-23
+              - button "Open date picker" [ref=e9203] [cursor=pointer]: 📅
+          - cell [ref=e9204]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e9205]:
+            - generic [ref=e9206]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e9207] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e9208]:
+            - generic [ref=e9209]: 4h
+          - 'cell "#f97316 #f97316" [ref=e9210]':
+            - generic [ref=e9211]:
+              - generic [ref=e9213]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 174" [ref=e9214]:
+          - cell "175" [ref=e9215]
+          - cell "dC8ftO2_a5fcoPvBb0HPloHe9 [...]" [ref=e9216]
+          - cell "Alice" [ref=e9217]
+          - cell "Weber" [ref=e9218]
+          - cell "alice.weber@example.com" [ref=e9219]
+          - cell "Legal" [ref=e9220]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e9221]:
+            - generic: ▾
+          - cell "no no diam eos ut consete [...]" [ref=e9222]:
+            - text: no no diam eos ut consete [...]
+            - generic [ref=e9223] [cursor=pointer]: 🖉
+          - cell [ref=e9224]:
+            - checkbox [checked] [ref=e9225]
+          - cell "60,771.00 €" [ref=e9226]
+          - cell "Apr 23, 2018 2018-04-23 Open date picker" [ref=e9227]:
+            - generic [ref=e9228]:
+              - text: Apr 23, 2018
+              - textbox: 2018-04-23
+              - button "Open date picker" [ref=e9229] [cursor=pointer]: 📅
+          - cell "Julia Meyer" [ref=e9230]
+          - cell "Remote" [ref=e9231]
+          - cell "+11 470 222745" [ref=e9232]
+          - cell "EMP00175" [ref=e9233]
+          - cell "On Leave" [ref=e9234]
+          - cell "Software Engineer" [ref=e9235]
+          - cell "Mobile" [ref=e9236]
+          - cell "Nov 22, 2023, 7:52 AM 2023-11-22T07:52 Open date/time picker" [ref=e9237]:
+            - generic [ref=e9238]:
+              - text: Nov 22, 2023, 7:52 AM
+              - textbox: 2023-11-22T07:52
+              - button "Open date/time picker" [ref=e9239] [cursor=pointer]: 📅
+          - cell "0.39" [ref=e9240]
+          - cell "+ 12,027 €" [ref=e9241]
+          - cell "Temporary" [ref=e9242]
+          - cell "UK" [ref=e9243]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e9244]:
+            - text: Cologne
+            - generic: ▾
+          - cell "40560" [ref=e9245]
+          - cell "96 Example Street" [ref=e9246]
+          - cell "https://www.linkedin.com/in/aliceweber 🔗" [ref=e9247]:
+            - generic [ref=e9248]:
+              - generic [ref=e9249]: https://www.linkedin.com/in/aliceweber
+              - button "🔗" [ref=e9250] [cursor=pointer]
+          - cell [ref=e9251]
+          - cell "September 10, 1975 1975-09-10 Open date picker" [ref=e9253]:
+            - generic [ref=e9254]:
+              - text: September 10, 1975
+              - textbox: 1975-09-10
+              - button "Open date picker" [ref=e9255] [cursor=pointer]: 📅
+          - cell "Ian Müller (+49507528537)" [ref=e9256]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e9257]:
+            - generic [ref=e9258]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e9259] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e9260]:
+            - generic [ref=e9261]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e9262]':
+            - generic [ref=e9263]:
+              - generic [ref=e9265]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 175" [ref=e9266]:
+          - cell "176" [ref=e9267]
+          - cell "h0crL5YrxfxfIVj5tKzT6k5tD [...]" [ref=e9268]
+          - cell "Frank" [ref=e9269]
+          - cell "Müller" [ref=e9270]
+          - cell [ref=e9271]
+          - cell [ref=e9272]:
+            - generic: ▾
+          - cell "SQL, Java, AWS" [ref=e9273]:
+            - text: SQL, Java, AWS
+            - generic: ▾
+          - cell [ref=e9274]:
+            - generic [ref=e9275] [cursor=pointer]: 🖉
+          - cell [ref=e9276]:
+            - checkbox [checked] [ref=e9277]
+          - cell "57,686.00 €" [ref=e9278]
+          - cell "Nov 26, 2011 2011-11-26 Open date picker" [ref=e9279]:
+            - generic [ref=e9280]:
+              - text: Nov 26, 2011
+              - textbox: 2011-11-26
+              - button "Open date picker" [ref=e9281] [cursor=pointer]: 📅
+          - cell "Bob Weber" [ref=e9282]
+          - cell "Cologne Office" [ref=e9283]
+          - cell "+49 910 321197" [ref=e9284]
+          - cell "EMP00176" [ref=e9285]
+          - cell "Active" [ref=e9286]
+          - cell [ref=e9287]
+          - cell "Platform" [ref=e9288]
+          - cell "Nov 15, 2021, 3:08 PM 2021-11-15T15:08 Open date/time picker" [ref=e9289]:
+            - generic [ref=e9290]:
+              - text: Nov 15, 2021, 3:08 PM
+              - textbox: 2021-11-15T15:08
+              - button "Open date/time picker" [ref=e9291] [cursor=pointer]: 📅
+          - cell "2.47" [ref=e9292]
+          - cell "+ 7,865 €" [ref=e9293]
+          - cell "Permanent" [ref=e9294]
+          - cell "Netherlands" [ref=e9295]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e9296]:
+            - generic: ▾
+          - cell "51455" [ref=e9297]
+          - cell "67 Example Street" [ref=e9298]
+          - cell [ref=e9299]
+          - cell [ref=e9301]
+          - cell "June 26, 1989 1989-06-26 Open date picker" [ref=e9303]:
+            - generic [ref=e9304]:
+              - text: June 26, 1989
+              - textbox: 1989-06-26
+              - button "Open date picker" [ref=e9305] [cursor=pointer]: 📅
+          - cell "Ian Meyer (+16647811166)" [ref=e9306]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e9307]:
+            - generic [ref=e9308]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e9309] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e9310]:
+            - generic [ref=e9311]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e9312]':
+            - generic [ref=e9313]:
+              - generic [ref=e9315]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 176" [ref=e9316]:
+          - cell "177" [ref=e9317]
+          - cell "ck2orRM3Qy6-sSpxE" [ref=e9318]
+          - cell "Diana" [ref=e9319]
+          - cell "Weber" [ref=e9320]
+          - cell "diana.weber@example.com" [ref=e9321]
+          - cell "Sales" [ref=e9322]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript" [ref=e9323]:
+            - text: TypeScript
+            - generic: ▾
+          - cell [ref=e9324]:
+            - generic [ref=e9325] [cursor=pointer]: 🖉
+          - cell [ref=e9326]:
+            - checkbox [checked] [ref=e9327]
+          - cell "71,759.00 €" [ref=e9328]
+          - cell "Open date picker" [ref=e9329]:
+            - generic [ref=e9330]:
+              - textbox
+              - button "Open date picker" [ref=e9332] [cursor=pointer]: 📅
+          - cell "Hannah Becker" [ref=e9333]
+          - cell [ref=e9334]
+          - cell "+49 137 401846" [ref=e9335]
+          - cell "EMP00177" [ref=e9336]
+          - cell "On Leave" [ref=e9337]
+          - cell "Software Engineer" [ref=e9338]
+          - cell "Platform" [ref=e9339]
+          - cell "Aug 11, 2022, 7:45 PM 2022-08-11T19:45 Open date/time picker" [ref=e9340]:
+            - generic [ref=e9341]:
+              - text: Aug 11, 2022, 7:45 PM
+              - textbox: 2022-08-11T19:45
+              - button "Open date/time picker" [ref=e9342] [cursor=pointer]: 📅
+          - cell "1.78" [ref=e9343]
+          - cell "+ 5,466 €" [ref=e9344]
+          - cell [ref=e9345]
+          - cell "Germany" [ref=e9346]:
+            - text: Germany
+            - generic: ▾
+          - cell "Hamburg" [ref=e9347]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "26650" [ref=e9348]
+          - cell "52 Example Street" [ref=e9349]
+          - cell [ref=e9350]
+          - cell [ref=e9352]
+          - cell "July 28, 1967 1967-07-28 Open date picker" [ref=e9354]:
+            - generic [ref=e9355]:
+              - text: July 28, 1967
+              - textbox: 1967-07-28
+              - button "Open date picker" [ref=e9356] [cursor=pointer]: 📅
+          - cell "Julia Wagner (+1174416078 [...]" [ref=e9357]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e9358]:
+            - generic [ref=e9359]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e9360] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e9361]:
+            - generic [ref=e9362]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e9363]':
+            - generic [ref=e9364]:
+              - generic [ref=e9366]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 177" [ref=e9367]:
+          - cell "178" [ref=e9368]
+          - cell "COnjfnI2wjPuTUFhbJbDNprW" [ref=e9369]
+          - cell "Diana" [ref=e9370]
+          - cell "Müller" [ref=e9371]
+          - cell "diana.müller@example.com" [ref=e9372]
+          - cell "IT" [ref=e9373]:
+            - text: IT
+            - generic: ▾
+          - cell "TypeScript, Java, SQL, Py [...]" [ref=e9374]:
+            - text: TypeScript, Java, SQL, Py [...]
+            - generic: ▾
+          - cell [ref=e9375]:
+            - generic [ref=e9376] [cursor=pointer]: 🖉
+          - cell [ref=e9377]:
+            - checkbox [checked] [ref=e9378]
+          - cell "62,623.00 €" [ref=e9379]
+          - cell "Jun 24, 2020 2020-06-24 Open date picker" [ref=e9380]:
+            - generic [ref=e9381]:
+              - text: Jun 24, 2020
+              - textbox: 2020-06-24
+              - button "Open date picker" [ref=e9382] [cursor=pointer]: 📅
+          - cell "Hannah Schmidt" [ref=e9383]
+          - cell [ref=e9384]
+          - cell "+11 589 450788" [ref=e9385]
+          - cell "EMP00178" [ref=e9386]
+          - cell "Active" [ref=e9387]
+          - cell "QA Engineer" [ref=e9388]
+          - cell "Platform" [ref=e9389]
+          - cell "Jan 17, 2024, 3:57 AM 2024-01-17T03:57 Open date/time picker" [ref=e9390]:
+            - generic [ref=e9391]:
+              - text: Jan 17, 2024, 3:57 AM
+              - textbox: 2024-01-17T03:57
+              - button "Open date/time picker" [ref=e9392] [cursor=pointer]: 📅
+          - cell "3.78" [ref=e9393]
+          - cell "+ 1,561 €" [ref=e9394]
+          - cell "Contractor" [ref=e9395]
+          - cell "France" [ref=e9396]:
+            - text: France
+            - generic: ▾
+          - cell "Stuttgart" [ref=e9397]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e9398]
+          - cell [ref=e9399]
+          - cell "https://www.linkedin.com/in/dianamüller 🔗" [ref=e9400]:
+            - generic [ref=e9401]:
+              - generic [ref=e9402]: https://www.linkedin.com/in/dianamüller
+              - button "🔗" [ref=e9403] [cursor=pointer]
+          - cell [ref=e9404]
+          - cell "March 22, 1971 1971-03-22 Open date picker" [ref=e9406]:
+            - generic [ref=e9407]:
+              - text: March 22, 1971
+              - textbox: 1971-03-22
+              - button "Open date picker" [ref=e9408] [cursor=pointer]: 📅
+          - cell "Frank Fischer (+493233539 [...]" [ref=e9409]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e9410]:
+            - generic [ref=e9411]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e9412] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e9413]:
+            - generic [ref=e9414]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e9415]':
+            - generic [ref=e9416]:
+              - generic [ref=e9418]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 178" [ref=e9419]:
+          - cell "179" [ref=e9420]
+          - cell "klTQE2ulHfbV6cXV4T3b5RU" [ref=e9421]
+          - cell "Ian" [ref=e9422]
+          - cell "Müller" [ref=e9423]
+          - cell "ian.müller@example.com" [ref=e9424]
+          - cell "IT" [ref=e9425]:
+            - text: IT
+            - generic: ▾
+          - cell "React, SQL" [ref=e9426]:
+            - text: React, SQL
+            - generic: ▾
+          - cell [ref=e9427]:
+            - generic [ref=e9428] [cursor=pointer]: 🖉
+          - cell [ref=e9429]:
+            - checkbox [checked] [ref=e9430]
+          - cell "62,319.00 €" [ref=e9431]
+          - cell "Jun 5, 2015 2015-06-05 Open date picker" [ref=e9432]:
+            - generic [ref=e9433]:
+              - text: Jun 5, 2015
+              - textbox: 2015-06-05
+              - button "Open date picker" [ref=e9434] [cursor=pointer]: 📅
+          - cell "Hannah Müller" [ref=e9435]
+          - cell "Remote" [ref=e9436]
+          - cell [ref=e9437]
+          - cell "EMP00179" [ref=e9438]
+          - cell "Active" [ref=e9439]
+          - cell [ref=e9440]
+          - cell "Web" [ref=e9441]
+          - cell "Oct 29, 2020, 6:15 AM 2020-10-29T06:15 Open date/time picker" [ref=e9442]:
+            - generic [ref=e9443]:
+              - text: Oct 29, 2020, 6:15 AM
+              - textbox: 2020-10-29T06:15
+              - button "Open date/time picker" [ref=e9444] [cursor=pointer]: 📅
+          - cell "3.79" [ref=e9445]
+          - cell "+ 12,140 €" [ref=e9446]
+          - cell [ref=e9447]
+          - cell "France" [ref=e9448]:
+            - text: France
+            - generic: ▾
+          - cell "Cologne" [ref=e9449]:
+            - text: Cologne
+            - generic: ▾
+          - cell "78713" [ref=e9450]
+          - cell [ref=e9451]
+          - cell [ref=e9452]
+          - cell [ref=e9454]
+          - cell "Open date picker" [ref=e9456]:
+            - generic [ref=e9457]:
+              - textbox
+              - button "Open date picker" [ref=e9459] [cursor=pointer]: 📅
+          - cell [ref=e9460]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e9461]:
+            - generic [ref=e9462]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e9463] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e9464]:
+            - generic [ref=e9465]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e9466]':
+            - generic [ref=e9467]:
+              - generic [ref=e9469]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 179" [ref=e9470]:
+          - cell "180" [ref=e9471]
+          - cell "FU4_kULo73bpuXQ2f5vsJ_eWY [...]" [ref=e9472]
+          - cell "Hannah" [ref=e9473]
+          - cell "Fischer" [ref=e9474]
+          - cell "hannah.fischer@example.co [...]" [ref=e9475]
+          - cell [ref=e9476]:
+            - generic: ▾
+          - cell "React, TypeScript, Docker [...]" [ref=e9477]:
+            - text: React, TypeScript, Docker [...]
+            - generic: ▾
+          - cell "rebum. sed sanctus dolore [...]" [ref=e9478]:
+            - text: rebum. sed sanctus dolore [...]
+            - generic [ref=e9479] [cursor=pointer]: 🖉
+          - cell [ref=e9480]:
+            - checkbox [checked] [ref=e9481]
+          - cell "65,170.00 €" [ref=e9482]
+          - cell "Oct 3, 2008 2008-10-03 Open date picker" [ref=e9483]:
+            - generic [ref=e9484]:
+              - text: Oct 3, 2008
+              - textbox: 2008-10-03
+              - button "Open date picker" [ref=e9485] [cursor=pointer]: 📅
+          - cell "Alice Meyer" [ref=e9486]
+          - cell [ref=e9487]
+          - cell [ref=e9488]
+          - cell "EMP00180" [ref=e9489]
+          - cell "Terminated" [ref=e9490]
+          - cell "Software Engineer" [ref=e9491]
+          - cell "Tools" [ref=e9492]
+          - cell "Sep 29, 2024, 8:59 PM 2024-09-29T20:59 Open date/time picker" [ref=e9493]:
+            - generic [ref=e9494]:
+              - text: Sep 29, 2024, 8:59 PM
+              - textbox: 2024-09-29T20:59
+              - button "Open date/time picker" [ref=e9495] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e9496]
+          - cell "+ 2,280 €" [ref=e9497]
+          - cell "Intern" [ref=e9498]
+          - cell "Germany" [ref=e9499]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e9500]:
+            - text: Munich
+            - generic: ▾
+          - cell "36892" [ref=e9501]
+          - cell [ref=e9502]
+          - cell [ref=e9503]
+          - cell "https://github.com/hannahfischer 🔗" [ref=e9505]:
+            - generic [ref=e9506]:
+              - generic [ref=e9507]: https://github.com/hannahfischer
+              - button "🔗" [ref=e9508] [cursor=pointer]
+          - cell "January 28, 1977 1977-01-28 Open date picker" [ref=e9509]:
+            - generic [ref=e9510]:
+              - text: January 28, 1977
+              - textbox: 1977-01-28
+              - button "Open date picker" [ref=e9511] [cursor=pointer]: 📅
+          - cell "Ian Wagner (+18795061456)" [ref=e9512]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e9513]:
+            - generic [ref=e9514]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e9515] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e9516]:
+            - generic [ref=e9517]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e9518]':
+            - generic [ref=e9519]:
+              - generic [ref=e9521]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 180" [ref=e9522]:
+          - cell "181" [ref=e9523]
+          - cell "dGNu7nr3-rZVqSorkNGSk4gjN [...]" [ref=e9524]
+          - cell "Bob" [ref=e9525]
+          - cell "Fischer" [ref=e9526]
+          - cell "bob.fischer@example.com" [ref=e9527]
+          - cell "Marketing" [ref=e9528]:
+            - text: Marketing
+            - generic: ▾
+          - cell "TypeScript" [ref=e9529]:
+            - text: TypeScript
+            - generic: ▾
+          - cell [ref=e9530]:
+            - generic [ref=e9531] [cursor=pointer]: 🖉
+          - cell [ref=e9532]:
+            - checkbox [checked] [ref=e9533]
+          - cell "85,286.00 €" [ref=e9534]
+          - cell "Nov 8, 2013 2013-11-08 Open date picker" [ref=e9535]:
+            - generic [ref=e9536]:
+              - text: Nov 8, 2013
+              - textbox: 2013-11-08
+              - button "Open date picker" [ref=e9537] [cursor=pointer]: 📅
+          - cell "Grace Meyer" [ref=e9538]
+          - cell "Berlin HQ" [ref=e9539]
+          - cell "+49 832 226041" [ref=e9540]
+          - cell "EMP00181" [ref=e9541]
+          - cell "Probation" [ref=e9542]
+          - cell "QA Engineer" [ref=e9543]
+          - cell "Growth" [ref=e9544]
+          - cell "Jul 19, 2020, 1:39 PM 2020-07-19T13:39 Open date/time picker" [ref=e9545]:
+            - generic [ref=e9546]:
+              - text: Jul 19, 2020, 1:39 PM
+              - textbox: 2020-07-19T13:39
+              - button "Open date/time picker" [ref=e9547] [cursor=pointer]: 📅
+          - cell "3.61" [ref=e9548]
+          - cell "+ 6,405 €" [ref=e9549]
+          - cell "Contractor" [ref=e9550]
+          - cell "UK" [ref=e9551]:
+            - text: UK
+            - generic: ▾
+          - cell "Frankfurt" [ref=e9552]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "28779" [ref=e9553]
+          - cell "65 Example Street" [ref=e9554]
+          - cell [ref=e9555]
+          - cell [ref=e9557]
+          - cell "Open date picker" [ref=e9559]:
+            - generic [ref=e9560]:
+              - textbox
+              - button "Open date picker" [ref=e9562] [cursor=pointer]: 📅
+          - cell [ref=e9563]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e9564]:
+            - generic [ref=e9565]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e9566] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e9567]:
+            - generic [ref=e9568]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e9569]':
+            - generic [ref=e9570]:
+              - generic [ref=e9572]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 181" [ref=e9573]:
+          - cell "182" [ref=e9574]
+          - cell "39VCPsm9a2" [ref=e9575]
+          - cell "Frank" [ref=e9576]
+          - cell [ref=e9577]
+          - cell "frank.fischer@example.com" [ref=e9578]
+          - cell "Legal" [ref=e9579]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e9580]:
+            - generic: ▾
+          - cell "amet, sadipscing justo ju [...]" [ref=e9581]:
+            - text: amet, sadipscing justo ju [...]
+            - generic [ref=e9582] [cursor=pointer]: 🖉
+          - cell [ref=e9583]:
+            - checkbox [checked] [ref=e9584]
+          - cell "75,266.00 €" [ref=e9585]
+          - cell "Sep 9, 2006 2006-09-09 Open date picker" [ref=e9586]:
+            - generic [ref=e9587]:
+              - text: Sep 9, 2006
+              - textbox: 2006-09-09
+              - button "Open date picker" [ref=e9588] [cursor=pointer]: 📅
+          - cell "Bob Schneider" [ref=e9589]
+          - cell "Remote" [ref=e9590]
+          - cell "+49 188 014420" [ref=e9591]
+          - cell "EMP00182" [ref=e9592]
+          - cell "Terminated" [ref=e9593]
+          - cell "Product Manager" [ref=e9594]
+          - cell "Growth" [ref=e9595]
+          - cell "Jun 26, 2023, 10:21 AM 2023-06-26T10:21 Open date/time picker" [ref=e9596]:
+            - generic [ref=e9597]:
+              - text: Jun 26, 2023, 10:21 AM
+              - textbox: 2023-06-26T10:21
+              - button "Open date/time picker" [ref=e9598] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e9599]
+          - cell "+ 11,193 €" [ref=e9600]
+          - cell "Permanent" [ref=e9601]
+          - cell "Netherlands" [ref=e9602]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e9603]:
+            - generic: ▾
+          - cell "37873" [ref=e9604]
+          - cell "109 Example Street" [ref=e9605]
+          - cell "https://www.linkedin.com/in/frankfischer 🔗" [ref=e9606]:
+            - generic [ref=e9607]:
+              - generic [ref=e9608]: https://www.linkedin.com/in/frankfischer
+              - button "🔗" [ref=e9609] [cursor=pointer]
+          - cell "https://github.com/frankfischer 🔗" [ref=e9610]:
+            - generic [ref=e9611]:
+              - generic [ref=e9612]: https://github.com/frankfischer
+              - button "🔗" [ref=e9613] [cursor=pointer]
+          - cell "June 10, 1992 1992-06-10 Open date picker" [ref=e9614]:
+            - generic [ref=e9615]:
+              - text: June 10, 1992
+              - textbox: 1992-06-10
+              - button "Open date picker" [ref=e9616] [cursor=pointer]: 📅
+          - cell [ref=e9617]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e9618]:
+            - generic [ref=e9619]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e9620] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e9621]:
+            - generic [ref=e9622]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e9623]':
+            - generic [ref=e9624]:
+              - generic [ref=e9626]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 182" [ref=e9627]:
+          - cell "183" [ref=e9628]
+          - cell "1Q02g2qbErB" [ref=e9629]
+          - cell "Eva" [ref=e9630]
+          - cell "Weber" [ref=e9631]
+          - cell "eva.weber@example.com" [ref=e9632]
+          - cell [ref=e9633]:
+            - generic: ▾
+          - cell "Docker, React" [ref=e9634]:
+            - text: Docker, React
+            - generic: ▾
+          - cell [ref=e9635]:
+            - generic [ref=e9636] [cursor=pointer]: 🖉
+          - cell [ref=e9637]:
+            - checkbox [checked] [ref=e9638]
+          - cell "64,810.00 €" [ref=e9639]
+          - cell "Jun 19, 2014 2014-06-19 Open date picker" [ref=e9640]:
+            - generic [ref=e9641]:
+              - text: Jun 19, 2014
+              - textbox: 2014-06-19
+              - button "Open date picker" [ref=e9642] [cursor=pointer]: 📅
+          - cell "Frank Schneider" [ref=e9643]
+          - cell "Cologne Office" [ref=e9644]
+          - cell "+49 466 037633" [ref=e9645]
+          - cell "EMP00183" [ref=e9646]
+          - cell "On Leave" [ref=e9647]
+          - cell "Data Analyst" [ref=e9648]
+          - cell [ref=e9649]
+          - cell "Open date/time picker" [ref=e9650]:
+            - generic [ref=e9651]:
+              - textbox
+              - button "Open date/time picker" [ref=e9653] [cursor=pointer]: 📅
+          - cell "0.56" [ref=e9654]
+          - cell "+ 9,550 €" [ref=e9655]
+          - cell "Temporary" [ref=e9656]
+          - cell "Netherlands" [ref=e9657]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Cologne" [ref=e9658]:
+            - text: Cologne
+            - generic: ▾
+          - cell "87866" [ref=e9659]
+          - cell "139 Example Street" [ref=e9660]
+          - cell [ref=e9661]
+          - cell [ref=e9663]
+          - cell "Open date picker" [ref=e9665]:
+            - generic [ref=e9666]:
+              - textbox
+              - button "Open date picker" [ref=e9668] [cursor=pointer]: 📅
+          - cell [ref=e9669]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e9670]:
+            - generic [ref=e9671]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e9672] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e9673]:
+            - generic [ref=e9674]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e9675]':
+            - generic [ref=e9676]:
+              - generic [ref=e9678]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 183" [ref=e9679]:
+          - cell "184" [ref=e9680]
+          - cell "eCDFlOgU5CFy3R4kCWGfr20X2 [...]" [ref=e9681]
+          - cell "Alice" [ref=e9682]
+          - cell "Meyer" [ref=e9683]
+          - cell "alice.meyer@example.com" [ref=e9684]
+          - cell "Sales" [ref=e9685]:
+            - text: Sales
+            - generic: ▾
+          - cell "Java, Figma, AWS" [ref=e9686]:
+            - text: Java, Figma, AWS
+            - generic: ▾
+          - cell "magna sed et accusam et e [...]" [ref=e9687]:
+            - text: magna sed et accusam et e [...]
+            - generic [ref=e9688] [cursor=pointer]: 🖉
+          - cell [ref=e9689]:
+            - checkbox [checked] [ref=e9690]
+          - cell "86,646.00 €" [ref=e9691]
+          - cell "May 21, 2024 2024-05-21 Open date picker" [ref=e9692]:
+            - generic [ref=e9693]:
+              - text: May 21, 2024
+              - textbox: 2024-05-21
+              - button "Open date picker" [ref=e9694] [cursor=pointer]: 📅
+          - cell "Julia Fischer" [ref=e9695]
+          - cell "Remote" [ref=e9696]
+          - cell "+19 509 964293" [ref=e9697]
+          - cell "EMP00184" [ref=e9698]
+          - cell "Probation" [ref=e9699]
+          - cell "Software Engineer" [ref=e9700]
+          - cell "Tools" [ref=e9701]
+          - cell "Feb 3, 2020, 10:34 PM 2020-02-03T22:34 Open date/time picker" [ref=e9702]:
+            - generic [ref=e9703]:
+              - text: Feb 3, 2020, 10:34 PM
+              - textbox: 2020-02-03T22:34
+              - button "Open date/time picker" [ref=e9704] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e9705]
+          - cell "+ 0 €" [ref=e9706]
+          - cell [ref=e9707]
+          - cell [ref=e9708]:
+            - generic: ▾
+          - cell "Cologne" [ref=e9709]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e9710]
+          - cell "160 Example Street" [ref=e9711]
+          - cell "https://www.linkedin.com/in/alicemeyer 🔗" [ref=e9712]:
+            - generic [ref=e9713]:
+              - generic [ref=e9714]: https://www.linkedin.com/in/alicemeyer
+              - button "🔗" [ref=e9715] [cursor=pointer]
+          - cell "https://github.com/alicemeyer 🔗" [ref=e9716]:
+            - generic [ref=e9717]:
+              - generic [ref=e9718]: https://github.com/alicemeyer
+              - button "🔗" [ref=e9719] [cursor=pointer]
+          - cell "April 16, 1997 1997-04-16 Open date picker" [ref=e9720]:
+            - generic [ref=e9721]:
+              - text: April 16, 1997
+              - textbox: 1997-04-16
+              - button "Open date picker" [ref=e9722] [cursor=pointer]: 📅
+          - cell [ref=e9723]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e9724]:
+            - generic [ref=e9725]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e9726] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e9727]:
+            - generic [ref=e9728]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e9729]':
+            - generic [ref=e9730]:
+              - generic [ref=e9732]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 184" [ref=e9733]:
+          - cell "185" [ref=e9734]
+          - cell "dlyK2fimllV" [ref=e9735]
+          - cell "Eva" [ref=e9736]
+          - cell "Wagner" [ref=e9737]
+          - cell "eva.wagner@example.com" [ref=e9738]
+          - cell "Finance" [ref=e9739]:
+            - text: Finance
+            - generic: ▾
+          - cell "Python, TypeScript" [ref=e9740]:
+            - text: Python, TypeScript
+            - generic: ▾
+          - cell [ref=e9741]:
+            - generic [ref=e9742] [cursor=pointer]: 🖉
+          - cell [ref=e9743]:
+            - checkbox [ref=e9744]
+          - cell "0.00 €" [ref=e9745]
+          - cell "Jun 2, 2005 2005-06-02 Open date picker" [ref=e9746]:
+            - generic [ref=e9747]:
+              - text: Jun 2, 2005
+              - textbox: 2005-06-02
+              - button "Open date picker" [ref=e9748] [cursor=pointer]: 📅
+          - cell "Eva Schneider" [ref=e9749]
+          - cell "Remote" [ref=e9750]
+          - cell "+49 626 445539" [ref=e9751]
+          - cell "EMP00185" [ref=e9752]
+          - cell "Active" [ref=e9753]
+          - cell "QA Engineer" [ref=e9754]
+          - cell "Mobile" [ref=e9755]
+          - cell "Jan 6, 2024, 5:47 AM 2024-01-06T05:47 Open date/time picker" [ref=e9756]:
+            - generic [ref=e9757]:
+              - text: Jan 6, 2024, 5:47 AM
+              - textbox: 2024-01-06T05:47
+              - button "Open date/time picker" [ref=e9758] [cursor=pointer]: 📅
+          - cell "0.51" [ref=e9759]
+          - cell "+ 12,191 €" [ref=e9760]
+          - cell "Contractor" [ref=e9761]
+          - cell "Spain" [ref=e9762]:
+            - text: Spain
+            - generic: ▾
+          - cell "Cologne" [ref=e9763]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e9764]
+          - cell "93 Example Street" [ref=e9765]
+          - cell [ref=e9766]
+          - cell [ref=e9768]
+          - cell "October 6, 1975 1975-10-06 Open date picker" [ref=e9770]:
+            - generic [ref=e9771]:
+              - text: October 6, 1975
+              - textbox: 1975-10-06
+              - button "Open date picker" [ref=e9772] [cursor=pointer]: 📅
+          - cell [ref=e9773]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e9774]:
+            - generic [ref=e9775]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e9776] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e9777]:
+            - generic [ref=e9778]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e9779]':
+            - generic [ref=e9780]:
+              - generic [ref=e9782]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 185" [ref=e9783]:
+          - cell "186" [ref=e9784]
+          - cell "wCx06s3Qtv6VRcZXXvX1xf0Qj [...]" [ref=e9785]
+          - cell "Alice" [ref=e9786]
+          - cell "Fischer" [ref=e9787]
+          - cell "alice.fischer@example.com" [ref=e9788]
+          - cell "Finance" [ref=e9789]:
+            - text: Finance
+            - generic: ▾
+          - cell "Python" [ref=e9790]:
+            - text: Python
+            - generic: ▾
+          - cell [ref=e9791]:
+            - generic [ref=e9792] [cursor=pointer]: 🖉
+          - cell [ref=e9793]:
+            - checkbox [checked] [ref=e9794]
+          - cell "65,863.00 €" [ref=e9795]
+          - cell "Sep 24, 2016 2016-09-24 Open date picker" [ref=e9796]:
+            - generic [ref=e9797]:
+              - text: Sep 24, 2016
+              - textbox: 2016-09-24
+              - button "Open date picker" [ref=e9798] [cursor=pointer]: 📅
+          - cell "Alice Schmidt" [ref=e9799]
+          - cell "Remote" [ref=e9800]
+          - cell [ref=e9801]
+          - cell "EMP00186" [ref=e9802]
+          - cell "On Leave" [ref=e9803]
+          - cell "Data Analyst" [ref=e9804]
+          - cell "Mobile" [ref=e9805]
+          - cell "Open date/time picker" [ref=e9806]:
+            - generic [ref=e9807]:
+              - textbox
+              - button "Open date/time picker" [ref=e9809] [cursor=pointer]: 📅
+          - cell "4.03" [ref=e9810]
+          - cell "+ 544 €" [ref=e9811]
+          - cell "Contractor" [ref=e9812]
+          - cell "Spain" [ref=e9813]:
+            - text: Spain
+            - generic: ▾
+          - cell "Stuttgart" [ref=e9814]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e9815]
+          - cell "98 Example Street" [ref=e9816]
+          - cell [ref=e9817]
+          - cell "https://github.com/alicefischer 🔗" [ref=e9819]:
+            - generic [ref=e9820]:
+              - generic [ref=e9821]: https://github.com/alicefischer
+              - button "🔗" [ref=e9822] [cursor=pointer]
+          - cell "Open date picker" [ref=e9823]:
+            - generic [ref=e9824]:
+              - textbox
+              - button "Open date picker" [ref=e9826] [cursor=pointer]: 📅
+          - cell [ref=e9827]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e9828]:
+            - generic [ref=e9829]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e9830] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e9831]:
+            - generic [ref=e9832]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e9833]':
+            - generic [ref=e9834]:
+              - generic [ref=e9836]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 186" [ref=e9837]:
+          - cell "187" [ref=e9838]
+          - cell [ref=e9839]
+          - cell "Bob" [ref=e9840]
+          - cell "Fischer" [ref=e9841]
+          - cell "bob.fischer@example.com" [ref=e9842]
+          - cell "HR" [ref=e9843]:
+            - text: HR
+            - generic: ▾
+          - cell "Python" [ref=e9844]:
+            - text: Python
+            - generic: ▾
+          - cell "erat, nonumy ipsum invidu [...]" [ref=e9845]:
+            - text: erat, nonumy ipsum invidu [...]
+            - generic [ref=e9846] [cursor=pointer]: 🖉
+          - cell [ref=e9847]:
+            - checkbox [checked] [ref=e9848]
+          - cell "45,126.00 €" [ref=e9849]
+          - cell "Aug 21, 2024 2024-08-21 Open date picker" [ref=e9850]:
+            - generic [ref=e9851]:
+              - text: Aug 21, 2024
+              - textbox: 2024-08-21
+              - button "Open date picker" [ref=e9852] [cursor=pointer]: 📅
+          - cell "Bob Schmidt" [ref=e9853]
+          - cell [ref=e9854]
+          - cell [ref=e9855]
+          - cell "EMP00187" [ref=e9856]
+          - cell "Terminated" [ref=e9857]
+          - cell "DevOps Engineer" [ref=e9858]
+          - cell "Growth" [ref=e9859]
+          - cell "Open date/time picker" [ref=e9860]:
+            - generic [ref=e9861]:
+              - textbox
+              - button "Open date/time picker" [ref=e9863] [cursor=pointer]: 📅
+          - cell "3.13" [ref=e9864]
+          - cell "+ 11,266 €" [ref=e9865]
+          - cell "Permanent" [ref=e9866]
+          - cell "USA" [ref=e9867]:
+            - text: USA
+            - generic: ▾
+          - cell "Cologne" [ref=e9868]:
+            - text: Cologne
+            - generic: ▾
+          - cell "39814" [ref=e9869]
+          - cell "171 Example Street" [ref=e9870]
+          - cell [ref=e9871]
+          - cell [ref=e9873]
+          - cell "June 12, 1966 1966-06-12 Open date picker" [ref=e9875]:
+            - generic [ref=e9876]:
+              - text: June 12, 1966
+              - textbox: 1966-06-12
+              - button "Open date picker" [ref=e9877] [cursor=pointer]: 📅
+          - cell [ref=e9878]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e9879]:
+            - generic [ref=e9880]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e9881] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e9882]:
+            - generic [ref=e9883]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e9884]':
+            - generic [ref=e9885]:
+              - generic [ref=e9887]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 187" [ref=e9888]:
+          - cell "188" [ref=e9889]
+          - cell "uQsFF1ybLPvqur" [ref=e9890]
+          - cell "Frank" [ref=e9891]
+          - cell "Müller" [ref=e9892]
+          - cell "frank.müller@example.com" [ref=e9893]
+          - cell "Legal" [ref=e9894]:
+            - text: Legal
+            - generic: ▾
+          - cell "Figma, Java, AWS" [ref=e9895]:
+            - text: Figma, Java, AWS
+            - generic: ▾
+          - cell [ref=e9896]:
+            - generic [ref=e9897] [cursor=pointer]: 🖉
+          - cell [ref=e9898]:
+            - checkbox [ref=e9899]
+          - cell "83,892.00 €" [ref=e9900]
+          - cell "Jul 25, 2008 2008-07-25 Open date picker" [ref=e9901]:
+            - generic [ref=e9902]:
+              - text: Jul 25, 2008
+              - textbox: 2008-07-25
+              - button "Open date picker" [ref=e9903] [cursor=pointer]: 📅
+          - cell "Charlie Weber" [ref=e9904]
+          - cell "Berlin HQ" [ref=e9905]
+          - cell "+49 983 503824" [ref=e9906]
+          - cell "EMP00188" [ref=e9907]
+          - cell "On Leave" [ref=e9908]
+          - cell "DevOps Engineer" [ref=e9909]
+          - cell "Core" [ref=e9910]
+          - cell "Open date/time picker" [ref=e9911]:
+            - generic [ref=e9912]:
+              - textbox
+              - button "Open date/time picker" [ref=e9914] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e9915]
+          - cell "+ 1,193 €" [ref=e9916]
+          - cell [ref=e9917]
+          - cell "France" [ref=e9918]:
+            - text: France
+            - generic: ▾
+          - cell "Hamburg" [ref=e9919]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "18438" [ref=e9920]
+          - cell [ref=e9921]
+          - cell [ref=e9922]
+          - cell "https://github.com/frankmüller 🔗" [ref=e9924]:
+            - generic [ref=e9925]:
+              - generic [ref=e9926]: https://github.com/frankmüller
+              - button "🔗" [ref=e9927] [cursor=pointer]
+          - cell "March 21, 1970 1970-03-21 Open date picker" [ref=e9928]:
+            - generic [ref=e9929]:
+              - text: March 21, 1970
+              - textbox: 1970-03-21
+              - button "Open date picker" [ref=e9930] [cursor=pointer]: 📅
+          - cell [ref=e9931]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e9932]:
+            - generic [ref=e9933]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e9934] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e9935]:
+            - generic [ref=e9936]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e9937]':
+            - generic [ref=e9938]:
+              - generic [ref=e9940]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 188" [ref=e9941]:
+          - cell "189" [ref=e9942]
+          - cell "iamGilA-eZao7l2pzYKTRLNiJ [...]" [ref=e9943]
+          - cell "Bob" [ref=e9944]
+          - cell "Müller" [ref=e9945]
+          - cell "bob.müller@example.com" [ref=e9946]
+          - cell "IT" [ref=e9947]:
+            - text: IT
+            - generic: ▾
+          - cell "React, TypeScript, Figma" [ref=e9948]:
+            - text: React, TypeScript, Figma
+            - generic: ▾
+          - cell "sadipscing sea et et duo [...]" [ref=e9949]:
+            - text: sadipscing sea et et duo [...]
+            - generic [ref=e9950] [cursor=pointer]: 🖉
+          - cell [ref=e9951]:
+            - checkbox [checked] [ref=e9952]
+          - cell "46,484.00 €" [ref=e9953]
+          - cell "May 22, 2017 2017-05-22 Open date picker" [ref=e9954]:
+            - generic [ref=e9955]:
+              - text: May 22, 2017
+              - textbox: 2017-05-22
+              - button "Open date picker" [ref=e9956] [cursor=pointer]: 📅
+          - cell [ref=e9957]
+          - cell "Cologne Office" [ref=e9958]
+          - cell [ref=e9959]
+          - cell "EMP00189" [ref=e9960]
+          - cell "Probation" [ref=e9961]
+          - cell "Designer" [ref=e9962]
+          - cell "Platform" [ref=e9963]
+          - cell "Open date/time picker" [ref=e9964]:
+            - generic [ref=e9965]:
+              - textbox
+              - button "Open date/time picker" [ref=e9967] [cursor=pointer]: 📅
+          - cell "1.48" [ref=e9968]
+          - cell "+ 4,184 €" [ref=e9969]
+          - cell "Intern" [ref=e9970]
+          - cell "Germany" [ref=e9971]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e9972]:
+            - text: Munich
+            - generic: ▾
+          - cell "41369" [ref=e9973]
+          - cell "120 Example Street" [ref=e9974]
+          - cell [ref=e9975]
+          - cell [ref=e9977]
+          - cell "Open date picker" [ref=e9979]:
+            - generic [ref=e9980]:
+              - textbox
+              - button "Open date picker" [ref=e9982] [cursor=pointer]: 📅
+          - cell "Grace Fischer (+498628802 [...]" [ref=e9983]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e9984]:
+            - generic [ref=e9985]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e9986] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e9987]:
+            - generic [ref=e9988]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e9989]':
+            - generic [ref=e9990]:
+              - generic [ref=e9992]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 189" [ref=e9993]:
+          - cell "190" [ref=e9994]
+          - cell "ynvDFL11NfmxDdC_0gopW7qSo [...]" [ref=e9995]
+          - cell "Bob" [ref=e9996]
+          - cell [ref=e9997]
+          - cell "bob.weber@example.com" [ref=e9998]
+          - cell "HR" [ref=e9999]:
+            - text: HR
+            - generic: ▾
+          - cell "Figma, AWS, React" [ref=e10000]:
+            - text: Figma, AWS, React
+            - generic: ▾
+          - cell [ref=e10001]:
+            - generic [ref=e10002] [cursor=pointer]: 🖉
+          - cell [ref=e10003]:
+            - checkbox [checked] [ref=e10004]
+          - cell "71,859.00 €" [ref=e10005]
+          - cell "Apr 18, 2022 2022-04-18 Open date picker" [ref=e10006]:
+            - generic [ref=e10007]:
+              - text: Apr 18, 2022
+              - textbox: 2022-04-18
+              - button "Open date picker" [ref=e10008] [cursor=pointer]: 📅
+          - cell "Diana Schmidt" [ref=e10009]
+          - cell "Remote" [ref=e10010]
+          - cell "+11 559 814680" [ref=e10011]
+          - cell "EMP00190" [ref=e10012]
+          - cell [ref=e10013]
+          - cell [ref=e10014]
+          - cell "Platform" [ref=e10015]
+          - cell "Open date/time picker" [ref=e10016]:
+            - generic [ref=e10017]:
+              - textbox
+              - button "Open date/time picker" [ref=e10019] [cursor=pointer]: 📅
+          - cell "4.84" [ref=e10020]
+          - cell "+ 0 €" [ref=e10021]
+          - cell [ref=e10022]
+          - cell "Germany" [ref=e10023]:
+            - text: Germany
+            - generic: ▾
+          - cell "Hamburg" [ref=e10024]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "83055" [ref=e10025]
+          - cell "68 Example Street" [ref=e10026]
+          - cell [ref=e10027]
+          - cell "https://github.com/bobweber 🔗" [ref=e10029]:
+            - generic [ref=e10030]:
+              - generic [ref=e10031]: https://github.com/bobweber
+              - button "🔗" [ref=e10032] [cursor=pointer]
+          - cell "December 14, 1996 1996-12-14 Open date picker" [ref=e10033]:
+            - generic [ref=e10034]:
+              - text: December 14, 1996
+              - textbox: 1996-12-14
+              - button "Open date picker" [ref=e10035] [cursor=pointer]: 📅
+          - cell "Eva Müller (+16010996570)" [ref=e10036]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e10037]:
+            - generic [ref=e10038]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e10039] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e10040]:
+            - generic [ref=e10041]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e10042]':
+            - generic [ref=e10043]:
+              - generic [ref=e10045]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 190" [ref=e10046]:
+          - cell "191" [ref=e10047]
+          - cell [ref=e10048]
+          - cell "Alice" [ref=e10049]
+          - cell "Schmidt" [ref=e10050]
+          - cell "alice.schmidt@example.com" [ref=e10051]
+          - cell "IT" [ref=e10052]:
+            - text: IT
+            - generic: ▾
+          - cell "React, Docker, TypeScript [...]" [ref=e10053]:
+            - text: React, Docker, TypeScript [...]
+            - generic: ▾
+          - cell "clita sanctus ipsum est. [...]" [ref=e10054]:
+            - text: clita sanctus ipsum est. [...]
+            - generic [ref=e10055] [cursor=pointer]: 🖉
+          - cell [ref=e10056]:
+            - checkbox [checked] [ref=e10057]
+          - cell "56,713.00 €" [ref=e10058]
+          - cell "Dec 27, 2014 2014-12-27 Open date picker" [ref=e10059]:
+            - generic [ref=e10060]:
+              - text: Dec 27, 2014
+              - textbox: 2014-12-27
+              - button "Open date picker" [ref=e10061] [cursor=pointer]: 📅
+          - cell "Hannah Müller" [ref=e10062]
+          - cell "Cologne Office" [ref=e10063]
+          - cell [ref=e10064]
+          - cell "EMP00191" [ref=e10065]
+          - cell "Terminated" [ref=e10066]
+          - cell "Data Analyst" [ref=e10067]
+          - cell [ref=e10068]
+          - cell "Open date/time picker" [ref=e10069]:
+            - generic [ref=e10070]:
+              - textbox
+              - button "Open date/time picker" [ref=e10072] [cursor=pointer]: 📅
+          - cell "3.30" [ref=e10073]
+          - cell "+ 0 €" [ref=e10074]
+          - cell "Intern" [ref=e10075]
+          - cell "Spain" [ref=e10076]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e10077]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "43653" [ref=e10078]
+          - cell "102 Example Street" [ref=e10079]
+          - cell [ref=e10080]
+          - cell [ref=e10082]
+          - cell "September 1, 1987 1987-09-01 Open date picker" [ref=e10084]:
+            - generic [ref=e10085]:
+              - text: September 1, 1987
+              - textbox: 1987-09-01
+              - button "Open date picker" [ref=e10086] [cursor=pointer]: 📅
+          - cell [ref=e10087]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e10088]:
+            - generic [ref=e10089]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e10090] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e10091]:
+            - generic [ref=e10092]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e10093]':
+            - generic [ref=e10094]:
+              - generic [ref=e10096]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 191" [ref=e10097]:
+          - cell "192" [ref=e10098]
+          - cell "l64nNiFnadHtyGYkenodJtE-5 [...]" [ref=e10099]
+          - cell "Julia" [ref=e10100]
+          - cell "Schmidt" [ref=e10101]
+          - cell "julia.schmidt@example.com" [ref=e10102]
+          - cell "HR" [ref=e10103]:
+            - text: HR
+            - generic: ▾
+          - cell "Python, AWS" [ref=e10104]:
+            - text: Python, AWS
+            - generic: ▾
+          - cell "et sed dolor dolores temp [...]" [ref=e10105]:
+            - text: et sed dolor dolores temp [...]
+            - generic [ref=e10106] [cursor=pointer]: 🖉
+          - cell [ref=e10107]:
+            - checkbox [checked] [ref=e10108]
+          - cell "84,097.00 €" [ref=e10109]
+          - cell "Jul 10, 2023 2023-07-10 Open date picker" [ref=e10110]:
+            - generic [ref=e10111]:
+              - text: Jul 10, 2023
+              - textbox: 2023-07-10
+              - button "Open date picker" [ref=e10112] [cursor=pointer]: 📅
+          - cell [ref=e10113]
+          - cell "Cologne Office" [ref=e10114]
+          - cell "+12 087 406549" [ref=e10115]
+          - cell "EMP00192" [ref=e10116]
+          - cell "Probation" [ref=e10117]
+          - cell "DevOps Engineer" [ref=e10118]
+          - cell "Platform" [ref=e10119]
+          - cell "May 17, 2023, 7:47 PM 2023-05-17T19:47 Open date/time picker" [ref=e10120]:
+            - generic [ref=e10121]:
+              - text: May 17, 2023, 7:47 PM
+              - textbox: 2023-05-17T19:47
+              - button "Open date/time picker" [ref=e10122] [cursor=pointer]: 📅
+          - cell "4.00" [ref=e10123]
+          - cell "+ 0 €" [ref=e10124]
+          - cell "Intern" [ref=e10125]
+          - cell "France" [ref=e10126]:
+            - text: France
+            - generic: ▾
+          - cell "Hamburg" [ref=e10127]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "96756" [ref=e10128]
+          - cell "87 Example Street" [ref=e10129]
+          - cell [ref=e10130]
+          - cell [ref=e10132]
+          - cell "June 28, 1995 1995-06-28 Open date picker" [ref=e10134]:
+            - generic [ref=e10135]:
+              - text: June 28, 1995
+              - textbox: 1995-06-28
+              - button "Open date picker" [ref=e10136] [cursor=pointer]: 📅
+          - cell [ref=e10137]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e10138]:
+            - generic [ref=e10139]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e10140] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e10141]:
+            - generic [ref=e10142]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e10143]':
+            - generic [ref=e10144]:
+              - generic [ref=e10146]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 192" [ref=e10147]:
+          - cell "193" [ref=e10148]
+          - cell "3_jx5sTDCYKJ7fDa4s9ZsHU30 [...]" [ref=e10149]
+          - cell "Hannah" [ref=e10150]
+          - cell "Meyer" [ref=e10151]
+          - cell "hannah.meyer@example.com" [ref=e10152]
+          - cell "Sales" [ref=e10153]:
+            - text: Sales
+            - generic: ▾
+          - cell [ref=e10154]:
+            - generic: ▾
+          - cell "et eirmod eos ut takimata [...]" [ref=e10155]:
+            - text: et eirmod eos ut takimata [...]
+            - generic [ref=e10156] [cursor=pointer]: 🖉
+          - cell [ref=e10157]:
+            - checkbox [checked] [ref=e10158]
+          - cell "0.00 €" [ref=e10159]
+          - cell "Dec 29, 2013 2013-12-29 Open date picker" [ref=e10160]:
+            - generic [ref=e10161]:
+              - text: Dec 29, 2013
+              - textbox: 2013-12-29
+              - button "Open date picker" [ref=e10162] [cursor=pointer]: 📅
+          - cell "Eva Schmidt" [ref=e10163]
+          - cell "Berlin HQ" [ref=e10164]
+          - cell "+49 719 556964" [ref=e10165]
+          - cell "EMP00193" [ref=e10166]
+          - cell "Probation" [ref=e10167]
+          - cell "Product Manager" [ref=e10168]
+          - cell "Mobile" [ref=e10169]
+          - cell "Apr 25, 2021, 6:39 AM 2021-04-25T06:39 Open date/time picker" [ref=e10170]:
+            - generic [ref=e10171]:
+              - text: Apr 25, 2021, 6:39 AM
+              - textbox: 2021-04-25T06:39
+              - button "Open date/time picker" [ref=e10172] [cursor=pointer]: 📅
+          - cell "2.93" [ref=e10173]
+          - cell "+ 11,209 €" [ref=e10174]
+          - cell "Contractor" [ref=e10175]
+          - cell "Germany" [ref=e10176]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e10177]:
+            - text: Munich
+            - generic: ▾
+          - cell "55137" [ref=e10178]
+          - cell [ref=e10179]
+          - cell [ref=e10180]
+          - cell [ref=e10182]
+          - cell "Open date picker" [ref=e10184]:
+            - generic [ref=e10185]:
+              - textbox
+              - button "Open date picker" [ref=e10187] [cursor=pointer]: 📅
+          - cell "Julia Weber (+49269651750 [...]" [ref=e10188]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e10189]:
+            - generic [ref=e10190]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e10191] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e10192]:
+            - generic [ref=e10193]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e10194]':
+            - generic [ref=e10195]:
+              - generic [ref=e10197]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 193" [ref=e10198]:
+          - cell "194" [ref=e10199]
+          - cell "Zm6H2aYn17UjoRqxbRDRHUMjM [...]" [ref=e10200]
+          - cell "Eva" [ref=e10201]
+          - cell "Meyer" [ref=e10202]
+          - cell "eva.meyer@example.com" [ref=e10203]
+          - cell "IT" [ref=e10204]:
+            - text: IT
+            - generic: ▾
+          - cell "SQL, Java, AWS" [ref=e10205]:
+            - text: SQL, Java, AWS
+            - generic: ▾
+          - cell [ref=e10206]:
+            - generic [ref=e10207] [cursor=pointer]: 🖉
+          - cell [ref=e10208]:
+            - checkbox [checked] [ref=e10209]
+          - cell "50,852.00 €" [ref=e10210]
+          - cell "Mar 6, 2010 2010-03-06 Open date picker" [ref=e10211]:
+            - generic [ref=e10212]:
+              - text: Mar 6, 2010
+              - textbox: 2010-03-06
+              - button "Open date picker" [ref=e10213] [cursor=pointer]: 📅
+          - cell [ref=e10214]
+          - cell "Remote" [ref=e10215]
+          - cell [ref=e10216]
+          - cell "EMP00194" [ref=e10217]
+          - cell "On Leave" [ref=e10218]
+          - cell "QA Engineer" [ref=e10219]
+          - cell "Growth" [ref=e10220]
+          - cell "Jul 3, 2020, 3:54 PM 2020-07-03T15:54 Open date/time picker" [ref=e10221]:
+            - generic [ref=e10222]:
+              - text: Jul 3, 2020, 3:54 PM
+              - textbox: 2020-07-03T15:54
+              - button "Open date/time picker" [ref=e10223] [cursor=pointer]: 📅
+          - cell "3.54" [ref=e10224]
+          - cell "+ 0 €" [ref=e10225]
+          - cell "Contractor" [ref=e10226]
+          - cell "Netherlands" [ref=e10227]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Frankfurt" [ref=e10228]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell [ref=e10229]
+          - cell "75 Example Street" [ref=e10230]
+          - cell [ref=e10231]
+          - cell [ref=e10233]
+          - cell "Open date picker" [ref=e10235]:
+            - generic [ref=e10236]:
+              - textbox
+              - button "Open date picker" [ref=e10238] [cursor=pointer]: 📅
+          - cell [ref=e10239]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e10240]:
+            - generic [ref=e10241]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e10242] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e10243]:
+            - generic [ref=e10244]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e10245]':
+            - generic [ref=e10246]:
+              - generic [ref=e10248]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 194" [ref=e10249]:
+          - cell "195" [ref=e10250]
+          - cell "9KIVYvoLJT-mQ56clolLxtPbP [...]" [ref=e10251]
+          - cell "Grace" [ref=e10252]
+          - cell "Schneider" [ref=e10253]
+          - cell "grace.schneider@example.c [...]" [ref=e10254]
+          - cell "Legal" [ref=e10255]:
+            - text: Legal
+            - generic: ▾
+          - cell "React, TypeScript" [ref=e10256]:
+            - text: React, TypeScript
+            - generic: ▾
+          - cell [ref=e10257]:
+            - generic [ref=e10258] [cursor=pointer]: 🖉
+          - cell [ref=e10259]:
+            - checkbox [checked] [ref=e10260]
+          - cell "42,043.00 €" [ref=e10261]
+          - cell "Nov 9, 2008 2008-11-09 Open date picker" [ref=e10262]:
+            - generic [ref=e10263]:
+              - text: Nov 9, 2008
+              - textbox: 2008-11-09
+              - button "Open date picker" [ref=e10264] [cursor=pointer]: 📅
+          - cell "Eva Becker" [ref=e10265]
+          - cell "Hamburg Office" [ref=e10266]
+          - cell "+19 176 503118" [ref=e10267]
+          - cell "EMP00195" [ref=e10268]
+          - cell "Active" [ref=e10269]
+          - cell [ref=e10270]
+          - cell "Mobile" [ref=e10271]
+          - cell "Open date/time picker" [ref=e10272]:
+            - generic [ref=e10273]:
+              - textbox
+              - button "Open date/time picker" [ref=e10275] [cursor=pointer]: 📅
+          - cell "0.57" [ref=e10276]
+          - cell "+ 4,435 €" [ref=e10277]
+          - cell "Intern" [ref=e10278]
+          - cell "USA" [ref=e10279]:
+            - text: USA
+            - generic: ▾
+          - cell "Berlin" [ref=e10280]:
+            - text: Berlin
+            - generic: ▾
+          - cell "15496" [ref=e10281]
+          - cell "51 Example Street" [ref=e10282]
+          - cell [ref=e10283]
+          - cell [ref=e10285]
+          - cell "December 21, 1980 1980-12-21 Open date picker" [ref=e10287]:
+            - generic [ref=e10288]:
+              - text: December 21, 1980
+              - textbox: 1980-12-21
+              - button "Open date picker" [ref=e10289] [cursor=pointer]: 📅
+          - cell "Julia Weber (+49491146407 [...]" [ref=e10290]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e10291]:
+            - generic [ref=e10292]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e10293] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e10294]:
+            - generic [ref=e10295]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e10296]':
+            - generic [ref=e10297]:
+              - generic [ref=e10299]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 195" [ref=e10300]:
+          - cell "196" [ref=e10301]
+          - cell "43Sqho_jYtZkIN3-tyER8M7Af [...]" [ref=e10302]
+          - cell "Ian" [ref=e10303]
+          - cell [ref=e10304]
+          - cell "ian.schmidt@example.com" [ref=e10305]
+          - cell "Finance" [ref=e10306]:
+            - text: Finance
+            - generic: ▾
+          - cell "React, TypeScript, Python" [ref=e10307]:
+            - text: React, TypeScript, Python
+            - generic: ▾
+          - cell "sanctus labore sit sed ve [...]" [ref=e10308]:
+            - text: sanctus labore sit sed ve [...]
+            - generic [ref=e10309] [cursor=pointer]: 🖉
+          - cell [ref=e10310]:
+            - checkbox [checked] [ref=e10311]
+          - cell "43,510.00 €" [ref=e10312]
+          - cell "Oct 28, 2006 2006-10-28 Open date picker" [ref=e10313]:
+            - generic [ref=e10314]:
+              - text: Oct 28, 2006
+              - textbox: 2006-10-28
+              - button "Open date picker" [ref=e10315] [cursor=pointer]: 📅
+          - cell "Bob Becker" [ref=e10316]
+          - cell "Remote" [ref=e10317]
+          - cell "+14 128 258185" [ref=e10318]
+          - cell "EMP00196" [ref=e10319]
+          - cell "Probation" [ref=e10320]
+          - cell "QA Engineer" [ref=e10321]
+          - cell "Growth" [ref=e10322]
+          - cell "Open date/time picker" [ref=e10323]:
+            - generic [ref=e10324]:
+              - textbox
+              - button "Open date/time picker" [ref=e10326] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e10327]
+          - cell "+ 7,072 €" [ref=e10328]
+          - cell "Contractor" [ref=e10329]
+          - cell "Netherlands" [ref=e10330]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Cologne" [ref=e10331]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e10332]
+          - cell [ref=e10333]
+          - cell [ref=e10334]
+          - cell "https://github.com/ianschmidt 🔗" [ref=e10336]:
+            - generic [ref=e10337]:
+              - generic [ref=e10338]: https://github.com/ianschmidt
+              - button "🔗" [ref=e10339] [cursor=pointer]
+          - cell "Open date picker" [ref=e10340]:
+            - generic [ref=e10341]:
+              - textbox
+              - button "Open date picker" [ref=e10343] [cursor=pointer]: 📅
+          - cell "Julia Müller (+4918821058 [...]" [ref=e10344]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e10345]:
+            - generic [ref=e10346]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e10347] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e10348]:
+            - generic [ref=e10349]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e10350]':
+            - generic [ref=e10351]:
+              - generic [ref=e10353]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 196" [ref=e10354]:
+          - cell "197" [ref=e10355]
+          - cell "X8QJIAwjcZkBfR6zP2BkomY5- [...]" [ref=e10356]
+          - cell "Diana" [ref=e10357]
+          - cell "Schmidt" [ref=e10358]
+          - cell "diana.schmidt@example.com" [ref=e10359]
+          - cell "Sales" [ref=e10360]:
+            - text: Sales
+            - generic: ▾
+          - cell "Docker, AWS, SQL, Figma" [ref=e10361]:
+            - text: Docker, AWS, SQL, Figma
+            - generic: ▾
+          - cell "et labore est. sanctus ei [...]" [ref=e10362]:
+            - text: et labore est. sanctus ei [...]
+            - generic [ref=e10363] [cursor=pointer]: 🖉
+          - cell [ref=e10364]:
+            - checkbox [ref=e10365]
+          - cell "49,521.00 €" [ref=e10366]
+          - cell "Sep 13, 2022 2022-09-13 Open date picker" [ref=e10367]:
+            - generic [ref=e10368]:
+              - text: Sep 13, 2022
+              - textbox: 2022-09-13
+              - button "Open date picker" [ref=e10369] [cursor=pointer]: 📅
+          - cell "Diana Fischer" [ref=e10370]
+          - cell [ref=e10371]
+          - cell [ref=e10372]
+          - cell "EMP00197" [ref=e10373]
+          - cell "Active" [ref=e10374]
+          - cell "Data Analyst" [ref=e10375]
+          - cell [ref=e10376]
+          - cell "Aug 29, 2022, 9:39 PM 2022-08-29T21:39 Open date/time picker" [ref=e10377]:
+            - generic [ref=e10378]:
+              - text: Aug 29, 2022, 9:39 PM
+              - textbox: 2022-08-29T21:39
+              - button "Open date/time picker" [ref=e10379] [cursor=pointer]: 📅
+          - cell "1.20" [ref=e10380]
+          - cell "+ 5,058 €" [ref=e10381]
+          - cell "Intern" [ref=e10382]
+          - cell "UK" [ref=e10383]:
+            - text: UK
+            - generic: ▾
+          - cell "Frankfurt" [ref=e10384]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "57328" [ref=e10385]
+          - cell "172 Example Street" [ref=e10386]
+          - cell "https://www.linkedin.com/in/dianaschmidt 🔗" [ref=e10387]:
+            - generic [ref=e10388]:
+              - generic [ref=e10389]: https://www.linkedin.com/in/dianaschmidt
+              - button "🔗" [ref=e10390] [cursor=pointer]
+          - cell [ref=e10391]
+          - cell "Open date picker" [ref=e10393]:
+            - generic [ref=e10394]:
+              - textbox
+              - button "Open date picker" [ref=e10396] [cursor=pointer]: 📅
+          - cell "Ian Becker (+49801917189)" [ref=e10397]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e10398]:
+            - generic [ref=e10399]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e10400] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e10401]:
+            - generic [ref=e10402]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e10403]':
+            - generic [ref=e10404]:
+              - generic [ref=e10406]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 197" [ref=e10407]:
+          - cell "198" [ref=e10408]
+          - cell "-LPjQNWrpSFQ6VqMu4ay4AwqQ [...]" [ref=e10409]
+          - cell "Charlie" [ref=e10410]
+          - cell "Schmidt" [ref=e10411]
+          - cell "charlie.schmidt@example.c [...]" [ref=e10412]
+          - cell "Marketing" [ref=e10413]:
+            - text: Marketing
+            - generic: ▾
+          - cell "TypeScript, AWS, Java" [ref=e10414]:
+            - text: TypeScript, AWS, Java
+            - generic: ▾
+          - cell "et eos takimata gubergren [...]" [ref=e10415]:
+            - text: et eos takimata gubergren [...]
+            - generic [ref=e10416] [cursor=pointer]: 🖉
+          - cell [ref=e10417]:
+            - checkbox [checked] [ref=e10418]
+          - cell "58,869.00 €" [ref=e10419]
+          - cell "Apr 4, 2006 2006-04-04 Open date picker" [ref=e10420]:
+            - generic [ref=e10421]:
+              - text: Apr 4, 2006
+              - textbox: 2006-04-04
+              - button "Open date picker" [ref=e10422] [cursor=pointer]: 📅
+          - cell "Diana Becker" [ref=e10423]
+          - cell [ref=e10424]
+          - cell [ref=e10425]
+          - cell "EMP00198" [ref=e10426]
+          - cell "Probation" [ref=e10427]
+          - cell "QA Engineer" [ref=e10428]
+          - cell "Tools" [ref=e10429]
+          - cell "Open date/time picker" [ref=e10430]:
+            - generic [ref=e10431]:
+              - textbox
+              - button "Open date/time picker" [ref=e10433] [cursor=pointer]: 📅
+          - cell "4.04" [ref=e10434]
+          - cell "+ 0 €" [ref=e10435]
+          - cell "Intern" [ref=e10436]
+          - cell "France" [ref=e10437]:
+            - text: France
+            - generic: ▾
+          - cell "Frankfurt" [ref=e10438]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "92297" [ref=e10439]
+          - cell "40 Example Street" [ref=e10440]
+          - cell "https://www.linkedin.com/in/charlieschmidt 🔗" [ref=e10441]:
+            - generic [ref=e10442]:
+              - generic [ref=e10443]: https://www.linkedin.com/in/charlieschmidt
+              - button "🔗" [ref=e10444] [cursor=pointer]
+          - cell [ref=e10445]
+          - cell "September 29, 1997 1997-09-29 Open date picker" [ref=e10447]:
+            - generic [ref=e10448]:
+              - text: September 29, 1997
+              - textbox: 1997-09-29
+              - button "Open date picker" [ref=e10449] [cursor=pointer]: 📅
+          - cell "Eva Müller (+13538416529)" [ref=e10450]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e10451]:
+            - generic [ref=e10452]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e10453] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e10454]:
+            - generic [ref=e10455]: 5h
+          - 'cell "#10b981 #10b981" [ref=e10456]':
+            - generic [ref=e10457]:
+              - generic [ref=e10459]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 198" [ref=e10460]:
+          - cell "199" [ref=e10461]
+          - cell "Wpkgn2gGBrFXDmr3sZZrggc3p [...]" [ref=e10462]
+          - cell "Frank" [ref=e10463]
+          - cell "Fischer" [ref=e10464]
+          - cell "frank.fischer@example.com" [ref=e10465]
+          - cell "Legal" [ref=e10466]:
+            - text: Legal
+            - generic: ▾
+          - cell "Figma, React" [ref=e10467]:
+            - text: Figma, React
+            - generic: ▾
+          - cell "eirmod et dolore amet, am [...]" [ref=e10468]:
+            - text: eirmod et dolore amet, am [...]
+            - generic [ref=e10469] [cursor=pointer]: 🖉
+          - cell [ref=e10470]:
+            - checkbox [checked] [ref=e10471]
+          - cell "0.00 €" [ref=e10472]
+          - cell "Dec 23, 2013 2013-12-23 Open date picker" [ref=e10473]:
+            - generic [ref=e10474]:
+              - text: Dec 23, 2013
+              - textbox: 2013-12-23
+              - button "Open date picker" [ref=e10475] [cursor=pointer]: 📅
+          - cell "Eva Fischer" [ref=e10476]
+          - cell "Munich Office" [ref=e10477]
+          - cell "+19 701 342269" [ref=e10478]
+          - cell "EMP00199" [ref=e10479]
+          - cell "Probation" [ref=e10480]
+          - cell "DevOps Engineer" [ref=e10481]
+          - cell [ref=e10482]
+          - cell "Open date/time picker" [ref=e10483]:
+            - generic [ref=e10484]:
+              - textbox
+              - button "Open date/time picker" [ref=e10486] [cursor=pointer]: 📅
+          - cell "1.13" [ref=e10487]
+          - cell "+ 60 €" [ref=e10488]
+          - cell [ref=e10489]
+          - cell "Netherlands" [ref=e10490]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Berlin" [ref=e10491]:
+            - text: Berlin
+            - generic: ▾
+          - cell "73029" [ref=e10492]
+          - cell "123 Example Street" [ref=e10493]
+          - cell [ref=e10494]
+          - cell [ref=e10496]
+          - cell "October 19, 1970 1970-10-19 Open date picker" [ref=e10498]:
+            - generic [ref=e10499]:
+              - text: October 19, 1970
+              - textbox: 1970-10-19
+              - button "Open date picker" [ref=e10500] [cursor=pointer]: 📅
+          - cell "Alice Fischer (+492505756 [...]" [ref=e10501]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e10502]:
+            - generic [ref=e10503]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e10504] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e10505]:
+            - generic [ref=e10506]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e10507]':
+            - generic [ref=e10508]:
+              - generic [ref=e10510]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 199" [ref=e10511]:
+          - cell "200" [ref=e10512]
+          - cell "2qcxhejbgRy" [ref=e10513]
+          - cell "Ian" [ref=e10514]
+          - cell "Müller" [ref=e10515]
+          - cell "ian.müller@example.com" [ref=e10516]
+          - cell "Marketing" [ref=e10517]:
+            - text: Marketing
+            - generic: ▾
+          - cell "TypeScript, React, AWS" [ref=e10518]:
+            - text: TypeScript, React, AWS
+            - generic: ▾
+          - cell [ref=e10519]:
+            - generic [ref=e10520] [cursor=pointer]: 🖉
+          - cell [ref=e10521]:
+            - checkbox [checked] [ref=e10522]
+          - cell "70,063.00 €" [ref=e10523]
+          - cell "Jun 24, 2013 2013-06-24 Open date picker" [ref=e10524]:
+            - generic [ref=e10525]:
+              - text: Jun 24, 2013
+              - textbox: 2013-06-24
+              - button "Open date picker" [ref=e10526] [cursor=pointer]: 📅
+          - cell "Diana Wagner" [ref=e10527]
+          - cell "Cologne Office" [ref=e10528]
+          - cell "+16 295 215113" [ref=e10529]
+          - cell "EMP00200" [ref=e10530]
+          - cell "Probation" [ref=e10531]
+          - cell "Product Manager" [ref=e10532]
+          - cell "Core" [ref=e10533]
+          - cell "Aug 28, 2021, 12:44 PM 2021-08-28T12:44 Open date/time picker" [ref=e10534]:
+            - generic [ref=e10535]:
+              - text: Aug 28, 2021, 12:44 PM
+              - textbox: 2021-08-28T12:44
+              - button "Open date/time picker" [ref=e10536] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e10537]
+          - cell "+ 0 €" [ref=e10538]
+          - cell "Permanent" [ref=e10539]
+          - cell "France" [ref=e10540]:
+            - text: France
+            - generic: ▾
+          - cell "Munich" [ref=e10541]:
+            - text: Munich
+            - generic: ▾
+          - cell [ref=e10542]
+          - cell "110 Example Street" [ref=e10543]
+          - cell [ref=e10544]
+          - cell [ref=e10546]
+          - cell "Open date picker" [ref=e10548]:
+            - generic [ref=e10549]:
+              - textbox
+              - button "Open date picker" [ref=e10551] [cursor=pointer]: 📅
+          - cell "Charlie Becker (+49297232 [...]" [ref=e10552]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e10553]:
+            - generic [ref=e10554]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e10555] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e10556]:
+            - generic [ref=e10557]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e10558]':
+            - generic [ref=e10559]:
+              - generic [ref=e10561]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 200" [ref=e10562]:
+          - cell "201" [ref=e10563]
+          - cell "JV_D0ngyBJp_B7JzjBtGH" [ref=e10564]
+          - cell "Diana" [ref=e10565]
+          - cell "Becker" [ref=e10566]
+          - cell "diana.becker@example.com" [ref=e10567]
+          - cell "Sales" [ref=e10568]:
+            - text: Sales
+            - generic: ▾
+          - cell [ref=e10569]:
+            - generic: ▾
+          - cell "ea gubergren, labore nonu [...]" [ref=e10570]:
+            - text: ea gubergren, labore nonu [...]
+            - generic [ref=e10571] [cursor=pointer]: 🖉
+          - cell [ref=e10572]:
+            - checkbox [checked] [ref=e10573]
+          - cell "68,262.00 €" [ref=e10574]
+          - cell "Jan 21, 2011 2011-01-21 Open date picker" [ref=e10575]:
+            - generic [ref=e10576]:
+              - text: Jan 21, 2011
+              - textbox: 2011-01-21
+              - button "Open date picker" [ref=e10577] [cursor=pointer]: 📅
+          - cell "Grace Schneider" [ref=e10578]
+          - cell "Remote" [ref=e10579]
+          - cell "+49 969 852954" [ref=e10580]
+          - cell "EMP00201" [ref=e10581]
+          - cell "On Leave" [ref=e10582]
+          - cell "Software Engineer" [ref=e10583]
+          - cell "Web" [ref=e10584]
+          - cell "Oct 1, 2024, 1:20 PM 2024-10-01T13:20 Open date/time picker" [ref=e10585]:
+            - generic [ref=e10586]:
+              - text: Oct 1, 2024, 1:20 PM
+              - textbox: 2024-10-01T13:20
+              - button "Open date/time picker" [ref=e10587] [cursor=pointer]: 📅
+          - cell "3.15" [ref=e10588]
+          - cell "+ 0 €" [ref=e10589]
+          - cell [ref=e10590]
+          - cell "Germany" [ref=e10591]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e10592]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "44943" [ref=e10593]
+          - cell "112 Example Street" [ref=e10594]
+          - cell "https://www.linkedin.com/in/dianabecker 🔗" [ref=e10595]:
+            - generic [ref=e10596]:
+              - generic [ref=e10597]: https://www.linkedin.com/in/dianabecker
+              - button "🔗" [ref=e10598] [cursor=pointer]
+          - cell [ref=e10599]
+          - cell "Open date picker" [ref=e10601]:
+            - generic [ref=e10602]:
+              - textbox
+              - button "Open date picker" [ref=e10604] [cursor=pointer]: 📅
+          - cell [ref=e10605]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e10606]:
+            - generic [ref=e10607]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e10608] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e10609]:
+            - generic [ref=e10610]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e10611]':
+            - generic [ref=e10612]:
+              - generic [ref=e10614]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 201" [ref=e10615]:
+          - cell "202" [ref=e10616]
+          - cell "AWAz7hAKffXTXI0jmItUE" [ref=e10617]
+          - cell "Alice" [ref=e10618]
+          - cell "Wagner" [ref=e10619]
+          - cell "alice.wagner@example.com" [ref=e10620]
+          - cell "Sales" [ref=e10621]:
+            - text: Sales
+            - generic: ▾
+          - cell "SQL, Figma, Java, AWS" [ref=e10622]:
+            - text: SQL, Figma, Java, AWS
+            - generic: ▾
+          - cell [ref=e10623]:
+            - generic [ref=e10624] [cursor=pointer]: 🖉
+          - cell [ref=e10625]:
+            - checkbox [checked] [ref=e10626]
+          - cell "60,911.00 €" [ref=e10627]
+          - cell "Dec 11, 2019 2019-12-11 Open date picker" [ref=e10628]:
+            - generic [ref=e10629]:
+              - text: Dec 11, 2019
+              - textbox: 2019-12-11
+              - button "Open date picker" [ref=e10630] [cursor=pointer]: 📅
+          - cell "Frank Schmidt" [ref=e10631]
+          - cell "Munich Office" [ref=e10632]
+          - cell "+49 262 135778" [ref=e10633]
+          - cell "EMP00202" [ref=e10634]
+          - cell "Probation" [ref=e10635]
+          - cell "Product Manager" [ref=e10636]
+          - cell "Mobile" [ref=e10637]
+          - cell "Jun 17, 2020, 1:39 AM 2020-06-17T01:39 Open date/time picker" [ref=e10638]:
+            - generic [ref=e10639]:
+              - text: Jun 17, 2020, 1:39 AM
+              - textbox: 2020-06-17T01:39
+              - button "Open date/time picker" [ref=e10640] [cursor=pointer]: 📅
+          - cell "0.05" [ref=e10641]
+          - cell "+ 4,398 €" [ref=e10642]
+          - cell "Permanent" [ref=e10643]
+          - cell "Spain" [ref=e10644]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e10645]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "12340" [ref=e10646]
+          - cell "44 Example Street" [ref=e10647]
+          - cell [ref=e10648]
+          - cell [ref=e10650]
+          - cell "December 26, 1966 1966-12-26 Open date picker" [ref=e10652]:
+            - generic [ref=e10653]:
+              - text: December 26, 1966
+              - textbox: 1966-12-26
+              - button "Open date picker" [ref=e10654] [cursor=pointer]: 📅
+          - cell [ref=e10655]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e10656]:
+            - generic [ref=e10657]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e10658] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e10659]:
+            - generic [ref=e10660]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e10661]':
+            - generic [ref=e10662]:
+              - generic [ref=e10664]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 202" [ref=e10665]:
+          - cell "203" [ref=e10666]
+          - cell "2othx-VvvKd" [ref=e10667]
+          - cell "Bob" [ref=e10668]
+          - cell "Schneider" [ref=e10669]
+          - cell "bob.schneider@example.com" [ref=e10670]
+          - cell "HR" [ref=e10671]:
+            - text: HR
+            - generic: ▾
+          - cell [ref=e10672]:
+            - generic: ▾
+          - cell "aliquyam magna et gubergr [...]" [ref=e10673]:
+            - text: aliquyam magna et gubergr [...]
+            - generic [ref=e10674] [cursor=pointer]: 🖉
+          - cell [ref=e10675]:
+            - checkbox [checked] [ref=e10676]
+          - cell "81,289.00 €" [ref=e10677]
+          - cell "Apr 14, 2022 2022-04-14 Open date picker" [ref=e10678]:
+            - generic [ref=e10679]:
+              - text: Apr 14, 2022
+              - textbox: 2022-04-14
+              - button "Open date picker" [ref=e10680] [cursor=pointer]: 📅
+          - cell [ref=e10681]
+          - cell "Cologne Office" [ref=e10682]
+          - cell "+19 915 521813" [ref=e10683]
+          - cell "EMP00203" [ref=e10684]
+          - cell "Active" [ref=e10685]
+          - cell "Designer" [ref=e10686]
+          - cell "Growth" [ref=e10687]
+          - cell "Feb 9, 2023, 4:49 PM 2023-02-09T16:49 Open date/time picker" [ref=e10688]:
+            - generic [ref=e10689]:
+              - text: Feb 9, 2023, 4:49 PM
+              - textbox: 2023-02-09T16:49
+              - button "Open date/time picker" [ref=e10690] [cursor=pointer]: 📅
+          - cell "4.56" [ref=e10691]
+          - cell "+ 1,967 €" [ref=e10692]
+          - cell "Permanent" [ref=e10693]
+          - cell "UK" [ref=e10694]:
+            - text: UK
+            - generic: ▾
+          - cell "Frankfurt" [ref=e10695]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "62752" [ref=e10696]
+          - cell [ref=e10697]
+          - cell [ref=e10698]
+          - cell "https://github.com/bobschneider 🔗" [ref=e10700]:
+            - generic [ref=e10701]:
+              - generic [ref=e10702]: https://github.com/bobschneider
+              - button "🔗" [ref=e10703] [cursor=pointer]
+          - cell "June 28, 1970 1970-06-28 Open date picker" [ref=e10704]:
+            - generic [ref=e10705]:
+              - text: June 28, 1970
+              - textbox: 1970-06-28
+              - button "Open date picker" [ref=e10706] [cursor=pointer]: 📅
+          - cell [ref=e10707]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e10708]:
+            - generic [ref=e10709]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e10710] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e10711]:
+            - generic [ref=e10712]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e10713]':
+            - generic [ref=e10714]:
+              - generic [ref=e10716]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 203" [ref=e10717]:
+          - cell "204" [ref=e10718]
+          - cell "K6x6ggBkHEYvg0AOtkGB3kDr" [ref=e10719]
+          - cell "Eva" [ref=e10720]
+          - cell "Schmidt" [ref=e10721]
+          - cell "eva.schmidt@example.com" [ref=e10722]
+          - cell "Finance" [ref=e10723]:
+            - text: Finance
+            - generic: ▾
+          - cell "React, Figma, Java, Docke [...]" [ref=e10724]:
+            - text: React, Figma, Java, Docke [...]
+            - generic: ▾
+          - cell [ref=e10725]:
+            - generic [ref=e10726] [cursor=pointer]: 🖉
+          - cell [ref=e10727]:
+            - checkbox [checked] [ref=e10728]
+          - cell "81,467.00 €" [ref=e10729]
+          - cell "Jul 23, 2011 2011-07-23 Open date picker" [ref=e10730]:
+            - generic [ref=e10731]:
+              - text: Jul 23, 2011
+              - textbox: 2011-07-23
+              - button "Open date picker" [ref=e10732] [cursor=pointer]: 📅
+          - cell "Charlie Müller" [ref=e10733]
+          - cell "Cologne Office" [ref=e10734]
+          - cell [ref=e10735]
+          - cell "EMP00204" [ref=e10736]
+          - cell "On Leave" [ref=e10737]
+          - cell "DevOps Engineer" [ref=e10738]
+          - cell "Web" [ref=e10739]
+          - cell "Open date/time picker" [ref=e10740]:
+            - generic [ref=e10741]:
+              - textbox
+              - button "Open date/time picker" [ref=e10743] [cursor=pointer]: 📅
+          - cell "3.48" [ref=e10744]
+          - cell "+ 2,328 €" [ref=e10745]
+          - cell [ref=e10746]
+          - cell "Netherlands" [ref=e10747]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Cologne" [ref=e10748]:
+            - text: Cologne
+            - generic: ▾
+          - cell "23778" [ref=e10749]
+          - cell "91 Example Street" [ref=e10750]
+          - cell [ref=e10751]
+          - cell [ref=e10753]
+          - cell "June 3, 1991 1991-06-03 Open date picker" [ref=e10755]:
+            - generic [ref=e10756]:
+              - text: June 3, 1991
+              - textbox: 1991-06-03
+              - button "Open date picker" [ref=e10757] [cursor=pointer]: 📅
+          - cell "Ian Fischer (+49770323266 [...]" [ref=e10758]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e10759]:
+            - generic [ref=e10760]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e10761] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e10762]:
+            - generic [ref=e10763]: 4h
+          - 'cell "#f97316 #f97316" [ref=e10764]':
+            - generic [ref=e10765]:
+              - generic [ref=e10767]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 204" [ref=e10768]:
+          - cell "205" [ref=e10769]
+          - cell "_Kmn24zmvEJSOhEdJMsETRB3X [...]" [ref=e10770]
+          - cell "Diana" [ref=e10771]
+          - cell "Meyer" [ref=e10772]
+          - cell "diana.meyer@example.com" [ref=e10773]
+          - cell "IT" [ref=e10774]:
+            - text: IT
+            - generic: ▾
+          - cell "React, TypeScript, Java, [...]" [ref=e10775]:
+            - text: React, TypeScript, Java, [...]
+            - generic: ▾
+          - cell "amet, accusam eos Stet se [...]" [ref=e10776]:
+            - text: amet, accusam eos Stet se [...]
+            - generic [ref=e10777] [cursor=pointer]: 🖉
+          - cell [ref=e10778]:
+            - checkbox [checked] [ref=e10779]
+          - cell "56,536.00 €" [ref=e10780]
+          - cell "Jun 16, 2018 2018-06-16 Open date picker" [ref=e10781]:
+            - generic [ref=e10782]:
+              - text: Jun 16, 2018
+              - textbox: 2018-06-16
+              - button "Open date picker" [ref=e10783] [cursor=pointer]: 📅
+          - cell "Frank Müller" [ref=e10784]
+          - cell "Hamburg Office" [ref=e10785]
+          - cell [ref=e10786]
+          - cell "EMP00205" [ref=e10787]
+          - cell "Probation" [ref=e10788]
+          - cell "Software Engineer" [ref=e10789]
+          - cell "Core" [ref=e10790]
+          - cell "May 30, 2022, 6:48 PM 2022-05-30T18:48 Open date/time picker" [ref=e10791]:
+            - generic [ref=e10792]:
+              - text: May 30, 2022, 6:48 PM
+              - textbox: 2022-05-30T18:48
+              - button "Open date/time picker" [ref=e10793] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e10794]
+          - cell "+ 12,121 €" [ref=e10795]
+          - cell "Temporary" [ref=e10796]
+          - cell "Netherlands" [ref=e10797]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e10798]:
+            - generic: ▾
+          - cell "79899" [ref=e10799]
+          - cell "86 Example Street" [ref=e10800]
+          - cell [ref=e10801]
+          - cell [ref=e10803]
+          - cell "April 26, 1985 1985-04-26 Open date picker" [ref=e10805]:
+            - generic [ref=e10806]:
+              - text: April 26, 1985
+              - textbox: 1985-04-26
+              - button "Open date picker" [ref=e10807] [cursor=pointer]: 📅
+          - cell "Ian Weber (+16546808804)" [ref=e10808]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e10809]:
+            - generic [ref=e10810]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e10811] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e10812]:
+            - generic [ref=e10813]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e10814]':
+            - generic [ref=e10815]:
+              - generic [ref=e10817]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 205" [ref=e10818]:
+          - cell "206" [ref=e10819]
+          - cell "jRpmE-xy-H73h6_Eu4xkJiYjf [...]" [ref=e10820]
+          - cell "Eva" [ref=e10821]
+          - cell "Weber" [ref=e10822]
+          - cell "eva.weber@example.com" [ref=e10823]
+          - cell "Marketing" [ref=e10824]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Java, Figma, TypeScript, [...]" [ref=e10825]:
+            - text: Java, Figma, TypeScript, [...]
+            - generic: ▾
+          - cell [ref=e10826]:
+            - generic [ref=e10827] [cursor=pointer]: 🖉
+          - cell [ref=e10828]:
+            - checkbox [checked] [ref=e10829]
+          - cell "62,829.00 €" [ref=e10830]
+          - cell "Sep 4, 2005 2005-09-04 Open date picker" [ref=e10831]:
+            - generic [ref=e10832]:
+              - text: Sep 4, 2005
+              - textbox: 2005-09-04
+              - button "Open date picker" [ref=e10833] [cursor=pointer]: 📅
+          - cell [ref=e10834]
+          - cell [ref=e10835]
+          - cell "+11 817 492815" [ref=e10836]
+          - cell "EMP00206" [ref=e10837]
+          - cell "On Leave" [ref=e10838]
+          - cell "QA Engineer" [ref=e10839]
+          - cell [ref=e10840]
+          - cell "Jan 9, 2020, 9:52 AM 2020-01-09T09:52 Open date/time picker" [ref=e10841]:
+            - generic [ref=e10842]:
+              - text: Jan 9, 2020, 9:52 AM
+              - textbox: 2020-01-09T09:52
+              - button "Open date/time picker" [ref=e10843] [cursor=pointer]: 📅
+          - cell "4.96" [ref=e10844]
+          - cell "+ 13,387 €" [ref=e10845]
+          - cell "Temporary" [ref=e10846]
+          - cell "Netherlands" [ref=e10847]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e10848]:
+            - generic: ▾
+          - cell "36863" [ref=e10849]
+          - cell [ref=e10850]
+          - cell [ref=e10851]
+          - cell [ref=e10853]
+          - cell "February 18, 1977 1977-02-18 Open date picker" [ref=e10855]:
+            - generic [ref=e10856]:
+              - text: February 18, 1977
+              - textbox: 1977-02-18
+              - button "Open date picker" [ref=e10857] [cursor=pointer]: 📅
+          - cell "Charlie Meyer (+136215750 [...]" [ref=e10858]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e10859]:
+            - generic [ref=e10860]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e10861] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e10862]:
+            - generic [ref=e10863]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e10864]':
+            - generic [ref=e10865]:
+              - generic [ref=e10867]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 206" [ref=e10868]:
+          - cell "207" [ref=e10869]
+          - cell "dm6QQairC7OIBZUGvfJr4gIQA [...]" [ref=e10870]
+          - cell "Diana" [ref=e10871]
+          - cell "Wagner" [ref=e10872]
+          - cell "diana.wagner@example.com" [ref=e10873]
+          - cell "IT" [ref=e10874]:
+            - text: IT
+            - generic: ▾
+          - cell "AWS, Python, Java" [ref=e10875]:
+            - text: AWS, Python, Java
+            - generic: ▾
+          - cell "amet, labore dolore justo [...]" [ref=e10876]:
+            - text: amet, labore dolore justo [...]
+            - generic [ref=e10877] [cursor=pointer]: 🖉
+          - cell [ref=e10878]:
+            - checkbox [ref=e10879]
+          - cell "66,009.00 €" [ref=e10880]
+          - cell "Oct 3, 2019 2019-10-03 Open date picker" [ref=e10881]:
+            - generic [ref=e10882]:
+              - text: Oct 3, 2019
+              - textbox: 2019-10-03
+              - button "Open date picker" [ref=e10883] [cursor=pointer]: 📅
+          - cell "Eva Müller" [ref=e10884]
+          - cell [ref=e10885]
+          - cell "+49 104 170881" [ref=e10886]
+          - cell "EMP00207" [ref=e10887]
+          - cell "Probation" [ref=e10888]
+          - cell "Product Manager" [ref=e10889]
+          - cell [ref=e10890]
+          - cell "May 4, 2020, 10:48 PM 2020-05-04T22:48 Open date/time picker" [ref=e10891]:
+            - generic [ref=e10892]:
+              - text: May 4, 2020, 10:48 PM
+              - textbox: 2020-05-04T22:48
+              - button "Open date/time picker" [ref=e10893] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e10894]
+          - cell "+ 1,403 €" [ref=e10895]
+          - cell [ref=e10896]
+          - cell "UK" [ref=e10897]:
+            - text: UK
+            - generic: ▾
+          - cell "Stuttgart" [ref=e10898]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "97543" [ref=e10899]
+          - cell [ref=e10900]
+          - cell [ref=e10901]
+          - cell [ref=e10903]
+          - cell "Open date picker" [ref=e10905]:
+            - generic [ref=e10906]:
+              - textbox
+              - button "Open date picker" [ref=e10908] [cursor=pointer]: 📅
+          - cell [ref=e10909]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e10910]:
+            - generic [ref=e10911]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e10912] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e10913]:
+            - generic [ref=e10914]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e10915]':
+            - generic [ref=e10916]:
+              - generic [ref=e10918]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 207" [ref=e10919]:
+          - cell "208" [ref=e10920]
+          - cell "CrimMiUOMmUo4jnzYiQGlVxtM [...]" [ref=e10921]
+          - cell "Charlie" [ref=e10922]
+          - cell "Müller" [ref=e10923]
+          - cell "charlie.müller@example.co [...]" [ref=e10924]
+          - cell [ref=e10925]:
+            - generic: ▾
+          - cell "Python" [ref=e10926]:
+            - text: Python
+            - generic: ▾
+          - cell [ref=e10927]:
+            - generic [ref=e10928] [cursor=pointer]: 🖉
+          - cell [ref=e10929]:
+            - checkbox [checked] [ref=e10930]
+          - cell "57,537.00 €" [ref=e10931]
+          - cell "Jul 2, 2005 2005-07-02 Open date picker" [ref=e10932]:
+            - generic [ref=e10933]:
+              - text: Jul 2, 2005
+              - textbox: 2005-07-02
+              - button "Open date picker" [ref=e10934] [cursor=pointer]: 📅
+          - cell "Diana Meyer" [ref=e10935]
+          - cell "Remote" [ref=e10936]
+          - cell "+49 414 014958" [ref=e10937]
+          - cell "EMP00208" [ref=e10938]
+          - cell "Active" [ref=e10939]
+          - cell "DevOps Engineer" [ref=e10940]
+          - cell "Core" [ref=e10941]
+          - cell "Open date/time picker" [ref=e10942]:
+            - generic [ref=e10943]:
+              - textbox
+              - button "Open date/time picker" [ref=e10945] [cursor=pointer]: 📅
+          - cell "3.21" [ref=e10946]
+          - cell "+ 6,469 €" [ref=e10947]
+          - cell "Intern" [ref=e10948]
+          - cell "Netherlands" [ref=e10949]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Cologne" [ref=e10950]:
+            - text: Cologne
+            - generic: ▾
+          - cell "33519" [ref=e10951]
+          - cell [ref=e10952]
+          - cell [ref=e10953]
+          - cell [ref=e10955]
+          - cell "June 22, 1967 1967-06-22 Open date picker" [ref=e10957]:
+            - generic [ref=e10958]:
+              - text: June 22, 1967
+              - textbox: 1967-06-22
+              - button "Open date picker" [ref=e10959] [cursor=pointer]: 📅
+          - cell [ref=e10960]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e10961]:
+            - generic [ref=e10962]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e10963] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e10964]:
+            - generic [ref=e10965]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e10966]':
+            - generic [ref=e10967]:
+              - generic [ref=e10969]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 208" [ref=e10970]:
+          - cell "209" [ref=e10971]
+          - cell [ref=e10972]
+          - cell "Julia" [ref=e10973]
+          - cell "Schneider" [ref=e10974]
+          - cell "julia.schneider@example.c [...]" [ref=e10975]
+          - cell [ref=e10976]:
+            - generic: ▾
+          - cell "React" [ref=e10977]:
+            - text: React
+            - generic: ▾
+          - cell "eirmod dolor rebum. sit a [...]" [ref=e10978]:
+            - text: eirmod dolor rebum. sit a [...]
+            - generic [ref=e10979] [cursor=pointer]: 🖉
+          - cell [ref=e10980]:
+            - checkbox [checked] [ref=e10981]
+          - cell "61,257.00 €" [ref=e10982]
+          - cell "Mar 6, 2024 2024-03-06 Open date picker" [ref=e10983]:
+            - generic [ref=e10984]:
+              - text: Mar 6, 2024
+              - textbox: 2024-03-06
+              - button "Open date picker" [ref=e10985] [cursor=pointer]: 📅
+          - cell "Alice Schmidt" [ref=e10986]
+          - cell "Remote" [ref=e10987]
+          - cell [ref=e10988]
+          - cell "EMP00209" [ref=e10989]
+          - cell "Active" [ref=e10990]
+          - cell "Data Analyst" [ref=e10991]
+          - cell "Tools" [ref=e10992]
+          - cell "Sep 2, 2024, 8:04 PM 2024-09-02T20:04 Open date/time picker" [ref=e10993]:
+            - generic [ref=e10994]:
+              - text: Sep 2, 2024, 8:04 PM
+              - textbox: 2024-09-02T20:04
+              - button "Open date/time picker" [ref=e10995] [cursor=pointer]: 📅
+          - cell "3.17" [ref=e10996]
+          - cell "+ 0 €" [ref=e10997]
+          - cell "Permanent" [ref=e10998]
+          - cell "Netherlands" [ref=e10999]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e11000]:
+            - generic: ▾
+          - cell "94286" [ref=e11001]
+          - cell "166 Example Street" [ref=e11002]
+          - cell [ref=e11003]
+          - cell [ref=e11005]
+          - cell "Open date picker" [ref=e11007]:
+            - generic [ref=e11008]:
+              - textbox
+              - button "Open date picker" [ref=e11010] [cursor=pointer]: 📅
+          - cell "Ian Wagner (+11884023228)" [ref=e11011]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e11012]:
+            - generic [ref=e11013]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e11014] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e11015]:
+            - generic [ref=e11016]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e11017]':
+            - generic [ref=e11018]:
+              - generic [ref=e11020]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 209" [ref=e11021]:
+          - cell "210" [ref=e11022]
+          - cell "7mD2nOevYyutw8_OZKd-_0_vO [...]" [ref=e11023]
+          - cell "Charlie" [ref=e11024]
+          - cell "Becker" [ref=e11025]
+          - cell "charlie.becker@example.co [...]" [ref=e11026]
+          - cell "IT" [ref=e11027]:
+            - text: IT
+            - generic: ▾
+          - cell "Java, React" [ref=e11028]:
+            - text: Java, React
+            - generic: ▾
+          - cell "labore sed ea labore accu [...]" [ref=e11029]:
+            - text: labore sed ea labore accu [...]
+            - generic [ref=e11030] [cursor=pointer]: 🖉
+          - cell [ref=e11031]:
+            - checkbox [checked] [ref=e11032]
+          - cell "50,759.00 €" [ref=e11033]
+          - cell "Sep 6, 2021 2021-09-06 Open date picker" [ref=e11034]:
+            - generic [ref=e11035]:
+              - text: Sep 6, 2021
+              - textbox: 2021-09-06
+              - button "Open date picker" [ref=e11036] [cursor=pointer]: 📅
+          - cell "Frank Schneider" [ref=e11037]
+          - cell "Munich Office" [ref=e11038]
+          - cell [ref=e11039]
+          - cell "EMP00210" [ref=e11040]
+          - cell "On Leave" [ref=e11041]
+          - cell [ref=e11042]
+          - cell "Platform" [ref=e11043]
+          - cell "Dec 23, 2021, 1:46 AM 2021-12-23T01:46 Open date/time picker" [ref=e11044]:
+            - generic [ref=e11045]:
+              - text: Dec 23, 2021, 1:46 AM
+              - textbox: 2021-12-23T01:46
+              - button "Open date/time picker" [ref=e11046] [cursor=pointer]: 📅
+          - cell "3.46" [ref=e11047]
+          - cell "+ 5,397 €" [ref=e11048]
+          - cell "Temporary" [ref=e11049]
+          - cell "Netherlands" [ref=e11050]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Hamburg" [ref=e11051]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e11052]
+          - cell "111 Example Street" [ref=e11053]
+          - cell [ref=e11054]
+          - cell [ref=e11056]
+          - cell "September 6, 1990 1990-09-06 Open date picker" [ref=e11058]:
+            - generic [ref=e11059]:
+              - text: September 6, 1990
+              - textbox: 1990-09-06
+              - button "Open date picker" [ref=e11060] [cursor=pointer]: 📅
+          - cell [ref=e11061]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e11062]:
+            - generic [ref=e11063]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e11064] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e11065]:
+            - generic [ref=e11066]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e11067]':
+            - generic [ref=e11068]:
+              - generic [ref=e11070]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 210" [ref=e11071]:
+          - cell "211" [ref=e11072]
+          - cell "5MS_gU2ITF6KaDg9dxoi05K98 [...]" [ref=e11073]
+          - cell "Ian" [ref=e11074]
+          - cell "Weber" [ref=e11075]
+          - cell "ian.weber@example.com" [ref=e11076]
+          - cell [ref=e11077]:
+            - generic: ▾
+          - cell [ref=e11078]:
+            - generic: ▾
+          - cell "consetetur vero ut ipsum [...]" [ref=e11079]:
+            - text: consetetur vero ut ipsum [...]
+            - generic [ref=e11080] [cursor=pointer]: 🖉
+          - cell [ref=e11081]:
+            - checkbox [checked] [ref=e11082]
+          - cell "52,584.00 €" [ref=e11083]
+          - cell "Sep 14, 2011 2011-09-14 Open date picker" [ref=e11084]:
+            - generic [ref=e11085]:
+              - text: Sep 14, 2011
+              - textbox: 2011-09-14
+              - button "Open date picker" [ref=e11086] [cursor=pointer]: 📅
+          - cell "Grace Wagner" [ref=e11087]
+          - cell "Remote" [ref=e11088]
+          - cell "+16 013 618650" [ref=e11089]
+          - cell "EMP00211" [ref=e11090]
+          - cell "On Leave" [ref=e11091]
+          - cell "Data Analyst" [ref=e11092]
+          - cell "Core" [ref=e11093]
+          - cell "Dec 8, 2024, 11:27 AM 2024-12-08T11:27 Open date/time picker" [ref=e11094]:
+            - generic [ref=e11095]:
+              - text: Dec 8, 2024, 11:27 AM
+              - textbox: 2024-12-08T11:27
+              - button "Open date/time picker" [ref=e11096] [cursor=pointer]: 📅
+          - cell "0.23" [ref=e11097]
+          - cell "+ 11,208 €" [ref=e11098]
+          - cell "Temporary" [ref=e11099]
+          - cell "UK" [ref=e11100]:
+            - text: UK
+            - generic: ▾
+          - cell "Stuttgart" [ref=e11101]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "46560" [ref=e11102]
+          - cell "19 Example Street" [ref=e11103]
+          - cell "https://www.linkedin.com/in/ianweber 🔗" [ref=e11104]:
+            - generic [ref=e11105]:
+              - generic [ref=e11106]: https://www.linkedin.com/in/ianweber
+              - button "🔗" [ref=e11107] [cursor=pointer]
+          - cell [ref=e11108]
+          - cell "February 3, 1984 1984-02-03 Open date picker" [ref=e11110]:
+            - generic [ref=e11111]:
+              - text: February 3, 1984
+              - textbox: 1984-02-03
+              - button "Open date picker" [ref=e11112] [cursor=pointer]: 📅
+          - cell "Bob Schmidt (+49115717748 [...]" [ref=e11113]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e11114]:
+            - generic [ref=e11115]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e11116] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e11117]:
+            - generic [ref=e11118]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e11119]':
+            - generic [ref=e11120]:
+              - generic [ref=e11122]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 211" [ref=e11123]:
+          - cell "212" [ref=e11124]
+          - cell "80Y3vyxybfNTL491vcQsMIjK5 [...]" [ref=e11125]
+          - cell "Hannah" [ref=e11126]
+          - cell "Wagner" [ref=e11127]
+          - cell "hannah.wagner@example.com" [ref=e11128]
+          - cell [ref=e11129]:
+            - generic: ▾
+          - cell "Figma, Docker, React, Typ [...]" [ref=e11130]:
+            - text: Figma, Docker, React, Typ [...]
+            - generic: ▾
+          - cell [ref=e11131]:
+            - generic [ref=e11132] [cursor=pointer]: 🖉
+          - cell [ref=e11133]:
+            - checkbox [checked] [ref=e11134]
+          - cell "87,949.00 €" [ref=e11135]
+          - cell "Feb 23, 2020 2020-02-23 Open date picker" [ref=e11136]:
+            - generic [ref=e11137]:
+              - text: Feb 23, 2020
+              - textbox: 2020-02-23
+              - button "Open date picker" [ref=e11138] [cursor=pointer]: 📅
+          - cell [ref=e11139]
+          - cell [ref=e11140]
+          - cell "+49 525 437876" [ref=e11141]
+          - cell "EMP00212" [ref=e11142]
+          - cell "Active" [ref=e11143]
+          - cell "Product Manager" [ref=e11144]
+          - cell "Mobile" [ref=e11145]
+          - cell "Jun 9, 2023, 7:25 PM 2023-06-09T19:25 Open date/time picker" [ref=e11146]:
+            - generic [ref=e11147]:
+              - text: Jun 9, 2023, 7:25 PM
+              - textbox: 2023-06-09T19:25
+              - button "Open date/time picker" [ref=e11148] [cursor=pointer]: 📅
+          - cell "2.20" [ref=e11149]
+          - cell "+ 11,932 €" [ref=e11150]
+          - cell "Temporary" [ref=e11151]
+          - cell "UK" [ref=e11152]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e11153]:
+            - generic: ▾
+          - cell "18597" [ref=e11154]
+          - cell "120 Example Street" [ref=e11155]
+          - cell [ref=e11156]
+          - cell [ref=e11158]
+          - cell "Open date picker" [ref=e11160]:
+            - generic [ref=e11161]:
+              - textbox
+              - button "Open date picker" [ref=e11163] [cursor=pointer]: 📅
+          - cell "Alice Schmidt (+495410423 [...]" [ref=e11164]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e11165]:
+            - generic [ref=e11166]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e11167] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e11168]:
+            - generic [ref=e11169]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e11170]':
+            - generic [ref=e11171]:
+              - generic [ref=e11173]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 212" [ref=e11174]:
+          - cell "213" [ref=e11175]
+          - cell "lLOGPgCxCZKGGLStqkGT4E3B_ [...]" [ref=e11176]
+          - cell "Hannah" [ref=e11177]
+          - cell "Meyer" [ref=e11178]
+          - cell "hannah.meyer@example.com" [ref=e11179]
+          - cell "Marketing" [ref=e11180]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Python" [ref=e11181]:
+            - text: Python
+            - generic: ▾
+          - cell "vero nonumy ea eirmod sed [...]" [ref=e11182]:
+            - text: vero nonumy ea eirmod sed [...]
+            - generic [ref=e11183] [cursor=pointer]: 🖉
+          - cell [ref=e11184]:
+            - checkbox [checked] [ref=e11185]
+          - cell "84,532.00 €" [ref=e11186]
+          - cell "Jul 8, 2018 2018-07-08 Open date picker" [ref=e11187]:
+            - generic [ref=e11188]:
+              - text: Jul 8, 2018
+              - textbox: 2018-07-08
+              - button "Open date picker" [ref=e11189] [cursor=pointer]: 📅
+          - cell "Diana Meyer" [ref=e11190]
+          - cell [ref=e11191]
+          - cell "+12 949 168441" [ref=e11192]
+          - cell "EMP00213" [ref=e11193]
+          - cell "On Leave" [ref=e11194]
+          - cell "QA Engineer" [ref=e11195]
+          - cell "Web" [ref=e11196]
+          - cell "Open date/time picker" [ref=e11197]:
+            - generic [ref=e11198]:
+              - textbox
+              - button "Open date/time picker" [ref=e11200] [cursor=pointer]: 📅
+          - cell "1.66" [ref=e11201]
+          - cell "+ 6,888 €" [ref=e11202]
+          - cell "Permanent" [ref=e11203]
+          - cell "Germany" [ref=e11204]:
+            - text: Germany
+            - generic: ▾
+          - cell "Hamburg" [ref=e11205]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "43414" [ref=e11206]
+          - cell [ref=e11207]
+          - cell [ref=e11208]
+          - cell [ref=e11210]
+          - cell "August 25, 1984 1984-08-25 Open date picker" [ref=e11212]:
+            - generic [ref=e11213]:
+              - text: August 25, 1984
+              - textbox: 1984-08-25
+              - button "Open date picker" [ref=e11214] [cursor=pointer]: 📅
+          - cell "Bob Schneider (+496161659 [...]" [ref=e11215]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e11216]:
+            - generic [ref=e11217]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e11218] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e11219]:
+            - generic [ref=e11220]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e11221]':
+            - generic [ref=e11222]:
+              - generic [ref=e11224]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 213" [ref=e11225]:
+          - cell "214" [ref=e11226]
+          - cell "lyblBHJIHYV" [ref=e11227]
+          - cell "Alice" [ref=e11228]
+          - cell "Fischer" [ref=e11229]
+          - cell "alice.fischer@example.com" [ref=e11230]
+          - cell "HR" [ref=e11231]:
+            - text: HR
+            - generic: ▾
+          - cell [ref=e11232]:
+            - generic: ▾
+          - cell [ref=e11233]:
+            - generic [ref=e11234] [cursor=pointer]: 🖉
+          - cell [ref=e11235]:
+            - checkbox [checked] [ref=e11236]
+          - cell "43,052.00 €" [ref=e11237]
+          - cell "Jun 4, 2019 2019-06-04 Open date picker" [ref=e11238]:
+            - generic [ref=e11239]:
+              - text: Jun 4, 2019
+              - textbox: 2019-06-04
+              - button "Open date picker" [ref=e11240] [cursor=pointer]: 📅
+          - cell "Frank Weber" [ref=e11241]
+          - cell "Hamburg Office" [ref=e11242]
+          - cell "+15 424 998224" [ref=e11243]
+          - cell "EMP00214" [ref=e11244]
+          - cell "On Leave" [ref=e11245]
+          - cell "Product Manager" [ref=e11246]
+          - cell "Tools" [ref=e11247]
+          - cell "Jul 11, 2024, 8:40 AM 2024-07-11T08:40 Open date/time picker" [ref=e11248]:
+            - generic [ref=e11249]:
+              - text: Jul 11, 2024, 8:40 AM
+              - textbox: 2024-07-11T08:40
+              - button "Open date/time picker" [ref=e11250] [cursor=pointer]: 📅
+          - cell "0.48" [ref=e11251]
+          - cell "+ 1,619 €" [ref=e11252]
+          - cell [ref=e11253]
+          - cell "Germany" [ref=e11254]:
+            - text: Germany
+            - generic: ▾
+          - cell "Hamburg" [ref=e11255]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e11256]
+          - cell [ref=e11257]
+          - cell "https://www.linkedin.com/in/alicefischer 🔗" [ref=e11258]:
+            - generic [ref=e11259]:
+              - generic [ref=e11260]: https://www.linkedin.com/in/alicefischer
+              - button "🔗" [ref=e11261] [cursor=pointer]
+          - cell [ref=e11262]
+          - cell "January 1, 1993 1993-01-01 Open date picker" [ref=e11264]:
+            - generic [ref=e11265]:
+              - text: January 1, 1993
+              - textbox: 1993-01-01
+              - button "Open date picker" [ref=e11266] [cursor=pointer]: 📅
+          - cell [ref=e11267]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e11268]:
+            - generic [ref=e11269]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e11270] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e11271]:
+            - generic [ref=e11272]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e11273]':
+            - generic [ref=e11274]:
+              - generic [ref=e11276]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 214" [ref=e11277]:
+          - cell "215" [ref=e11278]
+          - cell "TtxhOyhk_H8-Pw6s68K6ecTYr [...]" [ref=e11279]
+          - cell "Grace" [ref=e11280]
+          - cell "Becker" [ref=e11281]
+          - cell "grace.becker@example.com" [ref=e11282]
+          - cell "HR" [ref=e11283]:
+            - text: HR
+            - generic: ▾
+          - cell "SQL, Figma" [ref=e11284]:
+            - text: SQL, Figma
+            - generic: ▾
+          - cell "voluptua. tempor Lorem ta [...]" [ref=e11285]:
+            - text: voluptua. tempor Lorem ta [...]
+            - generic [ref=e11286] [cursor=pointer]: 🖉
+          - cell [ref=e11287]:
+            - checkbox [checked] [ref=e11288]
+          - cell "43,184.00 €" [ref=e11289]
+          - cell "Jul 26, 2011 2011-07-26 Open date picker" [ref=e11290]:
+            - generic [ref=e11291]:
+              - text: Jul 26, 2011
+              - textbox: 2011-07-26
+              - button "Open date picker" [ref=e11292] [cursor=pointer]: 📅
+          - cell [ref=e11293]
+          - cell "Cologne Office" [ref=e11294]
+          - cell "+49 347 864646" [ref=e11295]
+          - cell "EMP00215" [ref=e11296]
+          - cell "Terminated" [ref=e11297]
+          - cell "Software Engineer" [ref=e11298]
+          - cell "Mobile" [ref=e11299]
+          - cell "Dec 17, 2022, 6:35 PM 2022-12-17T18:35 Open date/time picker" [ref=e11300]:
+            - generic [ref=e11301]:
+              - text: Dec 17, 2022, 6:35 PM
+              - textbox: 2022-12-17T18:35
+              - button "Open date/time picker" [ref=e11302] [cursor=pointer]: 📅
+          - cell "0.76" [ref=e11303]
+          - cell "+ 0 €" [ref=e11304]
+          - cell "Permanent" [ref=e11305]
+          - cell "USA" [ref=e11306]:
+            - text: USA
+            - generic: ▾
+          - cell "Hamburg" [ref=e11307]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e11308]
+          - cell "153 Example Street" [ref=e11309]
+          - cell "https://www.linkedin.com/in/gracebecker 🔗" [ref=e11310]:
+            - generic [ref=e11311]:
+              - generic [ref=e11312]: https://www.linkedin.com/in/gracebecker
+              - button "🔗" [ref=e11313] [cursor=pointer]
+          - cell "https://github.com/gracebecker 🔗" [ref=e11314]:
+            - generic [ref=e11315]:
+              - generic [ref=e11316]: https://github.com/gracebecker
+              - button "🔗" [ref=e11317] [cursor=pointer]
+          - cell "Open date picker" [ref=e11318]:
+            - generic [ref=e11319]:
+              - textbox
+              - button "Open date picker" [ref=e11321] [cursor=pointer]: 📅
+          - cell [ref=e11322]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e11323]:
+            - generic [ref=e11324]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e11325] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e11326]:
+            - generic [ref=e11327]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e11328]':
+            - generic [ref=e11329]:
+              - generic [ref=e11331]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 215" [ref=e11332]:
+          - cell "216" [ref=e11333]
+          - cell "PDmy1RQQDO4lEHOU7W-is4WFW [...]" [ref=e11334]
+          - cell "Eva" [ref=e11335]
+          - cell "Fischer" [ref=e11336]
+          - cell "eva.fischer@example.com" [ref=e11337]
+          - cell "IT" [ref=e11338]:
+            - text: IT
+            - generic: ▾
+          - cell "React, TypeScript, Figma, [...]" [ref=e11339]:
+            - text: React, TypeScript, Figma, [...]
+            - generic: ▾
+          - cell "est. erat, sit sea magna [...]" [ref=e11340]:
+            - text: est. erat, sit sea magna [...]
+            - generic [ref=e11341] [cursor=pointer]: 🖉
+          - cell [ref=e11342]:
+            - checkbox [checked] [ref=e11343]
+          - cell "83,721.00 €" [ref=e11344]
+          - cell "Feb 15, 2008 2008-02-15 Open date picker" [ref=e11345]:
+            - generic [ref=e11346]:
+              - text: Feb 15, 2008
+              - textbox: 2008-02-15
+              - button "Open date picker" [ref=e11347] [cursor=pointer]: 📅
+          - cell "Alice Weber" [ref=e11348]
+          - cell "Remote" [ref=e11349]
+          - cell "+13 809 660787" [ref=e11350]
+          - cell "EMP00216" [ref=e11351]
+          - cell "Probation" [ref=e11352]
+          - cell "Data Analyst" [ref=e11353]
+          - cell "Mobile" [ref=e11354]
+          - cell "Open date/time picker" [ref=e11355]:
+            - generic [ref=e11356]:
+              - textbox
+              - button "Open date/time picker" [ref=e11358] [cursor=pointer]: 📅
+          - cell "3.25" [ref=e11359]
+          - cell "+ 6,318 €" [ref=e11360]
+          - cell "Intern" [ref=e11361]
+          - cell "UK" [ref=e11362]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e11363]:
+            - text: Cologne
+            - generic: ▾
+          - cell "19785" [ref=e11364]
+          - cell [ref=e11365]
+          - cell [ref=e11366]
+          - cell [ref=e11368]
+          - cell "March 20, 1965 1965-03-20 Open date picker" [ref=e11370]:
+            - generic [ref=e11371]:
+              - text: March 20, 1965
+              - textbox: 1965-03-20
+              - button "Open date picker" [ref=e11372] [cursor=pointer]: 📅
+          - cell [ref=e11373]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e11374]:
+            - generic [ref=e11375]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e11376] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e11377]:
+            - generic [ref=e11378]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e11379]':
+            - generic [ref=e11380]:
+              - generic [ref=e11382]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 216" [ref=e11383]:
+          - cell "217" [ref=e11384]
+          - cell "tI2QlYaG6c6OXAWGnUZwiR1rE [...]" [ref=e11385]
+          - cell "Bob" [ref=e11386]
+          - cell "Becker" [ref=e11387]
+          - cell "bob.becker@example.com" [ref=e11388]
+          - cell "IT" [ref=e11389]:
+            - text: IT
+            - generic: ▾
+          - cell "Java, Python" [ref=e11390]:
+            - text: Java, Python
+            - generic: ▾
+          - cell [ref=e11391]:
+            - generic [ref=e11392] [cursor=pointer]: 🖉
+          - cell [ref=e11393]:
+            - checkbox [ref=e11394]
+          - cell "82,205.00 €" [ref=e11395]
+          - cell "Open date picker" [ref=e11396]:
+            - generic [ref=e11397]:
+              - textbox
+              - button "Open date picker" [ref=e11399] [cursor=pointer]: 📅
+          - cell "Grace Fischer" [ref=e11400]
+          - cell "Munich Office" [ref=e11401]
+          - cell "+11 346 264292" [ref=e11402]
+          - cell "EMP00217" [ref=e11403]
+          - cell "Probation" [ref=e11404]
+          - cell [ref=e11405]
+          - cell "Growth" [ref=e11406]
+          - cell "Apr 29, 2022, 12:14 PM 2022-04-29T12:14 Open date/time picker" [ref=e11407]:
+            - generic [ref=e11408]:
+              - text: Apr 29, 2022, 12:14 PM
+              - textbox: 2022-04-29T12:14
+              - button "Open date/time picker" [ref=e11409] [cursor=pointer]: 📅
+          - cell "1.09" [ref=e11410]
+          - cell "+ 8,679 €" [ref=e11411]
+          - cell "Intern" [ref=e11412]
+          - cell "Spain" [ref=e11413]:
+            - text: Spain
+            - generic: ▾
+          - cell "Munich" [ref=e11414]:
+            - text: Munich
+            - generic: ▾
+          - cell [ref=e11415]
+          - cell [ref=e11416]
+          - cell "https://www.linkedin.com/in/bobbecker 🔗" [ref=e11417]:
+            - generic [ref=e11418]:
+              - generic [ref=e11419]: https://www.linkedin.com/in/bobbecker
+              - button "🔗" [ref=e11420] [cursor=pointer]
+          - cell [ref=e11421]
+          - cell "May 3, 1988 1988-05-03 Open date picker" [ref=e11423]:
+            - generic [ref=e11424]:
+              - text: May 3, 1988
+              - textbox: 1988-05-03
+              - button "Open date picker" [ref=e11425] [cursor=pointer]: 📅
+          - cell "Ian Wagner (+17752852299)" [ref=e11426]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e11427]:
+            - generic [ref=e11428]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e11429] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e11430]:
+            - generic [ref=e11431]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e11432]':
+            - generic [ref=e11433]:
+              - generic [ref=e11435]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 217" [ref=e11436]:
+          - cell "218" [ref=e11437]
+          - cell "cQZoiVlHsvzsjy4JxufMuJHWp [...]" [ref=e11438]
+          - cell "Frank" [ref=e11439]
+          - cell "Meyer" [ref=e11440]
+          - cell "frank.meyer@example.com" [ref=e11441]
+          - cell "IT" [ref=e11442]:
+            - text: IT
+            - generic: ▾
+          - cell "React, TypeScript, Java" [ref=e11443]:
+            - text: React, TypeScript, Java
+            - generic: ▾
+          - cell "clita gubergren, Lorem ea [...]" [ref=e11444]:
+            - text: clita gubergren, Lorem ea [...]
+            - generic [ref=e11445] [cursor=pointer]: 🖉
+          - cell [ref=e11446]:
+            - checkbox [checked] [ref=e11447]
+          - cell "56,178.00 €" [ref=e11448]
+          - cell "Open date picker" [ref=e11449]:
+            - generic [ref=e11450]:
+              - textbox
+              - button "Open date picker" [ref=e11452] [cursor=pointer]: 📅
+          - cell [ref=e11453]
+          - cell "Berlin HQ" [ref=e11454]
+          - cell "+17 573 053984" [ref=e11455]
+          - cell "EMP00218" [ref=e11456]
+          - cell "Active" [ref=e11457]
+          - cell "Software Engineer" [ref=e11458]
+          - cell [ref=e11459]
+          - cell "Open date/time picker" [ref=e11460]:
+            - generic [ref=e11461]:
+              - textbox
+              - button "Open date/time picker" [ref=e11463] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e11464]
+          - cell "+ 11,175 €" [ref=e11465]
+          - cell "Temporary" [ref=e11466]
+          - cell "France" [ref=e11467]:
+            - text: France
+            - generic: ▾
+          - cell "Frankfurt" [ref=e11468]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell [ref=e11469]
+          - cell "150 Example Street" [ref=e11470]
+          - cell "https://www.linkedin.com/in/frankmeyer 🔗" [ref=e11471]:
+            - generic [ref=e11472]:
+              - generic [ref=e11473]: https://www.linkedin.com/in/frankmeyer
+              - button "🔗" [ref=e11474] [cursor=pointer]
+          - cell [ref=e11475]
+          - cell "January 25, 1993 1993-01-25 Open date picker" [ref=e11477]:
+            - generic [ref=e11478]:
+              - text: January 25, 1993
+              - textbox: 1993-01-25
+              - button "Open date picker" [ref=e11479] [cursor=pointer]: 📅
+          - cell [ref=e11480]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e11481]:
+            - generic [ref=e11482]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e11483] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e11484]:
+            - generic [ref=e11485]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e11486]':
+            - generic [ref=e11487]:
+              - generic [ref=e11489]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 218" [ref=e11490]:
+          - cell "219" [ref=e11491]
+          - cell "g-RU_ipTgzu7Pssp0BAloRm1T [...]" [ref=e11492]
+          - cell "Charlie" [ref=e11493]
+          - cell "Fischer" [ref=e11494]
+          - cell "charlie.fischer@example.c [...]" [ref=e11495]
+          - cell "Marketing" [ref=e11496]:
+            - text: Marketing
+            - generic: ▾
+          - cell "React, TypeScript, Python" [ref=e11497]:
+            - text: React, TypeScript, Python
+            - generic: ▾
+          - cell "elitr, erat, justo takima [...]" [ref=e11498]:
+            - text: elitr, erat, justo takima [...]
+            - generic [ref=e11499] [cursor=pointer]: 🖉
+          - cell [ref=e11500]:
+            - checkbox [checked] [ref=e11501]
+          - cell "0.00 €" [ref=e11502]
+          - cell "Jan 30, 2014 2014-01-30 Open date picker" [ref=e11503]:
+            - generic [ref=e11504]:
+              - text: Jan 30, 2014
+              - textbox: 2014-01-30
+              - button "Open date picker" [ref=e11505] [cursor=pointer]: 📅
+          - cell "Diana Wagner" [ref=e11506]
+          - cell [ref=e11507]
+          - cell [ref=e11508]
+          - cell "EMP00219" [ref=e11509]
+          - cell "On Leave" [ref=e11510]
+          - cell "Product Manager" [ref=e11511]
+          - cell "Core" [ref=e11512]
+          - cell "Sep 16, 2022, 2:02 AM 2022-09-16T02:02 Open date/time picker" [ref=e11513]:
+            - generic [ref=e11514]:
+              - text: Sep 16, 2022, 2:02 AM
+              - textbox: 2022-09-16T02:02
+              - button "Open date/time picker" [ref=e11515] [cursor=pointer]: 📅
+          - cell "3.72" [ref=e11516]
+          - cell "+ 4,058 €" [ref=e11517]
+          - cell "Intern" [ref=e11518]
+          - cell "France" [ref=e11519]:
+            - text: France
+            - generic: ▾
+          - cell [ref=e11520]:
+            - generic: ▾
+          - cell [ref=e11521]
+          - cell "83 Example Street" [ref=e11522]
+          - cell [ref=e11523]
+          - cell [ref=e11525]
+          - cell "November 1, 1966 1966-11-01 Open date picker" [ref=e11527]:
+            - generic [ref=e11528]:
+              - text: November 1, 1966
+              - textbox: 1966-11-01
+              - button "Open date picker" [ref=e11529] [cursor=pointer]: 📅
+          - cell [ref=e11530]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e11531]:
+            - generic [ref=e11532]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e11533] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e11534]:
+            - generic [ref=e11535]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e11536]':
+            - generic [ref=e11537]:
+              - generic [ref=e11539]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 219" [ref=e11540]:
+          - cell "220" [ref=e11541]
+          - cell "jffsSlxERObzLPtE" [ref=e11542]
+          - cell "Ian" [ref=e11543]
+          - cell "Schneider" [ref=e11544]
+          - cell "ian.schneider@example.com" [ref=e11545]
+          - cell [ref=e11546]:
+            - generic: ▾
+          - cell "AWS, Python, TypeScript, [...]" [ref=e11547]:
+            - text: AWS, Python, TypeScript, [...]
+            - generic: ▾
+          - cell "gubergren, consetetur era [...]" [ref=e11548]:
+            - text: gubergren, consetetur era [...]
+            - generic [ref=e11549] [cursor=pointer]: 🖉
+          - cell [ref=e11550]:
+            - checkbox [checked] [ref=e11551]
+          - cell "0.00 €" [ref=e11552]
+          - cell "Open date picker" [ref=e11553]:
+            - generic [ref=e11554]:
+              - textbox
+              - button "Open date picker" [ref=e11556] [cursor=pointer]: 📅
+          - cell "Diana Fischer" [ref=e11557]
+          - cell "Remote" [ref=e11558]
+          - cell "+49 948 480578" [ref=e11559]
+          - cell "EMP00220" [ref=e11560]
+          - cell "On Leave" [ref=e11561]
+          - cell "Designer" [ref=e11562]
+          - cell [ref=e11563]
+          - cell "Feb 19, 2023, 12:09 AM 2023-02-19T00:09 Open date/time picker" [ref=e11564]:
+            - generic [ref=e11565]:
+              - text: Feb 19, 2023, 12:09 AM
+              - textbox: 2023-02-19T00:09
+              - button "Open date/time picker" [ref=e11566] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e11567]
+          - cell "+ 1,168 €" [ref=e11568]
+          - cell "Contractor" [ref=e11569]
+          - cell "UK" [ref=e11570]:
+            - text: UK
+            - generic: ▾
+          - cell "Hamburg" [ref=e11571]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "70754" [ref=e11572]
+          - cell "96 Example Street" [ref=e11573]
+          - cell "https://www.linkedin.com/in/ianschneider 🔗" [ref=e11574]:
+            - generic [ref=e11575]:
+              - generic [ref=e11576]: https://www.linkedin.com/in/ianschneider
+              - button "🔗" [ref=e11577] [cursor=pointer]
+          - cell [ref=e11578]
+          - cell "November 5, 1990 1990-11-05 Open date picker" [ref=e11580]:
+            - generic [ref=e11581]:
+              - text: November 5, 1990
+              - textbox: 1990-11-05
+              - button "Open date picker" [ref=e11582] [cursor=pointer]: 📅
+          - cell [ref=e11583]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e11584]:
+            - generic [ref=e11585]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e11586] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e11587]:
+            - generic [ref=e11588]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e11589]':
+            - generic [ref=e11590]:
+              - generic [ref=e11592]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 220" [ref=e11593]:
+          - cell "221" [ref=e11594]
+          - cell "wuVZHdkZrCxZOn" [ref=e11595]
+          - cell "Julia" [ref=e11596]
+          - cell "Müller" [ref=e11597]
+          - cell [ref=e11598]
+          - cell "Sales" [ref=e11599]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript" [ref=e11600]:
+            - text: TypeScript
+            - generic: ▾
+          - cell "sadipscing sed amet, ipsu [...]" [ref=e11601]:
+            - text: sadipscing sed amet, ipsu [...]
+            - generic [ref=e11602] [cursor=pointer]: 🖉
+          - cell [ref=e11603]:
+            - checkbox [checked] [ref=e11604]
+          - cell "52,996.00 €" [ref=e11605]
+          - cell "Jul 11, 2020 2020-07-11 Open date picker" [ref=e11606]:
+            - generic [ref=e11607]:
+              - text: Jul 11, 2020
+              - textbox: 2020-07-11
+              - button "Open date picker" [ref=e11608] [cursor=pointer]: 📅
+          - cell "Ian Schneider" [ref=e11609]
+          - cell "Remote" [ref=e11610]
+          - cell [ref=e11611]
+          - cell "EMP00221" [ref=e11612]
+          - cell "Active" [ref=e11613]
+          - cell "DevOps Engineer" [ref=e11614]
+          - cell [ref=e11615]
+          - cell "Open date/time picker" [ref=e11616]:
+            - generic [ref=e11617]:
+              - textbox
+              - button "Open date/time picker" [ref=e11619] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e11620]
+          - cell "+ 0 €" [ref=e11621]
+          - cell [ref=e11622]
+          - cell "Netherlands" [ref=e11623]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Berlin" [ref=e11624]:
+            - text: Berlin
+            - generic: ▾
+          - cell "75230" [ref=e11625]
+          - cell "2 Example Street" [ref=e11626]
+          - cell [ref=e11627]
+          - cell [ref=e11629]
+          - cell "Open date picker" [ref=e11631]:
+            - generic [ref=e11632]:
+              - textbox
+              - button "Open date picker" [ref=e11634] [cursor=pointer]: 📅
+          - cell [ref=e11635]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e11636]:
+            - generic [ref=e11637]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e11638] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e11639]:
+            - generic [ref=e11640]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e11641]':
+            - generic [ref=e11642]:
+              - generic [ref=e11644]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 221" [ref=e11645]:
+          - cell "222" [ref=e11646]
+          - cell "Kokd_IXn76M0XnLBbTnROYZzX [...]" [ref=e11647]
+          - cell "Ian" [ref=e11648]
+          - cell "Schmidt" [ref=e11649]
+          - cell "ian.schmidt@example.com" [ref=e11650]
+          - cell "Marketing" [ref=e11651]:
+            - text: Marketing
+            - generic: ▾
+          - cell "TypeScript, Figma, Docker" [ref=e11652]:
+            - text: TypeScript, Figma, Docker
+            - generic: ▾
+          - cell "magna clita ut invidunt s [...]" [ref=e11653]:
+            - text: magna clita ut invidunt s [...]
+            - generic [ref=e11654] [cursor=pointer]: 🖉
+          - cell [ref=e11655]:
+            - checkbox [checked] [ref=e11656]
+          - cell "93,029.00 €" [ref=e11657]
+          - cell "Jan 24, 2014 2014-01-24 Open date picker" [ref=e11658]:
+            - generic [ref=e11659]:
+              - text: Jan 24, 2014
+              - textbox: 2014-01-24
+              - button "Open date picker" [ref=e11660] [cursor=pointer]: 📅
+          - cell [ref=e11661]
+          - cell [ref=e11662]
+          - cell "+49 934 654847" [ref=e11663]
+          - cell "EMP00222" [ref=e11664]
+          - cell "Probation" [ref=e11665]
+          - cell "Data Analyst" [ref=e11666]
+          - cell "Core" [ref=e11667]
+          - cell "Jan 22, 2023, 3:00 PM 2023-01-22T15:00 Open date/time picker" [ref=e11668]:
+            - generic [ref=e11669]:
+              - text: Jan 22, 2023, 3:00 PM
+              - textbox: 2023-01-22T15:00
+              - button "Open date/time picker" [ref=e11670] [cursor=pointer]: 📅
+          - cell "3.52" [ref=e11671]
+          - cell "+ 1,585 €" [ref=e11672]
+          - cell "Intern" [ref=e11673]
+          - cell "Netherlands" [ref=e11674]:
+            - text: Netherlands
+            - generic: ▾
+          - cell [ref=e11675]:
+            - generic: ▾
+          - cell "82040" [ref=e11676]
+          - cell "158 Example Street" [ref=e11677]
+          - cell "https://www.linkedin.com/in/ianschmidt 🔗" [ref=e11678]:
+            - generic [ref=e11679]:
+              - generic [ref=e11680]: https://www.linkedin.com/in/ianschmidt
+              - button "🔗" [ref=e11681] [cursor=pointer]
+          - cell [ref=e11682]
+          - cell "Open date picker" [ref=e11684]:
+            - generic [ref=e11685]:
+              - textbox
+              - button "Open date picker" [ref=e11687] [cursor=pointer]: 📅
+          - cell "Ian Fischer (+49354601967 [...]" [ref=e11688]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e11689]:
+            - generic [ref=e11690]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e11691] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e11692]:
+            - generic [ref=e11693]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e11694]':
+            - generic [ref=e11695]:
+              - generic [ref=e11697]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 222" [ref=e11698]:
+          - cell "223" [ref=e11699]
+          - cell "wLfTeQlCJQrbZL5BoNGxQKGPD [...]" [ref=e11700]
+          - cell "Grace" [ref=e11701]
+          - cell "Wagner" [ref=e11702]
+          - cell [ref=e11703]
+          - cell [ref=e11704]:
+            - generic: ▾
+          - cell "Figma, SQL, TypeScript, J [...]" [ref=e11705]:
+            - text: Figma, SQL, TypeScript, J [...]
+            - generic: ▾
+          - cell "sed vero et diam At eirmo [...]" [ref=e11706]:
+            - text: sed vero et diam At eirmo [...]
+            - generic [ref=e11707] [cursor=pointer]: 🖉
+          - cell [ref=e11708]:
+            - checkbox [checked] [ref=e11709]
+          - cell "59,759.00 €" [ref=e11710]
+          - cell "Open date picker" [ref=e11711]:
+            - generic [ref=e11712]:
+              - textbox
+              - button "Open date picker" [ref=e11714] [cursor=pointer]: 📅
+          - cell [ref=e11715]
+          - cell [ref=e11716]
+          - cell [ref=e11717]
+          - cell "EMP00223" [ref=e11718]
+          - cell [ref=e11719]
+          - cell "Data Analyst" [ref=e11720]
+          - cell "Core" [ref=e11721]
+          - cell "Open date/time picker" [ref=e11722]:
+            - generic [ref=e11723]:
+              - textbox
+              - button "Open date/time picker" [ref=e11725] [cursor=pointer]: 📅
+          - cell "0.62" [ref=e11726]
+          - cell "+ 3,146 €" [ref=e11727]
+          - cell "Permanent" [ref=e11728]
+          - cell "Germany" [ref=e11729]:
+            - text: Germany
+            - generic: ▾
+          - cell "Hamburg" [ref=e11730]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "42109" [ref=e11731]
+          - cell "95 Example Street" [ref=e11732]
+          - cell "https://www.linkedin.com/in/gracewagner 🔗" [ref=e11733]:
+            - generic [ref=e11734]:
+              - generic [ref=e11735]: https://www.linkedin.com/in/gracewagner
+              - button "🔗" [ref=e11736] [cursor=pointer]
+          - cell [ref=e11737]
+          - cell "January 7, 1973 1973-01-07 Open date picker" [ref=e11739]:
+            - generic [ref=e11740]:
+              - text: January 7, 1973
+              - textbox: 1973-01-07
+              - button "Open date picker" [ref=e11741] [cursor=pointer]: 📅
+          - cell [ref=e11742]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e11743]:
+            - generic [ref=e11744]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e11745] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e11746]:
+            - generic [ref=e11747]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e11748]':
+            - generic [ref=e11749]:
+              - generic [ref=e11751]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 223" [ref=e11752]:
+          - cell "224" [ref=e11753]
+          - cell "8SkrMA5JzjfxYRaRBG" [ref=e11754]
+          - cell "Grace" [ref=e11755]
+          - cell "Müller" [ref=e11756]
+          - cell "grace.müller@example.com" [ref=e11757]
+          - cell "Sales" [ref=e11758]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript, React, SQL, J [...]" [ref=e11759]:
+            - text: TypeScript, React, SQL, J [...]
+            - generic: ▾
+          - cell "consetetur ipsum ipsum du [...]" [ref=e11760]:
+            - text: consetetur ipsum ipsum du [...]
+            - generic [ref=e11761] [cursor=pointer]: 🖉
+          - cell [ref=e11762]:
+            - checkbox [checked] [ref=e11763]
+          - cell "60,495.00 €" [ref=e11764]
+          - cell "Oct 9, 2022 2022-10-09 Open date picker" [ref=e11765]:
+            - generic [ref=e11766]:
+              - text: Oct 9, 2022
+              - textbox: 2022-10-09
+              - button "Open date picker" [ref=e11767] [cursor=pointer]: 📅
+          - cell "Eva Müller" [ref=e11768]
+          - cell "Munich Office" [ref=e11769]
+          - cell "+16 573 117515" [ref=e11770]
+          - cell "EMP00224" [ref=e11771]
+          - cell "On Leave" [ref=e11772]
+          - cell "Software Engineer" [ref=e11773]
+          - cell "Core" [ref=e11774]
+          - cell "Open date/time picker" [ref=e11775]:
+            - generic [ref=e11776]:
+              - textbox
+              - button "Open date/time picker" [ref=e11778] [cursor=pointer]: 📅
+          - cell "0.14" [ref=e11779]
+          - cell "+ 0 €" [ref=e11780]
+          - cell "Contractor" [ref=e11781]
+          - cell "Germany" [ref=e11782]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e11783]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "61365" [ref=e11784]
+          - cell [ref=e11785]
+          - cell [ref=e11786]
+          - cell [ref=e11788]
+          - cell "July 29, 1965 1965-07-29 Open date picker" [ref=e11790]:
+            - generic [ref=e11791]:
+              - text: July 29, 1965
+              - textbox: 1965-07-29
+              - button "Open date picker" [ref=e11792] [cursor=pointer]: 📅
+          - cell [ref=e11793]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e11794]:
+            - generic [ref=e11795]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e11796] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e11797]:
+            - generic [ref=e11798]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e11799]':
+            - generic [ref=e11800]:
+              - generic [ref=e11802]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 224" [ref=e11803]:
+          - cell "225" [ref=e11804]
+          - cell "6puijKZo0APbJwjuUbU2onmeE [...]" [ref=e11805]
+          - cell "Diana" [ref=e11806]
+          - cell "Müller" [ref=e11807]
+          - cell "diana.müller@example.com" [ref=e11808]
+          - cell [ref=e11809]:
+            - generic: ▾
+          - cell [ref=e11810]:
+            - generic: ▾
+          - cell "amet, et et gubergren, co [...]" [ref=e11811]:
+            - text: amet, et et gubergren, co [...]
+            - generic [ref=e11812] [cursor=pointer]: 🖉
+          - cell [ref=e11813]:
+            - checkbox [ref=e11814]
+          - cell "96,300.00 €" [ref=e11815]
+          - cell "Nov 10, 2023 2023-11-10 Open date picker" [ref=e11816]:
+            - generic [ref=e11817]:
+              - text: Nov 10, 2023
+              - textbox: 2023-11-10
+              - button "Open date picker" [ref=e11818] [cursor=pointer]: 📅
+          - cell "Grace Wagner" [ref=e11819]
+          - cell "Munich Office" [ref=e11820]
+          - cell "+49 976 618804" [ref=e11821]
+          - cell "EMP00225" [ref=e11822]
+          - cell [ref=e11823]
+          - cell "Designer" [ref=e11824]
+          - cell "Platform" [ref=e11825]
+          - cell "Open date/time picker" [ref=e11826]:
+            - generic [ref=e11827]:
+              - textbox
+              - button "Open date/time picker" [ref=e11829] [cursor=pointer]: 📅
+          - cell "4.42" [ref=e11830]
+          - cell "+ 0 €" [ref=e11831]
+          - cell "Temporary" [ref=e11832]
+          - cell "UK" [ref=e11833]:
+            - text: UK
+            - generic: ▾
+          - cell "Frankfurt" [ref=e11834]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "34119" [ref=e11835]
+          - cell "124 Example Street" [ref=e11836]
+          - cell [ref=e11837]
+          - cell [ref=e11839]
+          - cell "January 11, 1967 1967-01-11 Open date picker" [ref=e11841]:
+            - generic [ref=e11842]:
+              - text: January 11, 1967
+              - textbox: 1967-01-11
+              - button "Open date picker" [ref=e11843] [cursor=pointer]: 📅
+          - cell [ref=e11844]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e11845]:
+            - generic [ref=e11846]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e11847] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e11848]:
+            - generic [ref=e11849]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e11850]':
+            - generic [ref=e11851]:
+              - generic [ref=e11853]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 225" [ref=e11854]:
+          - cell "226" [ref=e11855]
+          - cell "AnfniJ9DoVGj" [ref=e11856]
+          - cell "Charlie" [ref=e11857]
+          - cell "Weber" [ref=e11858]
+          - cell [ref=e11859]
+          - cell "HR" [ref=e11860]:
+            - text: HR
+            - generic: ▾
+          - cell "Python, Java, Figma, AWS" [ref=e11861]:
+            - text: Python, Java, Figma, AWS
+            - generic: ▾
+          - cell "ut ipsum justo aliquyam s [...]" [ref=e11862]:
+            - text: ut ipsum justo aliquyam s [...]
+            - generic [ref=e11863] [cursor=pointer]: 🖉
+          - cell [ref=e11864]:
+            - checkbox [checked] [ref=e11865]
+          - cell "41,135.00 €" [ref=e11866]
+          - cell "Jan 6, 2013 2013-01-06 Open date picker" [ref=e11867]:
+            - generic [ref=e11868]:
+              - text: Jan 6, 2013
+              - textbox: 2013-01-06
+              - button "Open date picker" [ref=e11869] [cursor=pointer]: 📅
+          - cell "Alice Schneider" [ref=e11870]
+          - cell "Munich Office" [ref=e11871]
+          - cell "+14 446 554203" [ref=e11872]
+          - cell "EMP00226" [ref=e11873]
+          - cell "Probation" [ref=e11874]
+          - cell "DevOps Engineer" [ref=e11875]
+          - cell "Web" [ref=e11876]
+          - cell "Open date/time picker" [ref=e11877]:
+            - generic [ref=e11878]:
+              - textbox
+              - button "Open date/time picker" [ref=e11880] [cursor=pointer]: 📅
+          - cell "3.65" [ref=e11881]
+          - cell "+ 6,324 €" [ref=e11882]
+          - cell "Temporary" [ref=e11883]
+          - cell "France" [ref=e11884]:
+            - text: France
+            - generic: ▾
+          - cell "Munich" [ref=e11885]:
+            - text: Munich
+            - generic: ▾
+          - cell [ref=e11886]
+          - cell "196 Example Street" [ref=e11887]
+          - cell [ref=e11888]
+          - cell [ref=e11890]
+          - cell "May 24, 1996 1996-05-24 Open date picker" [ref=e11892]:
+            - generic [ref=e11893]:
+              - text: May 24, 1996
+              - textbox: 1996-05-24
+              - button "Open date picker" [ref=e11894] [cursor=pointer]: 📅
+          - cell [ref=e11895]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e11896]:
+            - generic [ref=e11897]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e11898] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e11899]:
+            - generic [ref=e11900]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e11901]':
+            - generic [ref=e11902]:
+              - generic [ref=e11904]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 226" [ref=e11905]:
+          - cell "227" [ref=e11906]
+          - cell "UroRVMhe1JwuPoh_jVCtFza3Y [...]" [ref=e11907]
+          - cell "Diana" [ref=e11908]
+          - cell "Schneider" [ref=e11909]
+          - cell "diana.schneider@example.c [...]" [ref=e11910]
+          - cell "IT" [ref=e11911]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e11912]:
+            - generic: ▾
+          - cell [ref=e11913]:
+            - generic [ref=e11914] [cursor=pointer]: 🖉
+          - cell [ref=e11915]:
+            - checkbox [checked] [ref=e11916]
+          - cell "0.00 €" [ref=e11917]
+          - cell "Aug 14, 2006 2006-08-14 Open date picker" [ref=e11918]:
+            - generic [ref=e11919]:
+              - text: Aug 14, 2006
+              - textbox: 2006-08-14
+              - button "Open date picker" [ref=e11920] [cursor=pointer]: 📅
+          - cell [ref=e11921]
+          - cell "Munich Office" [ref=e11922]
+          - cell [ref=e11923]
+          - cell "EMP00227" [ref=e11924]
+          - cell "On Leave" [ref=e11925]
+          - cell "Product Manager" [ref=e11926]
+          - cell "Mobile" [ref=e11927]
+          - cell "Feb 7, 2024, 1:35 PM 2024-02-07T13:35 Open date/time picker" [ref=e11928]:
+            - generic [ref=e11929]:
+              - text: Feb 7, 2024, 1:35 PM
+              - textbox: 2024-02-07T13:35
+              - button "Open date/time picker" [ref=e11930] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e11931]
+          - cell "+ 8,883 €" [ref=e11932]
+          - cell "Intern" [ref=e11933]
+          - cell "France" [ref=e11934]:
+            - text: France
+            - generic: ▾
+          - cell [ref=e11935]:
+            - generic: ▾
+          - cell [ref=e11936]
+          - cell [ref=e11937]
+          - cell [ref=e11938]
+          - cell [ref=e11940]
+          - cell "Open date picker" [ref=e11942]:
+            - generic [ref=e11943]:
+              - textbox
+              - button "Open date picker" [ref=e11945] [cursor=pointer]: 📅
+          - cell [ref=e11946]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e11947]:
+            - generic [ref=e11948]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e11949] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e11950]:
+            - generic [ref=e11951]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e11952]':
+            - generic [ref=e11953]:
+              - generic [ref=e11955]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 227" [ref=e11956]:
+          - cell "228" [ref=e11957]
+          - cell "tbyrnPOVgG3FKrLIRs-vpvQie [...]" [ref=e11958]
+          - cell "Frank" [ref=e11959]
+          - cell "Wagner" [ref=e11960]
+          - cell "frank.wagner@example.com" [ref=e11961]
+          - cell "HR" [ref=e11962]:
+            - text: HR
+            - generic: ▾
+          - cell [ref=e11963]:
+            - generic: ▾
+          - cell [ref=e11964]:
+            - generic [ref=e11965] [cursor=pointer]: 🖉
+          - cell [ref=e11966]:
+            - checkbox [ref=e11967]
+          - cell "74,469.00 €" [ref=e11968]
+          - cell "Dec 6, 2011 2011-12-06 Open date picker" [ref=e11969]:
+            - generic [ref=e11970]:
+              - text: Dec 6, 2011
+              - textbox: 2011-12-06
+              - button "Open date picker" [ref=e11971] [cursor=pointer]: 📅
+          - cell "Diana Schneider" [ref=e11972]
+          - cell "Hamburg Office" [ref=e11973]
+          - cell "+49 651 130024" [ref=e11974]
+          - cell "EMP00228" [ref=e11975]
+          - cell [ref=e11976]
+          - cell "Product Manager" [ref=e11977]
+          - cell "Web" [ref=e11978]
+          - cell "May 3, 2021, 12:57 PM 2021-05-03T12:57 Open date/time picker" [ref=e11979]:
+            - generic [ref=e11980]:
+              - text: May 3, 2021, 12:57 PM
+              - textbox: 2021-05-03T12:57
+              - button "Open date/time picker" [ref=e11981] [cursor=pointer]: 📅
+          - cell "0.47" [ref=e11982]
+          - cell "+ 0 €" [ref=e11983]
+          - cell [ref=e11984]
+          - cell "France" [ref=e11985]:
+            - text: France
+            - generic: ▾
+          - cell [ref=e11986]:
+            - generic: ▾
+          - cell "56135" [ref=e11987]
+          - cell [ref=e11988]
+          - cell [ref=e11989]
+          - cell [ref=e11991]
+          - cell "June 8, 1987 1987-06-08 Open date picker" [ref=e11993]:
+            - generic [ref=e11994]:
+              - text: June 8, 1987
+              - textbox: 1987-06-08
+              - button "Open date picker" [ref=e11995] [cursor=pointer]: 📅
+          - cell [ref=e11996]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e11997]:
+            - generic [ref=e11998]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e11999] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e12000]:
+            - generic [ref=e12001]: 5h
+          - 'cell "#10b981 #10b981" [ref=e12002]':
+            - generic [ref=e12003]:
+              - generic [ref=e12005]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 228" [ref=e12006]:
+          - cell "229" [ref=e12007]
+          - cell "bslSHjanNFmIGdCbWQ1" [ref=e12008]
+          - cell "Bob" [ref=e12009]
+          - cell "Wagner" [ref=e12010]
+          - cell "bob.wagner@example.com" [ref=e12011]
+          - cell [ref=e12012]:
+            - generic: ▾
+          - cell [ref=e12013]:
+            - generic: ▾
+          - cell [ref=e12014]:
+            - generic [ref=e12015] [cursor=pointer]: 🖉
+          - cell [ref=e12016]:
+            - checkbox [checked] [ref=e12017]
+          - cell "64,804.00 €" [ref=e12018]
+          - cell "Mar 2, 2018 2018-03-02 Open date picker" [ref=e12019]:
+            - generic [ref=e12020]:
+              - text: Mar 2, 2018
+              - textbox: 2018-03-02
+              - button "Open date picker" [ref=e12021] [cursor=pointer]: 📅
+          - cell "Julia Becker" [ref=e12022]
+          - cell "Cologne Office" [ref=e12023]
+          - cell [ref=e12024]
+          - cell "EMP00229" [ref=e12025]
+          - cell "Probation" [ref=e12026]
+          - cell "DevOps Engineer" [ref=e12027]
+          - cell "Growth" [ref=e12028]
+          - cell "Sep 24, 2022, 11:26 AM 2022-09-24T11:26 Open date/time picker" [ref=e12029]:
+            - generic [ref=e12030]:
+              - text: Sep 24, 2022, 11:26 AM
+              - textbox: 2022-09-24T11:26
+              - button "Open date/time picker" [ref=e12031] [cursor=pointer]: 📅
+          - cell "0.87" [ref=e12032]
+          - cell "+ 13,424 €" [ref=e12033]
+          - cell [ref=e12034]
+          - cell "USA" [ref=e12035]:
+            - text: USA
+            - generic: ▾
+          - cell "Frankfurt" [ref=e12036]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "33133" [ref=e12037]
+          - cell [ref=e12038]
+          - cell "https://www.linkedin.com/in/bobwagner 🔗" [ref=e12039]:
+            - generic [ref=e12040]:
+              - generic [ref=e12041]: https://www.linkedin.com/in/bobwagner
+              - button "🔗" [ref=e12042] [cursor=pointer]
+          - cell [ref=e12043]
+          - cell "Open date picker" [ref=e12045]:
+            - generic [ref=e12046]:
+              - textbox
+              - button "Open date picker" [ref=e12048] [cursor=pointer]: 📅
+          - cell [ref=e12049]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e12050]:
+            - generic [ref=e12051]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e12052] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e12053]:
+            - generic [ref=e12054]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e12055]':
+            - generic [ref=e12056]:
+              - generic [ref=e12058]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 229" [ref=e12059]:
+          - cell "230" [ref=e12060]
+          - cell "eCy1LND5Oc9VouKRlsQ9lB7QB [...]" [ref=e12061]
+          - cell "Hannah" [ref=e12062]
+          - cell "Fischer" [ref=e12063]
+          - cell "hannah.fischer@example.co [...]" [ref=e12064]
+          - cell "Sales" [ref=e12065]:
+            - text: Sales
+            - generic: ▾
+          - cell "Docker, Java, AWS" [ref=e12066]:
+            - text: Docker, Java, AWS
+            - generic: ▾
+          - cell "takimata consetetur takim [...]" [ref=e12067]:
+            - text: takimata consetetur takim [...]
+            - generic [ref=e12068] [cursor=pointer]: 🖉
+          - cell [ref=e12069]:
+            - checkbox [checked] [ref=e12070]
+          - cell "64,151.00 €" [ref=e12071]
+          - cell "Feb 7, 2008 2008-02-07 Open date picker" [ref=e12072]:
+            - generic [ref=e12073]:
+              - text: Feb 7, 2008
+              - textbox: 2008-02-07
+              - button "Open date picker" [ref=e12074] [cursor=pointer]: 📅
+          - cell [ref=e12075]
+          - cell [ref=e12076]
+          - cell "+18 883 110060" [ref=e12077]
+          - cell "EMP00230" [ref=e12078]
+          - cell "Terminated" [ref=e12079]
+          - cell "Product Manager" [ref=e12080]
+          - cell "Growth" [ref=e12081]
+          - cell "Sep 3, 2023, 11:53 AM 2023-09-03T11:53 Open date/time picker" [ref=e12082]:
+            - generic [ref=e12083]:
+              - text: Sep 3, 2023, 11:53 AM
+              - textbox: 2023-09-03T11:53
+              - button "Open date/time picker" [ref=e12084] [cursor=pointer]: 📅
+          - cell "4.35" [ref=e12085]
+          - cell "+ 5,830 €" [ref=e12086]
+          - cell "Temporary" [ref=e12087]
+          - cell "Spain" [ref=e12088]:
+            - text: Spain
+            - generic: ▾
+          - cell [ref=e12089]:
+            - generic: ▾
+          - cell "89885" [ref=e12090]
+          - cell "130 Example Street" [ref=e12091]
+          - cell [ref=e12092]
+          - cell [ref=e12094]
+          - cell "September 12, 1982 1982-09-12 Open date picker" [ref=e12096]:
+            - generic [ref=e12097]:
+              - text: September 12, 1982
+              - textbox: 1982-09-12
+              - button "Open date picker" [ref=e12098] [cursor=pointer]: 📅
+          - cell "Frank Becker (+1573681647 [...]" [ref=e12099]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e12100]:
+            - generic [ref=e12101]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e12102] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e12103]:
+            - generic [ref=e12104]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e12105]':
+            - generic [ref=e12106]:
+              - generic [ref=e12108]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 230" [ref=e12109]:
+          - cell "231" [ref=e12110]
+          - cell "OqRiAOSjGNso0YsLJB3_y_Gqj [...]" [ref=e12111]
+          - cell "Ian" [ref=e12112]
+          - cell "Schneider" [ref=e12113]
+          - cell "ian.schneider@example.com" [ref=e12114]
+          - cell "Finance" [ref=e12115]:
+            - text: Finance
+            - generic: ▾
+          - cell "Python" [ref=e12116]:
+            - text: Python
+            - generic: ▾
+          - cell "voluptua. amet, voluptua. [...]" [ref=e12117]:
+            - text: voluptua. amet, voluptua. [...]
+            - generic [ref=e12118] [cursor=pointer]: 🖉
+          - cell [ref=e12119]:
+            - checkbox [checked] [ref=e12120]
+          - cell "55,674.00 €" [ref=e12121]
+          - cell "Oct 5, 2020 2020-10-05 Open date picker" [ref=e12122]:
+            - generic [ref=e12123]:
+              - text: Oct 5, 2020
+              - textbox: 2020-10-05
+              - button "Open date picker" [ref=e12124] [cursor=pointer]: 📅
+          - cell "Hannah Wagner" [ref=e12125]
+          - cell "Remote" [ref=e12126]
+          - cell [ref=e12127]
+          - cell "EMP00231" [ref=e12128]
+          - cell "Terminated" [ref=e12129]
+          - cell "Software Engineer" [ref=e12130]
+          - cell "Core" [ref=e12131]
+          - cell "Open date/time picker" [ref=e12132]:
+            - generic [ref=e12133]:
+              - textbox
+              - button "Open date/time picker" [ref=e12135] [cursor=pointer]: 📅
+          - cell "0.60" [ref=e12136]
+          - cell "+ 6,896 €" [ref=e12137]
+          - cell "Permanent" [ref=e12138]
+          - cell "USA" [ref=e12139]:
+            - text: USA
+            - generic: ▾
+          - cell "Hamburg" [ref=e12140]:
+            - text: Hamburg
+            - generic: ▾
+          - cell [ref=e12141]
+          - cell [ref=e12142]
+          - cell [ref=e12143]
+          - cell [ref=e12145]
+          - cell "Open date picker" [ref=e12147]:
+            - generic [ref=e12148]:
+              - textbox
+              - button "Open date picker" [ref=e12150] [cursor=pointer]: 📅
+          - cell [ref=e12151]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e12152]:
+            - generic [ref=e12153]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e12154] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e12155]:
+            - generic [ref=e12156]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e12157]':
+            - generic [ref=e12158]:
+              - generic [ref=e12160]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 231" [ref=e12161]:
+          - cell "232" [ref=e12162]
+          - cell "8IHwkwF5hf9zvN_utNSlyIcwm [...]" [ref=e12163]
+          - cell "Ian" [ref=e12164]
+          - cell "Schmidt" [ref=e12165]
+          - cell "ian.schmidt@example.com" [ref=e12166]
+          - cell "Marketing" [ref=e12167]:
+            - text: Marketing
+            - generic: ▾
+          - cell "AWS, React" [ref=e12168]:
+            - text: AWS, React
+            - generic: ▾
+          - cell "sed sadipscing erat, Lore [...]" [ref=e12169]:
+            - text: sed sadipscing erat, Lore [...]
+            - generic [ref=e12170] [cursor=pointer]: 🖉
+          - cell [ref=e12171]:
+            - checkbox [checked] [ref=e12172]
+          - cell "55,194.00 €" [ref=e12173]
+          - cell "Nov 16, 2023 2023-11-16 Open date picker" [ref=e12174]:
+            - generic [ref=e12175]:
+              - text: Nov 16, 2023
+              - textbox: 2023-11-16
+              - button "Open date picker" [ref=e12176] [cursor=pointer]: 📅
+          - cell "Bob Meyer" [ref=e12177]
+          - cell "Hamburg Office" [ref=e12178]
+          - cell "+49 445 426948" [ref=e12179]
+          - cell "EMP00232" [ref=e12180]
+          - cell "Active" [ref=e12181]
+          - cell [ref=e12182]
+          - cell "Platform" [ref=e12183]
+          - cell "Open date/time picker" [ref=e12184]:
+            - generic [ref=e12185]:
+              - textbox
+              - button "Open date/time picker" [ref=e12187] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e12188]
+          - cell "+ 14,458 €" [ref=e12189]
+          - cell "Temporary" [ref=e12190]
+          - cell "Spain" [ref=e12191]:
+            - text: Spain
+            - generic: ▾
+          - cell [ref=e12192]:
+            - generic: ▾
+          - cell [ref=e12193]
+          - cell "146 Example Street" [ref=e12194]
+          - cell [ref=e12195]
+          - cell "https://github.com/ianschmidt 🔗" [ref=e12197]:
+            - generic [ref=e12198]:
+              - generic [ref=e12199]: https://github.com/ianschmidt
+              - button "🔗" [ref=e12200] [cursor=pointer]
+          - cell "Open date picker" [ref=e12201]:
+            - generic [ref=e12202]:
+              - textbox
+              - button "Open date picker" [ref=e12204] [cursor=pointer]: 📅
+          - cell "Frank Weber (+49399322592 [...]" [ref=e12205]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e12206]:
+            - generic [ref=e12207]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e12208] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e12209]:
+            - generic [ref=e12210]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e12211]':
+            - generic [ref=e12212]:
+              - generic [ref=e12214]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 232" [ref=e12215]:
+          - cell "233" [ref=e12216]
+          - cell [ref=e12217]
+          - cell "Diana" [ref=e12218]
+          - cell "Schneider" [ref=e12219]
+          - cell "diana.schneider@example.c [...]" [ref=e12220]
+          - cell "Legal" [ref=e12221]:
+            - text: Legal
+            - generic: ▾
+          - cell "React, TypeScript, AWS, F [...]" [ref=e12222]:
+            - text: React, TypeScript, AWS, F [...]
+            - generic: ▾
+          - cell "invidunt tempor gubergren [...]" [ref=e12223]:
+            - text: invidunt tempor gubergren [...]
+            - generic [ref=e12224] [cursor=pointer]: 🖉
+          - cell [ref=e12225]:
+            - checkbox [checked] [ref=e12226]
+          - cell "95,505.00 €" [ref=e12227]
+          - cell "Open date picker" [ref=e12228]:
+            - generic [ref=e12229]:
+              - textbox
+              - button "Open date picker" [ref=e12231] [cursor=pointer]: 📅
+          - cell [ref=e12232]
+          - cell [ref=e12233]
+          - cell "+16 284 752543" [ref=e12234]
+          - cell "EMP00233" [ref=e12235]
+          - cell "Active" [ref=e12236]
+          - cell "QA Engineer" [ref=e12237]
+          - cell "Core" [ref=e12238]
+          - cell "Open date/time picker" [ref=e12239]:
+            - generic [ref=e12240]:
+              - textbox
+              - button "Open date/time picker" [ref=e12242] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e12243]
+          - cell "+ 947 €" [ref=e12244]
+          - cell "Contractor" [ref=e12245]
+          - cell "Germany" [ref=e12246]:
+            - text: Germany
+            - generic: ▾
+          - cell "Berlin" [ref=e12247]:
+            - text: Berlin
+            - generic: ▾
+          - cell "55647" [ref=e12248]
+          - cell [ref=e12249]
+          - cell [ref=e12250]
+          - cell [ref=e12252]
+          - cell "Open date picker" [ref=e12254]:
+            - generic [ref=e12255]:
+              - textbox
+              - button "Open date picker" [ref=e12257] [cursor=pointer]: 📅
+          - cell "Eva Schmidt (+49760396309 [...]" [ref=e12258]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e12259]:
+            - generic [ref=e12260]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e12261] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e12262]:
+            - generic [ref=e12263]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e12264]':
+            - generic [ref=e12265]:
+              - generic [ref=e12267]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 233" [ref=e12268]:
+          - cell "234" [ref=e12269]
+          - cell [ref=e12270]
+          - cell "Charlie" [ref=e12271]
+          - cell "Schneider" [ref=e12272]
+          - cell "charlie.schneider@example [...]" [ref=e12273]
+          - cell [ref=e12274]:
+            - generic: ▾
+          - cell "Python, Figma" [ref=e12275]:
+            - text: Python, Figma
+            - generic: ▾
+          - cell "magna et et Lorem nonumy [...]" [ref=e12276]:
+            - text: magna et et Lorem nonumy [...]
+            - generic [ref=e12277] [cursor=pointer]: 🖉
+          - cell [ref=e12278]:
+            - checkbox [checked] [ref=e12279]
+          - cell "80,056.00 €" [ref=e12280]
+          - cell "Aug 13, 2017 2017-08-13 Open date picker" [ref=e12281]:
+            - generic [ref=e12282]:
+              - text: Aug 13, 2017
+              - textbox: 2017-08-13
+              - button "Open date picker" [ref=e12283] [cursor=pointer]: 📅
+          - cell "Charlie Schneider" [ref=e12284]
+          - cell "Remote" [ref=e12285]
+          - cell "+11 974 338126" [ref=e12286]
+          - cell "EMP00234" [ref=e12287]
+          - cell "Probation" [ref=e12288]
+          - cell "Software Engineer" [ref=e12289]
+          - cell [ref=e12290]
+          - cell "Oct 29, 2024, 6:03 AM 2024-10-29T06:03 Open date/time picker" [ref=e12291]:
+            - generic [ref=e12292]:
+              - text: Oct 29, 2024, 6:03 AM
+              - textbox: 2024-10-29T06:03
+              - button "Open date/time picker" [ref=e12293] [cursor=pointer]: 📅
+          - cell "2.10" [ref=e12294]
+          - cell "+ 0 €" [ref=e12295]
+          - cell "Permanent" [ref=e12296]
+          - cell "USA" [ref=e12297]:
+            - text: USA
+            - generic: ▾
+          - cell "Cologne" [ref=e12298]:
+            - text: Cologne
+            - generic: ▾
+          - cell "52265" [ref=e12299]
+          - cell [ref=e12300]
+          - cell [ref=e12301]
+          - cell [ref=e12303]
+          - cell "August 13, 1967 1967-08-13 Open date picker" [ref=e12305]:
+            - generic [ref=e12306]:
+              - text: August 13, 1967
+              - textbox: 1967-08-13
+              - button "Open date picker" [ref=e12307] [cursor=pointer]: 📅
+          - cell "Hannah Meyer (+4939539335 [...]" [ref=e12308]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e12309]:
+            - generic [ref=e12310]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e12311] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e12312]:
+            - generic [ref=e12313]: 4h
+          - 'cell "#f97316 #f97316" [ref=e12314]':
+            - generic [ref=e12315]:
+              - generic [ref=e12317]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 234" [ref=e12318]:
+          - cell "235" [ref=e12319]
+          - cell "7J8yh3Gve_4K6TaAwib0TVQ5N [...]" [ref=e12320]
+          - cell "Eva" [ref=e12321]
+          - cell "Fischer" [ref=e12322]
+          - cell "eva.fischer@example.com" [ref=e12323]
+          - cell "IT" [ref=e12324]:
+            - text: IT
+            - generic: ▾
+          - cell "React, TypeScript" [ref=e12325]:
+            - text: React, TypeScript
+            - generic: ▾
+          - cell "sit amet, dolor est. no a [...]" [ref=e12326]:
+            - text: sit amet, dolor est. no a [...]
+            - generic [ref=e12327] [cursor=pointer]: 🖉
+          - cell [ref=e12328]:
+            - checkbox [checked] [ref=e12329]
+          - cell "51,916.00 €" [ref=e12330]
+          - cell "Dec 18, 2011 2011-12-18 Open date picker" [ref=e12331]:
+            - generic [ref=e12332]:
+              - text: Dec 18, 2011
+              - textbox: 2011-12-18
+              - button "Open date picker" [ref=e12333] [cursor=pointer]: 📅
+          - cell "Alice Fischer" [ref=e12334]
+          - cell [ref=e12335]
+          - cell "+19 969 170920" [ref=e12336]
+          - cell "EMP00235" [ref=e12337]
+          - cell "Active" [ref=e12338]
+          - cell "Software Engineer" [ref=e12339]
+          - cell "Web" [ref=e12340]
+          - cell "Apr 1, 2024, 2:54 AM 2024-04-01T02:54 Open date/time picker" [ref=e12341]:
+            - generic [ref=e12342]:
+              - text: Apr 1, 2024, 2:54 AM
+              - textbox: 2024-04-01T02:54
+              - button "Open date/time picker" [ref=e12343] [cursor=pointer]: 📅
+          - cell "3.01" [ref=e12344]
+          - cell "+ 11,983 €" [ref=e12345]
+          - cell "Temporary" [ref=e12346]
+          - cell "Germany" [ref=e12347]:
+            - text: Germany
+            - generic: ▾
+          - cell [ref=e12348]:
+            - generic: ▾
+          - cell "54256" [ref=e12349]
+          - cell "85 Example Street" [ref=e12350]
+          - cell "https://www.linkedin.com/in/evafischer 🔗" [ref=e12351]:
+            - generic [ref=e12352]:
+              - generic [ref=e12353]: https://www.linkedin.com/in/evafischer
+              - button "🔗" [ref=e12354] [cursor=pointer]
+          - cell [ref=e12355]
+          - cell "August 30, 1985 1985-08-30 Open date picker" [ref=e12357]:
+            - generic [ref=e12358]:
+              - text: August 30, 1985
+              - textbox: 1985-08-30
+              - button "Open date picker" [ref=e12359] [cursor=pointer]: 📅
+          - cell [ref=e12360]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e12361]:
+            - generic [ref=e12362]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e12363] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e12364]:
+            - generic [ref=e12365]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e12366]':
+            - generic [ref=e12367]:
+              - generic [ref=e12369]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 235" [ref=e12370]:
+          - cell "236" [ref=e12371]
+          - cell "EnmHwq21veHzY5L3" [ref=e12372]
+          - cell "Charlie" [ref=e12373]
+          - cell "Schmidt" [ref=e12374]
+          - cell "charlie.schmidt@example.c [...]" [ref=e12375]
+          - cell "HR" [ref=e12376]:
+            - text: HR
+            - generic: ▾
+          - cell "Figma, React, TypeScript, [...]" [ref=e12377]:
+            - text: Figma, React, TypeScript, [...]
+            - generic: ▾
+          - cell [ref=e12378]:
+            - generic [ref=e12379] [cursor=pointer]: 🖉
+          - cell [ref=e12380]:
+            - checkbox [checked] [ref=e12381]
+          - cell "0.00 €" [ref=e12382]
+          - cell "Sep 3, 2016 2016-09-03 Open date picker" [ref=e12383]:
+            - generic [ref=e12384]:
+              - text: Sep 3, 2016
+              - textbox: 2016-09-03
+              - button "Open date picker" [ref=e12385] [cursor=pointer]: 📅
+          - cell "Diana Becker" [ref=e12386]
+          - cell "Berlin HQ" [ref=e12387]
+          - cell [ref=e12388]
+          - cell "EMP00236" [ref=e12389]
+          - cell "Probation" [ref=e12390]
+          - cell "QA Engineer" [ref=e12391]
+          - cell "Mobile" [ref=e12392]
+          - cell "Aug 21, 2023, 11:33 AM 2023-08-21T11:33 Open date/time picker" [ref=e12393]:
+            - generic [ref=e12394]:
+              - text: Aug 21, 2023, 11:33 AM
+              - textbox: 2023-08-21T11:33
+              - button "Open date/time picker" [ref=e12395] [cursor=pointer]: 📅
+          - cell "4.06" [ref=e12396]
+          - cell "+ 4,390 €" [ref=e12397]
+          - cell "Intern" [ref=e12398]
+          - cell "Spain" [ref=e12399]:
+            - text: Spain
+            - generic: ▾
+          - cell "Berlin" [ref=e12400]:
+            - text: Berlin
+            - generic: ▾
+          - cell "85874" [ref=e12401]
+          - cell "136 Example Street" [ref=e12402]
+          - cell [ref=e12403]
+          - cell "https://github.com/charlieschmidt 🔗" [ref=e12405]:
+            - generic [ref=e12406]:
+              - generic [ref=e12407]: https://github.com/charlieschmidt
+              - button "🔗" [ref=e12408] [cursor=pointer]
+          - cell "June 18, 1996 1996-06-18 Open date picker" [ref=e12409]:
+            - generic [ref=e12410]:
+              - text: June 18, 1996
+              - textbox: 1996-06-18
+              - button "Open date picker" [ref=e12411] [cursor=pointer]: 📅
+          - cell [ref=e12412]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e12413]:
+            - generic [ref=e12414]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e12415] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e12416]:
+            - generic [ref=e12417]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e12418]':
+            - generic [ref=e12419]:
+              - generic [ref=e12421]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 236" [ref=e12422]:
+          - cell "237" [ref=e12423]
+          - cell "a40JfVu3Ku1_b5BphYv9-k" [ref=e12424]
+          - cell "Charlie" [ref=e12425]
+          - cell "Weber" [ref=e12426]
+          - cell "charlie.weber@example.com" [ref=e12427]
+          - cell "Sales" [ref=e12428]:
+            - text: Sales
+            - generic: ▾
+          - cell "AWS, SQL, Java" [ref=e12429]:
+            - text: AWS, SQL, Java
+            - generic: ▾
+          - cell "sanctus Lorem et Stet dol [...]" [ref=e12430]:
+            - text: sanctus Lorem et Stet dol [...]
+            - generic [ref=e12431] [cursor=pointer]: 🖉
+          - cell [ref=e12432]:
+            - checkbox [checked] [ref=e12433]
+          - cell "0.00 €" [ref=e12434]
+          - cell "May 16, 2007 2007-05-16 Open date picker" [ref=e12435]:
+            - generic [ref=e12436]:
+              - text: May 16, 2007
+              - textbox: 2007-05-16
+              - button "Open date picker" [ref=e12437] [cursor=pointer]: 📅
+          - cell "Diana Meyer" [ref=e12438]
+          - cell "Hamburg Office" [ref=e12439]
+          - cell [ref=e12440]
+          - cell "EMP00237" [ref=e12441]
+          - cell "Active" [ref=e12442]
+          - cell "DevOps Engineer" [ref=e12443]
+          - cell "Growth" [ref=e12444]
+          - cell "Open date/time picker" [ref=e12445]:
+            - generic [ref=e12446]:
+              - textbox
+              - button "Open date/time picker" [ref=e12448] [cursor=pointer]: 📅
+          - cell "3.08" [ref=e12449]
+          - cell "+ 8,444 €" [ref=e12450]
+          - cell "Contractor" [ref=e12451]
+          - cell "USA" [ref=e12452]:
+            - text: USA
+            - generic: ▾
+          - cell "Frankfurt" [ref=e12453]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell [ref=e12454]
+          - cell "30 Example Street" [ref=e12455]
+          - cell [ref=e12456]
+          - cell "https://github.com/charlieweber 🔗" [ref=e12458]:
+            - generic [ref=e12459]:
+              - generic [ref=e12460]: https://github.com/charlieweber
+              - button "🔗" [ref=e12461] [cursor=pointer]
+          - cell "August 12, 1982 1982-08-12 Open date picker" [ref=e12462]:
+            - generic [ref=e12463]:
+              - text: August 12, 1982
+              - textbox: 1982-08-12
+              - button "Open date picker" [ref=e12464] [cursor=pointer]: 📅
+          - cell "Eva Schneider (+496169037 [...]" [ref=e12465]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e12466]:
+            - generic [ref=e12467]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e12468] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e12469]:
+            - generic [ref=e12470]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e12471]':
+            - generic [ref=e12472]:
+              - generic [ref=e12474]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 237" [ref=e12475]:
+          - cell "238" [ref=e12476]
+          - cell "IO1Fmt3IPplwy4rs" [ref=e12477]
+          - cell "Frank" [ref=e12478]
+          - cell "Schneider" [ref=e12479]
+          - cell "frank.schneider@example.c [...]" [ref=e12480]
+          - cell "Finance" [ref=e12481]:
+            - text: Finance
+            - generic: ▾
+          - cell "Python, TypeScript, SQL" [ref=e12482]:
+            - text: Python, TypeScript, SQL
+            - generic: ▾
+          - cell [ref=e12483]:
+            - generic [ref=e12484] [cursor=pointer]: 🖉
+          - cell [ref=e12485]:
+            - checkbox [ref=e12486]
+          - cell "72,662.00 €" [ref=e12487]
+          - cell "Feb 17, 2007 2007-02-17 Open date picker" [ref=e12488]:
+            - generic [ref=e12489]:
+              - text: Feb 17, 2007
+              - textbox: 2007-02-17
+              - button "Open date picker" [ref=e12490] [cursor=pointer]: 📅
+          - cell "Hannah Schneider" [ref=e12491]
+          - cell "Berlin HQ" [ref=e12492]
+          - cell "+17 719 962479" [ref=e12493]
+          - cell "EMP00238" [ref=e12494]
+          - cell "Active" [ref=e12495]
+          - cell "DevOps Engineer" [ref=e12496]
+          - cell [ref=e12497]
+          - cell "Mar 2, 2024, 1:37 PM 2024-03-02T13:37 Open date/time picker" [ref=e12498]:
+            - generic [ref=e12499]:
+              - text: Mar 2, 2024, 1:37 PM
+              - textbox: 2024-03-02T13:37
+              - button "Open date/time picker" [ref=e12500] [cursor=pointer]: 📅
+          - cell "1.73" [ref=e12501]
+          - cell "+ 0 €" [ref=e12502]
+          - cell "Intern" [ref=e12503]
+          - cell "Spain" [ref=e12504]:
+            - text: Spain
+            - generic: ▾
+          - cell "Cologne" [ref=e12505]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e12506]
+          - cell [ref=e12507]
+          - cell [ref=e12508]
+          - cell [ref=e12510]
+          - cell "Open date picker" [ref=e12512]:
+            - generic [ref=e12513]:
+              - textbox
+              - button "Open date picker" [ref=e12515] [cursor=pointer]: 📅
+          - cell "Frank Wagner (+4983333634 [...]" [ref=e12516]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e12517]:
+            - generic [ref=e12518]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e12519] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e12520]:
+            - generic [ref=e12521]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e12522]':
+            - generic [ref=e12523]:
+              - generic [ref=e12525]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 238" [ref=e12526]:
+          - cell "239" [ref=e12527]
+          - cell "1rfOHrm8iHobVm02" [ref=e12528]
+          - cell "Alice" [ref=e12529]
+          - cell "Müller" [ref=e12530]
+          - cell "alice.müller@example.com" [ref=e12531]
+          - cell "Marketing" [ref=e12532]:
+            - text: Marketing
+            - generic: ▾
+          - cell "TypeScript, Python, SQL" [ref=e12533]:
+            - text: TypeScript, Python, SQL
+            - generic: ▾
+          - cell "dolore magna eos sed cons [...]" [ref=e12534]:
+            - text: dolore magna eos sed cons [...]
+            - generic [ref=e12535] [cursor=pointer]: 🖉
+          - cell [ref=e12536]:
+            - checkbox [checked] [ref=e12537]
+          - cell "68,398.00 €" [ref=e12538]
+          - cell "Open date picker" [ref=e12539]:
+            - generic [ref=e12540]:
+              - textbox
+              - button "Open date picker" [ref=e12542] [cursor=pointer]: 📅
+          - cell "Frank Wagner" [ref=e12543]
+          - cell "Cologne Office" [ref=e12544]
+          - cell [ref=e12545]
+          - cell "EMP00239" [ref=e12546]
+          - cell "Terminated" [ref=e12547]
+          - cell "QA Engineer" [ref=e12548]
+          - cell "Growth" [ref=e12549]
+          - cell "Open date/time picker" [ref=e12550]:
+            - generic [ref=e12551]:
+              - textbox
+              - button "Open date/time picker" [ref=e12553] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e12554]
+          - cell "+ 2,222 €" [ref=e12555]
+          - cell "Intern" [ref=e12556]
+          - cell "France" [ref=e12557]:
+            - text: France
+            - generic: ▾
+          - cell "Berlin" [ref=e12558]:
+            - text: Berlin
+            - generic: ▾
+          - cell "11933" [ref=e12559]
+          - cell "124 Example Street" [ref=e12560]
+          - cell [ref=e12561]
+          - cell [ref=e12563]
+          - cell "September 11, 1997 1997-09-11 Open date picker" [ref=e12565]:
+            - generic [ref=e12566]:
+              - text: September 11, 1997
+              - textbox: 1997-09-11
+              - button "Open date picker" [ref=e12567] [cursor=pointer]: 📅
+          - cell "Ian Meyer (+49319213995)" [ref=e12568]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e12569]:
+            - generic [ref=e12570]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e12571] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e12572]:
+            - generic [ref=e12573]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e12574]':
+            - generic [ref=e12575]:
+              - generic [ref=e12577]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 239" [ref=e12578]:
+          - cell "240" [ref=e12579]
+          - cell "YOzXouQJtgxY-9ktX0jd91RUj [...]" [ref=e12580]
+          - cell "Diana" [ref=e12581]
+          - cell "Müller" [ref=e12582]
+          - cell "diana.müller@example.com" [ref=e12583]
+          - cell "Finance" [ref=e12584]:
+            - text: Finance
+            - generic: ▾
+          - cell "Java, Python, TypeScript, [...]" [ref=e12585]:
+            - text: Java, Python, TypeScript, [...]
+            - generic: ▾
+          - cell "erat, diam rebum. Stet gu [...]" [ref=e12586]:
+            - text: erat, diam rebum. Stet gu [...]
+            - generic [ref=e12587] [cursor=pointer]: 🖉
+          - cell [ref=e12588]:
+            - checkbox [checked] [ref=e12589]
+          - cell "0.00 €" [ref=e12590]
+          - cell "Mar 28, 2018 2018-03-28 Open date picker" [ref=e12591]:
+            - generic [ref=e12592]:
+              - text: Mar 28, 2018
+              - textbox: 2018-03-28
+              - button "Open date picker" [ref=e12593] [cursor=pointer]: 📅
+          - cell "Alice Becker" [ref=e12594]
+          - cell "Cologne Office" [ref=e12595]
+          - cell [ref=e12596]
+          - cell "EMP00240" [ref=e12597]
+          - cell "On Leave" [ref=e12598]
+          - cell "Data Analyst" [ref=e12599]
+          - cell "Platform" [ref=e12600]
+          - cell "Open date/time picker" [ref=e12601]:
+            - generic [ref=e12602]:
+              - textbox
+              - button "Open date/time picker" [ref=e12604] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e12605]
+          - cell "+ 14,776 €" [ref=e12606]
+          - cell "Permanent" [ref=e12607]
+          - cell "UK" [ref=e12608]:
+            - text: UK
+            - generic: ▾
+          - cell "Hamburg" [ref=e12609]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "75249" [ref=e12610]
+          - cell "174 Example Street" [ref=e12611]
+          - cell [ref=e12612]
+          - cell [ref=e12614]
+          - cell "January 19, 1997 1997-01-19 Open date picker" [ref=e12616]:
+            - generic [ref=e12617]:
+              - text: January 19, 1997
+              - textbox: 1997-01-19
+              - button "Open date picker" [ref=e12618] [cursor=pointer]: 📅
+          - cell [ref=e12619]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e12620]:
+            - generic [ref=e12621]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e12622] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e12623]:
+            - generic [ref=e12624]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e12625]':
+            - generic [ref=e12626]:
+              - generic [ref=e12628]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 240" [ref=e12629]:
+          - cell "241" [ref=e12630]
+          - cell "1UhXj8vVUCamvVPXpbmZrIStP [...]" [ref=e12631]
+          - cell "Ian" [ref=e12632]
+          - cell "Müller" [ref=e12633]
+          - cell "ian.müller@example.com" [ref=e12634]
+          - cell "Legal" [ref=e12635]:
+            - text: Legal
+            - generic: ▾
+          - cell "Python, TypeScript, Java" [ref=e12636]:
+            - text: Python, TypeScript, Java
+            - generic: ▾
+          - cell "eirmod clita vero duo dia [...]" [ref=e12637]:
+            - text: eirmod clita vero duo dia [...]
+            - generic [ref=e12638] [cursor=pointer]: 🖉
+          - cell [ref=e12639]:
+            - checkbox [checked] [ref=e12640]
+          - cell "48,314.00 €" [ref=e12641]
+          - cell "Nov 1, 2009 2009-11-01 Open date picker" [ref=e12642]:
+            - generic [ref=e12643]:
+              - text: Nov 1, 2009
+              - textbox: 2009-11-01
+              - button "Open date picker" [ref=e12644] [cursor=pointer]: 📅
+          - cell "Charlie Wagner" [ref=e12645]
+          - cell "Berlin HQ" [ref=e12646]
+          - cell "+11 897 574294" [ref=e12647]
+          - cell "EMP00241" [ref=e12648]
+          - cell "On Leave" [ref=e12649]
+          - cell "Software Engineer" [ref=e12650]
+          - cell "Core" [ref=e12651]
+          - cell "Nov 4, 2023, 12:58 AM 2023-11-04T00:58 Open date/time picker" [ref=e12652]:
+            - generic [ref=e12653]:
+              - text: Nov 4, 2023, 12:58 AM
+              - textbox: 2023-11-04T00:58
+              - button "Open date/time picker" [ref=e12654] [cursor=pointer]: 📅
+          - cell "2.14" [ref=e12655]
+          - cell "+ 0 €" [ref=e12656]
+          - cell "Permanent" [ref=e12657]
+          - cell "Germany" [ref=e12658]:
+            - text: Germany
+            - generic: ▾
+          - cell [ref=e12659]:
+            - generic: ▾
+          - cell [ref=e12660]
+          - cell "37 Example Street" [ref=e12661]
+          - cell [ref=e12662]
+          - cell [ref=e12664]
+          - cell "June 20, 1976 1976-06-20 Open date picker" [ref=e12666]:
+            - generic [ref=e12667]:
+              - text: June 20, 1976
+              - textbox: 1976-06-20
+              - button "Open date picker" [ref=e12668] [cursor=pointer]: 📅
+          - cell [ref=e12669]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e12670]:
+            - generic [ref=e12671]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e12672] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e12673]:
+            - generic [ref=e12674]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e12675]':
+            - generic [ref=e12676]:
+              - generic [ref=e12678]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 241" [ref=e12679]:
+          - cell "242" [ref=e12680]
+          - cell "reSDafOc-9TVRPgmal0UDav4u [...]" [ref=e12681]
+          - cell "Diana" [ref=e12682]
+          - cell "Fischer" [ref=e12683]
+          - cell "diana.fischer@example.com" [ref=e12684]
+          - cell "HR" [ref=e12685]:
+            - text: HR
+            - generic: ▾
+          - cell "Docker, Figma" [ref=e12686]:
+            - text: Docker, Figma
+            - generic: ▾
+          - cell "clita justo diam sed labo [...]" [ref=e12687]:
+            - text: clita justo diam sed labo [...]
+            - generic [ref=e12688] [cursor=pointer]: 🖉
+          - cell [ref=e12689]:
+            - checkbox [checked] [ref=e12690]
+          - cell "59,374.00 €" [ref=e12691]
+          - cell "Aug 5, 2005 2005-08-05 Open date picker" [ref=e12692]:
+            - generic [ref=e12693]:
+              - text: Aug 5, 2005
+              - textbox: 2005-08-05
+              - button "Open date picker" [ref=e12694] [cursor=pointer]: 📅
+          - cell "Julia Weber" [ref=e12695]
+          - cell "Cologne Office" [ref=e12696]
+          - cell "+17 755 828650" [ref=e12697]
+          - cell "EMP00242" [ref=e12698]
+          - cell "On Leave" [ref=e12699]
+          - cell "Designer" [ref=e12700]
+          - cell "Core" [ref=e12701]
+          - cell "Dec 2, 2020, 7:07 PM 2020-12-02T19:07 Open date/time picker" [ref=e12702]:
+            - generic [ref=e12703]:
+              - text: Dec 2, 2020, 7:07 PM
+              - textbox: 2020-12-02T19:07
+              - button "Open date/time picker" [ref=e12704] [cursor=pointer]: 📅
+          - cell "1.59" [ref=e12705]
+          - cell "+ 4,807 €" [ref=e12706]
+          - cell "Permanent" [ref=e12707]
+          - cell "France" [ref=e12708]:
+            - text: France
+            - generic: ▾
+          - cell "Frankfurt" [ref=e12709]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "47123" [ref=e12710]
+          - cell "56 Example Street" [ref=e12711]
+          - cell "https://www.linkedin.com/in/dianafischer 🔗" [ref=e12712]:
+            - generic [ref=e12713]:
+              - generic [ref=e12714]: https://www.linkedin.com/in/dianafischer
+              - button "🔗" [ref=e12715] [cursor=pointer]
+          - cell [ref=e12716]
+          - cell "December 6, 1983 1983-12-06 Open date picker" [ref=e12718]:
+            - generic [ref=e12719]:
+              - text: December 6, 1983
+              - textbox: 1983-12-06
+              - button "Open date picker" [ref=e12720] [cursor=pointer]: 📅
+          - cell [ref=e12721]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e12722]:
+            - generic [ref=e12723]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e12724] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e12725]:
+            - generic [ref=e12726]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e12727]':
+            - generic [ref=e12728]:
+              - generic [ref=e12730]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 242" [ref=e12731]:
+          - cell "243" [ref=e12732]
+          - cell "QmCKE9hGRac7bDTqcF2jCuCBj [...]" [ref=e12733]
+          - cell "Diana" [ref=e12734]
+          - cell "Becker" [ref=e12735]
+          - cell "diana.becker@example.com" [ref=e12736]
+          - cell [ref=e12737]:
+            - generic: ▾
+          - cell "Java" [ref=e12738]:
+            - text: Java
+            - generic: ▾
+          - cell [ref=e12739]:
+            - generic [ref=e12740] [cursor=pointer]: 🖉
+          - cell [ref=e12741]:
+            - checkbox [ref=e12742]
+          - cell "61,484.00 €" [ref=e12743]
+          - cell "May 15, 2024 2024-05-15 Open date picker" [ref=e12744]:
+            - generic [ref=e12745]:
+              - text: May 15, 2024
+              - textbox: 2024-05-15
+              - button "Open date picker" [ref=e12746] [cursor=pointer]: 📅
+          - cell "Ian Müller" [ref=e12747]
+          - cell "Berlin HQ" [ref=e12748]
+          - cell [ref=e12749]
+          - cell "EMP00243" [ref=e12750]
+          - cell "Terminated" [ref=e12751]
+          - cell "Software Engineer" [ref=e12752]
+          - cell "Growth" [ref=e12753]
+          - cell "Open date/time picker" [ref=e12754]:
+            - generic [ref=e12755]:
+              - textbox
+              - button "Open date/time picker" [ref=e12757] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e12758]
+          - cell "+ 0 €" [ref=e12759]
+          - cell "Permanent" [ref=e12760]
+          - cell "Netherlands" [ref=e12761]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Frankfurt" [ref=e12762]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell [ref=e12763]
+          - cell "17 Example Street" [ref=e12764]
+          - cell [ref=e12765]
+          - cell [ref=e12767]
+          - cell "March 4, 1989 1989-03-04 Open date picker" [ref=e12769]:
+            - generic [ref=e12770]:
+              - text: March 4, 1989
+              - textbox: 1989-03-04
+              - button "Open date picker" [ref=e12771] [cursor=pointer]: 📅
+          - cell "Grace Schneider (+4938466 [...]" [ref=e12772]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e12773]:
+            - generic [ref=e12774]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e12775] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e12776]:
+            - generic [ref=e12777]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e12778]':
+            - generic [ref=e12779]:
+              - generic [ref=e12781]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 243" [ref=e12782]:
+          - cell "244" [ref=e12783]
+          - cell [ref=e12784]
+          - cell "Ian" [ref=e12785]
+          - cell "Weber" [ref=e12786]
+          - cell "ian.weber@example.com" [ref=e12787]
+          - cell "Marketing" [ref=e12788]:
+            - text: Marketing
+            - generic: ▾
+          - cell [ref=e12789]:
+            - generic: ▾
+          - cell "sed sed gubergren, sanctu [...]" [ref=e12790]:
+            - text: sed sed gubergren, sanctu [...]
+            - generic [ref=e12791] [cursor=pointer]: 🖉
+          - cell [ref=e12792]:
+            - checkbox [ref=e12793]
+          - cell "97,303.00 €" [ref=e12794]
+          - cell "Nov 29, 2024 2024-11-29 Open date picker" [ref=e12795]:
+            - generic [ref=e12796]:
+              - text: Nov 29, 2024
+              - textbox: 2024-11-29
+              - button "Open date picker" [ref=e12797] [cursor=pointer]: 📅
+          - cell [ref=e12798]
+          - cell "Hamburg Office" [ref=e12799]
+          - cell [ref=e12800]
+          - cell "EMP00244" [ref=e12801]
+          - cell "Terminated" [ref=e12802]
+          - cell "Data Analyst" [ref=e12803]
+          - cell "Tools" [ref=e12804]
+          - cell "Sep 29, 2024, 6:29 PM 2024-09-29T18:29 Open date/time picker" [ref=e12805]:
+            - generic [ref=e12806]:
+              - text: Sep 29, 2024, 6:29 PM
+              - textbox: 2024-09-29T18:29
+              - button "Open date/time picker" [ref=e12807] [cursor=pointer]: 📅
+          - cell "3.74" [ref=e12808]
+          - cell "+ 0 €" [ref=e12809]
+          - cell "Contractor" [ref=e12810]
+          - cell [ref=e12811]:
+            - generic: ▾
+          - cell "Frankfurt" [ref=e12812]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "79817" [ref=e12813]
+          - cell "12 Example Street" [ref=e12814]
+          - cell "https://www.linkedin.com/in/ianweber 🔗" [ref=e12815]:
+            - generic [ref=e12816]:
+              - generic [ref=e12817]: https://www.linkedin.com/in/ianweber
+              - button "🔗" [ref=e12818] [cursor=pointer]
+          - cell [ref=e12819]
+          - cell "June 13, 1993 1993-06-13 Open date picker" [ref=e12821]:
+            - generic [ref=e12822]:
+              - text: June 13, 1993
+              - textbox: 1993-06-13
+              - button "Open date picker" [ref=e12823] [cursor=pointer]: 📅
+          - cell "Frank Becker (+1549341262 [...]" [ref=e12824]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e12825]:
+            - generic [ref=e12826]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e12827] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e12828]:
+            - generic [ref=e12829]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e12830]':
+            - generic [ref=e12831]:
+              - generic [ref=e12833]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 244" [ref=e12834]:
+          - cell "245" [ref=e12835]
+          - cell "UV9xt-9Fb8qg" [ref=e12836]
+          - cell "Eva" [ref=e12837]
+          - cell "Weber" [ref=e12838]
+          - cell "eva.weber@example.com" [ref=e12839]
+          - cell "IT" [ref=e12840]:
+            - text: IT
+            - generic: ▾
+          - cell "React, Figma, TypeScript" [ref=e12841]:
+            - text: React, Figma, TypeScript
+            - generic: ▾
+          - cell "takimata invidunt voluptu [...]" [ref=e12842]:
+            - text: takimata invidunt voluptu [...]
+            - generic [ref=e12843] [cursor=pointer]: 🖉
+          - cell [ref=e12844]:
+            - checkbox [checked] [ref=e12845]
+          - cell "0.00 €" [ref=e12846]
+          - cell "Jul 15, 2009 2009-07-15 Open date picker" [ref=e12847]:
+            - generic [ref=e12848]:
+              - text: Jul 15, 2009
+              - textbox: 2009-07-15
+              - button "Open date picker" [ref=e12849] [cursor=pointer]: 📅
+          - cell [ref=e12850]
+          - cell [ref=e12851]
+          - cell "+14 568 576634" [ref=e12852]
+          - cell "EMP00245" [ref=e12853]
+          - cell "On Leave" [ref=e12854]
+          - cell "Data Analyst" [ref=e12855]
+          - cell "Platform" [ref=e12856]
+          - cell "Open date/time picker" [ref=e12857]:
+            - generic [ref=e12858]:
+              - textbox
+              - button "Open date/time picker" [ref=e12860] [cursor=pointer]: 📅
+          - cell "0.27" [ref=e12861]
+          - cell "+ 0 €" [ref=e12862]
+          - cell "Contractor" [ref=e12863]
+          - cell "Spain" [ref=e12864]:
+            - text: Spain
+            - generic: ▾
+          - cell "Berlin" [ref=e12865]:
+            - text: Berlin
+            - generic: ▾
+          - cell "25688" [ref=e12866]
+          - cell [ref=e12867]
+          - cell [ref=e12868]
+          - cell [ref=e12870]
+          - cell "July 18, 1969 1969-07-18 Open date picker" [ref=e12872]:
+            - generic [ref=e12873]:
+              - text: July 18, 1969
+              - textbox: 1969-07-18
+              - button "Open date picker" [ref=e12874] [cursor=pointer]: 📅
+          - cell "Julia Weber (+49521106682 [...]" [ref=e12875]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e12876]:
+            - generic [ref=e12877]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e12878] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e12879]:
+            - generic [ref=e12880]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e12881]':
+            - generic [ref=e12882]:
+              - generic [ref=e12884]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 245" [ref=e12885]:
+          - cell "246" [ref=e12886]
+          - cell [ref=e12887]
+          - cell "Frank" [ref=e12888]
+          - cell [ref=e12889]
+          - cell "frank.müller@example.com" [ref=e12890]
+          - cell "Marketing" [ref=e12891]:
+            - text: Marketing
+            - generic: ▾
+          - cell "TypeScript, Java, Docker, [...]" [ref=e12892]:
+            - text: TypeScript, Java, Docker, [...]
+            - generic: ▾
+          - cell "ut accusam sit et diam ve [...]" [ref=e12893]:
+            - text: ut accusam sit et diam ve [...]
+            - generic [ref=e12894] [cursor=pointer]: 🖉
+          - cell [ref=e12895]:
+            - checkbox [checked] [ref=e12896]
+          - cell "86,157.00 €" [ref=e12897]
+          - cell "Nov 24, 2016 2016-11-24 Open date picker" [ref=e12898]:
+            - generic [ref=e12899]:
+              - text: Nov 24, 2016
+              - textbox: 2016-11-24
+              - button "Open date picker" [ref=e12900] [cursor=pointer]: 📅
+          - cell [ref=e12901]
+          - cell "Cologne Office" [ref=e12902]
+          - cell "+16 214 777443" [ref=e12903]
+          - cell "EMP00246" [ref=e12904]
+          - cell "Probation" [ref=e12905]
+          - cell "QA Engineer" [ref=e12906]
+          - cell "Core" [ref=e12907]
+          - cell "Apr 13, 2024, 4:09 PM 2024-04-13T16:09 Open date/time picker" [ref=e12908]:
+            - generic [ref=e12909]:
+              - text: Apr 13, 2024, 4:09 PM
+              - textbox: 2024-04-13T16:09
+              - button "Open date/time picker" [ref=e12910] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e12911]
+          - cell "+ 2,983 €" [ref=e12912]
+          - cell "Temporary" [ref=e12913]
+          - cell "Spain" [ref=e12914]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e12915]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "33070" [ref=e12916]
+          - cell "121 Example Street" [ref=e12917]
+          - cell "https://www.linkedin.com/in/frankmüller 🔗" [ref=e12918]:
+            - generic [ref=e12919]:
+              - generic [ref=e12920]: https://www.linkedin.com/in/frankmüller
+              - button "🔗" [ref=e12921] [cursor=pointer]
+          - cell [ref=e12922]
+          - cell "July 1, 1972 1972-07-01 Open date picker" [ref=e12924]:
+            - generic [ref=e12925]:
+              - text: July 1, 1972
+              - textbox: 1972-07-01
+              - button "Open date picker" [ref=e12926] [cursor=pointer]: 📅
+          - cell "Grace Schmidt (+167124636 [...]" [ref=e12927]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e12928]:
+            - generic [ref=e12929]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e12930] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e12931]:
+            - generic [ref=e12932]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e12933]':
+            - generic [ref=e12934]:
+              - generic [ref=e12936]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 246" [ref=e12937]:
+          - cell "247" [ref=e12938]
+          - cell "3uGlP4ms9zTuIBRLuf3UYrR" [ref=e12939]
+          - cell "Alice" [ref=e12940]
+          - cell "Schneider" [ref=e12941]
+          - cell "alice.schneider@example.c [...]" [ref=e12942]
+          - cell "Finance" [ref=e12943]:
+            - text: Finance
+            - generic: ▾
+          - cell "Figma" [ref=e12944]:
+            - text: Figma
+            - generic: ▾
+          - cell [ref=e12945]:
+            - generic [ref=e12946] [cursor=pointer]: 🖉
+          - cell [ref=e12947]:
+            - checkbox [checked] [ref=e12948]
+          - cell "68,094.00 €" [ref=e12949]
+          - cell "Jul 4, 2011 2011-07-04 Open date picker" [ref=e12950]:
+            - generic [ref=e12951]:
+              - text: Jul 4, 2011
+              - textbox: 2011-07-04
+              - button "Open date picker" [ref=e12952] [cursor=pointer]: 📅
+          - cell "Ian Müller" [ref=e12953]
+          - cell "Hamburg Office" [ref=e12954]
+          - cell "+13 214 543606" [ref=e12955]
+          - cell "EMP00247" [ref=e12956]
+          - cell "On Leave" [ref=e12957]
+          - cell "QA Engineer" [ref=e12958]
+          - cell "Core" [ref=e12959]
+          - cell "Jun 23, 2024, 11:58 PM 2024-06-23T23:58 Open date/time picker" [ref=e12960]:
+            - generic [ref=e12961]:
+              - text: Jun 23, 2024, 11:58 PM
+              - textbox: 2024-06-23T23:58
+              - button "Open date/time picker" [ref=e12962] [cursor=pointer]: 📅
+          - cell "4.95" [ref=e12963]
+          - cell "+ 7,114 €" [ref=e12964]
+          - cell "Temporary" [ref=e12965]
+          - cell "UK" [ref=e12966]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e12967]:
+            - generic: ▾
+          - cell "36958" [ref=e12968]
+          - cell "152 Example Street" [ref=e12969]
+          - cell [ref=e12970]
+          - cell [ref=e12972]
+          - cell "March 7, 1992 1992-03-07 Open date picker" [ref=e12974]:
+            - generic [ref=e12975]:
+              - text: March 7, 1992
+              - textbox: 1992-03-07
+              - button "Open date picker" [ref=e12976] [cursor=pointer]: 📅
+          - cell "Hannah Weber (+4972178415 [...]" [ref=e12977]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e12978]:
+            - generic [ref=e12979]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e12980] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e12981]:
+            - generic [ref=e12982]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e12983]':
+            - generic [ref=e12984]:
+              - generic [ref=e12986]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 247" [ref=e12987]:
+          - cell "248" [ref=e12988]
+          - cell "hqQfjqlDal1F1I-2G7faz2Cqf [...]" [ref=e12989]
+          - cell "Grace" [ref=e12990]
+          - cell "Wagner" [ref=e12991]
+          - cell "grace.wagner@example.com" [ref=e12992]
+          - cell "HR" [ref=e12993]:
+            - text: HR
+            - generic: ▾
+          - cell [ref=e12994]:
+            - generic: ▾
+          - cell "takimata Stet elitr, magn [...]" [ref=e12995]:
+            - text: takimata Stet elitr, magn [...]
+            - generic [ref=e12996] [cursor=pointer]: 🖉
+          - cell [ref=e12997]:
+            - checkbox [checked] [ref=e12998]
+          - cell "64,241.00 €" [ref=e12999]
+          - cell "Mar 19, 2016 2016-03-19 Open date picker" [ref=e13000]:
+            - generic [ref=e13001]:
+              - text: Mar 19, 2016
+              - textbox: 2016-03-19
+              - button "Open date picker" [ref=e13002] [cursor=pointer]: 📅
+          - cell "Charlie Schneider" [ref=e13003]
+          - cell "Cologne Office" [ref=e13004]
+          - cell "+15 301 836914" [ref=e13005]
+          - cell "EMP00248" [ref=e13006]
+          - cell "Probation" [ref=e13007]
+          - cell "QA Engineer" [ref=e13008]
+          - cell "Web" [ref=e13009]
+          - cell "Dec 6, 2023, 7:55 PM 2023-12-06T19:55 Open date/time picker" [ref=e13010]:
+            - generic [ref=e13011]:
+              - text: Dec 6, 2023, 7:55 PM
+              - textbox: 2023-12-06T19:55
+              - button "Open date/time picker" [ref=e13012] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e13013]
+          - cell "+ 0 €" [ref=e13014]
+          - cell "Temporary" [ref=e13015]
+          - cell "USA" [ref=e13016]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e13017]:
+            - text: Munich
+            - generic: ▾
+          - cell "57417" [ref=e13018]
+          - cell "87 Example Street" [ref=e13019]
+          - cell [ref=e13020]
+          - cell [ref=e13022]
+          - cell "January 21, 2000 2000-01-21 Open date picker" [ref=e13024]:
+            - generic [ref=e13025]:
+              - text: January 21, 2000
+              - textbox: 2000-01-21
+              - button "Open date picker" [ref=e13026] [cursor=pointer]: 📅
+          - cell [ref=e13027]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e13028]:
+            - generic [ref=e13029]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e13030] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e13031]:
+            - generic [ref=e13032]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e13033]':
+            - generic [ref=e13034]:
+              - generic [ref=e13036]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 248" [ref=e13037]:
+          - cell "249" [ref=e13038]
+          - cell "ayb3Cavgea1Fu56nGIf4TKrmu [...]" [ref=e13039]
+          - cell "Hannah" [ref=e13040]
+          - cell "Schmidt" [ref=e13041]
+          - cell "hannah.schmidt@example.co [...]" [ref=e13042]
+          - cell "IT" [ref=e13043]:
+            - text: IT
+            - generic: ▾
+          - cell "Docker, TypeScript, SQL" [ref=e13044]:
+            - text: Docker, TypeScript, SQL
+            - generic: ▾
+          - cell [ref=e13045]:
+            - generic [ref=e13046] [cursor=pointer]: 🖉
+          - cell [ref=e13047]:
+            - checkbox [checked] [ref=e13048]
+          - cell "72,458.00 €" [ref=e13049]
+          - cell "Open date picker" [ref=e13050]:
+            - generic [ref=e13051]:
+              - textbox
+              - button "Open date picker" [ref=e13053] [cursor=pointer]: 📅
+          - cell "Grace Weber" [ref=e13054]
+          - cell [ref=e13055]
+          - cell "+11 904 000495" [ref=e13056]
+          - cell "EMP00249" [ref=e13057]
+          - cell "Probation" [ref=e13058]
+          - cell "QA Engineer" [ref=e13059]
+          - cell "Tools" [ref=e13060]
+          - cell "Open date/time picker" [ref=e13061]:
+            - generic [ref=e13062]:
+              - textbox
+              - button "Open date/time picker" [ref=e13064] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e13065]
+          - cell "+ 9,737 €" [ref=e13066]
+          - cell "Temporary" [ref=e13067]
+          - cell "UK" [ref=e13068]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e13069]:
+            - text: Cologne
+            - generic: ▾
+          - cell "64481" [ref=e13070]
+          - cell "131 Example Street" [ref=e13071]
+          - cell [ref=e13072]
+          - cell [ref=e13074]
+          - cell "March 27, 1965 1965-03-27 Open date picker" [ref=e13076]:
+            - generic [ref=e13077]:
+              - text: March 27, 1965
+              - textbox: 1965-03-27
+              - button "Open date picker" [ref=e13078] [cursor=pointer]: 📅
+          - cell "Bob Schmidt (+49744168832 [...]" [ref=e13079]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e13080]:
+            - generic [ref=e13081]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e13082] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e13083]:
+            - generic [ref=e13084]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e13085]':
+            - generic [ref=e13086]:
+              - generic [ref=e13088]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 249" [ref=e13089]:
+          - cell "250" [ref=e13090]
+          - cell "ihCVNosZZZMKNuK0765QhvoBg [...]" [ref=e13091]
+          - cell "Charlie" [ref=e13092]
+          - cell "Becker" [ref=e13093]
+          - cell "charlie.becker@example.co [...]" [ref=e13094]
+          - cell "Legal" [ref=e13095]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java, Python, AWS, SQL" [ref=e13096]:
+            - text: Java, Python, AWS, SQL
+            - generic: ▾
+          - cell "duo consetetur et elitr, [...]" [ref=e13097]:
+            - text: duo consetetur et elitr, [...]
+            - generic [ref=e13098] [cursor=pointer]: 🖉
+          - cell [ref=e13099]:
+            - checkbox [checked] [ref=e13100]
+          - cell "40,784.00 €" [ref=e13101]
+          - cell "Jan 2, 2012 2012-01-02 Open date picker" [ref=e13102]:
+            - generic [ref=e13103]:
+              - text: Jan 2, 2012
+              - textbox: 2012-01-02
+              - button "Open date picker" [ref=e13104] [cursor=pointer]: 📅
+          - cell [ref=e13105]
+          - cell "Berlin HQ" [ref=e13106]
+          - cell "+11 528 369531" [ref=e13107]
+          - cell "EMP00250" [ref=e13108]
+          - cell "Probation" [ref=e13109]
+          - cell "Software Engineer" [ref=e13110]
+          - cell [ref=e13111]
+          - cell "Open date/time picker" [ref=e13112]:
+            - generic [ref=e13113]:
+              - textbox
+              - button "Open date/time picker" [ref=e13115] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e13116]
+          - cell "+ 0 €" [ref=e13117]
+          - cell "Permanent" [ref=e13118]
+          - cell "UK" [ref=e13119]:
+            - text: UK
+            - generic: ▾
+          - cell "Munich" [ref=e13120]:
+            - text: Munich
+            - generic: ▾
+          - cell "90235" [ref=e13121]
+          - cell "47 Example Street" [ref=e13122]
+          - cell "https://www.linkedin.com/in/charliebecker 🔗" [ref=e13123]:
+            - generic [ref=e13124]:
+              - generic [ref=e13125]: https://www.linkedin.com/in/charliebecker
+              - button "🔗" [ref=e13126] [cursor=pointer]
+          - cell [ref=e13127]
+          - cell "January 24, 1996 1996-01-24 Open date picker" [ref=e13129]:
+            - generic [ref=e13130]:
+              - text: January 24, 1996
+              - textbox: 1996-01-24
+              - button "Open date picker" [ref=e13131] [cursor=pointer]: 📅
+          - cell [ref=e13132]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e13133]:
+            - generic [ref=e13134]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e13135] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e13136]:
+            - generic [ref=e13137]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e13138]':
+            - generic [ref=e13139]:
+              - generic [ref=e13141]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 250" [ref=e13142]:
+          - cell "251" [ref=e13143]
+          - cell "VL2FON6SeCGq6aTSDruaeCmJ2 [...]" [ref=e13144]
+          - cell "Charlie" [ref=e13145]
+          - cell "Becker" [ref=e13146]
+          - cell "charlie.becker@example.co [...]" [ref=e13147]
+          - cell "Legal" [ref=e13148]:
+            - text: Legal
+            - generic: ▾
+          - cell "React" [ref=e13149]:
+            - text: React
+            - generic: ▾
+          - cell "et gubergren, takimata la [...]" [ref=e13150]:
+            - text: et gubergren, takimata la [...]
+            - generic [ref=e13151] [cursor=pointer]: 🖉
+          - cell [ref=e13152]:
+            - checkbox [checked] [ref=e13153]
+          - cell "78,634.00 €" [ref=e13154]
+          - cell "Dec 15, 2016 2016-12-15 Open date picker" [ref=e13155]:
+            - generic [ref=e13156]:
+              - text: Dec 15, 2016
+              - textbox: 2016-12-15
+              - button "Open date picker" [ref=e13157] [cursor=pointer]: 📅
+          - cell [ref=e13158]
+          - cell "Hamburg Office" [ref=e13159]
+          - cell "+49 671 821817" [ref=e13160]
+          - cell "EMP00251" [ref=e13161]
+          - cell "On Leave" [ref=e13162]
+          - cell "DevOps Engineer" [ref=e13163]
+          - cell "Tools" [ref=e13164]
+          - cell "Jan 24, 2020, 8:34 PM 2020-01-24T20:34 Open date/time picker" [ref=e13165]:
+            - generic [ref=e13166]:
+              - text: Jan 24, 2020, 8:34 PM
+              - textbox: 2020-01-24T20:34
+              - button "Open date/time picker" [ref=e13167] [cursor=pointer]: 📅
+          - cell "2.33" [ref=e13168]
+          - cell "+ 8,356 €" [ref=e13169]
+          - cell "Temporary" [ref=e13170]
+          - cell "France" [ref=e13171]:
+            - text: France
+            - generic: ▾
+          - cell "Berlin" [ref=e13172]:
+            - text: Berlin
+            - generic: ▾
+          - cell "87586" [ref=e13173]
+          - cell "198 Example Street" [ref=e13174]
+          - cell "https://www.linkedin.com/in/charliebecker 🔗" [ref=e13175]:
+            - generic [ref=e13176]:
+              - generic [ref=e13177]: https://www.linkedin.com/in/charliebecker
+              - button "🔗" [ref=e13178] [cursor=pointer]
+          - cell [ref=e13179]
+          - cell "November 28, 1984 1984-11-28 Open date picker" [ref=e13181]:
+            - generic [ref=e13182]:
+              - text: November 28, 1984
+              - textbox: 1984-11-28
+              - button "Open date picker" [ref=e13183] [cursor=pointer]: 📅
+          - cell [ref=e13184]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e13185]:
+            - generic [ref=e13186]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e13187] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e13188]:
+            - generic [ref=e13189]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e13190]':
+            - generic [ref=e13191]:
+              - generic [ref=e13193]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 251" [ref=e13194]:
+          - cell "252" [ref=e13195]
+          - cell "KWYucuiLlsl-6O1C7rPxHIkOm [...]" [ref=e13196]
+          - cell "Bob" [ref=e13197]
+          - cell "Becker" [ref=e13198]
+          - cell "bob.becker@example.com" [ref=e13199]
+          - cell "IT" [ref=e13200]:
+            - text: IT
+            - generic: ▾
+          - cell "Docker, Python" [ref=e13201]:
+            - text: Docker, Python
+            - generic: ▾
+          - cell [ref=e13202]:
+            - generic [ref=e13203] [cursor=pointer]: 🖉
+          - cell [ref=e13204]:
+            - checkbox [ref=e13205]
+          - cell "52,436.00 €" [ref=e13206]
+          - cell "Mar 3, 2008 2008-03-03 Open date picker" [ref=e13207]:
+            - generic [ref=e13208]:
+              - text: Mar 3, 2008
+              - textbox: 2008-03-03
+              - button "Open date picker" [ref=e13209] [cursor=pointer]: 📅
+          - cell "Ian Schmidt" [ref=e13210]
+          - cell "Munich Office" [ref=e13211]
+          - cell "+49 797 541475" [ref=e13212]
+          - cell "EMP00252" [ref=e13213]
+          - cell "Terminated" [ref=e13214]
+          - cell "Designer" [ref=e13215]
+          - cell [ref=e13216]
+          - cell "Sep 9, 2024, 9:20 AM 2024-09-09T09:20 Open date/time picker" [ref=e13217]:
+            - generic [ref=e13218]:
+              - text: Sep 9, 2024, 9:20 AM
+              - textbox: 2024-09-09T09:20
+              - button "Open date/time picker" [ref=e13219] [cursor=pointer]: 📅
+          - cell "1.40" [ref=e13220]
+          - cell "+ 9,008 €" [ref=e13221]
+          - cell "Temporary" [ref=e13222]
+          - cell "UK" [ref=e13223]:
+            - text: UK
+            - generic: ▾
+          - cell "Stuttgart" [ref=e13224]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "83167" [ref=e13225]
+          - cell "180 Example Street" [ref=e13226]
+          - cell [ref=e13227]
+          - cell [ref=e13229]
+          - cell "April 19, 1992 1992-04-19 Open date picker" [ref=e13231]:
+            - generic [ref=e13232]:
+              - text: April 19, 1992
+              - textbox: 1992-04-19
+              - button "Open date picker" [ref=e13233] [cursor=pointer]: 📅
+          - cell [ref=e13234]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e13235]:
+            - generic [ref=e13236]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e13237] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e13238]:
+            - generic [ref=e13239]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e13240]':
+            - generic [ref=e13241]:
+              - generic [ref=e13243]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 252" [ref=e13244]:
+          - cell "253" [ref=e13245]
+          - cell "_XfWZiz8ttwgdNsSPYI0ckVz4 [...]" [ref=e13246]
+          - cell "Eva" [ref=e13247]
+          - cell "Weber" [ref=e13248]
+          - cell "eva.weber@example.com" [ref=e13249]
+          - cell "IT" [ref=e13250]:
+            - text: IT
+            - generic: ▾
+          - cell "Java, SQL, AWS" [ref=e13251]:
+            - text: Java, SQL, AWS
+            - generic: ▾
+          - cell [ref=e13252]:
+            - generic [ref=e13253] [cursor=pointer]: 🖉
+          - cell [ref=e13254]:
+            - checkbox [checked] [ref=e13255]
+          - cell "73,065.00 €" [ref=e13256]
+          - cell "Jan 2, 2006 2006-01-02 Open date picker" [ref=e13257]:
+            - generic [ref=e13258]:
+              - text: Jan 2, 2006
+              - textbox: 2006-01-02
+              - button "Open date picker" [ref=e13259] [cursor=pointer]: 📅
+          - cell "Grace Müller" [ref=e13260]
+          - cell "Berlin HQ" [ref=e13261]
+          - cell [ref=e13262]
+          - cell "EMP00253" [ref=e13263]
+          - cell "Probation" [ref=e13264]
+          - cell "Product Manager" [ref=e13265]
+          - cell "Tools" [ref=e13266]
+          - cell "Apr 17, 2020, 1:40 AM 2020-04-17T01:40 Open date/time picker" [ref=e13267]:
+            - generic [ref=e13268]:
+              - text: Apr 17, 2020, 1:40 AM
+              - textbox: 2020-04-17T01:40
+              - button "Open date/time picker" [ref=e13269] [cursor=pointer]: 📅
+          - cell "3.73" [ref=e13270]
+          - cell "+ 4,089 €" [ref=e13271]
+          - cell "Intern" [ref=e13272]
+          - cell "Spain" [ref=e13273]:
+            - text: Spain
+            - generic: ▾
+          - cell "Berlin" [ref=e13274]:
+            - text: Berlin
+            - generic: ▾
+          - cell "96506" [ref=e13275]
+          - cell "175 Example Street" [ref=e13276]
+          - cell [ref=e13277]
+          - cell [ref=e13279]
+          - cell "August 9, 1976 1976-08-09 Open date picker" [ref=e13281]:
+            - generic [ref=e13282]:
+              - text: August 9, 1976
+              - textbox: 1976-08-09
+              - button "Open date picker" [ref=e13283] [cursor=pointer]: 📅
+          - cell "Eva Meyer (+49790445491)" [ref=e13284]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e13285]:
+            - generic [ref=e13286]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e13287] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e13288]:
+            - generic [ref=e13289]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e13290]':
+            - generic [ref=e13291]:
+              - generic [ref=e13293]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 253" [ref=e13294]:
+          - cell "254" [ref=e13295]
+          - cell "2r1IDvBV1ysDaZ8HHYxQkrPSX [...]" [ref=e13296]
+          - cell "Julia" [ref=e13297]
+          - cell "Wagner" [ref=e13298]
+          - cell "julia.wagner@example.com" [ref=e13299]
+          - cell "Sales" [ref=e13300]:
+            - text: Sales
+            - generic: ▾
+          - cell "Figma, Java, TypeScript, [...]" [ref=e13301]:
+            - text: Figma, Java, TypeScript, [...]
+            - generic: ▾
+          - cell "At At Stet gubergren, et [...]" [ref=e13302]:
+            - text: At At Stet gubergren, et [...]
+            - generic [ref=e13303] [cursor=pointer]: 🖉
+          - cell [ref=e13304]:
+            - checkbox [checked] [ref=e13305]
+          - cell "46,441.00 €" [ref=e13306]
+          - cell "Jun 9, 2006 2006-06-09 Open date picker" [ref=e13307]:
+            - generic [ref=e13308]:
+              - text: Jun 9, 2006
+              - textbox: 2006-06-09
+              - button "Open date picker" [ref=e13309] [cursor=pointer]: 📅
+          - cell "Bob Schneider" [ref=e13310]
+          - cell [ref=e13311]
+          - cell "+13 521 004911" [ref=e13312]
+          - cell "EMP00254" [ref=e13313]
+          - cell "Active" [ref=e13314]
+          - cell "QA Engineer" [ref=e13315]
+          - cell "Mobile" [ref=e13316]
+          - cell "Open date/time picker" [ref=e13317]:
+            - generic [ref=e13318]:
+              - textbox
+              - button "Open date/time picker" [ref=e13320] [cursor=pointer]: 📅
+          - cell "3.89" [ref=e13321]
+          - cell "+ 3,713 €" [ref=e13322]
+          - cell "Permanent" [ref=e13323]
+          - cell "Germany" [ref=e13324]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e13325]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "52314" [ref=e13326]
+          - cell [ref=e13327]
+          - cell "https://www.linkedin.com/in/juliawagner 🔗" [ref=e13328]:
+            - generic [ref=e13329]:
+              - generic [ref=e13330]: https://www.linkedin.com/in/juliawagner
+              - button "🔗" [ref=e13331] [cursor=pointer]
+          - cell [ref=e13332]
+          - cell "February 25, 1966 1966-02-25 Open date picker" [ref=e13334]:
+            - generic [ref=e13335]:
+              - text: February 25, 1966
+              - textbox: 1966-02-25
+              - button "Open date picker" [ref=e13336] [cursor=pointer]: 📅
+          - cell "Eva Meyer (+49545394097)" [ref=e13337]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e13338]:
+            - generic [ref=e13339]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e13340] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e13341]:
+            - generic [ref=e13342]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e13343]':
+            - generic [ref=e13344]:
+              - generic [ref=e13346]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 254" [ref=e13347]:
+          - cell "255" [ref=e13348]
+          - cell "vr3E7ZfydVweQXVxOl9tynjkd [...]" [ref=e13349]
+          - cell "Hannah" [ref=e13350]
+          - cell "Becker" [ref=e13351]
+          - cell "hannah.becker@example.com" [ref=e13352]
+          - cell "Finance" [ref=e13353]:
+            - text: Finance
+            - generic: ▾
+          - cell "Figma, React" [ref=e13354]:
+            - text: Figma, React
+            - generic: ▾
+          - cell "erat, erat, At et sadipsc [...]" [ref=e13355]:
+            - text: erat, erat, At et sadipsc [...]
+            - generic [ref=e13356] [cursor=pointer]: 🖉
+          - cell [ref=e13357]:
+            - checkbox [ref=e13358]
+          - cell "53,233.00 €" [ref=e13359]
+          - cell "Aug 3, 2015 2015-08-03 Open date picker" [ref=e13360]:
+            - generic [ref=e13361]:
+              - text: Aug 3, 2015
+              - textbox: 2015-08-03
+              - button "Open date picker" [ref=e13362] [cursor=pointer]: 📅
+          - cell "Diana Schmidt" [ref=e13363]
+          - cell "Munich Office" [ref=e13364]
+          - cell "+14 779 292922" [ref=e13365]
+          - cell "EMP00255" [ref=e13366]
+          - cell [ref=e13367]
+          - cell "Product Manager" [ref=e13368]
+          - cell [ref=e13369]
+          - cell "Open date/time picker" [ref=e13370]:
+            - generic [ref=e13371]:
+              - textbox
+              - button "Open date/time picker" [ref=e13373] [cursor=pointer]: 📅
+          - cell "0.14" [ref=e13374]
+          - cell "+ 1,306 €" [ref=e13375]
+          - cell "Permanent" [ref=e13376]
+          - cell "Netherlands" [ref=e13377]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Frankfurt" [ref=e13378]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "53858" [ref=e13379]
+          - cell "129 Example Street" [ref=e13380]
+          - cell [ref=e13381]
+          - cell [ref=e13383]
+          - cell "November 20, 1988 1988-11-20 Open date picker" [ref=e13385]:
+            - generic [ref=e13386]:
+              - text: November 20, 1988
+              - textbox: 1988-11-20
+              - button "Open date picker" [ref=e13387] [cursor=pointer]: 📅
+          - cell [ref=e13388]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e13389]:
+            - generic [ref=e13390]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e13391] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e13392]:
+            - generic [ref=e13393]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e13394]':
+            - generic [ref=e13395]:
+              - generic [ref=e13397]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 255" [ref=e13398]:
+          - cell "256" [ref=e13399]
+          - cell "AtMluQ1c-4gYDiuQFQVglDyqJ [...]" [ref=e13400]
+          - cell "Diana" [ref=e13401]
+          - cell "Fischer" [ref=e13402]
+          - cell "diana.fischer@example.com" [ref=e13403]
+          - cell [ref=e13404]:
+            - generic: ▾
+          - cell [ref=e13405]:
+            - generic: ▾
+          - cell [ref=e13406]:
+            - generic [ref=e13407] [cursor=pointer]: 🖉
+          - cell [ref=e13408]:
+            - checkbox [checked] [ref=e13409]
+          - cell "87,153.00 €" [ref=e13410]
+          - cell "Mar 2, 2020 2020-03-02 Open date picker" [ref=e13411]:
+            - generic [ref=e13412]:
+              - text: Mar 2, 2020
+              - textbox: 2020-03-02
+              - button "Open date picker" [ref=e13413] [cursor=pointer]: 📅
+          - cell "Diana Becker" [ref=e13414]
+          - cell "Hamburg Office" [ref=e13415]
+          - cell "+49 368 041916" [ref=e13416]
+          - cell "EMP00256" [ref=e13417]
+          - cell "On Leave" [ref=e13418]
+          - cell "QA Engineer" [ref=e13419]
+          - cell "Tools" [ref=e13420]
+          - cell "Apr 13, 2020, 3:07 PM 2020-04-13T15:07 Open date/time picker" [ref=e13421]:
+            - generic [ref=e13422]:
+              - text: Apr 13, 2020, 3:07 PM
+              - textbox: 2020-04-13T15:07
+              - button "Open date/time picker" [ref=e13423] [cursor=pointer]: 📅
+          - cell "3.79" [ref=e13424]
+          - cell "+ 0 €" [ref=e13425]
+          - cell [ref=e13426]
+          - cell "Spain" [ref=e13427]:
+            - text: Spain
+            - generic: ▾
+          - cell "Berlin" [ref=e13428]:
+            - text: Berlin
+            - generic: ▾
+          - cell "16994" [ref=e13429]
+          - cell "75 Example Street" [ref=e13430]
+          - cell [ref=e13431]
+          - cell "https://github.com/dianafischer 🔗" [ref=e13433]:
+            - generic [ref=e13434]:
+              - generic [ref=e13435]: https://github.com/dianafischer
+              - button "🔗" [ref=e13436] [cursor=pointer]
+          - cell "October 24, 1973 1973-10-24 Open date picker" [ref=e13437]:
+            - generic [ref=e13438]:
+              - text: October 24, 1973
+              - textbox: 1973-10-24
+              - button "Open date picker" [ref=e13439] [cursor=pointer]: 📅
+          - cell "Alice Meyer (+49760171722 [...]" [ref=e13440]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e13441]:
+            - generic [ref=e13442]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e13443] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e13444]:
+            - generic [ref=e13445]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e13446]':
+            - generic [ref=e13447]:
+              - generic [ref=e13449]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 256" [ref=e13450]:
+          - cell "257" [ref=e13451]
+          - cell "nqISauTyb5rKnIzxu0ZseT5lr [...]" [ref=e13452]
+          - cell "Ian" [ref=e13453]
+          - cell "Schmidt" [ref=e13454]
+          - cell "ian.schmidt@example.com" [ref=e13455]
+          - cell "Sales" [ref=e13456]:
+            - text: Sales
+            - generic: ▾
+          - cell "React" [ref=e13457]:
+            - text: React
+            - generic: ▾
+          - cell "sed kasd nonumy sanctus u [...]" [ref=e13458]:
+            - text: sed kasd nonumy sanctus u [...]
+            - generic [ref=e13459] [cursor=pointer]: 🖉
+          - cell [ref=e13460]:
+            - checkbox [checked] [ref=e13461]
+          - cell "74,949.00 €" [ref=e13462]
+          - cell "Mar 27, 2017 2017-03-27 Open date picker" [ref=e13463]:
+            - generic [ref=e13464]:
+              - text: Mar 27, 2017
+              - textbox: 2017-03-27
+              - button "Open date picker" [ref=e13465] [cursor=pointer]: 📅
+          - cell "Julia Weber" [ref=e13466]
+          - cell "Cologne Office" [ref=e13467]
+          - cell "+19 518 678625" [ref=e13468]
+          - cell "EMP00257" [ref=e13469]
+          - cell "Probation" [ref=e13470]
+          - cell "Software Engineer" [ref=e13471]
+          - cell "Growth" [ref=e13472]
+          - cell "Oct 13, 2022, 10:49 PM 2022-10-13T22:49 Open date/time picker" [ref=e13473]:
+            - generic [ref=e13474]:
+              - text: Oct 13, 2022, 10:49 PM
+              - textbox: 2022-10-13T22:49
+              - button "Open date/time picker" [ref=e13475] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e13476]
+          - cell "+ 0 €" [ref=e13477]
+          - cell "Contractor" [ref=e13478]
+          - cell "Spain" [ref=e13479]:
+            - text: Spain
+            - generic: ▾
+          - cell [ref=e13480]:
+            - generic: ▾
+          - cell "72002" [ref=e13481]
+          - cell "51 Example Street" [ref=e13482]
+          - cell [ref=e13483]
+          - cell "https://github.com/ianschmidt 🔗" [ref=e13485]:
+            - generic [ref=e13486]:
+              - generic [ref=e13487]: https://github.com/ianschmidt
+              - button "🔗" [ref=e13488] [cursor=pointer]
+          - cell "November 12, 1982 1982-11-12 Open date picker" [ref=e13489]:
+            - generic [ref=e13490]:
+              - text: November 12, 1982
+              - textbox: 1982-11-12
+              - button "Open date picker" [ref=e13491] [cursor=pointer]: 📅
+          - cell "Ian Becker (+13653971904)" [ref=e13492]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e13493]:
+            - generic [ref=e13494]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e13495] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e13496]:
+            - generic [ref=e13497]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e13498]':
+            - generic [ref=e13499]:
+              - generic [ref=e13501]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 257" [ref=e13502]:
+          - cell "258" [ref=e13503]
+          - cell "GwFD0aaPFAZ9rm9AegnTsRo0q" [ref=e13504]
+          - cell "Frank" [ref=e13505]
+          - cell "Weber" [ref=e13506]
+          - cell "frank.weber@example.com" [ref=e13507]
+          - cell "Legal" [ref=e13508]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e13509]:
+            - generic: ▾
+          - cell [ref=e13510]:
+            - generic [ref=e13511] [cursor=pointer]: 🖉
+          - cell [ref=e13512]:
+            - checkbox [checked] [ref=e13513]
+          - cell "79,604.00 €" [ref=e13514]
+          - cell "Aug 18, 2017 2017-08-18 Open date picker" [ref=e13515]:
+            - generic [ref=e13516]:
+              - text: Aug 18, 2017
+              - textbox: 2017-08-18
+              - button "Open date picker" [ref=e13517] [cursor=pointer]: 📅
+          - cell "Bob Meyer" [ref=e13518]
+          - cell "Cologne Office" [ref=e13519]
+          - cell "+19 810 100452" [ref=e13520]
+          - cell "EMP00258" [ref=e13521]
+          - cell "On Leave" [ref=e13522]
+          - cell "Software Engineer" [ref=e13523]
+          - cell "Platform" [ref=e13524]
+          - cell "Sep 27, 2020, 7:51 AM 2020-09-27T07:51 Open date/time picker" [ref=e13525]:
+            - generic [ref=e13526]:
+              - text: Sep 27, 2020, 7:51 AM
+              - textbox: 2020-09-27T07:51
+              - button "Open date/time picker" [ref=e13527] [cursor=pointer]: 📅
+          - cell "2.77" [ref=e13528]
+          - cell "+ 0 €" [ref=e13529]
+          - cell "Intern" [ref=e13530]
+          - cell "Spain" [ref=e13531]:
+            - text: Spain
+            - generic: ▾
+          - cell "Stuttgart" [ref=e13532]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "76908" [ref=e13533]
+          - cell [ref=e13534]
+          - cell [ref=e13535]
+          - cell "https://github.com/frankweber 🔗" [ref=e13537]:
+            - generic [ref=e13538]:
+              - generic [ref=e13539]: https://github.com/frankweber
+              - button "🔗" [ref=e13540] [cursor=pointer]
+          - cell "Open date picker" [ref=e13541]:
+            - generic [ref=e13542]:
+              - textbox
+              - button "Open date picker" [ref=e13544] [cursor=pointer]: 📅
+          - cell "Hannah Fischer (+49404182 [...]" [ref=e13545]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e13546]:
+            - generic [ref=e13547]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e13548] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e13549]:
+            - generic [ref=e13550]: 5h
+          - 'cell "#10b981 #10b981" [ref=e13551]':
+            - generic [ref=e13552]:
+              - generic [ref=e13554]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 258" [ref=e13555]:
+          - cell "259" [ref=e13556]
+          - cell "vshZHDCeh3SYJKbOh" [ref=e13557]
+          - cell [ref=e13558]
+          - cell "Wagner" [ref=e13559]
+          - cell "ian.wagner@example.com" [ref=e13560]
+          - cell "Legal" [ref=e13561]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java, Docker, SQL, Python" [ref=e13562]:
+            - text: Java, Docker, SQL, Python
+            - generic: ▾
+          - cell "accusam duo sea diam ea d [...]" [ref=e13563]:
+            - text: accusam duo sea diam ea d [...]
+            - generic [ref=e13564] [cursor=pointer]: 🖉
+          - cell [ref=e13565]:
+            - checkbox [checked] [ref=e13566]
+          - cell "43,201.00 €" [ref=e13567]
+          - cell "Jan 6, 2006 2006-01-06 Open date picker" [ref=e13568]:
+            - generic [ref=e13569]:
+              - text: Jan 6, 2006
+              - textbox: 2006-01-06
+              - button "Open date picker" [ref=e13570] [cursor=pointer]: 📅
+          - cell "Charlie Weber" [ref=e13571]
+          - cell "Berlin HQ" [ref=e13572]
+          - cell "+49 801 336459" [ref=e13573]
+          - cell "EMP00259" [ref=e13574]
+          - cell "Probation" [ref=e13575]
+          - cell "Data Analyst" [ref=e13576]
+          - cell "Platform" [ref=e13577]
+          - cell "Jun 27, 2020, 11:46 PM 2020-06-27T23:46 Open date/time picker" [ref=e13578]:
+            - generic [ref=e13579]:
+              - text: Jun 27, 2020, 11:46 PM
+              - textbox: 2020-06-27T23:46
+              - button "Open date/time picker" [ref=e13580] [cursor=pointer]: 📅
+          - cell "3.09" [ref=e13581]
+          - cell "+ 13,210 €" [ref=e13582]
+          - cell "Contractor" [ref=e13583]
+          - cell "UK" [ref=e13584]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e13585]:
+            - generic: ▾
+          - cell "98685" [ref=e13586]
+          - cell [ref=e13587]
+          - cell [ref=e13588]
+          - cell [ref=e13590]
+          - cell "December 8, 1985 1985-12-08 Open date picker" [ref=e13592]:
+            - generic [ref=e13593]:
+              - text: December 8, 1985
+              - textbox: 1985-12-08
+              - button "Open date picker" [ref=e13594] [cursor=pointer]: 📅
+          - cell [ref=e13595]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e13596]:
+            - generic [ref=e13597]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e13598] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e13599]:
+            - generic [ref=e13600]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e13601]':
+            - generic [ref=e13602]:
+              - generic [ref=e13604]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 259" [ref=e13605]:
+          - cell "260" [ref=e13606]
+          - cell "fJolxBkH8iEMVKLF64BqKhiir [...]" [ref=e13607]
+          - cell "Frank" [ref=e13608]
+          - cell "Wagner" [ref=e13609]
+          - cell "frank.wagner@example.com" [ref=e13610]
+          - cell "Legal" [ref=e13611]:
+            - text: Legal
+            - generic: ▾
+          - cell "Python, Java" [ref=e13612]:
+            - text: Python, Java
+            - generic: ▾
+          - cell "sed magna sed magna Lorem [...]" [ref=e13613]:
+            - text: sed magna sed magna Lorem [...]
+            - generic [ref=e13614] [cursor=pointer]: 🖉
+          - cell [ref=e13615]:
+            - checkbox [checked] [ref=e13616]
+          - cell "41,572.00 €" [ref=e13617]
+          - cell "Mar 30, 2011 2011-03-30 Open date picker" [ref=e13618]:
+            - generic [ref=e13619]:
+              - text: Mar 30, 2011
+              - textbox: 2011-03-30
+              - button "Open date picker" [ref=e13620] [cursor=pointer]: 📅
+          - cell "Grace Wagner" [ref=e13621]
+          - cell "Berlin HQ" [ref=e13622]
+          - cell "+49 458 857882" [ref=e13623]
+          - cell "EMP00260" [ref=e13624]
+          - cell "Terminated" [ref=e13625]
+          - cell "Data Analyst" [ref=e13626]
+          - cell "Core" [ref=e13627]
+          - cell "Open date/time picker" [ref=e13628]:
+            - generic [ref=e13629]:
+              - textbox
+              - button "Open date/time picker" [ref=e13631] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e13632]
+          - cell "+ 6,259 €" [ref=e13633]
+          - cell "Permanent" [ref=e13634]
+          - cell "Germany" [ref=e13635]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e13636]:
+            - text: Munich
+            - generic: ▾
+          - cell "88641" [ref=e13637]
+          - cell "10 Example Street" [ref=e13638]
+          - cell [ref=e13639]
+          - cell [ref=e13641]
+          - cell "February 24, 1992 1992-02-24 Open date picker" [ref=e13643]:
+            - generic [ref=e13644]:
+              - text: February 24, 1992
+              - textbox: 1992-02-24
+              - button "Open date picker" [ref=e13645] [cursor=pointer]: 📅
+          - cell [ref=e13646]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e13647]:
+            - generic [ref=e13648]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e13649] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e13650]:
+            - generic [ref=e13651]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e13652]':
+            - generic [ref=e13653]:
+              - generic [ref=e13655]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 260" [ref=e13656]:
+          - cell "261" [ref=e13657]
+          - cell "KmLRsBggdOLt5DqEReAOe5dRB [...]" [ref=e13658]
+          - cell "Hannah" [ref=e13659]
+          - cell "Becker" [ref=e13660]
+          - cell "hannah.becker@example.com" [ref=e13661]
+          - cell "HR" [ref=e13662]:
+            - text: HR
+            - generic: ▾
+          - cell "Java, Python" [ref=e13663]:
+            - text: Java, Python
+            - generic: ▾
+          - cell "aliquyam et eirmod takima [...]" [ref=e13664]:
+            - text: aliquyam et eirmod takima [...]
+            - generic [ref=e13665] [cursor=pointer]: 🖉
+          - cell [ref=e13666]:
+            - checkbox [checked] [ref=e13667]
+          - cell "49,805.00 €" [ref=e13668]
+          - cell "Oct 29, 2021 2021-10-29 Open date picker" [ref=e13669]:
+            - generic [ref=e13670]:
+              - text: Oct 29, 2021
+              - textbox: 2021-10-29
+              - button "Open date picker" [ref=e13671] [cursor=pointer]: 📅
+          - cell "Charlie Fischer" [ref=e13672]
+          - cell "Munich Office" [ref=e13673]
+          - cell [ref=e13674]
+          - cell "EMP00261" [ref=e13675]
+          - cell "Probation" [ref=e13676]
+          - cell "Data Analyst" [ref=e13677]
+          - cell "Mobile" [ref=e13678]
+          - cell "May 11, 2023, 5:41 PM 2023-05-11T17:41 Open date/time picker" [ref=e13679]:
+            - generic [ref=e13680]:
+              - text: May 11, 2023, 5:41 PM
+              - textbox: 2023-05-11T17:41
+              - button "Open date/time picker" [ref=e13681] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e13682]
+          - cell "+ 14,111 €" [ref=e13683]
+          - cell "Contractor" [ref=e13684]
+          - cell "UK" [ref=e13685]:
+            - text: UK
+            - generic: ▾
+          - cell "Berlin" [ref=e13686]:
+            - text: Berlin
+            - generic: ▾
+          - cell "15081" [ref=e13687]
+          - cell "103 Example Street" [ref=e13688]
+          - cell [ref=e13689]
+          - cell [ref=e13691]
+          - cell "December 1, 1994 1994-12-01 Open date picker" [ref=e13693]:
+            - generic [ref=e13694]:
+              - text: December 1, 1994
+              - textbox: 1994-12-01
+              - button "Open date picker" [ref=e13695] [cursor=pointer]: 📅
+          - cell [ref=e13696]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e13697]:
+            - generic [ref=e13698]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e13699] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e13700]:
+            - generic [ref=e13701]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e13702]':
+            - generic [ref=e13703]:
+              - generic [ref=e13705]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 261" [ref=e13706]:
+          - cell "262" [ref=e13707]
+          - cell "QgsyYOBJvC5z0AZbuVLI4gLun" [ref=e13708]
+          - cell "Charlie" [ref=e13709]
+          - cell "Wagner" [ref=e13710]
+          - cell "charlie.wagner@example.co [...]" [ref=e13711]
+          - cell "HR" [ref=e13712]:
+            - text: HR
+            - generic: ▾
+          - cell "React" [ref=e13713]:
+            - text: React
+            - generic: ▾
+          - cell "magna voluptua. magna At [...]" [ref=e13714]:
+            - text: magna voluptua. magna At [...]
+            - generic [ref=e13715] [cursor=pointer]: 🖉
+          - cell [ref=e13716]:
+            - checkbox [checked] [ref=e13717]
+          - cell "96,434.00 €" [ref=e13718]
+          - cell "Oct 21, 2023 2023-10-21 Open date picker" [ref=e13719]:
+            - generic [ref=e13720]:
+              - text: Oct 21, 2023
+              - textbox: 2023-10-21
+              - button "Open date picker" [ref=e13721] [cursor=pointer]: 📅
+          - cell "Grace Wagner" [ref=e13722]
+          - cell "Hamburg Office" [ref=e13723]
+          - cell "+18 749 547051" [ref=e13724]
+          - cell "EMP00262" [ref=e13725]
+          - cell [ref=e13726]
+          - cell "QA Engineer" [ref=e13727]
+          - cell "Core" [ref=e13728]
+          - cell "Open date/time picker" [ref=e13729]:
+            - generic [ref=e13730]:
+              - textbox
+              - button "Open date/time picker" [ref=e13732] [cursor=pointer]: 📅
+          - cell "3.75" [ref=e13733]
+          - cell "+ 9,907 €" [ref=e13734]
+          - cell "Contractor" [ref=e13735]
+          - cell [ref=e13736]:
+            - generic: ▾
+          - cell "Munich" [ref=e13737]:
+            - text: Munich
+            - generic: ▾
+          - cell "55307" [ref=e13738]
+          - cell [ref=e13739]
+          - cell [ref=e13740]
+          - cell [ref=e13742]
+          - cell "August 3, 1979 1979-08-03 Open date picker" [ref=e13744]:
+            - generic [ref=e13745]:
+              - text: August 3, 1979
+              - textbox: 1979-08-03
+              - button "Open date picker" [ref=e13746] [cursor=pointer]: 📅
+          - cell [ref=e13747]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e13748]:
+            - generic [ref=e13749]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e13750] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e13751]:
+            - generic [ref=e13752]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e13753]':
+            - generic [ref=e13754]:
+              - generic [ref=e13756]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 262" [ref=e13757]:
+          - cell "263" [ref=e13758]
+          - cell "FVUuiexZtEWn7byYV7AwxV" [ref=e13759]
+          - cell "Frank" [ref=e13760]
+          - cell "Becker" [ref=e13761]
+          - cell "frank.becker@example.com" [ref=e13762]
+          - cell [ref=e13763]:
+            - generic: ▾
+          - cell "React, Python, Docker, SQ [...]" [ref=e13764]:
+            - text: React, Python, Docker, SQ [...]
+            - generic: ▾
+          - cell "sanctus dolores te" [ref=e13765]:
+            - text: sanctus dolores te
+            - generic [ref=e13766] [cursor=pointer]: 🖉
+          - cell [ref=e13767]:
+            - checkbox [checked] [ref=e13768]
+          - cell "41,684.00 €" [ref=e13769]
+          - cell "Jun 17, 2016 2016-06-17 Open date picker" [ref=e13770]:
+            - generic [ref=e13771]:
+              - text: Jun 17, 2016
+              - textbox: 2016-06-17
+              - button "Open date picker" [ref=e13772] [cursor=pointer]: 📅
+          - cell "Diana Becker" [ref=e13773]
+          - cell "Berlin HQ" [ref=e13774]
+          - cell "+19 856 878884" [ref=e13775]
+          - cell "EMP00263" [ref=e13776]
+          - cell [ref=e13777]
+          - cell "Product Manager" [ref=e13778]
+          - cell [ref=e13779]
+          - cell "Open date/time picker" [ref=e13780]:
+            - generic [ref=e13781]:
+              - textbox
+              - button "Open date/time picker" [ref=e13783] [cursor=pointer]: 📅
+          - cell "4.05" [ref=e13784]
+          - cell "+ 14,220 €" [ref=e13785]
+          - cell "Temporary" [ref=e13786]
+          - cell "USA" [ref=e13787]:
+            - text: USA
+            - generic: ▾
+          - cell "Cologne" [ref=e13788]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e13789]
+          - cell "142 Example Street" [ref=e13790]
+          - cell [ref=e13791]
+          - cell "https://github.com/frankbecker 🔗" [ref=e13793]:
+            - generic [ref=e13794]:
+              - generic [ref=e13795]: https://github.com/frankbecker
+              - button "🔗" [ref=e13796] [cursor=pointer]
+          - cell "October 3, 1990 1990-10-03 Open date picker" [ref=e13797]:
+            - generic [ref=e13798]:
+              - text: October 3, 1990
+              - textbox: 1990-10-03
+              - button "Open date picker" [ref=e13799] [cursor=pointer]: 📅
+          - cell [ref=e13800]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e13801]:
+            - generic [ref=e13802]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e13803] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e13804]:
+            - generic [ref=e13805]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e13806]':
+            - generic [ref=e13807]:
+              - generic [ref=e13809]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 263" [ref=e13810]:
+          - cell "264" [ref=e13811]
+          - cell "coIFmYyx08N7ERHs9bJnIyHvp [...]" [ref=e13812]
+          - cell "Alice" [ref=e13813]
+          - cell "Meyer" [ref=e13814]
+          - cell "alice.meyer@example.com" [ref=e13815]
+          - cell "Marketing" [ref=e13816]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Figma, React" [ref=e13817]:
+            - text: Figma, React
+            - generic: ▾
+          - cell "consetetur clita dolor et [...]" [ref=e13818]:
+            - text: consetetur clita dolor et [...]
+            - generic [ref=e13819] [cursor=pointer]: 🖉
+          - cell [ref=e13820]:
+            - checkbox [checked] [ref=e13821]
+          - cell "52,274.00 €" [ref=e13822]
+          - cell "Apr 7, 2017 2017-04-07 Open date picker" [ref=e13823]:
+            - generic [ref=e13824]:
+              - text: Apr 7, 2017
+              - textbox: 2017-04-07
+              - button "Open date picker" [ref=e13825] [cursor=pointer]: 📅
+          - cell "Diana Meyer" [ref=e13826]
+          - cell "Cologne Office" [ref=e13827]
+          - cell "+19 207 716250" [ref=e13828]
+          - cell "EMP00264" [ref=e13829]
+          - cell "On Leave" [ref=e13830]
+          - cell "Product Manager" [ref=e13831]
+          - cell "Tools" [ref=e13832]
+          - cell "Mar 31, 2023, 7:11 PM 2023-03-31T19:11 Open date/time picker" [ref=e13833]:
+            - generic [ref=e13834]:
+              - text: Mar 31, 2023, 7:11 PM
+              - textbox: 2023-03-31T19:11
+              - button "Open date/time picker" [ref=e13835] [cursor=pointer]: 📅
+          - cell "3.47" [ref=e13836]
+          - cell "+ 14,855 €" [ref=e13837]
+          - cell "Contractor" [ref=e13838]
+          - cell "Spain" [ref=e13839]:
+            - text: Spain
+            - generic: ▾
+          - cell "Stuttgart" [ref=e13840]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "90997" [ref=e13841]
+          - cell "57 Example Street" [ref=e13842]
+          - cell "https://www.linkedin.com/in/alicemeyer 🔗" [ref=e13843]:
+            - generic [ref=e13844]:
+              - generic [ref=e13845]: https://www.linkedin.com/in/alicemeyer
+              - button "🔗" [ref=e13846] [cursor=pointer]
+          - cell [ref=e13847]
+          - cell "April 23, 1966 1966-04-23 Open date picker" [ref=e13849]:
+            - generic [ref=e13850]:
+              - text: April 23, 1966
+              - textbox: 1966-04-23
+              - button "Open date picker" [ref=e13851] [cursor=pointer]: 📅
+          - cell [ref=e13852]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e13853]:
+            - generic [ref=e13854]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e13855] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e13856]:
+            - generic [ref=e13857]: 4h
+          - 'cell "#f97316 #f97316" [ref=e13858]':
+            - generic [ref=e13859]:
+              - generic [ref=e13861]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 264" [ref=e13862]:
+          - cell "265" [ref=e13863]
+          - cell "xhH7ETUUmzHqrYp2BMtEh55QK [...]" [ref=e13864]
+          - cell "Hannah" [ref=e13865]
+          - cell "Schneider" [ref=e13866]
+          - cell "hannah.schneider@example. [...]" [ref=e13867]
+          - cell "Finance" [ref=e13868]:
+            - text: Finance
+            - generic: ▾
+          - cell [ref=e13869]:
+            - generic: ▾
+          - cell "et consetetur gubergren, [...]" [ref=e13870]:
+            - text: et consetetur gubergren, [...]
+            - generic [ref=e13871] [cursor=pointer]: 🖉
+          - cell [ref=e13872]:
+            - checkbox [ref=e13873]
+          - cell "42,822.00 €" [ref=e13874]
+          - cell "Mar 5, 2005 2005-03-05 Open date picker" [ref=e13875]:
+            - generic [ref=e13876]:
+              - text: Mar 5, 2005
+              - textbox: 2005-03-05
+              - button "Open date picker" [ref=e13877] [cursor=pointer]: 📅
+          - cell "Bob Becker" [ref=e13878]
+          - cell "Hamburg Office" [ref=e13879]
+          - cell "+18 391 562463" [ref=e13880]
+          - cell "EMP00265" [ref=e13881]
+          - cell "On Leave" [ref=e13882]
+          - cell "QA Engineer" [ref=e13883]
+          - cell "Platform" [ref=e13884]
+          - cell "Oct 16, 2022, 7:18 AM 2022-10-16T07:18 Open date/time picker" [ref=e13885]:
+            - generic [ref=e13886]:
+              - text: Oct 16, 2022, 7:18 AM
+              - textbox: 2022-10-16T07:18
+              - button "Open date/time picker" [ref=e13887] [cursor=pointer]: 📅
+          - cell "0.88" [ref=e13888]
+          - cell "+ 5,594 €" [ref=e13889]
+          - cell "Contractor" [ref=e13890]
+          - cell "France" [ref=e13891]:
+            - text: France
+            - generic: ▾
+          - cell [ref=e13892]:
+            - generic: ▾
+          - cell "67660" [ref=e13893]
+          - cell "136 Example Street" [ref=e13894]
+          - cell "https://www.linkedin.com/in/hannahschneider 🔗" [ref=e13895]:
+            - generic [ref=e13896]:
+              - generic [ref=e13897]: https://www.linkedin.com/in/hannahschneider
+              - button "🔗" [ref=e13898] [cursor=pointer]
+          - cell [ref=e13899]
+          - cell "May 18, 1991 1991-05-18 Open date picker" [ref=e13901]:
+            - generic [ref=e13902]:
+              - text: May 18, 1991
+              - textbox: 1991-05-18
+              - button "Open date picker" [ref=e13903] [cursor=pointer]: 📅
+          - cell [ref=e13904]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e13905]:
+            - generic [ref=e13906]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e13907] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e13908]:
+            - generic [ref=e13909]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e13910]':
+            - generic [ref=e13911]:
+              - generic [ref=e13913]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 265" [ref=e13914]:
+          - cell "266" [ref=e13915]
+          - cell "U66DuK-r3xLm" [ref=e13916]
+          - cell "Frank" [ref=e13917]
+          - cell "Schmidt" [ref=e13918]
+          - cell "frank.schmidt@example.com" [ref=e13919]
+          - cell "Legal" [ref=e13920]:
+            - text: Legal
+            - generic: ▾
+          - cell "SQL, AWS, React" [ref=e13921]:
+            - text: SQL, AWS, React
+            - generic: ▾
+          - cell [ref=e13922]:
+            - generic [ref=e13923] [cursor=pointer]: 🖉
+          - cell [ref=e13924]:
+            - checkbox [checked] [ref=e13925]
+          - cell "98,403.00 €" [ref=e13926]
+          - cell "Aug 18, 2024 2024-08-18 Open date picker" [ref=e13927]:
+            - generic [ref=e13928]:
+              - text: Aug 18, 2024
+              - textbox: 2024-08-18
+              - button "Open date picker" [ref=e13929] [cursor=pointer]: 📅
+          - cell [ref=e13930]
+          - cell "Berlin HQ" [ref=e13931]
+          - cell "+49 495 973565" [ref=e13932]
+          - cell "EMP00266" [ref=e13933]
+          - cell "Probation" [ref=e13934]
+          - cell "Software Engineer" [ref=e13935]
+          - cell "Tools" [ref=e13936]
+          - cell "Open date/time picker" [ref=e13937]:
+            - generic [ref=e13938]:
+              - textbox
+              - button "Open date/time picker" [ref=e13940] [cursor=pointer]: 📅
+          - cell "0.48" [ref=e13941]
+          - cell "+ 6,578 €" [ref=e13942]
+          - cell "Temporary" [ref=e13943]
+          - cell "France" [ref=e13944]:
+            - text: France
+            - generic: ▾
+          - cell "Munich" [ref=e13945]:
+            - text: Munich
+            - generic: ▾
+          - cell "34676" [ref=e13946]
+          - cell "47 Example Street" [ref=e13947]
+          - cell [ref=e13948]
+          - cell [ref=e13950]
+          - cell "August 4, 1975 1975-08-04 Open date picker" [ref=e13952]:
+            - generic [ref=e13953]:
+              - text: August 4, 1975
+              - textbox: 1975-08-04
+              - button "Open date picker" [ref=e13954] [cursor=pointer]: 📅
+          - cell "Grace Schmidt (+160447857 [...]" [ref=e13955]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e13956]:
+            - generic [ref=e13957]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e13958] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e13959]:
+            - generic [ref=e13960]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e13961]':
+            - generic [ref=e13962]:
+              - generic [ref=e13964]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 266" [ref=e13965]:
+          - cell "267" [ref=e13966]
+          - cell "dmAeomtyf-qvq_b3MO51b3cyK [...]" [ref=e13967]
+          - cell "Grace" [ref=e13968]
+          - cell "Weber" [ref=e13969]
+          - cell "grace.weber@example.com" [ref=e13970]
+          - cell "Legal" [ref=e13971]:
+            - text: Legal
+            - generic: ▾
+          - cell "Docker, AWS" [ref=e13972]:
+            - text: Docker, AWS
+            - generic: ▾
+          - cell "sit labore Lorem accusam [...]" [ref=e13973]:
+            - text: sit labore Lorem accusam [...]
+            - generic [ref=e13974] [cursor=pointer]: 🖉
+          - cell [ref=e13975]:
+            - checkbox [checked] [ref=e13976]
+          - cell "73,633.00 €" [ref=e13977]
+          - cell "Aug 10, 2018 2018-08-10 Open date picker" [ref=e13978]:
+            - generic [ref=e13979]:
+              - text: Aug 10, 2018
+              - textbox: 2018-08-10
+              - button "Open date picker" [ref=e13980] [cursor=pointer]: 📅
+          - cell "Frank Müller" [ref=e13981]
+          - cell "Berlin HQ" [ref=e13982]
+          - cell "+17 812 449142" [ref=e13983]
+          - cell "EMP00267" [ref=e13984]
+          - cell "Active" [ref=e13985]
+          - cell "Designer" [ref=e13986]
+          - cell [ref=e13987]
+          - cell "Nov 30, 2023, 1:45 AM 2023-11-30T01:45 Open date/time picker" [ref=e13988]:
+            - generic [ref=e13989]:
+              - text: Nov 30, 2023, 1:45 AM
+              - textbox: 2023-11-30T01:45
+              - button "Open date/time picker" [ref=e13990] [cursor=pointer]: 📅
+          - cell "3.77" [ref=e13991]
+          - cell "+ 13,768 €" [ref=e13992]
+          - cell "Temporary" [ref=e13993]
+          - cell "USA" [ref=e13994]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e13995]:
+            - text: Munich
+            - generic: ▾
+          - cell "30894" [ref=e13996]
+          - cell "164 Example Street" [ref=e13997]
+          - cell "https://www.linkedin.com/in/graceweber 🔗" [ref=e13998]:
+            - generic [ref=e13999]:
+              - generic [ref=e14000]: https://www.linkedin.com/in/graceweber
+              - button "🔗" [ref=e14001] [cursor=pointer]
+          - cell [ref=e14002]
+          - cell "August 24, 1976 1976-08-24 Open date picker" [ref=e14004]:
+            - generic [ref=e14005]:
+              - text: August 24, 1976
+              - textbox: 1976-08-24
+              - button "Open date picker" [ref=e14006] [cursor=pointer]: 📅
+          - cell [ref=e14007]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e14008]:
+            - generic [ref=e14009]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e14010] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e14011]:
+            - generic [ref=e14012]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e14013]':
+            - generic [ref=e14014]:
+              - generic [ref=e14016]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 267" [ref=e14017]:
+          - cell "268" [ref=e14018]
+          - cell "RdeGEjbAuJTA8eB" [ref=e14019]
+          - cell "Eva" [ref=e14020]
+          - cell "Becker" [ref=e14021]
+          - cell "eva.becker@example.com" [ref=e14022]
+          - cell "Sales" [ref=e14023]:
+            - text: Sales
+            - generic: ▾
+          - cell "Java" [ref=e14024]:
+            - text: Java
+            - generic: ▾
+          - cell "dolores At est. erat, et [...]" [ref=e14025]:
+            - text: dolores At est. erat, et [...]
+            - generic [ref=e14026] [cursor=pointer]: 🖉
+          - cell [ref=e14027]:
+            - checkbox [checked] [ref=e14028]
+          - cell "72,332.00 €" [ref=e14029]
+          - cell "Apr 4, 2020 2020-04-04 Open date picker" [ref=e14030]:
+            - generic [ref=e14031]:
+              - text: Apr 4, 2020
+              - textbox: 2020-04-04
+              - button "Open date picker" [ref=e14032] [cursor=pointer]: 📅
+          - cell "Charlie Schneider" [ref=e14033]
+          - cell "Cologne Office" [ref=e14034]
+          - cell "+49 532 057798" [ref=e14035]
+          - cell "EMP00268" [ref=e14036]
+          - cell "On Leave" [ref=e14037]
+          - cell "DevOps Engineer" [ref=e14038]
+          - cell "Web" [ref=e14039]
+          - cell "Open date/time picker" [ref=e14040]:
+            - generic [ref=e14041]:
+              - textbox
+              - button "Open date/time picker" [ref=e14043] [cursor=pointer]: 📅
+          - cell "0.68" [ref=e14044]
+          - cell "+ 12,060 €" [ref=e14045]
+          - cell [ref=e14046]
+          - cell "UK" [ref=e14047]:
+            - text: UK
+            - generic: ▾
+          - cell "Cologne" [ref=e14048]:
+            - text: Cologne
+            - generic: ▾
+          - cell [ref=e14049]
+          - cell "151 Example Street" [ref=e14050]
+          - cell [ref=e14051]
+          - cell [ref=e14053]
+          - cell "February 17, 1965 1965-02-17 Open date picker" [ref=e14055]:
+            - generic [ref=e14056]:
+              - text: February 17, 1965
+              - textbox: 1965-02-17
+              - button "Open date picker" [ref=e14057] [cursor=pointer]: 📅
+          - cell [ref=e14058]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e14059]:
+            - generic [ref=e14060]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e14061] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e14062]:
+            - generic [ref=e14063]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e14064]':
+            - generic [ref=e14065]:
+              - generic [ref=e14067]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 268" [ref=e14068]:
+          - cell "269" [ref=e14069]
+          - cell "BUhuz6M6Vlq6DiRk" [ref=e14070]
+          - cell "Ian" [ref=e14071]
+          - cell "Becker" [ref=e14072]
+          - cell "ian.becker@example.com" [ref=e14073]
+          - cell "Legal" [ref=e14074]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java, Figma" [ref=e14075]:
+            - text: Java, Figma
+            - generic: ▾
+          - cell "ipsum et ipsum et dolore [...]" [ref=e14076]:
+            - text: ipsum et ipsum et dolore [...]
+            - generic [ref=e14077] [cursor=pointer]: 🖉
+          - cell [ref=e14078]:
+            - checkbox [checked] [ref=e14079]
+          - cell "86,583.00 €" [ref=e14080]
+          - cell "Sep 10, 2021 2021-09-10 Open date picker" [ref=e14081]:
+            - generic [ref=e14082]:
+              - text: Sep 10, 2021
+              - textbox: 2021-09-10
+              - button "Open date picker" [ref=e14083] [cursor=pointer]: 📅
+          - cell "Bob Schmidt" [ref=e14084]
+          - cell "Cologne Office" [ref=e14085]
+          - cell [ref=e14086]
+          - cell "EMP00269" [ref=e14087]
+          - cell "Active" [ref=e14088]
+          - cell "Designer" [ref=e14089]
+          - cell "Mobile" [ref=e14090]
+          - cell "Mar 14, 2022, 2:18 AM 2022-03-14T02:18 Open date/time picker" [ref=e14091]:
+            - generic [ref=e14092]:
+              - text: Mar 14, 2022, 2:18 AM
+              - textbox: 2022-03-14T02:18
+              - button "Open date/time picker" [ref=e14093] [cursor=pointer]: 📅
+          - cell "1.70" [ref=e14094]
+          - cell "+ 0 €" [ref=e14095]
+          - cell "Intern" [ref=e14096]
+          - cell "Netherlands" [ref=e14097]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Frankfurt" [ref=e14098]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "90483" [ref=e14099]
+          - cell [ref=e14100]
+          - cell [ref=e14101]
+          - cell "https://github.com/ianbecker 🔗" [ref=e14103]:
+            - generic [ref=e14104]:
+              - generic [ref=e14105]: https://github.com/ianbecker
+              - button "🔗" [ref=e14106] [cursor=pointer]
+          - cell "Open date picker" [ref=e14107]:
+            - generic [ref=e14108]:
+              - textbox
+              - button "Open date picker" [ref=e14110] [cursor=pointer]: 📅
+          - cell [ref=e14111]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e14112]:
+            - generic [ref=e14113]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e14114] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e14115]:
+            - generic [ref=e14116]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e14117]':
+            - generic [ref=e14118]:
+              - generic [ref=e14120]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 269" [ref=e14121]:
+          - cell "270" [ref=e14122]
+          - cell "v65QNwimk0SW" [ref=e14123]
+          - cell "Alice" [ref=e14124]
+          - cell "Meyer" [ref=e14125]
+          - cell [ref=e14126]
+          - cell "Sales" [ref=e14127]:
+            - text: Sales
+            - generic: ▾
+          - cell [ref=e14128]:
+            - generic: ▾
+          - cell "dolor diam consetetur tem [...]" [ref=e14129]:
+            - text: dolor diam consetetur tem [...]
+            - generic [ref=e14130] [cursor=pointer]: 🖉
+          - cell [ref=e14131]:
+            - checkbox [checked] [ref=e14132]
+          - cell "0.00 €" [ref=e14133]
+          - cell "May 21, 2018 2018-05-21 Open date picker" [ref=e14134]:
+            - generic [ref=e14135]:
+              - text: May 21, 2018
+              - textbox: 2018-05-21
+              - button "Open date picker" [ref=e14136] [cursor=pointer]: 📅
+          - cell "Frank Schneider" [ref=e14137]
+          - cell "Berlin HQ" [ref=e14138]
+          - cell "+17 486 575424" [ref=e14139]
+          - cell "EMP00270" [ref=e14140]
+          - cell "On Leave" [ref=e14141]
+          - cell "DevOps Engineer" [ref=e14142]
+          - cell "Tools" [ref=e14143]
+          - cell "Open date/time picker" [ref=e14144]:
+            - generic [ref=e14145]:
+              - textbox
+              - button "Open date/time picker" [ref=e14147] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e14148]
+          - cell "+ 0 €" [ref=e14149]
+          - cell "Temporary" [ref=e14150]
+          - cell "Spain" [ref=e14151]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e14152]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "17575" [ref=e14153]
+          - cell "192 Example Street" [ref=e14154]
+          - cell "https://www.linkedin.com/in/alicemeyer 🔗" [ref=e14155]:
+            - generic [ref=e14156]:
+              - generic [ref=e14157]: https://www.linkedin.com/in/alicemeyer
+              - button "🔗" [ref=e14158] [cursor=pointer]
+          - cell [ref=e14159]
+          - cell "Open date picker" [ref=e14161]:
+            - generic [ref=e14162]:
+              - textbox
+              - button "Open date picker" [ref=e14164] [cursor=pointer]: 📅
+          - cell "Diana Weber (+14540070991 [...]" [ref=e14165]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e14166]:
+            - generic [ref=e14167]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e14168] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e14169]:
+            - generic [ref=e14170]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e14171]':
+            - generic [ref=e14172]:
+              - generic [ref=e14174]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 270" [ref=e14175]:
+          - cell "271" [ref=e14176]
+          - cell "Is8xGeqESv" [ref=e14177]
+          - cell "Diana" [ref=e14178]
+          - cell "Becker" [ref=e14179]
+          - cell "diana.becker@example.com" [ref=e14180]
+          - cell "Sales" [ref=e14181]:
+            - text: Sales
+            - generic: ▾
+          - cell "Python, AWS, React, Docke [...]" [ref=e14182]:
+            - text: Python, AWS, React, Docke [...]
+            - generic: ▾
+          - cell "erat, accusam takimata es [...]" [ref=e14183]:
+            - text: erat, accusam takimata es [...]
+            - generic [ref=e14184] [cursor=pointer]: 🖉
+          - cell [ref=e14185]:
+            - checkbox [checked] [ref=e14186]
+          - cell "95,512.00 €" [ref=e14187]
+          - cell "Jun 10, 2012 2012-06-10 Open date picker" [ref=e14188]:
+            - generic [ref=e14189]:
+              - text: Jun 10, 2012
+              - textbox: 2012-06-10
+              - button "Open date picker" [ref=e14190] [cursor=pointer]: 📅
+          - cell "Bob Becker" [ref=e14191]
+          - cell "Cologne Office" [ref=e14192]
+          - cell "+19 402 702861" [ref=e14193]
+          - cell "EMP00271" [ref=e14194]
+          - cell "Active" [ref=e14195]
+          - cell "Designer" [ref=e14196]
+          - cell "Growth" [ref=e14197]
+          - cell "Aug 9, 2023, 5:57 AM 2023-08-09T05:57 Open date/time picker" [ref=e14198]:
+            - generic [ref=e14199]:
+              - text: Aug 9, 2023, 5:57 AM
+              - textbox: 2023-08-09T05:57
+              - button "Open date/time picker" [ref=e14200] [cursor=pointer]: 📅
+          - cell "1.82" [ref=e14201]
+          - cell "+ 14,342 €" [ref=e14202]
+          - cell "Intern" [ref=e14203]
+          - cell "France" [ref=e14204]:
+            - text: France
+            - generic: ▾
+          - cell "Hamburg" [ref=e14205]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "47658" [ref=e14206]
+          - cell "70 Example Street" [ref=e14207]
+          - cell [ref=e14208]
+          - cell [ref=e14210]
+          - cell "August 15, 1993 1993-08-15 Open date picker" [ref=e14212]:
+            - generic [ref=e14213]:
+              - text: August 15, 1993
+              - textbox: 1993-08-15
+              - button "Open date picker" [ref=e14214] [cursor=pointer]: 📅
+          - cell "Charlie Wagner (+19873924 [...]" [ref=e14215]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e14216]:
+            - generic [ref=e14217]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e14218] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e14219]:
+            - generic [ref=e14220]: 8h
+          - 'cell "#3b82f6 #3b82f6" [ref=e14221]':
+            - generic [ref=e14222]:
+              - generic [ref=e14224]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 271" [ref=e14225]:
+          - cell "272" [ref=e14226]
+          - cell "bIUrtPyuZWn4ZRvmL2" [ref=e14227]
+          - cell "Frank" [ref=e14228]
+          - cell "Fischer" [ref=e14229]
+          - cell "frank.fischer@example.com" [ref=e14230]
+          - cell "Finance" [ref=e14231]:
+            - text: Finance
+            - generic: ▾
+          - cell "Python, Java, Figma, AWS" [ref=e14232]:
+            - text: Python, Java, Figma, AWS
+            - generic: ▾
+          - cell "elitr, invidunt ea dolore [...]" [ref=e14233]:
+            - text: elitr, invidunt ea dolore [...]
+            - generic [ref=e14234] [cursor=pointer]: 🖉
+          - cell [ref=e14235]:
+            - checkbox [checked] [ref=e14236]
+          - cell "84,827.00 €" [ref=e14237]
+          - cell "Open date picker" [ref=e14238]:
+            - generic [ref=e14239]:
+              - textbox
+              - button "Open date picker" [ref=e14241] [cursor=pointer]: 📅
+          - cell "Alice Müller" [ref=e14242]
+          - cell "Berlin HQ" [ref=e14243]
+          - cell "+16 662 303931" [ref=e14244]
+          - cell "EMP00272" [ref=e14245]
+          - cell "Active" [ref=e14246]
+          - cell "Designer" [ref=e14247]
+          - cell "Platform" [ref=e14248]
+          - cell "Apr 8, 2020, 3:50 AM 2020-04-08T03:50 Open date/time picker" [ref=e14249]:
+            - generic [ref=e14250]:
+              - text: Apr 8, 2020, 3:50 AM
+              - textbox: 2020-04-08T03:50
+              - button "Open date/time picker" [ref=e14251] [cursor=pointer]: 📅
+          - cell "2.39" [ref=e14252]
+          - cell "+ 13,194 €" [ref=e14253]
+          - cell "Permanent" [ref=e14254]
+          - cell "Netherlands" [ref=e14255]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Munich" [ref=e14256]:
+            - text: Munich
+            - generic: ▾
+          - cell "42458" [ref=e14257]
+          - cell "118 Example Street" [ref=e14258]
+          - cell "https://www.linkedin.com/in/frankfischer 🔗" [ref=e14259]:
+            - generic [ref=e14260]:
+              - generic [ref=e14261]: https://www.linkedin.com/in/frankfischer
+              - button "🔗" [ref=e14262] [cursor=pointer]
+          - cell [ref=e14263]
+          - cell "August 24, 1989 1989-08-24 Open date picker" [ref=e14265]:
+            - generic [ref=e14266]:
+              - text: August 24, 1989
+              - textbox: 1989-08-24
+              - button "Open date picker" [ref=e14267] [cursor=pointer]: 📅
+          - cell "Alice Meyer (+49402534590 [...]" [ref=e14268]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e14269]:
+            - generic [ref=e14270]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e14271] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e14272]:
+            - generic [ref=e14273]: 7h 30m
+          - 'cell "#ef4444 #ef4444" [ref=e14274]':
+            - generic [ref=e14275]:
+              - generic [ref=e14277]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 272" [ref=e14278]:
+          - cell "273" [ref=e14279]
+          - cell "_KBcqSwsRRab-brwbc3BAgnbq [...]" [ref=e14280]
+          - cell "Charlie" [ref=e14281]
+          - cell "Müller" [ref=e14282]
+          - cell "charlie.müller@example.co [...]" [ref=e14283]
+          - cell [ref=e14284]:
+            - generic: ▾
+          - cell "Figma" [ref=e14285]:
+            - text: Figma
+            - generic: ▾
+          - cell "diam vero vero dolore et [...]" [ref=e14286]:
+            - text: diam vero vero dolore et [...]
+            - generic [ref=e14287] [cursor=pointer]: 🖉
+          - cell [ref=e14288]:
+            - checkbox [checked] [ref=e14289]
+          - cell "99,256.00 €" [ref=e14290]
+          - cell "Jun 28, 2012 2012-06-28 Open date picker" [ref=e14291]:
+            - generic [ref=e14292]:
+              - text: Jun 28, 2012
+              - textbox: 2012-06-28
+              - button "Open date picker" [ref=e14293] [cursor=pointer]: 📅
+          - cell "Hannah Müller" [ref=e14294]
+          - cell "Cologne Office" [ref=e14295]
+          - cell "+14 679 310025" [ref=e14296]
+          - cell "EMP00273" [ref=e14297]
+          - cell "Active" [ref=e14298]
+          - cell [ref=e14299]
+          - cell [ref=e14300]
+          - cell "Open date/time picker" [ref=e14301]:
+            - generic [ref=e14302]:
+              - textbox
+              - button "Open date/time picker" [ref=e14304] [cursor=pointer]: 📅
+          - cell "1.40" [ref=e14305]
+          - cell "+ 566 €" [ref=e14306]
+          - cell "Intern" [ref=e14307]
+          - cell "Germany" [ref=e14308]:
+            - text: Germany
+            - generic: ▾
+          - cell "Berlin" [ref=e14309]:
+            - text: Berlin
+            - generic: ▾
+          - cell "98047" [ref=e14310]
+          - cell "61 Example Street" [ref=e14311]
+          - cell [ref=e14312]
+          - cell [ref=e14314]
+          - cell "Open date picker" [ref=e14316]:
+            - generic [ref=e14317]:
+              - textbox
+              - button "Open date picker" [ref=e14319] [cursor=pointer]: 📅
+          - cell "Frank Schmidt (+143238769 [...]" [ref=e14320]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e14321]:
+            - generic [ref=e14322]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e14323] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e14324]:
+            - generic [ref=e14325]: 8h 30m
+          - 'cell "#10b981 #10b981" [ref=e14326]':
+            - generic [ref=e14327]:
+              - generic [ref=e14329]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 273" [ref=e14330]:
+          - cell "274" [ref=e14331]
+          - cell "yTPrOUDnSWU8N2LwXECqzfgRW [...]" [ref=e14332]
+          - cell "Julia" [ref=e14333]
+          - cell "Schneider" [ref=e14334]
+          - cell "julia.schneider@example.c [...]" [ref=e14335]
+          - cell "Sales" [ref=e14336]:
+            - text: Sales
+            - generic: ▾
+          - cell "SQL, React, Docker, AWS" [ref=e14337]:
+            - text: SQL, React, Docker, AWS
+            - generic: ▾
+          - cell "et sanctus est. duo eirmo [...]" [ref=e14338]:
+            - text: et sanctus est. duo eirmo [...]
+            - generic [ref=e14339] [cursor=pointer]: 🖉
+          - cell [ref=e14340]:
+            - checkbox [checked] [ref=e14341]
+          - cell "89,926.00 €" [ref=e14342]
+          - cell "Oct 18, 2014 2014-10-18 Open date picker" [ref=e14343]:
+            - generic [ref=e14344]:
+              - text: Oct 18, 2014
+              - textbox: 2014-10-18
+              - button "Open date picker" [ref=e14345] [cursor=pointer]: 📅
+          - cell "Bob Becker" [ref=e14346]
+          - cell "Munich Office" [ref=e14347]
+          - cell [ref=e14348]
+          - cell "EMP00274" [ref=e14349]
+          - cell "Active" [ref=e14350]
+          - cell "QA Engineer" [ref=e14351]
+          - cell "Tools" [ref=e14352]
+          - cell "Open date/time picker" [ref=e14353]:
+            - generic [ref=e14354]:
+              - textbox
+              - button "Open date/time picker" [ref=e14356] [cursor=pointer]: 📅
+          - cell "4.00" [ref=e14357]
+          - cell "+ 0 €" [ref=e14358]
+          - cell "Contractor" [ref=e14359]
+          - cell "UK" [ref=e14360]:
+            - text: UK
+            - generic: ▾
+          - cell [ref=e14361]:
+            - generic: ▾
+          - cell "32399" [ref=e14362]
+          - cell [ref=e14363]
+          - cell [ref=e14364]
+          - cell "https://github.com/juliaschneider 🔗" [ref=e14366]:
+            - generic [ref=e14367]:
+              - generic [ref=e14368]: https://github.com/juliaschneider
+              - button "🔗" [ref=e14369] [cursor=pointer]
+          - cell "Open date picker" [ref=e14370]:
+            - generic [ref=e14371]:
+              - textbox
+              - button "Open date picker" [ref=e14373] [cursor=pointer]: 📅
+          - cell [ref=e14374]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e14375]:
+            - generic [ref=e14376]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e14377] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e14378]:
+            - generic [ref=e14379]: 4h
+          - 'cell "#f59e0b #f59e0b" [ref=e14380]':
+            - generic [ref=e14381]:
+              - generic [ref=e14383]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 274" [ref=e14384]:
+          - cell "275" [ref=e14385]
+          - cell "W6OxcS3T7rkL30FRTd2HNoSTF [...]" [ref=e14386]
+          - cell "Julia" [ref=e14387]
+          - cell "Müller" [ref=e14388]
+          - cell "julia.müller@example.com" [ref=e14389]
+          - cell "Sales" [ref=e14390]:
+            - text: Sales
+            - generic: ▾
+          - cell [ref=e14391]:
+            - generic: ▾
+          - cell "At erat, ipsum Stet et du [...]" [ref=e14392]:
+            - text: At erat, ipsum Stet et du [...]
+            - generic [ref=e14393] [cursor=pointer]: 🖉
+          - cell [ref=e14394]:
+            - checkbox [checked] [ref=e14395]
+          - cell "76,583.00 €" [ref=e14396]
+          - cell "Jun 24, 2016 2016-06-24 Open date picker" [ref=e14397]:
+            - generic [ref=e14398]:
+              - text: Jun 24, 2016
+              - textbox: 2016-06-24
+              - button "Open date picker" [ref=e14399] [cursor=pointer]: 📅
+          - cell "Grace Fischer" [ref=e14400]
+          - cell "Remote" [ref=e14401]
+          - cell "+11 021 057756" [ref=e14402]
+          - cell "EMP00275" [ref=e14403]
+          - cell "Active" [ref=e14404]
+          - cell "Product Manager" [ref=e14405]
+          - cell "Web" [ref=e14406]
+          - cell "Jul 4, 2021, 9:49 AM 2021-07-04T09:49 Open date/time picker" [ref=e14407]:
+            - generic [ref=e14408]:
+              - text: Jul 4, 2021, 9:49 AM
+              - textbox: 2021-07-04T09:49
+              - button "Open date/time picker" [ref=e14409] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e14410]
+          - cell "+ 10,227 €" [ref=e14411]
+          - cell "Permanent" [ref=e14412]
+          - cell [ref=e14413]:
+            - generic: ▾
+          - cell "Stuttgart" [ref=e14414]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "10220" [ref=e14415]
+          - cell "152 Example Street" [ref=e14416]
+          - cell "https://www.linkedin.com/in/juliamüller 🔗" [ref=e14417]:
+            - generic [ref=e14418]:
+              - generic [ref=e14419]: https://www.linkedin.com/in/juliamüller
+              - button "🔗" [ref=e14420] [cursor=pointer]
+          - cell [ref=e14421]
+          - cell "August 5, 1969 1969-08-05 Open date picker" [ref=e14423]:
+            - generic [ref=e14424]:
+              - text: August 5, 1969
+              - textbox: 1969-08-05
+              - button "Open date picker" [ref=e14425] [cursor=pointer]: 📅
+          - cell [ref=e14426]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e14427]:
+            - generic [ref=e14428]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e14429] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e14430]:
+            - generic [ref=e14431]: 6h
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e14432]':
+            - generic [ref=e14433]:
+              - generic [ref=e14435]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 275" [ref=e14436]:
+          - cell "276" [ref=e14437]
+          - cell "SiCDPOCJTEwbDzaZC1mxRggZn" [ref=e14438]
+          - cell "Diana" [ref=e14439]
+          - cell "Schneider" [ref=e14440]
+          - cell "diana.schneider@example.c [...]" [ref=e14441]
+          - cell "Legal" [ref=e14442]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e14443]:
+            - generic: ▾
+          - cell "accusam diam sed eos just [...]" [ref=e14444]:
+            - text: accusam diam sed eos just [...]
+            - generic [ref=e14445] [cursor=pointer]: 🖉
+          - cell [ref=e14446]:
+            - checkbox [ref=e14447]
+          - cell "41,968.00 €" [ref=e14448]
+          - cell "Jul 14, 2017 2017-07-14 Open date picker" [ref=e14449]:
+            - generic [ref=e14450]:
+              - text: Jul 14, 2017
+              - textbox: 2017-07-14
+              - button "Open date picker" [ref=e14451] [cursor=pointer]: 📅
+          - cell "Julia Wagner" [ref=e14452]
+          - cell [ref=e14453]
+          - cell "+19 143 235973" [ref=e14454]
+          - cell "EMP00276" [ref=e14455]
+          - cell "Active" [ref=e14456]
+          - cell "Product Manager" [ref=e14457]
+          - cell "Mobile" [ref=e14458]
+          - cell "Open date/time picker" [ref=e14459]:
+            - generic [ref=e14460]:
+              - textbox
+              - button "Open date/time picker" [ref=e14462] [cursor=pointer]: 📅
+          - cell "0.43" [ref=e14463]
+          - cell "+ 9,314 €" [ref=e14464]
+          - cell [ref=e14465]
+          - cell "UK" [ref=e14466]:
+            - text: UK
+            - generic: ▾
+          - cell "Stuttgart" [ref=e14467]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "65462" [ref=e14468]
+          - cell [ref=e14469]
+          - cell [ref=e14470]
+          - cell [ref=e14472]
+          - cell "Open date picker" [ref=e14474]:
+            - generic [ref=e14475]:
+              - textbox
+              - button "Open date picker" [ref=e14477] [cursor=pointer]: 📅
+          - cell [ref=e14478]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e14479]:
+            - generic [ref=e14480]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e14481] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e14482]:
+            - generic [ref=e14483]: 7h
+          - 'cell "#ec4899 #ec4899" [ref=e14484]':
+            - generic [ref=e14485]:
+              - generic [ref=e14487]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 276" [ref=e14488]:
+          - cell "277" [ref=e14489]
+          - cell [ref=e14490]
+          - cell "Diana" [ref=e14491]
+          - cell "Schmidt" [ref=e14492]
+          - cell "diana.schmidt@example.com" [ref=e14493]
+          - cell "Sales" [ref=e14494]:
+            - text: Sales
+            - generic: ▾
+          - cell [ref=e14495]:
+            - generic: ▾
+          - cell "rebum. no dolores et taki [...]" [ref=e14496]:
+            - text: rebum. no dolores et taki [...]
+            - generic [ref=e14497] [cursor=pointer]: 🖉
+          - cell [ref=e14498]:
+            - checkbox [checked] [ref=e14499]
+          - cell "46,130.00 €" [ref=e14500]
+          - cell "Nov 9, 2015 2015-11-09 Open date picker" [ref=e14501]:
+            - generic [ref=e14502]:
+              - text: Nov 9, 2015
+              - textbox: 2015-11-09
+              - button "Open date picker" [ref=e14503] [cursor=pointer]: 📅
+          - cell "Ian Wagner" [ref=e14504]
+          - cell "Cologne Office" [ref=e14505]
+          - cell "+49 166 829117" [ref=e14506]
+          - cell "EMP00277" [ref=e14507]
+          - cell "Active" [ref=e14508]
+          - cell "QA Engineer" [ref=e14509]
+          - cell "Growth" [ref=e14510]
+          - cell "Nov 4, 2024, 2:39 PM 2024-11-04T14:39 Open date/time picker" [ref=e14511]:
+            - generic [ref=e14512]:
+              - text: Nov 4, 2024, 2:39 PM
+              - textbox: 2024-11-04T14:39
+              - button "Open date/time picker" [ref=e14513] [cursor=pointer]: 📅
+          - cell "0.08" [ref=e14514]
+          - cell "+ 14,968 €" [ref=e14515]
+          - cell [ref=e14516]
+          - cell "Spain" [ref=e14517]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e14518]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "72733" [ref=e14519]
+          - cell "93 Example Street" [ref=e14520]
+          - cell [ref=e14521]
+          - cell [ref=e14523]
+          - cell "Open date picker" [ref=e14525]:
+            - generic [ref=e14526]:
+              - textbox
+              - button "Open date picker" [ref=e14528] [cursor=pointer]: 📅
+          - cell "Hannah Weber (+1611737723 [...]" [ref=e14529]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e14530]:
+            - generic [ref=e14531]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e14532] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e14533]:
+            - generic [ref=e14534]: 9h
+          - 'cell "#06b6d4 #06b6d4" [ref=e14535]':
+            - generic [ref=e14536]:
+              - generic [ref=e14538]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 277" [ref=e14539]:
+          - cell "278" [ref=e14540]
+          - cell "9SoEhSZuZqul8diuu_uox7c" [ref=e14541]
+          - cell "Charlie" [ref=e14542]
+          - cell "Müller" [ref=e14543]
+          - cell "charlie.müller@example.co [...]" [ref=e14544]
+          - cell "Finance" [ref=e14545]:
+            - text: Finance
+            - generic: ▾
+          - cell "AWS, Figma" [ref=e14546]:
+            - text: AWS, Figma
+            - generic: ▾
+          - cell "takimata labore ipsum ali [...]" [ref=e14547]:
+            - text: takimata labore ipsum ali [...]
+            - generic [ref=e14548] [cursor=pointer]: 🖉
+          - cell [ref=e14549]:
+            - checkbox [ref=e14550]
+          - cell "56,082.00 €" [ref=e14551]
+          - cell "May 10, 2023 2023-05-10 Open date picker" [ref=e14552]:
+            - generic [ref=e14553]:
+              - text: May 10, 2023
+              - textbox: 2023-05-10
+              - button "Open date picker" [ref=e14554] [cursor=pointer]: 📅
+          - cell "Eva Müller" [ref=e14555]
+          - cell [ref=e14556]
+          - cell "+15 447 877713" [ref=e14557]
+          - cell "EMP00278" [ref=e14558]
+          - cell "Terminated" [ref=e14559]
+          - cell "Data Analyst" [ref=e14560]
+          - cell "Tools" [ref=e14561]
+          - cell "Oct 5, 2022, 3:58 PM 2022-10-05T15:58 Open date/time picker" [ref=e14562]:
+            - generic [ref=e14563]:
+              - text: Oct 5, 2022, 3:58 PM
+              - textbox: 2022-10-05T15:58
+              - button "Open date/time picker" [ref=e14564] [cursor=pointer]: 📅
+          - cell "2.23" [ref=e14565]
+          - cell "+ 0 €" [ref=e14566]
+          - cell "Temporary" [ref=e14567]
+          - cell "Netherlands" [ref=e14568]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Munich" [ref=e14569]:
+            - text: Munich
+            - generic: ▾
+          - cell "52154" [ref=e14570]
+          - cell "135 Example Street" [ref=e14571]
+          - cell [ref=e14572]
+          - cell [ref=e14574]
+          - cell "June 23, 2000 2000-06-23 Open date picker" [ref=e14576]:
+            - generic [ref=e14577]:
+              - text: June 23, 2000
+              - textbox: 2000-06-23
+              - button "Open date picker" [ref=e14578] [cursor=pointer]: 📅
+          - cell "Hannah Weber (+4941307405 [...]" [ref=e14579]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e14580]:
+            - generic [ref=e14581]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e14582] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e14583]:
+            - generic [ref=e14584]: 5h
+          - 'cell "#84cc16 #84cc16" [ref=e14585]':
+            - generic [ref=e14586]:
+              - generic [ref=e14588]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 278" [ref=e14589]:
+          - cell "279" [ref=e14590]
+          - cell "IunXTkdEI4gElkaw3hZdZNck2 [...]" [ref=e14591]
+          - cell "Alice" [ref=e14592]
+          - cell "Meyer" [ref=e14593]
+          - cell "alice.meyer@example.com" [ref=e14594]
+          - cell "HR" [ref=e14595]:
+            - text: HR
+            - generic: ▾
+          - cell "Figma, Docker" [ref=e14596]:
+            - text: Figma, Docker
+            - generic: ▾
+          - cell "diam et justo amet, et do [...]" [ref=e14597]:
+            - text: diam et justo amet, et do [...]
+            - generic [ref=e14598] [cursor=pointer]: 🖉
+          - cell [ref=e14599]:
+            - checkbox [checked] [ref=e14600]
+          - cell "96,490.00 €" [ref=e14601]
+          - cell "Open date picker" [ref=e14602]:
+            - generic [ref=e14603]:
+              - textbox
+              - button "Open date picker" [ref=e14605] [cursor=pointer]: 📅
+          - cell "Diana Schneider" [ref=e14606]
+          - cell "Munich Office" [ref=e14607]
+          - cell "+13 491 702575" [ref=e14608]
+          - cell "EMP00279" [ref=e14609]
+          - cell "Active" [ref=e14610]
+          - cell "Product Manager" [ref=e14611]
+          - cell "Core" [ref=e14612]
+          - cell "Open date/time picker" [ref=e14613]:
+            - generic [ref=e14614]:
+              - textbox
+              - button "Open date/time picker" [ref=e14616] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e14617]
+          - cell "+ 3,875 €" [ref=e14618]
+          - cell "Intern" [ref=e14619]
+          - cell "France" [ref=e14620]:
+            - text: France
+            - generic: ▾
+          - cell "Stuttgart" [ref=e14621]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "82153" [ref=e14622]
+          - cell [ref=e14623]
+          - cell "https://www.linkedin.com/in/alicemeyer 🔗" [ref=e14624]:
+            - generic [ref=e14625]:
+              - generic [ref=e14626]: https://www.linkedin.com/in/alicemeyer
+              - button "🔗" [ref=e14627] [cursor=pointer]
+          - cell [ref=e14628]
+          - cell "July 7, 1995 1995-07-07 Open date picker" [ref=e14630]:
+            - generic [ref=e14631]:
+              - text: July 7, 1995
+              - textbox: 1995-07-07
+              - button "Open date picker" [ref=e14632] [cursor=pointer]: 📅
+          - cell [ref=e14633]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e14634]:
+            - generic [ref=e14635]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e14636] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e14637]:
+            - generic [ref=e14638]: 6h 30m
+          - 'cell "#f97316 #f97316" [ref=e14639]':
+            - generic [ref=e14640]:
+              - generic [ref=e14642]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 279" [ref=e14643]:
+          - cell "280" [ref=e14644]
+          - cell "2FyeBYLdEFRRxRXJMh6LctJCR [...]" [ref=e14645]
+          - cell "Hannah" [ref=e14646]
+          - cell "Becker" [ref=e14647]
+          - cell "hannah.becker@example.com" [ref=e14648]
+          - cell "Finance" [ref=e14649]:
+            - text: Finance
+            - generic: ▾
+          - cell [ref=e14650]:
+            - generic: ▾
+          - cell "sanctus et invidunt ea cl [...]" [ref=e14651]:
+            - text: sanctus et invidunt ea cl [...]
+            - generic [ref=e14652] [cursor=pointer]: 🖉
+          - cell [ref=e14653]:
+            - checkbox [checked] [ref=e14654]
+          - cell "66,470.00 €" [ref=e14655]
+          - cell "Mar 4, 2008 2008-03-04 Open date picker" [ref=e14656]:
+            - generic [ref=e14657]:
+              - text: Mar 4, 2008
+              - textbox: 2008-03-04
+              - button "Open date picker" [ref=e14658] [cursor=pointer]: 📅
+          - cell "Bob Wagner" [ref=e14659]
+          - cell "Hamburg Office" [ref=e14660]
+          - cell "+13 749 446292" [ref=e14661]
+          - cell "EMP00280" [ref=e14662]
+          - cell "Terminated" [ref=e14663]
+          - cell "Designer" [ref=e14664]
+          - cell [ref=e14665]
+          - cell "Open date/time picker" [ref=e14666]:
+            - generic [ref=e14667]:
+              - textbox
+              - button "Open date/time picker" [ref=e14669] [cursor=pointer]: 📅
+          - cell "3.20" [ref=e14670]
+          - cell "+ 8,561 €" [ref=e14671]
+          - cell "Contractor" [ref=e14672]
+          - cell "USA" [ref=e14673]:
+            - text: USA
+            - generic: ▾
+          - cell "Munich" [ref=e14674]:
+            - text: Munich
+            - generic: ▾
+          - cell "14692" [ref=e14675]
+          - cell "139 Example Street" [ref=e14676]
+          - cell [ref=e14677]
+          - cell [ref=e14679]
+          - cell "March 19, 1971 1971-03-19 Open date picker" [ref=e14681]:
+            - generic [ref=e14682]:
+              - text: March 19, 1971
+              - textbox: 1971-03-19
+              - button "Open date picker" [ref=e14683] [cursor=pointer]: 📅
+          - cell [ref=e14684]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e14685]:
+            - generic [ref=e14686]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e14687] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e14688]:
+            - generic [ref=e14689]: 8h 15m
+          - 'cell "#6366f1 #6366f1" [ref=e14690]':
+            - generic [ref=e14691]:
+              - generic [ref=e14693]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 280" [ref=e14694]:
+          - cell "281" [ref=e14695]
+          - cell "KgCkOfhfCDt" [ref=e14696]
+          - cell "Grace" [ref=e14697]
+          - cell "Wagner" [ref=e14698]
+          - cell "grace.wagner@example.com" [ref=e14699]
+          - cell "Legal" [ref=e14700]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java, TypeScript, Python" [ref=e14701]:
+            - text: Java, TypeScript, Python
+            - generic: ▾
+          - cell [ref=e14702]:
+            - generic [ref=e14703] [cursor=pointer]: 🖉
+          - cell [ref=e14704]:
+            - checkbox [checked] [ref=e14705]
+          - cell "41,938.00 €" [ref=e14706]
+          - cell "Sep 21, 2010 2010-09-21 Open date picker" [ref=e14707]:
+            - generic [ref=e14708]:
+              - text: Sep 21, 2010
+              - textbox: 2010-09-21
+              - button "Open date picker" [ref=e14709] [cursor=pointer]: 📅
+          - cell [ref=e14710]
+          - cell "Cologne Office" [ref=e14711]
+          - cell "+13 419 498603" [ref=e14712]
+          - cell "EMP00281" [ref=e14713]
+          - cell "Active" [ref=e14714]
+          - cell "QA Engineer" [ref=e14715]
+          - cell "Web" [ref=e14716]
+          - cell "Dec 13, 2023, 10:40 AM 2023-12-13T10:40 Open date/time picker" [ref=e14717]:
+            - generic [ref=e14718]:
+              - text: Dec 13, 2023, 10:40 AM
+              - textbox: 2023-12-13T10:40
+              - button "Open date/time picker" [ref=e14719] [cursor=pointer]: 📅
+          - cell "1.23" [ref=e14720]
+          - cell "+ 11,653 €" [ref=e14721]
+          - cell "Permanent" [ref=e14722]
+          - cell "Spain" [ref=e14723]:
+            - text: Spain
+            - generic: ▾
+          - cell "Munich" [ref=e14724]:
+            - text: Munich
+            - generic: ▾
+          - cell "57205" [ref=e14725]
+          - cell "69 Example Street" [ref=e14726]
+          - cell [ref=e14727]
+          - cell [ref=e14729]
+          - cell "Open date picker" [ref=e14731]:
+            - generic [ref=e14732]:
+              - textbox
+              - button "Open date picker" [ref=e14734] [cursor=pointer]: 📅
+          - cell "Eva Fischer (+16910899931 [...]" [ref=e14735]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e14736]:
+            - generic [ref=e14737]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e14738] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e14739]:
+            - generic [ref=e14740]: 8h
+          - 'cell "#14b8a6 #14b8a6" [ref=e14741]':
+            - generic [ref=e14742]:
+              - generic [ref=e14744]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 281" [ref=e14745]:
+          - cell "282" [ref=e14746]
+          - cell "y4C2afirSzvDUd-9yV" [ref=e14747]
+          - cell "Diana" [ref=e14748]
+          - cell "Becker" [ref=e14749]
+          - cell "diana.becker@example.com" [ref=e14750]
+          - cell "IT" [ref=e14751]:
+            - text: IT
+            - generic: ▾
+          - cell "React, Figma" [ref=e14752]:
+            - text: React, Figma
+            - generic: ▾
+          - cell "sanctus ea no consetetur [...]" [ref=e14753]:
+            - text: sanctus ea no consetetur [...]
+            - generic [ref=e14754] [cursor=pointer]: 🖉
+          - cell [ref=e14755]:
+            - checkbox [checked] [ref=e14756]
+          - cell "42,184.00 €" [ref=e14757]
+          - cell "Mar 13, 2017 2017-03-13 Open date picker" [ref=e14758]:
+            - generic [ref=e14759]:
+              - text: Mar 13, 2017
+              - textbox: 2017-03-13
+              - button "Open date picker" [ref=e14760] [cursor=pointer]: 📅
+          - cell [ref=e14761]
+          - cell "Cologne Office" [ref=e14762]
+          - cell "+11 381 873494" [ref=e14763]
+          - cell "EMP00282" [ref=e14764]
+          - cell "Probation" [ref=e14765]
+          - cell [ref=e14766]
+          - cell "Tools" [ref=e14767]
+          - cell "Open date/time picker" [ref=e14768]:
+            - generic [ref=e14769]:
+              - textbox
+              - button "Open date/time picker" [ref=e14771] [cursor=pointer]: 📅
+          - cell "3.35" [ref=e14772]
+          - cell "+ 0 €" [ref=e14773]
+          - cell "Temporary" [ref=e14774]
+          - cell "France" [ref=e14775]:
+            - text: France
+            - generic: ▾
+          - cell "Cologne" [ref=e14776]:
+            - text: Cologne
+            - generic: ▾
+          - cell "10183" [ref=e14777]
+          - cell [ref=e14778]
+          - cell [ref=e14779]
+          - cell [ref=e14781]
+          - cell "September 9, 1977 1977-09-09 Open date picker" [ref=e14783]:
+            - generic [ref=e14784]:
+              - text: September 9, 1977
+              - textbox: 1977-09-09
+              - button "Open date picker" [ref=e14785] [cursor=pointer]: 📅
+          - cell [ref=e14786]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e14787]:
+            - generic [ref=e14788]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e14789] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e14790]:
+            - generic [ref=e14791]: 7h 30m
+          - 'cell "#e11d48 #e11d48" [ref=e14792]':
+            - generic [ref=e14793]:
+              - generic [ref=e14795]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 282" [ref=e14796]:
+          - cell "283" [ref=e14797]
+          - cell "UUT_VdwcIeYnqneCujjnuf5yD [...]" [ref=e14798]
+          - cell "Charlie" [ref=e14799]
+          - cell "Weber" [ref=e14800]
+          - cell "charlie.weber@example.com" [ref=e14801]
+          - cell "IT" [ref=e14802]:
+            - text: IT
+            - generic: ▾
+          - cell [ref=e14803]:
+            - generic: ▾
+          - cell "sit et et takimata nonumy [...]" [ref=e14804]:
+            - text: sit et et takimata nonumy [...]
+            - generic [ref=e14805] [cursor=pointer]: 🖉
+          - cell [ref=e14806]:
+            - checkbox [checked] [ref=e14807]
+          - cell "41,884.00 €" [ref=e14808]
+          - cell "Apr 23, 2015 2015-04-23 Open date picker" [ref=e14809]:
+            - generic [ref=e14810]:
+              - text: Apr 23, 2015
+              - textbox: 2015-04-23
+              - button "Open date picker" [ref=e14811] [cursor=pointer]: 📅
+          - cell [ref=e14812]
+          - cell "Remote" [ref=e14813]
+          - cell "+11 778 770900" [ref=e14814]
+          - cell "EMP00283" [ref=e14815]
+          - cell "Terminated" [ref=e14816]
+          - cell "Data Analyst" [ref=e14817]
+          - cell "Mobile" [ref=e14818]
+          - cell "Mar 10, 2024, 9:50 AM 2024-03-10T09:50 Open date/time picker" [ref=e14819]:
+            - generic [ref=e14820]:
+              - text: Mar 10, 2024, 9:50 AM
+              - textbox: 2024-03-10T09:50
+              - button "Open date/time picker" [ref=e14821] [cursor=pointer]: 📅
+          - cell "2.83" [ref=e14822]
+          - cell "+ 0 €" [ref=e14823]
+          - cell "Contractor" [ref=e14824]
+          - cell "Spain" [ref=e14825]:
+            - text: Spain
+            - generic: ▾
+          - cell "Frankfurt" [ref=e14826]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell [ref=e14827]
+          - cell "152 Example Street" [ref=e14828]
+          - cell "https://www.linkedin.com/in/charlieweber 🔗" [ref=e14829]:
+            - generic [ref=e14830]:
+              - generic [ref=e14831]: https://www.linkedin.com/in/charlieweber
+              - button "🔗" [ref=e14832] [cursor=pointer]
+          - cell [ref=e14833]
+          - cell "May 21, 1981 1981-05-21 Open date picker" [ref=e14835]:
+            - generic [ref=e14836]:
+              - text: May 21, 1981
+              - textbox: 1981-05-21
+              - button "Open date picker" [ref=e14837] [cursor=pointer]: 📅
+          - cell [ref=e14838]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e14839]:
+            - generic [ref=e14840]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e14841] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e14842]:
+            - generic [ref=e14843]: 8h 30m
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e14844]':
+            - generic [ref=e14845]:
+              - generic [ref=e14847]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 283" [ref=e14848]:
+          - cell "284" [ref=e14849]
+          - cell "djY3STZqr8S28n" [ref=e14850]
+          - cell "Hannah" [ref=e14851]
+          - cell "Fischer" [ref=e14852]
+          - cell "hannah.fischer@example.co [...]" [ref=e14853]
+          - cell "HR" [ref=e14854]:
+            - text: HR
+            - generic: ▾
+          - cell "Figma, Docker, AWS, SQL" [ref=e14855]:
+            - text: Figma, Docker, AWS, SQL
+            - generic: ▾
+          - cell [ref=e14856]:
+            - generic [ref=e14857] [cursor=pointer]: 🖉
+          - cell [ref=e14858]:
+            - checkbox [checked] [ref=e14859]
+          - cell "93,139.00 €" [ref=e14860]
+          - cell "Aug 20, 2006 2006-08-20 Open date picker" [ref=e14861]:
+            - generic [ref=e14862]:
+              - text: Aug 20, 2006
+              - textbox: 2006-08-20
+              - button "Open date picker" [ref=e14863] [cursor=pointer]: 📅
+          - cell "Charlie Fischer" [ref=e14864]
+          - cell "Munich Office" [ref=e14865]
+          - cell "+16 609 427706" [ref=e14866]
+          - cell "EMP00284" [ref=e14867]
+          - cell "Active" [ref=e14868]
+          - cell "DevOps Engineer" [ref=e14869]
+          - cell "Platform" [ref=e14870]
+          - cell "Open date/time picker" [ref=e14871]:
+            - generic [ref=e14872]:
+              - textbox
+              - button "Open date/time picker" [ref=e14874] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e14875]
+          - cell "+ 0 €" [ref=e14876]
+          - cell [ref=e14877]
+          - cell "Spain" [ref=e14878]:
+            - text: Spain
+            - generic: ▾
+          - cell "Cologne" [ref=e14879]:
+            - text: Cologne
+            - generic: ▾
+          - cell "59544" [ref=e14880]
+          - cell [ref=e14881]
+          - cell [ref=e14882]
+          - cell [ref=e14884]
+          - cell "November 1, 1993 1993-11-01 Open date picker" [ref=e14886]:
+            - generic [ref=e14887]:
+              - text: November 1, 1993
+              - textbox: 1993-11-01
+              - button "Open date picker" [ref=e14888] [cursor=pointer]: 📅
+          - cell "Eva Müller (+16157625269)" [ref=e14889]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e14890]:
+            - generic [ref=e14891]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e14892] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e14893]:
+            - generic [ref=e14894]: 4h
+          - 'cell "#a855f7 #a855f7" [ref=e14895]':
+            - generic [ref=e14896]:
+              - generic [ref=e14898]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 284" [ref=e14899]:
+          - cell "285" [ref=e14900]
+          - cell "m7ftSMHRauje_3zOumE-ZK6Jl [...]" [ref=e14901]
+          - cell "Julia" [ref=e14902]
+          - cell "Fischer" [ref=e14903]
+          - cell "julia.fischer@example.com" [ref=e14904]
+          - cell "Marketing" [ref=e14905]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Java, SQL, Python" [ref=e14906]:
+            - text: Java, SQL, Python
+            - generic: ▾
+          - cell "sed tempor erat, rebum. i [...]" [ref=e14907]:
+            - text: sed tempor erat, rebum. i [...]
+            - generic [ref=e14908] [cursor=pointer]: 🖉
+          - cell [ref=e14909]:
+            - checkbox [checked] [ref=e14910]
+          - cell "70,250.00 €" [ref=e14911]
+          - cell "Nov 16, 2023 2023-11-16 Open date picker" [ref=e14912]:
+            - generic [ref=e14913]:
+              - text: Nov 16, 2023
+              - textbox: 2023-11-16
+              - button "Open date picker" [ref=e14914] [cursor=pointer]: 📅
+          - cell "Charlie Becker" [ref=e14915]
+          - cell "Hamburg Office" [ref=e14916]
+          - cell "+18 897 471881" [ref=e14917]
+          - cell "EMP00285" [ref=e14918]
+          - cell "Active" [ref=e14919]
+          - cell "Designer" [ref=e14920]
+          - cell "Growth" [ref=e14921]
+          - cell "Open date/time picker" [ref=e14922]:
+            - generic [ref=e14923]:
+              - textbox
+              - button "Open date/time picker" [ref=e14925] [cursor=pointer]: 📅
+          - cell "3.76" [ref=e14926]
+          - cell "+ 1,990 €" [ref=e14927]
+          - cell "Permanent" [ref=e14928]
+          - cell "France" [ref=e14929]:
+            - text: France
+            - generic: ▾
+          - cell "Frankfurt" [ref=e14930]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "79222" [ref=e14931]
+          - cell "129 Example Street" [ref=e14932]
+          - cell "https://www.linkedin.com/in/juliafischer 🔗" [ref=e14933]:
+            - generic [ref=e14934]:
+              - generic [ref=e14935]: https://www.linkedin.com/in/juliafischer
+              - button "🔗" [ref=e14936] [cursor=pointer]
+          - cell [ref=e14937]
+          - cell "Open date picker" [ref=e14939]:
+            - generic [ref=e14940]:
+              - textbox
+              - button "Open date picker" [ref=e14942] [cursor=pointer]: 📅
+          - cell [ref=e14943]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e14944]:
+            - generic [ref=e14945]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e14946] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e14947]:
+            - generic [ref=e14948]: 6h
+          - 'cell "#d946ef #d946ef" [ref=e14949]':
+            - generic [ref=e14950]:
+              - generic [ref=e14952]: "#d946ef"
+              - textbox: "#d946ef"
+        - row "Row 285" [ref=e14953]:
+          - cell "286" [ref=e14954]
+          - cell "H-JcauM_Lgwv5rCQyWN_Vj47- [...]" [ref=e14955]
+          - cell "Julia" [ref=e14956]
+          - cell "Müller" [ref=e14957]
+          - cell "julia.müller@example.com" [ref=e14958]
+          - cell "HR" [ref=e14959]:
+            - text: HR
+            - generic: ▾
+          - cell "AWS, Java, Python, Figma" [ref=e14960]:
+            - text: AWS, Java, Python, Figma
+            - generic: ▾
+          - cell [ref=e14961]:
+            - generic [ref=e14962] [cursor=pointer]: 🖉
+          - cell [ref=e14963]:
+            - checkbox [checked] [ref=e14964]
+          - cell "47,020.00 €" [ref=e14965]
+          - cell "Dec 11, 2016 2016-12-11 Open date picker" [ref=e14966]:
+            - generic [ref=e14967]:
+              - text: Dec 11, 2016
+              - textbox: 2016-12-11
+              - button "Open date picker" [ref=e14968] [cursor=pointer]: 📅
+          - cell "Diana Becker" [ref=e14969]
+          - cell "Hamburg Office" [ref=e14970]
+          - cell "+19 168 284003" [ref=e14971]
+          - cell "EMP00286" [ref=e14972]
+          - cell "Active" [ref=e14973]
+          - cell "Designer" [ref=e14974]
+          - cell "Web" [ref=e14975]
+          - cell "Jun 10, 2023, 12:08 AM 2023-06-10T00:08 Open date/time picker" [ref=e14976]:
+            - generic [ref=e14977]:
+              - text: Jun 10, 2023, 12:08 AM
+              - textbox: 2023-06-10T00:08
+              - button "Open date/time picker" [ref=e14978] [cursor=pointer]: 📅
+          - cell "3.64" [ref=e14979]
+          - cell "+ 0 €" [ref=e14980]
+          - cell "Permanent" [ref=e14981]
+          - cell "Germany" [ref=e14982]:
+            - text: Germany
+            - generic: ▾
+          - cell "Stuttgart" [ref=e14983]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e14984]
+          - cell "164 Example Street" [ref=e14985]
+          - cell [ref=e14986]
+          - cell [ref=e14988]
+          - cell "Open date picker" [ref=e14990]:
+            - generic [ref=e14991]:
+              - textbox
+              - button "Open date picker" [ref=e14993] [cursor=pointer]: 📅
+          - cell [ref=e14994]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e14995]:
+            - generic [ref=e14996]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e14997] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e14998]:
+            - generic [ref=e14999]: 7h
+          - 'cell "#3b82f6 #3b82f6" [ref=e15000]':
+            - generic [ref=e15001]:
+              - generic [ref=e15003]: "#3b82f6"
+              - textbox: "#3b82f6"
+        - row "Row 286" [ref=e15004]:
+          - cell "287" [ref=e15005]
+          - cell "2lh7j0vHgaUDx7GQtgfE9aWLa [...]" [ref=e15006]
+          - cell "Hannah" [ref=e15007]
+          - cell "Wagner" [ref=e15008]
+          - cell "hannah.wagner@example.com" [ref=e15009]
+          - cell "Legal" [ref=e15010]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e15011]:
+            - generic: ▾
+          - cell "amet, dolor elitr, At et [...]" [ref=e15012]:
+            - text: amet, dolor elitr, At et [...]
+            - generic [ref=e15013] [cursor=pointer]: 🖉
+          - cell [ref=e15014]:
+            - checkbox [checked] [ref=e15015]
+          - cell "56,923.00 €" [ref=e15016]
+          - cell "Oct 6, 2020 2020-10-06 Open date picker" [ref=e15017]:
+            - generic [ref=e15018]:
+              - text: Oct 6, 2020
+              - textbox: 2020-10-06
+              - button "Open date picker" [ref=e15019] [cursor=pointer]: 📅
+          - cell "Bob Schneider" [ref=e15020]
+          - cell "Hamburg Office" [ref=e15021]
+          - cell "+49 620 362513" [ref=e15022]
+          - cell "EMP00287" [ref=e15023]
+          - cell "Probation" [ref=e15024]
+          - cell "Designer" [ref=e15025]
+          - cell "Core" [ref=e15026]
+          - cell "Jul 7, 2021, 4:37 PM 2021-07-07T16:37 Open date/time picker" [ref=e15027]:
+            - generic [ref=e15028]:
+              - text: Jul 7, 2021, 4:37 PM
+              - textbox: 2021-07-07T16:37
+              - button "Open date/time picker" [ref=e15029] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e15030]
+          - cell "+ 14,746 €" [ref=e15031]
+          - cell "Temporary" [ref=e15032]
+          - cell "France" [ref=e15033]:
+            - text: France
+            - generic: ▾
+          - cell [ref=e15034]:
+            - generic: ▾
+          - cell "11929" [ref=e15035]
+          - cell "139 Example Street" [ref=e15036]
+          - cell "https://www.linkedin.com/in/hannahwagner 🔗" [ref=e15037]:
+            - generic [ref=e15038]:
+              - generic [ref=e15039]: https://www.linkedin.com/in/hannahwagner
+              - button "🔗" [ref=e15040] [cursor=pointer]
+          - cell [ref=e15041]
+          - cell "Open date picker" [ref=e15043]:
+            - generic [ref=e15044]:
+              - textbox
+              - button "Open date picker" [ref=e15046] [cursor=pointer]: 📅
+          - cell [ref=e15047]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e15048]:
+            - generic [ref=e15049]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e15050] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e15051]:
+            - generic [ref=e15052]: 9h
+          - 'cell "#ef4444 #ef4444" [ref=e15053]':
+            - generic [ref=e15054]:
+              - generic [ref=e15056]: "#ef4444"
+              - textbox: "#ef4444"
+        - row "Row 287" [ref=e15057]:
+          - cell "288" [ref=e15058]
+          - cell "tM-8swMhrjVIiPPjWR" [ref=e15059]
+          - cell "Charlie" [ref=e15060]
+          - cell "Meyer" [ref=e15061]
+          - cell [ref=e15062]
+          - cell [ref=e15063]:
+            - generic: ▾
+          - cell "Figma, React, TypeScript, [...]" [ref=e15064]:
+            - text: Figma, React, TypeScript, [...]
+            - generic: ▾
+          - cell [ref=e15065]:
+            - generic [ref=e15066] [cursor=pointer]: 🖉
+          - cell [ref=e15067]:
+            - checkbox [ref=e15068]
+          - cell "55,574.00 €" [ref=e15069]
+          - cell "Sep 14, 2022 2022-09-14 Open date picker" [ref=e15070]:
+            - generic [ref=e15071]:
+              - text: Sep 14, 2022
+              - textbox: 2022-09-14
+              - button "Open date picker" [ref=e15072] [cursor=pointer]: 📅
+          - cell "Charlie Schneider" [ref=e15073]
+          - cell "Berlin HQ" [ref=e15074]
+          - cell [ref=e15075]
+          - cell "EMP00288" [ref=e15076]
+          - cell "Active" [ref=e15077]
+          - cell "Software Engineer" [ref=e15078]
+          - cell "Web" [ref=e15079]
+          - cell "Open date/time picker" [ref=e15080]:
+            - generic [ref=e15081]:
+              - textbox
+              - button "Open date/time picker" [ref=e15083] [cursor=pointer]: 📅
+          - cell "0.68" [ref=e15084]
+          - cell "+ 8,955 €" [ref=e15085]
+          - cell "Temporary" [ref=e15086]
+          - cell "Germany" [ref=e15087]:
+            - text: Germany
+            - generic: ▾
+          - cell "Munich" [ref=e15088]:
+            - text: Munich
+            - generic: ▾
+          - cell "97626" [ref=e15089]
+          - cell "155 Example Street" [ref=e15090]
+          - cell "https://www.linkedin.com/in/charliemeyer 🔗" [ref=e15091]:
+            - generic [ref=e15092]:
+              - generic [ref=e15093]: https://www.linkedin.com/in/charliemeyer
+              - button "🔗" [ref=e15094] [cursor=pointer]
+          - cell [ref=e15095]
+          - cell "June 30, 1992 1992-06-30 Open date picker" [ref=e15097]:
+            - generic [ref=e15098]:
+              - text: June 30, 1992
+              - textbox: 1992-06-30
+              - button "Open date picker" [ref=e15099] [cursor=pointer]: 📅
+          - cell [ref=e15100]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e15101]:
+            - generic [ref=e15102]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e15103] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e15104]:
+            - generic [ref=e15105]: 5h
+          - 'cell "#10b981 #10b981" [ref=e15106]':
+            - generic [ref=e15107]:
+              - generic [ref=e15109]: "#10b981"
+              - textbox: "#10b981"
+        - row "Row 288" [ref=e15110]:
+          - cell "289" [ref=e15111]
+          - cell "G0J_pc9Rvex" [ref=e15112]
+          - cell "Charlie" [ref=e15113]
+          - cell "Becker" [ref=e15114]
+          - cell "charlie.becker@example.co [...]" [ref=e15115]
+          - cell "Finance" [ref=e15116]:
+            - text: Finance
+            - generic: ▾
+          - cell "Docker, React" [ref=e15117]:
+            - text: Docker, React
+            - generic: ▾
+          - cell [ref=e15118]:
+            - generic [ref=e15119] [cursor=pointer]: 🖉
+          - cell [ref=e15120]:
+            - checkbox [checked] [ref=e15121]
+          - cell "0.00 €" [ref=e15122]
+          - cell "Jul 31, 2017 2017-07-31 Open date picker" [ref=e15123]:
+            - generic [ref=e15124]:
+              - text: Jul 31, 2017
+              - textbox: 2017-07-31
+              - button "Open date picker" [ref=e15125] [cursor=pointer]: 📅
+          - cell "Diana Weber" [ref=e15126]
+          - cell "Berlin HQ" [ref=e15127]
+          - cell "+49 436 509274" [ref=e15128]
+          - cell "EMP00289" [ref=e15129]
+          - cell "On Leave" [ref=e15130]
+          - cell "Data Analyst" [ref=e15131]
+          - cell "Mobile" [ref=e15132]
+          - cell "Dec 21, 2020, 6:48 AM 2020-12-21T06:48 Open date/time picker" [ref=e15133]:
+            - generic [ref=e15134]:
+              - text: Dec 21, 2020, 6:48 AM
+              - textbox: 2020-12-21T06:48
+              - button "Open date/time picker" [ref=e15135] [cursor=pointer]: 📅
+          - cell "1.03" [ref=e15136]
+          - cell "+ 0 €" [ref=e15137]
+          - cell "Temporary" [ref=e15138]
+          - cell "Spain" [ref=e15139]:
+            - text: Spain
+            - generic: ▾
+          - cell "Hamburg" [ref=e15140]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "50778" [ref=e15141]
+          - cell "161 Example Street" [ref=e15142]
+          - cell [ref=e15143]
+          - cell "https://github.com/charliebecker 🔗" [ref=e15145]:
+            - generic [ref=e15146]:
+              - generic [ref=e15147]: https://github.com/charliebecker
+              - button "🔗" [ref=e15148] [cursor=pointer]
+          - cell "Open date picker" [ref=e15149]:
+            - generic [ref=e15150]:
+              - textbox
+              - button "Open date picker" [ref=e15152] [cursor=pointer]: 📅
+          - cell [ref=e15153]
+          - cell "07:00 AM 07:00 Open time picker" [ref=e15154]:
+            - generic [ref=e15155]:
+              - text: 07:00 AM
+              - textbox: 07:00
+              - button "Open time picker" [ref=e15156] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e15157]:
+            - generic [ref=e15158]: 6h 30m
+          - 'cell "#f59e0b #f59e0b" [ref=e15159]':
+            - generic [ref=e15160]:
+              - generic [ref=e15162]: "#f59e0b"
+              - textbox: "#f59e0b"
+        - row "Row 289" [ref=e15163]:
+          - cell "290" [ref=e15164]
+          - cell "Dvj88YxLDQwSkBX6q1fjKQcsu [...]" [ref=e15165]
+          - cell "Charlie" [ref=e15166]
+          - cell "Meyer" [ref=e15167]
+          - cell "charlie.meyer@example.com" [ref=e15168]
+          - cell "Finance" [ref=e15169]:
+            - text: Finance
+            - generic: ▾
+          - cell "React" [ref=e15170]:
+            - text: React
+            - generic: ▾
+          - cell "no accusam et diam et gub [...]" [ref=e15171]:
+            - text: no accusam et diam et gub [...]
+            - generic [ref=e15172] [cursor=pointer]: 🖉
+          - cell [ref=e15173]:
+            - checkbox [checked] [ref=e15174]
+          - cell "89,280.00 €" [ref=e15175]
+          - cell "Nov 5, 2017 2017-11-05 Open date picker" [ref=e15176]:
+            - generic [ref=e15177]:
+              - text: Nov 5, 2017
+              - textbox: 2017-11-05
+              - button "Open date picker" [ref=e15178] [cursor=pointer]: 📅
+          - cell "Ian Fischer" [ref=e15179]
+          - cell "Berlin HQ" [ref=e15180]
+          - cell "+18 778 420808" [ref=e15181]
+          - cell "EMP00290" [ref=e15182]
+          - cell "On Leave" [ref=e15183]
+          - cell "DevOps Engineer" [ref=e15184]
+          - cell [ref=e15185]
+          - cell "Feb 8, 2020, 7:54 AM 2020-02-08T07:54 Open date/time picker" [ref=e15186]:
+            - generic [ref=e15187]:
+              - text: Feb 8, 2020, 7:54 AM
+              - textbox: 2020-02-08T07:54
+              - button "Open date/time picker" [ref=e15188] [cursor=pointer]: 📅
+          - cell "3.67" [ref=e15189]
+          - cell "+ 13,298 €" [ref=e15190]
+          - cell "Intern" [ref=e15191]
+          - cell "USA" [ref=e15192]:
+            - text: USA
+            - generic: ▾
+          - cell "Stuttgart" [ref=e15193]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell [ref=e15194]
+          - cell [ref=e15195]
+          - cell "https://www.linkedin.com/in/charliemeyer 🔗" [ref=e15196]:
+            - generic [ref=e15197]:
+              - generic [ref=e15198]: https://www.linkedin.com/in/charliemeyer
+              - button "🔗" [ref=e15199] [cursor=pointer]
+          - cell [ref=e15200]
+          - cell "Open date picker" [ref=e15202]:
+            - generic [ref=e15203]:
+              - textbox
+              - button "Open date picker" [ref=e15205] [cursor=pointer]: 📅
+          - cell "Grace Wagner (+1308111545 [...]" [ref=e15206]
+          - cell "07:30 AM 07:30 Open time picker" [ref=e15207]:
+            - generic [ref=e15208]:
+              - text: 07:30 AM
+              - textbox: 07:30
+              - button "Open time picker" [ref=e15209] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e15210]:
+            - generic [ref=e15211]: 8h 15m
+          - 'cell "#8b5cf6 #8b5cf6" [ref=e15212]':
+            - generic [ref=e15213]:
+              - generic [ref=e15215]: "#8b5cf6"
+              - textbox: "#8b5cf6"
+        - row "Row 290" [ref=e15216]:
+          - cell "291" [ref=e15217]
+          - cell "3RiKr14Y9grP_iyp-F" [ref=e15218]
+          - cell "Alice" [ref=e15219]
+          - cell "Fischer" [ref=e15220]
+          - cell "alice.fischer@example.com" [ref=e15221]
+          - cell "HR" [ref=e15222]:
+            - text: HR
+            - generic: ▾
+          - cell "AWS, React, Figma" [ref=e15223]:
+            - text: AWS, React, Figma
+            - generic: ▾
+          - cell "erat, sadipscing kasd duo [...]" [ref=e15224]:
+            - text: erat, sadipscing kasd duo [...]
+            - generic [ref=e15225] [cursor=pointer]: 🖉
+          - cell [ref=e15226]:
+            - checkbox [checked] [ref=e15227]
+          - cell "87,851.00 €" [ref=e15228]
+          - cell "Open date picker" [ref=e15229]:
+            - generic [ref=e15230]:
+              - textbox
+              - button "Open date picker" [ref=e15232] [cursor=pointer]: 📅
+          - cell "Alice Weber" [ref=e15233]
+          - cell [ref=e15234]
+          - cell [ref=e15235]
+          - cell "EMP00291" [ref=e15236]
+          - cell "Terminated" [ref=e15237]
+          - cell "Data Analyst" [ref=e15238]
+          - cell "Mobile" [ref=e15239]
+          - cell "Open date/time picker" [ref=e15240]:
+            - generic [ref=e15241]:
+              - textbox
+              - button "Open date/time picker" [ref=e15243] [cursor=pointer]: 📅
+          - cell "0.31" [ref=e15244]
+          - cell "+ 4,416 €" [ref=e15245]
+          - cell "Permanent" [ref=e15246]
+          - cell "Netherlands" [ref=e15247]:
+            - text: Netherlands
+            - generic: ▾
+          - cell "Stuttgart" [ref=e15248]:
+            - text: Stuttgart
+            - generic: ▾
+          - cell "50741" [ref=e15249]
+          - cell "70 Example Street" [ref=e15250]
+          - cell [ref=e15251]
+          - cell [ref=e15253]
+          - cell "January 26, 1987 1987-01-26 Open date picker" [ref=e15255]:
+            - generic [ref=e15256]:
+              - text: January 26, 1987
+              - textbox: 1987-01-26
+              - button "Open date picker" [ref=e15257] [cursor=pointer]: 📅
+          - cell [ref=e15258]
+          - cell "08:00 AM 08:00 Open time picker" [ref=e15259]:
+            - generic [ref=e15260]:
+              - text: 08:00 AM
+              - textbox: 08:00
+              - button "Open time picker" [ref=e15261] [cursor=pointer]: 🕒
+          - cell "8h" [ref=e15262]:
+            - generic [ref=e15263]: 8h
+          - 'cell "#ec4899 #ec4899" [ref=e15264]':
+            - generic [ref=e15265]:
+              - generic [ref=e15267]: "#ec4899"
+              - textbox: "#ec4899"
+        - row "Row 291" [ref=e15268]:
+          - cell "292" [ref=e15269]
+          - cell "65InQ2zzL2n3Do8TbkyX5KuSj [...]" [ref=e15270]
+          - cell "Eva" [ref=e15271]
+          - cell "Müller" [ref=e15272]
+          - cell "eva.müller@example.com" [ref=e15273]
+          - cell "Legal" [ref=e15274]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java" [ref=e15275]:
+            - text: Java
+            - generic: ▾
+          - cell "vero At eos gubergren, se [...]" [ref=e15276]:
+            - text: vero At eos gubergren, se [...]
+            - generic [ref=e15277] [cursor=pointer]: 🖉
+          - cell [ref=e15278]:
+            - checkbox [ref=e15279]
+          - cell "46,478.00 €" [ref=e15280]
+          - cell "Aug 30, 2022 2022-08-30 Open date picker" [ref=e15281]:
+            - generic [ref=e15282]:
+              - text: Aug 30, 2022
+              - textbox: 2022-08-30
+              - button "Open date picker" [ref=e15283] [cursor=pointer]: 📅
+          - cell [ref=e15284]
+          - cell "Cologne Office" [ref=e15285]
+          - cell "+49 580 946584" [ref=e15286]
+          - cell "EMP00292" [ref=e15287]
+          - cell "Active" [ref=e15288]
+          - cell "Designer" [ref=e15289]
+          - cell "Platform" [ref=e15290]
+          - cell "May 29, 2020, 12:12 PM 2020-05-29T12:12 Open date/time picker" [ref=e15291]:
+            - generic [ref=e15292]:
+              - text: May 29, 2020, 12:12 PM
+              - textbox: 2020-05-29T12:12
+              - button "Open date/time picker" [ref=e15293] [cursor=pointer]: 📅
+          - cell "0.43" [ref=e15294]
+          - cell "+ 0 €" [ref=e15295]
+          - cell "Contractor" [ref=e15296]
+          - cell [ref=e15297]:
+            - generic: ▾
+          - cell [ref=e15298]:
+            - generic: ▾
+          - cell "75780" [ref=e15299]
+          - cell "155 Example Street" [ref=e15300]
+          - cell [ref=e15301]
+          - cell "https://github.com/evamüller 🔗" [ref=e15303]:
+            - generic [ref=e15304]:
+              - generic [ref=e15305]: https://github.com/evamüller
+              - button "🔗" [ref=e15306] [cursor=pointer]
+          - cell "Open date picker" [ref=e15307]:
+            - generic [ref=e15308]:
+              - textbox
+              - button "Open date picker" [ref=e15310] [cursor=pointer]: 📅
+          - cell [ref=e15311]
+          - cell "08:15 AM 08:15 Open time picker" [ref=e15312]:
+            - generic [ref=e15313]:
+              - text: 08:15 AM
+              - textbox: 08:15
+              - button "Open time picker" [ref=e15314] [cursor=pointer]: 🕒
+          - cell "7h 30m" [ref=e15315]:
+            - generic [ref=e15316]: 7h 30m
+          - 'cell "#06b6d4 #06b6d4" [ref=e15317]':
+            - generic [ref=e15318]:
+              - generic [ref=e15320]: "#06b6d4"
+              - textbox: "#06b6d4"
+        - row "Row 292" [ref=e15321]:
+          - cell "293" [ref=e15322]
+          - cell "EHRhh5jDxwbPB4mS3yZQpdkD4 [...]" [ref=e15323]
+          - cell "Julia" [ref=e15324]
+          - cell "Wagner" [ref=e15325]
+          - cell "julia.wagner@example.com" [ref=e15326]
+          - cell "Sales" [ref=e15327]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript, AWS, Python" [ref=e15328]:
+            - text: TypeScript, AWS, Python
+            - generic: ▾
+          - cell "sea clita erat, At et duo [...]" [ref=e15329]:
+            - text: sea clita erat, At et duo [...]
+            - generic [ref=e15330] [cursor=pointer]: 🖉
+          - cell [ref=e15331]:
+            - checkbox [checked] [ref=e15332]
+          - cell "0.00 €" [ref=e15333]
+          - cell "Dec 23, 2020 2020-12-23 Open date picker" [ref=e15334]:
+            - generic [ref=e15335]:
+              - text: Dec 23, 2020
+              - textbox: 2020-12-23
+              - button "Open date picker" [ref=e15336] [cursor=pointer]: 📅
+          - cell "Eva Becker" [ref=e15337]
+          - cell "Cologne Office" [ref=e15338]
+          - cell "+49 292 547378" [ref=e15339]
+          - cell "EMP00293" [ref=e15340]
+          - cell "On Leave" [ref=e15341]
+          - cell "DevOps Engineer" [ref=e15342]
+          - cell "Web" [ref=e15343]
+          - cell "May 1, 2024, 11:51 PM 2024-05-01T23:51 Open date/time picker" [ref=e15344]:
+            - generic [ref=e15345]:
+              - text: May 1, 2024, 11:51 PM
+              - textbox: 2024-05-01T23:51
+              - button "Open date/time picker" [ref=e15346] [cursor=pointer]: 📅
+          - cell "1.27" [ref=e15347]
+          - cell "+ 1,771 €" [ref=e15348]
+          - cell [ref=e15349]
+          - cell "USA" [ref=e15350]:
+            - text: USA
+            - generic: ▾
+          - cell [ref=e15351]:
+            - generic: ▾
+          - cell "74454" [ref=e15352]
+          - cell [ref=e15353]
+          - cell [ref=e15354]
+          - cell [ref=e15356]
+          - cell "December 17, 1988 1988-12-17 Open date picker" [ref=e15358]:
+            - generic [ref=e15359]:
+              - text: December 17, 1988
+              - textbox: 1988-12-17
+              - button "Open date picker" [ref=e15360] [cursor=pointer]: 📅
+          - cell [ref=e15361]
+          - cell "08:30 AM 08:30 Open time picker" [ref=e15362]:
+            - generic [ref=e15363]:
+              - text: 08:30 AM
+              - textbox: 08:30
+              - button "Open time picker" [ref=e15364] [cursor=pointer]: 🕒
+          - cell "8h 30m" [ref=e15365]:
+            - generic [ref=e15366]: 8h 30m
+          - 'cell "#84cc16 #84cc16" [ref=e15367]':
+            - generic [ref=e15368]:
+              - generic [ref=e15370]: "#84cc16"
+              - textbox: "#84cc16"
+        - row "Row 293" [ref=e15371]:
+          - cell "294" [ref=e15372]
+          - cell "vUbMvOSQJVxkwRAIc4fbQWK2d [...]" [ref=e15373]
+          - cell "Charlie" [ref=e15374]
+          - cell "Schmidt" [ref=e15375]
+          - cell "charlie.schmidt@example.c [...]" [ref=e15376]
+          - cell "Finance" [ref=e15377]:
+            - text: Finance
+            - generic: ▾
+          - cell "Docker, SQL, AWS" [ref=e15378]:
+            - text: Docker, SQL, AWS
+            - generic: ▾
+          - cell "amet, ipsum nonumy dolor [...]" [ref=e15379]:
+            - text: amet, ipsum nonumy dolor [...]
+            - generic [ref=e15380] [cursor=pointer]: 🖉
+          - cell [ref=e15381]:
+            - checkbox [checked] [ref=e15382]
+          - cell "96,355.00 €" [ref=e15383]
+          - cell "Open date picker" [ref=e15384]:
+            - generic [ref=e15385]:
+              - textbox
+              - button "Open date picker" [ref=e15387] [cursor=pointer]: 📅
+          - cell "Diana Becker" [ref=e15388]
+          - cell "Remote" [ref=e15389]
+          - cell "+11 643 039297" [ref=e15390]
+          - cell "EMP00294" [ref=e15391]
+          - cell "Active" [ref=e15392]
+          - cell "DevOps Engineer" [ref=e15393]
+          - cell "Platform" [ref=e15394]
+          - cell "Open date/time picker" [ref=e15395]:
+            - generic [ref=e15396]:
+              - textbox
+              - button "Open date/time picker" [ref=e15398] [cursor=pointer]: 📅
+          - cell "2.77" [ref=e15399]
+          - cell "+ 2,105 €" [ref=e15400]
+          - cell "Permanent" [ref=e15401]
+          - cell "Germany" [ref=e15402]:
+            - text: Germany
+            - generic: ▾
+          - cell [ref=e15403]:
+            - generic: ▾
+          - cell [ref=e15404]
+          - cell "153 Example Street" [ref=e15405]
+          - cell [ref=e15406]
+          - cell [ref=e15408]
+          - cell "Open date picker" [ref=e15410]:
+            - generic [ref=e15411]:
+              - textbox
+              - button "Open date picker" [ref=e15413] [cursor=pointer]: 📅
+          - cell [ref=e15414]
+          - cell "08:45 AM 08:45 Open time picker" [ref=e15415]:
+            - generic [ref=e15416]:
+              - text: 08:45 AM
+              - textbox: 08:45
+              - button "Open time picker" [ref=e15417] [cursor=pointer]: 🕒
+          - cell "4h" [ref=e15418]:
+            - generic [ref=e15419]: 4h
+          - 'cell "#f97316 #f97316" [ref=e15420]':
+            - generic [ref=e15421]:
+              - generic [ref=e15423]: "#f97316"
+              - textbox: "#f97316"
+        - row "Row 294" [ref=e15424]:
+          - cell "295" [ref=e15425]
+          - cell "AkYxNtE3WUeAnDmmO92Mp" [ref=e15426]
+          - cell "Alice" [ref=e15427]
+          - cell "Fischer" [ref=e15428]
+          - cell "alice.fischer@example.com" [ref=e15429]
+          - cell "Legal" [ref=e15430]:
+            - text: Legal
+            - generic: ▾
+          - cell "Java, Figma" [ref=e15431]:
+            - text: Java, Figma
+            - generic: ▾
+          - cell "diam duo rebum. ut dolore [...]" [ref=e15432]:
+            - text: diam duo rebum. ut dolore [...]
+            - generic [ref=e15433] [cursor=pointer]: 🖉
+          - cell [ref=e15434]:
+            - checkbox [checked] [ref=e15435]
+          - cell "0.00 €" [ref=e15436]
+          - cell "Feb 5, 2020 2020-02-05 Open date picker" [ref=e15437]:
+            - generic [ref=e15438]:
+              - text: Feb 5, 2020
+              - textbox: 2020-02-05
+              - button "Open date picker" [ref=e15439] [cursor=pointer]: 📅
+          - cell "Frank Schmidt" [ref=e15440]
+          - cell [ref=e15441]
+          - cell "+49 652 408757" [ref=e15442]
+          - cell "EMP00295" [ref=e15443]
+          - cell "On Leave" [ref=e15444]
+          - cell "Data Analyst" [ref=e15445]
+          - cell [ref=e15446]
+          - cell "Jul 21, 2024, 9:19 PM 2024-07-21T21:19 Open date/time picker" [ref=e15447]:
+            - generic [ref=e15448]:
+              - text: Jul 21, 2024, 9:19 PM
+              - textbox: 2024-07-21T21:19
+              - button "Open date/time picker" [ref=e15449] [cursor=pointer]: 📅
+          - cell "3.92" [ref=e15450]
+          - cell "+ 12,852 €" [ref=e15451]
+          - cell "Permanent" [ref=e15452]
+          - cell "USA" [ref=e15453]:
+            - text: USA
+            - generic: ▾
+          - cell "Cologne" [ref=e15454]:
+            - text: Cologne
+            - generic: ▾
+          - cell "97793" [ref=e15455]
+          - cell "69 Example Street" [ref=e15456]
+          - cell [ref=e15457]
+          - cell [ref=e15459]
+          - cell "June 4, 1990 1990-06-04 Open date picker" [ref=e15461]:
+            - generic [ref=e15462]:
+              - text: June 4, 1990
+              - textbox: 1990-06-04
+              - button "Open date picker" [ref=e15463] [cursor=pointer]: 📅
+          - cell "Bob Weber (+49271666523)" [ref=e15464]
+          - cell "09:00 AM 09:00 Open time picker" [ref=e15465]:
+            - generic [ref=e15466]:
+              - text: 09:00 AM
+              - textbox: 09:00
+              - button "Open time picker" [ref=e15467] [cursor=pointer]: 🕒
+          - cell "6h" [ref=e15468]:
+            - generic [ref=e15469]: 6h
+          - 'cell "#6366f1 #6366f1" [ref=e15470]':
+            - generic [ref=e15471]:
+              - generic [ref=e15473]: "#6366f1"
+              - textbox: "#6366f1"
+        - row "Row 295" [ref=e15474]:
+          - cell "296" [ref=e15475]
+          - cell "OEJw5Sjf6qDs" [ref=e15476]
+          - cell "Ian" [ref=e15477]
+          - cell "Schmidt" [ref=e15478]
+          - cell "ian.schmidt@example.com" [ref=e15479]
+          - cell "Legal" [ref=e15480]:
+            - text: Legal
+            - generic: ▾
+          - cell [ref=e15481]:
+            - generic: ▾
+          - cell "sanctus erat, no sed dolo [...]" [ref=e15482]:
+            - text: sanctus erat, no sed dolo [...]
+            - generic [ref=e15483] [cursor=pointer]: 🖉
+          - cell [ref=e15484]:
+            - checkbox [checked] [ref=e15485]
+          - cell "55,425.00 €" [ref=e15486]
+          - cell "Aug 3, 2010 2010-08-03 Open date picker" [ref=e15487]:
+            - generic [ref=e15488]:
+              - text: Aug 3, 2010
+              - textbox: 2010-08-03
+              - button "Open date picker" [ref=e15489] [cursor=pointer]: 📅
+          - cell "Eva Wagner" [ref=e15490]
+          - cell "Munich Office" [ref=e15491]
+          - cell "+15 501 110211" [ref=e15492]
+          - cell "EMP00296" [ref=e15493]
+          - cell "Terminated" [ref=e15494]
+          - cell "Designer" [ref=e15495]
+          - cell "Tools" [ref=e15496]
+          - cell "Aug 16, 2020, 2:17 AM 2020-08-16T02:17 Open date/time picker" [ref=e15497]:
+            - generic [ref=e15498]:
+              - text: Aug 16, 2020, 2:17 AM
+              - textbox: 2020-08-16T02:17
+              - button "Open date/time picker" [ref=e15499] [cursor=pointer]: 📅
+          - cell "4.11" [ref=e15500]
+          - cell "+ 14,511 €" [ref=e15501]
+          - cell "Temporary" [ref=e15502]
+          - cell "France" [ref=e15503]:
+            - text: France
+            - generic: ▾
+          - cell "Munich" [ref=e15504]:
+            - text: Munich
+            - generic: ▾
+          - cell [ref=e15505]
+          - cell "188 Example Street" [ref=e15506]
+          - cell "https://www.linkedin.com/in/ianschmidt 🔗" [ref=e15507]:
+            - generic [ref=e15508]:
+              - generic [ref=e15509]: https://www.linkedin.com/in/ianschmidt
+              - button "🔗" [ref=e15510] [cursor=pointer]
+          - cell [ref=e15511]
+          - cell "Open date picker" [ref=e15513]:
+            - generic [ref=e15514]:
+              - textbox
+              - button "Open date picker" [ref=e15516] [cursor=pointer]: 📅
+          - cell "Charlie Schmidt (+1801073 [...]" [ref=e15517]
+          - cell "09:15 AM 09:15 Open time picker" [ref=e15518]:
+            - generic [ref=e15519]:
+              - text: 09:15 AM
+              - textbox: 09:15
+              - button "Open time picker" [ref=e15520] [cursor=pointer]: 🕒
+          - cell "7h" [ref=e15521]:
+            - generic [ref=e15522]: 7h
+          - 'cell "#14b8a6 #14b8a6" [ref=e15523]':
+            - generic [ref=e15524]:
+              - generic [ref=e15526]: "#14b8a6"
+              - textbox: "#14b8a6"
+        - row "Row 296" [ref=e15527]:
+          - cell "297" [ref=e15528]
+          - cell "mzJeEkX28xfbRN0ifuSHTXPCu [...]" [ref=e15529]
+          - cell "Ian" [ref=e15530]
+          - cell "Becker" [ref=e15531]
+          - cell "ian.becker@example.com" [ref=e15532]
+          - cell "Finance" [ref=e15533]:
+            - text: Finance
+            - generic: ▾
+          - cell "React" [ref=e15534]:
+            - text: React
+            - generic: ▾
+          - cell "labore sed no dolore et e [...]" [ref=e15535]:
+            - text: labore sed no dolore et e [...]
+            - generic [ref=e15536] [cursor=pointer]: 🖉
+          - cell [ref=e15537]:
+            - checkbox [checked] [ref=e15538]
+          - cell "91,974.00 €" [ref=e15539]
+          - cell "Jun 20, 2011 2011-06-20 Open date picker" [ref=e15540]:
+            - generic [ref=e15541]:
+              - text: Jun 20, 2011
+              - textbox: 2011-06-20
+              - button "Open date picker" [ref=e15542] [cursor=pointer]: 📅
+          - cell "Charlie Schneider" [ref=e15543]
+          - cell "Hamburg Office" [ref=e15544]
+          - cell "+19 545 490259" [ref=e15545]
+          - cell "EMP00297" [ref=e15546]
+          - cell "Probation" [ref=e15547]
+          - cell "Designer" [ref=e15548]
+          - cell [ref=e15549]
+          - cell "Sep 7, 2021, 10:30 PM 2021-09-07T22:30 Open date/time picker" [ref=e15550]:
+            - generic [ref=e15551]:
+              - text: Sep 7, 2021, 10:30 PM
+              - textbox: 2021-09-07T22:30
+              - button "Open date/time picker" [ref=e15552] [cursor=pointer]: 📅
+          - cell "2.94" [ref=e15553]
+          - cell "+ 8,082 €" [ref=e15554]
+          - cell [ref=e15555]
+          - cell "USA" [ref=e15556]:
+            - text: USA
+            - generic: ▾
+          - cell "Hamburg" [ref=e15557]:
+            - text: Hamburg
+            - generic: ▾
+          - cell "19751" [ref=e15558]
+          - cell [ref=e15559]
+          - cell [ref=e15560]
+          - cell [ref=e15562]
+          - cell "Open date picker" [ref=e15564]:
+            - generic [ref=e15565]:
+              - textbox
+              - button "Open date picker" [ref=e15567] [cursor=pointer]: 📅
+          - cell [ref=e15568]
+          - cell "09:30 AM 09:30 Open time picker" [ref=e15569]:
+            - generic [ref=e15570]:
+              - text: 09:30 AM
+              - textbox: 09:30
+              - button "Open time picker" [ref=e15571] [cursor=pointer]: 🕒
+          - cell "9h" [ref=e15572]:
+            - generic [ref=e15573]: 9h
+          - 'cell "#e11d48 #e11d48" [ref=e15574]':
+            - generic [ref=e15575]:
+              - generic [ref=e15577]: "#e11d48"
+              - textbox: "#e11d48"
+        - row "Row 297" [ref=e15578]:
+          - cell "298" [ref=e15579]
+          - cell "WJyuYPrDWLndw5_oPSFrN8X53 [...]" [ref=e15580]
+          - cell "Eva" [ref=e15581]
+          - cell "Schmidt" [ref=e15582]
+          - cell "eva.schmidt@example.com" [ref=e15583]
+          - cell "Sales" [ref=e15584]:
+            - text: Sales
+            - generic: ▾
+          - cell "TypeScript, AWS" [ref=e15585]:
+            - text: TypeScript, AWS
+            - generic: ▾
+          - cell "dolor gubergren, sit Stet [...]" [ref=e15586]:
+            - text: dolor gubergren, sit Stet [...]
+            - generic [ref=e15587] [cursor=pointer]: 🖉
+          - cell [ref=e15588]:
+            - checkbox [checked] [ref=e15589]
+          - cell "66,316.00 €" [ref=e15590]
+          - cell "Jan 4, 2014 2014-01-04 Open date picker" [ref=e15591]:
+            - generic [ref=e15592]:
+              - text: Jan 4, 2014
+              - textbox: 2014-01-04
+              - button "Open date picker" [ref=e15593] [cursor=pointer]: 📅
+          - cell "Hannah Meyer" [ref=e15594]
+          - cell "Cologne Office" [ref=e15595]
+          - cell "+49 717 499446" [ref=e15596]
+          - cell "EMP00298" [ref=e15597]
+          - cell "Active" [ref=e15598]
+          - cell "Product Manager" [ref=e15599]
+          - cell "Growth" [ref=e15600]
+          - cell "Oct 26, 2020, 2:49 PM 2020-10-26T14:49 Open date/time picker" [ref=e15601]:
+            - generic [ref=e15602]:
+              - text: Oct 26, 2020, 2:49 PM
+              - textbox: 2020-10-26T14:49
+              - button "Open date/time picker" [ref=e15603] [cursor=pointer]: 📅
+          - cell "0.00" [ref=e15604]
+          - cell "+ 14,321 €" [ref=e15605]
+          - cell "Intern" [ref=e15606]
+          - cell "Spain" [ref=e15607]:
+            - text: Spain
+            - generic: ▾
+          - cell "Cologne" [ref=e15608]:
+            - text: Cologne
+            - generic: ▾
+          - cell "25571" [ref=e15609]
+          - cell "36 Example Street" [ref=e15610]
+          - cell [ref=e15611]
+          - cell [ref=e15613]
+          - cell "Open date picker" [ref=e15615]:
+            - generic [ref=e15616]:
+              - textbox
+              - button "Open date picker" [ref=e15618] [cursor=pointer]: 📅
+          - cell [ref=e15619]
+          - cell "10:00 AM 10:00 Open time picker" [ref=e15620]:
+            - generic [ref=e15621]:
+              - text: 10:00 AM
+              - textbox: 10:00
+              - button "Open time picker" [ref=e15622] [cursor=pointer]: 🕒
+          - cell "5h" [ref=e15623]:
+            - generic [ref=e15624]: 5h
+          - 'cell "#0ea5e9 #0ea5e9" [ref=e15625]':
+            - generic [ref=e15626]:
+              - generic [ref=e15628]: "#0ea5e9"
+              - textbox: "#0ea5e9"
+        - row "Row 298" [ref=e15629]:
+          - cell "299" [ref=e15630]
+          - cell "bf1vKF5dqU8Ob8yXAT3VUe2fA" [ref=e15631]
+          - cell "Julia" [ref=e15632]
+          - cell "Schneider" [ref=e15633]
+          - cell "julia.schneider@example.c [...]" [ref=e15634]
+          - cell "Marketing" [ref=e15635]:
+            - text: Marketing
+            - generic: ▾
+          - cell "Figma, React" [ref=e15636]:
+            - text: Figma, React
+            - generic: ▾
+          - cell "vero ea duo sadipscing ac [...]" [ref=e15637]:
+            - text: vero ea duo sadipscing ac [...]
+            - generic [ref=e15638] [cursor=pointer]: 🖉
+          - cell [ref=e15639]:
+            - checkbox [checked] [ref=e15640]
+          - cell "77,630.00 €" [ref=e15641]
+          - cell "Apr 27, 2012 2012-04-27 Open date picker" [ref=e15642]:
+            - generic [ref=e15643]:
+              - text: Apr 27, 2012
+              - textbox: 2012-04-27
+              - button "Open date picker" [ref=e15644] [cursor=pointer]: 📅
+          - cell "Hannah Schneider" [ref=e15645]
+          - cell "Berlin HQ" [ref=e15646]
+          - cell [ref=e15647]
+          - cell "EMP00299" [ref=e15648]
+          - cell "Terminated" [ref=e15649]
+          - cell "QA Engineer" [ref=e15650]
+          - cell "Web" [ref=e15651]
+          - cell "Aug 10, 2021, 10:32 PM 2021-08-10T22:32 Open date/time picker" [ref=e15652]:
+            - generic [ref=e15653]:
+              - text: Aug 10, 2021, 10:32 PM
+              - textbox: 2021-08-10T22:32
+              - button "Open date/time picker" [ref=e15654] [cursor=pointer]: 📅
+          - cell "4.48" [ref=e15655]
+          - cell "+ 0 €" [ref=e15656]
+          - cell "Temporary" [ref=e15657]
+          - cell [ref=e15658]:
+            - generic: ▾
+          - cell "Munich" [ref=e15659]:
+            - text: Munich
+            - generic: ▾
+          - cell [ref=e15660]
+          - cell "20 Example Street" [ref=e15661]
+          - cell [ref=e15662]
+          - cell [ref=e15664]
+          - cell "November 20, 1980 1980-11-20 Open date picker" [ref=e15666]:
+            - generic [ref=e15667]:
+              - text: November 20, 1980
+              - textbox: 1980-11-20
+              - button "Open date picker" [ref=e15668] [cursor=pointer]: 📅
+          - cell "Diana Schneider (+4933997 [...]" [ref=e15669]
+          - cell "10:30 AM 10:30 Open time picker" [ref=e15670]:
+            - generic [ref=e15671]:
+              - text: 10:30 AM
+              - textbox: 10:30
+              - button "Open time picker" [ref=e15672] [cursor=pointer]: 🕒
+          - cell "6h 30m" [ref=e15673]:
+            - generic [ref=e15674]: 6h 30m
+          - 'cell "#a855f7 #a855f7" [ref=e15675]':
+            - generic [ref=e15676]:
+              - generic [ref=e15678]: "#a855f7"
+              - textbox: "#a855f7"
+        - row "Row 299" [ref=e15679]:
+          - cell "300" [ref=e15680]
+          - cell "YQ2nSaLD5MGOYqOTC" [ref=e15681]
+          - cell "Bob" [ref=e15682]
+          - cell "Fischer" [ref=e15683]
+          - cell "bob.fischer@example.com" [ref=e15684]
+          - cell "Finance" [ref=e15685]:
+            - text: Finance
+            - generic: ▾
+          - cell "Figma, AWS, Java, Python" [ref=e15686]:
+            - text: Figma, AWS, Java, Python
+            - generic: ▾
+          - cell "justo justo voluptua. ali [...]" [ref=e15687]:
+            - text: justo justo voluptua. ali [...]
+            - generic [ref=e15688] [cursor=pointer]: 🖉
+          - cell [ref=e15689]:
+            - checkbox [checked] [ref=e15690]
+          - cell "0.00 €" [ref=e15691]
+          - cell "May 10, 2012 2012-05-10 Open date picker" [ref=e15692]:
+            - generic [ref=e15693]:
+              - text: May 10, 2012
+              - textbox: 2012-05-10
+              - button "Open date picker" [ref=e15694] [cursor=pointer]: 📅
+          - cell "Julia Schmidt" [ref=e15695]
+          - cell "Cologne Office" [ref=e15696]
+          - cell "+49 568 975272" [ref=e15697]
+          - cell "EMP00300" [ref=e15698]
+          - cell "Probation" [ref=e15699]
+          - cell [ref=e15700]
+          - cell "Core" [ref=e15701]
+          - cell "Open date/time picker" [ref=e15702]:
+            - generic [ref=e15703]:
+              - textbox
+              - button "Open date/time picker" [ref=e15705] [cursor=pointer]: 📅
+          - cell "0.83" [ref=e15706]
+          - cell "+ 11,411 €" [ref=e15707]
+          - cell "Contractor" [ref=e15708]
+          - cell "USA" [ref=e15709]:
+            - text: USA
+            - generic: ▾
+          - cell "Frankfurt" [ref=e15710]:
+            - text: Frankfurt
+            - generic: ▾
+          - cell "23257" [ref=e15711]
+          - cell "95 Example Street" [ref=e15712]
+          - cell [ref=e15713]
+          - cell "https://github.com/bobfischer 🔗" [ref=e15715]:
+            - generic [ref=e15716]:
+              - generic [ref=e15717]: https://github.com/bobfischer
+              - button "🔗" [ref=e15718] [cursor=pointer]
+          - cell "February 12, 1979 1979-02-12 Open date picker" [ref=e15719]:
+            - generic [ref=e15720]:
+              - text: February 12, 1979
+              - textbox: 1979-02-12
+              - button "Open date picker" [ref=e15721] [cursor=pointer]: 📅
+          - cell [ref=e15722]
+          - cell "11:00 AM 11:00 Open time picker" [ref=e15723]:
+            - generic [ref=e15724]:
+              - text: 11:00 AM
+              - textbox: 11:00
+              - button "Open time picker" [ref=e15725] [cursor=pointer]: 🕒
+          - cell "8h 15m" [ref=e15726]:
+            - generic [ref=e15727]: 8h 15m
+          - 'cell "#d946ef #d946ef" [ref=e15728]':
+            - generic [ref=e15729]:
+              - generic [ref=e15731]: "#d946ef"
+              - textbox: "#d946ef"
+        - row [ref=e15732]:
+          - cell [ref=e15733]
+          - cell [ref=e15734]
+          - cell [ref=e15735]
+          - cell [ref=e15736]
+          - cell [ref=e15737]
+          - cell [ref=e15738]
+          - cell [ref=e15739]
+          - cell [ref=e15740]
+          - cell [ref=e15741]
+          - cell [ref=e15742]
+          - cell [ref=e15743]
+          - cell [ref=e15744]
+          - cell [ref=e15745]
+          - cell [ref=e15746]
+          - cell [ref=e15747]
+          - cell [ref=e15748]
+          - cell [ref=e15749]
+          - cell [ref=e15750]
+          - cell [ref=e15751]
+          - cell [ref=e15752]
+          - cell [ref=e15753]
+          - cell [ref=e15754]
+          - cell [ref=e15755]
+          - cell [ref=e15756]
+          - cell [ref=e15757]
+          - cell [ref=e15758]
+          - cell [ref=e15759]
+          - cell [ref=e15760]
+          - cell [ref=e15761]
+          - cell [ref=e15762]
+          - cell [ref=e15763]
+          - cell [ref=e15764]
+          - cell [ref=e15765]
+    - generic [ref=e15766]:
+      - generic [ref=e15767]: +
+      - spinbutton [ref=e15768]: "1"
+      - button "Create Rows" [ref=e15769] [cursor=pointer]
+  - generic [ref=e15770]:
+    - generic [ref=e15771]:
+      - generic [ref=e15772]: Page
+      - button "Page 1" [ref=e15774]: "1"
+      - generic [ref=e15775]: of 300 rows with
+      - combobox "rows per page" [ref=e15776] [cursor=pointer]:
+        - option "10"
+        - option "25"
+        - option "50"
+        - option "100"
+        - option "250"
+        - option "500"
+        - option "1000"
+        - option "All" [selected]
+      - generic [ref=e15777]: rows per page
+    - generic [ref=e15778]:
+      - button "Reset Filter & Sort" [disabled] [ref=e15779]
+      - button "[...]" [ref=e15780] [cursor=pointer]
+      - button "Columns" [ref=e15781] [cursor=pointer]
+      - button "Reset Columns" [disabled] [ref=e15782]
+```

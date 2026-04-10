@@ -211,8 +211,8 @@ export const demoColumns: ColumnConfig<any>[] = [
   },
   { name: "postalCode", type: "String", label: "Postal Code", headerTitle: "Postal code" },
   { name: "address", type: "String", label: "Address", headerTitle: "Street and house number" },
-  { name: "linkedin", type: "String", label: "LinkedIn", headerTitle: "LinkedIn profile URL" },
-  { name: "github", type: "String", label: "GitHub", headerTitle: "GitHub profile URL" },
+  { name: "linkedin", type: "Url", label: "LinkedIn", headerTitle: "LinkedIn profile URL" },
+  { name: "github", type: "Url", label: "GitHub", headerTitle: "GitHub profile URL" },
   {
     name: "dateOfBirth",
     type: "Date",

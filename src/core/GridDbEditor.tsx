@@ -22,6 +22,8 @@ import { useContextMenu } from "./useContextMenu";
 import { useCursor } from "./useCursor";
 import { useUndoRedo } from "./useUndoRedo";
 import { TableTranslations, TranslationsContext, resolveTranslations } from "./TranslationsContext";
+import { useColumnWidthAnimation } from "./useColumnWidthAnimation";
+import { formatDuration, normalizeDuration } from "../editors/DurationEditor";
 
 export const getCursorName = (prefix: string, hasCursor: boolean, editing: boolean) =>
   hasCursor ? prefix + (editing ? "edited" : "selected") : "";
@@ -144,16 +146,7 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     const effectiveSortConfig = isControlledSort ? controlledSortConfig : internalSortConfig;
     const effectiveFilters = isControlledFilter ? controlledFilters! : internalFilters;
 
-    const handleSortChange = React.useCallback(
-      (config: SortConfig) => {
-        if (isControlledSort) {
-          controlledOnSortChange?.(config);
-        } else {
-          setInternalSortConfig(config);
-        }
-      },
-      [isControlledSort, controlledOnSortChange],
-    );
+    // (moved handleSortChange down)
 
     const handleFilterChange = React.useCallback(
       (colName: string, value: string) => {
@@ -295,10 +288,24 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       gridDbEditorRef,
     } = useCursor(displayRows, columns, numberOfStickyColums, onSelectionChange);
 
+    const { frozenCss, handleFocusCapture, handleBlurCapture, onSortInitiated } = useColumnWidthAnimation(tableRef, viewportRef, tableId);
+
     const { stickyColumnsLefts } = useStickyColumnsLeftChecker(
       tableRef,
       numberOfStickyColums,
       tableId,
+    );
+
+    const handleSortChange = React.useCallback(
+      (config: SortConfig, colIdx?: number) => {
+        if (colIdx !== undefined) onSortInitiated(colIdx);
+        if (isControlledSort) {
+          controlledOnSortChange?.(config);
+        } else {
+          setInternalSortConfig(config);
+        }
+      },
+      [isControlledSort, controlledOnSortChange, onSortInitiated],
     );
 
     useOnGridResize(tableRef, displayRows.length, columns.length, () => {
@@ -428,8 +435,13 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       for (let r = startRow; r <= endRow; r++) {
         const cells: string[] = [];
         for (let c = startCol; c <= endCol; c++) {
-          const val = displayRows[r]?.[columns[c]?.name];
-          cells.push(val == null ? "" : String(val));
+          const col = columns[c];
+          const val = displayRows[r]?.[col?.name];
+          let formattedVal = val == null ? "" : String(val);
+          if (col?.type === "Duration") {
+            formattedVal = formatDuration(val, col.durationFormat);
+          }
+          cells.push(formattedVal);
         }
         lines.push(cells.join("\t"));
       }
@@ -469,7 +481,15 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
             if (colIdx >= columns.length) break;
             const col = columns[colIdx];
             if (col.readOnly) continue;
-            newRow[col.name] = cells[c];
+
+            let parsedVal: any = cells[c];
+            if (col.type === "Duration") {
+              parsedVal = normalizeDuration(parsedVal);
+            } else if (col.type === "MultiCombobox" || col.multiselect) {
+              parsedVal = parsedVal === "" ? [] : parsedVal.split(",").map((s: string) => s.trim());
+            }
+
+            newRow[col.name] = parsedVal;
             rowChanged = true;
           }
           if (rowChanged) {
@@ -862,6 +882,21 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
           pasteAtCursor();
           return;
         }
+        if (ctrl && event.key.toLowerCase() === "a") {
+          if (!cursorRef.current.editing) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (displayRows.length > 0 && columns.length > 0) {
+              setCursorRef({
+                colSelection: false,
+                selectionStart: { colIdx: 0, rowIdx: 0 },
+                selectionEnd: { colIdx: columns.length - 1, rowIdx: displayRows.length - 1 },
+                fillEnd: { colIdx: columns.length - 1, rowIdx: displayRows.length - 1 },
+              });
+            }
+            return;
+          }
+        }
         if (ctrl && event.key === "h" && enableSearchReplace) {
           event.preventDefault();
           event.stopPropagation();
@@ -1099,7 +1134,10 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
             }
           }}
           tabIndex={0}
+          onFocusCapture={handleFocusCapture}
+          onBlurCapture={handleBlurCapture}
         >
+          {frozenCss && <style dangerouslySetInnerHTML={{ __html: frozenCss }} />}
           {stickyColumnsLefts.css != null && (
             <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
           )}
@@ -1115,9 +1153,13 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
             ref={viewportRef}
             className="grid-db-editor-viewport"
             onContextMenu={(event) => {
-              // Don't show context menu when a dialog is open
+              // Don't show custom context menu when a dialog is open (but allow browser default inside dialogs)
               if (searchReplaceOpen || document.querySelector(".editor-dialog-overlay")) {
-                event.preventDefault();
+                const target = event.target as HTMLElement;
+                const isInsideDialog = target.closest(".editor-dialog-overlay, .search-replace-dialog");
+                if (!isInsideDialog) {
+                  event.preventDefault();
+                }
                 return;
               }
               // Don't show context menu on header filter inputs

@@ -65,23 +65,23 @@ export const DateTimeEditor: Editor<string> = ({
       onCommit: (val) => onChange(parseDateTimeInput(val)),
     });
 
-  if (!editing) {
-    return <span>{formatDateTime(value, fmt)}</span>;
-  }
-
   return (
     <span className="date-editor-wrapper">
-      <input
-        ref={inputRef}
-        type="text"
-        className="cell-editor-input"
-        autoComplete="off"
-        data-lpignore="true"
-        value={localValue}
-        onChange={(e) => setLocalValue(e.target.value)}
-        onBlur={handleBlur}
-        onKeyDown={handleKeyDown}
-      />
+      {editing ? (
+        <input
+          ref={inputRef}
+          type="text"
+          className="cell-editor-input"
+          autoComplete="off"
+          data-lpignore="true"
+          value={localValue}
+          onChange={(e) => setLocalValue(e.target.value)}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+        />
+      ) : (
+        <span className="cell-editor-display-text">{formatDateTime(value, fmt)}</span>
+      )}
       <input
         ref={pickerRef}
         type="datetime-local"
@@ -104,6 +104,7 @@ export const DateTimeEditor: Editor<string> = ({
         onMouseDown={(e) => {
           e.preventDefault();
           e.stopPropagation();
+          if (!editing && onEnterEditMode) onEnterEditMode();
           try { pickerRef.current?.showPicker(); } catch { pickerRef.current?.click(); }
         }}
         aria-label="Open date/time picker"

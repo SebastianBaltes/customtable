@@ -138,6 +138,7 @@
   /* Cell / column header layout */
   .col-header,
   .cell {
+    position: relative; /* For absolute picker buttons */
     padding-top: 6px;
     padding-bottom: 6px;
     padding-right: 20px;
@@ -539,15 +540,36 @@
 }
 
 /* Date / Time / Color editor wrappers */
-.date-editor-wrapper {
-  display: inline-flex;
-  align-items: center;
+.date-editor-wrapper,
+.color-editor-wrapper,
+.url-editor-wrapper {
+  display: block;
   width: 100%;
 }
 
-.date-editor-wrapper .cell-editor-input {
-  flex: 1;
-  min-width: 0;
+.date-editor-wrapper .cell-editor-input,
+.color-editor-wrapper .cell-editor-input,
+.url-editor-wrapper .cell-editor-input,
+.date-editor-wrapper .cell-editor-display-text,
+.url-editor-wrapper .url-editor-display .truncate {
+  width: 100%;
+  padding-right: 24px; /* Make space for right-aligned picker/icon */
+  box-sizing: border-box;
+}
+
+.url-editor-display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: 4px;
+  min-height: 1.25rem; /* Ensure consistent height even if empty */
+}
+
+.url-editor-display .truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .cell-editor-picker-hidden {
@@ -560,7 +582,10 @@
 }
 
 .cell-editor-picker-btn {
-  flex-shrink: 0;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
   border: none;
   background: none;
   cursor: pointer;
@@ -571,31 +596,33 @@
   &:hover { opacity: 1; }
 }
 
-.color-editor-display,
-.color-editor-wrapper {
+.color-editor-display {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   width: 100%;
 }
 
-.color-editor-wrapper .cell-editor-input {
-  flex: 1;
-  min-width: 0;
+.color-swatch-clickable {
+  cursor: pointer;
 }
 
 .color-swatch {
-  display: inline-block;
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 16px;
   height: 16px;
   border-radius: 3px;
   border: 1px solid rgba(0, 0, 0, 0.2);
-  flex-shrink: 0;
-  vertical-align: middle;
+  z-index: 2;
+  cursor: pointer;
 }
 
-.color-swatch-clickable {
-  cursor: pointer;
+.color-editor-wrapper span {
+  padding-right: 24px;
+  display: block;
 }
 
 /* Pagination structure */
@@ -914,7 +941,10 @@
   background: var(--ct-status-info, #1565c0);
   color: #fff;
   border-color: transparent;
-  &:hover { opacity: 0.9; }
+  &:hover { 
+    background: var(--ct-status-info, #1565c0);
+    opacity: 0.9; 
+  }
   &:disabled { opacity: 0.5; cursor: default; }
 }
 

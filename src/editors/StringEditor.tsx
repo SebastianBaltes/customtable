@@ -67,7 +67,8 @@ export const StringEditor: Editor<string> = ({
     });
 
   if (!editing) {
-    const stringVal = value ?? "";
+    let stringVal = value ?? "";
+    if (mask) stringVal = applyMask(stringVal, mask);
     const displayValue =
       textEllipsisLength && stringVal.length > textEllipsisLength
         ? stringVal.substring(0, textEllipsisLength) + " [...]"
@@ -77,12 +78,40 @@ export const StringEditor: Editor<string> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (mask) {
-      const masked = applyMask(e.target.value, mask);
+      const input = e.target;
+      const rawValue = input.value;
+      const selectionStart = input.selectionStart || 0;
+      
+      // literals in mask for cursor tracking
+      const literalChars = new Set<string>();
+      for (const ch of mask) {
+        if (ch !== '#' && ch !== 'A' && ch !== '*') literalChars.add(ch);
+      }
+      
+      // Count data chars before cursor to keep logical position
+      let dataCharsBefore = 0;
+      for (let i = 0; i < selectionStart; i++) {
+        if (!literalChars.has(rawValue[i])) dataCharsBefore++;
+      }
+      
+      const masked = applyMask(rawValue, mask);
       setLocalValue(masked);
+      
       requestAnimationFrame(() => {
         if (inputRef.current) {
-          const pos = masked.length;
-          inputRef.current.setSelectionRange(pos, pos);
+          let newPos = 0;
+          let foundDataChars = 0;
+          while (newPos < masked.length && foundDataChars < dataCharsBefore) {
+            if (!literalChars.has(masked[newPos])) {
+              foundDataChars++;
+            }
+            newPos++;
+          }
+          // If we are at a literal, skip forward to the next data slot or end
+          while (newPos < masked.length && literalChars.has(masked[newPos])) {
+            newPos++;
+          }
+          inputRef.current.setSelectionRange(newPos, newPos);
         }
       });
     } else {

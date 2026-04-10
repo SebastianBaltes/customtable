@@ -103,14 +103,24 @@ export const DurationEditor: Editor<string> = ({
 
   const { localValue, setLocalValue, inputRef, handleKeyDown, handleBlur } =
     useInlineEdit({
-      value: value ?? "",
+      value: formatDuration(value, { style: "short" }),
       editing,
       initialEditValue,
-      onCommit: (val) => onChange(normalizeDuration(val)),
+      onCommit: (val) => {
+        const normalized = normalizeDuration(val);
+        // If normalization changed something or if value is different from raw ISO, commit
+        if (normalized !== value) {
+          onChange(normalized);
+        }
+      },
     });
 
   if (!editing) {
-    return <span>{formatDuration(value, fmt)}</span>;
+    return (
+      <div className="duration-editor-display">
+        <span>{formatDuration(value, fmt)}</span>
+      </div>
+    );
   }
 
   return (

@@ -179,6 +179,18 @@ export const TableCell = React.memo(
           textEllipsisLength,
           initialEditValue,
           () => setCursorRef({ editing: false }),
+          isReadOnly,
+          () => {
+            if (!isReadOnly) {
+              setCursorRef({
+                editing: true,
+                selectionStart: { rowIdx, colIdx },
+                selectionEnd: { rowIdx, colIdx },
+                fillEnd: { rowIdx, colIdx },
+                initialEditValue: "",
+              });
+            }
+          }
         )}
         {!effectiveEditing && isDropdownType(column.type) && (
           <span className="cell-dropdown-indicator" aria-hidden="true">
