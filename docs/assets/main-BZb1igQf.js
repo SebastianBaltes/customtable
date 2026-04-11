@@ -1,0 +1,2622 @@
+import{a as e,c as t,d as n,i as r,l as i,n as a,o,r as s,s as c,t as l,u}from"./src-CpnXnBYt.js";var d=t(),f=n(u());function p(e,t){let[n,r]=(0,f.useState)(()=>{try{let n=localStorage.getItem(e);return n===null?t:JSON.parse(n)}catch{return t}});return[n,(0,f.useCallback)(t=>{r(n=>{let r=t instanceof Function?t(n):t;try{localStorage.setItem(e,JSON.stringify(r))}catch{}return r})},[e])]}var ee=n(i()),m=o(),h=({open:t,onClose:n,columns:r,columnOrder:i,onColumnOrderChange:a,hiddenColumns:o,onHiddenColumnsChange:s,onReset:l,numberOfStickyColumns:u,onStickyColumnsChange:d})=>{let[p,h]=(0,f.useState)(null),[g,_]=(0,f.useState)(null),v=(0,f.useRef)(null);if(c(v,t),!t)return null;let y=new Map(r.map(e=>[e.name,e])),b=i.length>0?i:r.map(e=>e.name),x=(e,t)=>{e.preventDefault(),_(t)},S=e=>{if(p===null||p===e){h(null),_(null);return}let t=[...b],[n]=t.splice(p,1);t.splice(e,0,n),a(t),h(null),_(null)},C=e=>{let t=new Set(o);t.has(e)?t.delete(e):t.add(e),s(t)};return ee.createPortal((0,m.jsx)(`div`,{ref:v,className:`search-replace-overlay`,onMouseDown:e=>{e.stopPropagation(),e.target===e.currentTarget&&n()},children:(0,m.jsxs)(`div`,{className:`search-replace-dialog column-manager-dialog`,children:[(0,m.jsxs)(`div`,{className:`search-replace-header`,children:[(0,m.jsx)(`span`,{className:`search-replace-title`,children:`Manage Columns`}),(0,m.jsx)(`button`,{className:`search-replace-close`,onClick:n,title:`Close`,children:`×`})]}),(0,m.jsx)(`div`,{className:`column-manager-list`,children:b.map((t,n)=>{let r=y.get(t);if(!r)return null;let i=r.label??r.name,a=o.has(t),s=g===n&&p!==n;return(0,m.jsxs)(`div`,{className:e(`column-manager-item`,{"drag-over":s,dragging:p===n}),draggable:!0,onDragStart:()=>h(n),onDragOver:e=>x(e,n),onDrop:()=>S(n),onDragEnd:()=>{h(null),_(null)},children:[(0,m.jsx)(`span`,{className:`column-manager-grip`,"aria-hidden":`true`,children:`⠿`}),(0,m.jsxs)(`label`,{className:`column-manager-label`,children:[(0,m.jsx)(`input`,{type:`checkbox`,checked:!a,onChange:()=>C(t)}),i]}),r.type&&(0,m.jsx)(`span`,{className:`column-manager-type`,children:r.type})]},t)})}),(0,m.jsxs)(`div`,{className:`search-replace-footer`,children:[(0,m.jsx)(`button`,{className:`search-replace-btn`,onClick:()=>{l(),n()},children:`Reset`}),d&&(0,m.jsxs)(`label`,{className:`column-manager-sticky-label`,children:[`Fixed columns`,(0,m.jsx)(`select`,{className:`column-manager-sticky-select`,value:u??0,onChange:e=>d(Number(e.target.value)),children:Array.from({length:Math.min(b.length,6)+1},(e,t)=>(0,m.jsx)(`option`,{value:t,children:t===0?`None`:String(t)},t))})]}),(0,m.jsx)(`span`,{style:{flex:1}}),(0,m.jsx)(`button`,{className:`search-replace-btn search-replace-btn-primary`,onClick:n,children:`Done`})]})]})}),document.body)},g=JSON.parse(`[{"id":1,"complexKey":"LHarp__--zJKdKrmfClme63j7UHwipw-8ezCXmxDWElrL8E","description":"","firstName":"Charlie","lastName":"Schmidt","email":"charlie.schmidt@example.com","department":"","skills":[],"isActive":true,"salary":48697,"hireDate":"2014-03-27","manager":"Alice Wagner","officeLocation":"Munich Office","phone":"+49753504699","employeeNumber":"EMP00001","status":"Probation","role":"Data Analyst","team":"Mobile","lastLogin":"","performanceScore":"1.86","bonus":9547,"contractType":"Temporary","country":"France","city":"Hamburg","postalCode":"49866","address":"154 Example Street","linkedin":"https://www.linkedin.com/in/example-user-001","github":"","dateOfBirth":"","emergencyContact":""},{"id":2,"complexKey":"","description":"","firstName":"Alice","lastName":"Becker","email":"alice.becker@example.com","department":"IT","skills":["AWS"],"isActive":true,"salary":79052,"hireDate":"2015-11-19","manager":"Bob Wagner","officeLocation":"Remote","phone":"+49962549942","employeeNumber":"EMP00002","status":"Probation","role":"DevOps Engineer","team":"Platform","lastLogin":"2024-11-03T00:19:57.706Z","performanceScore":"","bonus":10050,"contractType":"Permanent","country":"France","city":"Berlin","postalCode":"88197","address":"189 Example Street","linkedin":"https://www.linkedin.com/in/example-user-002","github":"","dateOfBirth":"1991-10-26","emergencyContact":"Ian Schmidt (+49138587704)"},{"id":3,"complexKey":"ymf-RmURHztIVnM604LqFT","description":"","firstName":"","lastName":"Schneider","email":"frank.schneider@example.com","department":"Legal","skills":["Docker","SQL","Python","Figma"],"isActive":true,"salary":42862,"hireDate":"","manager":"Diana Meyer","officeLocation":"Remote","phone":"+49212674546","employeeNumber":"EMP00003","status":"Active","role":"Software Engineer","team":"Web","lastLogin":"2021-07-08T03:26:04.634Z","performanceScore":"","bonus":"","contractType":"Contractor","country":"UK","city":"","postalCode":"75477","address":"102 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":4,"complexKey":"i1TD63yzYNM_PEDebQDH7h","description":"et dolor sadipscing ut et ea tempor sanctus magna At invidunt voluptua. consetetur dolores sed tempor sanctus elitr, dolore accusam sed sed invidunt clita ut sadipscing et voluptua. diam et dolores consetetur nonumy sed sanctus sanctus et et voluptua. gubergren, elitr, sanctus clita dolore Stet no invidunt eos justo justo et est. erat, dolor sea accusam tempor eos vero et sit dolores diam kasd","firstName":"Frank","lastName":"Fischer","email":"frank.fischer@example.com","department":"Marketing","skills":["Java","Docker"],"isActive":true,"salary":61440,"hireDate":"2007-07-24","manager":"Diana Wagner","officeLocation":"Remote","phone":"+49287924949","employeeNumber":"EMP00004","status":"Active","role":"QA Engineer","team":"Core","lastLogin":"2021-07-01T20:41:12.244Z","performanceScore":"0.49","bonus":12085,"contractType":"","country":"France","city":"","postalCode":"22667","address":"","linkedin":"","github":"https://github.com/example-user-004","dateOfBirth":"","emergencyContact":""},{"id":5,"complexKey":"Csy2nNVkPMoMcRwyFtk0NOsNxzTH0kX","description":"","firstName":"","lastName":"Müller","email":"frank.müller@example.com","department":"Marketing","skills":[],"isActive":true,"salary":40168,"hireDate":"2005-04-23","manager":"Eva Weber","officeLocation":"Remote","phone":"+13795977154","employeeNumber":"EMP00005","status":"Terminated","role":"Data Analyst","team":"Core","lastLogin":"2023-11-26T02:26:30.258Z","performanceScore":"2.91","bonus":"","contractType":"","country":"UK","city":"","postalCode":"29248","address":"151 Example Street","linkedin":"","github":"https://github.com/example-user-005","dateOfBirth":"","emergencyContact":"Grace Wagner (+49232882408)"},{"id":6,"complexKey":"hIa1SYiZTC4dZTCUD5YCPu2MPNv5_bGb-G","description":"At no diam nonumy diam ut gubergren, voluptua. sea aliquyam eirmod amet, sed consetetur vero et est. sanctus ut ut diam voluptua. et dolore dolore accusam invidunt At takimata duo sit Lorem gubergren, ipsum diam ipsum ipsum nonumy","firstName":"Bob","lastName":"Meyer","email":"bob.meyer@example.com","department":"Marketing","skills":[],"isActive":true,"salary":67732,"hireDate":"2023-10-26","manager":"","officeLocation":"Berlin HQ","phone":"+49391397597","employeeNumber":"EMP00006","status":"Terminated","role":"Product Manager","team":"Tools","lastLogin":"2020-08-26T18:11:41.597Z","performanceScore":"","bonus":3155,"contractType":"Intern","country":"Spain","city":"Frankfurt","postalCode":"49113","address":"","linkedin":"","github":"","dateOfBirth":"1980-11-25","emergencyContact":""},{"id":7,"complexKey":"jOK93U2DI8GYhOdullq3YQpWxq_ongYGcUFk0i","description":"tempor invidunt vero et labore Lorem et rebum. takimata duo Stet tempor eos At voluptua. ea dolores sadipscing kasd takimata diam duo invidunt kasd vero et kasd diam sanctus elitr, consetetur duo accusam duo elitr, et et amet, no accusam Lorem sed vero voluptua. elitr, elitr, Stet ut invidunt amet, est. sanctus et takimata sed sadipscing accusam ea accusam eos rebum. kasd sed aliquyam dolores sed elitr, rebum. ut magna ut et dolore et sadipscing Lorem ea sed et est. aliquyam takimata vero elitr, dolores amet, ipsum dolor est. invidunt rebum. ut sanctus et et takimata erat, sed rebum. d","firstName":"Charlie","lastName":"Meyer","email":"charlie.meyer@example.com","department":"","skills":["Java","SQL","TypeScript","Docker"],"isActive":true,"salary":93622,"hireDate":"2008-04-16","manager":"","officeLocation":"Remote","phone":"+14596253543","employeeNumber":"EMP00007","status":"On Leave","role":"QA Engineer","team":"Core","lastLogin":"","performanceScore":"0.07","bonus":"","contractType":"Intern","country":"USA","city":"Cologne","postalCode":"39141","address":"","linkedin":"","github":"https://github.com/example-user-007","dateOfBirth":"1978-06-21","emergencyContact":"Frank Weber (+17538115829)"},{"id":8,"complexKey":"lOOizKGCqgmDjID","description":"kasd consetetur et diam invidunt justo et Lorem eirmod labore sea diam et sea voluptua. dolor Stet ut tempor dolor eirmod tempor Stet et Stet et no amet, diam sit eirmod elitr, eos voluptua. eos sea clita","firstName":"Ian","lastName":"Müller","email":"ian.müller@example.com","department":"Finance","skills":["React","AWS","SQL","Figma"],"isActive":true,"salary":85026,"hireDate":"2020-08-12","manager":"Charlie Meyer","officeLocation":"Munich Office","phone":"+49787251595","employeeNumber":"EMP00008","status":"Terminated","role":"DevOps Engineer","team":"Mobile","lastLogin":"","performanceScore":"3.58","bonus":2455,"contractType":"Intern","country":"UK","city":"","postalCode":"","address":"144 Example Street","linkedin":"https://www.linkedin.com/in/example-user-008","github":"","dateOfBirth":"2000-12-07","emergencyContact":"Grace Müller (+49483132964)"},{"id":9,"complexKey":"d7hlDm0CHdGmmmEU7ZiiX_ZnY39C","description":"dolor eirmod et voluptua. nonumy et dolores sed diam no labore duo elitr, sea Lorem rebum. dolor justo takimata magna Stet eos eos no Stet takimata tempor aliquyam At sanctus ut consetetur et duo invidunt et nonumy invidunt vero est","firstName":"Alice","lastName":"Weber","email":"alice.weber@example.com","department":"IT","skills":[],"isActive":false,"salary":52371,"hireDate":"2012-06-04","manager":"Charlie Schmidt","officeLocation":"Remote","phone":"+49563027281","employeeNumber":"EMP00009","status":"Terminated","role":"Software Engineer","team":"Core","lastLogin":"2023-11-11T07:13:42.052Z","performanceScore":"3.51","bonus":"","contractType":"Intern","country":"Spain","city":"Hamburg","postalCode":"63371","address":"81 Example Street","linkedin":"https://www.linkedin.com/in/example-user-009","github":"","dateOfBirth":"","emergencyContact":"Diana Becker (+18875514805)"},{"id":10,"complexKey":"cP-dtCGx_wGFr0","description":"ipsum tempor justo tempor diam Stet voluptua. eos dolore magna dolores aliquyam diam nonumy consetetur eirmod sed sadipscing invidunt labore labore labore eos eirmod rebum. nonumy sed eos Stet voluptua. erat, gubergren, magna consetetur eirmod sea accusam rebum. amet, duo dolores et eos erat, et no et est. elitr, ut ipsum invidunt eirmod At accusam et sanctus elitr, no dolore sed sit diam sed Lorem sit takimata sea sea sed no consetetur nonumy ea magna rebum. et amet, ea clita aliquyam sed ut sed eirmod diam diam consetetur eirmod est. invidunt kasd ut vero dolor consetetur dolore rebum. rebum.","firstName":"Diana","lastName":"Fischer","email":"diana.fischer@example.com","department":"IT","skills":["Figma"],"isActive":true,"salary":49781,"hireDate":"2024-12-09","manager":"","officeLocation":"","phone":"+16200317685","employeeNumber":"EMP00010","status":"Active","role":"Data Analyst","team":"Growth","lastLogin":"2021-02-19T18:00:46.983Z","performanceScore":"2.99","bonus":14190,"contractType":"Intern","country":"France","city":"","postalCode":"24911","address":"79 Example Street","linkedin":"","github":"","dateOfBirth":"1972-06-11","emergencyContact":"Hannah Meyer (+49589439341)"},{"id":11,"complexKey":"oOgwE4kGZu0gB-7xH1Hl2lgwpI3","description":"est. invidunt rebum. et nonumy aliquyam sadipscing ea magna justo eirmod dolor dolore diam et elitr, takimata vero sea amet, aliquyam ea sed dolore sit diam diam aliquyam rebum. labore elitr, et dolores sea diam Lorem justo con","firstName":"Ian","lastName":"Schmidt","email":"ian.schmidt@example.com","department":"HR","skills":[],"isActive":true,"salary":"","hireDate":"2021-08-14","manager":"Frank Becker","officeLocation":"Cologne Office","phone":"+17403558613","employeeNumber":"EMP00011","status":"Probation","role":"DevOps Engineer","team":"Platform","lastLogin":"2023-10-04T10:52:57.711Z","performanceScore":"1.50","bonus":14433,"contractType":"Contractor","country":"USA","city":"","postalCode":"54197","address":"57 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Alice Schneider (+49444406690)"},{"id":12,"complexKey":"","description":"ut invi","firstName":"Julia","lastName":"Becker","email":"julia.becker@example.com","department":"","skills":["Docker","Figma","TypeScript"],"isActive":false,"salary":49885,"hireDate":"2015-02-18","manager":"Grace Müller","officeLocation":"Remote","phone":"+49524566323","employeeNumber":"EMP00012","status":"Probation","role":"Designer","team":"Mobile","lastLogin":"","performanceScore":"4.61","bonus":371,"contractType":"","country":"Germany","city":"Stuttgart","postalCode":"48775","address":"","linkedin":"","github":"","dateOfBirth":"1998-05-24","emergencyContact":""},{"id":13,"complexKey":"3IriUvOMHuP9ux0IygXlCO","description":"duo ut kasd kasd et tempor clita voluptua. gubergren, ut et clita amet, accusam et dolore magna sea magna tempor magna Stet gubergren, sanctus elitr, dolore gubergren, est. kasd sea Lorem sed accusam consetetur At sadipscing duo sanctus tempor invidunt sit rebum. eirmod justo invidunt nonumy clita takimata invidunt labore dolor amet, justo diam consetetur dolore Stet dolores Stet Stet gubergren, et aliquyam Stet dolores diam dolores takimata ea elitr, et clita nonumy diam consetetur tempor Stet sanctus diam dolore eirmod ut elitr, no dolore et rebum. kasd sit vero invidunt voluptua. est. no dolor clita duo magna nonumy sanctus dolor voluptua. accusam Stet Stet ea duo accusam invidunt eos nonumy takimata eirmod eos consetetur sed ea vero dolor diam sanctus consetetur temp","firstName":"Charlie","lastName":"","email":"charlie.müller@example.com","department":"Finance","skills":["Python","Docker","Java","SQL"],"isActive":true,"salary":"","hireDate":"2017-12-11","manager":"Bob Schneider","officeLocation":"Remote","phone":"+18633362557","employeeNumber":"EMP00013","status":"Terminated","role":"","team":"Core","lastLogin":"","performanceScore":"2.22","bonus":"","contractType":"Intern","country":"Spain","city":"Munich","postalCode":"","address":"189 Example Street","linkedin":"","github":"","dateOfBirth":"1995-09-16","emergencyContact":"Diana Schneider (+49280044384)"},{"id":14,"complexKey":"ZUDEyhvQnWDoXsI9JEYkzLzpPTTfMXpjj1UGZnwezrXoz","description":"","firstName":"Charlie","lastName":"Schmidt","email":"charlie.schmidt@example.com","department":"Sales","skills":["React","SQL","TypeScript"],"isActive":true,"salary":90924,"hireDate":"2014-05-19","manager":"Diana Meyer","officeLocation":"Remote","phone":"+17674256556","employeeNumber":"EMP00014","status":"On Leave","role":"Software Engineer","team":"Platform","lastLogin":"2024-06-02T09:16:37.770Z","performanceScore":"4.04","bonus":"","contractType":"Intern","country":"Spain","city":"Cologne","postalCode":"25182","address":"198 Example Street","linkedin":"","github":"https://github.com/example-user-014","dateOfBirth":"1989-04-15","emergencyContact":""},{"id":15,"complexKey":"Li37YKTL-u","description":"Stet tempor gubergren, dolores et guber","firstName":"Frank","lastName":"Meyer","email":"frank.meyer@example.com","department":"IT","skills":["AWS","SQL","Figma"],"isActive":true,"salary":"","hireDate":"2010-01-20","manager":"Ian Fischer","officeLocation":"Remote","phone":"+11307390023","employeeNumber":"EMP00015","status":"On Leave","role":"DevOps Engineer","team":"Platform","lastLogin":"2023-09-10T14:10:07.479Z","performanceScore":"1.33","bonus":9720,"contractType":"Intern","country":"UK","city":"Berlin","postalCode":"36485","address":"55 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":16,"complexKey":"0AQdaK-oUJx8BWDxbWnskKTci7BY-O7a54qgu68gurMFf76IQA","description":"dolor aliquyam et eos duo erat, diam no elitr, At ea dolores sea sit justo aliquyam diam aliquyam diam labore et dolore et At accusam erat, diam labore erat, kasd diam duo amet, ut labore magna et aliquyam sed et gubergren, voluptua. takimata elitr, voluptua. Lorem consetetur duo ut voluptua. eos Lorem clita erat, ea sea consetetur sed Stet aliquyam erat, amet, labore voluptua. rebum. gubergren, takimata aliquyam dolore ea eirmod ut n","firstName":"Alice","lastName":"Fischer","email":"alice.fischer@example.com","department":"IT","skills":["SQL"],"isActive":true,"salary":42115,"hireDate":"2024-09-07","manager":"","officeLocation":"Cologne Office","phone":"+49179104737","employeeNumber":"EMP00016","status":"Probation","role":"DevOps Engineer","team":"Platform","lastLogin":"2023-12-07T14:59:25.431Z","performanceScore":"","bonus":10162,"contractType":"Contractor","country":"UK","city":"Berlin","postalCode":"39979","address":"65 Example Street","linkedin":"","github":"","dateOfBirth":"1974-04-06","emergencyContact":""},{"id":17,"complexKey":"","description":"Stet Stet clita justo dolore clita et sed sed nonumy et elitr, duo voluptua. At diam clita erat, justo no et consetetur amet, sadipscing eirmod invidunt sit accusam dolores et sanctus labore sanctus amet, et elitr, ea At dolor gubergren, amet, sadipscing et rebum. ut dolor elitr, sea justo eirmod vero sit rebum. accusam labore elitr, Lorem tempor elitr, nonumy erat, consetetur ea eos labore accusam gubergren, diam Stet et consetetur tempor dolores eirmod amet, elitr, et Stet dolore et ipsum sea nonumy sit diam est. ea clita At consetetur sanctus diam At sit clita sed ipsum et dolores eos et sit magna sed Stet e","firstName":"Hannah","lastName":"Fischer","email":"hannah.fischer@example.com","department":"HR","skills":[],"isActive":true,"salary":88841,"hireDate":"2023-06-01","manager":"Alice Meyer","officeLocation":"","phone":"+49434583732","employeeNumber":"EMP00017","status":"Terminated","role":"Data Analyst","team":"Platform","lastLogin":"2023-11-13T23:08:12.140Z","performanceScore":"1.16","bonus":"","contractType":"Intern","country":"France","city":"Berlin","postalCode":"63922","address":"","linkedin":"","github":"https://github.com/example-user-017","dateOfBirth":"1995-08-19","emergencyContact":""},{"id":18,"complexKey":"JwlHFGb7YbLLavtEAkYOUGOOf9dHBQE75Q5","description":"","firstName":"Grace","lastName":"Weber","email":"grace.weber@example.com","department":"Finance","skills":["React","TypeScript","Java","SQL"],"isActive":true,"salary":"","hireDate":"2017-05-31","manager":"Grace Wagner","officeLocation":"Cologne Office","phone":"+49822669280","employeeNumber":"EMP00018","status":"Terminated","role":"Designer","team":"Tools","lastLogin":"","performanceScore":"0.71","bonus":"","contractType":"Intern","country":"France","city":"Munich","postalCode":"68648","address":"131 Example Street","linkedin":"https://www.linkedin.com/in/example-user-018","github":"","dateOfBirth":"1994-09-24","emergencyContact":""},{"id":19,"complexKey":"","description":"sit ut sed takimata dolores et vero sadipscing labore sed Stet takimata magna takimata sea eirmod voluptua. et sea dolore sea dolores At magna eirmod sadipscing et voluptua. invidunt sanctus erat, accusam sit ea ipsum elitr, diam nonumy accusam justo aliquyam clita ut consetetur clita sit vero accusam et eirmod diam duo elitr, sadipscing labore eos dolore nonumy sanctus dolore rebum. ea takimata vero eos gubergren, magna rebum. et ipsum et est. labore eos diam erat, sit duo consetetur voluptua. diam rebum. ut amet, clita rebum. invidunt et rebum. dolore magna gubergren, takimata est. gubergren, era","firstName":"Charlie","lastName":"Becker","email":"charlie.becker@example.com","department":"Sales","skills":[],"isActive":true,"salary":42047,"hireDate":"2011-07-27","manager":"Julia Meyer","officeLocation":"","phone":"+49525754233","employeeNumber":"EMP00019","status":"Active","role":"Data Analyst","team":"Platform","lastLogin":"2023-09-19T09:01:47.667Z","performanceScore":"4.94","bonus":5774,"contractType":"Permanent","country":"UK","city":"Stuttgart","postalCode":"17144","address":"","linkedin":"","github":"https://github.com/example-user-019","dateOfBirth":"1979-11-06","emergencyContact":"Bob Meyer (+49143041697)"},{"id":20,"complexKey":"xASWZ6hiU42","description":"","firstName":"Ian","lastName":"Fischer","email":"ian.fischer@example.com","department":"IT","skills":["Java","Python","React"],"isActive":true,"salary":63497,"hireDate":"2011-10-07","manager":"Frank Schmidt","officeLocation":"Berlin HQ","phone":"+12151371419","employeeNumber":"EMP00020","status":"Probation","role":"Software Engineer","team":"","lastLogin":"2022-04-30T19:54:44.113Z","performanceScore":"1.38","bonus":4961,"contractType":"Permanent","country":"France","city":"Stuttgart","postalCode":"93988","address":"115 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":21,"complexKey":"BqgT_EejGRnrOgi","description":"rebum. accusam sadipscing dolor est. sanctus dolores ut voluptua. no aliquyam rebum. justo et et magna et et kasd magna sit nonumy sit Lorem sea","firstName":"Grace","lastName":"Weber","email":"grace.weber@example.com","department":"IT","skills":["AWS","TypeScript","Docker"],"isActive":false,"salary":97258,"hireDate":"2012-06-07","manager":"Ian Becker","officeLocation":"Munich Office","phone":"+15963900705","employeeNumber":"EMP00021","status":"Active","role":"DevOps Engineer","team":"Web","lastLogin":"2022-04-26T08:18:36.271Z","performanceScore":"1.80","bonus":7823,"contractType":"Intern","country":"USA","city":"Hamburg","postalCode":"98529","address":"82 Example Street","linkedin":"https://www.linkedin.com/in/example-user-021","github":"","dateOfBirth":"1965-05-30","emergencyContact":""},{"id":22,"complexKey":"x4Qxupv5c-","description":"diam consetetur ea takimata clita labore kasd diam nonumy et clita eirmod sed ea ipsum clita sadipscing dolores ut eirmod rebum. voluptua. duo eirmod justo justo elitr, sadipscing dolore amet, eos tempor clita est. Stet et justo ea erat, erat, clita labore At eos no vero eirmod ea consetetur no ut ut tempor voluptua. aliquyam duo no justo Lorem eirmod gubergren, sed eirmod aliquyam justo no est. rebum. ipsum labore nonumy duo sit duo erat, ipsum duo no accusam aliquyam invidunt dolore labore Lorem Stet sit vero et no tempor takimata dolore et voluptua. Stet erat, el","firstName":"Ian","lastName":"Weber","email":"ian.weber@example.com","department":"","skills":[],"isActive":true,"salary":45199,"hireDate":"2020-09-19","manager":"Grace Müller","officeLocation":"Remote","phone":"+11085103979","employeeNumber":"EMP00022","status":"Terminated","role":"QA Engineer","team":"Mobile","lastLogin":"","performanceScore":"1.51","bonus":1086,"contractType":"Contractor","country":"UK","city":"Hamburg","postalCode":"48960","address":"","linkedin":"","github":"https://github.com/example-user-022","dateOfBirth":"","emergencyContact":""},{"id":23,"complexKey":"","description":"sed justo sea voluptua. Stet dolores ea tempor sed et dolores justo voluptua. dolore aliquyam ea elitr, et gubergren, takimata At gubergren, sanctus clita diam invidunt sadipscing et est. amet, labore tempor Stet ea invidunt sadipscing accusam est. eirmod diam justo voluptua. sed et dolor invidunt et et et eos no dolores erat, nonumy labore amet, sea dolores ut accusam et erat, dolores sit erat, duo ipsum invidunt elitr, magna sed diam sea erat, amet, ipsum vero justo ea gubergren, tempor no","firstName":"Julia","lastName":"Müller","email":"julia.müller@example.com","department":"HR","skills":["React","AWS","Java","Docker"],"isActive":true,"salary":84871,"hireDate":"2020-06-04","manager":"","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00023","status":"Probation","role":"Designer","team":"Growth","lastLogin":"","performanceScore":"","bonus":4807,"contractType":"Permanent","country":"","city":"Stuttgart","postalCode":"24315","address":"","linkedin":"","github":"https://github.com/example-user-023","dateOfBirth":"1990-03-29","emergencyContact":""},{"id":24,"complexKey":"zRD-ROjAS9k_5XvoBXkA41fZVYtDMG9c-bo26oXp2BwDgK","description":"consetetur vero est. dolores sed eos et sit tempor eos et sadipscing magna eirmod est. nonumy kasd no sea ea aliquyam aliquyam elitr, ut rebum. invidunt est. sit et ipsum sed invidunt kasd sed diam voluptua. sea sanctus kasd sanctus takimata est. rebum. tempor sadipscing sadipscing consetetur takimata tempor sed amet, gubergren, et At takimata At amet, et sed gubergren, sadipscing vero erat, ea et clita justo kasd et duo eirmod gubergren, amet, sed sed magna magna ea duo et diam accusam At kasd At diam vero diam ea est. takimata nonumy clita no tempor eos tempor tempor vero sed gubergren, elitr, et accusam ut Lorem sit sit tempor sea ea dolores tempor gubergren, sanctus takimata Lorem Lorem erat, consetetur sed elitr, eos takimata magna et gubergren, dolores clita","firstName":"Frank","lastName":"Schneider","email":"","department":"","skills":["SQL","React"],"isActive":true,"salary":48431,"hireDate":"2008-09-08","manager":"","officeLocation":"","phone":"","employeeNumber":"EMP00024","status":"On Leave","role":"Product Manager","team":"","lastLogin":"","performanceScore":"3.51","bonus":"","contractType":"Contractor","country":"Germany","city":"Cologne","postalCode":"58266","address":"","linkedin":"https://www.linkedin.com/in/example-user-024","github":"","dateOfBirth":"","emergencyContact":""},{"id":25,"complexKey":"9ka0nUJtCbOn3ZVM6","description":"At gubergren, et justo At magna sed eirmod justo sanctus accusam diam accusam accusam eos voluptua. dolor justo invidunt magna eos sed sed sadipscing no dolores tempor sea sed labor","firstName":"Diana","lastName":"Meyer","email":"diana.meyer@example.com","department":"Finance","skills":["Java","React"],"isActive":true,"salary":55605,"hireDate":"2006-10-22","manager":"","officeLocation":"Remote","phone":"+15488840516","employeeNumber":"EMP00025","status":"","role":"Product Manager","team":"Core","lastLogin":"2022-04-24T21:41:37.365Z","performanceScore":"4.70","bonus":"","contractType":"Intern","country":"Germany","city":"Frankfurt","postalCode":"13366","address":"75 Example Street","linkedin":"","github":"","dateOfBirth":"1966-10-03","emergencyContact":""},{"id":26,"complexKey":"xx8QmvA8PnNQyuPhTm8bvGHmrbF0XsdB","description":"et ut At et sed voluptua. sed dolore ipsum Lorem sed dolores no et rebum. ut magna dolores nonumy consetetur ut At sanctus sadipscing sadipscing vero clita takimata diam invidunt erat, vero diam vero takimata At no sadipscing dolore dolore labore gubergren, l","firstName":"Julia","lastName":"Wagner","email":"julia.wagner@example.com","department":"Finance","skills":["AWS","SQL","Figma"],"isActive":false,"salary":"","hireDate":"","manager":"Grace Meyer","officeLocation":"Cologne Office","phone":"+14454170022","employeeNumber":"EMP00026","status":"Terminated","role":"Designer","team":"Mobile","lastLogin":"2023-09-10T06:01:38.337Z","performanceScore":"","bonus":"","contractType":"Intern","country":"Germany","city":"Munich","postalCode":"59328","address":"","linkedin":"https://www.linkedin.com/in/example-user-026","github":"","dateOfBirth":"","emergencyContact":""},{"id":27,"complexKey":"vi4j911uO6ZaqFs5","description":"clita takimata et ut labore labore et dolore amet, dolore erat, diam amet, ipsum justo ipsum eos et erat, dolor gubergren, invidunt clita ut nonumy sed voluptua. erat, dolore et invidunt elitr, erat, labore sed vero tempor diam invidunt kasd dolore rebum. ipsum sanctus et et labore sanctus Stet nonumy est. ea At justo ea sed justo ut no sit diam vero diam elitr, Stet et duo ut clita sanctus diam justo et takimata et sadipscing At diam et labore sea est. rebum. et elitr, sit invidunt","firstName":"Grace","lastName":"Schneider","email":"","department":"Finance","skills":["AWS"],"isActive":true,"salary":57004,"hireDate":"2005-05-28","manager":"Hannah Schneider","officeLocation":"Berlin HQ","phone":"+49341648657","employeeNumber":"EMP00027","status":"Probation","role":"Data Analyst","team":"Platform","lastLogin":"","performanceScore":"3.01","bonus":9761,"contractType":"Contractor","country":"Germany","city":"Frankfurt","postalCode":"15304","address":"107 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":28,"complexKey":"K6v6Nh7DtW8n9IEN8Ek56GygaX9ormNvnczaDprOJNMXF-f_u","description":"est. dolor eirmod amet, dolore sed gubergren, sanctus kasd et consetetur accusam rebum. est. labore diam justo aliquyam sed invidunt est. ea diam vero sanctus Stet ipsum justo erat, dolore voluptua. ut invidunt At et amet, ut dolores kasd dolor gubergren, tempor gubergren, tempor sed sit accusam gubergren, amet, et nonumy et sadipscing eos et sit dolor gubergren, diam sed accusam justo nonumy Stet sea rebum. sea sed At Stet ea no Stet takimata vero Stet et tempor dolores dolor sed rebum. no clita consetetur elitr, sanctus Stet elitr, gubergren, sit est. Lorem rebum. est. sed sed diam invidunt labore nonumy erat, duo dolores ipsum amet, kasd et gubergren, sea invidunt et aliquyam voluptua. magna accusam invidunt eirmod tempor diam Stet kasd invidunt invidunt takimata voluptua. voluptua. ut ipsum takimata tempor labore kasd voluptua. aliq","firstName":"Diana","lastName":"Schmidt","email":"diana.schmidt@example.com","department":"Marketing","skills":["React","TypeScript","Python"],"isActive":false,"salary":41696,"hireDate":"2012-11-29","manager":"","officeLocation":"Remote","phone":"+49731034412","employeeNumber":"EMP00028","status":"Terminated","role":"QA Engineer","team":"Growth","lastLogin":"","performanceScore":"1.06","bonus":1254,"contractType":"Intern","country":"UK","city":"","postalCode":"10021","address":"36 Example Street","linkedin":"","github":"","dateOfBirth":"1977-08-02","emergencyContact":"Eva Schmidt (+17706019789)"},{"id":29,"complexKey":"6Rr0O9ZDTydI96tGSuRSh4egjJS","description":"","firstName":"Ian","lastName":"Schneider","email":"ian.schneider@example.com","department":"Sales","skills":["React","Docker","Python","TypeScript"],"isActive":true,"salary":93036,"hireDate":"2013-03-14","manager":"Grace Schneider","officeLocation":"Remote","phone":"+49871459758","employeeNumber":"EMP00029","status":"On Leave","role":"Software Engineer","team":"Web","lastLogin":"","performanceScore":"2.01","bonus":8776,"contractType":"Intern","country":"Germany","city":"Cologne","postalCode":"68263","address":"38 Example Street","linkedin":"https://www.linkedin.com/in/example-user-029","github":"","dateOfBirth":"1967-05-23","emergencyContact":""},{"id":30,"complexKey":"k5NVl5veLIIJCSPimmEUS0VsdM4YTH9i_7n","description":"sadipscing justo diam accusam At sed sed invidunt elitr, consetetur diam est. duo dolores Stet ipsum no dolore elitr, clita sed justo sit vero amet, dolore sed no eirmod et sea et dolor eos invidunt erat, vero At voluptua. accusam dolor sed Stet accusam consetetur duo eos consetetur rebum. Stet sed ipsum voluptua. ut nonumy magna accusam Lorem no diam voluptua. dolores no sadipscing no sea est. eos tempor clita magna sea sit et duo justo sed accusam ut sed labore diam accusam justo erat, duo vero diam et sanctus duo dolores dolore accusam et et sed sit no invidunt et diam accusa","firstName":"Diana","lastName":"Fischer","email":"diana.fischer@example.com","department":"Finance","skills":["Figma","Python","AWS","Java"],"isActive":true,"salary":99283,"hireDate":"2021-05-17","manager":"Charlie Weber","officeLocation":"Munich Office","phone":"+49202195228","employeeNumber":"EMP00030","status":"Terminated","role":"QA Engineer","team":"Tools","lastLogin":"2022-09-01T21:53:10.509Z","performanceScore":"0.95","bonus":5199,"contractType":"Contractor","country":"UK","city":"Stuttgart","postalCode":"34480","address":"132 Example Street","linkedin":"","github":"https://github.com/example-user-030","dateOfBirth":"","emergencyContact":""},{"id":31,"complexKey":"mi8JFqiHexhfisN0OKVgmLfg4UgeZGaJraKfyJw","description":"","firstName":"Alice","lastName":"Weber","email":"alice.weber@example.com","department":"Legal","skills":["Java","React"],"isActive":true,"salary":"","hireDate":"2018-08-31","manager":"Hannah Meyer","officeLocation":"Hamburg Office","phone":"+15550614245","employeeNumber":"EMP00031","status":"Probation","role":"Data Analyst","team":"","lastLogin":"","performanceScore":"0.78","bonus":1756,"contractType":"Intern","country":"France","city":"Berlin","postalCode":"11529","address":"3 Example Street","linkedin":"","github":"https://github.com/example-user-031","dateOfBirth":"1966-05-03","emergencyContact":""},{"id":32,"complexKey":"peTxYS-MQvT_6Edrw4RzP0aqvZmhuKiRyZ","description":"sadipscing takimata et ut diam tempor consetetur eirmod accusam invidunt sea elitr, eirmod Lorem At et rebum. et At vo","firstName":"Eva","lastName":"","email":"eva.müller@example.com","department":"HR","skills":["TypeScript","Python","Docker"],"isActive":true,"salary":59723,"hireDate":"2008-08-08","manager":"Julia Müller","officeLocation":"Remote","phone":"","employeeNumber":"EMP00032","status":"Active","role":"QA Engineer","team":"Growth","lastLogin":"","performanceScore":"4.72","bonus":"","contractType":"Temporary","country":"USA","city":"Munich","postalCode":"55510","address":"156 Example Street","linkedin":"https://www.linkedin.com/in/example-user-032","github":"","dateOfBirth":"","emergencyContact":"Eva Meyer (+49474048184)"},{"id":33,"complexKey":"","description":"gubergren, eos sed ipsum et ea duo ipsum vero ut clita consetetur sadipscing et accusam aliquyam sed tempor ea clita sadipscing gubergren, ut tempor dolore consetetur et voluptua. vero rebum. ut vero no rebum. ea sanctus justo eirmod kasd et invidunt labore invidunt rebum. sit ipsum eirmod Lorem magna rebum. magna diam eirmod eirmod tempor consetetur gubergren, takimata voluptua. sanctus accusam sanctus et sadipscing consetetur ut clita et dolore et ea clita diam sed eos labore amet, sit justo diam accusam aliquyam sea justo no clita eos invidunt sit amet, clita voluptua. et eos At sit labore sit ipsum Stet et Stet invidunt amet, aliquyam ipsum sed duo est. dolore et dolore At sed diam vero takimata diam magna aliquyam sed et sea magna dolores et et Stet sit At no eos kasd et ea est. eos clita ut eirmod et sed et","firstName":"Bob","lastName":"Fischer","email":"bob.fischer@example.com","department":"Finance","skills":["TypeScript","AWS","Java"],"isActive":true,"salary":78054,"hireDate":"2008-08-19","manager":"","officeLocation":"Munich Office","phone":"+12634238725","employeeNumber":"EMP00033","status":"Active","role":"DevOps Engineer","team":"Core","lastLogin":"","performanceScore":"1.60","bonus":6484,"contractType":"Intern","country":"Spain","city":"Frankfurt","postalCode":"","address":"","linkedin":"https://www.linkedin.com/in/example-user-033","github":"","dateOfBirth":"1966-07-16","emergencyContact":""},{"id":34,"complexKey":"lDpr6MuG5OEr3a-EdOk7duv9I-mve5f1MZKb78rVj","description":"","firstName":"Diana","lastName":"Fischer","email":"diana.fischer@example.com","department":"HR","skills":[],"isActive":true,"salary":57627,"hireDate":"2007-05-02","manager":"","officeLocation":"Hamburg Office","phone":"+49466978775","employeeNumber":"EMP00034","status":"Probation","role":"","team":"Web","lastLogin":"","performanceScore":"0.63","bonus":11330,"contractType":"Permanent","country":"UK","city":"Munich","postalCode":"38301","address":"167 Example Street","linkedin":"","github":"https://github.com/example-user-034","dateOfBirth":"1990-11-24","emergencyContact":""},{"id":35,"complexKey":"","description":"","firstName":"Ian","lastName":"Schmidt","email":"ian.schmidt@example.com","department":"Finance","skills":["AWS","Python"],"isActive":false,"salary":76543,"hireDate":"2010-03-25","manager":"","officeLocation":"Remote","phone":"+49151666955","employeeNumber":"EMP00035","status":"On Leave","role":"QA Engineer","team":"Web","lastLogin":"2023-11-08T13:16:42.979Z","performanceScore":"1.48","bonus":9542,"contractType":"Contractor","country":"France","city":"Munich","postalCode":"60497","address":"87 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":36,"complexKey":"mAiFoJXrf-5Bb","description":"invidunt magna sanctus Stet elitr, takimata amet, voluptua. kasd et eirmod diam nonumy justo dolores sed diam diam ut erat, dolore eos sadipscing rebum. At et sea ipsum kasd et Stet Stet diam et et sed ea sed sed tempor diam nonumy dolore sed Stet diam vero sadipscing voluptua. invidunt duo Stet sit sit ea accusam aliquyam takimata vero sadipscing di","firstName":"Ian","lastName":"Meyer","email":"ian.meyer@example.com","department":"Legal","skills":["React","AWS","Python"],"isActive":true,"salary":"","hireDate":"2006-04-19","manager":"","officeLocation":"Berlin HQ","phone":"+49445653863","employeeNumber":"EMP00036","status":"Active","role":"Software Engineer","team":"","lastLogin":"","performanceScore":"","bonus":"","contractType":"","country":"Netherlands","city":"","postalCode":"81707","address":"15 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":37,"complexKey":"2xeT8RO2iTIt8yKvmdVCAZSNGaphPwg2MIJyfmXz","description":"consetetur sed rebum. sea dolor dolor ea kasd Stet jus","firstName":"Ian","lastName":"","email":"ian.schmidt@example.com","department":"Finance","skills":["AWS","SQL","Java"],"isActive":true,"salary":97195,"hireDate":"2009-09-17","manager":"Julia Schneider","officeLocation":"Hamburg Office","phone":"+49389348960","employeeNumber":"EMP00037","status":"Active","role":"QA Engineer","team":"Core","lastLogin":"2021-03-10T00:13:28.815Z","performanceScore":"1.72","bonus":"","contractType":"Permanent","country":"Netherlands","city":"Hamburg","postalCode":"77420","address":"34 Example Street","linkedin":"","github":"","dateOfBirth":"1972-01-17","emergencyContact":"Charlie Meyer (+49519448637)"},{"id":38,"complexKey":"Do9OpF2P6YmbB0n7RqSP6iNiEZIN5yYsFwK2C4qFQLt","description":"","firstName":"Eva","lastName":"Meyer","email":"","department":"Legal","skills":["Docker","AWS"],"isActive":true,"salary":72785,"hireDate":"2023-02-03","manager":"","officeLocation":"Remote","phone":"","employeeNumber":"EMP00038","status":"On Leave","role":"Product Manager","team":"","lastLogin":"","performanceScore":"0.05","bonus":"","contractType":"Intern","country":"Germany","city":"Cologne","postalCode":"26377","address":"37 Example Street","linkedin":"https://www.linkedin.com/in/example-user-038","github":"","dateOfBirth":"1999-08-20","emergencyContact":""},{"id":39,"complexKey":"SJCasDGJ39TngzXzLCYnuLiAjmeQBx8UuIFC_","description":"diam diam ut consetetur sea clita tempor ut Lorem kasd sed nonumy invidunt justo aliquyam rebum. voluptua. clita et gubergren, erat, Stet eos kasd gubergren, no sanctus duo dolores sed dolores labore aliquyam invidunt ve","firstName":"Eva","lastName":"Meyer","email":"eva.meyer@example.com","department":"Finance","skills":["SQL","Java"],"isActive":true,"salary":"","hireDate":"2011-04-16","manager":"Bob Meyer","officeLocation":"","phone":"+49950890351","employeeNumber":"EMP00039","status":"Terminated","role":"Designer","team":"Web","lastLogin":"2020-02-18T07:10:02.078Z","performanceScore":"","bonus":"","contractType":"Temporary","country":"UK","city":"","postalCode":"55626","address":"195 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":40,"complexKey":"vCH-R2uxiCfYcMaV67OmOywJ3j76jENDdfVJA","description":"voluptua. kasd accusam sea Lorem erat, eos tempor ea gubergren, erat, takimata dolore et dolores nonumy gubergren, diam et invidunt clita takimata et rebum. labore takimata et gubergren, tempor et invidunt sed gubergren, sea justo ut ea clita sea vero dolores aliquyam et eirmod tempor accusam duo et erat, dolores dolor duo diam aliquyam takimata sed eos amet, voluptua. ea et aliquyam kasd kasd diam nonumy invidunt nonumy kasd justo diam dolores ipsum est. vero dolore invidunt sadipscing eirmod et kasd At At takimata nonumy Stet diam duo clita duo dolores consetetur magna est. At clita sanctus consetetur dolor magna consetetur et ut gubergren, labore ipsum sit et eirmod vero no sed Lorem elitr, et clita vero no justo sanctus Stet labore vero diam et et sit est. Lorem nonumy diam et no diam erat, et At At consetetur sanctus eirmod dolore et duo eirmod accusam ut sed amet, eirmod Stet ipsum Stet dolores justo dolor invidunt v","firstName":"Ian","lastName":"Schmidt","email":"ian.schmidt@example.com","department":"Marketing","skills":["TypeScript"],"isActive":false,"salary":61385,"hireDate":"2014-05-13","manager":"","officeLocation":"Munich Office","phone":"+17941268637","employeeNumber":"EMP00040","status":"Active","role":"QA Engineer","team":"Growth","lastLogin":"","performanceScore":"1.76","bonus":"","contractType":"Intern","country":"Netherlands","city":"Frankfurt","postalCode":"89229","address":"140 Example Street","linkedin":"https://www.linkedin.com/in/example-user-040","github":"","dateOfBirth":"2000-11-01","emergencyContact":""},{"id":41,"complexKey":"AruWrKD8AZH","description":"","firstName":"Hannah","lastName":"Wagner","email":"","department":"Sales","skills":["Java","Python","AWS","TypeScript"],"isActive":true,"salary":46320,"hireDate":"2022-09-30","manager":"Charlie Wagner","officeLocation":"Munich Office","phone":"+49558894468","employeeNumber":"EMP00041","status":"Terminated","role":"","team":"Core","lastLogin":"2022-01-14T08:08:58.435Z","performanceScore":"0.37","bonus":6114,"contractType":"Intern","country":"USA","city":"Frankfurt","postalCode":"51752","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":42,"complexKey":"DwvQFzNjliBHKuarhmf6U_6bO_fsnQ57IWUI","description":"","firstName":"Bob","lastName":"Weber","email":"bob.weber@example.com","department":"","skills":["React","TypeScript"],"isActive":true,"salary":84661,"hireDate":"","manager":"Charlie Becker","officeLocation":"Hamburg Office","phone":"+16679361436","employeeNumber":"EMP00042","status":"Terminated","role":"Data Analyst","team":"","lastLogin":"2024-01-13T04:19:09.892Z","performanceScore":"","bonus":"","contractType":"Contractor","country":"France","city":"","postalCode":"","address":"117 Example Street","linkedin":"https://www.linkedin.com/in/example-user-042","github":"","dateOfBirth":"1970-02-01","emergencyContact":""},{"id":43,"complexKey":"HvtAExo2yZiLepNz7SS3Y-BgqIhBd_wRGm9CsMaf7OC9i","description":"","firstName":"Ian","lastName":"Fischer","email":"ian.fischer@example.com","department":"Marketing","skills":[],"isActive":true,"salary":"","hireDate":"2005-11-22","manager":"Eva Wagner","officeLocation":"","phone":"","employeeNumber":"EMP00043","status":"Active","role":"DevOps Engineer","team":"Platform","lastLogin":"2023-05-02T13:13:56.103Z","performanceScore":"1.96","bonus":4631,"contractType":"Permanent","country":"Germany","city":"Munich","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":44,"complexKey":"tHVJjsmZxWX8OBjcNkskwqBJb8","description":"sed sea accusam nonumy labore Lorem ut gubergren, invidunt kasd elitr, magna consetetur labore sadipscing sadipscing nonumy diam sed kasd takimata consetetur elitr, kasd takimata erat, clita sanctus Stet diam rebum. est. tempor justo invidunt vero sit erat, labore Stet no erat, At erat, eirmod et eos kasd et dolores nonumy diam ea diam sed sadipscing eos Lorem et sit erat, consetetur et et gubergren, kasd accusam nonumy voluptua. gubergren, magna accusam takimata aliquyam elitr, amet, erat, dolores amet, sit accusam voluptua. rebum. eirmod At ipsum takimata gubergren, Stet At consetetur accusam magna clita eirmod kasd et ipsum clita sed sit amet, Stet et sit elitr, duo est. consetetur dolores gubergren, invidunt kasd magna magna amet, diam rebum. voluptua. consetetur sadipscing invidunt diam sit Stet diam kasd Lorem kasd erat, sed gubergren, ipsum sea aliquyam dolores erat, duo labore et justo ipsum accusam labore eirmod kasd s","firstName":"Eva","lastName":"Weber","email":"eva.weber@example.com","department":"","skills":["Figma","Docker","Python","TypeScript"],"isActive":true,"salary":60936,"hireDate":"2016-11-15","manager":"Frank Schneider","officeLocation":"Remote","phone":"+49727931114","employeeNumber":"EMP00044","status":"Active","role":"","team":"Core","lastLogin":"","performanceScore":"1.76","bonus":8681,"contractType":"Permanent","country":"UK","city":"Berlin","postalCode":"35857","address":"116 Example Street","linkedin":"","github":"https://github.com/example-user-044","dateOfBirth":"1968-09-04","emergencyContact":"Ian Schneider (+49943392924)"},{"id":45,"complexKey":"6QS1Y1PlEMoDnoTH_j8","description":"","firstName":"Bob","lastName":"Becker","email":"bob.becker@example.com","department":"Marketing","skills":["TypeScript","AWS","SQL","Docker"],"isActive":true,"salary":46845,"hireDate":"2017-01-07","manager":"Charlie Fischer","officeLocation":"","phone":"+11674046574","employeeNumber":"EMP00045","status":"Probation","role":"DevOps Engineer","team":"Platform","lastLogin":"","performanceScore":"","bonus":12649,"contractType":"Temporary","country":"Netherlands","city":"Berlin","postalCode":"68994","address":"114 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":46,"complexKey":"YXBSnahVIVuK1B0kNCW6E1JHxHzcqE1UvC3foePI9","description":"consetetur ipsum dolores Lorem consetetur ut elitr, Lorem vero ea tempor sed clita ea sea diam accusam eirmod takimata gubergren, duo tempor kasd et et justo consetetur duo At aliquyam sadipscing tempor est. et voluptua. magna sanctus dolore eos Stet invidunt et invidunt amet, eirmod rebum. dolor amet, voluptua. sea justo ea Lorem duo accusam sadipscing voluptua. tempor diam invidunt tempor takimata magna sed takimata magna no consetetur justo sanctus Lorem diam tempor dolores takimata labore diam rebum. duo diam clita takimata gubergren, aliquyam gubergren, sed tempor duo duo Stet Lorem gubergren, duo sed voluptua. justo Lorem dolore labore eos Stet et ipsum et sit sed elitr, voluptua. duo takimata sed et diam labore kasd duo aliquyam rebum. sadipscing dolores dolor vero ipsum sed et clita tempor diam est. et aliquyam dolores labore duo takimata no justo voluptua. Stet magna sanct","firstName":"Eva","lastName":"Müller","email":"eva.müller@example.com","department":"IT","skills":["Python","AWS","Figma"],"isActive":true,"salary":78208,"hireDate":"2012-05-15","manager":"","officeLocation":"Berlin HQ","phone":"","employeeNumber":"EMP00046","status":"Active","role":"QA Engineer","team":"","lastLogin":"2022-11-24T17:42:00.461Z","performanceScore":"0.24","bonus":8899,"contractType":"Contractor","country":"Germany","city":"Stuttgart","postalCode":"95185","address":"52 Example Street","linkedin":"https://www.linkedin.com/in/example-user-046","github":"https://github.com/example-user-046","dateOfBirth":"","emergencyContact":"Hannah Weber (+19154893603)"},{"id":47,"complexKey":"RUNBksjPF5QIKeY7z7i-YdVbkYaE8EN16sO-M5i-Oz","description":"","firstName":"Ian","lastName":"Fischer","email":"ian.fischer@example.com","department":"","skills":["React","TypeScript","AWS"],"isActive":false,"salary":79145,"hireDate":"2014-04-20","manager":"Charlie Weber","officeLocation":"Cologne Office","phone":"+49451130337","employeeNumber":"EMP00047","status":"Terminated","role":"Designer","team":"Growth","lastLogin":"","performanceScore":"3.56","bonus":"","contractType":"Intern","country":"Spain","city":"Munich","postalCode":"40983","address":"23 Example Street","linkedin":"","github":"","dateOfBirth":"1990-05-28","emergencyContact":""},{"id":48,"complexKey":"eJXUP3p1c8PsU3P","description":"dolore magna elitr, eirmod ea sea rebum. sanctus eirmod elitr, Lorem eos justo nonumy diam et ut et duo amet, dolore ut eos ut consetetur tempor Stet Stet ipsum elitr, ut gubergren, sit At gubergren, nonumy kasd diam Lorem labore clita takimata nonumy eos At rebum. accusam diam At kasd voluptua. amet, vero elitr, sit labore d","firstName":"Frank","lastName":"Fischer","email":"frank.fischer@example.com","department":"IT","skills":["Python","React"],"isActive":false,"salary":"","hireDate":"2013-05-26","manager":"Charlie Schmidt","officeLocation":"Berlin HQ","phone":"+14073688650","employeeNumber":"EMP00048","status":"On Leave","role":"Software Engineer","team":"Mobile","lastLogin":"","performanceScore":"","bonus":"","contractType":"Contractor","country":"UK","city":"Frankfurt","postalCode":"95439","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":49,"complexKey":"7L2zSgm49frfP_gZTLhfhIPDeMe_eA5sSQ9uLU7","description":"","firstName":"Ian","lastName":"Weber","email":"ian.weber@example.com","department":"Legal","skills":["Figma"],"isActive":true,"salary":58086,"hireDate":"2012-07-24","manager":"Ian Schmidt","officeLocation":"Munich Office","phone":"+17011292272","employeeNumber":"EMP00049","status":"On Leave","role":"Software Engineer","team":"","lastLogin":"2024-08-02T05:15:45.213Z","performanceScore":"0.76","bonus":5730,"contractType":"Permanent","country":"","city":"Frankfurt","postalCode":"15165","address":"37 Example Street","linkedin":"https://www.linkedin.com/in/example-user-049","github":"","dateOfBirth":"1983-11-27","emergencyContact":""},{"id":50,"complexKey":"ALnGI9z1VCcV9oQvx1A8dEFKuq2miOHUs","description":"est. sed sanctus Lorem sit voluptua. est. justo labore et invidunt At et ut eirmod no vero amet, sanctus et dolor accusam et labore At dolores aliquyam Stet erat, dolores voluptua. magna et At invidunt sadipscing sea justo sed aliquyam duo sea erat, accusam sit diam kasd invidunt clita diam Stet voluptua. takimata Lorem Stet voluptua. justo ea dolores rebum. Lorem Stet magna Stet sed gubergren, labore et diam sanctus kasd diam justo nonumy ut dolore sed rebum. eos","firstName":"Alice","lastName":"Schneider","email":"alice.schneider@example.com","department":"Finance","skills":[],"isActive":true,"salary":"","hireDate":"2008-01-22","manager":"Frank Schneider","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00050","status":"Probation","role":"","team":"Growth","lastLogin":"2024-11-19T22:56:08.156Z","performanceScore":"1.16","bonus":12769,"contractType":"Temporary","country":"Germany","city":"Berlin","postalCode":"50734","address":"157 Example Street","linkedin":"","github":"","dateOfBirth":"1996-03-31","emergencyContact":""},{"id":51,"complexKey":"HIxzr5pDpXBScnwLBRSRqKejXKukOAffOzBV2BLhvLFx","description":"ea eos et eos dolores dolore At ipsum gubergren, sea diam erat, dolores et elitr, no et Lorem tempor sit et sit et et magna sit invidunt ipsum voluptua. sadipscing vero At accusam dolor eirmod nonumy dolores no justo duo Stet At diam et ipsum sadipscing Stet sed kasd sed labore et gubergren, amet, Stet nonumy nonumy voluptua. eirmod gubergren, diam sed takimata diam et rebum. Lorem invidunt est. gubergren, vero dolor et accusam consetetur erat, amet, nonumy ea takimata justo kasd eirmod diam Stet clita aliquyam accusam eirmod labore amet, eos ut ut voluptua. sit ut sea sea dolores no invidunt dolor accusam est. eirmod gubergren, sadipscing kasd accusam diam aliquyam diam tempor vero Lorem et takimata et sea ut elitr, ipsum t","firstName":"Grace","lastName":"Müller","email":"grace.müller@example.com","department":"IT","skills":["SQL","Java","AWS","Figma"],"isActive":true,"salary":48845,"hireDate":"2022-06-15","manager":"Alice Meyer","officeLocation":"Munich Office","phone":"+13935180571","employeeNumber":"EMP00051","status":"Terminated","role":"Software Engineer","team":"Mobile","lastLogin":"","performanceScore":"2.58","bonus":14509,"contractType":"Temporary","country":"France","city":"Frankfurt","postalCode":"51181","address":"26 Example Street","linkedin":"","github":"https://github.com/example-user-051","dateOfBirth":"1973-03-24","emergencyContact":""},{"id":52,"complexKey":"zKuvO6Cwhhr2jQaxF1ReIpjq6FtDQips5UM1_Kyy7RFI6t","description":"consetetur ipsum ut nonumy et kasd accusam vero eirmod eos sit magna et magna erat, kasd invidunt dolores tempor tempor sadipscing labore kasd sea diam et est. eirmod Stet aliquyam invidunt Stet no aliquyam sanctus ut vero no Stet aliquyam sadipscing et sadipscing aliquyam rebum. dolore duo erat, takimata rebum. et elitr, diam et Lorem ea erat, no nonumy labore nonumy sit rebum. vero dolores diam diam Lorem rebum. gubergren, duo dolores vero sed ea et At ea Lorem labore rebum. sed sadipscing et At et ut ea eirmod est. tempor et et consetetur diam elitr, consetetur consetetur justo et sadipscing dolores amet, ut gubergren, labore diam nonumy voluptua. ea eirmod dolor dolore sed labore dolore sanctus no est. accusam eos sea eos At voluptua. et et et gubergren, takimata Lorem rebum. Lorem est. Stet just","firstName":"Grace","lastName":"Schmidt","email":"grace.schmidt@example.com","department":"Legal","skills":["React","Java"],"isActive":true,"salary":95938,"hireDate":"2009-06-05","manager":"Charlie Schmidt","officeLocation":"","phone":"+49369386426","employeeNumber":"EMP00052","status":"On Leave","role":"","team":"Mobile","lastLogin":"2022-11-04T19:17:26.602Z","performanceScore":"2.78","bonus":"","contractType":"","country":"UK","city":"Hamburg","postalCode":"","address":"","linkedin":"","github":"https://github.com/example-user-052","dateOfBirth":"1976-02-05","emergencyContact":""},{"id":53,"complexKey":"2W5N-VzfZkp1UICwrZzdttXqaaXq","description":"magna sit takimata voluptua. At magna ipsum elitr, gubergren, sed gubergren, sanctus diam takimata aliquyam magna duo elitr, sadipscing magna no voluptua. dolores ipsum diam sanctus labore ut magna takimata et ea clita accusam ipsum kasd duo magna ea gubergren, rebum. sea ea gubergren, ea ipsum sed Lorem gubergren, clita no erat, tempor dolor takimata sadipscing erat, sadipscing dolores erat, voluptua. invidunt eirmod magna sed magna nonumy diam justo et clita sadipscing Lorem gubergren, est. tempor et rebum. vero nonumy et accusam sea eos dolores est. accusam et gubergren, justo sanctus ea voluptua. rebum. diam erat, dolores dolores duo ut diam Stet amet, gubergren, eirmod ut kasd est. dolore diam diam voluptua. clita sea gubergren, takimata invidunt erat, et Lorem Lorem dolores ea sanctus sit nonumy consetetur eirmod ea accusam Stet Stet kasd vero ea et eirmod rebum. labore est","firstName":"","lastName":"Schneider","email":"bob.schneider@example.com","department":"Finance","skills":["TypeScript"],"isActive":true,"salary":47915,"hireDate":"2015-10-20","manager":"","officeLocation":"Remote","phone":"+49515297553","employeeNumber":"EMP00053","status":"Active","role":"DevOps Engineer","team":"Mobile","lastLogin":"","performanceScore":"1.11","bonus":2262,"contractType":"Intern","country":"UK","city":"Hamburg","postalCode":"16644","address":"107 Example Street","linkedin":"","github":"","dateOfBirth":"1991-01-28","emergencyContact":""},{"id":54,"complexKey":"-r8VPmKfE7Cl","description":"","firstName":"Grace","lastName":"Fischer","email":"grace.fischer@example.com","department":"HR","skills":["React"],"isActive":true,"salary":78450,"hireDate":"2021-10-09","manager":"Grace Müller","officeLocation":"Cologne Office","phone":"+49106774720","employeeNumber":"EMP00054","status":"On Leave","role":"Designer","team":"Mobile","lastLogin":"2022-05-23T09:14:52.416Z","performanceScore":"1.72","bonus":"","contractType":"","country":"USA","city":"Cologne","postalCode":"36547","address":"152 Example Street","linkedin":"","github":"https://github.com/example-user-054","dateOfBirth":"2000-08-25","emergencyContact":""},{"id":55,"complexKey":"LQpk9PasMTIhc3PyMfhFbqG5DJlXucwlCC6KnDRMYvV1J","description":"","firstName":"Diana","lastName":"Weber","email":"diana.weber@example.com","department":"HR","skills":["React"],"isActive":true,"salary":94817,"hireDate":"2005-10-07","manager":"Eva Wagner","officeLocation":"Munich Office","phone":"+11485143515","employeeNumber":"EMP00055","status":"Terminated","role":"Software Engineer","team":"Core","lastLogin":"","performanceScore":"2.36","bonus":13014,"contractType":"Contractor","country":"UK","city":"Stuttgart","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Hannah Wagner (+49651108276)"},{"id":56,"complexKey":"CbjDcMBM7u","description":"et dolor aliquyam justo consetetur At sed kasd sed kasd est. gubergren, voluptua. accusam Stet kasd no nonumy ea Stet sed kasd sanctus vero sadipscing no et et gubergren, rebum. sea vero sea At takimata Stet ea invidunt ipsum justo justo et labore justo ipsum sit amet, gubergren, duo consetetur sed elitr, elitr, takimata aliquyam sed eos diam clita tempor dolores tempor eos Stet elitr, duo est. aliquyam diam eirmod elitr, vero sed Stet At kasd labore At consetetur sadipscing dolor kasd est. Lorem takimata sadipscing elitr, duo amet, ut vero eos sadipscing gubergren, vero sanctus ut magna diam gubergren, sed magna kasd diam sanctus sit invidunt clita sed rebum. diam magna elitr, eirmod aliquyam voluptua. clita magna dolores clita Lorem dolore clita elitr, et aliquyam magna elitr, tempor ut et sed duo et est. dolor invidunt sea kasd invidunt dolores voluptua. ut amet, est. ipsum dolores se","firstName":"Hannah","lastName":"Becker","email":"hannah.becker@example.com","department":"IT","skills":["AWS"],"isActive":true,"salary":"","hireDate":"2015-09-06","manager":"","officeLocation":"Cologne Office","phone":"+49254975866","employeeNumber":"EMP00056","status":"On Leave","role":"QA Engineer","team":"Tools","lastLogin":"","performanceScore":"1.12","bonus":728,"contractType":"Intern","country":"Netherlands","city":"Hamburg","postalCode":"52756","address":"0 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":57,"complexKey":"aKI1RpL71MUEDBs6Ht8r2Zljyms9PKqc5E9rD2Irk5DkxvDvLg","description":"","firstName":"Bob","lastName":"","email":"bob.weber@example.com","department":"Legal","skills":["Python"],"isActive":true,"salary":99190,"hireDate":"2005-06-18","manager":"Charlie Fischer","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00057","status":"Active","role":"Software Engineer","team":"Growth","lastLogin":"","performanceScore":"","bonus":5972,"contractType":"Intern","country":"Germany","city":"","postalCode":"","address":"67 Example Street","linkedin":"https://www.linkedin.com/in/example-user-057","github":"https://github.com/example-user-057","dateOfBirth":"1977-06-03","emergencyContact":""},{"id":58,"complexKey":"-rMF9_9KEXWh_3Taz88F4pHndaGbG21toCGCw8Jju","description":"takimata no dolores takimata takimata diam amet, sea dolores no amet, Lorem At sed vero sed aliquyam At aliquyam elitr, accusam et erat, dolores sit sea diam kasd et eirmod dolor voluptua. gubergren, diam kasd kasd ipsum dolor et ipsum sed et sit ea dolore accusam duo ipsum aliquyam diam dolor sadipscing ea voluptua. sea Lorem sit sit voluptua. At takimata eos sadipscing takimata rebum. ut et magna justo magna eos takimata Lorem et rebum. At sed erat, sea diam dolores dolores gubergren, vero dolore magna sanctus sed diam takimata est. erat, et justo aliquyam sed et gubergren, est. eos no no gubergren, et justo dolores aliquyam sea At Stet et clita dolores erat, vero ut dolor eirmod labore nonumy dolore accusam est. sed rebum. duo duo erat, no Stet et no et et sea sadipscing eirmod voluptua. magna ut diam ea sanctus et kasd accusam erat, tempor dolor erat, ipsum At dolore et et rebu","firstName":"Alice","lastName":"Fischer","email":"alice.fischer@example.com","department":"Finance","skills":["SQL"],"isActive":true,"salary":57526,"hireDate":"2011-05-12","manager":"Diana Becker","officeLocation":"Cologne Office","phone":"+18552121960","employeeNumber":"EMP00058","status":"Terminated","role":"QA Engineer","team":"Growth","lastLogin":"2024-07-19T19:17:39.490Z","performanceScore":"","bonus":"","contractType":"","country":"Netherlands","city":"Munich","postalCode":"89417","address":"136 Example Street","linkedin":"https://www.linkedin.com/in/example-user-058","github":"","dateOfBirth":"1995-11-01","emergencyContact":""},{"id":59,"complexKey":"dewPCEd7Y9vY","description":"et sea amet, et invidunt duo et At kasd Lorem diam eirmod diam tempor Lorem labore vero vero consetetur aliquyam dolor aliquyam At sed sed nonumy Stet magna invidunt diam voluptua. sea Stet magna eirmod nonumy ut aliquyam sed vero erat, duo amet, invidunt sanctus sit justo diam dolore ea ipsum accusam ipsum sadipscing justo sed dolor ea gubergren, sadipscing ipsum diam diam voluptua. no est. consetetur tempor et labore no nonumy ipsum elitr, magna et et est. magna dolore sadipscing diam est. gubergren, nonumy duo erat, labore rebum. dolores kasd At diam tempor et sed et justo sea sea diam sit takimata labore At kasd et Stet dolor dolor no sed eos et voluptua. eos voluptua. sed rebum. sit eos dolore amet, no justo dolores no eos ipsum et Stet et sanctus Lorem Lorem ipsum ut eirmod nonumy aliquyam sed accusam et dolores eirmod diam At est. Stet sed accusam sit sadipscing At ipsum sea sanctus no dolores clita eos no sadipscing elitr, vero accusam justo rebum. Stet dolore rebum. At","firstName":"Grace","lastName":"Meyer","email":"grace.meyer@example.com","department":"","skills":[],"isActive":true,"salary":78395,"hireDate":"2018-10-14","manager":"Alice Becker","officeLocation":"Remote","phone":"","employeeNumber":"EMP00059","status":"Terminated","role":"QA Engineer","team":"Mobile","lastLogin":"","performanceScore":"0.39","bonus":289,"contractType":"Permanent","country":"Spain","city":"Stuttgart","postalCode":"","address":"128 Example Street","linkedin":"https://www.linkedin.com/in/example-user-059","github":"","dateOfBirth":"1998-12-22","emergencyContact":"Charlie Schneider (+49571693488)"},{"id":60,"complexKey":"iyUWqSKto09fnO3PRLRu2MtcczftMWQLMvuAGtna7BXibJKI","description":"","firstName":"","lastName":"","email":"grace.wagner@example.com","department":"Finance","skills":["AWS"],"isActive":true,"salary":69937,"hireDate":"2017-04-19","manager":"Grace Fischer","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00060","status":"Probation","role":"Data Analyst","team":"","lastLogin":"","performanceScore":"2.84","bonus":3581,"contractType":"Intern","country":"France","city":"Berlin","postalCode":"40896","address":"134 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Alice Fischer (+49641279192)"},{"id":61,"complexKey":"lh6rQsSSh14dnGq7POsM1E88Qj6QyhzOoVjkHTfwc","description":"Lorem est. labore amet, consetetur erat, ea takimata ea magna amet, sanctus Stet dolor diam takimata Lorem ipsum sed sea ut nonumy et ut ipsum gubergren, vero sed rebum. eos Lorem et et voluptua. erat, amet, sed eirmod eirmod eos gubergren, dolor Stet invidunt tempor erat, dolor Stet consetetur magna justo Stet no amet, aliquyam dolor dolor sea ut Lorem voluptua. et elitr, aliquyam amet, sed clita diam erat, kasd sanctus voluptua. sed nonumy diam rebum. ea erat, consetetur eos aliquyam et elitr, sit duo aliquyam ut sea At At no tempor et diam At takimata justo dolores est. ut sed ea eos dolore tempor accusam et diam et no eos et vero diam ut eos gubergren, tempor labore voluptua. erat, sanctus consete","firstName":"Hannah","lastName":"","email":"","department":"Finance","skills":["TypeScript","Python","Figma"],"isActive":true,"salary":95744,"hireDate":"2018-10-04","manager":"Frank Müller","officeLocation":"Cologne Office","phone":"+49244316745","employeeNumber":"EMP00061","status":"Terminated","role":"Data Analyst","team":"Core","lastLogin":"2020-06-24T18:00:13.460Z","performanceScore":"0.13","bonus":7449,"contractType":"Permanent","country":"France","city":"Munich","postalCode":"96502","address":"113 Example Street","linkedin":"","github":"","dateOfBirth":"1984-07-15","emergencyContact":"Grace Fischer (+49377021452)"},{"id":62,"complexKey":"dMgUeMOpAqj76w-HS5V--0","description":"","firstName":"Diana","lastName":"Meyer","email":"diana.meyer@example.com","department":"IT","skills":["React","TypeScript","AWS"],"isActive":true,"salary":43278,"hireDate":"2022-11-10","manager":"Bob Fischer","officeLocation":"Hamburg Office","phone":"+49396109977","employeeNumber":"EMP00062","status":"On Leave","role":"Designer","team":"Web","lastLogin":"2023-07-13T23:15:11.515Z","performanceScore":"1.45","bonus":10367,"contractType":"Contractor","country":"Spain","city":"","postalCode":"58172","address":"192 Example Street","linkedin":"https://www.linkedin.com/in/example-user-062","github":"","dateOfBirth":"","emergencyContact":"Diana Wagner (+49459170178)"},{"id":63,"complexKey":"nTz7Jkdy5x33K3xDvLmeTupP5","description":"et labore gubergren, labore dolore diam duo invidunt labore diam gubergren, Lorem magna Stet invidunt labore dolor sea labore amet, elitr, clita diam tempor sed","firstName":"Bob","lastName":"Weber","email":"bob.weber@example.com","department":"IT","skills":["AWS","SQL"],"isActive":true,"salary":"","hireDate":"2014-08-18","manager":"","officeLocation":"Remote","phone":"+14995917691","employeeNumber":"EMP00063","status":"On Leave","role":"Product Manager","team":"Web","lastLogin":"2023-07-05T03:09:52.005Z","performanceScore":"0.82","bonus":51,"contractType":"","country":"France","city":"Hamburg","postalCode":"29793","address":"111 Example Street","linkedin":"","github":"","dateOfBirth":"1973-01-11","emergencyContact":""},{"id":64,"complexKey":"","description":"","firstName":"Bob","lastName":"Becker","email":"bob.becker@example.com","department":"Marketing","skills":["Docker","React"],"isActive":true,"salary":67860,"hireDate":"2018-07-19","manager":"Bob Fischer","officeLocation":"Remote","phone":"+13429959022","employeeNumber":"EMP00064","status":"Probation","role":"Software Engineer","team":"Tools","lastLogin":"2020-01-31T21:25:14.676Z","performanceScore":"0.84","bonus":3359,"contractType":"","country":"Netherlands","city":"Hamburg","postalCode":"22471","address":"160 Example Street","linkedin":"","github":"","dateOfBirth":"1967-12-05","emergencyContact":""},{"id":65,"complexKey":"OBJvlKei9f6kfy27aUXQmEp4iAtiE","description":"sit et sed dolores sit accusam nonumy ipsum et takimata justo ea aliquyam et et kasd no sed At aliquyam clita invidunt no sea eos sanctus invidunt duo et amet, sed duo consetetur takimata Lorem clita no duo Stet labore Lorem eirmod voluptua. sadipscing sed sea no rebum. dolore vero sanctus dolor no sanctus dolor magna gubergren, eirmod Lorem nonumy gubergren, eos elitr, diam duo et dolor dol","firstName":"Grace","lastName":"Meyer","email":"grace.meyer@example.com","department":"Marketing","skills":["Python","Figma","TypeScript","SQL"],"isActive":true,"salary":54877,"hireDate":"2012-09-19","manager":"Charlie Fischer","officeLocation":"Remote","phone":"+16821016898","employeeNumber":"EMP00065","status":"Active","role":"Software Engineer","team":"Platform","lastLogin":"2022-07-05T17:58:59.860Z","performanceScore":"","bonus":2387,"contractType":"Intern","country":"Spain","city":"Cologne","postalCode":"40424","address":"123 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":66,"complexKey":"7IQxOMfcMo8vHAs8kVkMIL3pl","description":"et duo voluptua. Lorem gubergren, voluptua. voluptua. dolor et accusam ipsum voluptua. justo et dolores magna sanctus diam duo tempor est. sea invidunt sed justo et sadipscing sed et et et sed est. labore sed gubergren, elitr, amet, no dolore dolor consetetur voluptua. et est. et accusam clita At est. rebum. dolores ea ut aliquyam","firstName":"Ian","lastName":"Müller","email":"ian.müller@example.com","department":"Finance","skills":["SQL"],"isActive":true,"salary":78509,"hireDate":"2019-10-12","manager":"Bob Schmidt","officeLocation":"Cologne Office","phone":"+14755766793","employeeNumber":"EMP00066","status":"Terminated","role":"Designer","team":"Tools","lastLogin":"2022-04-15T15:05:23.235Z","performanceScore":"1.89","bonus":1214,"contractType":"","country":"Netherlands","city":"","postalCode":"76019","address":"30 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":67,"complexKey":"6kRmD2vrara8pfFfCqTgH","description":"dolore labore erat, magna Lorem et nonumy erat, diam amet, Lorem Lorem eos aliquyam voluptua. ipsum no dolor amet, rebum. no eos clita clita nonumy et tempor tempor accusam ut ea eirmod tempor sit tempor tempor eirmod no et eos takimata duo erat, Stet rebum. Lorem et invidunt justo et labore aliquyam sanctus invidunt nonumy voluptua. takimata At sed tempor Lorem magna elitr, no ut At diam dolores sed labore rebum. dolores dolor et ut sea invidunt takimata aliquyam invidunt erat, et ea gubergren, accusam sanctus vero labore sadipscing accusam et dolor et et sed gubergren, labore sit justo duo amet, accusam et sadipscing Stet consetetur kasd invidunt ea sed invidunt aliquyam sanctus eirmod nonumy Lorem dolores amet, clita At elitr, tempor sanctus et vero diam amet, sed gubergren, clita ipsum ipsum no justo et eos no consetetur consetetur labore ut amet, te","firstName":"Hannah","lastName":"Wagner","email":"","department":"Finance","skills":["SQL","Java","Python"],"isActive":false,"salary":59165,"hireDate":"2011-07-14","manager":"","officeLocation":"Munich Office","phone":"+49673053819","employeeNumber":"EMP00067","status":"Active","role":"DevOps Engineer","team":"Platform","lastLogin":"2020-08-19T19:28:31.671Z","performanceScore":"0.99","bonus":"","contractType":"Temporary","country":"Spain","city":"Cologne","postalCode":"70725","address":"128 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Charlie Becker (+49160188421)"},{"id":68,"complexKey":"8Hyx54bCbK6tWkdoW7HVm7_vvekkIxGhImC35OTG92_3dWRc","description":"ea sea At sadipscing magna diam sit nonumy dolores sed sed no dolores est. no nonumy est. eirmod dolores sed dolor et duo dolore justo sadipscing dolores aliquyam sea nonumy dolores et no dolore diam sanctus aliquyam accusam ea kasd et sed ipsum ipsum vero sed clita ut invidunt diam sadipscing dolor no gubergren, no eos eos gubergren, kasd rebum. sea Lorem magna invidunt et ipsum eos sanctus takimata est. sadipscing ut duo At dolore sit Stet clita sit sea accusam takimata Stet eos aliquyam accusam eirmod no diam no clita nonumy vero gubergren, sed accusam nonumy sed vero diam amet, dolores diam erat,","firstName":"Ian","lastName":"Wagner","email":"ian.wagner@example.com","department":"Finance","skills":["React"],"isActive":true,"salary":51233,"hireDate":"2024-09-07","manager":"Julia Becker","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00068","status":"Terminated","role":"Product Manager","team":"Core","lastLogin":"2023-12-05T12:26:27.807Z","performanceScore":"4.57","bonus":"","contractType":"Temporary","country":"Germany","city":"","postalCode":"24895","address":"47 Example Street","linkedin":"https://www.linkedin.com/in/example-user-068","github":"","dateOfBirth":"1995-02-06","emergencyContact":""},{"id":69,"complexKey":"Ag53u84RrLlsXzNwS-C0QHxEvIq9IpNBbmY4Ou-ch","description":"","firstName":"","lastName":"","email":"julia.meyer@example.com","department":"Sales","skills":["React","Python","Figma"],"isActive":true,"salary":58299,"hireDate":"2020-09-19","manager":"Julia Becker","officeLocation":"Berlin HQ","phone":"","employeeNumber":"EMP00069","status":"Probation","role":"Product Manager","team":"Web","lastLogin":"2021-08-10T18:13:19.799Z","performanceScore":"0.81","bonus":"","contractType":"","country":"Spain","city":"Hamburg","postalCode":"14177","address":"167 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Julia Becker (+14455022373)"},{"id":70,"complexKey":"zWvXAkQ3vLoDWrgI3GspesOsVANU5OsDD--yD_LZ4DCW","description":"elitr, diam magna duo sea invidunt erat, erat, et dolor no takimata nonumy diam diam sit kasd amet, takimata et Lorem At accusam clita tempor dolores sed justo kasd elitr, labore justo dolor amet, ut sed accusam dolores erat, kasd nonumy ipsum eirmod takimata takimata invidunt sed et kasd vero erat, invidunt ea elitr, amet, est. invidunt elitr, eos et duo voluptua. labore voluptua. ut Stet elitr, est. duo dolo","firstName":"Grace","lastName":"Meyer","email":"","department":"Sales","skills":["React","Python","Java"],"isActive":true,"salary":41298,"hireDate":"2009-11-01","manager":"Diana Wagner","officeLocation":"Hamburg Office","phone":"+11990865292","employeeNumber":"EMP00070","status":"Probation","role":"Product Manager","team":"Tools","lastLogin":"","performanceScore":"2.56","bonus":2721,"contractType":"Permanent","country":"USA","city":"Frankfurt","postalCode":"39683","address":"57 Example Street","linkedin":"","github":"","dateOfBirth":"1981-05-16","emergencyContact":""},{"id":71,"complexKey":"CZb0PKnuu6_OfVbaNHVP1u0dKeRXrCbO","description":"dolores labore sed et kasd et dolores clita accusam vero duo et elitr, rebum. At sed kasd kasd amet, et ipsum consetetur ipsum amet, dolore diam dolores est. eirmod et sadipscing no takimata Stet vero et amet, dolor takimata sed Stet sit sed sanctus sit et Lorem no accusam magna diam sanctus Lorem et kasd ipsum accusam gubergren, eos justo voluptua. sed gubergren, sadipscing eirmod justo invidunt et ea Stet aliquyam rebum. diam accusam voluptua. dolor et ipsum At accusam justo et duo diam diam labore duo eirmod kasd justo est. no et gubergren, At ut accusam ut tempor duo rebum. et dolor tempor rebum. sed et invidunt At Stet et sed justo sea diam gubergren, sed consetetur sed sed labore et rebum. et ipsum et sed dolores sanctus voluptua. et sit dolor voluptua. ea sea ea invidunt et elitr, clita elitr, sea tempor gubergren, diam accusam Stet ipsum rebum. invidunt no tempor ipsum sea justo eos tempor sea elitr, et takimata voluptua. rebum. no elitr, accusam l","firstName":"Bob","lastName":"Fischer","email":"","department":"Legal","skills":["Figma"],"isActive":true,"salary":58339,"hireDate":"2019-08-08","manager":"Diana Meyer","officeLocation":"Berlin HQ","phone":"+16424596509","employeeNumber":"EMP00071","status":"Probation","role":"Data Analyst","team":"Growth","lastLogin":"","performanceScore":"4.78","bonus":12377,"contractType":"Intern","country":"","city":"Cologne","postalCode":"89051","address":"198 Example Street","linkedin":"https://www.linkedin.com/in/example-user-071","github":"","dateOfBirth":"1966-07-28","emergencyContact":""},{"id":72,"complexKey":"L0qhCSTxBTlFp6c46QsnUzI5VTwSaB7iiR7B5WHxo8WcHd28Jk","description":"dolor ipsum Lorem et kasd ipsum no no et diam Lorem et At sadipscing takimata et duo tempor duo dolor sadipscing diam diam est. accusam sed et ea tempor amet, et inv","firstName":"Eva","lastName":"Becker","email":"eva.becker@example.com","department":"IT","skills":["AWS"],"isActive":true,"salary":60432,"hireDate":"","manager":"Julia Schmidt","officeLocation":"Remote","phone":"","employeeNumber":"EMP00072","status":"On Leave","role":"Product Manager","team":"Web","lastLogin":"2023-12-26T14:41:15.527Z","performanceScore":"","bonus":12167,"contractType":"Contractor","country":"USA","city":"Berlin","postalCode":"61164","address":"","linkedin":"https://www.linkedin.com/in/example-user-072","github":"","dateOfBirth":"1994-03-12","emergencyContact":""},{"id":73,"complexKey":"kb6Q5JDTqOQxsJz2UPwhXF","description":"sed eirmod Lorem sanctus ea ea ut magna At sea dolor gubergren, takimata gubergren, erat, et ea sea et rebum. tempor nonumy sadipscing vero tempor ipsum erat, magna diam accusam Stet ut accusam gubergren, et duo rebum. labore takimata no rebum. est. est. justo elitr, et voluptua. voluptua. dolores diam no invidunt sea takimata magna kasd Stet sadipscing At kasd est. tempor aliquyam accusam Lorem Stet amet, et elitr, dolores accusam Lorem sit sed sed Lorem clita et vero magna justo no et nonumy magna sed sea sit accusam voluptua. sanctus magna dolore At At sea aliquyam dolor nonumy et kasd et dolore kasd Stet ipsum takimata amet, labore sed erat, At vero no et accusam sed sea rebum. consetetur est. accusam elitr, sit dolores consetetur","firstName":"Bob","lastName":"Schneider","email":"bob.schneider@example.com","department":"Marketing","skills":[],"isActive":true,"salary":90370,"hireDate":"2006-03-21","manager":"Grace Müller","officeLocation":"Hamburg Office","phone":"+49455399167","employeeNumber":"EMP00073","status":"On Leave","role":"Product Manager","team":"Mobile","lastLogin":"","performanceScore":"3.82","bonus":7392,"contractType":"Permanent","country":"UK","city":"","postalCode":"69913","address":"67 Example Street","linkedin":"https://www.linkedin.com/in/example-user-073","github":"","dateOfBirth":"1984-10-14","emergencyContact":""},{"id":74,"complexKey":"nLf76F6lunNmDY8Vvgs2lrIduJiPMX","description":"dolor elitr, ut vero est. dolore diam diam tempor elitr, tempor et magna aliquyam et magna est. voluptua. aliquyam takimata et labore et elitr, est. et justo aliquyam Lorem est. voluptua. vero sadipscing sea sit erat, no nonumy Lorem dolores rebum. tempor invidunt eirmod labore nonumy dolores diam ut et elitr, dolore diam invidunt ipsum consetetur sit rebum. sea consetetur aliquyam tempor et sea accusam dolor At duo elitr, voluptua. eirmod dolor sadipscing dolor sed sanctus est. rebum. est. dolor nonumy justo sadipscing duo diam nonumy Lorem justo amet, invidunt magna et sadipscing ut dolores magna sanctus no sed accusam elitr, ut et rebum","firstName":"Julia","lastName":"Schneider","email":"julia.schneider@example.com","department":"Legal","skills":["Python"],"isActive":true,"salary":91800,"hireDate":"","manager":"","officeLocation":"","phone":"","employeeNumber":"EMP00074","status":"Probation","role":"Designer","team":"","lastLogin":"","performanceScore":"1.94","bonus":7067,"contractType":"Contractor","country":"Netherlands","city":"Hamburg","postalCode":"70224","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":75,"complexKey":"Q2uCnbOXHNI4Mb3ANwVNFcc_307Lz--BbAu1M0qW-L1Elz","description":"magna et duo tempor ea aliquyam erat, consetetur ut kasd rebum. sit sanctus invidunt ea invidunt est. amet, ea et no et diam sea et et Stet tempor sed nonumy et eirmod tempor sea amet, aliquyam sit elitr, et diam At et et nonumy sea sea duo duo invidunt ipsum invidunt ea et elitr, kasd et consetetur At rebum. et justo labore nonumy nonumy Lorem takimata gubergren, et no amet, nonumy sea amet, magna dolor rebum. invidunt nonumy accusam tempor diam et sit diam dolor ea ea vero sed et sit et kasd diam diam sanctus sea invidunt aliquyam kasd invidunt vero voluptua. cl","firstName":"Bob","lastName":"Schmidt","email":"bob.schmidt@example.com","department":"Sales","skills":[],"isActive":true,"salary":87862,"hireDate":"2008-10-28","manager":"Julia Wagner","officeLocation":"Hamburg Office","phone":"+13954869861","employeeNumber":"EMP00075","status":"Probation","role":"Product Manager","team":"Tools","lastLogin":"","performanceScore":"0.41","bonus":10608,"contractType":"Temporary","country":"USA","city":"Cologne","postalCode":"12873","address":"","linkedin":"https://www.linkedin.com/in/example-user-075","github":"","dateOfBirth":"1987-12-12","emergencyContact":""},{"id":76,"complexKey":"_SkyuS75nvcrdLEHuJbnGDVzHVKZud","description":"voluptua. sea erat, rebum. elitr, clita magna consetetur Stet dolore sed takim","firstName":"Diana","lastName":"Müller","email":"diana.müller@example.com","department":"Finance","skills":["React","SQL","AWS"],"isActive":true,"salary":64192,"hireDate":"","manager":"Eva Fischer","officeLocation":"Hamburg Office","phone":"+49853486227","employeeNumber":"EMP00076","status":"Terminated","role":"Product Manager","team":"","lastLogin":"","performanceScore":"3.68","bonus":4360,"contractType":"Intern","country":"Netherlands","city":"Cologne","postalCode":"48450","address":"184 Example Street","linkedin":"","github":"","dateOfBirth":"1978-04-17","emergencyContact":"Hannah Fischer (+15806744141)"},{"id":77,"complexKey":"3tNx3rpzi0KVjOBtqaN5bs9zWwix-4","description":"eos ea dolor ut Lorem gubergren, et diam aliquyam magna diam accusam amet, Stet sea dolor ut est. justo voluptua. sanctus eirmod tempor clita ut justo gubergren, eos At et vero amet, amet, diam diam invidunt erat, diam magna labore sanctus ipsum takimata takimata takimata invidunt duo et sit invidunt gubergren, nonumy dolore ipsum labore voluptua. kasd magna At sanctus est. no gubergren, dolor est. gubergren, At eirmod et et elitr, nonumy dolor eirmod kasd sit est. clita dolore accusam et duo justo ea labore tempor et ut dolore et et consetetur sadipscing est. est. consetetur Stet sit eos invidunt elitr, justo ut magna sea sadipscing aliquyam sanctus dolores ea invidunt sanctus dolores rebum. n","firstName":"Frank","lastName":"Schmidt","email":"frank.schmidt@example.com","department":"","skills":["AWS"],"isActive":true,"salary":64447,"hireDate":"2023-01-11","manager":"","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00077","status":"On Leave","role":"Data Analyst","team":"","lastLogin":"","performanceScore":"","bonus":7979,"contractType":"Contractor","country":"Netherlands","city":"","postalCode":"82176","address":"19 Example Street","linkedin":"","github":"","dateOfBirth":"1988-08-17","emergencyContact":"Eva Schneider (+12948778910)"},{"id":78,"complexKey":"","description":"kasd eos sed diam Lorem eirmod dolor consetetur dolore voluptua. magna ea accusam kasd amet, Stet sadipscing amet, no et sea no voluptua. ea voluptua. Lorem magna aliquyam diam At amet, nonumy rebum. ea labore sed ea voluptua. no tempor dolore dolore et vero Lorem diam sanctus sea Stet ut voluptua. eos sed est. ut accusam sit takimata ipsum voluptua. Stet et et est. takimata takimata consetetur sadipscing sit Lorem diam dolores sit duo Lorem sadipscing labore dolor sanctus diam At erat, erat, sit justo elitr, dolore invidunt et sed diam eos justo rebum. takimata est. sed et voluptua. kasd sea gubergren, erat, dolor voluptua. sed et clita","firstName":"Ian","lastName":"Schneider","email":"ian.schneider@example.com","department":"Finance","skills":["React","TypeScript","Docker"],"isActive":true,"salary":52201,"hireDate":"2005-07-28","manager":"Grace Fischer","officeLocation":"Remote","phone":"","employeeNumber":"EMP00078","status":"On Leave","role":"QA Engineer","team":"Web","lastLogin":"2021-12-06T19:38:49.981Z","performanceScore":"4.91","bonus":13963,"contractType":"Temporary","country":"USA","city":"Hamburg","postalCode":"65086","address":"","linkedin":"https://www.linkedin.com/in/example-user-078","github":"https://github.com/example-user-078","dateOfBirth":"1991-12-11","emergencyContact":""},{"id":79,"complexKey":"8GZSm1CqKGUX9N_dWOo_h_sEVYBk","description":"et clita vero sed et aliquyam voluptua. consetetur eos diam accusam tempor clita no kasd diam At Lorem aliquyam justo Lorem no clita invidunt nonumy eos diam justo et invidunt eirmod invidunt tempor sit accusam ut ut consetetur kasd nonumy invidunt Lorem justo clita et rebum. takimata dolores duo elitr, eos takimata takimata invidunt vero ea duo elitr, dolor labore sanctus dolor Stet takimata et ea est. rebum. accusam aliquyam et sanctus clita sea invidunt Stet nonumy et kasd diam erat, sea sea Stet eirmod sadipscing duo labore sea erat, takimata clita Lorem labore ut et sanctus et ut et magna erat, labore eirmod invidunt dolores et magna ut dolore no voluptua. sadipscing sea consetetur elitr, aliquyam et clita Lorem sanctus","firstName":"","lastName":"Weber","email":"diana.weber@example.com","department":"Marketing","skills":["Figma","TypeScript"],"isActive":true,"salary":51309,"hireDate":"2010-09-19","manager":"Eva Schneider","officeLocation":"Remote","phone":"","employeeNumber":"EMP00079","status":"On Leave","role":"Product Manager","team":"Platform","lastLogin":"","performanceScore":"","bonus":5550,"contractType":"","country":"Netherlands","city":"Hamburg","postalCode":"24126","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":80,"complexKey":"","description":"accusam sit ipsum Stet sed diam duo justo Stet et invidunt At sed ea amet, et clita no accusam dolore accusam et kasd est. labore et et labore Lorem sanctus labore sed gubergren, erat, sed duo dolore invidunt sed clita sed eos clita eos accusam","firstName":"Ian","lastName":"Weber","email":"ian.weber@example.com","department":"Marketing","skills":["SQL"],"isActive":true,"salary":"","hireDate":"2018-12-13","manager":"","officeLocation":"Remote","phone":"","employeeNumber":"EMP00080","status":"","role":"Designer","team":"","lastLogin":"","performanceScore":"3.99","bonus":"","contractType":"Permanent","country":"Netherlands","city":"","postalCode":"66413","address":"","linkedin":"https://www.linkedin.com/in/example-user-080","github":"","dateOfBirth":"","emergencyContact":""},{"id":81,"complexKey":"8ndFMWNfOoSjCSP","description":"elitr, dolores sed eirmod sed diam ipsum eirmod takimata dolor dolore vero et sanctus erat, rebum. consetetur sanctus vero ipsum clita sit aliquyam rebum. et clita erat, magna sit kasd et diam voluptua. dolore dolore sed dolores consetetur a","firstName":"Alice","lastName":"Becker","email":"alice.becker@example.com","department":"Marketing","skills":["Figma","TypeScript"],"isActive":true,"salary":56443,"hireDate":"2011-02-22","manager":"Alice Schmidt","officeLocation":"Remote","phone":"","employeeNumber":"EMP00081","status":"Probation","role":"","team":"Web","lastLogin":"2020-09-17T15:19:50.767Z","performanceScore":"0.06","bonus":9475,"contractType":"Contractor","country":"Netherlands","city":"Cologne","postalCode":"","address":"121 Example Street","linkedin":"","github":"","dateOfBirth":"1965-05-28","emergencyContact":""},{"id":82,"complexKey":"mYBlGrhq15J1wFw1w3ui","description":"ea accusam aliquyam tempor accusam clita elitr, tempor At dolor sea nonumy rebum. eirmod diam sanctus sed dolore voluptua. dolore clita magna amet, et Lorem consetetur invidunt et consetetur dolor eirmod magna Lorem magna sit duo takimata diam consetetur aliquyam sanctus Lorem takimata Stet et et et erat, erat, aliquyam duo et justo amet, diam et diam takimata aliquyam sit magna eos sanctus sea ea ea ipsum amet, no duo sea eirmod sadipscing justo et duo tempor dolor sed dolores eos sea gubergren, et et di","firstName":"Charlie","lastName":"Weber","email":"","department":"Finance","skills":["Python","Figma","Java"],"isActive":true,"salary":66018,"hireDate":"","manager":"Bob Becker","officeLocation":"Hamburg Office","phone":"+49868857514","employeeNumber":"EMP00082","status":"Active","role":"QA Engineer","team":"Tools","lastLogin":"","performanceScore":"","bonus":5019,"contractType":"Contractor","country":"Spain","city":"","postalCode":"","address":"112 Example Street","linkedin":"","github":"","dateOfBirth":"1997-03-24","emergencyContact":""},{"id":83,"complexKey":"hZIghJlggygvac5pYSl0clfyQ9s","description":"eirmod nonumy erat, tempor clita eos ea et kasd dolore eos duo ut dolor Lorem clita invidunt Stet magna et elitr, et takimata et voluptua. At ea ipsum sea dolores aliquyam sanctus sed gubergren, Lorem et no no Stet sanctus no et Stet diam sea duo ut ea diam eos invidunt est. diam clita clita et sed eirmod erat, et At clita dolores diam ut diam accusam amet, erat, sea dolor sed sea sit sit consetetur duo Lorem et tempor ka","firstName":"Alice","lastName":"Meyer","email":"alice.meyer@example.com","department":"","skills":[],"isActive":true,"salary":99386,"hireDate":"2019-03-06","manager":"Frank Schneider","officeLocation":"Hamburg Office","phone":"+49724066066","employeeNumber":"EMP00083","status":"Probation","role":"Data Analyst","team":"Growth","lastLogin":"","performanceScore":"3.10","bonus":12203,"contractType":"Intern","country":"France","city":"Berlin","postalCode":"96600","address":"","linkedin":"https://www.linkedin.com/in/example-user-083","github":"https://github.com/example-user-083","dateOfBirth":"2000-05-05","emergencyContact":"Eva Fischer (+49329193695)"},{"id":84,"complexKey":"","description":"no et rebum. no ipsum aliquyam takimata aliquyam dolor sed et sea Stet sit diam et accusam consetetur dolor et rebum. magna nonumy no et magna dolores rebum. et kasd voluptua. dolores dolore tempor et aliquyam no sadipscing dolore Stet diam et eirmod aliquyam voluptua. ea sed sea dia","firstName":"Ian","lastName":"Müller","email":"ian.müller@example.com","department":"HR","skills":["Docker","React","Java"],"isActive":true,"salary":76672,"hireDate":"","manager":"Alice Weber","officeLocation":"Remote","phone":"+49954699126","employeeNumber":"EMP00084","status":"Probation","role":"Designer","team":"Core","lastLogin":"","performanceScore":"4.44","bonus":"","contractType":"Intern","country":"","city":"Cologne","postalCode":"34685","address":"185 Example Street","linkedin":"https://www.linkedin.com/in/example-user-084","github":"","dateOfBirth":"","emergencyContact":""},{"id":85,"complexKey":"hu2nvECKnxAJXIZF0U4Dg6ln","description":"","firstName":"Hannah","lastName":"Schmidt","email":"","department":"IT","skills":["AWS","Java","Docker"],"isActive":true,"salary":84389,"hireDate":"2022-12-19","manager":"","officeLocation":"Cologne Office","phone":"+13135012676","employeeNumber":"EMP00085","status":"On Leave","role":"Software Engineer","team":"Growth","lastLogin":"2022-03-14T01:31:31.168Z","performanceScore":"2.39","bonus":1236,"contractType":"Intern","country":"","city":"Frankfurt","postalCode":"41446","address":"64 Example Street","linkedin":"https://www.linkedin.com/in/example-user-085","github":"","dateOfBirth":"","emergencyContact":"Charlie Meyer (+15837517994)"},{"id":86,"complexKey":"W4S0jM7G0uVt_bkDave6CxgFKOFGb9EdZC-a","description":"accusam ut eirmod et ipsum sea Lorem et sea At et voluptua. kasd voluptua. sadipscing et dolor amet, gubergren, et Lorem diam et At voluptua. dolore et kasd sadipscing est. labore erat, eirmod duo invidunt et sed aliquyam rebum. sanctus est. diam diam ea dolores et gubergren, kasd consetetur Stet invidunt magna diam et accusam labore et ut gubergren, dolores sea sea ea sea nonumy At magna no et Stet voluptua. sed et Lorem est. eirmod diam amet, Stet consetetur ea invidunt Stet elitr, vero elitr, ut ea aliquyam At dolores eos sea duo labore labore et sanctus Stet aliquyam eos et At invidunt At et dolore diam et consetetur et gubergren, takimata accusam Lorem Stet et ipsum dolore gubergren, eirmod et eirmod Stet diam nonumy ut takimata labore est. ipsum At et ut duo Lorem diam consetetur","firstName":"Grace","lastName":"Fischer","email":"grace.fischer@example.com","department":"","skills":["TypeScript","AWS","Docker","Java"],"isActive":true,"salary":62124,"hireDate":"2015-12-05","manager":"Ian Weber","officeLocation":"Munich Office","phone":"+15523878292","employeeNumber":"EMP00086","status":"Terminated","role":"Product Manager","team":"Core","lastLogin":"2023-04-18T02:10:11.435Z","performanceScore":"","bonus":13263,"contractType":"","country":"France","city":"Frankfurt","postalCode":"","address":"58 Example Street","linkedin":"","github":"https://github.com/example-user-086","dateOfBirth":"","emergencyContact":""},{"id":87,"complexKey":"LRMZ2hkwSGbFvwx-DAnW","description":"clita eirmod At erat, consetetur gubergren, et Lorem tempor elitr, tempor dolore diam sanctus tempor sed est. gubergren, eirmod eos gubergren, ut elitr, consetetur eos no sit vero aliquyam sanctus Lorem Lorem sed takimata dolores diam sanctus gubergren, Lorem kasd ipsum Lorem ut tempor sadipscing voluptua. dolore et elitr, sanctus sadipscing et diam sit takimata elitr, accusam elitr, et est. sed et eos ea diam dolor invidun","firstName":"Hannah","lastName":"Becker","email":"","department":"Legal","skills":["Docker","React"],"isActive":true,"salary":47320,"hireDate":"2017-12-29","manager":"","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00087","status":"Active","role":"QA Engineer","team":"Web","lastLogin":"","performanceScore":"","bonus":8995,"contractType":"","country":"France","city":"Hamburg","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"1971-02-01","emergencyContact":""},{"id":88,"complexKey":"syZicyhLfwbxenQcgYSsPEQlmxJ6fDn2GmbdRUc","description":"diam eos sit sed et sit kasd nonumy et eirmod tempor dolore dolor dolores Lorem clita et eos takimata est. duo takimata consetetur sed et magna sed dolore consetetur dolores et duo clita voluptua. eirmod dolores ea accusam justo diam dolores takimata accusam accusam no labore dolores dolor et kasd clita rebum. kasd no erat, voluptua. accusam accusam magna eos nonumy gubergren, et et sit sed takimata erat, takimata erat, tempor duo et sed labore sea et diam kasd vero eos labore At consetetur magna et diam invidunt erat, rebum. dolores sed gubergren, ut sed elitr, amet, et sanctus vero no no amet, ipsum erat, eos aliquyam consetetur gubergren, sed takimata invidunt gubergren, sea sed est. sit Lorem labore Lorem gubergren, est. rebum. diam ut ut eos invidunt sea consetetur clita labore accusam dolor diam Lorem elitr, et duo erat, ipsum sea ea justo labore","firstName":"Ian","lastName":"Wagner","email":"ian.wagner@example.com","department":"Legal","skills":[],"isActive":true,"salary":60529,"hireDate":"","manager":"Charlie Müller","officeLocation":"Berlin HQ","phone":"+16263591558","employeeNumber":"EMP00088","status":"Active","role":"DevOps Engineer","team":"Growth","lastLogin":"2021-11-05T03:18:28.124Z","performanceScore":"","bonus":3594,"contractType":"Intern","country":"Spain","city":"Frankfurt","postalCode":"","address":"18 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":89,"complexKey":"","description":"","firstName":"Ian","lastName":"Becker","email":"ian.becker@example.com","department":"Marketing","skills":["AWS","React","Java"],"isActive":false,"salary":76576,"hireDate":"2016-03-15","manager":"","officeLocation":"Berlin HQ","phone":"+49268532041","employeeNumber":"EMP00089","status":"","role":"Software Engineer","team":"","lastLogin":"2024-02-26T14:46:37.825Z","performanceScore":"2.53","bonus":3576,"contractType":"Intern","country":"Spain","city":"Hamburg","postalCode":"11099","address":"15 Example Street","linkedin":"https://www.linkedin.com/in/example-user-089","github":"","dateOfBirth":"1966-10-18","emergencyContact":""},{"id":90,"complexKey":"uk_XH8heLJ2M62Fg_8xc_wPKc-onrQPlo","description":"tempor eirmod diam sed et eirmod et eos kasd labore At aliquyam sanctus Lorem ea eos vero sanctus voluptua. elitr, consetetur diam gubergren, sadipscing et sed Stet et sed invidunt gubergren, et sed vero diam no gubergren, magna et sanctus sea sit dolor tempor Stet At sit sed gubergren, nonumy e","firstName":"Ian","lastName":"Schmidt","email":"ian.schmidt@example.com","department":"Marketing","skills":["SQL","Java","Python"],"isActive":true,"salary":58188,"hireDate":"2017-01-20","manager":"Hannah Müller","officeLocation":"","phone":"","employeeNumber":"EMP00090","status":"Active","role":"Product Manager","team":"Growth","lastLogin":"2020-12-26T01:49:17.324Z","performanceScore":"2.20","bonus":"","contractType":"Intern","country":"UK","city":"Hamburg","postalCode":"85508","address":"60 Example Street","linkedin":"https://www.linkedin.com/in/example-user-090","github":"","dateOfBirth":"","emergencyContact":""},{"id":91,"complexKey":"QYCRw-__CVBS-AsK4PMDbHeUqBrl_Y","description":"","firstName":"Bob","lastName":"Meyer","email":"bob.meyer@example.com","department":"IT","skills":["React","TypeScript","Docker","Python"],"isActive":true,"salary":56444,"hireDate":"2017-12-20","manager":"Ian Becker","officeLocation":"Cologne Office","phone":"+49718219881","employeeNumber":"EMP00091","status":"Terminated","role":"","team":"Growth","lastLogin":"2023-08-20T14:34:35.610Z","performanceScore":"","bonus":14515,"contractType":"","country":"Germany","city":"Munich","postalCode":"32286","address":"","linkedin":"","github":"","dateOfBirth":"1993-11-08","emergencyContact":""},{"id":92,"complexKey":"","description":"justo voluptua. sea rebum. invidunt rebum. et tempor tempor eos dolore gubergren, Stet sed gubergren, et amet, clita kasd elitr, et dolores ut nonumy tempor ea kasd sanctus eirmod est. sed et sit no amet, dolor Lorem diam sanctus justo takimata est. invidunt magna invidunt eos labore aliquyam eos sadipscing takimata ipsum takimata et Stet labore magna sit sea gubergren, gubergren, gubergren, no voluptua. dolores kasd tempor invidunt est. eirmod consetetur tempor labore sed Lorem diam sed dolores diam no d","firstName":"Diana","lastName":"Wagner","email":"diana.wagner@example.com","department":"HR","skills":[],"isActive":true,"salary":60972,"hireDate":"2006-12-01","manager":"Charlie Schneider","officeLocation":"Munich Office","phone":"+49852164845","employeeNumber":"EMP00092","status":"Active","role":"Designer","team":"Platform","lastLogin":"2024-09-01T22:33:27.668Z","performanceScore":"4.47","bonus":6941,"contractType":"Temporary","country":"France","city":"Berlin","postalCode":"61975","address":"17 Example Street","linkedin":"https://www.linkedin.com/in/example-user-092","github":"","dateOfBirth":"1971-12-09","emergencyContact":""},{"id":93,"complexKey":"tgeQvgjzh9ce9N381yU6VESmP2mWGhJenhA4Wv74","description":"At Lorem justo ipsum sit aliquyam ipsum labore labore sed aliquyam et sanctus sit Stet takimata At sed takimata duo sanctus sed duo amet, tempor invidunt nonumy labore justo no amet, takimata gubergren, et Stet sit ut rebum. sit dolore labore diam aliquyam nonumy amet, amet, diam tempor kasd sadipscing ut At eos no ipsum diam ut erat, Lorem sed magna sit aliq","firstName":"Alice","lastName":"Weber","email":"alice.weber@example.com","department":"IT","skills":[],"isActive":true,"salary":99107,"hireDate":"2018-11-21","manager":"Bob Wagner","officeLocation":"Cologne Office","phone":"+49156235367","employeeNumber":"EMP00093","status":"On Leave","role":"Data Analyst","team":"","lastLogin":"2021-11-28T03:38:36.290Z","performanceScore":"0.17","bonus":"","contractType":"Contractor","country":"Germany","city":"Hamburg","postalCode":"","address":"78 Example Street","linkedin":"https://www.linkedin.com/in/example-user-093","github":"","dateOfBirth":"1985-05-05","emergencyContact":""},{"id":94,"complexKey":"wr8BXWe8JqSmG","description":"et erat, Stet labore ea Stet vero dolore no dolore et takimata At amet, nonumy sed sanctus ut vero eirmod nonumy et elitr, ut kasd sed Stet Lorem et se","firstName":"Julia","lastName":"Fischer","email":"julia.fischer@example.com","department":"Legal","skills":["React","SQL","AWS"],"isActive":true,"salary":90270,"hireDate":"2018-12-05","manager":"Eva Fischer","officeLocation":"Remote","phone":"+49537345003","employeeNumber":"EMP00094","status":"On Leave","role":"Data Analyst","team":"Tools","lastLogin":"2020-08-15T19:49:49.103Z","performanceScore":"","bonus":3767,"contractType":"Temporary","country":"UK","city":"Cologne","postalCode":"80809","address":"","linkedin":"https://www.linkedin.com/in/example-user-094","github":"","dateOfBirth":"","emergencyContact":""},{"id":95,"complexKey":"AqKoE8YhVGmvlESYP8ZvRQD-t_K_CmTAGsSi","description":"takimata Stet et nonumy diam et magna voluptua. elitr, invidunt gubergren, sea labore Stet amet, no sed gubergren, voluptua. labore sea elitr, consetetur clita elitr, diam At aliquyam accusam et consetetur duo consetetur diam justo ipsum takimata sed gubergren, consetetur voluptua. et aliquyam ea est. sanctus magna ipsum elitr, duo clita ipsum dolore sadipscing sanctus labore no est. et aliquyam sed magna est. diam ea invidunt ea eos duo ea clita At dolor voluptua. amet, ea dolore kasd et diam sea At justo no sit tempor diam accusam sed diam sed duo et ea At sed no aliquyam elitr, diam sea labore sed gubergren, Stet elitr, et diam erat, sadipscing ut est. et diam diam tempor vero sadipscing duo aliquyam elitr, amet, tempor sed et justo eos justo aliquyam Lorem invi","firstName":"Ian","lastName":"","email":"","department":"","skills":["React","Java"],"isActive":true,"salary":"","hireDate":"2011-07-01","manager":"Frank Wagner","officeLocation":"Remote","phone":"+49803403509","employeeNumber":"EMP00095","status":"Probation","role":"Product Manager","team":"Tools","lastLogin":"2020-05-04T15:14:33.352Z","performanceScore":"4.41","bonus":13845,"contractType":"Intern","country":"Netherlands","city":"","postalCode":"91975","address":"11 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":96,"complexKey":"IPr89lojLK8-gcXkdg-_s_mk9XMbMG","description":"dolores et duo labore duo consetetur elitr, aliquyam ea consetetur Stet Stet sea rebum. no eirmod sed ea dolores no consetetur nonumy rebum. Stet sea eirmod et justo sit et vero vero invidunt duo diam kasd duo diam tempor Lorem dolores eos duo accusam justo kasd rebum. duo dolores sed accusam no sed sea sadipscing At diam nonumy no eos sanctus amet, rebum. diam ea rebum. sea ea vero takimata dolore duo Lorem sed sed eos Stet takimata sit sadipscing magna takimata invidunt Lorem accusam voluptua. vero Stet aliquyam et amet, ut labore duo nonumy diam no aliquyam Stet clita sea et dolores ea eos Stet labore accusam dolores labore ipsum diam diam rebum. est. dolor erat, eirmod sed At nonumy sanctus est. takimata tempor et elitr, erat, erat, est. diam clita sanctus et diam no sit amet, voluptua. tempor duo dolores ipsum ipsum tempor ea Stet erat, dolore voluptua. et amet, kasd et et ut ipsum eirmod diam et no voluptua. et dolores ju","firstName":"Hannah","lastName":"Schneider","email":"","department":"Finance","skills":["SQL","Figma","React","Python"],"isActive":true,"salary":"","hireDate":"2021-01-10","manager":"Ian Fischer","officeLocation":"","phone":"+49958584386","employeeNumber":"EMP00096","status":"Active","role":"Data Analyst","team":"Mobile","lastLogin":"","performanceScore":"3.04","bonus":"","contractType":"Intern","country":"UK","city":"Cologne","postalCode":"22052","address":"167 Example Street","linkedin":"https://www.linkedin.com/in/example-user-096","github":"https://github.com/example-user-096","dateOfBirth":"","emergencyContact":"Charlie Schneider (+14011724578)"},{"id":97,"complexKey":"KKmOg2ObT9EyFZYjoil7HkbrNb","description":"","firstName":"Charlie","lastName":"Fischer","email":"charlie.fischer@example.com","department":"Marketing","skills":["Docker","Figma","Python"],"isActive":true,"salary":70103,"hireDate":"","manager":"Bob Becker","officeLocation":"","phone":"+18958684087","employeeNumber":"EMP00097","status":"On Leave","role":"Software Engineer","team":"Mobile","lastLogin":"","performanceScore":"3.87","bonus":13737,"contractType":"Permanent","country":"France","city":"Frankfurt","postalCode":"24890","address":"","linkedin":"","github":"","dateOfBirth":"1992-04-13","emergencyContact":"Grace Meyer (+17334429243)"},{"id":98,"complexKey":"R0Y5yx5qGeOXXAmEFx77rUVf3UXdDZ1","description":"","firstName":"Eva","lastName":"Weber","email":"eva.weber@example.com","department":"Marketing","skills":["Docker"],"isActive":false,"salary":63208,"hireDate":"","manager":"Hannah Schneider","officeLocation":"Remote","phone":"+49930381245","employeeNumber":"EMP00098","status":"Terminated","role":"Data Analyst","team":"","lastLogin":"","performanceScore":"1.71","bonus":"","contractType":"Permanent","country":"Spain","city":"Berlin","postalCode":"","address":"","linkedin":"","github":"https://github.com/example-user-098","dateOfBirth":"1984-04-18","emergencyContact":""},{"id":99,"complexKey":"0iZuCLQzZIhOJVY7E","description":"","firstName":"Hannah","lastName":"","email":"hannah.meyer@example.com","department":"IT","skills":["Docker","React","TypeScript","Python"],"isActive":true,"salary":53528,"hireDate":"2005-12-13","manager":"Hannah Müller","officeLocation":"Munich Office","phone":"+16088724858","employeeNumber":"EMP00099","status":"Probation","role":"Data Analyst","team":"Platform","lastLogin":"2024-12-06T00:57:17.798Z","performanceScore":"","bonus":6863,"contractType":"","country":"UK","city":"Stuttgart","postalCode":"64296","address":"8 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Ian Wagner (+49929313518)"},{"id":100,"complexKey":"p7IsvG9d8iShUl7sHwwHe-OHb1Z-wojgt","description":"nonumy ea sed magna justo accusam ipsum ut justo gubergren, At et rebum. invidunt rebum. ipsum kasd dolor est. amet, justo sed et dolor eos kasd no ut dolores eos justo Stet justo et At amet, eos nonumy sit eirmod invidunt erat, voluptua. consetetur dolor sanctus sea et amet, kasd sanctus et labore erat, eirmod est. et Lorem eos dolor eirmod et nonumy nonumy At sea vero ea erat, gubergren, diam dolor Stet dolores sit diam amet, tempor diam ut Stet takimata sed rebum. justo magna consetetur est. takimata dolore sed clita amet, eirmod ea elitr, labore ut dolor sed invidunt sea ipsum sed diam est. rebum. aliquyam magna aliquyam ea rebum. At accusam ut diam magna dolor ea et magna voluptua. labore eos invidunt et ea duo aliquyam sit est. diam rebum. gubergren, ipsum dolore rebum. takimata sit Lorem At et et takimat","firstName":"Charlie","lastName":"Wagner","email":"charlie.wagner@example.com","department":"Finance","skills":["Figma"],"isActive":true,"salary":80878,"hireDate":"","manager":"","officeLocation":"Cologne Office","phone":"+49291889796","employeeNumber":"EMP00100","status":"Probation","role":"Product Manager","team":"Tools","lastLogin":"2024-10-24T00:39:08.732Z","performanceScore":"4.22","bonus":2402,"contractType":"Contractor","country":"Netherlands","city":"Hamburg","postalCode":"","address":"168 Example Street","linkedin":"","github":"","dateOfBirth":"1980-09-15","emergencyContact":"Frank Fischer (+19829808983)"},{"id":101,"complexKey":"L0SW4kRV-0ayd5_rX2KYekeHWCjSCZu55-gD1IPfY","description":"eos no sadipscing et ut sadipscing dolor tempor rebum. sadipscing nonumy tempor consetetur labore consetetur eirmod elitr, ipsum elitr, labore et vero accusam invidunt dolores dolor diam kasd accusam accusam amet, accusam vero kasd sit amet, takimata At voluptua. sanctus rebum. ea sanctus invidunt Lorem At erat, elitr, aliquyam et sed kasd dolores labore vero sit takimata sed eirmod Stet labore sadipscing Lorem diam magna ipsum et sadipscing no diam sed eos labore nonumy et clita vero invidunt elitr, eos sed ut labore dolore gubergren, rebum. takimata justo","firstName":"Diana","lastName":"Meyer","email":"diana.meyer@example.com","department":"Marketing","skills":["Python","Docker"],"isActive":true,"salary":95627,"hireDate":"2022-05-30","manager":"Alice Fischer","officeLocation":"Remote","phone":"+19423198352","employeeNumber":"EMP00101","status":"On Leave","role":"Software Engineer","team":"Mobile","lastLogin":"","performanceScore":"","bonus":"","contractType":"Temporary","country":"","city":"Frankfurt","postalCode":"20828","address":"","linkedin":"","github":"https://github.com/example-user-101","dateOfBirth":"","emergencyContact":""},{"id":102,"complexKey":"qOxVDAM0z3","description":"eirmod et et elitr, consetetur labore diam et dolore sea sanctus ut amet, ipsum eirmod no elitr, sed et ut elitr, sit duo diam eirmod tempor kasd ut diam labore diam et ipsum rebum. gubergren, diam nonumy ut dolore sit voluptua. nonumy et sea et vero dolores At magna justo eirmod clita sanctus et elitr, et et et diam et et sanctus accusam clita nonumy est. sadipscing takimata sed dolor et sadipscing sanctus s","firstName":"Julia","lastName":"Fischer","email":"julia.fischer@example.com","department":"Marketing","skills":["AWS","Python","Docker","Java"],"isActive":false,"salary":56217,"hireDate":"2007-09-25","manager":"Alice Weber","officeLocation":"Remote","phone":"","employeeNumber":"EMP00102","status":"Probation","role":"QA Engineer","team":"Tools","lastLogin":"2024-05-19T08:16:48.989Z","performanceScore":"2.17","bonus":12023,"contractType":"Permanent","country":"Netherlands","city":"Munich","postalCode":"66697","address":"89 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":103,"complexKey":"P4ydDKghK4NnxcSSHqtm9hp5fKx_Hr0h_tciPAeuHA0K","description":"At gubergren, justo At dolor sit takimata rebum. sed sadipscing invidunt takimata aliquyam labore Stet sadipscing ut invidunt no duo nonumy no eirmod ut ea gubergren, sit sed consetetur takimata et eos sea Stet est. eirmod aliquyam sanctus takimata accusam dolor et dolore magna consetetur dolores gubergren, ea et ea nonumy ea sed sed dolore tempor justo sea invidunt elitr, invidunt sea sed vero Lorem no aliquyam amet, accusam sed justo dolore rebum. sed duo clita labore consetetur voluptua. dolores ea clita consetetur justo sanctus sed amet, labore et eirmod voluptua. justo elitr, dolore est. voluptua. eirmod At erat, labore takimata justo Stet dolores Lorem Lorem d","firstName":"Alice","lastName":"Weber","email":"alice.weber@example.com","department":"Marketing","skills":["Figma","React","AWS"],"isActive":false,"salary":54503,"hireDate":"2010-10-12","manager":"Alice Becker","officeLocation":"Cologne Office","phone":"+19332747642","employeeNumber":"EMP00103","status":"","role":"Product Manager","team":"Growth","lastLogin":"2023-09-19T21:18:19.583Z","performanceScore":"","bonus":3497,"contractType":"","country":"UK","city":"Frankfurt","postalCode":"78563","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Frank Müller (+14320852314)"},{"id":104,"complexKey":"fDeLVUKX_wvqdOdG61JU","description":"dolor no sed Lorem sanctus sea elitr, vero erat, takimata elitr, eirmod et sed et vero erat, et dolores elitr, eirmod aliquyam elitr, ut dolores sed et sadipscing vero gubergren, dolore labore sadipscing est. magna et sadipscing ea e","firstName":"Ian","lastName":"Wagner","email":"ian.wagner@example.com","department":"IT","skills":["Figma"],"isActive":true,"salary":80935,"hireDate":"2006-08-24","manager":"Bob Becker","officeLocation":"Hamburg Office","phone":"+49300704479","employeeNumber":"EMP00104","status":"Active","role":"Software Engineer","team":"Core","lastLogin":"","performanceScore":"","bonus":4075,"contractType":"Contractor","country":"Netherlands","city":"Stuttgart","postalCode":"","address":"161 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Ian Müller (+49109018876)"},{"id":105,"complexKey":"oP2MuufgCyf-plPv_imtsO5atwoq30-jlL4-mbZ","description":"est. eos vero amet, ipsum accusam nonumy erat, sed elitr, eirmod duo diam clita sed sed nonumy et diam et et magna no rebum. rebum. labore amet, Lorem voluptua. At sanctus kasd At diam est. amet, aliquyam accusam gubergren, vero clita eirmod sea invidunt est. voluptua. labore nonumy diam At no dolore sea eirmod gubergren, Stet dolor voluptua. nonumy sed et gubergren, magna eos erat, et et Lorem takimata et eos diam et est. diam sed dolore no labore duo dolores accusam eos At gubergren, eirmod sed sed consetetur gubergren, nonumy gubergren, clita amet, dolores takimata sanctus ipsum sit takimata ut At amet, no voluptua. duo sed diam dolor dolor clita et dolores kasd magna sanctus Lorem est. dolore no voluptua. duo kasd consetetur takimata volu","firstName":"","lastName":"","email":"diana.weber@example.com","department":"Finance","skills":["TypeScript","React","SQL"],"isActive":false,"salary":77978,"hireDate":"2020-12-27","manager":"Eva Schmidt","officeLocation":"Cologne Office","phone":"+15806618109","employeeNumber":"EMP00105","status":"Terminated","role":"","team":"","lastLogin":"","performanceScore":"1.50","bonus":4296,"contractType":"Temporary","country":"Germany","city":"Munich","postalCode":"33887","address":"64 Example Street","linkedin":"https://www.linkedin.com/in/example-user-105","github":"","dateOfBirth":"","emergencyContact":"Eva Meyer (+49854971152)"},{"id":106,"complexKey":"tLXdxL8rTgEcbmKCB242vfFxS_SWG3MpRPDnPN5","description":"","firstName":"Alice","lastName":"Wagner","email":"alice.wagner@example.com","department":"Sales","skills":["TypeScript","Java","SQL"],"isActive":true,"salary":88432,"hireDate":"2011-05-31","manager":"Diana Schmidt","officeLocation":"","phone":"+49974842228","employeeNumber":"EMP00106","status":"Active","role":"Data Analyst","team":"Core","lastLogin":"2020-02-25T22:43:46.873Z","performanceScore":"3.59","bonus":"","contractType":"Intern","country":"Spain","city":"Frankfurt","postalCode":"26829","address":"120 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":107,"complexKey":"-amEgVmDyPNJG","description":"sadipscing sed et sed ut rebum. justo ea ea eirmod aliquyam ipsum et amet, magna kasd ea ea et Stet Stet elitr, sit et justo magna voluptua. ut sea ipsum vero voluptu","firstName":"Bob","lastName":"Becker","email":"bob.becker@example.com","department":"Legal","skills":["React","TypeScript","Python"],"isActive":true,"salary":46214,"hireDate":"2020-12-08","manager":"Alice Meyer","officeLocation":"Munich Office","phone":"+49936818749","employeeNumber":"EMP00107","status":"Active","role":"Product Manager","team":"Mobile","lastLogin":"","performanceScore":"4.28","bonus":2145,"contractType":"Temporary","country":"USA","city":"Munich","postalCode":"20089","address":"122 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":108,"complexKey":"Cv2cMwdzda2B4CsrsiNqx","description":"est. ipsum sadipscing magna erat, sed ea sed At accusam elitr, amet, ipsum justo labore magna sanctus duo et et sanctus et justo gubergren, vero et voluptua. sea duo dolor sed et Stet sed sit elitr, diam et est. consetetur vero no et eos erat, sadipscing et Stet voluptua. elitr, At elitr, gu","firstName":"Diana","lastName":"Schneider","email":"diana.schneider@example.com","department":"","skills":[],"isActive":true,"salary":82153,"hireDate":"2008-07-12","manager":"Bob Fischer","officeLocation":"Berlin HQ","phone":"","employeeNumber":"EMP00108","status":"Terminated","role":"Software Engineer","team":"Platform","lastLogin":"","performanceScore":"","bonus":12560,"contractType":"Temporary","country":"","city":"Munich","postalCode":"66999","address":"167 Example Street","linkedin":"","github":"","dateOfBirth":"1998-02-18","emergencyContact":"Hannah Meyer (+18913424972)"},{"id":109,"complexKey":"LHzZsZ7WNM-f2eg5vBqMKh5eWL-LovOIooD9dbQq6G7PdP62t8","description":"accusam duo sea magna consetetur kasd takimata et et et diam sit diam kasd dolores sit sea ut labore sadipscing sed sea sed ea ea Stet aliquyam invidunt et ipsum est. aliquyam sed elitr, sadipscing diam vero tempor elitr, ea magna dolore At sadipscing consetetur Lorem sit sed elitr, et vero diam rebum. et ut At duo aliquyam At elitr, dolores no magna est. diam duo At ut eirmod elitr, Stet invidunt sed erat, et vero At justo ipsum eos accusam At diam sed ea et sadipscing vero duo kasd voluptua. takimata duo dolores eos amet, et tempor et sed labore accusam est. gubergren, est. Stet clita consetetur dolores dolore et voluptua. eirmod sea dolor elitr, Stet At justo dolores eos sed no Lorem clita duo clita magna rebum. diam no Lorem no ut tempor nonumy dolores sit dolores accusam sed dolore invidunt Lorem dolores accusam invidunt et amet, dolore amet, sanctus no Lorem dolor et eirmod ut ea At ipsum ea et gubergren, Stet et er","firstName":"Eva","lastName":"Meyer","email":"eva.meyer@example.com","department":"Marketing","skills":[],"isActive":true,"salary":49289,"hireDate":"2021-12-28","manager":"Julia Weber","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00109","status":"On Leave","role":"Product Manager","team":"","lastLogin":"","performanceScore":"1.32","bonus":14692,"contractType":"","country":"UK","city":"","postalCode":"56150","address":"199 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Charlie Fischer (+16555487007)"},{"id":110,"complexKey":"3CtJ8H8Ija0DmOxCk_rH675xxkTABEX2EnvDqeLhWhMZ08","description":"","firstName":"Hannah","lastName":"Becker","email":"hannah.becker@example.com","department":"Sales","skills":[],"isActive":true,"salary":89298,"hireDate":"2017-06-29","manager":"Hannah Müller","officeLocation":"Remote","phone":"","employeeNumber":"EMP00110","status":"Active","role":"DevOps Engineer","team":"Mobile","lastLogin":"2024-07-14T09:15:18.246Z","performanceScore":"0.56","bonus":2866,"contractType":"Temporary","country":"Germany","city":"Stuttgart","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"1993-02-18","emergencyContact":""},{"id":111,"complexKey":"","description":"nonumy takimata rebum. sit nonumy eirmod nonumy et vero sit duo erat, justo tempor At rebum. sanctus dolore et kasd ut At kasd diam invidunt invidunt amet, sed Lorem rebum. gubergren, amet, et dolor tempor Stet sanctus Lorem eirmod et clita nonumy et Lorem duo et voluptua. ea invidunt gubergren, accusam et et eirmod labore eirmod rebum. accusam takimata diam Lorem tempor et dolores dolores no clita dolore justo voluptua. sadipscing ut tempor tempor elitr, no accusam At At sea et no justo takimata sea sed invidunt","firstName":"Charlie","lastName":"Schneider","email":"charlie.schneider@example.com","department":"","skills":["React","AWS","TypeScript","Python"],"isActive":true,"salary":84056,"hireDate":"2006-04-24","manager":"","officeLocation":"Remote","phone":"+49978356101","employeeNumber":"EMP00111","status":"Active","role":"DevOps Engineer","team":"Platform","lastLogin":"2020-05-23T08:38:09.545Z","performanceScore":"2.34","bonus":"","contractType":"Intern","country":"UK","city":"Cologne","postalCode":"90976","address":"26 Example Street","linkedin":"https://www.linkedin.com/in/example-user-111","github":"","dateOfBirth":"","emergencyContact":"Eva Becker (+49412063095)"},{"id":112,"complexKey":"fs-ZWuyJdGCyyPrynln_","description":"aliquyam labore duo sed voluptua. ipsum aliquyam sed eirmod et clita tempor ut sadipscing et diam nonumy duo et accusam diam sea clita tempor sanctus gubergren, diam consetetur Stet kasd dolor takimata erat, justo duo et et sanctus rebum. rebum. dolores aliquyam sed takimata accusam nonumy consetetur dolor voluptua. sed et et eos diam diam voluptua. elitr, Lorem dolor et invidunt diam labore sed eos sit sadipscing et sit","firstName":"Alice","lastName":"Wagner","email":"alice.wagner@example.com","department":"Marketing","skills":["Python","TypeScript","React"],"isActive":true,"salary":66837,"hireDate":"2013-08-22","manager":"","officeLocation":"Cologne Office","phone":"+19495538398","employeeNumber":"EMP00112","status":"Active","role":"Designer","team":"","lastLogin":"2024-02-20T07:43:46.961Z","performanceScore":"2.30","bonus":3768,"contractType":"","country":"Netherlands","city":"Berlin","postalCode":"92288","address":"131 Example Street","linkedin":"","github":"","dateOfBirth":"1985-03-20","emergencyContact":""},{"id":113,"complexKey":"","description":"aliquyam no sed invidunt vero eos sed sed ut eos duo kasd eirmod sanctus magna diam dolores Stet kasd est. nonumy duo et dolor duo erat, dolore takimata labore ut tempor ut sed et sanctus erat, erat, sed rebum. takimata Lorem dolore sed dolore voluptua. magna Stet ea dolor clita voluptua. elitr, erat, sanctus et sanctus vero ut cli","firstName":"","lastName":"Schmidt","email":"julia.schmidt@example.com","department":"HR","skills":[],"isActive":true,"salary":84860,"hireDate":"2019-08-16","manager":"Diana Meyer","officeLocation":"Berlin HQ","phone":"+19933559594","employeeNumber":"EMP00113","status":"Probation","role":"Designer","team":"Growth","lastLogin":"2021-11-23T20:46:38.245Z","performanceScore":"1.14","bonus":"","contractType":"Permanent","country":"UK","city":"Frankfurt","postalCode":"50446","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":114,"complexKey":"gigiuUSTuLAeXQeO4mfUKUBPqFNi29-_wX","description":"","firstName":"Hannah","lastName":"Wagner","email":"hannah.wagner@example.com","department":"Marketing","skills":["Python"],"isActive":true,"salary":96924,"hireDate":"2017-11-27","manager":"","officeLocation":"Berlin HQ","phone":"+49393844988","employeeNumber":"EMP00114","status":"Terminated","role":"Product Manager","team":"","lastLogin":"2023-03-18T16:01:55.166Z","performanceScore":"2.62","bonus":14459,"contractType":"Permanent","country":"Germany","city":"Cologne","postalCode":"30126","address":"142 Example Street","linkedin":"","github":"https://github.com/example-user-114","dateOfBirth":"1988-11-30","emergencyContact":""},{"id":115,"complexKey":"","description":"Stet Stet eirmod erat, dolores labore kasd eos gubergren, sadipscing Stet nonumy accusam aliquyam elitr, dolore dolore eos et kasd labore At sed sit diam diam tempor consetetur At accusam gubergren, gubergren, consetetur Lorem et aliquyam eirmod et kasd nonumy consete","firstName":"Bob","lastName":"Schneider","email":"","department":"Sales","skills":["React"],"isActive":true,"salary":73332,"hireDate":"2009-08-03","manager":"","officeLocation":"Munich Office","phone":"+49519749193","employeeNumber":"EMP00115","status":"Active","role":"Software Engineer","team":"","lastLogin":"2020-01-27T08:22:46.375Z","performanceScore":"2.59","bonus":"","contractType":"","country":"UK","city":"Cologne","postalCode":"94331","address":"45 Example Street","linkedin":"","github":"","dateOfBirth":"1978-07-02","emergencyContact":"Eva Fischer (+49841029429)"},{"id":116,"complexKey":"dC7oBj9u8wNnGo-Og407hJC8wgfq_jt2OkrJV2","description":"","firstName":"","lastName":"Wagner","email":"ian.wagner@example.com","department":"HR","skills":["React"],"isActive":true,"salary":46437,"hireDate":"2005-04-25","manager":"Charlie Becker","officeLocation":"Munich Office","phone":"+17500150783","employeeNumber":"EMP00116","status":"","role":"","team":"","lastLogin":"2023-09-23T15:07:58.891Z","performanceScore":"","bonus":"","contractType":"","country":"USA","city":"Stuttgart","postalCode":"33414","address":"109 Example Street","linkedin":"","github":"","dateOfBirth":"1999-06-03","emergencyContact":""},{"id":117,"complexKey":"sxN_uUrwOhc","description":"voluptua. et dolor accusam takimata ea magna labore ea eos sea et eos aliquyam elitr, At et diam et ea justo no et invidunt tempor dolore clita dolore ut dolore diam gubergren, dolores diam labore At sed sanctus erat, ipsum sed sanctus tempor ut ea amet, et vero et aliquyam accusam ut et elitr, diam dolores ut vero ea vero sea invidunt invidunt no dolor diam diam sea et dolore diam clita amet, ea vero sanctus clita aliquyam no rebum. consetetur sed voluptua. sit rebum. vero et amet, eos voluptua. voluptua. aliquyam At clita no sit duo clita et amet, sit gubergren, no sea ipsum est. gubergren, et et no tempor est. no et invidunt amet, kasd takimata et nonumy clita dolor Lorem rebum. eos ut At tempor et dolores kasd dolor takimata no erat, elitr, dolore vero kasd gubergren, At clita accusam temp","firstName":"Hannah","lastName":"Müller","email":"hannah.müller@example.com","department":"Legal","skills":["TypeScript","AWS","SQL"],"isActive":true,"salary":51703,"hireDate":"2015-08-12","manager":"Grace Schneider","officeLocation":"Hamburg Office","phone":"+14040651013","employeeNumber":"EMP00117","status":"Probation","role":"Product Manager","team":"Mobile","lastLogin":"2021-02-12T02:26:29.566Z","performanceScore":"","bonus":"","contractType":"Temporary","country":"France","city":"Frankfurt","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"1993-01-24","emergencyContact":""},{"id":118,"complexKey":"TLdoNvjJkL","description":"","firstName":"Charlie","lastName":"Müller","email":"charlie.müller@example.com","department":"Marketing","skills":["TypeScript"],"isActive":true,"salary":87128,"hireDate":"2014-09-23","manager":"Ian Schneider","officeLocation":"Cologne Office","phone":"+17508969215","employeeNumber":"EMP00118","status":"On Leave","role":"Product Manager","team":"Platform","lastLogin":"","performanceScore":"4.14","bonus":"","contractType":"Contractor","country":"Netherlands","city":"Berlin","postalCode":"95547","address":"","linkedin":"","github":"","dateOfBirth":"1983-01-21","emergencyContact":"Bob Schmidt (+49368782174)"},{"id":119,"complexKey":"bVHTtbhje8U46JEyG3qGEcyiCxN3_WWTn","description":"","firstName":"Alice","lastName":"Müller","email":"alice.müller@example.com","department":"","skills":["SQL","AWS","Java"],"isActive":true,"salary":44804,"hireDate":"2012-07-22","manager":"Diana Schneider","officeLocation":"Munich Office","phone":"+16467826374","employeeNumber":"EMP00119","status":"Terminated","role":"QA Engineer","team":"Web","lastLogin":"2022-02-23T08:19:38.144Z","performanceScore":"2.39","bonus":"","contractType":"Permanent","country":"France","city":"Berlin","postalCode":"30754","address":"","linkedin":"","github":"","dateOfBirth":"1984-01-04","emergencyContact":""},{"id":120,"complexKey":"q-Yfy27h65kpzVSH-SswN-z5RG2niVyXzUJPU9W6H0KdAit","description":"","firstName":"Charlie","lastName":"Wagner","email":"charlie.wagner@example.com","department":"Legal","skills":["TypeScript"],"isActive":true,"salary":57872,"hireDate":"2010-01-29","manager":"","officeLocation":"","phone":"+49633469572","employeeNumber":"EMP00120","status":"Probation","role":"Product Manager","team":"Web","lastLogin":"","performanceScore":"3.37","bonus":"","contractType":"Permanent","country":"USA","city":"","postalCode":"90503","address":"101 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":121,"complexKey":"2DizEyA9xgrVA3sDEY0_ffYzg-2OX8i","description":"Lorem invidunt dolore sea sanctus eos dolore sea gubergren, kasd sed justo tempor dolores sea et At sea eos Stet justo kasd dolor accusam amet, et nonumy rebum. et duo At magna et rebum. consetetur invidunt amet, justo et invidunt dolor sit invidunt sit sadipscing eos et elitr, invidunt est. nonumy et ea erat, est. diam justo accusam diam dolores nonumy nonumy et eos est. ut dolore et sanctus ipsum labore dolor dolores gubergren, dolores dolores sanctus et erat, no amet, vero accusam vero consetetur ut est. kasd dolor invidunt At nonumy invidunt ut labore nonumy erat, sed Stet et sanctus diam sed duo tempor et erat, sed clita eos aliquyam et et et est. dolores tempor erat, elitr, duo dolor sed eos nonumy sed sanctus kasd accusam ipsum eirmod eos","firstName":"Eva","lastName":"Müller","email":"eva.müller@example.com","department":"Sales","skills":["Java"],"isActive":true,"salary":45923,"hireDate":"2006-07-31","manager":"Hannah Müller","officeLocation":"","phone":"+49593781792","employeeNumber":"EMP00121","status":"Terminated","role":"Data Analyst","team":"Core","lastLogin":"","performanceScore":"4.37","bonus":"","contractType":"Permanent","country":"Germany","city":"","postalCode":"","address":"178 Example Street","linkedin":"","github":"","dateOfBirth":"1976-05-14","emergencyContact":""},{"id":122,"complexKey":"P-7xrK7dXUKishZXbeKLSsaW4oZ-4Yp02Fh9pJpH6w","description":"voluptua. ipsum accusam erat, sea no sed dolor ea sed ipsum voluptua. ea no eos voluptua. erat, At Lorem tempor elitr, dolor eirmod eos elitr, et consetetur erat, justo accusam no ipsum At amet, est. sed eirmod et eos sed diam et magna est. duo est. dolor ut tempor","firstName":"Diana","lastName":"Meyer","email":"diana.meyer@example.com","department":"IT","skills":["Figma"],"isActive":true,"salary":61371,"hireDate":"2017-11-07","manager":"Hannah Meyer","officeLocation":"","phone":"+15896564731","employeeNumber":"EMP00122","status":"On Leave","role":"Data Analyst","team":"","lastLogin":"2024-07-11T12:31:24.534Z","performanceScore":"4.20","bonus":13338,"contractType":"Intern","country":"USA","city":"Stuttgart","postalCode":"54188","address":"154 Example Street","linkedin":"https://www.linkedin.com/in/example-user-122","github":"","dateOfBirth":"1967-12-13","emergencyContact":"Charlie Fischer (+49203510227)"},{"id":123,"complexKey":"_JnZikR2RbAj","description":"dolor sed elitr, sanctus clita voluptua. et vero voluptua. gubergren, dolore aliquyam et gubergren, no et sea magna aliquyam justo labore amet, invidunt duo clita sea ut amet, aliquyam vero est. Stet clita magna amet, dolore magna elitr, ut diam consetetur est. ipsum diam sanctus diam sed Lorem sadipscing et tempor et no ea duo sea et takimata dolor dolores duo ut","firstName":"Frank","lastName":"Becker","email":"frank.becker@example.com","department":"Legal","skills":["React","Java","AWS"],"isActive":true,"salary":59697,"hireDate":"2005-10-06","manager":"Ian Wagner","officeLocation":"Hamburg Office","phone":"+13545714328","employeeNumber":"EMP00123","status":"Terminated","role":"QA Engineer","team":"Growth","lastLogin":"2023-11-01T19:51:49.708Z","performanceScore":"","bonus":8572,"contractType":"Permanent","country":"Netherlands","city":"Frankfurt","postalCode":"32488","address":"40 Example Street","linkedin":"https://www.linkedin.com/in/example-user-123","github":"","dateOfBirth":"1979-09-02","emergencyContact":""},{"id":124,"complexKey":"Q84csatCn8IPVS3Ty2ZwfO-pYfAj0Cq","description":"diam diam diam diam magna aliquyam ut et dolores sadipscing sea accusam sed est. sadipscing et tempor ut clita sit et justo diam kasd diam labore justo Stet Lorem dolore rebum. et ea diam clita diam est. invidunt dolor accusam duo magna et magna justo invidunt dolores aliquyam ea takimata labore magna amet, nonumy est. gubergren, kasd ipsum no sadipsc","firstName":"Ian","lastName":"Müller","email":"ian.müller@example.com","department":"Marketing","skills":["Figma","AWS","Python","TypeScript"],"isActive":false,"salary":65358,"hireDate":"2007-09-11","manager":"Grace Schmidt","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00124","status":"Probation","role":"Software Engineer","team":"Tools","lastLogin":"2022-01-12T00:00:49.064Z","performanceScore":"","bonus":"","contractType":"","country":"USA","city":"Cologne","postalCode":"79916","address":"176 Example Street","linkedin":"https://www.linkedin.com/in/example-user-124","github":"https://github.com/example-user-124","dateOfBirth":"1967-08-23","emergencyContact":""},{"id":125,"complexKey":"hWtjUMpZ-fQWatqGZA7jGov6H4Fe5","description":"et duo sea ipsum sea gubergren, magna erat, et ea dolores takimata clita nonumy magna At invidunt et diam ea no nonumy no magna takimata sit et Stet eos ea dolore diam sea voluptua. diam diam sit est. duo ipsum amet, diam sed ea rebum. et erat, ea ipsum magna ut erat, sed dolor ut labore sed takimata takimata diam aliquyam dolor sit et dolore no invidunt nonumy sea rebum. gubergren, labore voluptua. magna clita eirmod vero accusam aliquyam rebum. tempor tempor sea amet, kasd justo clita sit vero amet, voluptua. no ut dolore gubergren, dolor tempor magna et labore invidunt sed dolore ver","firstName":"Bob","lastName":"Wagner","email":"bob.wagner@example.com","department":"HR","skills":["SQL","Java","Python"],"isActive":true,"salary":65770,"hireDate":"2020-12-24","manager":"Bob Schmidt","officeLocation":"Cologne Office","phone":"+11568572301","employeeNumber":"EMP00125","status":"Terminated","role":"Data Analyst","team":"Platform","lastLogin":"2021-10-26T10:55:42.304Z","performanceScore":"2.22","bonus":3788,"contractType":"Permanent","country":"Spain","city":"Cologne","postalCode":"","address":"","linkedin":"","github":"https://github.com/example-user-125","dateOfBirth":"2000-10-19","emergencyContact":"Grace Müller (+18810230114)"},{"id":126,"complexKey":"0BUMJKNJYh5eDicE-SOVBO","description":"duo dolore dolore dolores et tempor erat, et Lorem no elitr, aliquyam labore gubergren, erat, dolor eirmod labore nonumy magna et kasd At invidunt consetetur rebum. tempor amet, labore diam eos consetetur magna vero et et invidunt et eos clita clita nonumy diam invidunt tempor et nonumy sanctus est. nonumy justo est. justo et erat, dolores voluptua. vero duo est. rebum. takimata consetetur no erat, no erat, tempor consetetur sadipscing sit consetetur labore sanctus labore nonumy est. et voluptua. sanctus sadipscing et dolor et est. et vo","firstName":"Hannah","lastName":"","email":"hannah.weber@example.com","department":"Sales","skills":["AWS","React","Figma","Docker"],"isActive":true,"salary":66281,"hireDate":"2015-10-22","manager":"Alice Becker","officeLocation":"Hamburg Office","phone":"+49829999387","employeeNumber":"EMP00126","status":"Probation","role":"Product Manager","team":"","lastLogin":"","performanceScore":"0.60","bonus":12135,"contractType":"","country":"","city":"Cologne","postalCode":"51379","address":"70 Example Street","linkedin":"","github":"","dateOfBirth":"1976-04-02","emergencyContact":"Charlie Schneider (+14531178309)"},{"id":127,"complexKey":"mV0tTvSP1T2_8PhwntPFjuYcWcrQnWZo4spA1","description":"ea nonumy takimata et est. et et no dolor et est. kasd nonumy dolor invidunt takimata tempor d","firstName":"Alice","lastName":"Wagner","email":"alice.wagner@example.com","department":"Legal","skills":["AWS","React","TypeScript"],"isActive":true,"salary":83094,"hireDate":"","manager":"Hannah Schmidt","officeLocation":"Hamburg Office","phone":"+49810621083","employeeNumber":"EMP00127","status":"","role":"DevOps Engineer","team":"Core","lastLogin":"2021-02-06T11:14:12.113Z","performanceScore":"","bonus":"","contractType":"Intern","country":"UK","city":"Hamburg","postalCode":"56987","address":"181 Example Street","linkedin":"","github":"","dateOfBirth":"1970-08-21","emergencyContact":"Diana Fischer (+49802233098)"},{"id":128,"complexKey":"","description":"no At et labore ea amet, sanctus justo ipsum sanctus Lorem ipsum dolores ea labore magna elitr, takimata consetetur sea accusam tempor invidunt vero At rebum. takimata erat, At et clita voluptua. nonumy no no vero Stet magna dolores ea sea ipsum ut vero diam sed accusam Lorem sed sanctus dolor labore duo clita sea diam tempor Lorem accusam eirmod voluptua. sanctus duo kasd et diam eos takimata ut do","firstName":"Frank","lastName":"Weber","email":"frank.weber@example.com","department":"IT","skills":["Docker","Figma","TypeScript"],"isActive":true,"salary":97158,"hireDate":"2008-06-12","manager":"Frank Schmidt","officeLocation":"Berlin HQ","phone":"+49331541155","employeeNumber":"EMP00128","status":"Active","role":"Product Manager","team":"Web","lastLogin":"2020-06-17T05:20:30.457Z","performanceScore":"2.44","bonus":10445,"contractType":"Temporary","country":"USA","city":"Munich","postalCode":"","address":"117 Example Street","linkedin":"","github":"","dateOfBirth":"1998-12-09","emergencyContact":""},{"id":129,"complexKey":"M7KWbgoE9YnU","description":"eirmod ea Stet clita sadipscing dolores justo kasd elitr, sed duo sit accusam erat, eirmod ea Stet sed et Stet sed erat, sea Lorem eos labore sea est. ea takimata eos dolor Stet et sed vero no justo et clita ipsum amet, diam ea ea diam gubergren, sit ea et accusam Lorem tempor kasd justo est. est. sea erat, nonumy dolores amet, ipsum gubergren, sadipscing rebum. sanctus diam kasd vero justo sea ea clita duo sea gubergren, ipsum ut At sit labore takimata dolore erat, amet, sed takimata Lorem magna eos amet, takimata aliquyam takimata takimata sadipscing dolor duo labore dolor amet, sed sed est. dolores sed et At amet, ut aliquyam Lorem invidunt diam elitr, voluptua. vero diam no justo vero no diam invidunt et invidunt consetetur duo et dolores kasd clita ea et dolor gubergren, dolore diam gubergren, ipsum At Lorem At nonumy ipsum dolor","firstName":"Julia","lastName":"Schneider","email":"julia.schneider@example.com","department":"Sales","skills":["Docker","Java"],"isActive":true,"salary":44997,"hireDate":"2007-09-19","manager":"","officeLocation":"Munich Office","phone":"+49892917104","employeeNumber":"EMP00129","status":"Probation","role":"Data Analyst","team":"","lastLogin":"","performanceScore":"3.44","bonus":12865,"contractType":"Permanent","country":"USA","city":"Berlin","postalCode":"74832","address":"1 Example Street","linkedin":"","github":"","dateOfBirth":"1974-07-06","emergencyContact":""},{"id":130,"complexKey":"YtavrEVzhCLHykwf6LfaMwRSj0qt5lOqNMaRn","description":"rebum. dolor diam erat, consetetur eos ipsum duo sadipscing eos no aliquyam takimata takimata gubergren, sea sea no sed Stet gubergren, ipsum gubergren, Stet diam magna ea diam invidunt nonumy sed labore voluptua. aliquyam ut et vero dolor dolor sanctus diam diam ipsum elitr, sed dolore eos diam nonumy ipsum sanctus justo et diam no Lorem sanctus tempor sadipscing ipsum sadipscing voluptua. et accusam Lorem clita est. sea kasd Lorem aliquyam ipsum sed et ipsum At voluptua. ea et ut sea Stet aliquyam dolore duo accusam dolor Stet duo sea voluptua. accusam rebum. eos et l","firstName":"Alice","lastName":"Wagner","email":"alice.wagner@example.com","department":"","skills":["Java","Docker","Python","TypeScript"],"isActive":true,"salary":69438,"hireDate":"2007-09-28","manager":"","officeLocation":"Hamburg Office","phone":"+49877228465","employeeNumber":"EMP00130","status":"Active","role":"DevOps Engineer","team":"Mobile","lastLogin":"2020-04-08T04:19:05.039Z","performanceScore":"2.44","bonus":5492,"contractType":"Temporary","country":"UK","city":"","postalCode":"25194","address":"190 Example Street","linkedin":"","github":"","dateOfBirth":"1995-05-25","emergencyContact":""},{"id":131,"complexKey":"6t_Ax-4AywT","description":"sit erat, magna no eirmod et et labore Stet et erat, vero rebum. ut ipsum consetetur dolores kasd et invidunt sit gubergren, justo ut accusam vero eirmod takimata nonumy sadipscing sed ut et elitr, et At magna sed consetetur et nonumy kasd kasd aliquyam erat, rebum. et et kasd diam Lorem","firstName":"Diana","lastName":"Meyer","email":"diana.meyer@example.com","department":"","skills":["AWS","Java","SQL"],"isActive":true,"salary":43136,"hireDate":"2023-05-29","manager":"Diana Müller","officeLocation":"Remote","phone":"+15303227850","employeeNumber":"EMP00131","status":"On Leave","role":"Product Manager","team":"Platform","lastLogin":"2021-05-17T00:30:43.470Z","performanceScore":"0.89","bonus":11354,"contractType":"Temporary","country":"Spain","city":"","postalCode":"58584","address":"81 Example Street","linkedin":"","github":"","dateOfBirth":"1985-07-07","emergencyContact":""},{"id":132,"complexKey":"ZNJDRI402FdQNWzbAE1QPNasBHTkhCo8E1C7KPmJhlr4w","description":"kasd vero nonumy sed et justo labore sit eirmod dolore no sit At dolores Lorem Lorem duo vero et vero sed invidunt aliquyam sea sea dolores sit erat, labore vero ipsum sanctus erat, dolor eirmod et tempor rebum. diam sed ea et sit magna dolores ut diam et labore magna dolore magna sanctus dolore sed gubergren, invidunt vero sed invidunt nonumy est. kasd sit elitr, consetetur sea accusam takimata dolore vero Lorem takimata diam eirmod accusam rebum. dolor sed invidunt sed et eirmod vero sanctus eos rebum. ea elitr, et kasd dolor magna labore invidunt voluptua. clita duo et eirmod ut aliquyam sed diam Stet elitr, consetetur kasd invidunt et","firstName":"Bob","lastName":"Schmidt","email":"bob.schmidt@example.com","department":"HR","skills":[],"isActive":true,"salary":69334,"hireDate":"2011-06-16","manager":"Eva Schneider","officeLocation":"Munich Office","phone":"+14009477634","employeeNumber":"EMP00132","status":"Active","role":"Data Analyst","team":"Growth","lastLogin":"2024-01-11T23:26:44.060Z","performanceScore":"2.37","bonus":"","contractType":"Contractor","country":"USA","city":"Hamburg","postalCode":"25056","address":"47 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":133,"complexKey":"","description":"","firstName":"Ian","lastName":"Schmidt","email":"ian.schmidt@example.com","department":"","skills":["AWS","Figma","Java","Python"],"isActive":true,"salary":46255,"hireDate":"2007-06-25","manager":"","officeLocation":"Berlin HQ","phone":"","employeeNumber":"EMP00133","status":"Active","role":"Software Engineer","team":"","lastLogin":"2021-08-27T22:24:46.860Z","performanceScore":"","bonus":11814,"contractType":"Intern","country":"France","city":"Berlin","postalCode":"72824","address":"","linkedin":"","github":"","dateOfBirth":"1965-05-08","emergencyContact":"Frank Becker (+14126109686)"},{"id":134,"complexKey":"oqwTRnCTFOtU13F1Zz56A2467YSZI1iMK6mhovW","description":"","firstName":"Grace","lastName":"Schneider","email":"grace.schneider@example.com","department":"","skills":["Figma"],"isActive":true,"salary":87306,"hireDate":"","manager":"Charlie Schneider","officeLocation":"","phone":"+11599942315","employeeNumber":"EMP00134","status":"Probation","role":"Designer","team":"Core","lastLogin":"2023-08-07T07:23:58.063Z","performanceScore":"2.62","bonus":10989,"contractType":"Intern","country":"Spain","city":"Munich","postalCode":"86445","address":"104 Example Street","linkedin":"","github":"https://github.com/example-user-134","dateOfBirth":"","emergencyContact":""},{"id":135,"complexKey":"GQOq-m8XV3fRB_ls","description":"","firstName":"Julia","lastName":"Becker","email":"","department":"","skills":["Python"],"isActive":true,"salary":57551,"hireDate":"2019-02-21","manager":"Grace Weber","officeLocation":"Cologne Office","phone":"+13360006409","employeeNumber":"EMP00135","status":"Probation","role":"QA Engineer","team":"Tools","lastLogin":"","performanceScore":"2.65","bonus":11839,"contractType":"Temporary","country":"UK","city":"Frankfurt","postalCode":"61790","address":"175 Example Street","linkedin":"","github":"","dateOfBirth":"1981-01-24","emergencyContact":""},{"id":136,"complexKey":"","description":"dolor diam ipsum no dolores sadipscing tempor accusam Lorem eirmod voluptua. rebum. aliquyam sed accusam ipsum Lorem vero diam dolore aliquyam ea sed dolor nonumy aliquyam consetetur erat, amet, magna et gubergren, et invidunt ea sadipscing gubergren, duo et sed diam et Lorem d","firstName":"Grace","lastName":"Schmidt","email":"grace.schmidt@example.com","department":"Sales","skills":["React","SQL","AWS"],"isActive":true,"salary":60343,"hireDate":"2016-06-08","manager":"Diana Wagner","officeLocation":"","phone":"+49366452819","employeeNumber":"EMP00136","status":"Probation","role":"Data Analyst","team":"","lastLogin":"2021-08-18T22:20:06.769Z","performanceScore":"1.42","bonus":11855,"contractType":"Intern","country":"UK","city":"Cologne","postalCode":"81744","address":"154 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Hannah Fischer (+11350925062)"},{"id":137,"complexKey":"1WAPIZ7YfHGHkOCCOO7qObQAta2","description":"et ea gubergren, tempor tempor At diam tempor ipsum dolor amet, ut elitr, ut dolores sed et ut clita dolore erat, elitr, diam dolor rebum. et sit consetetur At dolore amet, est. dolore no sed accusam et diam dolores takimata At et justo dolores diam et At rebum. At sadipscing dolore sea consetetur Stet labore diam et diam invidunt kasd magna nonumy kasd sea justo elitr, takimata et est. erat, diam sit ipsum duo aliquyam aliquyam clita dolore gubergren, sed elitr, diam kasd labore et ea Stet gubergren, tempor dolore est. magna sed takimata tempor dolores tempor nonumy sed est. consetetur rebum. et s","firstName":"Ian","lastName":"Becker","email":"ian.becker@example.com","department":"Marketing","skills":["React","TypeScript","Figma"],"isActive":true,"salary":"","hireDate":"2020-01-07","manager":"","officeLocation":"Remote","phone":"","employeeNumber":"EMP00137","status":"Terminated","role":"Designer","team":"Tools","lastLogin":"2021-02-07T03:04:12.194Z","performanceScore":"3.73","bonus":"","contractType":"Permanent","country":"UK","city":"Berlin","postalCode":"40471","address":"","linkedin":"https://www.linkedin.com/in/example-user-137","github":"","dateOfBirth":"1978-01-19","emergencyContact":"Charlie Fischer (+49223494278)"},{"id":138,"complexKey":"K6l2M6C5LPyTxgAfynpJe","description":"labore At justo nonumy Stet sed diam clita ipsum sadipscing eirmod est. sed dolores duo duo sanctus dolores ipsum ut kasd Lorem voluptua. accusam rebum. Lorem diam et At sanctus dolores magna labore dolor et sadipscing labore vero est. ipsum sed sit dolore duo invidunt tempor kasd tempor eirmod nonumy elitr, erat, invidunt justo At labore tempor est. At vero ea rebum. magna justo ut kasd sed eos sed vero et Lorem voluptua. gubergren, diam ipsum gubergren, clita et sadips","firstName":"Charlie","lastName":"Wagner","email":"charlie.wagner@example.com","department":"","skills":["AWS"],"isActive":false,"salary":"","hireDate":"2010-07-28","manager":"Grace Müller","officeLocation":"Hamburg Office","phone":"+49830477292","employeeNumber":"EMP00138","status":"On Leave","role":"QA Engineer","team":"Tools","lastLogin":"2024-11-20T05:13:40.358Z","performanceScore":"3.05","bonus":"","contractType":"Temporary","country":"UK","city":"Frankfurt","postalCode":"","address":"31 Example Street","linkedin":"","github":"","dateOfBirth":"1983-12-03","emergencyContact":"Frank Schmidt (+49805366680)"},{"id":139,"complexKey":"","description":"consetetur sit et tempor magna elitr, accusam justo clita et eos eirmod ipsum dolore ut duo consetetur ipsum sed et sanctus sadipscing accusam sea eirmod labore nonumy duo aliquyam eirmod rebum. takimata At Lorem diam sadipscing tempor dolor et et magna eirmod sit et dolores et clita eirmod elitr, invidunt accusam Lorem invidunt dolores gubergren, voluptua. kasd magna ea nonumy et voluptua. invidunt Stet Stet voluptua. rebu","firstName":"Grace","lastName":"Schmidt","email":"grace.schmidt@example.com","department":"Legal","skills":["AWS","Figma","SQL","Java"],"isActive":true,"salary":77846,"hireDate":"2022-12-17","manager":"Julia Fischer","officeLocation":"","phone":"","employeeNumber":"EMP00139","status":"On Leave","role":"","team":"Tools","lastLogin":"","performanceScore":"1.33","bonus":6981,"contractType":"Temporary","country":"Spain","city":"Stuttgart","postalCode":"14463","address":"72 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":140,"complexKey":"","description":"","firstName":"Charlie","lastName":"Fischer","email":"","department":"Marketing","skills":["Figma","Java","Python","TypeScript"],"isActive":true,"salary":66227,"hireDate":"","manager":"Grace Becker","officeLocation":"","phone":"+49888721103","employeeNumber":"EMP00140","status":"On Leave","role":"QA Engineer","team":"Mobile","lastLogin":"2020-02-16T23:41:28.272Z","performanceScore":"","bonus":142,"contractType":"Contractor","country":"USA","city":"Frankfurt","postalCode":"71767","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":141,"complexKey":"JYy7aFqDsVQRvzLyxYbcJKrGyEw","description":"ipsum dolor aliquyam dolores Stet sanctus et et est. vero ut ut et diam ut vero ut rebum. tempor sanctus elitr, Stet erat, amet, sea labore et diam dolores et Lorem justo Lorem amet,","firstName":"Frank","lastName":"Wagner","email":"frank.wagner@example.com","department":"HR","skills":["Python","Java","Figma"],"isActive":true,"salary":67211,"hireDate":"2015-07-18","manager":"Charlie Becker","officeLocation":"","phone":"+11480800901","employeeNumber":"EMP00141","status":"Terminated","role":"Product Manager","team":"","lastLogin":"2020-10-07T23:25:48.523Z","performanceScore":"3.82","bonus":"","contractType":"","country":"UK","city":"Frankfurt","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"1970-08-12","emergencyContact":"Charlie Schmidt (+49882562025)"},{"id":142,"complexKey":"mcXjVodLNFiIOTrtV76vZUI5JivZcgqaga9qqCEayLqCW3","description":"Stet At accusam tempor vero dolor dolores sed justo et no At At At erat, ea voluptua. ea no takimata et rebum. erat, diam magna sit clita sit amet, sea accusam voluptua. amet, consetetur labore rebum. sed At ea accusam sed magna sed invidunt sea diam et consetetur aliquyam ipsum ut sed justo dolor tempor erat, sadipscing At justo et At et voluptua. dolore eirmod elitr, labore labore et et et voluptua. dolores ipsum eirmod no rebum. et sed erat, gubergren, magna erat, accusam justo clita sea sed labore Stet ea eirmod sed takimata dolores dolore no invidunt Lorem et duo dolor Lorem labore aliquyam et diam dolor no dolores voluptua. eos justo sanctus aliquyam accusam dolore labore amet,","firstName":"","lastName":"Fischer","email":"julia.fischer@example.com","department":"Finance","skills":["TypeScript","React"],"isActive":true,"salary":69373,"hireDate":"2008-10-07","manager":"Charlie Becker","officeLocation":"Hamburg Office","phone":"+11041023832","employeeNumber":"EMP00142","status":"Probation","role":"Product Manager","team":"Web","lastLogin":"","performanceScore":"","bonus":2829,"contractType":"Contractor","country":"UK","city":"Stuttgart","postalCode":"66597","address":"26 Example Street","linkedin":"","github":"https://github.com/example-user-142","dateOfBirth":"1976-01-13","emergencyContact":""},{"id":143,"complexKey":"UP4DWexiHpxrLDwUdbVsFbVRc1ot4Id","description":"","firstName":"Grace","lastName":"Müller","email":"grace.müller@example.com","department":"IT","skills":["Java","AWS"],"isActive":true,"salary":43803,"hireDate":"2023-11-05","manager":"Alice Weber","officeLocation":"Remote","phone":"+49760452781","employeeNumber":"EMP00143","status":"Probation","role":"Data Analyst","team":"Mobile","lastLogin":"2024-07-14T10:00:39.131Z","performanceScore":"","bonus":8598,"contractType":"Contractor","country":"France","city":"Hamburg","postalCode":"","address":"100 Example Street","linkedin":"","github":"https://github.com/example-user-143","dateOfBirth":"1969-07-22","emergencyContact":"Julia Schmidt (+49131152798)"},{"id":144,"complexKey":"9O_rgDWA-ChgPKE2Dds5oV1F9VY5LxpcahsE6Ten","description":"kasd","firstName":"Julia","lastName":"Becker","email":"","department":"","skills":[],"isActive":true,"salary":67155,"hireDate":"","manager":"Frank Weber","officeLocation":"Cologne Office","phone":"+49919028317","employeeNumber":"EMP00144","status":"On Leave","role":"Designer","team":"Growth","lastLogin":"","performanceScore":"0.55","bonus":11966,"contractType":"Permanent","country":"Germany","city":"Stuttgart","postalCode":"85742","address":"116 Example Street","linkedin":"https://www.linkedin.com/in/example-user-144","github":"","dateOfBirth":"","emergencyContact":"Grace Weber (+49294135668)"},{"id":145,"complexKey":"WnoUxXt_tNtlxugJkbtN1_Mpqyw19mH9aOiUV","description":"ea diam dolores elitr, Lorem diam ea diam et magna no elitr, justo clita dolor duo sed dolore et ea takimata kasd dolore elitr, nonumy est. magna vero sea dolores duo consetetur ut accusam voluptua. tempor tempor labore nonumy dolor sanctus invidunt et kasd sanctus dolor takimata nonumy ut vero justo eirmod magna eirmod sadipscing duo et aliquyam diam Lorem sanctus consetetur eos Stet duo nonumy et Stet rebum. et sea erat, dolore sed aliquyam sadipscing gubergren, magna ipsum aliquyam ut sed invidunt accusam sed tempor diam clita dolores est. amet, diam sanctus ut diam eirmod vero takimata vero ea duo clita no amet, sadipscing aliquyam elitr, vero sanctus sed clita tempor voluptua. tempor gubergren, clita Stet aliquyam amet, ipsum takimata Stet kasd consetetur amet, diam dolore","firstName":"Charlie","lastName":"Wagner","email":"charlie.wagner@example.com","department":"","skills":["TypeScript"],"isActive":true,"salary":45128,"hireDate":"2006-06-09","manager":"Diana Becker","officeLocation":"Berlin HQ","phone":"","employeeNumber":"EMP00145","status":"On Leave","role":"Software Engineer","team":"Growth","lastLogin":"","performanceScore":"0.69","bonus":6775,"contractType":"Temporary","country":"Netherlands","city":"Cologne","postalCode":"95979","address":"105 Example Street","linkedin":"","github":"","dateOfBirth":"1970-04-19","emergencyContact":"Alice Weber (+49682279281)"},{"id":146,"complexKey":"yyGglT2gR3ji3kK4PpL8enQzsRM5Fn9TqZY-7d","description":"dolore consetetur dolor diam magna sed justo et sanctus justo no et sanctus voluptua. labore diam sed justo rebum. diam dolor Stet et eirmod sed sadipscing labore dolor nonumy no At aliquyam sadipscing sanctus takimata nonumy eirmod justo dolores At consetetur accusam ut gubergren, Stet sanctus et rebum. gubergren, aliquyam clita sed ipsum clita sit sit elitr, invidunt sea Stet sed et kasd aliquyam accusam eirmod dolores elitr, takimata vero erat, sed consetetur diam diam et invidunt eos diam dolore aliquyam et At dolore sed ut labore sed eirmod est. ea no accusam diam magn","firstName":"Hannah","lastName":"Meyer","email":"hannah.meyer@example.com","department":"Marketing","skills":["SQL","AWS","Python","Java"],"isActive":true,"salary":88509,"hireDate":"2005-03-18","manager":"Charlie Weber","officeLocation":"Hamburg Office","phone":"+19553325188","employeeNumber":"EMP00146","status":"On Leave","role":"","team":"Core","lastLogin":"2020-11-15T05:25:25.198Z","performanceScore":"1.89","bonus":12379,"contractType":"Contractor","country":"Spain","city":"Stuttgart","postalCode":"59340","address":"48 Example Street","linkedin":"https://www.linkedin.com/in/example-user-146","github":"","dateOfBirth":"1998-11-10","emergencyContact":""},{"id":147,"complexKey":"U7MBm9veqhugtucQ9l-l3Llv1mLWag2nVRNIr","description":"takimata elitr, no est. et","firstName":"Ian","lastName":"Fischer","email":"ian.fischer@example.com","department":"Sales","skills":["TypeScript","React","Java","Python"],"isActive":true,"salary":"","hireDate":"","manager":"","officeLocation":"Remote","phone":"+12819810226","employeeNumber":"EMP00147","status":"Active","role":"QA Engineer","team":"Mobile","lastLogin":"","performanceScore":"0.95","bonus":12061,"contractType":"","country":"UK","city":"Stuttgart","postalCode":"","address":"","linkedin":"https://www.linkedin.com/in/example-user-147","github":"https://github.com/example-user-147","dateOfBirth":"","emergencyContact":""},{"id":148,"complexKey":"qtrrosfHYQ4LS16IY-FAtDqXjFi0__WDFcSmIlgsXk8e21meha","description":"diam takimata et gubergren, ut eirmod est. et et kasd sed kasd elitr, invidunt erat, justo gubergren, dolores diam vero rebum. erat, diam diam clita dolore elitr, erat, sit sea ea ipsum invidunt justo magna sea consetetur diam consetetur et consetetur duo et vero et sed dolore et erat, ut sea sadipscing voluptua. At amet, et gubergren, est. Stet dolores accusam no duo diam rebum. At kasd eirmod diam ipsum justo labore rebum. ipsum Stet diam gubergren, ea duo diam voluptua. diam sea voluptua. kas","firstName":"Grace","lastName":"Schneider","email":"","department":"Sales","skills":[],"isActive":true,"salary":56665,"hireDate":"2006-11-01","manager":"Eva Becker","officeLocation":"Remote","phone":"+16504619658","employeeNumber":"EMP00148","status":"Active","role":"Data Analyst","team":"Mobile","lastLogin":"","performanceScore":"","bonus":13767,"contractType":"Temporary","country":"UK","city":"Frankfurt","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Julia Meyer (+11286361740)"},{"id":149,"complexKey":"ay-fcJHxvHZev","description":"ut diam ut est. diam vero gubergren, ut amet, sit invidunt dolore et Stet ipsum takimata invidunt duo elitr, ut labore dolores invidunt et justo ut amet, eirmod diam sadipscing diam kasd et aliquyam eos eirmod duo ea magna sit accusam erat, eos diam At eos dolores duo sed rebum. voluptua. diam duo kasd et duo ipsum dolores sadipscing nonumy rebum. justo duo aliquyam elitr, vero et At gubergren, vero no ut Lorem sed sed nonumy sanctus et accusam aliquyam consetetur no invidunt dolores takimata nonumy invidunt et ea sadipscing sadipscing At elitr, magna est. accusam eos tempor gubergren, clita invidunt duo sed dolores diam gubergren, Stet Stet clita consetetur ipsum clita est. dolor et dolore vero sadipscing rebum. ipsum nonumy eos et et sed sed accusam tempor est. eos gubergren, kasd magna et tempor dolores ea dolore diam","firstName":"Julia","lastName":"Fischer","email":"julia.fischer@example.com","department":"IT","skills":["Figma","SQL"],"isActive":false,"salary":59903,"hireDate":"2018-04-22","manager":"Julia Müller","officeLocation":"Hamburg Office","phone":"+49778860259","employeeNumber":"EMP00149","status":"On Leave","role":"Product Manager","team":"Mobile","lastLogin":"","performanceScore":"","bonus":5943,"contractType":"Permanent","country":"USA","city":"Cologne","postalCode":"44473","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Diana Schneider (+49308957388)"},{"id":150,"complexKey":"z1IjXc91MSd5_oz8z7z_Dm4m-Dcbxv","description":"takimata vero amet, rebum. invidunt tempor vero Lorem gubergren, sed sanctus sit dolore consetetur elitr, invidunt dolore sed dolore sadipscing At et eirmod voluptua. sadipscing est. kasd gubergren, aliquyam diam tempor sit et et justo ipsum sed Lorem et duo takimata diam diam Lorem et gubergren, diam Lorem accusam Stet sanctus takimata et amet, justo elitr, sed kasd Lorem sadipscing amet, nonumy tempor kasd dolores diam","firstName":"Charlie","lastName":"Meyer","email":"charlie.meyer@example.com","department":"HR","skills":["Figma"],"isActive":true,"salary":62124,"hireDate":"","manager":"","officeLocation":"","phone":"+49304271748","employeeNumber":"EMP00150","status":"Active","role":"Software Engineer","team":"","lastLogin":"","performanceScore":"","bonus":7133,"contractType":"Intern","country":"Netherlands","city":"","postalCode":"11743","address":"","linkedin":"","github":"","dateOfBirth":"1989-04-26","emergencyContact":""},{"id":151,"complexKey":"bQYAF7cB5Dl","description":"","firstName":"Alice","lastName":"Wagner","email":"alice.wagner@example.com","department":"IT","skills":["AWS"],"isActive":false,"salary":47082,"hireDate":"2012-09-13","manager":"Hannah Becker","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00151","status":"Probation","role":"Data Analyst","team":"Growth","lastLogin":"","performanceScore":"4.11","bonus":"","contractType":"Permanent","country":"USA","city":"Frankfurt","postalCode":"13464","address":"175 Example Street","linkedin":"","github":"","dateOfBirth":"2000-11-24","emergencyContact":""},{"id":152,"complexKey":"oYNjaH4rDvPa9jOHYTTr7","description":"eos ipsum sadipscing diam clita diam accusam kasd amet, magna ut Stet erat, vero diam At consetetur takimata dolores no et no diam invidunt consetetur eirmod vero ipsum et sea magna ut sea ea sadipscing est. no aliquyam sadipscing et duo dolores accusam et Stet nonumy eos est. consetetur sadipscing accusam amet, kasd accusam gubergren, consetetur erat, sed aliquyam re","firstName":"Diana","lastName":"Meyer","email":"diana.meyer@example.com","department":"Marketing","skills":["React","TypeScript","Python"],"isActive":true,"salary":72126,"hireDate":"2022-04-02","manager":"","officeLocation":"Berlin HQ","phone":"+49365861862","employeeNumber":"EMP00152","status":"Terminated","role":"QA Engineer","team":"Tools","lastLogin":"2023-02-10T07:39:35.040Z","performanceScore":"0.43","bonus":"","contractType":"Contractor","country":"Spain","city":"Cologne","postalCode":"","address":"36 Example Street","linkedin":"https://www.linkedin.com/in/example-user-152","github":"","dateOfBirth":"1994-07-21","emergencyContact":""},{"id":153,"complexKey":"","description":"vero sit diam dolore aliquyam labore labore est. sanctus elitr, elitr, est. rebum. accusam justo clita est. Stet justo justo labore accusam tempor diam et justo et gubergren, gubergren, amet, sit kasd est. et erat, Lorem Lorem justo labore invidun","firstName":"Julia","lastName":"Fischer","email":"julia.fischer@example.com","department":"Finance","skills":["Docker","Java"],"isActive":true,"salary":84357,"hireDate":"","manager":"Bob Weber","officeLocation":"Berlin HQ","phone":"+49679668719","employeeNumber":"EMP00153","status":"On Leave","role":"Product Manager","team":"Mobile","lastLogin":"2022-09-02T03:50:45.124Z","performanceScore":"","bonus":13081,"contractType":"Temporary","country":"Germany","city":"","postalCode":"80418","address":"85 Example Street","linkedin":"https://www.linkedin.com/in/example-user-153","github":"","dateOfBirth":"1992-12-09","emergencyContact":""},{"id":154,"complexKey":"L0zu7o7HvOw","description":"","firstName":"Charlie","lastName":"Becker","email":"charlie.becker@example.com","department":"Finance","skills":["Java","React"],"isActive":true,"salary":89955,"hireDate":"2021-01-07","manager":"Ian Meyer","officeLocation":"","phone":"","employeeNumber":"EMP00154","status":"Probation","role":"Designer","team":"Tools","lastLogin":"","performanceScore":"2.51","bonus":1081,"contractType":"Intern","country":"UK","city":"Berlin","postalCode":"","address":"147 Example Street","linkedin":"","github":"https://github.com/example-user-154","dateOfBirth":"","emergencyContact":"Julia Schmidt (+11862220451)"},{"id":155,"complexKey":"71GnnFGvKBF4MZegZSO_gBDtohDVx03","description":"takimata At sed elitr, eos invidunt sit takimata labore et diam erat, At dolore et voluptua. et duo voluptua. accusam nonumy elitr, invidunt vero et kasd eos labore kasd accusam elitr, clita At ut ipsum takimata dolor et kasd dolores consetetur rebum. gubergren, sadipscing dolore labore elitr, sadipscing accusam et sit erat, et Lorem sanctus sed dolor takimata est. sadipscing sit justo sadipscing nonumy et ea tempor est. consetetur consetetur sed invidunt consetetur dolore magna dolore dolor Lorem rebum. est. invidunt diam gubergren, takimata sea accusam tempor eirmod et invidunt ipsum vero sea clita dolores est. sit duo takimata ut At consetetur At magna eirmod rebum. duo et elitr,","firstName":"Julia","lastName":"","email":"julia.schmidt@example.com","department":"","skills":["Java","Docker","Figma"],"isActive":true,"salary":66943,"hireDate":"2016-03-24","manager":"Charlie Becker","officeLocation":"Berlin HQ","phone":"+15866845440","employeeNumber":"EMP00155","status":"Terminated","role":"DevOps Engineer","team":"Tools","lastLogin":"2022-04-06T00:23:43.826Z","performanceScore":"1.50","bonus":2423,"contractType":"","country":"Spain","city":"Hamburg","postalCode":"11823","address":"14 Example Street","linkedin":"","github":"","dateOfBirth":"1980-04-22","emergencyContact":""},{"id":156,"complexKey":"M5QXecImp6imG0sxuF8vvCmAdeMt_sRT","description":"voluptua. no Stet diam et At sit sed et ipsum justo erat, nonumy At sed ut duo kasd et duo diam rebum. et sanctus vero ea amet, sea sea est. dolores Stet accusam sit accusam takimata voluptua. invidunt dolor sadipscing invidunt labore accusam dolore et aliquyam ut ut dolore gubergren, dolor accusam justo amet, elitr, ea At justo nonumy sed no Lorem labore labore rebum. sanctus kasd duo ipsum kasd diam justo nonumy magna est. Stet nonumy dolore et eos sadipscing takimata sit ea est. At vero takimata consetetur sadipscing aliquyam At et et takimata ipsum invidunt dolores erat, eos takimata est. dolores rebum. no et et sadipscing erat, gubergren, sea erat, Stet clita kasd diam sanctus takimata vero magna accusam magna justo dolore elitr, est. ea no diam accusam sed kasd dolore sed et et sed sadipscing diam Stet accusam Lorem ea nonumy magna est. eos tempor sanctus eirmod rebum. diam aliquyam sit no est. diam sadipscing est. sea erat, san","firstName":"Hannah","lastName":"Becker","email":"hannah.becker@example.com","department":"HR","skills":["Java","TypeScript","React","Docker"],"isActive":true,"salary":68206,"hireDate":"2017-04-19","manager":"Diana Becker","officeLocation":"Hamburg Office","phone":"+49361224265","employeeNumber":"EMP00156","status":"Terminated","role":"QA Engineer","team":"","lastLogin":"2023-03-02T12:44:22.682Z","performanceScore":"0.54","bonus":8257,"contractType":"Temporary","country":"Germany","city":"Munich","postalCode":"56319","address":"16 Example Street","linkedin":"https://www.linkedin.com/in/example-user-156","github":"","dateOfBirth":"","emergencyContact":"Hannah Wagner (+12289558188)"},{"id":157,"complexKey":"Npi1-lLNhbpk58jdqftq","description":"diam Lorem dolore Stet no dolores ea vero sea Lorem sed sea vero et duo magna consetetur dolores amet, eirmod tempor justo vero nonumy dolore vero sadipscing no aliquyam est. elitr, duo tempor clita eirmod clita et kasd diam tempor eirmod kasd dolores et ipsum rebum. ea invidunt erat, est. ipsum diam sadipscing rebum. voluptua. rebum. dolore dolor gubergren, dolore magna dolore sanctus takimata tempor et ea aliquyam clita dolor et ipsum et ipsum sanctus accusam diam diam sanctus dolore sed est. sed sea eirmod voluptua. justo diam et no justo sea ea sea aliquyam justo dolore amet, accusam labore amet, takimata duo justo est. nonumy consetetur dolores magna ut ea diam aliquyam dolore est. sit dolore sed aliquyam aliquyam labore tempor ipsum Lorem diam kasd accusam Stet Lorem takimata justo takimata elitr, dolores et voluptua. consetetur sit dolores dolores est. aliquyam eirmod sed ea rebum. gubergren, rebum. labore magna sadipscing no At no gubergr","firstName":"Grace","lastName":"Becker","email":"","department":"Legal","skills":["Python","AWS","Java"],"isActive":true,"salary":53304,"hireDate":"2008-05-11","manager":"Diana Meyer","officeLocation":"Hamburg Office","phone":"+14674644515","employeeNumber":"EMP00157","status":"Terminated","role":"Software Engineer","team":"","lastLogin":"2021-12-19T03:00:56.729Z","performanceScore":"0.29","bonus":8821,"contractType":"Temporary","country":"Spain","city":"Stuttgart","postalCode":"78211","address":"154 Example Street","linkedin":"https://www.linkedin.com/in/example-user-157","github":"","dateOfBirth":"1975-06-19","emergencyContact":""},{"id":158,"complexKey":"LBRz0wp7nqex1m4t287gA","description":"sanctus dolore sea dolores invidunt sed et clita ut nonumy dolor aliquyam aliquyam erat, tempor ipsum voluptua. dolore sanctus no dolores duo ea dolor rebum. sed magna dolores est. voluptua. elitr, sea Lorem elitr, takimata Stet dolore et Lorem diam justo aliquyam elitr, invidunt ut ea consetetur justo At sea est. nonumy labore erat, diam aliquyam nonumy aliquyam sea takimata Stet sanctus sit ea est. magna voluptua. ea justo kasd sea ipsum et et accusam nonumy takimata accusam erat, rebum. At e","firstName":"Diana","lastName":"Schneider","email":"diana.schneider@example.com","department":"Finance","skills":["Docker"],"isActive":true,"salary":"","hireDate":"2017-02-16","manager":"Ian Weber","officeLocation":"Cologne Office","phone":"+14728066006","employeeNumber":"EMP00158","status":"Terminated","role":"DevOps Engineer","team":"Tools","lastLogin":"2020-03-31T11:31:53.286Z","performanceScore":"","bonus":"","contractType":"Temporary","country":"Spain","city":"Berlin","postalCode":"98233","address":"104 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Julia Müller (+49126127110)"},{"id":159,"complexKey":"llFh15xiCf1GzD9S-9yv6T7SW9m554yUi","description":"elitr, no est. sadipscing ipsum amet, magna eos est. dolores voluptua. clita ipsum rebum. invidunt consetetur et ut dolore","firstName":"Diana","lastName":"Becker","email":"diana.becker@example.com","department":"Legal","skills":["Figma","React"],"isActive":true,"salary":84785,"hireDate":"","manager":"Eva Becker","officeLocation":"","phone":"+14048695080","employeeNumber":"EMP00159","status":"Terminated","role":"","team":"Web","lastLogin":"","performanceScore":"4.43","bonus":7780,"contractType":"Contractor","country":"USA","city":"Munich","postalCode":"49856","address":"58 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Diana Fischer (+14509995155)"},{"id":160,"complexKey":"86QfETTkwhWOycX44ofHr2yzn9AL6JK4gd","description":"sit takimata Stet sea clita dolore vero diam ut Stet Lorem magna sit ut sit ea eirmod et Lorem eos voluptua. duo clita sadipscing nonumy At elitr, sadipscing gubergren, et sed vero consetetur At takimata sadipscing ipsum amet, et sadipscing erat, sed At consetetur takimata consetetur labore nonumy At dolore rebum. takimata sea dolores diam duo magna diam ea dolore eos justo eirmod vero sed e","firstName":"Ian","lastName":"Fischer","email":"ian.fischer@example.com","department":"Finance","skills":[],"isActive":true,"salary":42328,"hireDate":"2009-10-23","manager":"Eva Meyer","officeLocation":"Hamburg Office","phone":"+49302419225","employeeNumber":"EMP00160","status":"Probation","role":"Data Analyst","team":"Mobile","lastLogin":"","performanceScore":"2.27","bonus":1537,"contractType":"Contractor","country":"France","city":"Munich","postalCode":"17735","address":"6 Example Street","linkedin":"","github":"","dateOfBirth":"1985-06-24","emergencyContact":""},{"id":161,"complexKey":"bix-BwSm5B93","description":"voluptua. kasd duo kasd sed diam amet, vero consetetur invidunt At est. dolor consetetur vero clita consetetur amet, sed takimata ea takimata sanctus magna accusam voluptua. clita vero vero clita kasd At voluptua. dolores accusam invidunt elitr, sed sea invidunt clita et est. dolor labore dolores aliquyam justo est. no ut tempor Stet invidunt ipsum dolor dolores diam Stet","firstName":"Diana","lastName":"Schneider","email":"diana.schneider@example.com","department":"Marketing","skills":["SQL","TypeScript","Python","Docker"],"isActive":true,"salary":47484,"hireDate":"2009-06-05","manager":"","officeLocation":"Remote","phone":"+49736550690","employeeNumber":"EMP00161","status":"On Leave","role":"Software Engineer","team":"Mobile","lastLogin":"2022-12-13T08:00:40.453Z","performanceScore":"","bonus":"","contractType":"Temporary","country":"Spain","city":"Hamburg","postalCode":"68402","address":"199 Example Street","linkedin":"","github":"","dateOfBirth":"1978-10-26","emergencyContact":"Alice Schmidt (+12338081964)"},{"id":162,"complexKey":"xxBKk46wO5OGCyvQ","description":"tempor amet, Stet diam erat, kasd Stet vero voluptua. vero sit magna voluptua. et Lorem et et duo est. aliquyam ea At no aliquyam et sanctus takimata diam dolores labore dolores no sed diam amet, gubergren, est. vero et vero consetetur elitr, vero elitr, tempor dolore clita rebum. ea duo justo clita et gubergren, clita erat, no gubergren, At sea At ea dolor eos consetetur sed diam aliquyam ea rebum. dolore At invidun","firstName":"Eva","lastName":"Müller","email":"eva.müller@example.com","department":"Marketing","skills":["Python","SQL","TypeScript"],"isActive":true,"salary":76256,"hireDate":"2010-02-13","manager":"Frank Becker","officeLocation":"Cologne Office","phone":"+11828825765","employeeNumber":"EMP00162","status":"On Leave","role":"Designer","team":"Core","lastLogin":"2023-04-09T09:18:24.562Z","performanceScore":"4.95","bonus":"","contractType":"","country":"UK","city":"Munich","postalCode":"","address":"166 Example Street","linkedin":"","github":"https://github.com/example-user-162","dateOfBirth":"","emergencyContact":"Bob Wagner (+49702671999)"},{"id":163,"complexKey":"","description":"invidunt ut elitr, consetetur et diam et Stet dolor Lorem At diam takimata elitr, sea eirmod invidunt labore elitr, voluptua. sit justo eos takimata kasd dolor no magna et est. sed et sea justo ipsum eos eos tempor ea nonumy takimata Lorem ipsum et nonumy justo vero Lorem justo justo clita no diam elitr, tempor et et et est. accusam dolores clita Lorem tempor et elitr, sed sea magna dolor consetetur consetetur ali","firstName":"Bob","lastName":"Schmidt","email":"bob.schmidt@example.com","department":"Finance","skills":["Java","Python","Figma","SQL"],"isActive":true,"salary":51557,"hireDate":"2016-04-25","manager":"","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00163","status":"Active","role":"QA Engineer","team":"Web","lastLogin":"2023-01-04T05:26:52.214Z","performanceScore":"4.45","bonus":"","contractType":"Permanent","country":"Spain","city":"Stuttgart","postalCode":"45991","address":"18 Example Street","linkedin":"","github":"","dateOfBirth":"1994-06-16","emergencyContact":""},{"id":164,"complexKey":"4oyhiqBvFVSZK_Q6Yb2-g5X9Gd-","description":"","firstName":"Ian","lastName":"","email":"ian.wagner@example.com","department":"Finance","skills":["Python"],"isActive":true,"salary":"","hireDate":"","manager":"Ian Schneider","officeLocation":"Munich Office","phone":"+49883257493","employeeNumber":"EMP00164","status":"Terminated","role":"Data Analyst","team":"Web","lastLogin":"2020-05-27T13:47:05.190Z","performanceScore":"3.29","bonus":4120,"contractType":"Temporary","country":"France","city":"Frankfurt","postalCode":"13021","address":"5 Example Street","linkedin":"","github":"https://github.com/example-user-164","dateOfBirth":"1987-10-05","emergencyContact":""},{"id":165,"complexKey":"SH7-kMufRAgSvGX3tNDC4Kp9QhfB","description":"Stet kasd rebum. dolores gubergren, vero ipsum dolor gubergren, dolores et voluptua. sadipscing dolor At justo aliquyam et voluptua. erat, clita kasd sed sed dolores nonumy aliquyam diam vero dolor sanctus sed labore Lorem rebum. sit et rebum. takimata amet, eos invidunt et dolore Stet sed invidunt aliquyam Lorem est. dolore et nonumy dolores ut voluptua. consetetur sit nonumy sed duo erat, voluptua. eos voluptua. dolor sadipscing nonumy vero est. justo Stet invidunt eos Stet labore ipsum accusam justo ea dolore sed invidunt ut gubergren, dolores erat, no no ipsum justo voluptua. eos erat, magna ut At sadipscing sit eirmod gubergren, amet, eirmod justo sit eirmod amet, clita sea rebum. consetet","firstName":"Hannah","lastName":"Schneider","email":"hannah.schneider@example.com","department":"Sales","skills":["AWS","Python","React"],"isActive":false,"salary":68775,"hireDate":"2015-01-18","manager":"","officeLocation":"Munich Office","phone":"+12642129307","employeeNumber":"EMP00165","status":"On Leave","role":"Data Analyst","team":"Tools","lastLogin":"2024-05-21T09:42:45.854Z","performanceScore":"","bonus":"","contractType":"Permanent","country":"Germany","city":"Munich","postalCode":"15139","address":"","linkedin":"https://www.linkedin.com/in/example-user-165","github":"","dateOfBirth":"1966-10-27","emergencyContact":"Bob Fischer (+19809666272)"},{"id":166,"complexKey":"OL2PxdfS-nJRaDihReyrOjkYrOd","description":"kasd magna dolore no amet, eos elitr, et ea clita ea tempor dolores voluptua. vero et invidunt aliquyam voluptua. ipsum dolore eirmod elitr, voluptua. sed justo sed tempor ipsum sed aliquyam et ipsum invidunt sed nonumy ea dolor labore dolor ea et nonumy eos dolore sit clita eos duo vero diam sea et kasd duo dolores At nonumy sanctus dolor vero consetetur dolore tempor Lorem sed Lorem justo dolor sadipscing sit sed sit Lorem Stet takimata justo sit ipsum Lorem tempor vero nonumy justo invidunt gubergren, dolore et et ipsum aliquyam sit eirmod sed eir","firstName":"Eva","lastName":"Müller","email":"","department":"Finance","skills":["React","Java"],"isActive":true,"salary":"","hireDate":"2009-05-27","manager":"Ian Schmidt","officeLocation":"Remote","phone":"","employeeNumber":"EMP00166","status":"Terminated","role":"Designer","team":"Mobile","lastLogin":"2022-02-13T15:03:10.399Z","performanceScore":"2.37","bonus":3937,"contractType":"Temporary","country":"UK","city":"Munich","postalCode":"","address":"97 Example Street","linkedin":"","github":"https://github.com/example-user-166","dateOfBirth":"1981-06-29","emergencyContact":""},{"id":167,"complexKey":"64oQv1hR61Fji6p26EqoRoxqdX_K","description":"","firstName":"Ian","lastName":"Schmidt","email":"ian.schmidt@example.com","department":"","skills":[],"isActive":true,"salary":83755,"hireDate":"2015-08-04","manager":"Frank Wagner","officeLocation":"Berlin HQ","phone":"+49149479780","employeeNumber":"EMP00167","status":"Probation","role":"QA Engineer","team":"","lastLogin":"2020-07-12T04:56:29.080Z","performanceScore":"","bonus":11224,"contractType":"Intern","country":"France","city":"","postalCode":"14533","address":"120 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":168,"complexKey":"283x44KFYQMH6Jcn6I97jSaHyUmGeWxCNEceW","description":"","firstName":"Charlie","lastName":"Schmidt","email":"charlie.schmidt@example.com","department":"Legal","skills":["SQL","Figma","Java","Python"],"isActive":true,"salary":88365,"hireDate":"2010-12-27","manager":"","officeLocation":"","phone":"","employeeNumber":"EMP00168","status":"Active","role":"QA Engineer","team":"Core","lastLogin":"2022-11-26T19:54:32.139Z","performanceScore":"1.23","bonus":13986,"contractType":"Permanent","country":"UK","city":"Berlin","postalCode":"","address":"70 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":169,"complexKey":"DjnAo_Skbba7d-JXqUCLAWriNJbHqbqTkt8","description":"sanctus diam sea sit sit Lorem diam Lorem no eirmod eirmod Lorem invidunt erat, et accusam gubergren, tempor accusam et duo eos tempor et et elitr, clita voluptua. no Stet sanctus amet, duo diam vero sed rebum. consetetur aliquyam et sed et voluptua. amet, accusam invidunt gubergren, amet, sea et erat, aliquyam aliquyam sea dolor Lorem elitr, Stet et voluptua. consetetur eirmod ipsum aliquyam ipsum accusam dolore rebum. nonumy gubergren, dolor sea kasd tempor magna aliquyam et ut consetetur vero erat, elitr, tempor dolore sanctus kasd et sanctus dolores magna est. invidunt erat, sanctus Stet voluptua. labore sed labore dolor duo et dolor dolore tempor rebum. ut dolor Lorem dolor est. dolores eirmod consetetur erat, takimata dolor voluptua","firstName":"Charlie","lastName":"Schmidt","email":"charlie.schmidt@example.com","department":"Finance","skills":["Docker","AWS","TypeScript"],"isActive":true,"salary":84069,"hireDate":"2005-03-03","manager":"Julia Müller","officeLocation":"Munich Office","phone":"+49835113881","employeeNumber":"EMP00169","status":"Probation","role":"Designer","team":"Mobile","lastLogin":"","performanceScore":"","bonus":7113,"contractType":"Temporary","country":"France","city":"Hamburg","postalCode":"71461","address":"117 Example Street","linkedin":"","github":"","dateOfBirth":"1992-11-23","emergencyContact":"Charlie Schneider (+49605493465)"},{"id":170,"complexKey":"ZnsEeTtH1zR7g9uKX7BgB3M9SH40S6t31jd8NJI6uwWjF","description":"et et sadipscing takimata diam erat, sed Lorem diam diam et no ipsum eos sadipscing sanctus elitr, sadipscing et tempor Stet et accusam gubergren, eirmod labore et Lorem tempor Lorem amet, kasd dolor nonumy sea diam diam clita nonumy tempor dolore et vero sed consetetur tempor amet, rebum. ipsum kasd rebum. justo elitr, dolore et diam justo duo no gubergren, labore et eirmod no et","firstName":"Frank","lastName":"Becker","email":"frank.becker@example.com","department":"","skills":["React","TypeScript","AWS"],"isActive":true,"salary":99151,"hireDate":"2012-06-01","manager":"Julia Schmidt","officeLocation":"","phone":"","employeeNumber":"EMP00170","status":"Terminated","role":"Software Engineer","team":"Growth","lastLogin":"","performanceScore":"2.53","bonus":"","contractType":"Permanent","country":"Germany","city":"","postalCode":"86034","address":"","linkedin":"","github":"","dateOfBirth":"1995-03-17","emergencyContact":"Eva Wagner (+19115425502)"},{"id":171,"complexKey":"1ehj5Bf_9GhVc","description":"duo sit eos kasd aliquyam eos magna aliquyam magna accusam accusam sed est. kasd kasd erat, takimata ea sed takimata vero sanctus magna no accusam labore sea clita rebum. consetetur takimata amet, accusam dolores est. aliquyam duo voluptua. no takimata consetetur Lorem erat, consetetur est. ut vero et duo dolore et kasd accusam erat, sea elitr, est. rebum. amet, vero magna et Lorem et eos magna sed invidunt tempor erat, et et diam At magna justo At At invidunt rebum. et eirmod vero nonumy clita ut dolores magna et rebum. et rebum. vero ut ea takimata est. justo eirmod eirmod et amet, ipsum accusam Lorem invidunt ipsum magna sed tempor aliquyam amet, rebum. nonumy ut kasd eos dolores labore ipsum magna tempor dolor sea justo gubergren, voluptua. eirmod takimata voluptua. sadipscing takimata dolor sed sanctus diam takimata nonumy sed ea sanctus et elitr, Stet Lorem takimata ut et eos eirmod takimata voluptua. erat, et diam e","firstName":"","lastName":"Schneider","email":"julia.schneider@example.com","department":"Finance","skills":["React","TypeScript","AWS"],"isActive":true,"salary":94869,"hireDate":"2010-05-17","manager":"Julia Becker","officeLocation":"Remote","phone":"","employeeNumber":"EMP00171","status":"Probation","role":"","team":"Growth","lastLogin":"","performanceScore":"","bonus":154,"contractType":"Intern","country":"Netherlands","city":"Berlin","postalCode":"58033","address":"36 Example Street","linkedin":"","github":"","dateOfBirth":"1975-06-14","emergencyContact":"Bob Schmidt (+16465134091)"},{"id":172,"complexKey":"Kv7Jq3VEXo","description":"justo eirmod clita invidunt voluptua. eirmod ea diam vero ea accusam gubergren, rebum. consetetur sea amet, amet, takimata di","firstName":"Alice","lastName":"Weber","email":"alice.weber@example.com","department":"IT","skills":["React","TypeScript","Java"],"isActive":true,"salary":58243,"hireDate":"2010-08-06","manager":"Charlie Meyer","officeLocation":"","phone":"","employeeNumber":"EMP00172","status":"Terminated","role":"Software Engineer","team":"Web","lastLogin":"2023-05-01T11:20:44.285Z","performanceScore":"1.37","bonus":"","contractType":"Intern","country":"USA","city":"Hamburg","postalCode":"18654","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Hannah Schmidt (+19959641492)"},{"id":173,"complexKey":"zfP0-juKzhNvmjSxvOU-eZ4w9I0Nlz-oXnKX1-niM784Xq","description":"","firstName":"Julia","lastName":"Becker","email":"julia.becker@example.com","department":"Marketing","skills":["AWS","TypeScript","Java","Figma"],"isActive":true,"salary":54099,"hireDate":"2009-10-24","manager":"Eva Wagner","officeLocation":"Munich Office","phone":"+18472828556","employeeNumber":"EMP00173","status":"Active","role":"DevOps Engineer","team":"Web","lastLogin":"2022-01-18T22:47:39.528Z","performanceScore":"","bonus":"","contractType":"Temporary","country":"Netherlands","city":"Munich","postalCode":"","address":"188 Example Street","linkedin":"https://www.linkedin.com/in/example-user-173","github":"","dateOfBirth":"1997-11-15","emergencyContact":"Eva Wagner (+16298336576)"},{"id":174,"complexKey":"2AhMlDwsDcdGedvxdJ3gi59iRo_8vpWvtYak4oymuCCTHrl","description":"tempor sed Stet rebum. sed invidunt sit Stet clita voluptua. vero ju","firstName":"Frank","lastName":"Wagner","email":"frank.wagner@example.com","department":"Finance","skills":[],"isActive":true,"salary":85279,"hireDate":"2005-05-29","manager":"","officeLocation":"Cologne Office","phone":"+49966316708","employeeNumber":"EMP00174","status":"On Leave","role":"QA Engineer","team":"Tools","lastLogin":"","performanceScore":"","bonus":"","contractType":"Contractor","country":"USA","city":"Stuttgart","postalCode":"55716","address":"","linkedin":"https://www.linkedin.com/in/example-user-174","github":"","dateOfBirth":"1978-01-05","emergencyContact":""},{"id":175,"complexKey":"THbaffveEc_jj_oIiUF7TwwZc4p6","description":"et clita amet, sanctus sadipscing kasd ipsum ea justo gubergren, duo consetetur dolore ut sea kasd sadipscing takimata amet, sed justo voluptua. takimata accusam eos i","firstName":"Alice","lastName":"Müller","email":"alice.müller@example.com","department":"Sales","skills":["AWS","TypeScript","Python"],"isActive":true,"salary":53945,"hireDate":"2020-03-09","manager":"Hannah Müller","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00175","status":"Terminated","role":"QA Engineer","team":"Tools","lastLogin":"2021-08-25T07:14:50.771Z","performanceScore":"","bonus":"","contractType":"Temporary","country":"Netherlands","city":"Stuttgart","postalCode":"86530","address":"117 Example Street","linkedin":"https://www.linkedin.com/in/example-user-175","github":"","dateOfBirth":"","emergencyContact":""},{"id":176,"complexKey":"lFgVuN2IyV7KfSg-Ov9XcngkPiIBPHAiMQsR5hhq9b6oh72_aZ","description":"","firstName":"Grace","lastName":"Müller","email":"grace.müller@example.com","department":"Marketing","skills":["Figma","Python"],"isActive":false,"salary":42654,"hireDate":"2010-05-30","manager":"","officeLocation":"Berlin HQ","phone":"+49676248217","employeeNumber":"EMP00176","status":"Probation","role":"","team":"Web","lastLogin":"2023-10-19T00:57:03.563Z","performanceScore":"4.34","bonus":6990,"contractType":"Temporary","country":"USA","city":"","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"1978-10-30","emergencyContact":""},{"id":177,"complexKey":"7VW8P5JzONIjLB_WfpuqINgWAe7JymCknD9wfRWFkV","description":"sea sea sea sit voluptua. Lorem diam ut Lorem nonumy no rebum. gubergren, ea eos est. takimata ut sanctus Stet rebum. elitr, kasd At et sadipscing dolor sadipscing ac","firstName":"Ian","lastName":"Schmidt","email":"ian.schmidt@example.com","department":"","skills":["React","TypeScript"],"isActive":false,"salary":43326,"hireDate":"","manager":"Julia Meyer","officeLocation":"Hamburg Office","phone":"+16500092522","employeeNumber":"EMP00177","status":"On Leave","role":"Software Engineer","team":"Platform","lastLogin":"2022-10-01T13:20:03.607Z","performanceScore":"3.22","bonus":"","contractType":"Intern","country":"Germany","city":"Frankfurt","postalCode":"54354","address":"","linkedin":"","github":"","dateOfBirth":"1985-01-10","emergencyContact":"Grace Schneider (+49744664061)"},{"id":178,"complexKey":"HL4pshxp54fZ4g8kqSRotI","description":"sadipscing takimata dolores elitr, invidunt duo ut sit Stet no sadipscing et ipsum duo takimata est. takimata est. ut et dolore Stet clita ipsum aliquyam labore diam Stet labore ea aliquyam aliquyam erat, rebum. ut eirmod sed sanctus dolore diam aliquyam et nonumy sea nonumy amet, ipsum sea sed eos At sea accusam ut sea eos aliquyam sea gubergren, clita nonumy elitr, sed consetetur magna erat, aliquyam magna et kasd sea invidunt clita dolore ipsum labore dolore sanctus eirmod gubergren, aliquyam gubergren, gubergren, nonumy gubergren, nonumy sed takimata At et erat, elitr, erat, consetetur tempor takimata magna dolore voluptua. nonumy eirmod diam justo sadipscing nonumy accusam takimata diam eos dolor clita dolores invidunt et et eirmod invidunt no sed vero voluptua. sanctus consetetur tempor ea ut ut labore sanctus dolore ea justo et no eos magna et vero vero diam d","firstName":"Frank","lastName":"Fischer","email":"frank.fischer@example.com","department":"","skills":["Java","Figma"],"isActive":true,"salary":77348,"hireDate":"2009-12-01","manager":"Grace Schmidt","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00178","status":"","role":"Data Analyst","team":"Web","lastLogin":"2023-03-03T05:39:29.237Z","performanceScore":"0.82","bonus":"","contractType":"Permanent","country":"Spain","city":"Munich","postalCode":"39577","address":"110 Example Street","linkedin":"","github":"","dateOfBirth":"1979-07-11","emergencyContact":""},{"id":179,"complexKey":"I8Db1ZL3FKm5p2ZdAvW-46jE","description":"kasd diam nonumy sed ut magna gubergren, takimata dolor duo Lorem aliquyam Lorem kasd magna et et At ipsum diam labore diam magna accusam est. et vero elitr, et elitr, sed labore Lorem dolor dolores et est. eirmod et eos ipsum sea e","firstName":"Ian","lastName":"Schneider","email":"ian.schneider@example.com","department":"Legal","skills":["SQL","Java"],"isActive":true,"salary":91286,"hireDate":"2008-09-16","manager":"Charlie Müller","officeLocation":"Berlin HQ","phone":"+49373226734","employeeNumber":"EMP00179","status":"Active","role":"Software Engineer","team":"Platform","lastLogin":"","performanceScore":"3.36","bonus":13514,"contractType":"Temporary","country":"UK","city":"Cologne","postalCode":"","address":"161 Example Street","linkedin":"","github":"https://github.com/example-user-179","dateOfBirth":"","emergencyContact":"Frank Becker (+49186869731)"},{"id":180,"complexKey":"oNIF_UOcEgUQoES_Hmr4GJSeGQp0zk","description":"invidunt tempor nonumy con","firstName":"Bob","lastName":"Becker","email":"bob.becker@example.com","department":"Legal","skills":["Figma","Java","TypeScript"],"isActive":false,"salary":40296,"hireDate":"2006-03-31","manager":"Eva Schneider","officeLocation":"Berlin HQ","phone":"+13901811126","employeeNumber":"EMP00180","status":"","role":"Product Manager","team":"Platform","lastLogin":"","performanceScore":"","bonus":1504,"contractType":"","country":"Germany","city":"Stuttgart","postalCode":"14790","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":181,"complexKey":"TEpIAfhjfc1FB4PUNvGpHDlZ7a1ArucDAVAOQE5","description":"magna dolore aliquyam justo sed sed eirmod voluptua. sed justo no ipsum no dolores invidunt kasd sea sed amet, rebum. magna accusam gubergren, eirmod clita est. voluptua. sed et vero gubergren, ea labore dolor dolore invidunt et et ipsum accusam kasd sed ipsum ea ea et nonumy aliquyam sanctus sit justo At eos sit erat, accusam invidunt diam At ea j","firstName":"Alice","lastName":"Schmidt","email":"alice.schmidt@example.com","department":"Sales","skills":["React","Docker","TypeScript"],"isActive":true,"salary":57319,"hireDate":"2020-06-15","manager":"Bob Schmidt","officeLocation":"","phone":"+49532077098","employeeNumber":"EMP00181","status":"Active","role":"Product Manager","team":"Tools","lastLogin":"","performanceScore":"1.33","bonus":10058,"contractType":"Contractor","country":"UK","city":"Frankfurt","postalCode":"","address":"81 Example Street","linkedin":"","github":"https://github.com/example-user-181","dateOfBirth":"1986-11-18","emergencyContact":""},{"id":182,"complexKey":"LJ2cjNKbqmwHeHgjYOdzE1-ED40Maf0JbbmhMky","description":"kasd rebum. no At vero sed kasd justo ea duo ea takimata diam kasd sea duo tempor ipsum eos sea voluptua. ut ipsum dolores labore sea gubergren, vero aliquyam eos nonumy accusam diam sed voluptua. rebum. sea no eos eos magna et dolor nonumy Stet justo et eirmod et ut tempor Lorem vero eirmod magna voluptua. aliquyam eirmod et invidunt et sadipscing et justo nonumy accusam no Lorem justo sanctus et et eirmod ea erat, elitr,","firstName":"Eva","lastName":"Müller","email":"eva.müller@example.com","department":"Legal","skills":["Python","Java","TypeScript"],"isActive":true,"salary":59663,"hireDate":"2021-09-25","manager":"Alice Müller","officeLocation":"Hamburg Office","phone":"+49784996212","employeeNumber":"EMP00182","status":"On Leave","role":"Software Engineer","team":"Tools","lastLogin":"2024-07-20T04:36:49.507Z","performanceScore":"2.08","bonus":812,"contractType":"Permanent","country":"USA","city":"Stuttgart","postalCode":"21922","address":"","linkedin":"","github":"https://github.com/example-user-182","dateOfBirth":"","emergencyContact":"Diana Meyer (+17960051166)"},{"id":183,"complexKey":"","description":"","firstName":"Diana","lastName":"Wagner","email":"diana.wagner@example.com","department":"Sales","skills":["TypeScript","React","Figma","Java"],"isActive":true,"salary":66242,"hireDate":"2021-05-31","manager":"Eva Fischer","officeLocation":"","phone":"+49763624534","employeeNumber":"EMP00183","status":"Terminated","role":"DevOps Engineer","team":"Web","lastLogin":"2021-10-13T13:52:43.027Z","performanceScore":"3.49","bonus":10212,"contractType":"Intern","country":"Germany","city":"Munich","postalCode":"19298","address":"86 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":184,"complexKey":"EeSfaXwm4DNzhbpYKO6w8wCNrCAQCmaArRCPB-DR","description":"","firstName":"Ian","lastName":"Schneider","email":"ian.schneider@example.com","department":"Legal","skills":[],"isActive":true,"salary":69630,"hireDate":"2024-11-02","manager":"Bob Fischer","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00184","status":"On Leave","role":"Designer","team":"Platform","lastLogin":"","performanceScore":"","bonus":"","contractType":"Permanent","country":"Germany","city":"Munich","postalCode":"81652","address":"161 Example Street","linkedin":"https://www.linkedin.com/in/example-user-184","github":"","dateOfBirth":"","emergencyContact":""},{"id":185,"complexKey":"A03-mbS0cDc","description":"sit elitr, nonumy vero et sadipscing sadipscing diam ut est. duo ut dolore sed invidunt Stet sit sed ipsum ea vero elitr, et vero sea justo dolore sit est. takimata justo voluptua. gubergren, et takimata sadipscing ipsum accusam est. dolores no sea sanctus consetetur dolores tempor takimata est. tempor Stet et aliquyam sadipscing ipsum nonumy sed At nonumy accusam sed amet, aliquyam rebum. gubergren, elitr, At sea dolor est. sit eos diam dia","firstName":"Alice","lastName":"Müller","email":"alice.müller@example.com","department":"Finance","skills":["Java","Python","AWS"],"isActive":true,"salary":"","hireDate":"2018-05-30","manager":"Grace Schneider","officeLocation":"","phone":"+49725191572","employeeNumber":"EMP00185","status":"On Leave","role":"Data Analyst","team":"Mobile","lastLogin":"2021-10-19T00:32:15.570Z","performanceScore":"0.54","bonus":1133,"contractType":"Permanent","country":"Spain","city":"Berlin","postalCode":"92397","address":"","linkedin":"https://www.linkedin.com/in/example-user-185","github":"","dateOfBirth":"1989-07-15","emergencyContact":""},{"id":186,"complexKey":"RUcyggjNlm3","description":"","firstName":"Julia","lastName":"Fischer","email":"julia.fischer@example.com","department":"Marketing","skills":["SQL","AWS","Docker","Figma"],"isActive":true,"salary":"","hireDate":"2017-09-08","manager":"Eva Schneider","officeLocation":"Munich Office","phone":"+17954903606","employeeNumber":"EMP00186","status":"On Leave","role":"Software Engineer","team":"Growth","lastLogin":"","performanceScore":"1.53","bonus":"","contractType":"Permanent","country":"UK","city":"","postalCode":"11832","address":"","linkedin":"https://www.linkedin.com/in/example-user-186","github":"https://github.com/example-user-186","dateOfBirth":"","emergencyContact":"Ian Schmidt (+18360652171)"},{"id":187,"complexKey":"Kud-Gv8hqu_BSb3k","description":"","firstName":"Alice","lastName":"Wagner","email":"alice.wagner@example.com","department":"Sales","skills":["AWS","React"],"isActive":false,"salary":99734,"hireDate":"2006-12-30","manager":"Diana Fischer","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00187","status":"Active","role":"Software Engineer","team":"Tools","lastLogin":"2023-05-26T20:50:31.925Z","performanceScore":"4.49","bonus":2219,"contractType":"Permanent","country":"France","city":"Berlin","postalCode":"71682","address":"53 Example Street","linkedin":"","github":"https://github.com/example-user-187","dateOfBirth":"","emergencyContact":""},{"id":188,"complexKey":"AFI-6rmIEpHssvaXrq7r6bo-","description":"","firstName":"Frank","lastName":"Müller","email":"frank.müller@example.com","department":"Legal","skills":["Docker","React"],"isActive":true,"salary":75775,"hireDate":"2020-09-06","manager":"Grace Schmidt","officeLocation":"Hamburg Office","phone":"+14840826069","employeeNumber":"EMP00188","status":"Active","role":"QA Engineer","team":"Core","lastLogin":"2024-04-28T00:29:43.789Z","performanceScore":"0.19","bonus":"","contractType":"","country":"Germany","city":"Cologne","postalCode":"94144","address":"76 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":189,"complexKey":"u-KzraAAov12eaj8b0sE6Oo","description":"","firstName":"Grace","lastName":"Müller","email":"grace.müller@example.com","department":"","skills":["Python"],"isActive":true,"salary":90424,"hireDate":"2015-11-26","manager":"Ian Weber","officeLocation":"Cologne Office","phone":"+11422764942","employeeNumber":"EMP00189","status":"Probation","role":"DevOps Engineer","team":"","lastLogin":"","performanceScore":"3.74","bonus":269,"contractType":"Contractor","country":"USA","city":"Hamburg","postalCode":"55029","address":"89 Example Street","linkedin":"https://www.linkedin.com/in/example-user-189","github":"","dateOfBirth":"","emergencyContact":""},{"id":190,"complexKey":"9ZbUc04TgiduhKpfBZV83yOgsTdjqnu2yjon","description":"","firstName":"","lastName":"Wagner","email":"ian.wagner@example.com","department":"Sales","skills":[],"isActive":true,"salary":41481,"hireDate":"2007-08-01","manager":"Diana Schmidt","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00190","status":"On Leave","role":"DevOps Engineer","team":"Growth","lastLogin":"","performanceScore":"3.25","bonus":"","contractType":"Temporary","country":"Germany","city":"Munich","postalCode":"70549","address":"4 Example Street","linkedin":"","github":"","dateOfBirth":"1984-10-21","emergencyContact":"Bob Schmidt (+13535470407)"},{"id":191,"complexKey":"hjY4IxpIgJXoSvkfYHDs8ijGv","description":"","firstName":"Julia","lastName":"Schmidt","email":"julia.schmidt@example.com","department":"Marketing","skills":[],"isActive":true,"salary":48038,"hireDate":"2021-12-10","manager":"Grace Meyer","officeLocation":"Remote","phone":"","employeeNumber":"EMP00191","status":"Terminated","role":"Data Analyst","team":"","lastLogin":"2020-11-29T18:27:21.561Z","performanceScore":"1.35","bonus":"","contractType":"Permanent","country":"USA","city":"Munich","postalCode":"29855","address":"137 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Ian Müller (+14165565082)"},{"id":192,"complexKey":"","description":"justo et ipsum At sed eos elitr, kasd no gubergren, et erat, Lorem sadipscing eos no kasd et dolor justo Lorem voluptua. sanctus magna aliquyam sadipscing nonumy aliquyam sed ut dolore nonumy ipsum Stet vero Lorem amet, erat, diam sit no consetetur takimata sit clita rebum. consetetur sadipscing ipsum consetetur diam ut consetetur sea eirmod est. Stet amet, vero consetetur ea gubergren, justo Stet voluptua. sit aliquyam vero eirmod sanctus sanctus tempor erat, diam ut erat, voluptua. accusam et elitr, sea erat, Lorem invidunt rebum. et sanctus sanctus est. vero est. At et diam tempor et sed kasd ipsum clita labore sanctus voluptua. clita ea ipsum clita sea clita et elitr, magna elitr, eos sea dolore aliquyam ea sanctus labore gubergren, elitr, eirmod magna vero dolore amet, voluptua. rebum. ut sea aliquyam amet, voluptua. et sanctus rebum. clita voluptua. rebum. diam sit At consetetur elit","firstName":"Hannah","lastName":"Weber","email":"hannah.weber@example.com","department":"","skills":["React","Docker","TypeScript","Python"],"isActive":false,"salary":70412,"hireDate":"2009-08-14","manager":"Julia Weber","officeLocation":"Remote","phone":"","employeeNumber":"EMP00192","status":"Probation","role":"Designer","team":"Growth","lastLogin":"2024-01-07T19:32:31.788Z","performanceScore":"1.53","bonus":6638,"contractType":"Contractor","country":"Spain","city":"Berlin","postalCode":"54803","address":"154 Example Street","linkedin":"https://www.linkedin.com/in/example-user-192","github":"","dateOfBirth":"","emergencyContact":""},{"id":193,"complexKey":"9DDaQqb8uiWXbUXR9","description":"","firstName":"Charlie","lastName":"Wagner","email":"charlie.wagner@example.com","department":"IT","skills":["AWS","TypeScript","SQL","React"],"isActive":true,"salary":81319,"hireDate":"2021-07-14","manager":"Ian Becker","officeLocation":"Remote","phone":"","employeeNumber":"EMP00193","status":"Active","role":"Data Analyst","team":"","lastLogin":"","performanceScore":"","bonus":10437,"contractType":"Contractor","country":"Spain","city":"Munich","postalCode":"38929","address":"18 Example Street","linkedin":"","github":"https://github.com/example-user-193","dateOfBirth":"1995-03-18","emergencyContact":""},{"id":194,"complexKey":"SbnMNHcBemVWjghDnx7aPbADbV2eNMQKxyEiJ","description":"ipsum At sed clita takimata dolores kasd justo rebum. nonumy dolores duo clita et amet, kasd no erat, dolore sanctus Lorem sea gubergren, elitr, est. amet, voluptua. vero sit dolores tempor sadipscing vero clita Lorem gubergren, Stet sadipscing sea elitr, et dolores sea elitr, sea vero consetetur nonumy magna dolores accusam vero clita et magna sed labore consetetur eos nonumy accusam et nonumy accu","firstName":"Eva","lastName":"Meyer","email":"eva.meyer@example.com","department":"IT","skills":["Java","Python","AWS"],"isActive":true,"salary":77704,"hireDate":"2019-10-13","manager":"Bob Weber","officeLocation":"Cologne Office","phone":"+12227485092","employeeNumber":"EMP00194","status":"Active","role":"DevOps Engineer","team":"Mobile","lastLogin":"","performanceScore":"3.21","bonus":5494,"contractType":"","country":"USA","city":"Stuttgart","postalCode":"","address":"142 Example Street","linkedin":"","github":"https://github.com/example-user-194","dateOfBirth":"1977-03-01","emergencyContact":"Charlie Meyer (+15495884827)"},{"id":195,"complexKey":"YR4KVorfiRkuVcSBHIe_HRRyJJOL","description":"","firstName":"Frank","lastName":"Müller","email":"frank.müller@example.com","department":"Sales","skills":["Figma","SQL","React"],"isActive":true,"salary":71118,"hireDate":"2023-10-01","manager":"Ian Wagner","officeLocation":"Hamburg Office","phone":"+49311581168","employeeNumber":"EMP00195","status":"On Leave","role":"Data Analyst","team":"Web","lastLogin":"","performanceScore":"0.88","bonus":6968,"contractType":"Permanent","country":"UK","city":"Hamburg","postalCode":"10608","address":"125 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Eva Müller (+18113061746)"},{"id":196,"complexKey":"956n9kQi5VM9Tjl8roJYkMM2WAg-MESQaLDLs9TGDl1n_K","description":"et et At sed diam duo magna et diam sea consetetur dolores sed et takimata invidunt sit invidunt est. erat, sed et sed magna sadipscing kasd voluptua. Lorem eos tempor et et duo et sadipscing ea sit accusam clita ut labore sanctus aliquyam amet, diam et diam sed vero labore duo tempor vero ut vero takimata est. sanctus ipsum no voluptua. sed et sea takimata ut ea clita magna nonumy ea tempor et invidunt diam et dolor consetetur gubergren, rebum. justo dolores et ipsum labore no accusam sadipscing clita aliquyam aliquyam sed rebum. sed consetetur At sanctus gubergren, et et erat","firstName":"Grace","lastName":"Müller","email":"grace.müller@example.com","department":"Marketing","skills":["SQL"],"isActive":true,"salary":52039,"hireDate":"2024-09-29","manager":"Charlie Fischer","officeLocation":"","phone":"+12236367309","employeeNumber":"EMP00196","status":"Active","role":"Software Engineer","team":"","lastLogin":"","performanceScore":"1.48","bonus":"","contractType":"Temporary","country":"USA","city":"","postalCode":"","address":"182 Example Street","linkedin":"","github":"","dateOfBirth":"1994-05-31","emergencyContact":""},{"id":197,"complexKey":"VNRZggVvbLl2iAKdLa9NwDj","description":"","firstName":"Eva","lastName":"Meyer","email":"eva.meyer@example.com","department":"Sales","skills":["Figma","TypeScript","React","Docker"],"isActive":true,"salary":78694,"hireDate":"2015-03-18","manager":"Eva Müller","officeLocation":"Cologne Office","phone":"+49106741773","employeeNumber":"EMP00197","status":"Probation","role":"Software Engineer","team":"Web","lastLogin":"2022-08-27T18:01:21.233Z","performanceScore":"0.89","bonus":4650,"contractType":"Permanent","country":"USA","city":"Munich","postalCode":"","address":"5 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":198,"complexKey":"","description":"tempor ipsum aliquyam justo accusam vero vero kasd labore elitr, dolores justo dolores dolores et eos dolor voluptua. takimata voluptua. dolores labore ea ipsum invidunt sea amet, sadipscing sed Lorem sea vero no et kasd Stet et dolore sea nonumy ea ut ut voluptua. tempor kasd voluptua. eirmod erat, ipsum et accusam eirmod eos et aliquyam no voluptua. invidunt magna sadipscing ea kasd sadipscing clita diam eos nonumy clita dolores eirmod magna erat, elitr, clita duo rebum. et et nonumy voluptua. sed sea sadipscing voluptua. et et tempor elitr, duo et voluptua. dolores sed et magna dolore tempor sed Stet vero At sea est. sit tempor sed diam nonumy sadipscing gubergren, erat, magna ut erat, Lorem et invidunt sadipscing dolore et sit accusam ea elitr, et eirmod eirmod aliquyam sadipscing duo eirmod dolor sea nonumy consetetur","firstName":"Julia","lastName":"Schneider","email":"julia.schneider@example.com","department":"Legal","skills":["AWS","Docker","Java"],"isActive":true,"salary":51645,"hireDate":"","manager":"Hannah Meyer","officeLocation":"Munich Office","phone":"+49349603113","employeeNumber":"EMP00198","status":"Terminated","role":"Product Manager","team":"Platform","lastLogin":"2024-12-14T06:32:22.015Z","performanceScore":"3.14","bonus":9137,"contractType":"Contractor","country":"UK","city":"Berlin","postalCode":"34624","address":"157 Example Street","linkedin":"","github":"","dateOfBirth":"1969-04-15","emergencyContact":"Alice Schmidt (+12559675139)"},{"id":199,"complexKey":"-zfD1TLa87sc0X","description":"","firstName":"Ian","lastName":"Meyer","email":"ian.meyer@example.com","department":"Marketing","skills":["TypeScript","SQL","Java"],"isActive":true,"salary":"","hireDate":"2020-08-04","manager":"Grace Wagner","officeLocation":"Cologne Office","phone":"+11721248444","employeeNumber":"EMP00199","status":"On Leave","role":"Software Engineer","team":"Tools","lastLogin":"","performanceScore":"0.02","bonus":8198,"contractType":"","country":"Spain","city":"","postalCode":"62093","address":"16 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Diana Meyer (+49731070574)"},{"id":200,"complexKey":"","description":"","firstName":"Grace","lastName":"Meyer","email":"","department":"HR","skills":["React","TypeScript","AWS","SQL"],"isActive":true,"salary":91857,"hireDate":"2011-09-28","manager":"","officeLocation":"Munich Office","phone":"","employeeNumber":"EMP00200","status":"Active","role":"QA Engineer","team":"Mobile","lastLogin":"2024-10-21T21:22:08.694Z","performanceScore":"3.56","bonus":"","contractType":"Temporary","country":"France","city":"Stuttgart","postalCode":"","address":"175 Example Street","linkedin":"https://www.linkedin.com/in/example-user-200","github":"","dateOfBirth":"1992-07-29","emergencyContact":""},{"id":201,"complexKey":"Ryzi1fyp1EMLhiEEG_NG1da11","description":"Stet Lorem et et elitr, duo voluptua. no magna voluptua. sed At Lorem sadipscing consetetur nonumy consetetur tempor diam rebum. justo voluptua. Stet dolores sanctus sed sadipscing justo et et magna vero sed sadipscing accusam At eos amet, diam diam tempor dolore tempor dolore no diam voluptua. gubergren, dolor magna rebum. duo rebum. sed et aliquyam sit tempor sea sed justo ea sed diam dolor nonumy eos magna dolores voluptua. et et sanctus dolore dolores erat, labore amet, sanctus eirmod voluptua. sed kasd et et diam gubergren, kasd eos diam consetetur eos et ea amet, amet, sed At aliquyam At rebum. labore Stet Stet ipsum tempor consetetur diam et dolores Lorem clita tempor clita elitr, aliquyam erat, et sadipscing amet, vero labore sea justo kasd vero Stet sed diam eos At sit clita diam erat, voluptua. sed Stet sanctus voluptua. el","firstName":"Eva","lastName":"Schneider","email":"eva.schneider@example.com","department":"Marketing","skills":["AWS","SQL","React","Java"],"isActive":true,"salary":70307,"hireDate":"2022-08-18","manager":"Charlie Weber","officeLocation":"","phone":"+49584904725","employeeNumber":"EMP00201","status":"","role":"Software Engineer","team":"","lastLogin":"2024-04-03T06:16:20.513Z","performanceScore":"3.01","bonus":956,"contractType":"Contractor","country":"Netherlands","city":"Berlin","postalCode":"","address":"27 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":202,"complexKey":"_YSYaL4V3wW8yE22wIeUDt2z5DCIobgS3iYMiO_b7XuFiF","description":"labore sanctus justo no sea diam Lorem At eos eos At dolore At accusam ea magna consetetur justo ut et clita ea amet, clita est. et sanctus diam sadipscing ipsum amet, diam clita labore sanctus clita magna eos et diam eos dolor eos Stet diam et invidunt kasd aliquyam sit sit sit et takimata nonumy erat, et consetetur sed eos est. sanctus sanctus ea ea accusam et gubergren, accusam et et consetetur diam diam ea clita vero diam rebum. amet, erat, dolore labore voluptua. sed duo rebum. dolor Stet tempor et diam sanctus sit sit ut elitr, et amet, accusam amet, invidunt justo diam dolor sit eos consetetur kasd sit diam amet, consetetur eos dolor tempor sed et no amet, clita sea diam labore eirmod takimata labore accusam et kasd amet, elitr, At Lorem sea sit sed labore rebum. magna sanctus eos invidunt dolores invidunt sanctus sea diam consetetur dolor et invidunt At At diam consetetur sit no clita sadipscing labore e","firstName":"Grace","lastName":"Fischer","email":"grace.fischer@example.com","department":"","skills":["TypeScript","SQL","Docker","React"],"isActive":true,"salary":"","hireDate":"2020-09-12","manager":"Bob Becker","officeLocation":"Cologne Office","phone":"+18429577236","employeeNumber":"EMP00202","status":"Probation","role":"Data Analyst","team":"Mobile","lastLogin":"","performanceScore":"0.62","bonus":"","contractType":"","country":"Germany","city":"Stuttgart","postalCode":"61358","address":"165 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Frank Meyer (+49987827756)"},{"id":203,"complexKey":"4CwfNDi-IglEBvZ971PVblkTFP9U_DOhP2CF3fYOKaQPHwKnAc","description":"gubergren, Lorem est. et magna elitr, et aliquyam no erat, justo aliquyam et sit diam kasd sed dolore accusam gubergren, At voluptua. ea consetetur diam sea gubergren, takimata dolor est. est. et ut dolore labore sed magna duo et et et At consetetur Lorem diam consetetur gubergren, et et no diam sadipscing et tempor clita et sea vero gubergren, takimata dolore amet, dolor sanctus clita sanctus et et sed Stet justo et consetetur dolores sea et duo gubergren, et ut sanctus Lorem sit justo et tempor ea At consetetur diam eirmod duo sanctus eirmod duo consetetur kasd et diam Lorem sed nonumy duo duo et invidunt sit erat, est. et et duo sanctus eos sed labore ut eirmod vero et et magna clita justo eirmod Stet nonumy dolores","firstName":"Frank","lastName":"Schmidt","email":"frank.schmidt@example.com","department":"Finance","skills":["AWS","Java"],"isActive":true,"salary":55389,"hireDate":"2023-09-25","manager":"Diana Fischer","officeLocation":"Hamburg Office","phone":"+49610218637","employeeNumber":"EMP00203","status":"Terminated","role":"","team":"Core","lastLogin":"2020-02-12T10:07:18.700Z","performanceScore":"1.87","bonus":8711,"contractType":"Temporary","country":"USA","city":"","postalCode":"81635","address":"140 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":204,"complexKey":"tYFuPHw49l9yh2oJwK-gNFReVz-eHDbtMnPSQWCn4G1","description":"accusam et sea diam invidunt no diam sed takimata takimata eos ipsum nonumy diam Lorem labore eos sea diam labore voluptua. amet, dolore dolores kasd takimata eirmod justo et nonumy tempor diam invidunt labore est. et ipsum clita gubergren, invidunt accusam sed At gubergren, gubergren, invidunt elitr, elitr, duo tempor gubergren, sadipscing justo eos et takimata est. aliquyam sit Stet no aliquyam kasd gubergren, et duo diam erat, sed vero sit Lorem dolore takimata rebum. dolor ipsum voluptua. tempor invidun","firstName":"","lastName":"Wagner","email":"julia.wagner@example.com","department":"IT","skills":["SQL","React"],"isActive":true,"salary":66074,"hireDate":"2006-04-26","manager":"Diana Becker","officeLocation":"Remote","phone":"","employeeNumber":"EMP00204","status":"Active","role":"QA Engineer","team":"","lastLogin":"","performanceScore":"2.82","bonus":6424,"contractType":"Permanent","country":"UK","city":"Frankfurt","postalCode":"55455","address":"129 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Grace Schmidt (+49359470387)"},{"id":205,"complexKey":"W05iPe5SVyLVe2eGKp","description":"dolores dolores invidunt et rebum. eirmod no ipsum aliquyam erat, Stet Stet At takimata ipsum dolores eirmod dolor est. sit dolor est. sadipscing sea gubergren, rebum. Stet ea ipsum et eos clita Lorem eirmod dolores erat, vero sit Lorem dolores aliquyam diam rebum. dolore nonumy elitr, amet, ipsum sed et nonumy ea","firstName":"Eva","lastName":"Schneider","email":"","department":"Legal","skills":[],"isActive":true,"salary":87332,"hireDate":"2024-10-29","manager":"","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00205","status":"","role":"Designer","team":"Platform","lastLogin":"2024-04-06T01:01:51.143Z","performanceScore":"3.07","bonus":"","contractType":"Intern","country":"France","city":"Hamburg","postalCode":"","address":"175 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":206,"complexKey":"ZYvTB7eON7","description":"accusam At sadipscing Lorem et ea justo vero kasd diam sanctus et justo labore At est. magna ipsum sed dolore diam takimata kasd sit diam takimata kasd labore duo ut et no erat, sanctus et invidunt Stet sanctus nonumy consetetur voluptua. Stet erat, sit labore est. amet, sanctus elitr, rebum. eos diam sit justo rebum. diam ut diam amet, duo sit dolore sed amet, Lorem voluptua. est. eirmod nonumy sed labore et duo voluptua. aliquyam At invidunt ut et sit takimata sea justo et sanctus sit kasd dolore sea takimata diam diam justo sed clita et voluptua. nonumy sed sed takimata nonumy Lorem aliquyam aliquyam gubergren, dolores eos labore eos duo magna kasd tempor diam eos eos et vero eos et et At kasd aliquyam diam Lorem ut et diam elitr, vero eos kasd et gubergren, sit dolores accusam diam amet, consetetur accusam nonumy justo invidunt clita justo vero Stet diam dolor sed takimata ea duo voluptua. takimata dolore rebum.","firstName":"Charlie","lastName":"Fischer","email":"","department":"Finance","skills":[],"isActive":true,"salary":90061,"hireDate":"2013-03-15","manager":"","officeLocation":"Remote","phone":"+17181466133","employeeNumber":"EMP00206","status":"Terminated","role":"","team":"Tools","lastLogin":"2022-06-19T14:50:32.274Z","performanceScore":"2.32","bonus":9911,"contractType":"Permanent","country":"USA","city":"Frankfurt","postalCode":"37548","address":"172 Example Street","linkedin":"https://www.linkedin.com/in/example-user-206","github":"https://github.com/example-user-206","dateOfBirth":"1980-11-01","emergencyContact":"Eva Fischer (+19185612067)"},{"id":207,"complexKey":"PwoJOP23HfySzhIaAHI2TGYPFIN4FFnqE1bg9m0jR","description":"","firstName":"Ian","lastName":"Fischer","email":"ian.fischer@example.com","department":"Sales","skills":["TypeScript","React"],"isActive":true,"salary":62777,"hireDate":"2023-09-16","manager":"Eva Fischer","officeLocation":"Berlin HQ","phone":"","employeeNumber":"EMP00207","status":"Probation","role":"DevOps Engineer","team":"Platform","lastLogin":"2024-08-22T10:07:58.453Z","performanceScore":"2.48","bonus":"","contractType":"Intern","country":"UK","city":"Stuttgart","postalCode":"","address":"80 Example Street","linkedin":"","github":"https://github.com/example-user-207","dateOfBirth":"1966-07-05","emergencyContact":"Bob Meyer (+49698108846)"},{"id":208,"complexKey":"","description":"tempor duo et kasd eirmod Stet gubergren, amet, Stet kasd ut Lorem amet, amet, sed eirmod eirmod amet, nonumy est. ea elitr, dolore duo Lorem sea tempor consetetur elitr, et sea magna nonumy aliquyam kasd erat, eirmod consetetur elitr, diam accusam et elitr, justo nonumy voluptua. diam amet, et labore duo elitr, elitr, dolores justo sed nonumy vero justo accusam sit Stet At sed aliquyam duo duo vero et magna gubergren, aliquyam invidunt ea vero et erat, ea est. sed sea kasd magna sadipscing sadipscing rebum. erat, justo At Lorem sadipscing ut kasd sadipscing dolores Lorem voluptua. voluptua. rebum. Stet gubergren, consetetur amet, duo ipsum elitr, sadipscing takimata diam no eos sadipscing takimata sanctus kasd sed gubergren, aliquyam invidunt diam","firstName":"Ian","lastName":"Weber","email":"ian.weber@example.com","department":"IT","skills":["Figma"],"isActive":true,"salary":43096,"hireDate":"2008-12-16","manager":"","officeLocation":"Remote","phone":"+19495021996","employeeNumber":"EMP00208","status":"Active","role":"Designer","team":"Mobile","lastLogin":"","performanceScore":"0.57","bonus":4305,"contractType":"Permanent","country":"","city":"Hamburg","postalCode":"79996","address":"5 Example Street","linkedin":"","github":"https://github.com/example-user-208","dateOfBirth":"1990-04-09","emergencyContact":"Frank Weber (+12876622818)"},{"id":209,"complexKey":"A8qx2roFzrv65H835W5sir1KX7eeyqiLF6c6eokK9k2","description":"sea diam ea aliquyam At ipsum et eirmod dolore et duo et sed et rebum. dolore eirmod kasd tempor labore et ipsum et sed voluptua. dolores et tempor vero rebum. dolore et sed takimata sanctus justo labore eos dolore sed erat, nonumy est. Lorem sed sanctus clita ipsum tempor consetetur sanctus et duo dolore justo Stet ipsum vero gubergren, clita duo vero et kasd diam et eirmod dolore et magna At sit elitr, est. clita sanctus sa","firstName":"Grace","lastName":"Müller","email":"grace.müller@example.com","department":"Legal","skills":["SQL"],"isActive":true,"salary":49796,"hireDate":"2023-10-02","manager":"Julia Weber","officeLocation":"Remote","phone":"","employeeNumber":"EMP00209","status":"On Leave","role":"QA Engineer","team":"Growth","lastLogin":"2021-10-07T04:50:23.504Z","performanceScore":"","bonus":1735,"contractType":"","country":"France","city":"","postalCode":"","address":"23 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":210,"complexKey":"ywJ7sl4CrfJxwgJ6AD913HCWxs0h_RWShHlfaG-_oOYR0","description":"ipsum elitr, eirmod no ut ea elitr, et ipsum sea justo duo diam sed accusam justo kasd nonumy tempor Lorem diam no eirmod ea aliquyam sadipscing sanctus gubergren, At aliquyam no est. voluptua. eos elitr, sea sanctus eirmod sed no aliquyam invidunt ipsum justo et sadipscing dolores dolor et ea Lorem et et et At consetetur est. dolor ut ea amet, At clita sit gubergren, ut est. voluptua. Stet accusam clita erat, tempor duo sed kasd At tempor rebum. aliquyam diam eos ut voluptua. labore et sadipscing accusam dolores et Stet dolore rebum. amet, sed gubergren, dolore justo duo duo amet, Lorem labore consetetur nonumy sanctus diam sit vero labore amet, amet, dolore consetetur sadipscing kasd magna ut clita sadipscing diam consetetur et eos consetetur diam labore labore tempor et no eirmod magna ipsum dolor lab","firstName":"Grace","lastName":"Becker","email":"grace.becker@example.com","department":"Sales","skills":[],"isActive":true,"salary":98799,"hireDate":"2017-05-26","manager":"Alice Fischer","officeLocation":"","phone":"+12176260003","employeeNumber":"EMP00210","status":"On Leave","role":"DevOps Engineer","team":"Mobile","lastLogin":"2023-12-03T16:10:23.153Z","performanceScore":"3.39","bonus":"","contractType":"Permanent","country":"France","city":"Frankfurt","postalCode":"37118","address":"3 Example Street","linkedin":"","github":"https://github.com/example-user-210","dateOfBirth":"","emergencyContact":""},{"id":211,"complexKey":"d9Wmo3ThSi4EQMlSQ5exIL6-_kOUPb85nHR34PVAJUVCgkI","description":"duo et Lorem dolore et sea sadipscing rebum. sed no labore tempor sed duo nonumy consetetur diam no diam tempor sed magna dolores diam magna nonumy no ipsum consetetur diam erat, vero aliquyam diam consetetur ea ea ipsum consetetur et tempor sadipscing aliquyam diam ea sea Stet dolor duo nonumy voluptua. Lorem et diam et nonumy At At justo no dolore erat, consetetur clita rebum. gubergren, nonumy Lorem magna tempor gubergr","firstName":"Hannah","lastName":"Müller","email":"hannah.müller@example.com","department":"Finance","skills":["Docker","Java"],"isActive":true,"salary":92379,"hireDate":"2011-01-13","manager":"Frank Becker","officeLocation":"Munich Office","phone":"","employeeNumber":"EMP00211","status":"Terminated","role":"Product Manager","team":"Tools","lastLogin":"2024-02-04T07:25:06.447Z","performanceScore":"0.70","bonus":"","contractType":"Contractor","country":"UK","city":"Munich","postalCode":"84995","address":"39 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":212,"complexKey":"FURoYFR6WwHHEOU1ZTCTdhZfRuK6d27PlMa4TzJv","description":"","firstName":"Frank","lastName":"Schneider","email":"frank.schneider@example.com","department":"Finance","skills":["AWS","SQL"],"isActive":true,"salary":48047,"hireDate":"2007-12-25","manager":"Ian Meyer","officeLocation":"","phone":"+13124307330","employeeNumber":"EMP00212","status":"On Leave","role":"Designer","team":"","lastLogin":"2024-09-13T04:01:20.155Z","performanceScore":"","bonus":3348,"contractType":"Temporary","country":"Spain","city":"Stuttgart","postalCode":"","address":"152 Example Street","linkedin":"","github":"https://github.com/example-user-212","dateOfBirth":"1989-02-14","emergencyContact":""},{"id":213,"complexKey":"GHzWVvtSsqQae3vb0ZiW8ogFocVhJ7MHXAY","description":"","firstName":"Frank","lastName":"Schneider","email":"frank.schneider@example.com","department":"Sales","skills":["AWS"],"isActive":true,"salary":45070,"hireDate":"2021-03-19","manager":"","officeLocation":"Munich Office","phone":"+18844129114","employeeNumber":"EMP00213","status":"Probation","role":"Data Analyst","team":"","lastLogin":"2021-11-10T14:39:15.800Z","performanceScore":"3.84","bonus":"","contractType":"Permanent","country":"USA","city":"","postalCode":"35761","address":"152 Example Street","linkedin":"","github":"","dateOfBirth":"1982-03-08","emergencyContact":""},{"id":214,"complexKey":"Fc5IGPIiLz4IO-L-hygNpv42gB9bYL9MWDVEsywvsztYU","description":"","firstName":"Hannah","lastName":"Schneider","email":"hannah.schneider@example.com","department":"Legal","skills":[],"isActive":false,"salary":75703,"hireDate":"2015-11-04","manager":"Diana Wagner","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00214","status":"On Leave","role":"Designer","team":"Tools","lastLogin":"","performanceScore":"3.88","bonus":"","contractType":"Intern","country":"Netherlands","city":"Berlin","postalCode":"54679","address":"190 Example Street","linkedin":"","github":"https://github.com/example-user-214","dateOfBirth":"","emergencyContact":""},{"id":215,"complexKey":"6CY9JARkH3Hr8l","description":"aliquyam et magna sanctus tempor est. consetetur rebum. et dolore erat, et duo consetetur rebum. sanctus ea no eirmod voluptua. eos magna elitr, eos sadipscing sea amet, ut elitr, takimata accusam sit est. tempor rebum. aliquyam magna rebum. et dolore et dolor invidunt amet, gubergren, sadipscing sanctus eirmod elitr, ea magna accusam kasd sadipscing et no invidunt sadipscing Stet dolores et magna et rebum. magna est. eirmod Lorem duo est. Lorem sit Lorem justo ut eirmod sed et voluptua. rebum. nonumy est. sea justo elitr, et aliquyam ut sea magna et et takimata nonumy et ipsum et gubergren, consetetur invidunt sed el","firstName":"Ian","lastName":"Weber","email":"","department":"Legal","skills":["React","Figma"],"isActive":false,"salary":40173,"hireDate":"2015-06-05","manager":"Eva Meyer","officeLocation":"","phone":"+13600230986","employeeNumber":"EMP00215","status":"","role":"DevOps Engineer","team":"Mobile","lastLogin":"","performanceScore":"3.68","bonus":"","contractType":"Intern","country":"Spain","city":"","postalCode":"","address":"","linkedin":"https://www.linkedin.com/in/example-user-215","github":"https://github.com/example-user-215","dateOfBirth":"1975-02-27","emergencyContact":""},{"id":216,"complexKey":"0TatCE5j4BhH3Dvw2te0DXDQC7-m4rqIoS5","description":"sed eos ea rebum. rebum. justo duo takimata ea est. sadipscing voluptua. magna est. magna et aliquyam Lorem consetetur sea nonumy diam Lorem dolores eirmod kasd dolores invidunt rebum. ut accusam sit voluptua. erat, justo accusam nonumy Stet Stet justo et nonumy kasd takimata dolor nonumy duo et invidunt voluptua. duo amet, rebum. ut elitr, diam duo no","firstName":"Ian","lastName":"Schmidt","email":"ian.schmidt@example.com","department":"","skills":["AWS","Figma"],"isActive":true,"salary":"","hireDate":"2021-10-13","manager":"Ian Wagner","officeLocation":"Berlin HQ","phone":"","employeeNumber":"EMP00216","status":"On Leave","role":"DevOps Engineer","team":"Web","lastLogin":"","performanceScore":"1.16","bonus":"","contractType":"Permanent","country":"Spain","city":"Berlin","postalCode":"27803","address":"48 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Bob Fischer (+19671810711)"},{"id":217,"complexKey":"PcG0CrurT9rBoN0JM3UgteEFLKtj3kl3RG-mXH","description":"et sit magna sit At justo invidunt dolor dolor amet, sanctus diam amet, erat, et nonumy ipsum ipsum duo Stet dolor sea no sit takimata takimata eirmod dolore aliquyam voluptua. diam est. elitr, sed dolor takimata rebum. ipsum takimata et takimata dolore gubergren, sed erat, est. labore nonumy clita consetetur no sit kasd eos no invidunt amet, et nonumy accusam duo erat, takimata vero dolor sed tempor nonumy ipsum accusam dolores amet, Stet est. labore Stet sea ea duo takimata sanctus et eos vero nonumy eirmod rebum. no duo rebum. sadipscing et takimata sit est. takimata elitr, sea rebum. eos labore Stet ipsum nonumy sea At Lorem clita rebum. voluptua. duo elitr, no magna dolores dolore sea et sit ut gubergren, et dolor diam takimata sanctus elitr","firstName":"Grace","lastName":"Müller","email":"grace.müller@example.com","department":"HR","skills":["Python","Docker","Figma","TypeScript"],"isActive":true,"salary":71639,"hireDate":"2010-06-28","manager":"Charlie Schmidt","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00217","status":"Terminated","role":"Data Analyst","team":"Core","lastLogin":"2023-10-22T06:47:38.986Z","performanceScore":"","bonus":14734,"contractType":"","country":"","city":"Cologne","postalCode":"20169","address":"94 Example Street","linkedin":"","github":"","dateOfBirth":"1982-12-01","emergencyContact":""},{"id":218,"complexKey":"FfTpaXxeRQyNoNkdY0rPKi872_fse1wYZ_qzOaMkbjOl","description":"","firstName":"Ian","lastName":"Wagner","email":"ian.wagner@example.com","department":"","skills":["React","TypeScript"],"isActive":true,"salary":42494,"hireDate":"2010-09-14","manager":"","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00218","status":"Probation","role":"Data Analyst","team":"Platform","lastLogin":"2023-07-29T10:26:46.182Z","performanceScore":"1.00","bonus":"","contractType":"Temporary","country":"Netherlands","city":"Munich","postalCode":"47089","address":"71 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":219,"complexKey":"","description":"ea eos sit diam voluptua. erat, consetetur et diam sanctus no et aliquyam erat, accusam Lorem sadipscing no amet, amet, dolor elitr, At invidunt ipsum Stet et ut ut dolores vero accusam diam vero erat, Lorem diam Lorem invidunt duo sanctus sit duo erat, diam elitr, et est. vo","firstName":"Hannah","lastName":"Becker","email":"hannah.becker@example.com","department":"HR","skills":["SQL","React","TypeScript","Python"],"isActive":true,"salary":54738,"hireDate":"2018-08-09","manager":"Julia Schmidt","officeLocation":"Munich Office","phone":"+49755049192","employeeNumber":"EMP00219","status":"Active","role":"Product Manager","team":"Growth","lastLogin":"2024-01-08T14:51:21.384Z","performanceScore":"1.15","bonus":5225,"contractType":"Permanent","country":"France","city":"Hamburg","postalCode":"51764","address":"80 Example Street","linkedin":"https://www.linkedin.com/in/example-user-219","github":"","dateOfBirth":"1983-01-18","emergencyContact":""},{"id":220,"complexKey":"5jVdMRTr_Y5HxgFGOdS1ifTOwHczZQh95","description":"","firstName":"Hannah","lastName":"Schneider","email":"","department":"Marketing","skills":["Figma","Java","Python"],"isActive":true,"salary":97432,"hireDate":"2013-02-07","manager":"Bob Müller","officeLocation":"Cologne Office","phone":"+16092732315","employeeNumber":"EMP00220","status":"Active","role":"DevOps Engineer","team":"Web","lastLogin":"","performanceScore":"","bonus":7842,"contractType":"","country":"","city":"","postalCode":"18376","address":"132 Example Street","linkedin":"","github":"","dateOfBirth":"1981-08-05","emergencyContact":"Charlie Schneider (+11638886818)"},{"id":221,"complexKey":"eXs-9W9e5Zn43wk-NSAj-zz5VT5fzmg5bv9c","description":"nonumy et tempor diam diam voluptua. elitr, sanctus elitr, vero sea eirmod magna voluptua. diam clita erat, sed Stet Stet erat, sed sea dolores rebum. dolores At et tempor At vero Stet Lorem et eos invidunt eos voluptua. At ut est. sanctus et diam est. sed tempor diam takimata gubergren, ut sanctus amet, vero sed eos et labore takimata Stet nonumy amet, dolor no eirmod voluptua. dolores voluptua. elitr, labore magna dolore aliquyam et tempor voluptua. dolores sed tempor magna gubergren, takimata eirmod sanctus labore consetetur Stet no dolores eirmod erat, gubergren, duo diam sanctus kasd dolore sanctus sed nonumy erat, erat, et sadipscing nonumy diam et clita nonumy voluptua. invidunt sea Lorem nonumy sed eos ipsum sea sadipscing justo duo duo accusam nonumy gubergren, Lorem consetetur labore sadipscing nonumy et sed ipsum justo et labore invidunt ea et diam ipsum duo diam elitr, magna ipsum con","firstName":"Hannah","lastName":"Weber","email":"hannah.weber@example.com","department":"HR","skills":[],"isActive":true,"salary":45148,"hireDate":"2023-04-29","manager":"","officeLocation":"","phone":"","employeeNumber":"EMP00221","status":"Terminated","role":"","team":"Mobile","lastLogin":"","performanceScore":"3.65","bonus":"","contractType":"Contractor","country":"USA","city":"Cologne","postalCode":"13470","address":"","linkedin":"","github":"","dateOfBirth":"1999-08-24","emergencyContact":"Alice Schmidt (+49570120721)"},{"id":222,"complexKey":"rGQA8-zthNjhOc","description":"","firstName":"Diana","lastName":"","email":"","department":"Legal","skills":["Java","Python","React","AWS"],"isActive":true,"salary":92323,"hireDate":"2021-03-15","manager":"Hannah Weber","officeLocation":"Munich Office","phone":"+49496176644","employeeNumber":"EMP00222","status":"On Leave","role":"DevOps Engineer","team":"","lastLogin":"2022-03-29T04:32:38.864Z","performanceScore":"4.08","bonus":"","contractType":"Intern","country":"France","city":"Cologne","postalCode":"","address":"","linkedin":"https://www.linkedin.com/in/example-user-222","github":"","dateOfBirth":"","emergencyContact":"Frank Schmidt (+49706375532)"},{"id":223,"complexKey":"-svykDOEeIs6p4jQTCXF5eRRL3q9","description":"eos dolor vero duo sanctus sed eos se","firstName":"Alice","lastName":"Meyer","email":"alice.meyer@example.com","department":"Sales","skills":["React","Docker","SQL","AWS"],"isActive":false,"salary":80791,"hireDate":"2011-10-18","manager":"","officeLocation":"Munich Office","phone":"+19426897732","employeeNumber":"EMP00223","status":"Probation","role":"Designer","team":"Tools","lastLogin":"","performanceScore":"","bonus":"","contractType":"Temporary","country":"USA","city":"","postalCode":"51309","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Diana Fischer (+49919745184)"},{"id":224,"complexKey":"zEiqrvAZfvQ8DFXZ4WkiSJGf00jRxlPMlaiew1","description":"rebum. diam diam sanctus duo sanctus tempor sanctus gubergren, aliquyam At ut dolore sed sadipscing amet, labore est. labore eirmod At duo amet, Lorem diam takimata justo no et diam conset","firstName":"Ian","lastName":"Weber","email":"ian.weber@example.com","department":"Sales","skills":["React","TypeScript"],"isActive":true,"salary":"","hireDate":"2022-08-01","manager":"","officeLocation":"","phone":"+49819069726","employeeNumber":"EMP00224","status":"Active","role":"QA Engineer","team":"","lastLogin":"","performanceScore":"","bonus":"","contractType":"Contractor","country":"Germany","city":"Berlin","postalCode":"76788","address":"","linkedin":"https://www.linkedin.com/in/example-user-224","github":"","dateOfBirth":"1994-07-28","emergencyContact":"Grace Becker (+19348766842)"},{"id":225,"complexKey":"cnkcAIBohMG5koDBpsd9M5","description":"labore ea kasd labore elitr, Lorem sea amet, ea et diam Lorem duo elitr, amet, no gubergren, At ut justo aliquyam sit et eos magna sea diam aliquyam magna rebum. gubergren, clita kasd voluptua. diam sed sadipscing ea dolores ut magna labore At aliquyam invidunt ipsum sed erat, clita sanctus Stet dolores sanctus et sed aliquyam Stet est. amet, no et sed et et justo Lorem takimata tempor erat, diam dolor sit gubergren, ipsum voluptua. dolor erat, At aliquyam takimata et consetetur est. dolor eirmod sit et dolores takimata Lorem est. sed invidunt clita accusam takimata invidunt consetetur dolore eos erat, Lorem aliquyam labore tempor magna invidunt vero dolores et Lorem magna et justo dolores duo amet, diam et ea sed amet, no Lorem et sadipscing Lorem vero et sed At Stet clita ut sea Stet kasd sadipscing takimata ut clita diam dolores dolore magna et eos sed sadipscing dolor sadipscing accusam ut rebum. clita justo conset","firstName":"Frank","lastName":"Becker","email":"frank.becker@example.com","department":"IT","skills":["SQL","Docker"],"isActive":false,"salary":45065,"hireDate":"2020-04-18","manager":"Hannah Meyer","officeLocation":"Hamburg Office","phone":"+49828037380","employeeNumber":"EMP00225","status":"On Leave","role":"Data Analyst","team":"Growth","lastLogin":"2021-02-18T20:17:55.121Z","performanceScore":"3.20","bonus":"","contractType":"Intern","country":"UK","city":"Berlin","postalCode":"20224","address":"186 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Diana Wagner (+49236379545)"},{"id":226,"complexKey":"q7KvCrLIk3Z0sbmA0wcLUzuza6CASUFvJoAXmMq","description":"labore et clita eos magna dolore sanctus voluptua. magna eirmod vero nonumy voluptua. diam erat, erat, sanctus sed eirmod aliquyam Stet aliquyam ipsum dolores et Stet sea dolore Lorem takimata gubergren, duo amet, tempor At ut diam labore et gubergren, magna justo diam amet, ut tempor ipsum est. duo justo rebum. justo sadipscing diam labore sanctus labore vero sea eos diam et sit sanctus voluptua. amet, gubergren, sed amet, sed voluptua. takimata ea dolore sed nonumy sed eirmod tempor invidunt erat, et diam nonumy takimata nonumy diam vero consetetur kasd no dolor justo tempor et amet, voluptua. rebum. Lorem Stet justo ut voluptua. nonumy erat, invidunt est. invidunt no magna ea sanctus sadipscing et sanctus labore eirmod consetetur dolor kasd sanctus accusam dolor no dolore erat, justo sed dolores takimata justo ea takimata At amet, diam rebum. elitr, no et At magna Lorem justo kasd invidunt sit accusam aliquyam est. elitr, ipsum ea Stet erat,","firstName":"Frank","lastName":"Wagner","email":"frank.wagner@example.com","department":"Sales","skills":["Python","Java","Figma"],"isActive":true,"salary":78706,"hireDate":"2017-01-02","manager":"Ian Meyer","officeLocation":"Berlin HQ","phone":"+49285730537","employeeNumber":"EMP00226","status":"On Leave","role":"DevOps Engineer","team":"Tools","lastLogin":"2020-07-12T02:15:26.762Z","performanceScore":"","bonus":"","contractType":"Temporary","country":"USA","city":"Frankfurt","postalCode":"15249","address":"","linkedin":"","github":"","dateOfBirth":"1987-05-29","emergencyContact":"Eva Wagner (+17345610506)"},{"id":227,"complexKey":"chiWO4u_IhdPS_DFJH9i8D0MOFzKnS","description":"ipsum sit sanctus accusam duo vero Stet duo et dolores eos no sed tempor ut sed labore duo eos eirmod Lorem ea vero sadipscing invidunt et kasd Stet sea et sed est. sadipscing At aliquyam est. duo et vero diam duo ipsum est. sea consetetur vero eirmod et aliquyam diam est. et kasd accusam gubergren, et diam consetetur est. duo eos sanctus sadipscing erat, Stet dolores justo gubergren, dolor Lorem no sed magna vero diam sanctus et eirmod eirmod nonumy et vero magna duo duo Lorem amet, dolores vero clita vero elitr, accusam diam dolore sed dolor dolores dolores eos voluptua. e","firstName":"Bob","lastName":"Müller","email":"","department":"Sales","skills":[],"isActive":true,"salary":"","hireDate":"2012-02-13","manager":"Ian Schneider","officeLocation":"Hamburg Office","phone":"+14395155745","employeeNumber":"EMP00227","status":"Active","role":"Designer","team":"Mobile","lastLogin":"2022-10-18T23:52:09.353Z","performanceScore":"0.43","bonus":13442,"contractType":"Contractor","country":"Netherlands","city":"Cologne","postalCode":"","address":"12 Example Street","linkedin":"https://www.linkedin.com/in/example-user-227","github":"","dateOfBirth":"1973-01-14","emergencyContact":"Grace Becker (+17207560529)"},{"id":228,"complexKey":"5GQPEbJkdTGw8-nswY2XKe2YGQlLwZOvkDxa056nhvBLN-","description":"erat, At consetetur diam aliquyam kasd erat, voluptua. dolore no elitr, duo amet, accusam eirmod et no sadipscing vero erat, amet, no duo Stet ipsum dolor diam voluptua. duo ut sit ipsum invidunt et elitr, et sea sed rebum. et ut Lorem sanctus nonumy ipsum tempor takimata amet, aliquyam erat, vero At eos Stet et sit diam dolore ea est. justo vero sit clita takimata sanctus diam labore magna Stet At elitr, sadipscing justo et accusam erat, invidunt et amet, et ipsum sadipscing ipsum takimata Stet et rebum. Lorem et duo dol","firstName":"Grace","lastName":"Wagner","email":"grace.wagner@example.com","department":"Marketing","skills":[],"isActive":true,"salary":44308,"hireDate":"2018-04-18","manager":"Charlie Becker","officeLocation":"Cologne Office","phone":"+18511529108","employeeNumber":"EMP00228","status":"Terminated","role":"Product Manager","team":"Tools","lastLogin":"2020-12-08T00:54:39.825Z","performanceScore":"","bonus":499,"contractType":"Contractor","country":"UK","city":"Hamburg","postalCode":"92990","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Eva Wagner (+49449645461)"},{"id":229,"complexKey":"","description":"gubergren, dolore kasd dolor et ea ipsum kasd no sed sea rebum. ut takimata sit gubergren, est. sanctus justo Lorem tempor consetetur voluptua. rebum. et no duo voluptua. Stet At no elitr, duo labore voluptua. elitr, takimata duo dolores elitr, sadipscing magna et accusam dolore kasd takimata rebum. labore dolores Stet amet, duo sea eirmod tempor labore accusam diam sanctus magna eirmod sed Stet sea ipsum amet, est. invidunt et dolore sanctus dolor takimata justo clita voluptua. elitr, nonumy labore sed amet, eos sit gubergren, sanctus sed labore tempor et accusam eos","firstName":"Hannah","lastName":"Schneider","email":"","department":"Sales","skills":["Java","Figma","Docker"],"isActive":true,"salary":56701,"hireDate":"2023-09-18","manager":"Grace Meyer","officeLocation":"Cologne Office","phone":"+49636109704","employeeNumber":"EMP00229","status":"Probation","role":"Data Analyst","team":"Core","lastLogin":"2020-04-13T05:05:52.939Z","performanceScore":"3.66","bonus":1043,"contractType":"Contractor","country":"Spain","city":"Berlin","postalCode":"20808","address":"","linkedin":"","github":"","dateOfBirth":"1993-10-10","emergencyContact":""},{"id":230,"complexKey":"d3cyya52j-1RkDGC-oS9WQx","description":"duo justo gubergren, consetetur sanctus invidunt sadipscing dolore sanctus et magna Lorem clita est. vero ut nonumy elitr, consetetur consetetur tempor consetetur labore vero invidunt sadipscing Lorem clita invidunt Stet ut et elitr, dolor ea vero accu","firstName":"Frank","lastName":"Fischer","email":"frank.fischer@example.com","department":"Sales","skills":["SQL","Java","Python"],"isActive":true,"salary":52903,"hireDate":"2019-09-16","manager":"Charlie Schmidt","officeLocation":"Cologne Office","phone":"+49130681765","employeeNumber":"EMP00230","status":"On Leave","role":"Product Manager","team":"Mobile","lastLogin":"2021-02-01T16:29:10.001Z","performanceScore":"","bonus":"","contractType":"Temporary","country":"USA","city":"Munich","postalCode":"21400","address":"24 Example Street","linkedin":"","github":"","dateOfBirth":"1975-02-19","emergencyContact":"Diana Schneider (+49741600977)"},{"id":231,"complexKey":"z-p_CeuAAYWZXJEiUhwiPkQvleXO_-","description":"rebum. Lorem dolor eirmod sea elitr, sea sanctus amet, voluptua. erat, gubergren, accusam duo kasd At Lorem ipsum dolor rebum. duo rebum. ipsum elitr, amet, est. diam nonumy magna Stet et diam tempor diam nonumy tempor sed amet, tempor takimata no accusam et sed vero At elitr, sadipscing et dolores takimata amet, sed amet, kasd sanctus Lorem ea dolor sanctus et ipsum ipsum sit dolores tempor Stet vero nonumy dolor ipsum duo invidunt gubergren, takimata","firstName":"Frank","lastName":"Wagner","email":"frank.wagner@example.com","department":"Sales","skills":["TypeScript"],"isActive":true,"salary":63668,"hireDate":"2013-04-30","manager":"Grace Müller","officeLocation":"Munich Office","phone":"+19058130085","employeeNumber":"EMP00231","status":"On Leave","role":"DevOps Engineer","team":"","lastLogin":"","performanceScore":"2.69","bonus":11951,"contractType":"Permanent","country":"UK","city":"Berlin","postalCode":"73909","address":"102 Example Street","linkedin":"","github":"","dateOfBirth":"1993-10-08","emergencyContact":""},{"id":232,"complexKey":"pqgw4Y1fDF_QZDDDer1u7vO","description":"","firstName":"Ian","lastName":"Müller","email":"","department":"Sales","skills":["React","TypeScript"],"isActive":true,"salary":40059,"hireDate":"2014-08-15","manager":"","officeLocation":"Berlin HQ","phone":"+18659719939","employeeNumber":"EMP00232","status":"Active","role":"Software Engineer","team":"Tools","lastLogin":"2020-08-07T07:04:17.069Z","performanceScore":"3.18","bonus":2983,"contractType":"","country":"Germany","city":"Frankfurt","postalCode":"80141","address":"20 Example Street","linkedin":"","github":"","dateOfBirth":"1981-07-23","emergencyContact":""},{"id":233,"complexKey":"E9hEP3m6sxmOgoXqIn3m-oS3Yp6GcALsQLJAe-cV8OX9Ca7K","description":"accusam ipsum no kasd ea diam sea sed et clita amet, sit duo eirmod sed ipsum et takimata est. sed justo vero diam kasd Lorem dolores et ea no et sed ea Stet et aliquyam sit diam gubergren, diam est. et clita rebum. Stet amet, et invidunt diam sed Lorem tempor ea ea amet, consetetur et dolore aliquyam eirmod voluptua. s","firstName":"Julia","lastName":"Schneider","email":"julia.schneider@example.com","department":"HR","skills":["React","AWS","TypeScript"],"isActive":true,"salary":56595,"hireDate":"2016-08-28","manager":"Diana Meyer","officeLocation":"Berlin HQ","phone":"+49915509093","employeeNumber":"EMP00233","status":"Active","role":"QA Engineer","team":"Web","lastLogin":"2020-12-02T21:58:56.797Z","performanceScore":"","bonus":3865,"contractType":"","country":"","city":"Berlin","postalCode":"26647","address":"","linkedin":"https://www.linkedin.com/in/example-user-233","github":"","dateOfBirth":"1969-09-15","emergencyContact":""},{"id":234,"complexKey":"H1BvHx3Z8ZfeDpxE","description":"","firstName":"","lastName":"Schneider","email":"eva.schneider@example.com","department":"","skills":["Java"],"isActive":true,"salary":"","hireDate":"2016-12-18","manager":"","officeLocation":"Munich Office","phone":"+49435973257","employeeNumber":"EMP00234","status":"Terminated","role":"","team":"","lastLogin":"","performanceScore":"3.21","bonus":3959,"contractType":"Intern","country":"UK","city":"Munich","postalCode":"62087","address":"18 Example Street","linkedin":"","github":"","dateOfBirth":"1971-02-25","emergencyContact":""},{"id":235,"complexKey":"GcFgFCWeyfGQj_xGko03CdTDUP","description":"et Lorem Stet kasd justo sed diam erat, dolor est. Lorem no eirmod duo elitr, clita sed voluptua. tempor sit eirmod accusam labore consetetur elitr, sit diam eirmod erat, sit sed accusam aliquyam ea rebum. duo diam aliquyam amet, consetetur accusam consetetur labore rebum. sit et nonumy sed aliquyam takimata sadipscing sanctus Lorem sit accusam amet, gubergren, eirmod eos sed kasd Lorem Lorem diam tempor amet, eos et et dolores diam gubergren, consetetur et vero tempor elitr, et vero labore ut dolore Stet eos et sanctus diam eirmod labore sanctus no et ipsum sit vero diam labore kasd eos amet, nonumy diam nonumy duo dolores dolores At sadipscing eirmod nonumy est. no sanctus rebum. vero sea sit vero accusam erat, aliquyam sed At sadipscing et sit clita kasd est. invidunt vero diam dolor et justo dolore dolores magna est. et ea labore diam Stet nonumy invidunt et Stet ipsum sa","firstName":"Grace","lastName":"Wagner","email":"grace.wagner@example.com","department":"IT","skills":["Docker","React","Figma"],"isActive":true,"salary":76880,"hireDate":"2021-08-16","manager":"Eva Müller","officeLocation":"Cologne Office","phone":"+13393310930","employeeNumber":"EMP00235","status":"On Leave","role":"Product Manager","team":"Core","lastLogin":"","performanceScore":"","bonus":9979,"contractType":"Permanent","country":"Netherlands","city":"Berlin","postalCode":"81986","address":"","linkedin":"","github":"","dateOfBirth":"1987-05-03","emergencyContact":""},{"id":236,"complexKey":"zLqTmnBY2fz3pvB4VmryRHKqbwKNUn8D8LRzCnJP0F86HT","description":"diam et sed dolore voluptua. duo et eos kasd nonumy ut aliquyam invidunt amet, ipsum takimata sed erat, ut tempor et et Stet duo takimata sit voluptua. sed sea est. sed erat, sea est. no rebum. ut rebum. sed aliquyam tempor ea eirmod magna no duo dolores dolor ea sea consetetur diam et justo sit erat, clita ipsum et dolore invidunt dolore kasd vero dolor et diam kasd Stet no duo invidunt gubergren, erat, dolores dolore gubergren, tempor ipsum diam elitr, labore sed et dolore Stet erat, dolore vero voluptua. dolor dolores nonumy takimata voluptua. sed et diam amet, sed dolores sed clita et dolor tempor sed gubergren, ea sanctus eirmod dolor nonumy sea et rebum. amet, no gubergren, sit vero et sea tempor est. takimata est. eirmod ut gubergren, et justo duo et diam Lorem vero clita dolor eirmod sanctus consetetur Stet et ipsum voluptua. ea sed dolores et diam sit takimata dolores","firstName":"Hannah","lastName":"Wagner","email":"hannah.wagner@example.com","department":"Legal","skills":["SQL","Java","Figma","Python"],"isActive":true,"salary":60976,"hireDate":"2021-08-18","manager":"Charlie Fischer","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00236","status":"Probation","role":"Data Analyst","team":"Core","lastLogin":"","performanceScore":"3.33","bonus":"","contractType":"Intern","country":"Germany","city":"Hamburg","postalCode":"17952","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Alice Schneider (+49884513269)"},{"id":237,"complexKey":"jxQq_kt9A4vt","description":"ipsum sanctus no At eos justo clita justo magna et takimata et ipsum dolor est. kasd sed elitr, dolor consetetur voluptua. clita consetetur diam ut magna ut ea dolor clita et magna aliquyam duo sed dolores voluptua. magna eos ea est. voluptua. eirmod takimata accusam ea voluptua. sanctus vero amet, accusam consetetur amet, tempor et labore sed takimata no eirmod elitr, accusam et sanctus clita no et justo est. elitr, aliquyam ea voluptua. Lorem et ipsum dolor amet, est. sit amet, no dolor eos rebum. sadipscing invidunt accusam ea takimata duo est. kasd justo et consetetur magna et voluptua. et sea duo et magna rebum. labore voluptua. eos sea tempor clita nonumy duo accusam consetetur sadipscing Lorem sed et labore magna et justo gubergren, accusam ipsum eirmod takimata no sit sed rebum. gubergren, diam sit rebum. gubergren, sadipscing Stet diam eos ea voluptua. dolore eirmod Stet duo eos diam nonumy nonumy justo diam Stet no Lore","firstName":"Alice","lastName":"Fischer","email":"alice.fischer@example.com","department":"Legal","skills":["React"],"isActive":true,"salary":94238,"hireDate":"2014-01-30","manager":"Ian Meyer","officeLocation":"","phone":"+49985102988","employeeNumber":"EMP00237","status":"Probation","role":"Designer","team":"Core","lastLogin":"2024-08-25T21:49:19.030Z","performanceScore":"3.97","bonus":5398,"contractType":"","country":"USA","city":"Frankfurt","postalCode":"47981","address":"99 Example Street","linkedin":"","github":"","dateOfBirth":"1971-12-25","emergencyContact":"Ian Becker (+12795549100)"},{"id":238,"complexKey":"C12awDxKV_cJGP3lo-RLBiu","description":"dolores eos kasd Stet vero At et dolor clita At ipsum diam clita duo et est. tempor gubergren, sed et tempor sit sadipscing rebum. rebum. accusam et aliquyam nonumy et kasd labore eos diam sed clita sanctus ea ipsum sea eos ut gubergren, Stet nonumy gubergren, est. clita et nonumy eos voluptua. invidunt dolor accusam tempor voluptua. sed et duo elitr, erat, tempor ut eirmod duo sanctus accusam tempor sed vero Lorem diam eirmod At consetetur invidunt elitr, ea ea sadipscing justo takimata ut erat, diam takimata dolor sed magna diam consetetur labore ea rebum. dolor et magna sit dolores dolores accusam sed voluptua. sed vero Lorem dolores invidunt est. dolor gubergren, sanctus magna amet, amet, justo sea sea ea At voluptua. voluptua. sadipscing voluptua. eirmod tempor clita diam et ipsum kasd vero Lorem et rebum. tempor clita ipsum ut elitr, diam kasd gubergren, r","firstName":"Charlie","lastName":"","email":"charlie.weber@example.com","department":"IT","skills":["Java"],"isActive":true,"salary":"","hireDate":"2024-01-12","manager":"Diana Schneider","officeLocation":"Hamburg Office","phone":"+15862320994","employeeNumber":"EMP00238","status":"Probation","role":"DevOps Engineer","team":"Tools","lastLogin":"2020-03-27T01:53:14.718Z","performanceScore":"3.48","bonus":"","contractType":"Contractor","country":"Netherlands","city":"Munich","postalCode":"87888","address":"83 Example Street","linkedin":"","github":"","dateOfBirth":"1988-12-01","emergencyContact":""},{"id":239,"complexKey":"UH9Tuuhrr2H5FpG5A9RcWV6GW","description":"diam tempor sadipscing et nonumy Stet ut kasd eos no eos diam ut amet, est. sit aliquyam invidunt sanctus Stet accusam ipsum dolores et dolor rebum. kasd et sea ut sadipscing sadipscing sit elitr, sed sanctus ut dolores ea sit et nonumy gubergren, diam Lorem et dolor sit sit clita sed At et magna consetetur rebum. kasd dolore diam est. amet, ea magna erat, Stet sed Stet dolor magna sanctus dolores ipsum diam invidunt sed labore At ut amet, At nonumy sed et Stet no rebum. accusam voluptua. sed ut est. accusam erat, amet, kasd sanctus labore sit conset","firstName":"Diana","lastName":"Wagner","email":"diana.wagner@example.com","department":"Legal","skills":[],"isActive":true,"salary":82064,"hireDate":"2018-06-23","manager":"Julia Weber","officeLocation":"Cologne Office","phone":"+49811067584","employeeNumber":"EMP00239","status":"Active","role":"Product Manager","team":"Mobile","lastLogin":"","performanceScore":"2.70","bonus":"","contractType":"","country":"Spain","city":"Cologne","postalCode":"88888","address":"","linkedin":"","github":"","dateOfBirth":"1996-01-27","emergencyContact":""},{"id":240,"complexKey":"er9PcOc6oLdaV-waj-LiC5jI2J-TWd","description":"","firstName":"Ian","lastName":"Schneider","email":"ian.schneider@example.com","department":"IT","skills":["React","TypeScript","Python","Figma"],"isActive":true,"salary":88533,"hireDate":"2006-11-14","manager":"Alice Fischer","officeLocation":"","phone":"","employeeNumber":"EMP00240","status":"Terminated","role":"Designer","team":"Web","lastLogin":"2023-10-28T11:28:39.517Z","performanceScore":"","bonus":11597,"contractType":"","country":"Netherlands","city":"","postalCode":"72903","address":"","linkedin":"","github":"https://github.com/example-user-240","dateOfBirth":"1983-01-16","emergencyContact":""},{"id":241,"complexKey":"g99AXUq3ENlho1U3E4MuUec0HXy7V0v06w7rlOHlZ9W235q","description":"","firstName":"Frank","lastName":"Müller","email":"frank.müller@example.com","department":"Legal","skills":["Java","React"],"isActive":true,"salary":42104,"hireDate":"2011-08-14","manager":"Grace Becker","officeLocation":"Cologne Office","phone":"+15433549857","employeeNumber":"EMP00241","status":"On Leave","role":"QA Engineer","team":"","lastLogin":"2024-02-26T10:25:04.141Z","performanceScore":"1.10","bonus":1756,"contractType":"Intern","country":"Germany","city":"Munich","postalCode":"24314","address":"117 Example Street","linkedin":"","github":"https://github.com/example-user-241","dateOfBirth":"1978-01-08","emergencyContact":""},{"id":242,"complexKey":"bt2t9rAKEvuTTu2kkDsU8A0SvUVO3DxwO0FS","description":"","firstName":"","lastName":"Fischer","email":"ian.fischer@example.com","department":"Legal","skills":["React","Java"],"isActive":true,"salary":85683,"hireDate":"2011-09-08","manager":"Ian Weber","officeLocation":"Remote","phone":"+14118118022","employeeNumber":"EMP00242","status":"","role":"Product Manager","team":"Tools","lastLogin":"","performanceScore":"","bonus":"","contractType":"Permanent","country":"USA","city":"Frankfurt","postalCode":"51058","address":"136 Example Street","linkedin":"","github":"https://github.com/example-user-242","dateOfBirth":"1998-10-09","emergencyContact":""},{"id":243,"complexKey":"cOkqJMh-zRt","description":"voluptua. clita diam amet, sed sanctus gubergren, dolore et amet, duo clita et sit et et Stet rebum. eos dolores sanctus invidunt invidunt erat, tempor consetetur eirmod eos elitr, sit sea voluptua. diam sed elitr, no Stet At et eos ut consetetur accusam et no At ipsum et dolore elitr, sit no ut est. sea eos voluptua. takimata et diam ut gubergren, takimata mag","firstName":"Grace","lastName":"","email":"","department":"Marketing","skills":["SQL","React","Figma"],"isActive":true,"salary":"","hireDate":"2020-08-15","manager":"Grace Schneider","officeLocation":"Munich Office","phone":"","employeeNumber":"EMP00243","status":"","role":"Software Engineer","team":"Growth","lastLogin":"2022-02-03T11:15:33.998Z","performanceScore":"1.20","bonus":3557,"contractType":"Permanent","country":"USA","city":"Frankfurt","postalCode":"89974","address":"163 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":244,"complexKey":"72mRlcBXT9dG1WwogBENiZ6YbIVNForpmPxFz","description":"aliquyam kasd clita erat, kasd et erat, sanctus et tempor elitr, voluptua. ea sit sed magna diam dolor clita voluptua. et et et diam et gubergren, ea Lorem sea Lorem magna justo aliquyam gubergren, vero gubergren, eirmod tempor consetetur eirmod aliquyam justo et Stet accusam labore justo et At diam Stet ipsum invidunt magna At eos eirmod invidunt takimata eos tempor diam eirmod et tempor et sadipscing erat, ut gubergren, kasd sea clita et nonumy sea justo justo Lorem et est. amet, accusam justo Stet sed sanctus Lorem labore ea est. ea diam labore tempor accusam aliquyam At accusam ipsum clita dolore clita invidunt Lorem dolore diam eirmod clita sanctus eos clita et magna voluptua. labore no magna duo diam dolor amet, no ea dolores clita et takimata sit voluptua. eirmod labore tempor diam rebum. aliquyam diam voluptua. et clita sed elitr, eirmod sed sanctus vero eirmod vero tempor magna et invidunt eirmod dia","firstName":"Bob","lastName":"Schmidt","email":"bob.schmidt@example.com","department":"IT","skills":["Figma","Python","AWS","TypeScript"],"isActive":false,"salary":43592,"hireDate":"2017-03-10","manager":"Diana Meyer","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00244","status":"Probation","role":"Data Analyst","team":"Tools","lastLogin":"","performanceScore":"3.99","bonus":2870,"contractType":"Intern","country":"France","city":"Stuttgart","postalCode":"17882","address":"","linkedin":"","github":"","dateOfBirth":"1987-10-26","emergencyContact":"Hannah Schneider (+49140494411)"},{"id":245,"complexKey":"_OfThicxniNF3QIUX","description":"sanctus labore sed sea kasd dolores et Stet sed Lorem Stet vero sanctus elitr, et et no justo dolore eos labore rebum. eirmod sit accusam kasd et sanctus et kasd kasd labore vero elitr, sanctus sadipscing et no magna eos Stet nonumy elitr, est. voluptua. dolor Lorem et gubergren, ipsum clita kasd aliquyam et duo clita sea magna eos et vero consetetur ut et et diam et est","firstName":"","lastName":"Müller","email":"bob.müller@example.com","department":"Marketing","skills":[],"isActive":true,"salary":92015,"hireDate":"2011-12-09","manager":"Diana Meyer","officeLocation":"","phone":"+12352985315","employeeNumber":"EMP00245","status":"Active","role":"Data Analyst","team":"Growth","lastLogin":"2023-01-02T18:14:10.111Z","performanceScore":"1.85","bonus":880,"contractType":"Intern","country":"UK","city":"Berlin","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":246,"complexKey":"65KSsG7mKFd8De5Xgxkb0EWTU","description":"","firstName":"Alice","lastName":"Wagner","email":"alice.wagner@example.com","department":"Marketing","skills":["React","TypeScript","Docker","Python"],"isActive":true,"salary":"","hireDate":"2005-02-15","manager":"Hannah Schneider","officeLocation":"","phone":"+49135011326","employeeNumber":"EMP00246","status":"Active","role":"DevOps Engineer","team":"Core","lastLogin":"","performanceScore":"2.14","bonus":4593,"contractType":"Temporary","country":"UK","city":"Hamburg","postalCode":"67722","address":"","linkedin":"","github":"https://github.com/example-user-246","dateOfBirth":"1968-11-03","emergencyContact":"Frank Weber (+49961095249)"},{"id":247,"complexKey":"9S57u9SsTt_Y","description":"sanctus sed sed ea At sadipscing justo sea aliquyam labore At labore At consetetur sed sed aliquyam rebum. justo justo diam dolor no Lorem diam vero et dolor aliquyam et erat, no sadipscing sed Stet diam accusam rebum. duo sed duo labore Lorem At amet, rebum. At justo clita sanctus tempor At dolores amet, et sit Lorem gubergren, sea et sadipscing diam diam consetetur erat, accusam sadipscing rebum. sea et dolore invidunt kasd ea magna tempor dolor eos amet, magna labore kasd Stet justo sit eos elitr, erat, elitr, eirmod diam diam clita invidunt est. vero Lorem vero At sed rebum. clita voluptua. ipsum diam amet, dolores accusam diam","firstName":"Julia","lastName":"Schneider","email":"julia.schneider@example.com","department":"Sales","skills":["Java"],"isActive":true,"salary":"","hireDate":"2019-12-08","manager":"Charlie Schneider","officeLocation":"Remote","phone":"","employeeNumber":"EMP00247","status":"Probation","role":"QA Engineer","team":"Growth","lastLogin":"2022-08-17T03:22:04.443Z","performanceScore":"","bonus":"","contractType":"Permanent","country":"France","city":"Frankfurt","postalCode":"54727","address":"87 Example Street","linkedin":"https://www.linkedin.com/in/example-user-247","github":"","dateOfBirth":"","emergencyContact":"Ian Schneider (+49937210123)"},{"id":248,"complexKey":"lktGGNU_JeeLy-KfFD3XhZvp4FSwRWD8jjYIczWNSpAxVHt7Rj","description":"vero sadipscing sanctus takimata kasd At clita ea et dolore At sed At sit dolores nonumy diam ut sanctus voluptua. no","firstName":"Alice","lastName":"Müller","email":"alice.müller@example.com","department":"Finance","skills":["Docker","Python","TypeScript","SQL"],"isActive":true,"salary":68465,"hireDate":"2011-06-05","manager":"Charlie Schneider","officeLocation":"Hamburg Office","phone":"+49467930176","employeeNumber":"EMP00248","status":"On Leave","role":"QA Engineer","team":"Mobile","lastLogin":"","performanceScore":"4.29","bonus":4696,"contractType":"Intern","country":"France","city":"Frankfurt","postalCode":"50495","address":"","linkedin":"","github":"","dateOfBirth":"1996-04-28","emergencyContact":""},{"id":249,"complexKey":"71HkJBfWbmbRGFZQfuPd7IvYcnyrJlfcmP1n_BkqqSlZuEBFn","description":"","firstName":"Frank","lastName":"Müller","email":"frank.müller@example.com","department":"Legal","skills":[],"isActive":true,"salary":"","hireDate":"2006-08-11","manager":"Bob Meyer","officeLocation":"Berlin HQ","phone":"+49414972854","employeeNumber":"EMP00249","status":"Probation","role":"Software Engineer","team":"Mobile","lastLogin":"","performanceScore":"1.26","bonus":2551,"contractType":"Intern","country":"UK","city":"Frankfurt","postalCode":"","address":"3 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Julia Schneider (+18605994121)"},{"id":250,"complexKey":"P8iECISpam4f7o4sO-Ntt-p_EH","description":"dolore eos Stet est. clita clita dolores accusam labore est. dolore amet, elitr, ea justo invidunt clita tempor takimata elitr, sea et ipsum accusam vero et Stet nonumy et kasd accusam amet, voluptua. dolor accusam eos sadipscing tempor et eos nonumy consetetur rebum. no voluptua. eos sea labore At labore ea clita ipsum sed Stet dolor labore dolor gubergren, clita justo nonumy elitr, rebum. invidunt ea nonumy magna diam dolor eirmod aliquyam kasd labore sed et sadipscing diam gubergren, nonumy accusam no takimata clita dolores et takimata sea no aliquyam kasd et erat, diam sanctus At sanctus sanctus eirmod clita ut justo ea magna vero duo gubergren, diam et duo gubergren, sit est. sadipscing dolore dolore sed diam vero magna est. kasd et invidunt Lorem Lorem sea gubergren, elitr, est. erat, rebum. ea gubergren, takimata accusam et sit rebum. justo et tempor eirmod et no eos vero no voluptua. ipsum At dolore nonumy et sea ea et nonumy invidunt","firstName":"Hannah","lastName":"Schmidt","email":"hannah.schmidt@example.com","department":"Finance","skills":["React","TypeScript","Docker"],"isActive":true,"salary":45804,"hireDate":"2019-05-07","manager":"Ian Schmidt","officeLocation":"Remote","phone":"+49279141916","employeeNumber":"EMP00250","status":"On Leave","role":"Software Engineer","team":"","lastLogin":"","performanceScore":"","bonus":"","contractType":"Permanent","country":"Germany","city":"Frankfurt","postalCode":"31244","address":"157 Example Street","linkedin":"https://www.linkedin.com/in/example-user-250","github":"","dateOfBirth":"1971-04-01","emergencyContact":""},{"id":251,"complexKey":"","description":"","firstName":"Eva","lastName":"Wagner","email":"eva.wagner@example.com","department":"IT","skills":[],"isActive":true,"salary":"","hireDate":"2024-05-07","manager":"Hannah Schmidt","officeLocation":"Remote","phone":"+18167463274","employeeNumber":"EMP00251","status":"On Leave","role":"Designer","team":"Tools","lastLogin":"2021-11-28T12:47:01.915Z","performanceScore":"1.20","bonus":14859,"contractType":"Temporary","country":"Spain","city":"Hamburg","postalCode":"92940","address":"49 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":252,"complexKey":"MOk0-39DJ8E_K5-OYsTb3eddvXlmco7MKuwJmDC","description":"et et diam sanctus sit sea eos amet, Lorem justo dolore sed labore consetetur At tempor sit sed voluptua. gubergren, sit gubergren, sea dolor sadipscing duo Stet ea dolore dolores labore takimata amet, aliquyam accusam no ea At dolor duo eos diam et justo et vero magna rebum. dolore aliquyam consetetur dolores no amet, nonumy sed invidunt rebum. et duo labore At et nonumy et dolor kasd sed et diam voluptua. takimata aliquyam ut labore Lorem aliquyam dolore tempor duo diam Stet d","firstName":"Frank","lastName":"Wagner","email":"","department":"HR","skills":["SQL","AWS"],"isActive":true,"salary":58839,"hireDate":"2020-05-10","manager":"Ian Fischer","officeLocation":"Munich Office","phone":"+12237555078","employeeNumber":"EMP00252","status":"Active","role":"Data Analyst","team":"Mobile","lastLogin":"","performanceScore":"1.91","bonus":1132,"contractType":"Permanent","country":"Germany","city":"Munich","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"1978-03-10","emergencyContact":"Grace Schmidt (+49658370135)"},{"id":253,"complexKey":"jM1ZVnnOCTZ-eJhC_F","description":"aliquyam gubergren, est. justo Stet ut diam sea aliquyam sanctus diam labore duo Stet tempor At eos dolores rebum. consetetur erat, invidunt justo kasd clita erat, sadipscing eos sanctus dolor clita et ipsum est. sea erat, rebum. erat, Stet dolor voluptua. et erat, dolores et sea sadipscing consetetur ea nonumy invidunt voluptua. dolores justo amet, invidunt rebum. consetetur Stet gubergren, rebum. sed vero sit nonumy sea diam gubergren, vero invidunt justo nonumy nonumy gubergren, labore duo no est. ipsum clita erat, ut diam eos justo ut duo sit dolore eirmod consetetur et sed magna diam","firstName":"Alice","lastName":"Meyer","email":"alice.meyer@example.com","department":"Finance","skills":["Figma"],"isActive":true,"salary":49071,"hireDate":"2021-10-28","manager":"Alice Becker","officeLocation":"","phone":"+14711930114","employeeNumber":"EMP00253","status":"Active","role":"Designer","team":"Tools","lastLogin":"2023-08-28T01:38:14.652Z","performanceScore":"1.95","bonus":14243,"contractType":"Permanent","country":"Netherlands","city":"Frankfurt","postalCode":"12298","address":"","linkedin":"","github":"https://github.com/example-user-253","dateOfBirth":"1969-03-13","emergencyContact":"Ian Weber (+49605309754)"},{"id":254,"complexKey":"Z5nU4c6UIFEy2CiiV108lYzgnExv","description":"takimata ut diam gubergren, gubergren, et magna voluptua. et dolore ipsum duo sanctus accusam dolores duo eirmod gubergren, erat, erat, et diam At aliquyam sit et ipsum ipsum ipsum et diam dolor et accusam sea elitr, et magna justo et sea vero consetetur ut tempor aliquyam diam et ipsum nonumy et diam magna vero ut accusam nonumy dolor sanctus no eirmod Lorem dolores aliquyam no sit dolores amet, et erat, justo et labore takimata invidunt invidunt magna sed clita voluptua. et et dolore voluptua. gubergren, aliquyam eirmod elitr, At et sed magna et elitr, et justo ut amet, sed invidunt sanctus vero tempor gubergren, magna aliquyam kasd sadipscing sed vero rebum. At voluptua. sed vero At Stet justo accusam tempor dolore eirmod kasd","firstName":"Bob","lastName":"Fischer","email":"bob.fischer@example.com","department":"IT","skills":[],"isActive":true,"salary":81303,"hireDate":"2016-01-03","manager":"","officeLocation":"Munich Office","phone":"+11990869840","employeeNumber":"EMP00254","status":"Active","role":"Software Engineer","team":"Web","lastLogin":"2024-08-18T02:51:58.789Z","performanceScore":"","bonus":"","contractType":"Permanent","country":"Netherlands","city":"Munich","postalCode":"96037","address":"1 Example Street","linkedin":"","github":"","dateOfBirth":"1988-08-21","emergencyContact":""},{"id":255,"complexKey":"s5PGshqByw4iQ9Gs-eTUod-o4Tk_iKr","description":"et ut diam accusam elitr, aliquyam rebum. sea eirmod ea justo dolores voluptua. eirmod ea labore accusam sanctus et diam sea diam tempor sanctus et est. At ea Stet nonumy vero rebum. eirmod amet, diam rebum. consetetur invidunt ipsum est. diam rebum. sit no gubergren, et duo eos clita vero et ipsum gubergren, amet, consetetur elitr, ut dolor et tempor labore rebum. vero voluptua. sea Stet labore dolores voluptua. dolore accusam rebum. erat, sed rebum. dolore no eirmod est. et et aliquyam et diam no accusam diam takimata sed takimata diam sit clita sadipscing aliquyam justo clita eirmod dolores dolor sea justo et duo et sea kasd magna Lorem takimata takimata kasd nonumy et kasd Stet gubergren, duo nonumy elitr, Lorem justo dolore no et tempor elitr, sanctus duo diam sed labore est. At tempor magna invidunt consetetur dolores Lorem dolores sea sed ut erat, vero tempor ipsum dolore dolor invidunt Lorem et accusam justo voluptua. sea voluptua. sed takimata et no u","firstName":"Eva","lastName":"Weber","email":"eva.weber@example.com","department":"","skills":["Java"],"isActive":true,"salary":68555,"hireDate":"2015-11-28","manager":"Ian Becker","officeLocation":"Munich Office","phone":"+14383520168","employeeNumber":"EMP00255","status":"Terminated","role":"Data Analyst","team":"Platform","lastLogin":"2024-05-24T07:30:01.379Z","performanceScore":"2.79","bonus":"","contractType":"Intern","country":"USA","city":"","postalCode":"17756","address":"137 Example Street","linkedin":"https://www.linkedin.com/in/example-user-255","github":"https://github.com/example-user-255","dateOfBirth":"1981-10-28","emergencyContact":""},{"id":256,"complexKey":"ikG7FwGY90KyII9O9i_1MoGDvMx2vsTIn_VeJBRr","description":"accusam dolor no Lorem takimata clita sit vero et At et sanctus justo clita dolores sed invidunt ea et ut diam takimata duo est. sit consetetur Stet est. diam Stet dolore Lorem duo accusam voluptua. sed labore sed sadipscing sed labore et sadipscing eirmod dolore sit Lorem duo diam elitr, est. invidunt rebum. erat, sed et vero consetetur dolore accusam amet, At At et vero takimata At duo sadipscing erat, accusam eirmod sed Lorem elitr, clita erat, et ipsum no ut labore elitr, takimata ut magna ipsum amet, accusam diam amet, dolores est. At sit sadipscing elitr, gubergren, dolores no invidunt erat, vero sit accusam ut diam et justo aliquyam erat, duo amet, est. gubergren, nonumy no est. voluptua. voluptua. ea et sed diam diam s","firstName":"Frank","lastName":"Fischer","email":"frank.fischer@example.com","department":"Finance","skills":["Docker"],"isActive":false,"salary":"","hireDate":"2020-03-04","manager":"Eva Schneider","officeLocation":"","phone":"+49861921899","employeeNumber":"EMP00256","status":"Terminated","role":"DevOps Engineer","team":"Core","lastLogin":"2024-07-15T17:01:50.308Z","performanceScore":"0.00","bonus":"","contractType":"","country":"France","city":"","postalCode":"17404","address":"48 Example Street","linkedin":"https://www.linkedin.com/in/example-user-256","github":"","dateOfBirth":"","emergencyContact":""},{"id":257,"complexKey":"L_Dklz_f_IgVtizT1GsDf574SOPHUag04V3LAnbRvb1al9zcFU","description":"dolore gubergren, aliquyam diam labore dolores ut sea no no invidunt et dolor nonumy gubergren, kasd ipsum ipsum dolores no dolores Stet ipsum erat, clita et elitr, ut erat, eos sed dolor invidunt sea Stet vero At sit clita consetetur sea consetetur Lorem magna est. duo dolore aliquyam labore tempor elitr","firstName":"Bob","lastName":"Weber","email":"bob.weber@example.com","department":"Finance","skills":["TypeScript","Figma"],"isActive":true,"salary":69301,"hireDate":"","manager":"Hannah Wagner","officeLocation":"Cologne Office","phone":"+49588528912","employeeNumber":"EMP00257","status":"Probation","role":"Data Analyst","team":"Web","lastLogin":"2022-03-11T17:00:02.102Z","performanceScore":"","bonus":"","contractType":"Contractor","country":"USA","city":"Stuttgart","postalCode":"57479","address":"39 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":258,"complexKey":"Cw9tkCzyP3aKG_7q7jinDUkdDsjouufGiHS9_huY9V7PiDeI5","description":"","firstName":"Charlie","lastName":"Schmidt","email":"charlie.schmidt@example.com","department":"Finance","skills":["Python","Figma","TypeScript","Java"],"isActive":true,"salary":70793,"hireDate":"2015-08-05","manager":"Alice Weber","officeLocation":"","phone":"+13286296479","employeeNumber":"EMP00258","status":"Terminated","role":"Data Analyst","team":"Core","lastLogin":"2021-08-02T02:44:15.511Z","performanceScore":"1.57","bonus":"","contractType":"","country":"UK","city":"Cologne","postalCode":"69060","address":"183 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Alice Becker (+15369909882)"},{"id":259,"complexKey":"z94X6oEqgiCvZ8P6Voux88_ewK5kKmnz0kAcW4y-D0yqPNJ","description":"sit eirmod et ipsum eos Lorem et et amet, labore ut et vero kasd invidunt magna consetetur gubergren, dolore sed rebum. kasd est. sea et voluptua. sed no vero est. diam diam sea diam dolore aliquyam tempor et sanctus accusam no sea et sit diam sed est. no ut sed clita et eirmod et aliquyam labore voluptua. eirmod voluptua. diam erat, invidunt et ipsum et diam vero accusam sed gubergren, sanctus dolor sed sadipscing magna ea ea nonumy Lorem et sit sea accusam voluptua. voluptua. et magna tempor Lorem sed magna sed aliquyam voluptua. amet, sadipscing dolor dolore takimata accusam sed vero takimata Stet magna consetetur sed sanctus sanctus labore vero magna diam ut eos justo amet, diam ve","firstName":"Hannah","lastName":"Schmidt","email":"hannah.schmidt@example.com","department":"Finance","skills":[],"isActive":true,"salary":70093,"hireDate":"","manager":"Alice Meyer","officeLocation":"","phone":"+49161007704","employeeNumber":"EMP00259","status":"Active","role":"Designer","team":"Mobile","lastLogin":"","performanceScore":"1.94","bonus":"","contractType":"","country":"France","city":"Cologne","postalCode":"","address":"29 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Hannah Schmidt (+19331406953)"},{"id":260,"complexKey":"TqLC00h6pm","description":"justo est. nonumy duo no accusam et ipsum et et et rebum. tempor dolores kasd erat, elitr, takimata et clita aliquyam accusam elitr, sea Lorem sea vero labore Lorem sadipscing tempor gubergren, diam eirmod aliquyam Lorem consetetur no dolores sanctus sit sed ut takimata magna kasd amet, sed ipsum labore justo kasd ut elitr, gubergren, kasd clita et accusam Stet vero Stet amet, labore erat, Lorem amet, ipsum gubergren, ut vero ut erat, et At labore rebum. Stet et labore ut accusam nonumy eos sanctus Lorem sed tempor clita ipsum magna diam ipsum invidunt nonumy et ipsum ipsum dolor At nonumy erat, ut takimata sadipscing clita invidunt ut et voluptua. ut sit gubergren, Lorem sed aliqu","firstName":"Grace","lastName":"Schneider","email":"grace.schneider@example.com","department":"HR","skills":["AWS","Figma","Python"],"isActive":true,"salary":59359,"hireDate":"2019-03-01","manager":"Ian Meyer","officeLocation":"Remote","phone":"","employeeNumber":"EMP00260","status":"Active","role":"","team":"Growth","lastLogin":"","performanceScore":"2.58","bonus":"","contractType":"Contractor","country":"Netherlands","city":"Hamburg","postalCode":"","address":"14 Example Street","linkedin":"","github":"","dateOfBirth":"1985-01-14","emergencyContact":""},{"id":261,"complexKey":"oBz3iuUTA8Rylu","description":"sit vero voluptua. takimata justo consetetur Lorem eirmod sea dolore At Lorem et est. et Lorem diam ut elitr, sed Stet eos sanctus erat, takimata est. ut ea dolore amet, sanctus ea est. sed est. sit eos Stet tempor sed amet, sea diam eos At accusam accusam sanctus sadipscing ut gubergren, kasd accusam amet, dolore aliquyam diam gubergren, et magna diam ipsum et justo sit tempor Stet vero magna dolore justo duo et vero eirmod dolore Lorem sadipscing sanctus et aliquyam est. ipsum rebum. magna kasd amet, voluptua. sed rebum. sed gubergren, invidunt dolores eirmod voluptua. et clita diam dolore diam et diam diam sea invidunt magna sea et voluptua. At invidunt dolores","firstName":"Julia","lastName":"Müller","email":"julia.müller@example.com","department":"Marketing","skills":["React","AWS","Figma"],"isActive":true,"salary":60766,"hireDate":"2009-01-27","manager":"Bob Wagner","officeLocation":"Cologne Office","phone":"+49281345201","employeeNumber":"EMP00261","status":"Terminated","role":"","team":"","lastLogin":"","performanceScore":"3.19","bonus":3332,"contractType":"Contractor","country":"Germany","city":"Cologne","postalCode":"77809","address":"160 Example Street","linkedin":"https://www.linkedin.com/in/example-user-261","github":"","dateOfBirth":"","emergencyContact":"Bob Müller (+16702376553)"},{"id":262,"complexKey":"gJ6xFCU10LIONpxRDCBu4QjlbTR1sUxGV9","description":"","firstName":"Diana","lastName":"Schmidt","email":"diana.schmidt@example.com","department":"Legal","skills":["Java","React","SQL","Figma"],"isActive":false,"salary":72375,"hireDate":"2012-12-21","manager":"Eva Fischer","officeLocation":"Berlin HQ","phone":"+49422005121","employeeNumber":"EMP00262","status":"Terminated","role":"Product Manager","team":"","lastLogin":"2020-03-29T18:24:58.421Z","performanceScore":"2.60","bonus":701,"contractType":"Intern","country":"Netherlands","city":"","postalCode":"36837","address":"119 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":263,"complexKey":"","description":"sed nonumy amet, nonumy et justo nonumy dolore labore et amet, erat, sit et sit rebum. elitr, dolor et Lorem consetetur elitr, vero Lorem At vero elitr, nonumy Lorem labore est. ipsum takimata clita accusam rebum. sed clita vero Stet ea sadipscing voluptua. invidunt amet, no sit voluptua. takimata elitr, consetetur et sed labore sed vero vero ea sed est. elitr, amet, et ea Stet rebum. diam diam sea dolore diam dolore consetetur nonumy ipsum nonumy consetetur diam Lorem justo dolor sadipscing kasd kasd dolor ea diam invidunt est. Stet sadipscing sadipscing no cli","firstName":"Eva","lastName":"Wagner","email":"eva.wagner@example.com","department":"","skills":["SQL"],"isActive":true,"salary":"","hireDate":"2019-04-12","manager":"Julia Müller","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00263","status":"Probation","role":"Product Manager","team":"Tools","lastLogin":"","performanceScore":"","bonus":"","contractType":"Intern","country":"USA","city":"Stuttgart","postalCode":"87289","address":"","linkedin":"","github":"https://github.com/example-user-263","dateOfBirth":"","emergencyContact":"Grace Schneider (+15200903531)"},{"id":264,"complexKey":"dE6s4cznuu","description":"dolores consetetur sed et sit diam labore ut Lorem clita ut et eos diam vero sadipscing labore dolores est. ea accusam duo clita vero sed tempor diam et tempor aliquyam sit diam elitr, ipsum sed voluptua. labore voluptua. ea sanctus Lorem sit dolores erat, tempor justo nonumy eos nonumy eirmod sadipscing clita gubergren, accusam amet, Stet justo est. voluptua. invidunt takimata et no labore gubergren, sadipscing r","firstName":"Grace","lastName":"Weber","email":"grace.weber@example.com","department":"Finance","skills":["React","TypeScript"],"isActive":true,"salary":81994,"hireDate":"2016-09-14","manager":"Eva Weber","officeLocation":"Hamburg Office","phone":"+16730257692","employeeNumber":"EMP00264","status":"Active","role":"Data Analyst","team":"Web","lastLogin":"2023-08-12T20:39:16.318Z","performanceScore":"0.49","bonus":"","contractType":"","country":"USA","city":"Berlin","postalCode":"44799","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Eva Müller (+16072363244)"},{"id":265,"complexKey":"","description":"ut eirmod Stet invidunt labore","firstName":"Charlie","lastName":"Müller","email":"charlie.müller@example.com","department":"Legal","skills":["Figma","Python"],"isActive":true,"salary":82144,"hireDate":"2023-07-23","manager":"Frank Fischer","officeLocation":"Cologne Office","phone":"","employeeNumber":"EMP00265","status":"Terminated","role":"DevOps Engineer","team":"Tools","lastLogin":"2022-02-06T17:21:42.209Z","performanceScore":"4.97","bonus":"","contractType":"Contractor","country":"USA","city":"","postalCode":"40721","address":"90 Example Street","linkedin":"","github":"https://github.com/example-user-265","dateOfBirth":"","emergencyContact":"Alice Schneider (+16605604536)"},{"id":266,"complexKey":"","description":"dolor dolor eos no magna ea voluptua. Stet At diam rebum. sea et et et accusam diam dolor erat, dolor sadipscing voluptua. voluptua. invidunt sed duo clita amet, gubergren, nonumy voluptua. diam accusam ea aliquyam eos vero duo eos Stet erat, est. vero dolores nonumy diam rebum. aliquyam rebum. sed At clita clita ut ut sed sea sadipscing magna et invidunt vero eos et magna vero aliquyam magna Stet et amet, con","firstName":"Alice","lastName":"Müller","email":"alice.müller@example.com","department":"Sales","skills":[],"isActive":true,"salary":70668,"hireDate":"2023-05-04","manager":"Alice Weber","officeLocation":"Remote","phone":"+13884159548","employeeNumber":"EMP00266","status":"","role":"Software Engineer","team":"Growth","lastLogin":"","performanceScore":"0.17","bonus":13215,"contractType":"Contractor","country":"France","city":"Stuttgart","postalCode":"29756","address":"103 Example Street","linkedin":"","github":"https://github.com/example-user-266","dateOfBirth":"1969-08-15","emergencyContact":""},{"id":267,"complexKey":"ECCEPbLEnYM6lUPWQcHNEVnFZooPU7-","description":"est. labore Lorem duo eirmod At duo sit Lorem magna sadipscing magna gubergren, aliquyam et voluptua. eirmod aliquyam nonumy elitr, voluptua. no sed sed Stet re","firstName":"Julia","lastName":"Schneider","email":"julia.schneider@example.com","department":"Sales","skills":[],"isActive":true,"salary":91267,"hireDate":"2006-12-30","manager":"Ian Müller","officeLocation":"Hamburg Office","phone":"+17482537647","employeeNumber":"EMP00267","status":"Terminated","role":"QA Engineer","team":"Tools","lastLogin":"2024-09-29T23:23:54.452Z","performanceScore":"4.72","bonus":8821,"contractType":"","country":"USA","city":"Stuttgart","postalCode":"52394","address":"56 Example Street","linkedin":"","github":"","dateOfBirth":"1966-08-21","emergencyContact":""},{"id":268,"complexKey":"quGz_OICQVXsdv0xa9T-juILy0U9VmBXM-_t-wx2abg5NBk","description":"","firstName":"","lastName":"Meyer","email":"julia.meyer@example.com","department":"Marketing","skills":["SQL","Python"],"isActive":true,"salary":83234,"hireDate":"","manager":"Eva Weber","officeLocation":"Cologne Office","phone":"+11125970526","employeeNumber":"EMP00268","status":"On Leave","role":"","team":"Tools","lastLogin":"","performanceScore":"0.06","bonus":"","contractType":"Permanent","country":"France","city":"Hamburg","postalCode":"84604","address":"90 Example Street","linkedin":"","github":"","dateOfBirth":"1966-03-26","emergencyContact":""},{"id":269,"complexKey":"b123UvxvpRv2f0R","description":"diam ipsum kasd At et ut labore justo no vero labore accusam amet, eos justo ea sadipscing erat, sed voluptua. diam labore et ut labore sed voluptua. labore tempor consetetur takimata labore ut eirmod justo sanctus sadipscing dolore eirmod magna sadipscing kasd At elitr, gubergren, dolor eos elitr, sadipscing accusam amet, kasd ipsum At kasd diam nonumy sed clita magna rebum. erat, labore tempor labore sed sed vero dolor ipsum At ipsum ipsum aliquyam diam sanctus justo ipsum eos takimata dolor et tempor magna elitr, ipsum t","firstName":"Grace","lastName":"Weber","email":"grace.weber@example.com","department":"HR","skills":["TypeScript","React"],"isActive":true,"salary":61992,"hireDate":"2024-11-15","manager":"Diana Meyer","officeLocation":"Cologne Office","phone":"+16751148867","employeeNumber":"EMP00269","status":"Active","role":"Software Engineer","team":"Mobile","lastLogin":"2022-05-15T12:06:27.573Z","performanceScore":"1.73","bonus":8714,"contractType":"Temporary","country":"Spain","city":"Munich","postalCode":"","address":"192 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Hannah Becker (+49249030170)"},{"id":270,"complexKey":"I5PnNgMe3H11Bsgu9SPUPASQpYlK4j1_U_NFRxjz","description":"rebum. sanctus amet, rebum. tempor elitr, accusam tempor dolore At est. ut sanctus justo erat, voluptua. dolor eirmod vero sed ipsum dolor sadipscing voluptua. diam nonumy et duo magna dolor no gubergren, diam et sed et voluptua. et et elitr, vero diam sadipscing dolor dolores consetetur sanctus et et takimata diam labore et sea voluptua. sea kasd dolores duo tempor elitr, sed elitr, voluptua. kasd elitr, invidunt sed justo accusam ea At duo tempor duo sea aliquyam sit diam gubergren, ipsum invidunt ipsum takimata dolor sadipscing erat, duo et rebum. eos sanctus clita dolor no volu","firstName":"Hannah","lastName":"","email":"","department":"IT","skills":["SQL"],"isActive":true,"salary":"","hireDate":"2005-04-25","manager":"Eva Meyer","officeLocation":"","phone":"+19452439207","employeeNumber":"EMP00270","status":"","role":"DevOps Engineer","team":"Core","lastLogin":"2022-08-03T04:50:44.885Z","performanceScore":"","bonus":"","contractType":"Intern","country":"Netherlands","city":"Cologne","postalCode":"78737","address":"","linkedin":"https://www.linkedin.com/in/example-user-270","github":"","dateOfBirth":"1984-12-26","emergencyContact":"Julia Müller (+49190992260)"},{"id":271,"complexKey":"90RMh8nFqgvkXJSH4Sx4ijDXMEv314yZSfJ91ZVqkV","description":"et justo erat, kasd elitr, elitr, takimata et diam Lorem eos et et sadipscing est. At et consetetur clita aliquyam eirmod ut sit dolor duo Stet ut sed justo invidunt sanctus accusam labore sanctus sed eos et amet, nonumy At duo kasd et consetetur et sed ipsum kasd eos et magna magna magna sea At nonumy nonumy kasd sadipscing voluptua. eos justo aliquyam nonumy magna gubergren, diam invidunt dolores et sanctus ut gubergren, Lorem sed justo ea kasd justo et et clita eos nonumy tempor et magna kasd diam eos et sanctus","firstName":"Ian","lastName":"Becker","email":"ian.becker@example.com","department":"HR","skills":["AWS"],"isActive":true,"salary":84167,"hireDate":"2006-09-04","manager":"Diana Müller","officeLocation":"Cologne Office","phone":"+49605952923","employeeNumber":"EMP00271","status":"Active","role":"Product Manager","team":"Tools","lastLogin":"","performanceScore":"2.18","bonus":3196,"contractType":"Temporary","country":"France","city":"","postalCode":"68290","address":"161 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":272,"complexKey":"lKtACVcKgWoBGjAIn6NCF0O8CJ7ZSRZ_TgpS02QZ2mZ3SgeM","description":"ipsum sit no eos magna aliquyam At dolor diam amet, sea sit diam et sit sed dolore sed labore amet, invidunt gubergren, Lorem Lorem diam magna kasd consetetur diam ea magna accusam erat, dolores justo sed sanctus gubergren, et sed eirmod dolor rebum. sanctus Lorem dolores dolore est. Lorem no est. aliquyam diam rebum. sed sed takimata sed erat, sed voluptua. sed vero amet, sadipscing est. vero duo Lorem ea sea ea aliquyam et takimata sanctus amet, amet, sed eos sed labore dolore dolores duo rebum. diam sed sea diam labore duo et est. et diam sed ea no diam gubergren, vero ut diam clita dolore consetetur gubergren, diam voluptua. invidunt elitr, dolor nonumy ipsum gubergren, aliquyam dolores gubergren, consetetur At sed labore voluptua. eirmod et accusam invidunt e","firstName":"Ian","lastName":"Müller","email":"ian.müller@example.com","department":"Sales","skills":["SQL","React","TypeScript"],"isActive":true,"salary":98089,"hireDate":"2006-07-22","manager":"Grace Wagner","officeLocation":"Cologne Office","phone":"+19917629324","employeeNumber":"EMP00272","status":"Probation","role":"Product Manager","team":"","lastLogin":"2022-02-06T07:51:02.720Z","performanceScore":"2.54","bonus":"","contractType":"Temporary","country":"France","city":"","postalCode":"41350","address":"71 Example Street","linkedin":"","github":"","dateOfBirth":"1995-10-28","emergencyContact":""},{"id":273,"complexKey":"H1mCGuk8_9lMOwcCX68eTQS6fL3vc4BzzuinAcOEl","description":"justo aliquyam justo accusam sanctus magna aliquyam accusam Stet magna sed nonumy aliquyam nonumy elitr, ea dolore amet, et no ea ut et voluptua. erat, eirmod magna vero Lorem tempor est. et consetetur aliquyam sed i","firstName":"Frank","lastName":"Wagner","email":"frank.wagner@example.com","department":"HR","skills":[],"isActive":true,"salary":44218,"hireDate":"2010-09-17","manager":"Ian Fischer","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00273","status":"Probation","role":"Designer","team":"Growth","lastLogin":"2021-03-15T05:27:42.580Z","performanceScore":"0.46","bonus":1057,"contractType":"Permanent","country":"France","city":"Hamburg","postalCode":"73964","address":"","linkedin":"https://www.linkedin.com/in/example-user-273","github":"","dateOfBirth":"","emergencyContact":"Frank Meyer (+49583622806)"},{"id":274,"complexKey":"","description":"aliquyam aliquyam no diam ea et sed Stet diam kasd ea consetetur amet, dolore Stet eirmod voluptua. invidunt clita sea et rebum. nonumy dolore amet, Stet dolores dolore dolor tempor eirmod et nonumy consetetur labore tempor eos diam Lorem ea dolores sadipscing elitr, eirmod takimata est. dolor diam et sadipscing aliquyam voluptua. sadipscing diam rebum. tempor aliquyam est. Lorem voluptua. clita At et magna rebum. eirmod elitr, elitr, labore sed dolore gubergren, no sed sea est. invidunt eirmod eos ut et et et sit rebum. sed sit aliquyam diam sit no sit sed accusam est. sed erat, et do","firstName":"Diana","lastName":"Schmidt","email":"diana.schmidt@example.com","department":"HR","skills":[],"isActive":false,"salary":95794,"hireDate":"2006-07-19","manager":"Hannah Fischer","officeLocation":"","phone":"+14887733922","employeeNumber":"EMP00274","status":"Probation","role":"","team":"Tools","lastLogin":"","performanceScore":"3.88","bonus":2178,"contractType":"Contractor","country":"Spain","city":"Stuttgart","postalCode":"","address":"156 Example Street","linkedin":"","github":"","dateOfBirth":"1994-01-25","emergencyContact":""},{"id":275,"complexKey":"KDP-a1x2tFvUr4rdN_pNHxh2","description":"","firstName":"Hannah","lastName":"Becker","email":"hannah.becker@example.com","department":"HR","skills":["Java","React"],"isActive":true,"salary":88668,"hireDate":"2024-03-28","manager":"Julia Wagner","officeLocation":"Berlin HQ","phone":"+17798850788","employeeNumber":"EMP00275","status":"Probation","role":"Software Engineer","team":"Core","lastLogin":"2024-12-23T11:32:17.781Z","performanceScore":"1.54","bonus":12631,"contractType":"Contractor","country":"UK","city":"Frankfurt","postalCode":"92635","address":"135 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Charlie Fischer (+49505895804)"},{"id":276,"complexKey":"YEfGR4U0ZqQQ6nnulx3ZuJdYYY0s","description":"kasd magna Lorem tempor labore accusam takimata consetetur takimata eos accusam sit clita diam diam magna justo Lorem takimata Stet Stet takimata kasd sadipscing consetetu","firstName":"Diana","lastName":"Fischer","email":"","department":"Finance","skills":["AWS"],"isActive":true,"salary":47061,"hireDate":"2010-10-12","manager":"Alice Wagner","officeLocation":"Hamburg Office","phone":"+19366975341","employeeNumber":"EMP00276","status":"Terminated","role":"Software Engineer","team":"","lastLogin":"","performanceScore":"1.72","bonus":"","contractType":"Temporary","country":"UK","city":"Stuttgart","postalCode":"","address":"58 Example Street","linkedin":"","github":"https://github.com/example-user-276","dateOfBirth":"1997-08-11","emergencyContact":"Alice Weber (+17933093506)"},{"id":277,"complexKey":"3lVZ-WPPMPvd1pj2hTnfsNU-x9","description":"amet, duo et ut et ea consetetur invidunt diam sanctus eirmod ipsum Lorem et justo nonumy dolor elitr, consetetur At no aliquyam duo sit et et kasd et est. ea At sea kasd et sit elitr, erat, ut sed diam sanctus gubergren, no eos et et sit At magna et At ea sed et sea accusam vero sadipscing sed voluptua. gubergren, et eirmod et amet, dolor tempor labore no sea invidunt et eos rebum. el","firstName":"Frank","lastName":"Meyer","email":"frank.meyer@example.com","department":"Marketing","skills":["Figma","React","Docker","Java"],"isActive":true,"salary":86119,"hireDate":"2020-12-08","manager":"","officeLocation":"Remote","phone":"+11246324911","employeeNumber":"EMP00277","status":"Terminated","role":"Data Analyst","team":"Web","lastLogin":"2020-01-23T19:52:23.578Z","performanceScore":"1.62","bonus":5946,"contractType":"Temporary","country":"France","city":"Munich","postalCode":"","address":"186 Example Street","linkedin":"","github":"","dateOfBirth":"1980-01-12","emergencyContact":""},{"id":278,"complexKey":"0H6ILnYSfsJd","description":"accusam invidunt et consetetur diam rebum. labore rebum. et consetetur et erat, vero At et labore et clita elitr, magna accusam sanctus magna kasd voluptua. est. diam consetetur ea no ipsum eirmod duo ea sed diam duo gub","firstName":"Hannah","lastName":"Wagner","email":"hannah.wagner@example.com","department":"IT","skills":["Docker"],"isActive":true,"salary":51101,"hireDate":"","manager":"Hannah Weber","officeLocation":"Munich Office","phone":"+19886065935","employeeNumber":"EMP00278","status":"Probation","role":"Product Manager","team":"Platform","lastLogin":"2022-05-04T10:24:25.785Z","performanceScore":"1.13","bonus":13992,"contractType":"Intern","country":"Germany","city":"Berlin","postalCode":"86044","address":"157 Example Street","linkedin":"","github":"","dateOfBirth":"1990-05-06","emergencyContact":""},{"id":279,"complexKey":"mtIpkPRCnChchDgUJN2EdZuTiFL","description":"","firstName":"Hannah","lastName":"Schneider","email":"hannah.schneider@example.com","department":"IT","skills":["Java","Python"],"isActive":true,"salary":52268,"hireDate":"2016-07-23","manager":"","officeLocation":"Munich Office","phone":"+49897551980","employeeNumber":"EMP00279","status":"On Leave","role":"Software Engineer","team":"Mobile","lastLogin":"2023-12-01T02:45:27.796Z","performanceScore":"4.94","bonus":11321,"contractType":"Contractor","country":"USA","city":"","postalCode":"66577","address":"190 Example Street","linkedin":"","github":"","dateOfBirth":"1973-09-25","emergencyContact":""},{"id":280,"complexKey":"K4b4vHF8MuCAayAurpSJl8rv2","description":"et tempor kasd sea consetetur invidunt elitr, dolore invidunt dolores Stet sadipscing sed nonumy magna consetetur justo magna et et et At Stet et dolore duo Lorem dolores dolore eirmod labore et sanctus est. labore aliquyam aliquyam erat, aliquyam At clita invidunt sed duo sea eos aliquyam eos et sadipscing et eirmod vero At diam justo sed clita sea dolore sadipscing clita labore sanctus rebum. eirmod ea dolor ea At labore sadipscing est. eos kasd Lorem rebum. rebum. et kasd sed labore ea sanctus sadipscing sanctus Lorem elitr, sed takimata diam tempor eos sanctus ut al","firstName":"Hannah","lastName":"Weber","email":"hannah.weber@example.com","department":"Finance","skills":["AWS"],"isActive":true,"salary":44826,"hireDate":"","manager":"Eva Becker","officeLocation":"","phone":"+18901062943","employeeNumber":"EMP00280","status":"Terminated","role":"Data Analyst","team":"Tools","lastLogin":"2024-07-27T00:42:55.144Z","performanceScore":"","bonus":3713,"contractType":"Temporary","country":"USA","city":"Berlin","postalCode":"15987","address":"164 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":281,"complexKey":"","description":"diam takimata tempor est. duo sadipscing sed ipsum ut aliquyam et consetetur dolores et ut clita sed amet, clita sea sit elitr, accusam amet, eos ipsum invidunt magna et amet, et kasd aliquyam dolores erat, erat, ea eos duo Stet sadipscing et ea sed erat, nonumy elitr, dolore ea diam consetetur consetetur voluptua. amet, rebum. dolore dolor sit magna et eos labore diam dolor et kasd sanctus accusam erat, eirmod vero At consetetur ea tempor dolore accusam duo ut erat, ea erat, erat, clita ipsum sed ea gubergren, labore At aliquyam sed eos dolores et sadipscing diam amet, invidunt duo At erat, sea takimata nonumy san","firstName":"Frank","lastName":"Becker","email":"frank.becker@example.com","department":"IT","skills":[],"isActive":false,"salary":"","hireDate":"2005-12-10","manager":"Alice Schmidt","officeLocation":"Munich Office","phone":"+18488651931","employeeNumber":"EMP00281","status":"Terminated","role":"QA Engineer","team":"Growth","lastLogin":"2021-07-26T05:16:56.495Z","performanceScore":"1.07","bonus":"","contractType":"Permanent","country":"Spain","city":"Munich","postalCode":"98805","address":"","linkedin":"","github":"","dateOfBirth":"1971-05-21","emergencyContact":"Charlie Müller (+12798985266)"},{"id":282,"complexKey":"cXZUben7g7kkeCicmMIC0_Eu","description":"d","firstName":"Diana","lastName":"Becker","email":"","department":"Finance","skills":["React","Figma","TypeScript","Python"],"isActive":true,"salary":52110,"hireDate":"2018-12-27","manager":"Diana Wagner","officeLocation":"Berlin HQ","phone":"+13543296583","employeeNumber":"EMP00282","status":"On Leave","role":"Product Manager","team":"Tools","lastLogin":"2020-10-29T01:36:23.402Z","performanceScore":"4.57","bonus":12998,"contractType":"Contractor","country":"France","city":"Berlin","postalCode":"59375","address":"42 Example Street","linkedin":"https://www.linkedin.com/in/example-user-282","github":"","dateOfBirth":"","emergencyContact":""},{"id":283,"complexKey":"v1RuBu9wz6i2QzyPRmhbMEHJm1rz3Rbpyx","description":"magna ut tempor ea est. diam erat, ea accusam nonumy eos dolor clita nonumy sit est. invidunt eirmod ut diam eirmod rebum. sea elitr, et dolor kasd Stet kasd eos elitr, ut eos dolores sed dolor dolores ea At sit At Stet magna ipsum nonumy eos diam ve","firstName":"Frank","lastName":"Meyer","email":"frank.meyer@example.com","department":"Finance","skills":[],"isActive":true,"salary":96703,"hireDate":"2009-07-15","manager":"","officeLocation":"Munich Office","phone":"+49613967101","employeeNumber":"EMP00283","status":"Terminated","role":"DevOps Engineer","team":"Mobile","lastLogin":"2022-10-24T08:24:20.678Z","performanceScore":"0.28","bonus":2295,"contractType":"Temporary","country":"Germany","city":"Hamburg","postalCode":"23870","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":284,"complexKey":"Cq8DjZpcz3csBGtzBq","description":"","firstName":"Charlie","lastName":"Wagner","email":"charlie.wagner@example.com","department":"","skills":["Figma"],"isActive":true,"salary":92639,"hireDate":"","manager":"Ian Schmidt","officeLocation":"Remote","phone":"+11333023297","employeeNumber":"EMP00284","status":"Probation","role":"Product Manager","team":"Mobile","lastLogin":"2024-12-16T05:40:26.026Z","performanceScore":"1.78","bonus":14495,"contractType":"Contractor","country":"USA","city":"Berlin","postalCode":"","address":"43 Example Street","linkedin":"","github":"https://github.com/example-user-284","dateOfBirth":"1995-03-11","emergencyContact":"Grace Schneider (+11845870801)"},{"id":285,"complexKey":"V4ywJR9RseIDrOa1LFP-F","description":"sanctus elitr, et et At consetetur eos Stet et dolores amet, ipsum Lorem nonumy kasd Lorem tempor gubergren, rebum. sadipscing aliquyam diam sanctus dolore et At tempor elitr, nonumy ea aliquyam sed duo sit clita et aliquyam ut justo duo sea elitr, no diam At aliquyam et takimata sadipscing kasd labore et et ipsum At et et sadipscing magna diam sed et amet, clita es","firstName":"Ian","lastName":"Wagner","email":"","department":"Legal","skills":["AWS","TypeScript"],"isActive":true,"salary":54986,"hireDate":"2005-08-07","manager":"Grace Becker","officeLocation":"Hamburg Office","phone":"+19985203661","employeeNumber":"EMP00285","status":"Terminated","role":"Software Engineer","team":"Mobile","lastLogin":"2023-01-28T22:43:39.583Z","performanceScore":"1.99","bonus":"","contractType":"Permanent","country":"Netherlands","city":"Hamburg","postalCode":"65953","address":"56 Example Street","linkedin":"","github":"","dateOfBirth":"1994-07-29","emergencyContact":"Alice Meyer (+49763922400)"},{"id":286,"complexKey":"vAbl0fJ8ipNUuZm7RgJ7ymwZziF8thdOb1U5t2XUKnkH9ZAdO","description":"","firstName":"Bob","lastName":"Schmidt","email":"bob.schmidt@example.com","department":"","skills":["Docker","AWS","SQL","React"],"isActive":false,"salary":60720,"hireDate":"2010-03-19","manager":"Hannah Schneider","officeLocation":"Cologne Office","phone":"+49484656930","employeeNumber":"EMP00286","status":"Terminated","role":"DevOps Engineer","team":"Web","lastLogin":"2022-03-07T16:52:33.554Z","performanceScore":"2.71","bonus":4585,"contractType":"Intern","country":"UK","city":"","postalCode":"","address":"11 Example Street","linkedin":"","github":"https://github.com/example-user-286","dateOfBirth":"","emergencyContact":""},{"id":287,"complexKey":"BgY-geqoBmruOk7bIJKVW","description":"magna et et et sed est. magna aliquyam accusam erat, nonumy vero voluptua. voluptua. duo ipsum justo eos Lorem clita consetetur eirmod dolores et takimata justo sit eirmod justo takimata Stet vero accusam diam Lorem sanctus invidunt diam vero labore At diam sed justo At Lorem consetetur justo justo voluptua. ut ea rebum. consetetur ipsum dolore clita sed labore eirmod et takimata aliquyam duo justo duo nonumy erat, labore clita et eos labore sanctus kasd sadipscing At dolor et Lorem eirmod voluptua. takimata duo elitr, takimata aliquyam ea labore aliquyam Lorem sea ipsum ea et sadipscing et sit voluptua. dolore vero ipsum tempor et invidunt eirmod vero sadipscing justo sanctus sed ut diam dolore elitr, consetetur sed tempor nonumy dolores ut sadipscing Stet est. amet, sadipscing gubergren, rebum. diam erat, et diam rebum","firstName":"Hannah","lastName":"Wagner","email":"hannah.wagner@example.com","department":"Legal","skills":["TypeScript"],"isActive":true,"salary":79591,"hireDate":"2011-01-11","manager":"","officeLocation":"","phone":"","employeeNumber":"EMP00287","status":"Probation","role":"DevOps Engineer","team":"Mobile","lastLogin":"","performanceScore":"","bonus":4166,"contractType":"Intern","country":"UK","city":"","postalCode":"56887","address":"62 Example Street","linkedin":"https://www.linkedin.com/in/example-user-287","github":"","dateOfBirth":"","emergencyContact":"Frank Becker (+16637342189)"},{"id":288,"complexKey":"nktJj-P3t200DORzBC5PGoUhUxEl_M_6oUkxkO9DM2Me","description":"gubergren, kasd accusam ea dolore et gubergren, Lorem ea aliquyam diam ut clita dolores nonumy voluptua. et eos sit est. gubergren, Lorem et et rebum. et sit Stet sit vero sed labore dolor accusam voluptua. vero invidunt sit consetetur sea et est. eirmod invidunt dolore accusam tempor voluptua. diam takimata sed invidunt Stet eos ea vero eos diam et ea ea et diam sanctus At sanctus justo sanctus tempor eirmod sed sadipscing et ea no justo sea diam rebum. invidunt et eos sea dolor justo kasd eos dolore ea eos sed accusam vero accusam sed duo magna aliquyam At sea kasd justo et et invidunt sadipscing tempor diam sed Stet eirmod nonumy et dolor diam et sea ipsum aliquyam vero invidunt aliquyam accusam eos sed ipsum sed rebum. rebum. sit aliquyam vero clita Lorem eos voluptua. gubergren, diam sanctus kasd ea sadipsc","firstName":"Charlie","lastName":"Schneider","email":"charlie.schneider@example.com","department":"IT","skills":[],"isActive":false,"salary":44342,"hireDate":"2007-02-20","manager":"Hannah Schneider","officeLocation":"","phone":"+49505605924","employeeNumber":"EMP00288","status":"Probation","role":"Product Manager","team":"Tools","lastLogin":"2022-04-22T04:34:31.195Z","performanceScore":"","bonus":11320,"contractType":"","country":"UK","city":"Frankfurt","postalCode":"","address":"151 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Charlie Schmidt (+19592910922)"},{"id":289,"complexKey":"","description":"nonumy clita erat, rebum. ea sea Stet non","firstName":"Alice","lastName":"Fischer","email":"","department":"Legal","skills":["React","Java","TypeScript","AWS"],"isActive":true,"salary":"","hireDate":"2012-12-21","manager":"","officeLocation":"Munich Office","phone":"+11654708916","employeeNumber":"EMP00289","status":"Active","role":"","team":"Tools","lastLogin":"","performanceScore":"1.39","bonus":10828,"contractType":"Intern","country":"Spain","city":"Frankfurt","postalCode":"","address":"159 Example Street","linkedin":"https://www.linkedin.com/in/example-user-289","github":"","dateOfBirth":"1969-11-08","emergencyContact":""},{"id":290,"complexKey":"nLxHI5mS-kCua-5L5DoqMl006ej","description":"ea invidunt sadipscing diam At et ut ipsum sea et rebum. consetetur justo voluptua. dolor est. dolor sadipscing sadipscing sed invidunt Lorem eos sanctus tempor clita sanctus takimata kasd dolores sanctus rebum. sea labore et sea dolor est. invidunt et et ipsum no no dolores","firstName":"","lastName":"Wagner","email":"bob.wagner@example.com","department":"","skills":["Figma"],"isActive":true,"salary":97581,"hireDate":"2016-11-23","manager":"Diana Wagner","officeLocation":"Cologne Office","phone":"+49394606932","employeeNumber":"EMP00290","status":"Active","role":"DevOps Engineer","team":"Tools","lastLogin":"2024-03-19T03:20:31.312Z","performanceScore":"","bonus":7836,"contractType":"Temporary","country":"USA","city":"","postalCode":"73172","address":"","linkedin":"","github":"","dateOfBirth":"1996-07-13","emergencyContact":"Alice Wagner (+12652723608)"},{"id":291,"complexKey":"7EL_MJTogzP1RICZqsekwqQX2Mx0Skz3tAT9t","description":"dolores accusam duo rebum. dolores eos gubergren, rebum. eos sed no diam et ut eos sanctus clita consetetur et labore rebum. clita dolor takimata justo aliquyam et eli","firstName":"Grace","lastName":"Meyer","email":"grace.meyer@example.com","department":"Legal","skills":["Java","AWS","Python"],"isActive":true,"salary":61683,"hireDate":"","manager":"Eva Schneider","officeLocation":"Remote","phone":"+49302186884","employeeNumber":"EMP00291","status":"Active","role":"Software Engineer","team":"Web","lastLogin":"2020-09-18T05:12:55.723Z","performanceScore":"","bonus":"","contractType":"","country":"Netherlands","city":"Stuttgart","postalCode":"27525","address":"49 Example Street","linkedin":"","github":"","dateOfBirth":"1977-06-21","emergencyContact":"Grace Weber (+19202130279)"},{"id":292,"complexKey":"N4QtrEekAI2x_oIiRlH999Ole4AECpkEQgRQQA0xm","description":"nonumy diam labore nonumy ut dolore duo Stet accusam vero dolore voluptua. dolore ea duo consetetur eos magna sed sadipscing gubergren, consetetur vero amet, voluptua. gubergren, ut kasd voluptua. Lorem elitr, ipsum duo ea ea","firstName":"Ian","lastName":"Fischer","email":"ian.fischer@example.com","department":"HR","skills":["React","Python"],"isActive":true,"salary":75950,"hireDate":"2006-01-15","manager":"","officeLocation":"Remote","phone":"+13746834448","employeeNumber":"EMP00292","status":"Terminated","role":"Data Analyst","team":"Platform","lastLogin":"","performanceScore":"4.85","bonus":8500,"contractType":"Contractor","country":"Spain","city":"Stuttgart","postalCode":"","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Diana Wagner (+13767933535)"},{"id":293,"complexKey":"tCCE1s9sxA-zo5tA-3N","description":"","firstName":"Hannah","lastName":"Becker","email":"hannah.becker@example.com","department":"","skills":[],"isActive":true,"salary":71287,"hireDate":"2005-11-19","manager":"Julia Weber","officeLocation":"Munich Office","phone":"+49574570142","employeeNumber":"EMP00293","status":"On Leave","role":"Designer","team":"","lastLogin":"2023-09-20T18:22:33.535Z","performanceScore":"0.69","bonus":2417,"contractType":"Permanent","country":"UK","city":"Hamburg","postalCode":"45975","address":"196 Example Street","linkedin":"https://www.linkedin.com/in/example-user-293","github":"","dateOfBirth":"","emergencyContact":"Frank Wagner (+15466670950)"},{"id":294,"complexKey":"KT46pbL0Vr","description":"no ipsum sed erat, sit sanctus invidunt eos voluptua. justo dolores dolore Lorem accusam amet, eos accusam eirmod et sanctus consetetur labore clita Lorem clita amet, sed et eos aliquyam accusam At est. et et sed et sanctus nonumy labore sed clita diam et clita ipsum Lorem et sanctus rebum. sed ut gubergren, justo eirmod ut erat, eirmod ut sea dolores ea clita tempor nonumy elitr, ut sanctus takimata ipsum sit magna tempor eos Lorem ea nonumy sanctus aliquyam kasd sanctus tempor voluptua. eos kasd sed dolores rebum. sanctus labore no aliquyam accusam invidunt et no Lorem elitr, et duo eirmod ut Lorem duo erat, vero et amet, gubergren, ut duo takimata Stet dolore tempor amet, amet, erat, sadipscing diam sea sanctus duo Stet et et sed sadipscing dolore voluptua. dolor labore takimata rebum. diam clita sed sed dolor no kasd elitr, duo eirmod At justo aliquyam elitr, rebum. sadipscing At Stet et Stet At est. sadipscing labore gubergren,","firstName":"Bob","lastName":"Müller","email":"bob.müller@example.com","department":"HR","skills":["Docker"],"isActive":false,"salary":94064,"hireDate":"2010-07-15","manager":"Ian Schmidt","officeLocation":"Berlin HQ","phone":"+18821171350","employeeNumber":"EMP00294","status":"","role":"Designer","team":"Platform","lastLogin":"2020-01-30T04:45:42.641Z","performanceScore":"","bonus":655,"contractType":"Temporary","country":"France","city":"Berlin","postalCode":"54337","address":"123 Example Street","linkedin":"","github":"","dateOfBirth":"1995-09-05","emergencyContact":""},{"id":295,"complexKey":"e_7c9RODsJZXcxhd4ynWakT4EBC3P2QRiPaAaMuY","description":"","firstName":"Grace","lastName":"Meyer","email":"grace.meyer@example.com","department":"Finance","skills":[],"isActive":true,"salary":75268,"hireDate":"2008-12-04","manager":"Ian Meyer","officeLocation":"","phone":"+49709954260","employeeNumber":"EMP00295","status":"Terminated","role":"Designer","team":"","lastLogin":"","performanceScore":"2.04","bonus":5297,"contractType":"","country":"Netherlands","city":"","postalCode":"50971","address":"133 Example Street","linkedin":"","github":"","dateOfBirth":"","emergencyContact":"Frank Wagner (+49712292657)"},{"id":296,"complexKey":"","description":"","firstName":"","lastName":"Fischer","email":"julia.fischer@example.com","department":"HR","skills":["Figma"],"isActive":true,"salary":41159,"hireDate":"2018-11-09","manager":"Grace Schneider","officeLocation":"Remote","phone":"+49536594875","employeeNumber":"EMP00296","status":"Active","role":"Designer","team":"Core","lastLogin":"2021-03-29T03:44:22.369Z","performanceScore":"3.76","bonus":2496,"contractType":"Temporary","country":"Netherlands","city":"Frankfurt","postalCode":"26102","address":"19 Example Street","linkedin":"","github":"","dateOfBirth":"1999-07-09","emergencyContact":""},{"id":297,"complexKey":"","description":"At justo et et diam sed At et gubergren, et erat, et sed sed et takimata invidunt At sit clita dolor diam et et nonumy Stet consetetur nonumy et Stet sea ipsum labore et magna et Lorem magna diam takimata takimata sadipscing aliquyam eirmod et elitr, est. nonumy sea vero Lorem dolores magna ipsum sea nonumy Lorem magna tempor amet, takimata no vero dolores eos erat, gubergren, no no amet, Stet duo sea gubergren, magna At duo et dolore ut et ut erat, erat, sadipscing amet, vero ea eos sit elitr, invidunt sadipscing Lorem sed aliquyam sadipscing sea eirmod et consetetur erat, sed consetetur At erat, sadipscing et ipsum takimata justo et kasd sed et ea sea no Stet Lorem voluptua. Lorem est. gubergren, takimata dolor elitr, Stet invidunt invidunt clita accusam aliquyam rebum. tempor eirmod kasd takimata ta","firstName":"","lastName":"Wagner","email":"frank.wagner@example.com","department":"Legal","skills":["Docker","Python","React"],"isActive":true,"salary":80456,"hireDate":"2015-12-04","manager":"","officeLocation":"Cologne Office","phone":"+49169768377","employeeNumber":"EMP00297","status":"Terminated","role":"Software Engineer","team":"Core","lastLogin":"2024-12-01T23:07:38.299Z","performanceScore":"3.20","bonus":14756,"contractType":"Permanent","country":"","city":"Stuttgart","postalCode":"45601","address":"176 Example Street","linkedin":"https://www.linkedin.com/in/example-user-297","github":"","dateOfBirth":"1996-11-05","emergencyContact":""},{"id":298,"complexKey":"J_w_qOaupBIfs7EaBzh9lhzhBWty8QNh2riRUQL1FS512v","description":"","firstName":"Eva","lastName":"Meyer","email":"eva.meyer@example.com","department":"Legal","skills":["React"],"isActive":false,"salary":42703,"hireDate":"2021-07-14","manager":"Ian Schmidt","officeLocation":"Berlin HQ","phone":"+19514349128","employeeNumber":"EMP00298","status":"Probation","role":"Designer","team":"","lastLogin":"","performanceScore":"","bonus":"","contractType":"","country":"Spain","city":"Cologne","postalCode":"76291","address":"","linkedin":"","github":"","dateOfBirth":"1982-04-16","emergencyContact":"Charlie Weber (+19961485585)"},{"id":299,"complexKey":"9xq8uSqiimYl1D1mlTHrz3ZuNT","description":"sed clita ea kasd ipsum nonumy At voluptua. et et clita est. et sanctus nonumy gubergren, magna consetetur dolore aliquyam rebum. et gubergren, duo rebum. dolore et invidunt magna invidunt gubergren, At justo At tempor kasd et sed rebum. aliquyam ut no sed Stet sed diam erat, nonumy et sanctus elitr, vero sed et duo eos dolore tempor et erat, elitr, vero rebum. Lorem dolor kasd et sed clita vero accusam erat, diam dolores vero dolore elitr, ut accusam sed ut est. et Lorem dolor sed tempor duo duo sadipscing eos sanctus est. dolores magna sit sed gubergren, et accusam tempor erat, invidunt sed Lorem et rebum. Lore","firstName":"Bob","lastName":"Meyer","email":"bob.meyer@example.com","department":"","skills":[],"isActive":true,"salary":"","hireDate":"2018-09-04","manager":"","officeLocation":"Munich Office","phone":"+17930540431","employeeNumber":"EMP00299","status":"Active","role":"QA Engineer","team":"Web","lastLogin":"","performanceScore":"3.40","bonus":7572,"contractType":"Permanent","country":"Spain","city":"Munich","postalCode":"99654","address":"","linkedin":"","github":"","dateOfBirth":"","emergencyContact":""},{"id":300,"complexKey":"JAz06PiDNUsIzs","description":"","firstName":"Eva","lastName":"Wagner","email":"eva.wagner@example.com","department":"Marketing","skills":["Java","Python","Figma","Docker"],"isActive":true,"salary":90487,"hireDate":"2014-11-26","manager":"Diana Wagner","officeLocation":"Hamburg Office","phone":"","employeeNumber":"EMP00300","status":"Terminated","role":"Designer","team":"","lastLogin":"2023-09-18T08:17:16.411Z","performanceScore":"3.66","bonus":9473,"contractType":"Permanent","country":"Germany","city":"","postalCode":"88780","address":"145 Example Street","linkedin":"https://www.linkedin.com/in/example-user-300","github":"https://github.com/example-user-300","dateOfBirth":"1986-02-10","emergencyContact":""}]`),_=[{id:`light`,label:`Light`,css:`/*
+ * Light theme — clean, modern default.
+ * Pairs with core/base.css for structure.
+ */
+
+:root {
+
+  --font-size: 1rem;
+  --line-height: 1.3rem;
+
+  --ct-bg: white;
+  --ct-empty-area-bg: hsl(0, 0%, 92%);
+  --ct-text: hsl(0, 0%, 10%);
+  --ct-font: sans-serif;
+
+  --ct-border: hsl(0, 0%, 90%);
+  --ct-border-light: hsl(0, 0%, 80%);
+
+  --ct-header-bg: hsl(0, 0%, 95%);
+  --ct-header-border: hsl(0, 0%, 80%);
+  --ct-header-label: black;
+
+  --ct-row-bg: white;
+  --ct-row-hover: hsl(207, 100%, 97%);
+  --ct-sticky-bg: hsl(0, 0%, 96%);
+
+  --ct-selected-row-bg: hsl(207, 100%, 97%);
+  --ct-selected-col-bg: hsl(0, 0%, 90%);
+  --ct-selected-cell-bg: white;
+  --ct-selected-outline: hsl(207, 100%, 60%);
+  --ct-edited-outline: hsl(207, 100%, 60%);
+  --ct-selection-fill: #b3d9ff;
+  --ct-fill-outline: hsl(2, 100%, 60%);
+  --ct-dragger-bg: hsl(207, 100%, 60%);
+  --ct-dragger-border: white;
+
+  --ct-toolbar-bg: hsl(0, 0%, 95%);
+  --ct-toolbar-border: hsl(0, 0%, 90%);
+  --ct-input-border: hsl(0, 0%, 80%);
+  --ct-input-bg: white;
+  --ct-button-bg: white;
+  --ct-button-border: hsl(0, 0%, 70%);
+  --ct-button-hover: hsl(0, 0%, 95%);
+
+  --ct-focus-outline: hsl(207, 100%, 60%);
+
+  --ct-ctx-bg: white;
+  --ct-ctx-border: #ccc;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.2);
+  --ct-ctx-text: #222;
+  --ct-ctx-hover: #f0f0f0;
+  --ct-ctx-shortcut: #888;
+
+  --ct-muted: hsl(0, 0%, 60%);
+  --ct-muted-light: hsl(0, 0%, 80%);
+
+  --ct-dropdown-bg: white;
+  --ct-dropdown-border: hsl(0, 0%, 80%);
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.12);
+  --ct-dropdown-hover: hsl(0, 0%, 95%);
+  --ct-dropdown-selected: hsl(207, 100%, 97%);
+  --ct-dropdown-highlighted: hsl(207, 100%, 95%);
+  --ct-dropdown-both: hsl(207, 100%, 90%);
+  --ct-dropdown-text: hsl(0, 0%, 10%);
+  --ct-dropdown-placeholder: hsl(0, 0%, 40%);
+  --ct-dropdown-empty: hsl(0, 0%, 60%);
+
+  --ct-pagination-link: hsl(207, 100%, 40%);
+  --ct-pagination-hover-bg: hsl(207, 100%, 95%);
+  --ct-pagination-hover-border: hsl(207, 100%, 80%);
+  --ct-pagination-current-border: hsl(0, 0%, 60%);
+  --ct-pagination-label: hsl(0, 0%, 30%);
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.3);
+  --ct-dialog-bg: white;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.2);
+  --ct-dialog-border: hsl(0, 0%, 80%);
+  --ct-dialog-title: hsl(0, 0%, 10%);
+  --ct-dialog-close: hsl(0, 0%, 60%);
+  --ct-dialog-close-hover: hsl(0, 0%, 10%);
+  --ct-dialog-input-border: hsl(0, 0%, 80%);
+  --ct-dialog-btn-bg: white;
+  --ct-dialog-btn-border: hsl(0, 0%, 80%);
+  --ct-dialog-btn-text: hsl(0, 0%, 30%);
+  --ct-dialog-btn-hover: hsl(0, 0%, 95%);
+  --ct-dialog-save-bg: hsl(207, 100%, 60%);
+  --ct-dialog-save-hover: hsl(207, 100%, 50%);
+
+  --ct-cell-error-bg: hsl(0, 90%, 95%);
+  --ct-cell-error-text: hsl(0, 70%, 35%);
+  --ct-cell-stale-bg: hsl(40, 100%, 93%);
+  --ct-cell-stale-text: hsl(30, 80%, 30%);
+  --ct-row-readonly-bg: hsl(0, 0%, 93%);
+  --ct-row-readonly-text: hsl(0, 0%, 45%);
+  --ct-pencil-icon: "🖉";
+}
+
+/* ---- Apply theme variables ---- */
+
+.grid-db-editor {
+  font-family: var(--ct-font);
+  color: var(--ct-text);
+  background: var(--ct-bg);
+  border: 1px solid var(--ct-border-light);
+
+  .grid-db-editor-toolbar {
+    background-color: var(--ct-toolbar-bg);
+    border-bottom: 1px solid var(--ct-toolbar-border);
+  }
+
+  .toolbar-input {
+    border: 1px solid var(--ct-input-border);
+    background: var(--ct-input-bg);
+    color: var(--ct-text);
+  }
+
+  .toolbar-button {
+    border: 1px solid var(--ct-button-border);
+    background-color: var(--ct-button-bg);
+    color: var(--ct-text);
+    &:hover {
+      background-color: var(--ct-button-hover);
+    }
+  }
+
+  tbody td.sticky {
+    background-color: var(--ct-sticky-bg);
+    &.cell {
+      outline: 1px solid var(--ct-header-border);
+      border: none;
+    }
+  }
+
+  .cell {
+    border: 1px solid var(--ct-border-light);
+    color: var(--ct-text);
+  }
+
+  .cell-dropdown-indicator {
+    color: var(--ct-muted-light);
+    transition: color 0.15s;
+  }
+  .cell:hover .cell-dropdown-indicator {
+    color: var(--ct-muted);
+  }
+
+  .cell-popup-indicator {
+    color: var(--ct-muted-light);
+    transition: color 0.15s;
+  }
+  .cell:hover .cell-popup-indicator {
+    color: var(--ct-muted);
+  }
+
+  .col-header {
+    outline: 1px solid var(--ct-header-border);
+    background-color: var(--ct-header-bg);
+    color: var(--ct-text);
+  }
+
+  .col-edited,
+  .col-selected {
+    background-color: var(--ct-selected-col-bg);
+  }
+
+  .row-selected,
+  .row-edited {
+    background-color: var(--ct-selected-row-bg);
+    & td.sticky {
+      background-color: var(--ct-selected-row-bg);
+    }
+  }
+
+  .cell-selected {
+    background-color: var(--ct-selected-cell-bg);
+  }
+
+  .cell-edited {
+    background-color: var(--ct-selected-cell-bg);
+    outline: solid 4px var(--ct-edited-outline);
+  }
+
+  .selection-rectangle {
+    outline: solid 3px var(--ct-selected-outline);
+    outline-offset: 1px;
+  }
+  .fill-rectangle {
+    outline: solid 3px var(--ct-fill-outline);
+  }
+
+  .selection-rectangle-dragger {
+    outline: solid 1px var(--ct-dragger-border);
+    background-color: var(--ct-dragger-bg);
+  }
+
+  .col-header-label {
+    color: var(--ct-header-label);
+  }
+
+  .col-filter-input {
+    border: none;
+    background: var(--ct-input-bg);
+    color: var(--ct-text);
+    &:focus {
+      outline: 1px solid var(--ct-focus-outline);
+      border-color: var(--ct-focus-outline);
+    }
+  }
+
+  .number-editor-wrapper {
+    &::before {
+      color: var(--ct-muted);
+    }
+    &::after {
+      color: var(--ct-muted);
+    }
+  }
+
+  .combo-dropdown-display {
+    color: var(--ct-dropdown-placeholder);
+  }
+
+  .combo-dropdown-list {
+    background: var(--ct-dropdown-bg);
+    border: 1px solid var(--ct-dropdown-border);
+    box-shadow: 0 4px 12px var(--ct-dropdown-shadow);
+  }
+
+  .combo-dropdown-option {
+    color: var(--ct-dropdown-text);
+    &:hover {
+      background-color: var(--ct-dropdown-hover);
+    }
+    &.is-selected {
+      background-color: var(--ct-dropdown-selected);
+      font-weight: 500;
+    }
+    &.is-highlighted {
+      background-color: var(--ct-dropdown-highlighted);
+    }
+    &.is-selected.is-highlighted {
+      background-color: var(--ct-dropdown-both);
+    }
+  }
+
+  .combo-dropdown-custom-badge {
+    color: var(--ct-muted);
+  }
+  .combo-dropdown-checkbox {
+    color: var(--ct-muted);
+  }
+  .combo-dropdown-empty {
+    color: var(--ct-dropdown-empty);
+  }
+}
+
+
+/* Pagination */
+.ct-pagination {
+  font-family: var(--ct-font);
+
+  .ct-pagination-label {
+    color: var(--ct-pagination-label);
+  }
+
+  .ct-pagination-page {
+    border: 1px solid transparent;
+    color: var(--ct-pagination-link);
+    &:hover {
+      background-color: var(--ct-pagination-hover-bg);
+      border-color: var(--ct-pagination-hover-border);
+    }
+    &.is-current {
+      border-color: var(--ct-pagination-current-border);
+      background-color: var(--ct-bg);
+      color: var(--ct-text);
+      font-weight: 600;
+    }
+  }
+
+  .ct-pagination-ellipsis {
+    color: var(--ct-muted);
+  }
+
+  .ct-tool-button {
+    border: 1px solid var(--ct-button-border);
+    background-color: var(--ct-button-bg);
+    color: var(--ct-text);
+    &:hover:not(:disabled) {
+      background-color: var(--ct-button-hover);
+    }
+  }
+
+  .ct-pagination-select {
+    border: 1px solid var(--ct-input-border);
+    background-color: var(--ct-input-bg);
+    color: var(--ct-text);
+    &:focus {
+      outline: 1px solid var(--ct-focus-outline);
+      border-color: var(--ct-focus-outline);
+    }
+  }
+}
+
+/* Textarea Dialog */
+.editor-dialog-overlay {
+  background: var(--ct-dialog-overlay);
+}
+
+.editor-dialog {
+  background: var(--ct-dialog-bg);
+  box-shadow: 0 8px 32px var(--ct-dialog-shadow);
+  font-family: var(--ct-font);
+
+  .editor-dialog-header {
+    border-bottom: 1px solid var(--ct-dialog-border);
+  }
+  .editor-dialog-title {
+    color: var(--ct-dialog-title);
+  }
+  .editor-dialog-close {
+    color: var(--ct-dialog-close);
+    &:hover {
+      color: var(--ct-dialog-close-hover);
+    }
+  }
+  .editor-dialog-input {
+    border: 1px solid var(--ct-dialog-input-border);
+    color: var(--ct-text);
+    background: var(--ct-input-bg);
+    &:focus {
+      border-color: var(--ct-focus-outline);
+    }
+  }
+  .editor-dialog-footer {
+    border-top: 1px solid var(--ct-dialog-border);
+  }
+  .editor-dialog-btn {
+    border: 1px solid var(--ct-dialog-btn-border);
+    background: var(--ct-dialog-btn-bg);
+    color: var(--ct-dialog-btn-text);
+    &:hover {
+      background: var(--ct-dialog-btn-hover);
+    }
+  }
+  .editor-dialog-btn-save {
+    background: var(--ct-dialog-save-bg);
+    color: white;
+    border-color: var(--ct-dialog-save-bg);
+    &:hover {
+      background: var(--ct-dialog-save-hover);
+    }
+  }
+}
+
+/* Cell-meta utility classes */
+.grid-db-editor .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.grid-db-editor .cell-stale {
+  background-color: var(--ct-cell-stale-bg);
+  color: var(--ct-cell-stale-text);
+}
+
+.grid-db-editor .cell-unsaved {
+  background-color: hsl(30, 100%, 95%);
+  border-left: 3px solid hsl(30, 100%, 50%);
+}
+
+.grid-db-editor .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+
+.context-menu {
+  background-color: var(--ct-ctx-bg);
+  border: 1px solid var(--ct-ctx-border);
+  box-shadow: 0 2px 10px var(--ct-ctx-shadow);
+  font-family: var(--ct-font);
+}
+.context-menu-item {
+  color: var(--ct-ctx-text);
+  &:hover {
+    background-color: var(--ct-ctx-hover);
+  }
+}
+.context-menu-shortcut {
+  color: var(--ct-ctx-shortcut);
+}
+`},{id:`dark`,label:`Dark`,css:`/*
+ * Dark theme — dark backgrounds, light text, blue accents.
+ */
+
+:root {
+  --ct-bg: hsl(220, 15%, 13%);
+  --ct-empty-area-bg: hsl(220, 15%, 10%);
+  --ct-text: hsl(220, 10%, 85%);
+  --ct-font: sans-serif;
+
+  --ct-border: hsl(220, 12%, 22%);
+  --ct-border-light: hsl(220, 12%, 18%);
+
+  --ct-header-bg: hsl(220, 15%, 16%);
+  --ct-header-border: hsl(220, 12%, 25%);
+  --ct-header-label: hsl(220, 10%, 80%);
+
+  --ct-row-bg: hsl(220, 15%, 13%);
+  --ct-row-hover: hsl(220, 20%, 18%);
+  --ct-sticky-bg: hsl(220, 15%, 15%);
+
+  --ct-selected-row-bg: hsl(215, 30%, 20%);
+  --ct-selected-col-bg: hsl(220, 15%, 20%);
+  --ct-selected-cell-bg: hsl(220, 15%, 16%);
+  --ct-selected-outline: hsl(207, 80%, 50%);
+  --ct-edited-outline: hsl(207, 80%, 50%);
+  --ct-selection-blend: screen; /* Used in base/light css to blend properly in dark mode */
+  --ct-selection-fill: #1a2b40;
+  --ct-fill-outline: hsl(2, 70%, 50%);
+  --ct-dragger-bg: hsl(207, 80%, 50%);
+  --ct-dragger-border: hsl(220, 15%, 13%);
+
+  --ct-toolbar-bg: hsl(220, 15%, 16%);
+  --ct-toolbar-border: hsl(220, 12%, 22%);
+  --ct-input-border: hsl(220, 12%, 28%);
+  --ct-input-bg: hsl(220, 15%, 18%);
+  --ct-button-bg: hsl(220, 15%, 20%);
+  --ct-button-border: hsl(220, 12%, 30%);
+  --ct-button-hover: hsl(220, 15%, 25%);
+
+  --ct-focus-outline: hsl(207, 80%, 50%);
+
+  --ct-ctx-bg: hsl(220, 15%, 18%);
+  --ct-ctx-border: hsl(220, 12%, 28%);
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.5);
+  --ct-ctx-text: hsl(220, 10%, 85%);
+  --ct-ctx-hover: hsl(220, 15%, 24%);
+  --ct-ctx-shortcut: hsl(220, 10%, 50%);
+
+  --ct-muted: hsl(220, 10%, 45%);
+  --ct-muted-light: hsl(220, 10%, 30%);
+
+  --ct-dropdown-bg: hsl(220, 15%, 18%);
+  --ct-dropdown-border: hsl(220, 12%, 28%);
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.4);
+  --ct-dropdown-hover: hsl(220, 15%, 22%);
+  --ct-dropdown-selected: hsl(215, 30%, 22%);
+  --ct-dropdown-highlighted: hsl(215, 30%, 25%);
+  --ct-dropdown-both: hsl(215, 35%, 28%);
+  --ct-dropdown-text: hsl(220, 10%, 85%);
+  --ct-dropdown-placeholder: hsl(220, 10%, 50%);
+  --ct-dropdown-empty: hsl(220, 10%, 45%);
+
+  --ct-pagination-link: hsl(207, 80%, 60%);
+  --ct-pagination-hover-bg: hsl(215, 30%, 22%);
+  --ct-pagination-hover-border: hsl(207, 60%, 40%);
+  --ct-pagination-current-border: hsl(220, 10%, 45%);
+  --ct-pagination-label: hsl(220, 10%, 60%);
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.6);
+  --ct-dialog-bg: hsl(220, 15%, 16%);
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.5);
+  --ct-dialog-border: hsl(220, 12%, 25%);
+  --ct-dialog-title: hsl(220, 10%, 85%);
+  --ct-dialog-close: hsl(220, 10%, 45%);
+  --ct-dialog-close-hover: hsl(220, 10%, 85%);
+  --ct-dialog-input-border: hsl(220, 12%, 28%);
+  --ct-dialog-btn-bg: hsl(220, 15%, 20%);
+  --ct-dialog-btn-border: hsl(220, 12%, 30%);
+  --ct-dialog-btn-text: hsl(220, 10%, 80%);
+  --ct-dialog-btn-hover: hsl(220, 15%, 25%);
+  --ct-dialog-save-bg: hsl(207, 80%, 45%);
+  --ct-dialog-save-hover: hsl(207, 80%, 38%);
+
+  --ct-cell-error-bg: hsl(0, 40%, 22%);
+  --ct-cell-error-text: hsl(0, 80%, 75%);
+  --ct-row-readonly-bg: hsl(220, 15%, 18%);
+  --ct-row-readonly-text: hsl(220, 10%, 50%);
+  --ct-pencil-icon: "🖉";
+}
+
+
+/* Dark scrollbars & interactions */
+.grid-db-editor {
+  .grid-db-editor-viewport {
+    scrollbar-color: hsl(220, 12%, 30%) hsl(220, 15%, 16%);
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: hsl(220, 15%, 16%);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: hsl(220, 12%, 30%);
+      border-radius: 5px;
+      &:hover {
+        background: hsl(220, 12%, 38%);
+      }
+    }
+  }
+
+  /* Dark checkboxes */
+  & input[type="checkbox"] {
+    accent-color: hsl(207, 80%, 50%);
+  }
+}
+
+/* Cell-meta utility classes */
+.grid-db-editor .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.grid-db-editor .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+`},{id:`excel`,label:`Excel Classic`,css:`/*
+ * Excel Classic — mimics the traditional Microsoft Excel look.
+ * Gray headers, gridlines, green selection.
+ */
+
+:root {
+  --ct-bg: white;
+  --ct-empty-area-bg: hsl(0, 0%, 85%);
+  --ct-text: #000;
+  --ct-font: "Segoe UI", Calibri, Arial, sans-serif;
+
+  --ct-border: #b4b4b4;
+  --ct-border-light: #d4d4d4;
+
+  --ct-header-bg: #e6e6e6;
+  --ct-header-border: #b4b4b4;
+  --ct-header-label: #000;
+
+  --ct-row-bg: white;
+  --ct-row-hover: #e8f0fe;
+  --ct-sticky-bg: #f0f0f0;
+
+  --ct-selected-row-bg: #cce5ff;
+  --ct-selected-col-bg: #d5d5d5;
+  --ct-selected-cell-bg: white;
+  --ct-selected-outline: #217346;
+  --ct-edited-outline: #217346;
+  --ct-selection-fill: #9ee6b9;
+  --ct-fill-outline: rgba(33, 115, 70, 0.5);
+  --ct-dragger-bg: #217346;
+  --ct-dragger-border: white;
+
+  --ct-toolbar-bg: #f3f3f3;
+  --ct-toolbar-border: #d4d4d4;
+  --ct-input-border: #b4b4b4;
+  --ct-input-bg: white;
+  --ct-button-bg: #e6e6e6;
+  --ct-button-border: #a0a0a0;
+  --ct-button-hover: #d5d5d5;
+
+  --ct-focus-outline: #217346;
+
+  --ct-ctx-bg: #f9f9f9;
+  --ct-ctx-border: #b4b4b4;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.15);
+  --ct-ctx-text: #1a1a1a;
+  --ct-ctx-hover: #e0e0e0;
+  --ct-ctx-shortcut: #777;
+
+  --ct-muted: #888;
+  --ct-muted-light: #bbb;
+
+  --ct-dropdown-bg: white;
+  --ct-dropdown-border: #b4b4b4;
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.15);
+  --ct-dropdown-hover: #e8e8e8;
+  --ct-dropdown-selected: #cce5ff;
+  --ct-dropdown-highlighted: #dce8f5;
+  --ct-dropdown-both: #b8d4f0;
+  --ct-dropdown-text: #000;
+  --ct-dropdown-placeholder: #666;
+  --ct-dropdown-empty: #888;
+
+  --ct-pagination-link: #0563c1;
+  --ct-pagination-hover-bg: #dce8f5;
+  --ct-pagination-hover-border: #8cb4e0;
+  --ct-pagination-current-border: #999;
+  --ct-pagination-label: #444;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.3);
+  --ct-dialog-bg: #f3f3f3;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.25);
+  --ct-dialog-border: #b4b4b4;
+  --ct-dialog-title: #1a1a1a;
+  --ct-dialog-close: #888;
+  --ct-dialog-close-hover: #1a1a1a;
+  --ct-dialog-input-border: #b4b4b4;
+  --ct-dialog-btn-bg: #e6e6e6;
+  --ct-dialog-btn-border: #a0a0a0;
+  --ct-dialog-btn-text: #1a1a1a;
+  --ct-dialog-btn-hover: #d5d5d5;
+  --ct-dialog-save-bg: #217346;
+  --ct-dialog-save-hover: #185a35;
+
+  --ct-cell-error-bg: #ffc7ce;
+  --ct-cell-error-text: #9c0006;
+  --ct-row-readonly-bg: #f2f2f2;
+  --ct-row-readonly-text: #808080;
+  --ct-pencil-icon: "📝";
+}
+
+
+/* Excel-style checkboxes — classic Windows form controls */
+.grid-db-editor {
+  & input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #888;
+    border-top-color: #666;
+    border-left-color: #666;
+    background: #fff;
+    border-radius: 1px;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    flex-shrink: 0;
+
+    &:checked {
+      background: #fff;
+
+      &::after {
+        content: "✓";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1;
+        color: #217346;
+      }
+    }
+  }
+  .col-filter-input {
+    border: 1px solid var(--ct-border);
+  }
+  .selection-rectangle {
+    outline: solid 4px var(--ct-selected-outline);
+    outline-offset: 1px;
+  }
+}
+
+/* Cell-meta utility classes */
+.grid-db-editor .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.grid-db-editor .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+`},{id:`sheets`,label:`Google Sheets`,css:`/*
+ * Google Sheets — clean white, thin borders, blue accent, Roboto-like font.
+ */
+
+:root {
+  --ct-bg: white;
+  --ct-empty-area-bg: hsl(0, 0%, 92%);
+  --ct-text: #202124;
+  --ct-font: "Google Sans", Roboto, Arial, sans-serif;
+
+  --ct-border: #e0e0e0;
+  --ct-border-light: #e8eaed;
+
+  --ct-header-bg: rgba(242, 245, 250, 0);
+  --ct-header-border: #dadce0;
+  --ct-header-label: #202124;
+
+  --ct-row-bg: white;
+  --ct-row-hover: #f1f3f4;
+  --ct-sticky-bg: #f8f9fa;
+
+  --ct-selected-row-bg: #e8f0fe;
+  --ct-selected-col-bg: #e8eaed;
+  --ct-selected-cell-bg: white;
+  --ct-selected-outline: #1a73e8;
+  --ct-edited-outline: #1a73e8;
+  --ct-selection-fill: #bad3fa;
+  --ct-fill-outline: #5f6368;
+  --ct-dragger-bg: #1a73e8;
+  --ct-dragger-border: white;
+
+  --ct-toolbar-bg: #f8f9fa;
+  --ct-toolbar-border: #dadce0;
+  --ct-input-border: #dadce0;
+  --ct-input-bg: white;
+  --ct-button-bg: white;
+  --ct-button-border: #dadce0;
+  --ct-button-hover: #f1f3f4;
+
+  --ct-focus-outline: #1a73e8;
+
+  --ct-ctx-bg: white;
+  --ct-ctx-border: #dadce0;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.18);
+  --ct-ctx-text: #202124;
+  --ct-ctx-hover: #f1f3f4;
+  --ct-ctx-shortcut: #80868b;
+
+  --ct-muted: #80868b;
+  --ct-muted-light: #bdc1c6;
+
+  --ct-dropdown-bg: white;
+  --ct-dropdown-border: #dadce0;
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.18);
+  --ct-dropdown-hover: #f1f3f4;
+  --ct-dropdown-selected: #e8f0fe;
+  --ct-dropdown-highlighted: #d2e3fc;
+  --ct-dropdown-both: #c0d7f8;
+  --ct-dropdown-text: #202124;
+  --ct-dropdown-placeholder: #80868b;
+  --ct-dropdown-empty: #80868b;
+
+  --ct-pagination-link: #1a73e8;
+  --ct-pagination-hover-bg: #e8f0fe;
+  --ct-pagination-hover-border: #aecbfa;
+  --ct-pagination-current-border: #80868b;
+  --ct-pagination-label: #5f6368;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.32);
+  --ct-dialog-bg: white;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.28);
+  --ct-dialog-border: #dadce0;
+  --ct-dialog-title: #202124;
+  --ct-dialog-close: #5f6368;
+  --ct-dialog-close-hover: #202124;
+  --ct-dialog-input-border: #dadce0;
+  --ct-dialog-btn-bg: white;
+  --ct-dialog-btn-border: #dadce0;
+  --ct-dialog-btn-text: #5f6368;
+  --ct-dialog-btn-hover: #f1f3f4;
+  --ct-dialog-save-bg: #1a73e8;
+  --ct-dialog-save-hover: #1765cc;
+
+  --ct-cell-error-bg: #fce8e6;
+  --ct-cell-error-text: #c5221f;
+  --ct-row-readonly-bg: #f8f9fa;
+  --ct-row-readonly-text: #80868b;
+  --ct-pencil-icon: "📝";
+}
+
+
+/* Sheets blue checkboxes & interactions */
+.grid-db-editor {
+  & input[type="checkbox"] {
+    accent-color: #1a73e8;
+  }
+
+  .selection-rectangle-dragger {
+    content: "";
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: -7px;
+    bottom: -7px;
+    pointer-events: all;
+    cursor: crosshair;
+    border-radius: 100%;
+  }
+
+  .fill-rectangle {
+    outline: dashed 2px var(--ct-fill-outline);
+  }
+
+  .col-header-label {
+    font-weight: bold;
+  }
+}
+
+/* Cell-meta utility classes */
+.grid-db-editor .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.grid-db-editor .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+`},{id:`material`,label:`Material`,css:`/*
+ * Material UI DataTable inspired theme.
+ * Borderless cells, horizontal row dividers only, generous padding,
+ * elevated paper surface, rounded corners, Roboto font.
+ * Transitions, ripple-like focus, MUI elevation levels.
+ */
+
+:root {
+  --ct-bg: #fff;
+  --ct-empty-area-bg: hsl(0, 0%, 92%);
+  --ct-text: rgba(0, 0, 0, 0.87);
+  --ct-font: "Roboto", "Helvetica", "Arial", sans-serif;
+
+  --ct-border: transparent;
+  --ct-border-light: transparent;
+
+  --ct-header-bg: #fff;
+  --ct-header-border: transparent;
+  --ct-header-label: rgba(0, 0, 0, 0.6);
+
+  --ct-row-bg: #fff;
+  --ct-row-hover: rgba(0, 0, 0, 0.06);
+  --ct-sticky-bg: #fff;
+
+  --ct-selected-row-bg: rgba(25, 118, 210, 0.08);
+  --ct-selected-col-bg: rgba(25, 118, 210, 0.08);
+  --ct-selected-cell-bg: #fff;
+  --ct-selected-outline: #1565c0;
+  --ct-edited-outline: #1565c0;
+  --ct-selection-fill: #bce1fb;
+  --ct-fill-outline: #d32f2f;
+  --ct-dragger-bg: #1976d2;
+  --ct-dragger-border: #fff;
+
+  --ct-toolbar-bg: #fff;
+  --ct-toolbar-border: rgba(0, 0, 0, 0.12);
+  --ct-input-border: rgba(0, 0, 0, 0.23);
+  --ct-input-bg: #fff;
+  --ct-button-bg: #fff;
+  --ct-button-border: rgba(0, 0, 0, 0.23);
+  --ct-button-hover: rgba(0, 0, 0, 0.04);
+
+  --ct-focus-outline: #1976d2;
+
+  --ct-ctx-bg: #fff;
+  --ct-ctx-border: transparent;
+  --ct-ctx-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  --ct-ctx-text: rgba(0, 0, 0, 0.87);
+  --ct-ctx-hover: rgba(0, 0, 0, 0.04);
+  --ct-ctx-shortcut: rgba(0, 0, 0, 0.38);
+
+  --ct-muted: rgba(0, 0, 0, 0.54);
+  --ct-muted-light: rgba(0, 0, 0, 0.38);
+
+  --ct-dropdown-bg: #fff;
+  --ct-dropdown-border: transparent;
+  --ct-dropdown-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  --ct-dropdown-hover: rgba(0, 0, 0, 0.04);
+  --ct-dropdown-selected: rgba(25, 118, 210, 0.08);
+  --ct-dropdown-highlighted: rgba(0, 0, 0, 0.04);
+  --ct-dropdown-both: rgba(25, 118, 210, 0.16);
+  --ct-dropdown-text: rgba(0, 0, 0, 0.87);
+  --ct-dropdown-placeholder: rgba(0, 0, 0, 0.38);
+  --ct-dropdown-empty: rgba(0, 0, 0, 0.38);
+
+  --ct-pagination-link: #1976d2;
+  --ct-pagination-hover-bg: rgba(25, 118, 210, 0.08);
+  --ct-pagination-hover-border: transparent;
+  --ct-pagination-current-border: rgba(0, 0, 0, 0.23);
+  --ct-pagination-label: rgba(0, 0, 0, 0.6);
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.5);
+  --ct-dialog-bg: #fff;
+  --ct-dialog-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  --ct-dialog-border: transparent;
+  --ct-dialog-title: rgba(0, 0, 0, 0.87);
+  --ct-dialog-close: rgba(0, 0, 0, 0.54);
+  --ct-dialog-close-hover: rgba(0, 0, 0, 0.87);
+  --ct-dialog-input-border: rgba(0, 0, 0, 0.23);
+  --ct-dialog-btn-bg: transparent;
+  --ct-dialog-btn-border: transparent;
+  --ct-dialog-btn-text: #1976d2;
+  --ct-dialog-btn-hover: rgba(25, 118, 210, 0.04);
+  --ct-dialog-save-bg: #1976d2;
+  --ct-dialog-save-hover: #1565c0;
+
+  --ct-cell-error-bg: #fdecea;
+  --ct-cell-error-text: #611a15;
+  --ct-row-readonly-bg: rgba(0, 0, 0, 0.04);
+  --ct-row-readonly-text: rgba(0, 0, 0, 0.38);
+  --ct-pencil-icon: "✏️";
+}
+
+
+/* ===== MUI Overrides ===== */
+
+/* Paper-like container with elevation-1 shadow */
+.grid-db-editor {
+  border: none;
+  border-radius: 4px;
+  box-shadow:
+    0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+
+  /* --- Cells & Headers --- */
+
+  /* No cell outlines — only bottom border on rows */
+  .col-header,
+  .cell {
+    outline: none;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    padding: 16px;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1rem;
+    line-height: 1.43;
+  }
+
+  .col-header {
+    background: #fff;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.5rem;
+    color: rgba(0, 0, 0, 0.6);
+
+    &:hover .col-sort-icon {
+      opacity: 0.6;
+    }
+  }
+
+  & th {
+    font-weight: 500;
+  }
+
+  /* No outline on sticky cells; opaque bg so content doesn't bleed through */
+  tbody td.sticky.cell {
+    outline: none;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    background-color: #fff;
+  }
+
+  /* Selected column header — opaque so sticky headers don't bleed */
+  .col-edited,
+  .col-selected {
+    outline: none;
+    background-color: #bbdefb;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Stronger selection outline */
+  .cell-selected,
+  .cell-edited {
+    outline-width: 2px;
+    outline-offset: -1px;
+  }
+
+  /* Row hover — smooth transition */
+  tbody tr {
+    td {
+      transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    &:hover {
+      td {
+        background-color: rgba(0, 0, 0, 0.06);
+        &.sticky {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
+
+  .row-selected td.sticky,
+  .row-edited td.sticky {
+    background-color: #e3f2fd;
+  }
+
+  /* --- Sort icons: MUI arrow style --- */
+  .col-sort-icon {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.6);
+    transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* --- Inputs: MUI filled style (bottom-underline + subtle bg fill) --- */
+  .col-filter-input,
+  .toolbar-input {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 4px 4px 0 0;
+    padding: 6px 8px 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.87);
+    background: rgba(0, 0, 0, 0.04);
+    transition:
+      border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+
+    &:hover {
+      border-bottom-color: rgba(0, 0, 0, 0.87);
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    &:focus {
+      border-bottom: 2px solid #1565c0;
+      padding-bottom: 4px;
+      background: rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  /* Cell editor input — MUI underline animation */
+  .cell-editor-input {
+    transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* --- Buttons: MUI text-button style --- */
+  .toolbar-button {
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.02857em;
+    padding: 6px 16px;
+    min-height: 36px;
+    border: 1px solid rgba(25, 118, 210, 0.5);
+    background: transparent;
+    color: #1976d2;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition:
+      background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background: rgba(25, 118, 210, 0.08);
+      border-color: #1976d2;
+    }
+
+    &:active {
+      background: rgba(25, 118, 210, 0.12);
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.4);
+    }
+  }
+
+  /* --- Combobox / Dropdown: MUI Select & Menu --- */
+  .combo-dropdown-list {
+    border: none;
+    border-radius: 4px;
+    box-shadow:
+      0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    animation: mui-menu-open 120ms cubic-bezier(0, 0, 0.2, 1);
+    padding: 8px 0;
+  }
+
+  .combo-dropdown-option {
+    min-height: 36px;
+    padding: 6px 16px;
+    font-size: 1rem;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:active {
+      background-color: rgba(25, 118, 210, 0.12);
+    }
+  }
+
+  .combo-dropdown-input {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 0;
+    padding: 8px 16px;
+    font-size: 1rem;
+    background: transparent;
+    transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+
+    &:focus {
+      border-bottom-color: #1976d2;
+      box-shadow: 0 1px 0 0 #1976d2;
+    }
+  }
+
+  .combo-dropdown-display {
+    font-size: 1rem;
+  }
+
+  .combo-dropdown-empty {
+    padding: 16px;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.38);
+  }
+
+  /* Dropdown checkbox styling */
+  .combo-dropdown-checkbox {
+    font-size: 1.1rem;
+  }
+
+  /* Dropdown indicator (▼) */
+  .cell-dropdown-indicator {
+    color: rgba(0, 0, 0, 0.54);
+    transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* --- Checkboxes: MUI blue --- */
+  & input[type="checkbox"] {
+    accent-color: #1976d2;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  /* --- Spacing: more whitespace for Material density --- */
+  .grid-db-editor-toolbar {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  /* --- Scrollbar: thin, subtle --- */
+  .grid-db-editor-viewport {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 4px;
+      &:hover {
+        background: rgba(0, 0, 0, 0.35);
+      }
+    }
+  }
+
+  /* --- Selection dragger: MUI blue --- */
+  .fill-dragger {
+    transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+}
+
+.theme-switcher {
+  padding: 10px 16px;
+}
+
+/* --- Pagination: MUI TablePagination style --- */
+.ct-pagination {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  padding: 10px 16px;
+
+  .ct-tool-button {
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.02857em;
+    background: transparent;
+    color: #1976d2;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover:not(:disabled) {
+      background: rgba(25, 118, 210, 0.04);
+    }
+    &:active:not(:disabled) {
+      background: rgba(25, 118, 210, 0.12);
+    }
+    &:disabled {
+      color: rgba(0, 0, 0, 0.26);
+    }
+  }
+
+  .ct-pagination-page {
+    border: none;
+    border-radius: 50%;
+    min-width: 32px;
+    height: 32px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    &.is-current {
+      background-color: rgba(25, 118, 210, 0.12);
+      color: #1976d2;
+      font-weight: 500;
+      border: none;
+    }
+  }
+
+  .ct-pagination-select {
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 1rem;
+    transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.87);
+    }
+    &:focus {
+      border-color: #1976d2;
+      box-shadow: 0 0 0 1px #1976d2;
+    }
+  }
+}
+
+/* --- Textarea dialog: MUI Dialog --- */
+.editor-dialog-overlay {
+  animation: mui-overlay-open 225ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.editor-dialog {
+  border-radius: 4px;
+  box-shadow:
+    0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0px 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  animation: mui-dialog-open 225ms cubic-bezier(0, 0, 0.2, 1);
+
+  .editor-dialog-header {
+    border-bottom: none;
+    padding: 16px 24px;
+  }
+
+  .editor-dialog-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.0075em;
+  }
+
+  .editor-dialog-input {
+    margin: 0 24px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    padding: 12px;
+    font-size: 1rem;
+    transition:
+      border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.87);
+    }
+    &:focus {
+      border-color: #1976d2;
+      box-shadow: 0 0 0 1px #1976d2;
+    }
+  }
+
+  .editor-dialog-footer {
+    border-top: none;
+    padding: 8px 24px 16px;
+  }
+
+  .editor-dialog-close {
+    transition:
+      color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  .editor-dialog-btn {
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.02857em;
+    background: transparent;
+    color: #1976d2;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition:
+      background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background: rgba(25, 118, 210, 0.04);
+    }
+    &:active {
+      background: rgba(25, 118, 210, 0.12);
+    }
+  }
+
+  .editor-dialog-btn-save {
+    background: #1976d2;
+    color: white;
+    box-shadow:
+      0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+
+    &:hover {
+      background: #1565c0;
+      box-shadow:
+        0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+    }
+    &:active {
+      box-shadow:
+        0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+        0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+        0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+  }
+}
+
+@keyframes mui-menu-open {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes mui-overlay-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mui-dialog-open {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Theme switcher integration --- */
+.theme-switcher-select {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1rem;
+  transition: border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.87);
+  }
+  &:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 1px #1976d2;
+  }
+}
+
+/* Cell-meta utility classes */
+.grid-db-editor .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.grid-db-editor .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+
+.context-menu {
+  border: none;
+  border-radius: 4px;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow:
+    0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+  padding: 8px 0;
+  animation: mui-menu-open 120ms cubic-bezier(0, 0, 0.2, 1);
+
+  .context-menu-item {
+    padding: 6px 16px;
+    font-size: 1rem;
+    min-height: 36px;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+`},{id:`material3`,label:`Material 3`,css:`/*
+ * Material Design 3 (Material You) theme.
+ * Based on M3 baseline light scheme with purple primary (#6750A4).
+ * Tonal surface hierarchy, pill-shaped buttons, 28px dialog radius,
+ * M3 typography scale, state-layer opacities.
+ */
+
+:root {
+  --ct-bg: #fef7ff;
+  --ct-empty-area-bg: #ece6f0;
+  --ct-text: #1d1b20;
+  --ct-font: "Roboto", "Helvetica", "Arial", sans-serif;
+
+  --ct-border: transparent;
+  --ct-border-light: transparent;
+
+  --ct-header-bg: #ede7f3;
+  --ct-header-border: transparent;
+  --ct-header-label: #1d1b20;
+
+  --ct-row-bg: #fef7ff;
+  --ct-row-hover: rgba(29, 27, 32, 0.08);
+  --ct-sticky-bg: #f7f2fa;
+
+  --ct-selected-row-bg: rgba(103, 80, 164, 0.12);
+  --ct-selected-col-bg: rgba(103, 80, 164, 0.12);
+  --ct-selected-cell-bg: #fef7ff;
+  --ct-selected-outline: #6750a4;
+  --ct-edited-outline: #6750a4;
+  --ct-selection-fill: #d8cff3;
+  --ct-fill-outline: #b3261e;
+  --ct-dragger-bg: #6750a4;
+  --ct-dragger-border: #ffffff;
+
+  --ct-toolbar-bg: transparent;
+  --ct-toolbar-border: #cac4d0;
+  --ct-input-border: #79747e;
+  --ct-input-bg: #fef7ff;
+  --ct-button-bg: transparent;
+  --ct-button-border: #79747e;
+  --ct-button-hover: rgba(103, 80, 164, 0.08);
+
+  --ct-focus-outline: #6750a4;
+
+  --ct-ctx-bg: #f3edf7;
+  --ct-ctx-border: transparent;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.3);
+  --ct-ctx-text: #1d1b20;
+  --ct-ctx-hover: rgba(29, 27, 32, 0.08);
+  --ct-ctx-shortcut: #49454f;
+
+  --ct-muted: #49454f;
+  --ct-muted-light: #79747e;
+
+  --ct-dropdown-bg: #f3edf7;
+  --ct-dropdown-border: transparent;
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.3);
+  --ct-dropdown-hover: rgba(29, 27, 32, 0.08);
+  --ct-dropdown-selected: rgba(103, 80, 164, 0.08);
+  --ct-dropdown-highlighted: rgba(29, 27, 32, 0.08);
+  --ct-dropdown-both: rgba(103, 80, 164, 0.16);
+  --ct-dropdown-text: #1d1b20;
+  --ct-dropdown-placeholder: #49454f;
+  --ct-dropdown-empty: #49454f;
+
+  --ct-pagination-link: #6750a4;
+  --ct-pagination-hover-bg: rgba(103, 80, 164, 0.08);
+  --ct-pagination-hover-border: transparent;
+  --ct-pagination-current-border: #79747e;
+  --ct-pagination-label: #49454f;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.32);
+  --ct-dialog-bg: #ece6f0;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.3);
+  --ct-dialog-border: transparent;
+  --ct-dialog-title: #1d1b20;
+  --ct-dialog-close: #49454f;
+  --ct-dialog-close-hover: #1d1b20;
+  --ct-dialog-input-border: #79747e;
+  --ct-dialog-btn-bg: transparent;
+  --ct-dialog-btn-border: transparent;
+  --ct-dialog-btn-text: #6750a4;
+  --ct-dialog-btn-hover: rgba(103, 80, 164, 0.08);
+  --ct-dialog-save-bg: #6750a4;
+  --ct-dialog-save-hover: #7e67ae;
+
+  --ct-cell-error-bg: #f9dedc;
+  --ct-cell-error-text: #410e0b;
+  --ct-row-readonly-bg: rgba(29, 27, 32, 0.05);
+  --ct-row-readonly-text: rgba(29, 27, 32, 0.38);
+  --ct-pencil-icon: "✏️";
+}
+
+
+/* ===== M3 Overrides ===== */
+
+/* Surface-container-low with tonal elevation instead of shadow */
+.grid-db-editor {
+  border: 1px solid #cac4d0;
+  border-radius: 16px;
+  box-shadow: none;
+  overflow: hidden;
+  background: #fef7ff;
+
+  /* --- Cells & Headers --- */
+
+  .col-header,
+  .cell {
+    outline: none;
+    border-bottom: 1px solid #cac4d0;
+    padding: 16px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .col-header {
+    background: #e8e0ee;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    color: #1d1b20;
+    border-bottom: 1px solid #aea9b4;
+
+    &:hover .col-sort-icon {
+      opacity: 0.6;
+    }
+  }
+
+  & th {
+    font-weight: 500;
+  }
+
+  /* Sticky cells: opaque bg so content doesn't bleed through */
+  tbody td.sticky.cell {
+    outline: none;
+    border-bottom: 1px solid #cac4d0;
+    background-color: #f3edf7;
+  }
+
+  /* Selected column header */
+  .col-edited,
+  .col-selected {
+    outline: none;
+    background-color: #d9ccee;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* Selection outline */
+  .cell-selected,
+  .cell-edited {
+    outline-width: 2px;
+    outline-offset: -1px;
+  }
+
+  /* Row hover */
+  tbody tr {
+    td {
+      transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    }
+    &:hover {
+      td {
+        background-color: rgba(29, 27, 32, 0.08);
+        &.sticky {
+          background-color: #e5dfe9;
+        }
+      }
+    }
+  }
+
+  .row-selected td.sticky,
+  .row-edited td.sticky {
+    background-color: #d9ccee;
+  }
+
+  /* Body cell typography: body-medium */
+  .cell {
+    font-size: 1rem;
+    line-height: 20px;
+    letter-spacing: 0.25px;
+  }
+
+  /* --- Sort icons --- */
+  .col-sort-icon {
+    font-size: 1rem;
+    color: #49454f;
+    transition: opacity 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* --- Inputs: M3 filled style (bottom-indicator + tonal fill) --- */
+  .col-filter-input,
+  .toolbar-input {
+    border: none;
+    border-bottom: 1px solid #79747e;
+    border-radius: 4px 4px 0 0;
+    padding: 6px 8px 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+    color: #1d1b20;
+    background: rgba(29, 27, 32, 0.05);
+    transition:
+      border-color 200ms cubic-bezier(0.2, 0, 0, 1),
+      background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    outline: none;
+
+    &:hover {
+      border-bottom-color: #1d1b20;
+      background: rgba(29, 27, 32, 0.08);
+    }
+
+    &:focus {
+      border-bottom: 2px solid #6750a4;
+      padding-bottom: 4px;
+      background: rgba(29, 27, 32, 0.1);
+    }
+  }
+
+  /* Cell editor input */
+  .cell-editor-input {
+    transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* --- Buttons: M3 pill-shaped text buttons --- */
+  .toolbar-button {
+    border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+    padding: 10px 24px;
+    min-height: 40px;
+    border: none;
+    background: transparent;
+    color: #6750a4;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      background: rgba(103, 80, 164, 0.08);
+    }
+    &:active {
+      background: rgba(103, 80, 164, 0.1);
+    }
+    &:focus-visible {
+      outline: 2px solid #6750a4;
+      outline-offset: 2px;
+    }
+  }
+
+
+  /* --- Combobox / Dropdown: M3 Menu surface --- */
+  .combo-dropdown-list {
+    border: 1px solid #cac4d0;
+    border-radius: 4px;
+    background: #f3edf7;
+    box-shadow:
+      0px 1px 3px 0px rgba(0, 0, 0, 0.15),
+      0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+    animation: m3-menu-open 200ms cubic-bezier(0.2, 0, 0, 1);
+    padding: 8px 0;
+  }
+
+  .combo-dropdown-option {
+    min-height: 48px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:active {
+      background-color: rgba(103, 80, 164, 0.1);
+    }
+  }
+
+  .combo-dropdown-input {
+    border: none;
+    border-bottom: 1px solid #79747e;
+    border-radius: 0;
+    padding: 8px 16px;
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+    background: transparent;
+    transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    outline: none;
+
+    &:focus {
+      border-bottom-width: 2px;
+      border-bottom-color: #6750a4;
+      padding-bottom: 7px;
+    }
+  }
+
+  .combo-dropdown-display {
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+  }
+
+  .combo-dropdown-empty {
+    padding: 16px;
+    font-size: 1rem;
+    color: #49454f;
+  }
+
+  .combo-dropdown-checkbox {
+    font-size: 1.1rem;
+  }
+
+  .cell-dropdown-indicator {
+    color: #49454f;
+    transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  /* --- Checkboxes: M3 primary --- */
+  & input[type="checkbox"] {
+    accent-color: #6750a4;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: transform 100ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  /* --- Spacing: more whitespace for M3 density --- */
+  .grid-db-editor-toolbar {
+    padding: 10px 16px;
+    gap: 10px;
+  }
+
+  /* --- Scrollbar: thin, subtle --- */
+  .grid-db-editor-viewport {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(29, 27, 32, 0.2) transparent;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(29, 27, 32, 0.2);
+      border-radius: 4px;
+      &:hover {
+        background: rgba(29, 27, 32, 0.35);
+      }
+    }
+  }
+
+  /* --- Selection dragger --- */
+  .fill-dragger {
+    transition: transform 100ms cubic-bezier(0.2, 0, 0, 1);
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
+}
+
+.theme-switcher {
+  padding: 10px 16px;
+}
+
+/* --- Pagination: M3 style --- */
+.ct-pagination {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  padding: 10px 16px;
+
+  .ct-tool-button {
+    border: none;
+    border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.1px;
+    background: transparent;
+    color: #6750a4;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover:not(:disabled) {
+      background: rgba(103, 80, 164, 0.08);
+    }
+    &:active:not(:disabled) {
+      background: rgba(103, 80, 164, 0.1);
+    }
+    &:disabled {
+      color: rgba(29, 27, 32, 0.38);
+    }
+  }
+
+  .ct-pagination-page {
+    border: none;
+    border-radius: 50%;
+    min-width: 32px;
+    height: 32px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      background-color: rgba(29, 27, 32, 0.08);
+    }
+    &.is-current {
+      background-color: #eaddff;
+      color: #21005d;
+      font-weight: 500;
+      border: none;
+    }
+  }
+
+  .ct-pagination-select {
+    border: none;
+    border-bottom: 1px solid #79747e;
+    border-radius: 4px 4px 0 0;
+    padding: 6px 8px 5px;
+    font-size: 1rem;
+    background: rgba(29, 27, 32, 0.05);
+    transition:
+      border-color 200ms cubic-bezier(0.2, 0, 0, 1),
+      background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    outline: none;
+
+    &:hover {
+      border-bottom-color: #1d1b20;
+      background: rgba(29, 27, 32, 0.08);
+    }
+    &:focus {
+      border-bottom: 2px solid #6750a4;
+      padding-bottom: 4px;
+      background: rgba(29, 27, 32, 0.1);
+    }
+  }
+}
+
+/* --- Textarea dialog: M3 Dialog (28px radius) --- */
+.editor-dialog-overlay {
+  animation: m3-overlay-open 200ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.editor-dialog {
+  border-radius: 28px;
+  background: #ece6f0;
+  box-shadow:
+    0px 4px 8px 0px rgba(0, 0, 0, 0.1),
+    0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  animation: m3-dialog-open 200ms cubic-bezier(0.2, 0, 0, 1);
+
+  .editor-dialog-header {
+    border-bottom: none;
+    padding: 24px 24px 0;
+  }
+
+  .editor-dialog-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: 0px;
+  }
+
+  .editor-dialog-input {
+    margin: 16px 24px;
+    border: none;
+    border-bottom: 1px solid #79747e;
+    border-radius: 4px 4px 0 0;
+    padding: 12px;
+    font-size: 1rem;
+    letter-spacing: 0.25px;
+    color: #1d1b20;
+    background: rgba(29, 27, 32, 0.05);
+    transition:
+      border-color 200ms cubic-bezier(0.2, 0, 0, 1),
+      background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    outline: none;
+
+    &:hover {
+      border-bottom-color: #1d1b20;
+      background: rgba(29, 27, 32, 0.08);
+    }
+    &:focus {
+      border-bottom: 2px solid #6750a4;
+      padding-bottom: 11px;
+      background: rgba(29, 27, 32, 0.1);
+    }
+  }
+
+  .editor-dialog-footer {
+    border-top: none;
+    padding: 16px 24px 24px;
+  }
+
+  .editor-dialog-close {
+    transition:
+      color 200ms cubic-bezier(0.2, 0, 0, 1),
+      background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: rgba(29, 27, 32, 0.08);
+    }
+  }
+
+  .editor-dialog-btn {
+    border: none;
+    border-radius: 20px;
+    text-transform: none;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.1px;
+    background: transparent;
+    color: #6750a4;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      background: rgba(103, 80, 164, 0.08);
+    }
+    &:active {
+      background: rgba(103, 80, 164, 0.1);
+    }
+  }
+
+  .editor-dialog-btn-save {
+    background: #6750a4;
+    color: white;
+    box-shadow: none;
+
+    &:hover {
+      background: #7e67ae;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+    }
+    &:active {
+      background: #5b4397;
+    }
+  }
+}
+
+@keyframes m3-menu-open {
+  from {
+    opacity: 0;
+    transform: scaleY(0.8);
+    transform-origin: top;
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+@keyframes m3-overlay-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes m3-dialog-open {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Theme switcher integration --- */
+.theme-switcher-select {
+  border: 1px solid #79747e;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1rem;
+  transition: border-color 200ms cubic-bezier(0.2, 0, 0, 1);
+  outline: none;
+
+  &:hover {
+    border-color: #1d1b20;
+  }
+  &:focus {
+    border-color: #6750a4;
+    border-width: 2px;
+    padding: 3px 7px;
+  }
+}
+
+/* Cell-meta utility classes */
+.grid-db-editor .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.grid-db-editor .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+
+.context-menu {
+  border: 1px solid #cac4d0;
+  border-radius: 4px;
+  background: #f3edf7;
+  color: #1d1b20;
+  box-shadow:
+    0px 1px 3px 0px rgba(0, 0, 0, 0.15),
+    0px 4px 8px 0px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  animation: m3-menu-open 200ms cubic-bezier(0.2, 0, 0, 1);
+
+  .context-menu-item {
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    line-height: 20px;
+    min-height: 48px;
+    transition: background-color 200ms cubic-bezier(0.2, 0, 0, 1);
+
+    &:hover {
+      background-color: rgba(29, 27, 32, 0.08);
+    }
+    &:active {
+      background-color: rgba(29, 27, 32, 0.1);
+    }
+  }
+}
+`},{id:`numbers`,label:`Numbers`,css:`/*
+ * Apple Numbers inspired — clean, minimal, white background,
+ * light gray headers, thin borders, blue accent.
+ */
+
+:root {
+  --ct-bg: #fff;
+  --ct-empty-area-bg: #e8e8ed;
+  --ct-text: #1d1d1f;
+  --ct-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+
+  --ct-border: #d2d2d7;
+  --ct-border-light: #e0e0e4;
+
+  --ct-header-bg: #dadbde;
+  --ct-header-border: #bbbbc0;
+  --ct-header-label: #3a3a3c;
+
+  --ct-row-bg: #fff;
+  --ct-row-hover: #f0f5ff;
+  --ct-sticky-bg: #dadbde;
+
+  --ct-selected-row-bg: #d4e4f7;
+  --ct-selected-col-bg: #dce8f8;
+  --ct-selected-cell-bg: #fff;
+  --ct-selected-outline: #007aff;
+  --ct-edited-outline: #007aff;
+  --ct-selection-fill: #b3d7ff;
+  --ct-fill-outline: #ff3b30;
+  --ct-dragger-bg: #007aff;
+  --ct-dragger-border: #fff;
+
+  --ct-toolbar-bg: #f5f5f7;
+  --ct-toolbar-border: #d5d5da;
+  --ct-input-border: #c7c7cc;
+  --ct-input-bg: #fff;
+  --ct-button-bg: #fff;
+  --ct-button-border: #c7c7cc;
+  --ct-button-hover: #e8e8ed;
+
+  --ct-focus-outline: #007aff;
+
+  --ct-ctx-bg: #fff;
+  --ct-ctx-border: #d5d5da;
+  --ct-ctx-shadow: rgba(0, 0, 0, 0.15);
+  --ct-ctx-text: #1d1d1f;
+  --ct-ctx-hover: #e8e8ed;
+  --ct-ctx-shortcut: #8e8e93;
+
+  --ct-muted: #8e8e93;
+  --ct-muted-light: #c7c7cc;
+
+  --ct-dropdown-bg: #fff;
+  --ct-dropdown-border: #d5d5da;
+  --ct-dropdown-shadow: rgba(0, 0, 0, 0.12);
+  --ct-dropdown-hover: #f2f2f7;
+  --ct-dropdown-selected: #d4e4f7;
+  --ct-dropdown-highlighted: #e8e8ed;
+  --ct-dropdown-both: #c5d8ed;
+  --ct-dropdown-text: #1d1d1f;
+  --ct-dropdown-placeholder: #8e8e93;
+  --ct-dropdown-empty: #8e8e93;
+
+  --ct-pagination-link: #007aff;
+  --ct-pagination-hover-bg: #d4e4f7;
+  --ct-pagination-hover-border: #80bfff;
+  --ct-pagination-current-border: #8e8e93;
+  --ct-pagination-label: #3a3a3c;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.35);
+  --ct-dialog-bg: #fff;
+  --ct-dialog-shadow: rgba(0, 0, 0, 0.2);
+  --ct-dialog-border: #d5d5da;
+  --ct-dialog-title: #1d1d1f;
+  --ct-dialog-close: #8e8e93;
+  --ct-dialog-close-hover: #1d1d1f;
+  --ct-dialog-input-border: #c7c7cc;
+  --ct-dialog-btn-bg: #fff;
+  --ct-dialog-btn-border: #c7c7cc;
+  --ct-dialog-btn-text: #3a3a3c;
+  --ct-dialog-btn-hover: #e8e8ed;
+  --ct-dialog-save-bg: #007aff;
+  --ct-dialog-save-hover: #0066d6;
+
+  --ct-cell-error-bg: #fde8e8;
+  --ct-cell-error-text: #bf2626;
+  --ct-row-readonly-bg: #f5f5f7;
+  --ct-row-readonly-text: #86868b;
+  --ct-pencil-icon: "🖋";
+}
+
+/* Cell-meta utility classes */
+.grid-db-editor .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.grid-db-editor .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+`},{id:`high-contrast`,label:`High Contrast`,css:`/*
+ * High Contrast theme — maximum readability and accessibility.
+ * Strong borders, bold colors, larger text, WCAG AAA contrast ratios.
+ * Designed for users who need enhanced visual clarity.
+ */
+
+:root {
+  --font-size: 1.5rem;
+  --line-height: 2rem;
+
+  --ct-bg: #ffffff;
+  --ct-empty-area-bg: hsl(0, 0%, 85%);
+  --ct-text: #000000;
+  --ct-font: sans-serif;
+
+  --ct-border: #000000;
+  --ct-border-light: #000000;
+
+  --ct-header-bg: #000000;
+  --ct-header-border: #ffffff;
+  --ct-header-label: #ffffff;
+
+  --ct-row-bg: #ffffff;
+  --ct-row-hover: #ffff00;
+  --ct-sticky-bg: #ffffff;
+
+  --ct-selected-row-bg: #ffffcc;
+  --ct-selected-col-bg: #ffffcc;
+  --ct-selected-cell-bg: #ffffff;
+  --ct-selected-outline: #000000;
+  --ct-edited-outline: #000000;
+  --ct-selection-fill: #ffff00;
+  --ct-fill-outline: #000000;
+  --ct-dragger-bg: #000000;
+  --ct-dragger-border: #ffffff;
+
+  --ct-toolbar-bg: #ffffff;
+  --ct-toolbar-border: #000000;
+  --ct-input-border: #000000;
+  --ct-input-bg: #ffffff;
+  --ct-button-bg: #ffffff;
+  --ct-button-border: #000000;
+  --ct-button-hover: #ffff00;
+
+  --ct-focus-outline: #000000;
+
+  --ct-ctx-bg: #ffffff;
+  --ct-ctx-border: #000000;
+  --ct-ctx-shadow: none;
+  --ct-ctx-text: #000000;
+  --ct-ctx-hover: #ffff00;
+  --ct-ctx-shortcut: #000000;
+
+  --ct-muted: #000000;
+  --ct-muted-light: #000000;
+
+  --ct-dropdown-bg: #ffffff;
+  --ct-dropdown-border: #000000;
+  --ct-dropdown-shadow: none;
+  --ct-dropdown-hover: #ffff00;
+  --ct-dropdown-selected: #ffffcc;
+  --ct-dropdown-highlighted: #ffff00;
+  --ct-dropdown-both: #ffff00;
+  --ct-dropdown-text: #000000;
+  --ct-dropdown-placeholder: #000000;
+  --ct-dropdown-empty: #000000;
+
+  --ct-pagination-link: #000000;
+  --ct-pagination-hover-bg: #ffff00;
+  --ct-pagination-hover-border: #000000;
+  --ct-pagination-current-border: #000000;
+  --ct-pagination-label: #000000;
+
+  --ct-dialog-overlay: rgba(0, 0, 0, 0.8);
+  --ct-dialog-bg: #ffffff;
+  --ct-dialog-shadow: none;
+  --ct-dialog-border: #000000;
+  --ct-dialog-title: #000000;
+  --ct-dialog-close: #000000;
+  --ct-dialog-close-hover: #000000;
+  --ct-dialog-input-border: #000000;
+  --ct-dialog-btn-bg: #ffffff;
+  --ct-dialog-btn-border: #000000;
+  --ct-dialog-btn-text: #000000;
+  --ct-dialog-btn-hover: #ffff00;
+  --ct-dialog-save-bg: #000000;
+  --ct-dialog-save-hover: #000000;
+
+  --ct-cell-error-bg: #ff0000;
+  --ct-cell-error-text: #ffffff;
+  --ct-row-readonly-bg: #333333;
+  --ct-row-readonly-text: #999999;
+  --ct-pencil-icon: "🖋";
+}
+
+
+/* ===== High Contrast Overrides ===== */
+
+.grid-db-editor {
+  border: 4px solid #000000;
+
+  color: #000000;
+  background-color: #ffffff;
+
+
+  table {
+    font-family: Serif;
+    font-weight: bold;
+    th {
+      font-weight: bolder;
+    }
+  }
+
+  /* Base inputs bolder as well */
+  & input,
+  & button,
+  & select,
+  & textarea {
+
+    color: #000000;
+  }
+
+  .col-header,
+  .cell {
+    outline: 2px solid #000000;
+  }
+
+  .col-header {
+    font-weight: 800;
+    border-bottom: 3px solid #000000;
+    color: #ffffff;
+
+    /* If headers have SVGs, we might need to color them white */
+    & svg {
+      fill: #ffffff;
+      stroke: #ffffff;
+    }
+
+    &.col-edited,
+    &.col-selected {
+      color: #000000 !important;
+      & svg {
+        fill: #000000 !important;
+        stroke: #000000 !important;
+      }
+    }
+  }
+
+  & th {
+    font-weight: 800;
+  }
+
+  & tbody {
+    & td.sticky {
+      border-right: 3px solid #000000;
+    }
+    & tr:hover td {
+      background-color: #ffff00;
+      color: #000000;
+    }
+  }
+
+  /* Selected states — very visible with black outlines */
+  .col-edited,
+  .col-selected {
+    background-color: #ffffcc;
+    z-index: 2;
+    color: #000000 !important;
+
+    /* Force everything inside selected columns to be black */
+    & * {
+      color: #000000 !important;
+    }
+    & svg {
+      fill: #000000 !important;
+      stroke: #000000 !important;
+    }
+  }
+
+  .cell-edited {
+    outline: 8px solid #000000;
+    z-index: 3;
+  }
+
+  .row-selected td,
+  .row-edited td {
+    background-color: #ffffcc;
+  }
+
+  /* Selection rectangle */
+  .selection-rectangle {
+    outline: 8px solid #000000;
+    outline-offset: 1px;
+  }
+  .selection-rectangle-dragger {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    pointer-events: all;
+    cursor: crosshair;
+  }
+  .fill-rectangle {
+    outline: dashed 6px;
+    outline-offset: 1px;
+  }
+
+
+  /* Inputs — thick borders */
+  .col-filter-input {
+    border: 3px solid #000000;
+    background-color: #ffffff;
+    color: #000000;
+
+    &:focus {
+      border-color: #000000;
+      box-shadow:
+        0 0 0 3px #ffff00,
+        0 0 0 5px #000000;
+    }
+  }
+
+  .toolbar-input {
+    border: 3px solid #000000;
+
+    &:focus {
+      border-color: #000000;
+      box-shadow:
+        0 0 0 3px #ffff00,
+        0 0 0 5px #000000;
+    }
+  }
+
+  /* Buttons — clear thick borders, bold text */
+  .toolbar-button {
+    border: 3px solid #000000;
+    font-weight: 800;
+    background-color: #ffffff;
+    color: #000000;
+
+    &:hover {
+      background: #ffff00;
+    }
+
+    &:focus-visible {
+      outline: 4px solid #000000;
+      outline-offset: 2px;
+      background: #ffff00;
+    }
+  }
+
+  /* Dropdown (cell editor + filter combobox) */
+  .combo-dropdown-list,
+  .col-filter-dropdown {
+    border: 3px solid #000000;
+    box-shadow: 6px 6px 0 #000000;
+    background: #ffffff;
+    color: #000000;
+  }
+
+  .combo-dropdown-option,
+  .col-filter-dropdown-option {
+    &:hover {
+      background-color: #ffff00;
+    }
+
+    &.is-selected {
+      background-color: #ffffcc;
+    }
+  }
+
+  /* Checkboxes — classic style, larger, high contrast */
+  & input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #000000;
+    background: #ffffff;
+    border-radius: 0;
+    cursor: pointer;
+    position: relative;
+    vertical-align: middle;
+    flex-shrink: 0;
+    overflow: hidden;
+
+    &:checked {
+      background: #ffffff;
+      border-color: #000000;
+
+      &::after {
+        content: "✔";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 900;
+        line-height: 1;
+        color: #000000;
+      }
+    }
+
+    &:focus-visible {
+      outline: 4px solid #ffff00;
+      box-shadow: 0 0 0 2px #000000;
+    }
+  }
+}
+
+/* Pagination */
+.ct-pagination {
+
+  .ct-tool-button {
+    border: 3px solid #000000;
+    font-weight: 800;
+    color: #000000;
+    background: #ffffff;
+
+    &:hover:not(:disabled) {
+      background: #ffff00;
+    }
+  }
+
+  .ct-pagination-page {
+    border: 2px solid #000000;
+    font-weight: 700;
+    color: #000000;
+    background: #ffffff;
+
+    &:hover {
+      background-color: #ffff00;
+      border-color: #000000;
+    }
+
+    &.is-current {
+      background-color: #000000;
+      color: #ffffff;
+      font-weight: 800;
+      border-color: #000000;
+    }
+  }
+
+  .ct-pagination-select {
+    border: 3px solid #000000;
+    font-weight: 700;
+    background: #ffffff;
+    color: #000000;
+  }
+}
+
+/* Textarea Dialog */
+.editor-dialog {
+  border: 4px solid #000000;
+  box-shadow: 8px 8px 0 #000000;
+
+  .editor-dialog-title {
+    font-weight: 800;
+    color: #000000;
+  }
+
+  .editor-dialog-input {
+    border: 3px solid #000000;
+
+    background: #ffffff;
+    color: #000000;
+
+    &:focus {
+      border-color: #000000;
+      box-shadow:
+        0 0 0 3px #ffff00,
+        0 0 0 5px #000000;
+    }
+  }
+
+  .editor-dialog-btn {
+    border: 3px solid #000000;
+    font-weight: 800;
+    background: #ffffff;
+    color: #000000;
+
+    &:hover {
+      background: #ffff00;
+    }
+  }
+
+  .editor-dialog-btn-save {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+
+    &:hover {
+      background: #ffff00;
+      color: #000000;
+    }
+  }
+}
+
+/* Theme switcher */
+.theme-switcher-select {
+  border: 3px solid #000000;
+  font-weight: 700;
+  background: #ffffff;
+  color: #000000;
+
+  &:focus {
+    outline: none;
+    border-color: #000000;
+    box-shadow:
+      0 0 0 3px #ffff00,
+      0 0 0 5px #000000;
+  }
+}
+
+.example-footer {
+  margin-top: 2rem;
+  border: none;
+}
+
+.app-table-wrapper {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.grid-db-editor-toolbar {
+  border: none !important;
+}
+
+/* Cell-meta utility classes */
+.grid-db-editor .cell-error {
+  background-color: var(--ct-cell-error-bg);
+  color: var(--ct-cell-error-text);
+}
+
+.grid-db-editor .row-readonly td {
+  background-color: var(--ct-row-readonly-bg);
+  color: var(--ct-row-readonly-text);
+}
+
+.context-menu {
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0 #000000;
+  background: #ffffff;
+  color: #000000;
+
+  .context-menu-item {
+    font-weight: 700;
+
+    &:hover {
+      background-color: #ffff00;
+      color: #000000;
+    }
+  }
+}
+`}],v=[...[{name:`id`,type:`Number`,readOnly:!0,label:`ID`,headerTitle:`Unique internal row ID`,serverOwned:!0},{name:`complexKey`,type:`String`,label:`System Key`,headerTitle:`Internal system key (10-50 characters)`},{name:`firstName`,type:`String`,label:`First Name`,required:!0,headerTitle:`First name of the person`},{name:`lastName`,type:`String`,label:`Last Name`,required:!0,headerTitle:`Last name of the person`},{name:`email`,type:`String`,label:`Email`,required:!0,headerTitle:`Email address in the format user@example.com`},{name:`department`,type:`Combobox`,label:`Department`,selectOptions:[`HR`,`IT`,`Sales`,`Marketing`,`Finance`,`Legal`],headerTitle:`Department / organizational unit`},{name:`skills`,type:`MultiCombobox`,label:`Skills`,selectOptions:[`React`,`TypeScript`,`Python`,`Java`,`SQL`,`AWS`,`Docker`,`Figma`],headerTitle:`Skills / competencies (multiple selection)`},{name:`description`,type:`String`,label:`Description`,headerTitle:`Free text / long description (0-1000 characters)`,editor:a,dialogTitle:"${firstName} ${lastName}: Description",className:`col-description`,wrap:!0},{name:`isActive`,type:`Boolean`,label:`Active`,headerTitle:`Whether the person is active in the company`},{name:`salary`,type:`Number`,label:`Salary`,headerTitle:`Annual salary in EUR`,numberFormat:{decimalPlaces:2,thousandsSeparator:!0,suffix:` €`}},{name:`hireDate`,type:`Date`,label:`Hire Date`,headerTitle:`Hire date (YYYY-MM-DD)`,dateFormat:{dateStyle:`medium`}},{name:`manager`,type:`String`,label:`Manager`,headerTitle:`Name of the direct manager`},{name:`officeLocation`,type:`String`,label:`Office Location`,headerTitle:`Location or office`},{name:`phone`,type:`String`,label:`Phone`,inputMask:`+## ### ########`,headerTitle:`Phone number (international format)`},{name:`employeeNumber`,type:`String`,label:`Employee Number`,headerTitle:`Company-internal employee number`},{name:`status`,type:`String`,label:`Employment Status`,headerTitle:`Employment status (e.g. Active, On Leave)`},{name:`role`,type:`String`,label:`Role`,headerTitle:`Job title / role in the company`},{name:`team`,type:`String`,label:`Team`,headerTitle:`Team name or unit`},{name:`lastLogin`,type:`DateTime`,label:`Last Login`,headerTitle:`Last login timestamp (ISO)`,dateTimeFormat:{dateStyle:`medium`,timeStyle:`short`}},{name:`performanceScore`,type:`Number`,label:`Score`,headerTitle:`Rating value (0-5)`,numberFormat:{decimalPlaces:2,thousandsSeparator:!1}},{name:`bonus`,type:`Number`,label:`Bonus`,headerTitle:`Variable bonus payments in EUR`,numberFormat:{decimalPlaces:0,thousandsSeparator:!0,prefix:`+ `,suffix:` €`}},{name:`contractType`,type:`String`,label:`Contract Type`,headerTitle:`Type of contract (Permanent/Temporary/etc.)`},{name:`country`,type:`Combobox`,label:`Country`,headerTitle:`Country of residence or workplace`,selectOptions:[`Germany`,`Netherlands`,`Austria`,`Switzerland`,`France`],freeText:!0},{name:`city`,type:`Combobox`,label:`City`,headerTitle:`City (dependent on Country)`,selectOptions:e=>({Germany:[`Berlin`,`Munich`,`Hamburg`,`Frankfurt`,`Cologne`,`Stuttgart`],Netherlands:[`Amsterdam`,`Rotterdam`,`Utrecht`,`The Hague`,`Eindhoven`],Austria:[`Vienna`,`Graz`,`Salzburg`,`Innsbruck`,`Linz`],Switzerland:[`Zurich`,`Geneva`,`Basel`,`Bern`,`Lausanne`],France:[`Paris`,`Lyon`,`Marseille`,`Toulouse`,`Strasbourg`]})[e.country]??[],freeText:!0},{name:`postalCode`,type:`String`,label:`Postal Code`,headerTitle:`Postal code`},{name:`address`,type:`String`,label:`Address`,headerTitle:`Street and house number`},{name:`linkedin`,type:`Url`,label:`LinkedIn`,headerTitle:`LinkedIn profile URL`},{name:`github`,type:`Url`,label:`GitHub`,headerTitle:`GitHub profile URL`},{name:`dateOfBirth`,type:`Date`,label:`Date of Birth`,headerTitle:`Date of birth (YYYY-MM-DD)`,dateFormat:{dateStyle:`long`}},{name:`emergencyContact`,type:`String`,label:`Emergency Contact`,headerTitle:`Emergency contact (name + phone)`},{name:`checkInTime`,type:`Time`,label:`Check-In`,headerTitle:`Daily check-in time`,timeFormat:{showSeconds:!1}},{name:`shiftDuration`,type:`Duration`,label:`Shift`,headerTitle:`Standard shift duration`,durationFormat:{style:`short`}},{name:`brandColor`,type:`Color`,label:`Color`,headerTitle:`Team / brand color`}]],y=g.map((e,t)=>{let n={};return v.forEach(t=>{Object.prototype.hasOwnProperty.call(e,t.name)?n[t.name]=e[t.name]:t.type===`Boolean`?n[t.name]=!1:t.type===`Number`?n[t.name]=null:n[t.name]=``}),n.id=e.id==null?t:e.id,n}),b={3:{cells:{complexKey:{title:`Validation error: Key must not be 'dummy'`,className:`cell-error`}}},5:{row:{className:`row-readonly`,title:`This row is read-only`,readOnly:!0},cells:{complexKey:{disabled:!0,title:`Disabled cell`}}}},x={local:`Local (sync)`,"backend-fast":`Backend (100 ms)`,"backend-slow":`Backend (2 s)`,"backend-error":`Error (2 s)`,"backend-offline":`Connection error`,"backend-validation":`Validation (2 s)`,"backend-stale":`Stale (2 s)`},S=e=>new Promise(t=>setTimeout(t,e)),C=(e,t)=>new Promise((n,r)=>setTimeout(()=>r(Error(t)),e));function te(e){return e.map(e=>{let t={...e};return typeof t.firstName==`string`&&t.firstName&&(t.firstName=t.firstName.trim().replace(/^\w/,e=>e.toUpperCase())),typeof t.lastName==`string`&&t.lastName&&(t.lastName=t.lastName.trim().replace(/^\w/,e=>e.toUpperCase())),typeof t.email==`string`&&t.email&&(t.email=t.email.trim().toLowerCase()),t})}function ne(e,t){let n={};return e.forEach((e,r)=>{let i=t(e,r),a={};e.email!=null&&e.email!==``&&!String(e.email).includes(`@`)&&(a.email={title:`Invalid email: must contain @`,className:`cell-error`}),e.firstName!=null&&e.firstName!==``&&String(e.firstName).length<2&&(a.firstName={title:`Too short: minimum 2 characters`,className:`cell-warning`}),e.firstName&&(!e.lastName||String(e.lastName).trim()===``)&&(a.lastName={title:`Last name is required`,className:`cell-error`}),Object.keys(a).length>0&&(n[i]={cells:a})}),n}(0,d.createRoot)(document.getElementById(`root`)).render((0,m.jsx)(()=>{let[t,n]=(0,f.useState)(y),[i,a]=p(`ct-data-mode`,`local`),o=(0,f.useRef)(i);o.current=i;let c=(0,f.useRef)(null),u=(0,f.useRef)(null),[d,ee]=p(`ct-theme`,`light`),g=(0,f.useCallback)(e=>{let t=_.find(t=>t.id===e);if(!t)return;let n=document.getElementById(`theme-override`);n||(n=document.createElement(`style`),n.id=`theme-override`,document.head.appendChild(n)),n.textContent=t.css},[]);(0,f.useEffect)(()=>{g(d)},[d,g]);let[w,re]=(0,f.useState)(``),[T,E]=(0,f.useState)(null),[D,O]=(0,f.useState)({}),[k,A]=p(`ct-column-order`,[]),[j,M]=p(`ct-hidden-columns`,[]),N=(0,f.useMemo)(()=>new Set(j),[j]),[ie,ae]=(0,f.useState)(!1),[P,F]=p(`ct-column-widths`,{}),I=(0,f.useMemo)(()=>{let e=new Map(v.map(e=>[e.name,e])),t=k.length>0?k:v.map(e=>e.name),n=new Set(t);return[...t,...v.filter(e=>!n.has(e.name)).map(e=>e.name)].filter(e=>!N.has(e)).map(t=>e.get(t)).filter(Boolean)},[k,N]),[L,oe]=p(`ct-ellipsis`,!0),[R,z]=p(`ct-sticky-columns`,1),[B,V]=(0,f.useState)(1),[H,se]=(0,f.useState)(100),U=(0,f.useMemo)(()=>{let e=t.map((e,t)=>({row:e,origIdx:t})),n=Object.entries(D).filter(([,e])=>e.trim()!==``);return n.length>0&&(e=e.filter(({row:e})=>n.every(([t,n])=>{let r=e[t];if(n.startsWith(`\0`)){let e=n.slice(1).split(`
+`).filter(Boolean).map(e=>e===`empty`?``:e);return r==null||r===``?e.includes(``):Array.isArray(r)?r.some(t=>e.includes(String(t))):e.includes(String(r))}return r==null?!1:Array.isArray(r)?r.some(e=>String(e).toLowerCase().includes(n.toLowerCase())):String(r).toLowerCase().includes(n.toLowerCase())}))),T&&T.length>0&&e.sort((e,t)=>{for(let{column:n,direction:r}of T){let i=e.row[n],a=t.row[n];if(i==null&&a==null)continue;if(i==null)return 1;if(a==null)return-1;let o=String(i).localeCompare(String(a),void 0,{numeric:!0});if(o!==0)return r===`asc`?o:-o}return 0}),e},[t,D,T]),W=U.length,G=H===0?W||1:H,K=(B-1)*G,q=(0,f.useMemo)(()=>U.slice(K,K+G),[U,K,G]),{displayRows:J,displayItems:Y,displaySortConfig:ce,displayFilters:le,displayTotalFilteredRows:ue,status:X,loading:Z,pendingSortColumn:de,pendingFilterColumns:fe,asyncCellMeta:pe,handleRowsChange:me,handleUpdateRows:he,handleAsyncOp:ge,setError:Q,markCellsUnsaved:_e,consumeLastBatch:ve,resolveBatch:ye,clearAsyncMeta:be}=l({allRows:t,columns:I,sortConfig:T,filters:D,rowKeyFn:(e,t)=>``+q[t]?.origIdx,pageItems:q,pageRows:(0,f.useMemo)(()=>q.map(e=>e.row),[q]),totalFilteredRows:W,delayMs:i===`backend-slow`||i===`backend-error`||i===`backend-validation`||i===`backend-stale`?2e3:i===`backend-offline`?200:i===`backend-fast`?100:0,transformBackendRows:i===`backend-stale`?te:void 0,validateRows:i===`backend-validation`?ne:void 0,onStaleDetected:()=>requestAnimationFrame(()=>u.current?.())}),xe=(0,f.useMemo)(()=>{let e={...b};for(let[t,n]of Object.entries(pe))e[t]?e[t]={...e[t],cells:{...e[t].cells,...n.cells}}:e[t]=n;return e},[pe]),$=(0,f.useCallback)(e=>{let t=o.current;if(t!==`local`)return t===`backend-offline`?(Q(`${e}: connection failed — changes kept locally`),requestAnimationFrame(()=>u.current?.()),Promise.resolve()):t===`backend-error`?C(2e3,`${e} failed: server error`).catch(e=>{throw Q(e.message),e}):ge(e)},[ge,Q]),Se=(0,f.useMemo)(()=>{if(i!==`local`)return X},[i,X]),Ce=e=>{se(e),V(1)},we=e=>{O(e),V(1)},Te=(0,f.useCallback)(e=>{if(!e.hasSelection){re(``);return}let{startRow:t,endRow:n,startCol:r,endCol:i}=e.range,a=0,o=0;for(let e=t;e<=n;e++)for(let t=r;t<=i;t++){let n=I[t];if(!n)continue;let r=J[e]?.[n.name],i=Number(r);r!=null&&r!==``&&!isNaN(i)&&(a+=i,o++)}re(o>0?`Sum: ${a.toFixed(2)} | Count: ${o} | Avg: ${(a/o).toFixed(2)}`:``)},[J]);return(0,m.jsxs)(`div`,{className:`example-page`,children:[(0,m.jsxs)(`div`,{className:`theme-switcher`,children:[(0,m.jsx)(`a`,{href:`https://github.com/SebastianBaltes/customtable/blob/master/src/examples/example.tsx`,target:`_blank`,rel:`noopener noreferrer`,className:`view-source-link`,children:`</> View Source`}),(0,m.jsx)(`span`,{className:`theme-switcher-label`,children:`Theme:`}),(0,m.jsx)(`select`,{className:`theme-switcher-select`,value:d,onChange:e=>ee(e.target.value),children:_.map(e=>(0,m.jsx)(`option`,{value:e.id,children:e.label},e.id))}),(0,m.jsx)(`span`,{className:`theme-switcher-label`,style:{marginLeft:`2rem`},children:`Mode:`}),(0,m.jsx)(`select`,{className:`theme-switcher-select`,value:i,onChange:e=>{c.current?.abort(),c.current=null,a(e.target.value),be();try{localStorage.removeItem(`ct-unsaved`)}catch{}},children:Object.keys(x).map(e=>(0,m.jsx)(`option`,{value:e,children:x[e]},e))})]}),(0,m.jsx)(`div`,{className:`app-table-wrapper`,children:(0,m.jsx)(r,{rows:J,columns:I,numberOfStickyColums:R,colSelection:!0,caption:`Employee Data`,textEllipsisLength:L?25:void 0,onRowsChange:e=>{me(e);let r=[...t];if(e.length===J.length)e.forEach((e,t)=>{r[Y[t].origIdx]=e});else if(e.length>J.length){let t=e.slice(J.length);e.slice(0,J.length).forEach((e,t)=>{r[Y[t].origIdx]=e}),r.push(...t)}else{let t=new Set(e),i=new Set(Y.filter(e=>!t.has(e.row)).map(e=>e.origIdx));n(r.filter((e,t)=>!i.has(t)));return}n(r)},rowKey:(e,t)=>``+Y[t]?.origIdx,cellMeta:xe,sortConfig:ce,onSortChange:E,filters:le,onFilterChange:e=>we(e),status:Se,loading:Z,pendingFilterColumns:fe,pendingSortColumn:de,shakeRef:u,onUpdateRows:e=>{console.log(`onUpdateRows:`,e);let t=o.current;if(t===`backend-error`){let e=ve();return C(2e3,`update failed: server error`).catch(t=>{throw ye(e),Q(t.message),t})}if(t===`backend-offline`){let e=ve();_e(e),Q(`Connection error — retrying in background`),requestAnimationFrame(()=>u.current?.()),c.current?.abort();let t=new AbortController;c.current=t;let n=async r=>{let i=Math.min(2e3*2**r,3e4);await S(i),!t.signal.aborted&&(o.current===`backend-offline`?(Q(`Connection error — retry ${r+2} in ${Math.round(Math.min(i*2,3e4)/1e3)}s`),n(r+1)):(ye(e),be()))};return n(0),Promise.resolve()}return he(e)},onCreateRows:e=>(console.log(`onCreateRows:`,e),$(`create`)),onDeleteRows:e=>(console.log(`onDeleteRows:`,e),$(`delete`)),onUndo:e=>(console.log(`onUndo:`,e),$(`undo`)),onRedo:e=>(console.log(`onRedo:`,e),$(`redo`)),onSelectionChange:Te,enableSearchReplace:!0,columnWidths:P,onColumnResize:(e,t)=>{F(n=>({...n,[e]:t}))},extraContextMenuItems:[{label:`Log selection`,onClick:({selectedRows:e,selectionRange:t})=>{console.log(`Selected range:`,t,`Rows:`,e)}}]})}),(0,m.jsxs)(`div`,{className:`example-footer`,children:[(0,m.jsx)(s,{totalRows:ue,page:B,pageSize:H,onPageChange:V,onPageSizeChange:Ce,maxVisiblePages:7,loading:Z}),w&&(0,m.jsx)(`span`,{className:`selection-summary`,children:w}),(0,m.jsxs)(`div`,{className:`example-footer-controls`,children:[(0,m.jsx)(`button`,{className:`toolbar-button`,disabled:(!T||T.length===0)&&Object.keys(D).every(e=>!D[e]),onClick:()=>{E(null),O({}),V(1)},children:`Reset Filter & Sort`}),(0,m.jsx)(`button`,{className:e(`toolbar-button`,`toggle`,L&&`active`),onClick:()=>oe(e=>!e),title:`Toggle text truncation`,children:`[...]`}),(0,m.jsx)(`button`,{className:`toolbar-button`,onClick:()=>ae(!0),title:`Manage columns (order, visibility)`,children:`Columns`}),(0,m.jsx)(`button`,{className:`toolbar-button`,disabled:k.length===0&&j.length===0&&Object.keys(P).length===0,onClick:()=>{A([]),M([]),F({})},title:`Reset column order, visibility, and widths`,children:`Reset Columns`})]})]}),(0,m.jsx)(h,{open:ie,onClose:()=>ae(!1),columns:v,columnOrder:k.length>0?k:v.map(e=>e.name),onColumnOrderChange:A,hiddenColumns:N,onHiddenColumnsChange:e=>M([...e]),onReset:()=>{A([]),M([]),F({}),z(1)},numberOfStickyColumns:R,onStickyColumnsChange:z})]})},{}));
