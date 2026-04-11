@@ -79,7 +79,7 @@ export const ColorEditor: Editor<string> = ({
           onKeyDown={handleKeyDown}
         />
       ) : (
-        <span>{displayHex}</span>
+        <span className="color-editor-text-display">{displayHex}</span>
       )}
       <input
         ref={pickerRef}

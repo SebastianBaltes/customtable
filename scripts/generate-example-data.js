@@ -140,10 +140,10 @@ function generateDemoData(count) {
       postalCode: maybeEmpty(String(Math.floor(10000 + Math.random() * 89999)), 0.2),
       address: maybeEmpty(`${Math.floor(Math.random() * 200)} Example Street`, 0.3),
       linkedin: maybeEmpty(
-        `https://www.linkedin.com/in/${fName.toLowerCase()}${lName.toLowerCase()}`,
+        `https://www.linkedin.com/in/example-user-${String(i).padStart(3, "0")}`,
         0.7,
       ),
-      github: maybeEmpty(`https://github.com/${fName.toLowerCase()}${lName.toLowerCase()}`, 0.8),
+      github: maybeEmpty(`https://github.com/example-user-${String(i).padStart(3, "0")}`, 0.8),
       dateOfBirth: maybeEmpty(randomDateBetween(1965, 2000).split("T")[0], 0.4),
       emergencyContact: maybeEmpty(
         `${getRandomItem(firstNames)} ${getRandomItem(lastNames)} (${formatPhone()})`,
