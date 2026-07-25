@@ -237,6 +237,7 @@ flowchart TD
 | `enableSearchReplace` | `boolean` | — | `false` | Enable the Search & Replace dialog (Ctrl+H) and context menu entry. |
 | `focusNewRowOnCreate` | `boolean` | — | `true` | After creating rows (footer button, Alt+Insert hotkey, or context-menu insert above/below), move the cursor to the first editable cell of the first new row (in display order, so it respects sort/filter), scroll it into view, and enter edit mode so the user can type immediately. Set to `false` to opt out. |
 | `enableCreateRowsHotkey` | `boolean` | — | `true` | Enable the built-in **Alt+Insert** shortcut that triggers "Create Rows" (respecting the row-count input). Set to `false` to disable it. |
+| `initialSelection` | `{ rowKey?: string; colName: string } \| null` | — | — | Programmatically place the cell cursor on a cell after (re)render, in display coordinates, and scroll it into view. `colName` = logical column name; `rowKey` = target row's key (per the `rowKey` prop; omit for the first row). Applied once per distinct value once the row+column exist; silent no-op otherwise (safe before async data loads). |
 | `sortConfig` | `SortConfig` | — | _(internal)_ | Controlled sort state. |
 | `onSortChange` | `(config: SortConfig) => void` | — | — | Called when the user changes sort. |
 | `filters` | `FilterState` | — | _(internal)_ | Controlled filter state. |

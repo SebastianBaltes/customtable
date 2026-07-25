@@ -129,6 +129,17 @@ interface IProps {
    * button applies. Set to false to disable the shortcut. Default: true.
    */
   enableCreateRowsHotkey: boolean;
+  /**
+   * Programmatically place the cell cursor/selection on a specific cell after
+   * (re)render, in DISPLAY coordinates (respects active sort/filter), and scroll
+   * it into view. `colName` is the logical column name (not a display index);
+   * `rowKey` is the target row's key as produced by the `rowKey` prop — omit it
+   * to target the first display row. Safe to set before async data has loaded:
+   * it silently does nothing until the row and column are present, then applies
+   * once per distinct {rowKey, colName} value (so it never fights the user
+   * afterwards). Set to null/undefined to clear/re-arm.
+   */
+  initialSelection: { rowKey?: string; colName: string } | null;
 }
 
 type GridDbEditorProps = IRequiredProps & Partial<IProps>;
@@ -167,6 +178,7 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     focusNewRowOnCreate = true,
     enableCreateRowsHotkey = true,
     commitFilterOnBlur = false,
+    initialSelection,
   }: GridDbEditorProps) => {
     const t = React.useMemo(() => resolveTranslations(translationsProp), [translationsProp]);
     const [tableId] = React.useState(() => `MkEu3ZWrGK${Math.floor(Math.random() * 1000000)}`);
@@ -431,6 +443,41 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       // the row across the server-driven resort/rekey.
       if (!pending) pendingFocusRef.current = null;
     }, [displayRows, pending, findFirstEditableColIdx, setCursorRef]);
+
+    // Programmatic cell selection (initialSelection prop): place the cursor on
+    // {rowKey?, colName} in display coordinates and scroll it into view. Resolved
+    // by logical column name + rowKey, so it is correct under sort/filter. Applied
+    // at most once per distinct value (token) and only once the row+column exist,
+    // so it is safe to set before async data has loaded and never fights the user.
+    const appliedSelectionRef = React.useRef<string | null>(null);
+    React.useLayoutEffect(() => {
+      if (!initialSelection) {
+        appliedSelectionRef.current = null; // cleared → re-arm for a future target
+        return;
+      }
+      const { rowKey: targetRowKey, colName } = initialSelection;
+      const token = (targetRowKey ?? " first") + " " + colName;
+      if (appliedSelectionRef.current === token) return; // already applied this target
+      const colIdx = columns.findIndex((c) => c.name === colName);
+      if (colIdx < 0) return; // column not present (yet)
+      const rowIdx =
+        targetRowKey == null
+          ? displayRows.length > 0
+            ? 0
+            : -1
+          : displayRows.findIndex((row, i) => getRowKey(row, i) === targetRowKey);
+      if (rowIdx < 0) return; // row not present (yet) — retry on a later render
+      appliedSelectionRef.current = token;
+      setCursorRef({
+        editing: false,
+        initialEditValue: null,
+        filling: false,
+        colSelection: false,
+        selectionStart: { rowIdx, colIdx },
+        selectionEnd: { rowIdx, colIdx },
+        fillEnd: { rowIdx, colIdx },
+      });
+    }, [initialSelection, displayRows, columns, getRowKey, setCursorRef]);
 
     // --- Data mutation helpers ---
     const changeRows = React.useCallback(
