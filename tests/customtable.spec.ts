@@ -1948,11 +1948,14 @@ test.describe("Selection rectangle", () => {
 
       const vr = viewport.getBoundingClientRect();
       const cr = cellEl.getBoundingClientRect();
+      // `border-collapse: collapse` puts the grid line in the middle of the cell
+      // rect; the selection rectangle ends at the inner edge of that line.
+      const halfLine = parseFloat(getComputedStyle(cellEl).borderTopWidth) / 2;
       return {
-        expectedTop: cr.top - vr.top + viewport.scrollTop,
-        expectedLeft: cr.left - vr.left + viewport.scrollLeft,
-        expectedWidth: cr.width,
-        expectedHeight: cr.height,
+        expectedTop: cr.top + halfLine - vr.top + viewport.scrollTop,
+        expectedLeft: cr.left + halfLine - vr.left + viewport.scrollLeft,
+        expectedWidth: cr.width - 2 * halfLine,
+        expectedHeight: cr.height - 2 * halfLine,
         actualTop: parseFloat(selRect.style.top),
         actualLeft: parseFloat(selRect.style.left),
         actualWidth: parseFloat(selRect.style.width),
@@ -1963,11 +1966,13 @@ test.describe("Selection rectangle", () => {
 
     expect(rect).not.toBeNull();
     expect(rect!.display).toBe("block");
-    // Allow ±1px for sub-pixel rounding
-    expect(rect!.actualTop).toBeCloseTo(rect!.expectedTop, 0);
-    expect(rect!.actualLeft).toBeCloseTo(rect!.expectedLeft, 0);
-    expect(rect!.actualWidth).toBeCloseTo(rect!.expectedWidth, 0);
-    expect(rect!.actualHeight).toBeCloseTo(rect!.expectedHeight, 0);
+    // Every edge is snapped to a whole device pixel, so it may deviate from the
+    // fractional cell geometry by up to a pixel. This still catches gross errors
+    // such as swapped top/left deltas.
+    expect(Math.abs(rect!.actualTop - rect!.expectedTop)).toBeLessThanOrEqual(1.01);
+    expect(Math.abs(rect!.actualLeft - rect!.expectedLeft)).toBeLessThanOrEqual(1.01);
+    expect(Math.abs(rect!.actualWidth - rect!.expectedWidth)).toBeLessThanOrEqual(1.01);
+    expect(Math.abs(rect!.actualHeight - rect!.expectedHeight)).toBeLessThanOrEqual(1.01);
   });
 
   test("selection rectangle top must use viewport top, not viewport left", async ({ page }) => {
@@ -1988,7 +1993,10 @@ test.describe("Selection rectangle", () => {
 
       const vr = viewport.getBoundingClientRect();
       const cr = cellEl.getBoundingClientRect();
-      const correctTop = cr.top - vr.top + viewport.scrollTop;
+      // `border-collapse: collapse` puts the grid line in the middle of the cell
+      // rect; the selection rectangle ends at the inner edge of that line.
+      const halfLine = parseFloat(getComputedStyle(cellEl).borderTopWidth) / 2;
+      const correctTop = cr.top + halfLine - vr.top + viewport.scrollTop;
       const buggyTop = cr.top - vr.left + viewport.scrollTop; // what the old buggy code produced
       return {
         actualTop: parseFloat(selRect.style.top),
@@ -2001,10 +2009,10 @@ test.describe("Selection rectangle", () => {
     expect(result).not.toBeNull();
     // The toolbar makes viewport.top != viewport.left; verify this test is meaningful
     if (!result!.viewportTopEqualsLeft) {
-      expect(result!.actualTop).toBeCloseTo(result!.correctTop, 0);
+      expect(Math.abs(result!.actualTop - result!.correctTop)).toBeLessThanOrEqual(1.01);
       expect(result!.actualTop).not.toBeCloseTo(result!.buggyTop, 0);
     }
-    expect(result!.actualTop).toBeCloseTo(result!.correctTop, 0);
+    expect(Math.abs(result!.actualTop - result!.correctTop)).toBeLessThanOrEqual(1.01);
   });
 
   test("selection rectangle matches cell ClientRect for first cell of each row (rows 0-4)", async ({
@@ -2025,6 +2033,9 @@ test.describe("Selection rectangle", () => {
 
         const vr = viewport.getBoundingClientRect();
         const cr = cellEl.getBoundingClientRect();
+      // `border-collapse: collapse` puts the grid line in the middle of the cell
+      // rect; the selection rectangle ends at the inner edge of that line.
+      const halfLine = parseFloat(getComputedStyle(cellEl).borderTopWidth) / 2;
         return {
           expectedTop: cr.top - vr.top + viewport.scrollTop,
           expectedLeft: cr.left - vr.left + viewport.scrollLeft,
@@ -2034,8 +2045,8 @@ test.describe("Selection rectangle", () => {
       }, rowIdx);
 
       expect(result).not.toBeNull();
-      expect(result!.actualTop).toBeCloseTo(result!.expectedTop, 0);
-      expect(result!.actualLeft).toBeCloseTo(result!.expectedLeft, 0);
+      expect(Math.abs(result!.actualTop - result!.expectedTop)).toBeLessThanOrEqual(1.01);
+      expect(Math.abs(result!.actualLeft - result!.expectedLeft)).toBeLessThanOrEqual(1.01);
     }
   });
 
@@ -2086,9 +2097,12 @@ test.describe("Selection rectangle", () => {
 
       const vr = viewport.getBoundingClientRect();
       const cr = cellEl.getBoundingClientRect();
+      // `border-collapse: collapse` puts the grid line in the middle of the cell
+      // rect; the selection rectangle ends at the inner edge of that line.
+      const halfLine = parseFloat(getComputedStyle(cellEl).borderTopWidth) / 2;
       return {
-        expectedTop: cr.top - vr.top + viewport.scrollTop,
-        expectedLeft: cr.left - vr.left + viewport.scrollLeft,
+        expectedTop: cr.top + halfLine - vr.top + viewport.scrollTop,
+        expectedLeft: cr.left + halfLine - vr.left + viewport.scrollLeft,
         actualTop: parseFloat(selRect.style.top),
         actualLeft: parseFloat(selRect.style.left),
         display: selRect.style.display,
@@ -2097,8 +2111,8 @@ test.describe("Selection rectangle", () => {
 
     expect(result).not.toBeNull();
     expect(result!.display).toBe("block");
-    expect(result!.actualTop).toBeCloseTo(result!.expectedTop, 0);
-    expect(result!.actualLeft).toBeCloseTo(result!.expectedLeft, 0);
+    expect(Math.abs(result!.actualTop - result!.expectedTop)).toBeLessThanOrEqual(1.01);
+    expect(Math.abs(result!.actualLeft - result!.expectedLeft)).toBeLessThanOrEqual(1.01);
   });
 });
 

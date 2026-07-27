@@ -190,24 +190,130 @@ function setRectangleOverCells(
   if (!(viewport && rectangleDiv && startCell && endCell)) {
     return;
   }
-  const viewportRect = viewport.getBoundingClientRect();
   const startRect = startCell.getBoundingClientRect();
   const endRect = endCell.getBoundingClientRect();
-  const dtop = offsetParent ? -offsetParent.offsetTop : 0;
-  const dleft = offsetParent ? -offsetParent.offsetLeft : 0;
-  const topDelta = viewportRect.top;
-  const leftDelta = viewportRect.left;
-  const top = Math.min(startRect.top, endRect.top) - topDelta;
-  const left = Math.min(startRect.left, endRect.left) - leftDelta;
-  const right = Math.max(startRect.right, endRect.right) - leftDelta;
-  const bottom = Math.max(startRect.bottom, endRect.bottom) - topDelta;
-  const width = right - left;
-  const height = bottom - top;
+
+  // Align the rectangle with the *inner* edges of the grid lines around the
+  // selection, so that the themes' `outline-offset: 1px` lands exactly on the
+  // grid line instead of one pixel next to it (see `leadingInset`/`trailingInset`).
+  const startStyle = getComputedStyle(startCell);
+  const endStyle = startCell === endCell ? startStyle : getComputedStyle(endCell);
+  const startIsTop = startRect.top <= endRect.top;
+  const startIsLeft = startRect.left <= endRect.left;
+  const startIsBottom = startRect.bottom >= endRect.bottom;
+  const startIsRight = startRect.right >= endRect.right;
+
+  // Viewport (= client) coordinates of the wanted rectangle. Snap all four edges
+  // to the device pixel grid with the *same* rule and derive the size from the
+  // snapped edges. Rounding the position and the size independently let the
+  // right/bottom edge drift by up to a full pixel, which showed up as a
+  // selection rectangle that was often one pixel too large.
+  const top = snapToDevicePixel(
+    Math.min(startRect.top, endRect.top) +
+      leadingInset(startIsTop ? startStyle : endStyle, "borderTopWidth"),
+  );
+  const left = snapToDevicePixel(
+    Math.min(startRect.left, endRect.left) +
+      leadingInset(startIsLeft ? startStyle : endStyle, "borderLeftWidth"),
+  );
+  const rightCell = startIsRight ? startCell : endCell;
+  const bottomCell = startIsBottom ? startCell : endCell;
+  const right = snapToDevicePixel(
+    Math.max(startRect.right, endRect.right) -
+      trailingInset(
+        startIsRight ? startStyle : endStyle,
+        "borderRightWidth",
+        nextCellInRow(rightCell),
+        "borderLeftWidth",
+      ),
+  );
+  const bottom = snapToDevicePixel(
+    Math.max(startRect.bottom, endRect.bottom) -
+      trailingInset(
+        startIsBottom ? startStyle : endStyle,
+        "borderBottomWidth",
+        cellInNextRow(bottomCell),
+        "borderTopWidth",
+      ),
+  );
+
+  // Translate the snapped client coordinates into the coordinate system of the
+  // rectangle's containing block. For the sticky rectangle that is the sticky
+  // cell it is rendered in, otherwise the scrolled viewport. Both origins are
+  // read as fractional client coordinates on purpose: the rounded `offsetTop` /
+  // `offsetLeft` used before threw the snapped edges off by up to half a pixel
+  // again.
+  const origin = offsetParent ?? viewport;
+  const originRect = origin.getBoundingClientRect();
+  const originTop = originRect.top + origin.clientTop - (offsetParent ? 0 : viewport.scrollTop);
+  const originLeft = originRect.left + origin.clientLeft - (offsetParent ? 0 : viewport.scrollLeft);
+
   const style = rectangleDiv.style;
-  style.top = Math.round(top + viewport.scrollTop + dtop) + "px";
-  style.left = Math.round(left + viewport.scrollLeft + dleft) + "px";
-  style.width = Math.round(width) + "px";
-  style.height = Math.round(height) + "px";
+  style.top = top - originTop + "px";
+  style.left = left - originLeft + "px";
+  style.width = Math.max(0, right - left) + "px";
+  style.height = Math.max(0, bottom - top) + "px";
+}
+
+type BorderSide = "borderTopWidth" | "borderRightWidth" | "borderBottomWidth" | "borderLeftWidth";
+
+const nextCellInRow = (cell: HTMLTableCellElement) =>
+  cell.nextElementSibling instanceof HTMLTableCellElement ? cell.nextElementSibling : null;
+
+const cellInNextRow = (cell: HTMLTableCellElement) => {
+  const nextRow = cell.parentElement?.nextElementSibling;
+  return nextRow instanceof HTMLTableRowElement ? nextRow.cells[cell.cellIndex] ?? null : null;
+};
+
+/**
+ * Inset of the leading (top/left) edges: the distance between the bounding rect
+ * edge of a cell and the *inner* edge of the grid line drawn there.
+ *
+ * The table uses `border-collapse: collapse`, so a shared grid line is centered
+ * on the cell's bounding rect edge and half of it lies inside the cell. Cells
+ * without a border draw their separator as an `outline`, which lies completely
+ * outside the bounding rect and therefore needs no inset at all.
+ */
+function leadingInset(style: CSSStyleDeclaration, side: BorderSide): number {
+  const border = parseFloat(style[side]);
+  return Number.isFinite(border) ? border / 2 : 0;
+}
+
+/**
+ * Inset of the trailing (bottom/right) edges. For a borderless cell (the sticky
+ * cells use an `outline` as separator) the line at the trailing edge is drawn by
+ * the neighbouring cell: either as its collapsed border, which straddles the
+ * shared edge, or as its leading outline, which covers the last pixel of this
+ * cell.
+ */
+function trailingInset(
+  style: CSSStyleDeclaration,
+  side: BorderSide,
+  neighbour: HTMLTableCellElement | null,
+  neighbourSide: BorderSide,
+): number {
+  const border = parseFloat(style[side]);
+  if (Number.isFinite(border) && border > 0) {
+    return border / 2;
+  }
+  const neighbourStyle = neighbour ? getComputedStyle(neighbour) : null;
+  if (neighbourStyle) {
+    const neighbourBorder = parseFloat(neighbourStyle[neighbourSide]);
+    if (Number.isFinite(neighbourBorder) && neighbourBorder > 0) {
+      return neighbourBorder / 2;
+    }
+    const neighbourOutline = parseFloat(neighbourStyle.outlineWidth);
+    if (Number.isFinite(neighbourOutline)) {
+      return neighbourOutline;
+    }
+  }
+  const outline = parseFloat(style.outlineWidth);
+  return Number.isFinite(outline) ? outline : 0;
+}
+
+function snapToDevicePixel(value: number): number {
+  const dpr = (typeof window !== "undefined" && window.devicePixelRatio) || 1;
+  return Math.round(value * dpr) / dpr;
 }
 
 function getCellAccessors(tableRef: React.RefObject<HTMLTableElement>) {
