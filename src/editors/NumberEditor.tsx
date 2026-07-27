@@ -88,6 +88,11 @@ export const NumberEditor: Editor<number> = ({
       editing,
       initialEditValue: resolvedInitial,
       onCommit: commitNumber,
+      // Clicking into another cell must not turn "12," or "abc" into 0 — an
+      // unparsable number is discarded. Empty is not unparsable: clearing the
+      // cell deliberately means 0, same as on Enter.
+      canCommitOnExit: (v) =>
+        v.trim() === "" || !isNaN(parseLocaleNumber(v, fmt?.locale)),
     });
 
   if (!editing) {

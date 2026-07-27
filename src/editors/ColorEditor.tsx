@@ -26,6 +26,16 @@ function isValidHex(s: string): boolean {
   return /^#[0-9a-f]{6}$/i.test(s) || /^#[0-9a-f]{3}$/i.test(s);
 }
 
+/**
+ * True for input that is on its way to being a hex color but is not there yet
+ * ("#", "#ff", "ff00"). Free text such as a CSS color name is explicitly not
+ * "incomplete" — normalizeHex keeps it, and so do we.
+ */
+function isIncompleteHex(input: string): boolean {
+  const s = input.trim();
+  return /^#?[0-9a-f]*$/i.test(s) && !isValidHex(normalizeHex(s));
+}
+
 // ---------------------------------------------------------------------------
 // Editor component
 // ---------------------------------------------------------------------------
@@ -47,6 +57,9 @@ export const ColorEditor: Editor<string> = ({
       editing,
       initialEditValue,
       onCommit: (val) => onChange(normalizeHex(val)),
+      // On the implicit commit path a half-typed hex ("#ff00") is discarded
+      // rather than stored; free text and empty (= clear) still go through.
+      canCommitOnExit: (v) => v.trim() === "" || !isIncompleteHex(v),
     });
 
   const displayHex = value ?? "";

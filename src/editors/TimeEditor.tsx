@@ -69,6 +69,12 @@ export const TimeEditor: Editor<string> = ({
       initialEditValue,
       onCommit: (val) => onChange(parseTimeInput(val, fmt?.showSeconds)),
       transformValue: (val) => val === initialEditValue ? val : formatTime(val, fmt),
+      // parseTimeInput falls back to the raw text — discard half-typed times
+      // ("14:") on the implicit commit path instead of storing them. Empty
+      // clears the cell.
+      canCommitOnExit: (v) =>
+        v.trim() === "" ||
+        /^\d{1,2}:\d{2}(:\d{2})?$/.test(parseTimeInput(v, fmt?.showSeconds)),
     });
 
   return (

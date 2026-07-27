@@ -113,6 +113,10 @@ export const DurationEditor: Editor<string> = ({
           onChange(normalized);
         }
       },
+      // normalizeDuration falls back to the raw text, so a half-typed duration
+      // ("2h 3") would be stored verbatim. Discard it on the implicit path;
+      // empty clears the cell.
+      canCommitOnExit: (v) => v.trim() === "" || parseDuration(v) !== null,
     });
 
   if (!editing) {

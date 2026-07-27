@@ -528,6 +528,33 @@ Cells and headers receive these classes automatically:
 | **Duration** | Multi-format parser (`2h 30m`, `2:30`, `PT2H30M`). Normalizes to ISO 8601. |
 | **Color** | Hex input with swatch preview + native color picker. |
 
+### When an Edit Is Committed
+
+Text-based editors (String, Number, Date, DateTime, Time, Duration, Color, Url —
+everything built on `useInlineEdit`) commit on **any** way out of edit mode, not
+just on Enter/Tab:
+
+| Leaving edit mode by | Result |
+| --- | --- |
+| Enter / Tab / ArrowRight at end of text | Commit |
+| Clicking into another cell, clicking outside the grid, cursor moved programmatically | Commit |
+| Escape | Discard |
+
+Two guards keep the implicit path from writing noise:
+
+- **Unchanged input is never committed.** Merely opening an editor and leaving it
+  again produces no write, even where the display format would not survive a
+  round-trip through the editor's parser.
+- **Unparsable input is discarded** on the implicit path only — a half-typed date
+  (`27.0`), time (`14:`), duration (`2h 3`) or hex color (`#ff00`) is dropped
+  instead of being stored verbatim. Enter/Tab keep their existing lenient
+  behaviour, where the user explicitly asked for the value to be taken.
+
+Custom editors built on `useInlineEdit` get this for free. `canCommitOnExit`
+supplies the parse check, and `markHandled()` suppresses the implicit commit when
+the editor hands the value to its own UI (see `TextareaDialogEditor`, where the
+dialog's Save/Cancel owns the value).
+
 ### Number Editor Details
 
 In edit mode, prefix/suffix are rendered as CSS `::before`/`::after` decorations. Single-clicking an already-selected cell places the cursor at the click position. Typing a digit opens edit mode with that character pre-filled.

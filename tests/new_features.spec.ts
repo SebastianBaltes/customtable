@@ -3,7 +3,8 @@ import { test, expect } from "@playwright/test";
 test.describe("New Features and Bug Fixes", () => {
   test.beforeEach(async ({ page, context }) => {
     await context.grantPermissions(['clipboard-read', 'clipboard-write']);
-    await page.goto("http://localhost:5173/");
+    // Relative, so the suite follows playwright.config's baseURL (PW_PORT).
+    await page.goto("/");
   });
 
   test("Phone column should apply mask in display mode", async ({ page }) => {

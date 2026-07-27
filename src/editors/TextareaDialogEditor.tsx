@@ -20,12 +20,13 @@ export const TextareaDialogEditor: Editor<string> = ({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
 
-  const { localValue, setLocalValue, inputRef, handleKeyDown, handleBlur } = useInlineEdit({
-    value: value ?? "",
-    editing,
-    initialEditValue,
-    onCommit: onChange,
-  });
+  const { localValue, setLocalValue, inputRef, handleKeyDown, handleBlur, markHandled } =
+    useInlineEdit({
+      value: value ?? "",
+      editing,
+      initialEditValue,
+      onCommit: onChange,
+    });
 
   // --- Dialog state ---
   useEffect(() => {
@@ -53,17 +54,23 @@ export const TextareaDialogEditor: Editor<string> = ({
     ? columnConfig.dialogTitle.replace(/\$\{(\w+)\}/g, (_, key) => (row[key] ?? "") as string)
     : columnConfig.label ?? columnConfig.name;
 
+  // Closing the dialog also ends edit mode (onRequestClose). The dialog owns the
+  // value at that point, so the inline editor must not commit its own — stale —
+  // buffer on top of it. That applies to Save (dialog value wins) as well as to
+  // Cancel/Escape/X (the edit is deliberately discarded).
   const handleSave = () => {
     if (readOnly) {
       handleCancel();
       return;
     }
+    markHandled();
     onChange(dialogValue);
     setDialogOpen(false);
     onRequestClose?.();
   };
 
   const handleCancel = () => {
+    markHandled();
     setDialogValue(value ?? "");
     setDialogOpen(false);
     onRequestClose?.();

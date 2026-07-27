@@ -69,6 +69,11 @@ export const DateEditor: Editor<string> = ({
       initialEditValue,
       onCommit: (val) => onChange(parseDateInput(val)),
       transformValue: (val) => val === initialEditValue ? val : formatDate(val, fmt),
+      // parseDateInput falls back to the raw text, so without this guard a
+      // half-typed date ("27.0") would be written to the backend verbatim when
+      // the user clicks into another cell. Discard instead; empty clears.
+      canCommitOnExit: (v) =>
+        v.trim() === "" || /^\d{4}-\d{2}-\d{2}$/.test(parseDateInput(v)),
     });
 
   return (

@@ -65,6 +65,10 @@ export const DateTimeEditor: Editor<string> = ({
       editing,
       initialEditValue,
       onCommit: (val) => onChange(parseDateTimeInput(val)),
+      // parseDateTimeInput falls back to the raw text — only commit on the
+      // implicit path when Date can actually read it. Empty clears the cell.
+      canCommitOnExit: (v) =>
+        v.trim() === "" || !isNaN(new Date(v.trim()).getTime()),
     });
 
   return (

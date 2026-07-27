@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 
 const identity = (v: string) => v;
 
@@ -13,6 +13,17 @@ export interface UseInlineEditOptions {
   onCommit: (localValue: string) => void;
   /** Optional transform applied to the value before storing locally (e.g. input mask). */
   transformValue?: (val: string) => string;
+  /**
+   * Guard for *implicit* commits — leaving edit mode without Enter/Tab, i.e.
+   * clicking into another cell or blurring the input. Return false for input
+   * that cannot be parsed; the edit is then discarded instead of persisting a
+   * half-typed value. Explicit commits (Enter/Tab/ArrowRight) are never
+   * blocked by this — there the user asserted intent and the editor's own
+   * fallback handling applies.
+   *
+   * Defaults to "everything is committable" (correct for free-text editors).
+   */
+  canCommitOnExit?: (localValue: string) => boolean;
 }
 
 export interface UseInlineEditResult {
@@ -23,6 +34,13 @@ export interface UseInlineEditResult {
   handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   /** Spread onto the <input> element's onBlur. */
   handleBlur: () => void;
+  /**
+   * Tell the hook that the pending edit has already been dealt with (committed
+   * or deliberately discarded) elsewhere, so no implicit commit happens when
+   * edit mode ends. Needed by editors that hand the value over to their own
+   * UI, e.g. a dialog with Save/Cancel buttons.
+   */
+  markHandled: () => void;
 }
 
 /**
@@ -31,6 +49,10 @@ export interface UseInlineEditResult {
  * Handles: local state management, focus/select on edit-enter,
  * Escape (revert), Enter/Tab (commit + bubble), ArrowRight-at-end
  * (commit + navigate), and stopPropagation for all other keys.
+ *
+ * Leaving edit mode any other way (clicking into another cell, clicking
+ * outside the grid, cursor moved programmatically) commits as well — see
+ * `commitImplicit` below.
  */
 export function useInlineEdit({
   value,
@@ -38,10 +60,15 @@ export function useInlineEdit({
   initialEditValue,
   onCommit,
   transformValue,
+  canCommitOnExit,
 }: UseInlineEditOptions): UseInlineEditResult {
   const transform = transformValue ?? identity;
 
   const [localValue, setLocalValue] = useState(transform(value));
+  // Mirror of the state so the edit-exit effect below never commits a stale
+  // closure value.
+  const localValueRef = useRef(localValue);
+  localValueRef.current = localValue;
   const inputRef = useRef<HTMLInputElement>(null!);
   const isEscapingRef = useRef(false);
   const prevEditingRef = useRef(false);
@@ -51,27 +78,48 @@ export function useInlineEdit({
   // a synchronous focusout, so handleBlur would commit the same value a second
   // time within one dispatch.
   const hasCommittedRef = useRef(false);
+  // What the cell showed when edit mode started. An implicit commit only fires
+  // when the user actually changed something, which keeps merely visiting a
+  // cell from writing a re-formatted round-trip of the stored value back to the
+  // backend (e.g. null -> 0 in NumberEditor, or a locale-formatted date that
+  // does not parse back).
+  const baselineRef = useRef(transform(value));
 
   // --- Sync local value on edit-enter / edit-exit / prop change ---
-  useEffect(() => {
+  // useLayoutEffect, not useEffect: entering edit mode happens inside a keydown
+  // handler, and the buffer has to hold the typed character before the browser
+  // dispatches the *next* keydown. A passive effect runs after paint, so under
+  // load the following keystrokes could land in an input that still showed the
+  // old cell value ("Becker" + "ellTwoValue" instead of "CellTwoValue").
+  useLayoutEffect(() => {
     if (editing && !prevEditingRef.current) {
       isEscapingRef.current = false;
       hasCommittedRef.current = false;
+      const baseline = transform(value);
+      baselineRef.current = baseline;
       if (initialEditValue !== null && initialEditValue !== "") {
         setLocalValue(transform(initialEditValue));
         navigateOnArrowRightRef.current = true;
       } else {
-        setLocalValue(transform(value));
+        setLocalValue(baseline);
         navigateOnArrowRightRef.current = false;
       }
     } else if (!editing) {
+      // Leaving edit mode is the real blur moment: when the user clicks into
+      // another cell the grid re-renders this cell without an editor, so the
+      // <input> is unmounted *without* a focusout/onBlur ever firing (React
+      // does not call onBlur on unmount). Without this branch the typed value
+      // would be lost silently.
+      if (prevEditingRef.current) commitImplicit();
       setLocalValue(transform(value));
     }
     prevEditingRef.current = editing;
   }, [value, editing, initialEditValue]);
 
   // --- Focus & select on edit-enter ---
-  useEffect(() => {
+  // Also layout phase, for the same reason: the input must own the focus before
+  // the next keystroke arrives.
+  useLayoutEffect(() => {
     if (editing && inputRef.current) {
       inputRef.current.focus();
       if (initialEditValue === null) {
@@ -86,6 +134,24 @@ export function useInlineEdit({
   const commit = () => {
     hasCommittedRef.current = true;
     onCommit(localValue);
+  };
+
+  /**
+   * Commit path for everything that is not an explicit Enter/Tab: onBlur and
+   * the editing -> false transition. Both can happen for a single user action
+   * (and in either order), so this is idempotent via hasCommittedRef.
+   */
+  const commitImplicit = () => {
+    if (isEscapingRef.current || hasCommittedRef.current) return;
+    const current = localValueRef.current;
+    if (current === baselineRef.current) return;
+    if (canCommitOnExit && !canCommitOnExit(current)) return;
+    hasCommittedRef.current = true;
+    onCommit(current);
+  };
+
+  const markHandled = () => {
+    hasCommittedRef.current = true;
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -111,10 +177,16 @@ export function useInlineEdit({
     e.stopPropagation();
   };
 
-  // Still the legitimate commit path for clicking elsewhere.
   const handleBlur = () => {
-    if (!isEscapingRef.current && !hasCommittedRef.current) onCommit(localValue);
+    commitImplicit();
   };
 
-  return { localValue, setLocalValue, inputRef, handleKeyDown, handleBlur };
+  return {
+    localValue,
+    setLocalValue,
+    inputRef,
+    handleKeyDown,
+    handleBlur,
+    markHandled,
+  };
 }
