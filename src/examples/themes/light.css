@@ -52,6 +52,7 @@
   --ct-resize-handle: #4285f4;
   --ct-status-ok: #2e7d32;
   --ct-status-info: #1565c0;
+  --ct-status-info-solid: var(--ct-status-info, #1565c0);
   --ct-status-warning: #e65100;
   --ct-status-error: #c62828;
 

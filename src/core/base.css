@@ -60,6 +60,7 @@
   --ct-resize-handle: #4285f4;
   --ct-status-ok: #2e7d32;
   --ct-status-info: #1565c0;
+  --ct-status-info-solid: var(--ct-status-info, #1565c0);
   --ct-status-warning: #e65100;
   --ct-status-error: #c62828;
 
@@ -1075,13 +1076,21 @@
   &:hover { background: var(--ct-hover-bg, #f0f0f0); }
 }
 
+/*
+ * White text on a filled surface, so it reads --ct-status-info-solid rather
+ * than --ct-status-info: the latter is a foreground colour on a neutral ground
+ * (.toolbar-status-info, spinner borders) and a value tuned for that role need
+ * not carry white text at AA. Themes that never heard of the solid token keep
+ * their old look, because the default of --ct-status-info-solid is
+ * `var(--ct-status-info, …)`.
+ */
 .search-replace-btn-primary {
-  background: var(--ct-status-info, #1565c0);
+  background: var(--ct-status-info-solid, var(--ct-status-info, #1565c0));
   color: #fff;
   border-color: transparent;
-  &:hover { 
-    background: var(--ct-status-info, #1565c0);
-    opacity: 0.9; 
+  &:hover {
+    background: var(--ct-status-info-solid, var(--ct-status-info, #1565c0));
+    opacity: 0.9;
   }
   &:disabled { opacity: 0.5; cursor: default; }
 }
@@ -1375,15 +1384,6 @@
 
   .ct-pagination-ellipsis {
     color: var(--ct-muted);
-  }
-
-  .ct-tool-button {
-    border: 1px solid var(--ct-button-border);
-    background-color: var(--ct-button-bg);
-    color: var(--ct-text);
-    &:hover:not(:disabled) {
-      background-color: var(--ct-button-hover);
-    }
   }
 
   .ct-pagination-select {

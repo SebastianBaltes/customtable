@@ -41,15 +41,13 @@ function referencedVars(css) {
 }
 
 /**
- * Declared by a theme but read by nothing. Left in place on purpose: removing
- * a custom property from a shipped theme is a visible-behaviour decision, not
- * a cleanup this contract should make on its own. Tracked as a follow-up.
- *
- * --ct-selection-blend: dark.css sets it to `screen` with the comment "Used in
- * base/light css to blend properly in dark mode", but neither base.css nor any
- * theme ever reads it.
+ * Declared by a theme but read by nothing. Keep empty: a property that nothing
+ * reads is either a typo or dead weight, and the orphan assertion below is the
+ * place where that gets caught. The one historical entry,
+ * --ct-selection-blend (dark.css set it to `screen` with a comment claiming
+ * base/light read it — they never did), was removed instead of allowlisted.
  */
-const KNOWN_DEAD = ["--ct-selection-blend"];
+const KNOWN_DEAD = [];
 
 describe("theme contract", () => {
   const baseDefaults = rootDeclarations(baseCss);
@@ -65,6 +63,38 @@ describe("theme contract", () => {
   it("base.css defaults and themes/light.css agree exactly", () => {
     const light = rootDeclarations(fs.readFileSync(path.join(THEMES_DIR, "light.css"), "utf8"));
     expect(light).toEqual(baseDefaults);
+  });
+
+  /**
+   * The whole point of --ct-status-info-solid is that a theme which predates it
+   * — or any third-party theme that only ever heard of --ct-status-info — keeps
+   * painting the filled primary button in its own accent. That only holds while
+   * the default is a var() reference; replacing it with a literal would make
+   * base.css win over such a theme and silently repaint the button.
+   */
+  it("--ct-status-info-solid falls back to --ct-status-info", () => {
+    expect(baseDefaults["--ct-status-info-solid"]).toBe("var(--ct-status-info, #1565c0)");
+  });
+
+  /**
+   * dark.css is the only shipped theme with dark surfaces, so it is the only one
+   * that has to override base.css's light-tuned cell-meta colours. Each pair
+   * missing here is a light patch on a dark grid: --ct-cell-stale-* was absent
+   * and stale cells stayed light yellow until this assertion was added.
+   */
+  it("dark.css overrides every light-tuned cell-meta colour", () => {
+    const dark = rootDeclarations(fs.readFileSync(path.join(THEMES_DIR, "dark.css"), "utf8"));
+    expect(dark).not.toBeNull();
+    for (const v of [
+      "--ct-cell-error-bg",
+      "--ct-cell-error-text",
+      "--ct-cell-stale-bg",
+      "--ct-cell-stale-text",
+      "--ct-row-readonly-bg",
+      "--ct-row-readonly-text",
+    ]) {
+      expect(Object.keys(dark)).toContain(v);
+    }
   });
 
   it("ships eight themes", () => {

@@ -333,17 +333,6 @@ body[data-ct-theme="high-contrast"] {
   /* Pagination */
   .ct-pagination {
 
-    .ct-tool-button {
-      border: 3px solid #000000;
-      font-weight: 800;
-      color: #000000;
-      background: #ffffff;
-
-      &:hover:not(:disabled) {
-        background: #ffff00;
-      }
-    }
-
     .ct-pagination-page {
       border: 2px solid #000000;
       font-weight: 700;

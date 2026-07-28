@@ -35,7 +35,6 @@ body[data-ct-theme="dark"] {
     --ct-selected-cell-bg: hsl(220, 15%, 16%);
     --ct-selected-outline: hsl(207, 80%, 50%);
     --ct-edited-outline: hsl(207, 80%, 50%);
-    --ct-selection-blend: screen; /* Used in base/light css to blend properly in dark mode */
     --ct-selection-fill: #1a2b40;
     --ct-fill-outline: hsl(2, 70%, 50%);
     --ct-dragger-bg: hsl(207, 80%, 50%);
@@ -55,7 +54,14 @@ body[data-ct-theme="dark"] {
     --ct-hover-bg: hsl(220, 15%, 24%);
     --ct-resize-handle: hsl(207, 80%, 50%);
     --ct-status-ok: hsl(122, 45%, 62%);
+    /*
+     * Two roles, two tokens. --ct-status-info is a foreground colour on the dark
+     * ground (4.79:1 against --ct-bg, AA for normal text); the same value carries
+     * white text at only 3.45:1, which is why the filled primary button reads
+     * --ct-status-info-solid instead (white on it: 4.88:1, AA).
+     */
     --ct-status-info: hsl(207, 80%, 52%);
+    --ct-status-info-solid: hsl(207, 80%, 42%);
     --ct-status-warning: hsl(28, 90%, 62%);
     --ct-status-error: hsl(0, 75%, 68%);
 
@@ -103,6 +109,9 @@ body[data-ct-theme="dark"] {
 
     --ct-cell-error-bg: hsl(0, 40%, 22%);
     --ct-cell-error-text: hsl(0, 80%, 75%);
+    /* Amber counterpart of the error pair above; 6.79:1 text on background. */
+    --ct-cell-stale-bg: hsl(40, 40%, 22%);
+    --ct-cell-stale-text: hsl(40, 80%, 75%);
     --ct-row-readonly-bg: hsl(220, 15%, 18%);
     --ct-row-readonly-text: hsl(220, 10%, 50%);
     --ct-pencil-icon: "🖉";
