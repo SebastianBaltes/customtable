@@ -1,0 +1,124 @@
+/*
+ * GENERATED FILE — do not edit.
+ * Source: ../numbers.css
+ * Regenerate: node scripts/generate-scoped-themes.cjs
+ *
+ * Same declarations as the source theme, scoped to [data-ct-theme="numbers"]
+ * instead of :root. Put the attribute on <html> (or <body>) to activate:
+ *
+ *   document.documentElement.dataset.ctTheme = "numbers";
+ *
+ * The selector is more specific than :root, so this wins over a globally
+ * imported theme regardless of stylesheet order.
+ */
+
+:root[data-ct-theme="numbers"],
+body[data-ct-theme="numbers"] {
+    --ct-bg: #fff;
+    --ct-empty-area-bg: #e8e8ed;
+    --ct-text: #1d1d1f;
+    --ct-font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+
+    --ct-border: #d2d2d7;
+    --ct-border-light: #e0e0e4;
+
+    --ct-header-bg: #dadbde;
+    --ct-header-border: #bbbbc0;
+    --ct-header-label: #3a3a3c;
+
+    --ct-row-bg: #fff;
+    --ct-row-hover: #f0f5ff;
+    --ct-sticky-bg: #dadbde;
+
+    --ct-selected-row-bg: #d4e4f7;
+    --ct-selected-col-bg: #dce8f8;
+    --ct-selected-cell-bg: #fff;
+    --ct-selected-outline: #007aff;
+    --ct-edited-outline: #007aff;
+    --ct-selection-fill: #b3d7ff;
+    --ct-fill-outline: #ff3b30;
+    --ct-dragger-bg: #007aff;
+    --ct-dragger-border: #fff;
+
+    --ct-toolbar-bg: #f5f5f7;
+    --ct-toolbar-border: #d5d5da;
+    --ct-input-border: #c7c7cc;
+    --ct-input-bg: #fff;
+    --ct-button-bg: #fff;
+    --ct-button-border: #c7c7cc;
+    --ct-button-hover: #e8e8ed;
+
+    --ct-focus-outline: #007aff;
+
+    /* Status / interaction accents (consumed by core/base.css) */
+    --ct-hover-bg: #e8e8ed;
+    --ct-resize-handle: #007aff;
+    --ct-status-ok: #248a3d;
+    --ct-status-info: #0071e3;
+    --ct-status-warning: #c04c00;
+    --ct-status-error: #d70015;
+
+    --ct-ctx-bg: #fff;
+    --ct-ctx-border: #d5d5da;
+    --ct-ctx-shadow: rgba(0, 0, 0, 0.15);
+    --ct-ctx-text: #1d1d1f;
+    --ct-ctx-hover: #e8e8ed;
+    --ct-ctx-shortcut: #8e8e93;
+
+    --ct-muted: #8e8e93;
+    --ct-muted-light: #c7c7cc;
+
+    --ct-dropdown-bg: #fff;
+    --ct-dropdown-border: #d5d5da;
+    --ct-dropdown-shadow: rgba(0, 0, 0, 0.12);
+    --ct-dropdown-hover: #f2f2f7;
+    --ct-dropdown-selected: #d4e4f7;
+    --ct-dropdown-highlighted: #e8e8ed;
+    --ct-dropdown-both: #c5d8ed;
+    --ct-dropdown-text: #1d1d1f;
+    --ct-dropdown-placeholder: #8e8e93;
+    --ct-dropdown-empty: #8e8e93;
+
+    --ct-pagination-link: #007aff;
+    --ct-pagination-hover-bg: #d4e4f7;
+    --ct-pagination-hover-border: #80bfff;
+    --ct-pagination-current-border: #8e8e93;
+    --ct-pagination-label: #3a3a3c;
+
+    --ct-dialog-overlay: rgba(0, 0, 0, 0.35);
+    --ct-dialog-bg: #fff;
+    --ct-dialog-shadow: rgba(0, 0, 0, 0.2);
+    --ct-dialog-border: #d5d5da;
+    --ct-dialog-title: #1d1d1f;
+    --ct-dialog-close: #8e8e93;
+    --ct-dialog-close-hover: #1d1d1f;
+    --ct-dialog-input-border: #c7c7cc;
+    --ct-dialog-btn-bg: #fff;
+    --ct-dialog-btn-border: #c7c7cc;
+    --ct-dialog-btn-text: #3a3a3c;
+    --ct-dialog-btn-hover: #e8e8ed;
+    --ct-dialog-save-bg: #007aff;
+    --ct-dialog-save-hover: #0066d6;
+
+    --ct-cell-error-bg: #fde8e8;
+    --ct-cell-error-text: #bf2626;
+    --ct-row-readonly-bg: #f5f5f7;
+    --ct-row-readonly-text: #86868b;
+    --ct-pencil-icon: "🖋";
+
+  /*
+   * Apple Numbers inspired — clean, minimal, white background,
+   * light gray headers, thin borders, blue accent.
+   */
+
+  /* Cell-meta utility classes */
+  .grid-db-editor .cell-error {
+    background-color: var(--ct-cell-error-bg);
+    color: var(--ct-cell-error-text);
+  }
+
+  .grid-db-editor .row-readonly td {
+    background-color: var(--ct-row-readonly-bg);
+    color: var(--ct-row-readonly-text);
+  }
+}

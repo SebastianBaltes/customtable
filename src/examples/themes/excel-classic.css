@@ -40,6 +40,14 @@
 
   --ct-focus-outline: #217346;
 
+  /* Status / interaction accents (consumed by core/base.css) */
+  --ct-hover-bg: #e0e0e0;
+  --ct-resize-handle: #217346;
+  --ct-status-ok: #217346;
+  --ct-status-info: #1565c0;
+  --ct-status-warning: #b45309;
+  --ct-status-error: #9c0006;
+
   --ct-ctx-bg: #f9f9f9;
   --ct-ctx-border: #b4b4b4;
   --ct-ctx-shadow: rgba(0, 0, 0, 0.15);

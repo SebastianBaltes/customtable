@@ -12,6 +12,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "src/examples/index.html"),
         simple: resolve(__dirname, "src/examples/simple.html"),
+        scopedTheme: resolve(__dirname, "src/examples/scoped-theme.html"),
       },
     },
   },

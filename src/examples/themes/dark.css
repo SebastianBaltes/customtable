@@ -40,6 +40,14 @@
 
   --ct-focus-outline: hsl(207, 80%, 50%);
 
+  /* Status / interaction accents (consumed by core/base.css) */
+  --ct-hover-bg: hsl(220, 15%, 24%);
+  --ct-resize-handle: hsl(207, 80%, 50%);
+  --ct-status-ok: hsl(122, 45%, 62%);
+  --ct-status-info: hsl(207, 80%, 52%);
+  --ct-status-warning: hsl(28, 90%, 62%);
+  --ct-status-error: hsl(0, 75%, 68%);
+
   --ct-ctx-bg: hsl(220, 15%, 18%);
   --ct-ctx-border: hsl(220, 12%, 28%);
   --ct-ctx-shadow: rgba(0, 0, 0, 0.5);

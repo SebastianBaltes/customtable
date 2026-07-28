@@ -126,6 +126,9 @@ The package ships TypeScript sources and type declarations.
 ```tsx
 import React, { useState } from "react";
 import { GridDbEditor, ColumnConfig, Row } from "react-grid-db-editor";
+
+// style.css is all you need: it carries the layout *and* the default light
+// theme. Add a theme file only to change the look — see "Theming" below.
 import "react-grid-db-editor/style.css";
 
 const columns: ColumnConfig<any>[] = [
@@ -639,9 +642,61 @@ GridDbEditor ships with 8 themes and a CSS-variable-based theming system.
 | **Material 3** | Material You — purple scheme, rounded surfaces |
 | **High Contrast** | WCAG AAA contrast ratios, strong borders |
 
+### Applying a Theme
+
+`style.css` contains three things: the structural layout, the default values of
+every custom property, and the "apply" layer that paints those properties onto
+the markup. **A theme file only overrides variables** — so `style.css` alone is
+a complete light-themed grid, and `style.css` plus any one theme is a complete
+grid in that theme. You never need to import a second theme as a base.
+
+```ts
+import "react-grid-db-editor/style.css";
+import "react-grid-db-editor/themes/dark.css"; // optional
+```
+
+> Changed in 1.4.0 — before that release the apply layer lived at the bottom of
+> `themes/light.css`, which made `light.css` a mandatory base for every other
+> theme; importing only `style.css` + `themes/dark.css` produced a largely
+> unstyled grid. Existing imports keep working unchanged: `themes/light.css`
+> still ships and still declares the same values.
+
+### Switching Themes at Runtime
+
+Theme files declare their variables on `:root`, so they are page-wide. To pick a
+theme at runtime, import the **scoped** variant of each theme you want and flip
+one attribute:
+
+```ts
+import "react-grid-db-editor/style.css";
+import "react-grid-db-editor/themes/scoped/dark.css";
+import "react-grid-db-editor/themes/scoped/high-contrast.css";
+```
+
+```ts
+document.documentElement.dataset.ctTheme = "dark"; // or "high-contrast"
+delete document.documentElement.dataset.ctTheme; // back to the default
+```
+
+A scoped file declares the same variables under
+`:root[data-ct-theme="<id>"], body[data-ct-theme="<id>"]`. That selector is more
+specific than `:root`, so scoped files win over a globally imported theme no
+matter what order the stylesheets load in — you can add runtime switching to an
+existing app without touching its current imports.
+
+**Put the attribute on `<html>` or `<body>`, not on a wrapper element.** The
+search & replace dialog, the column manager, the textarea editor and the context
+menu all render through `createPortal(..., document.body)`. A scope further down
+the tree would style the grid but leave those dialogs on the default theme. For
+the same reason two grids on one page cannot currently carry different themes:
+the portalled dialogs have no way to tell which grid they belong to.
+
 ### Custom Themes
 
-A theme is a CSS file that sets custom properties on `:root`. The structural layout lives in `core/base.css` and never needs to change.
+A theme is a CSS file that sets custom properties on `:root`. The structural
+layout lives in `core/base.css` and never needs to change. Only override what
+you want to differ — anything you leave out falls back to the default set in
+`style.css`.
 
 ```css
 /* my-theme.css */
@@ -656,7 +711,9 @@ A theme is a CSS file that sets custom properties on `:root`. The structural lay
 }
 ```
 
-Import your theme CSS after `base.css`. The demo app demonstrates runtime theme switching, but a static CSS import works for most use cases.
+Import your theme CSS after `style.css`. To make it switchable the same way the
+built-ins are, wrap it in the scoped selector yourself, or drop it into
+`src/examples/themes/` and run `npm run themes:scoped`.
 
 ---
 

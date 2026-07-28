@@ -1,0 +1,122 @@
+/*
+ * GENERATED FILE — do not edit.
+ * Source: ../light.css
+ * Regenerate: node scripts/generate-scoped-themes.cjs
+ *
+ * Same declarations as the source theme, scoped to [data-ct-theme="light"]
+ * instead of :root. Put the attribute on <html> (or <body>) to activate:
+ *
+ *   document.documentElement.dataset.ctTheme = "light";
+ *
+ * The selector is more specific than :root, so this wins over a globally
+ * imported theme regardless of stylesheet order.
+ */
+
+:root[data-ct-theme="light"],
+body[data-ct-theme="light"] {
+
+    --font-size: 1rem;
+    --line-height: 1.3rem;
+
+    --ct-bg: white;
+    --ct-empty-area-bg: hsl(0, 0%, 92%);
+    --ct-text: hsl(0, 0%, 10%);
+    --ct-font: sans-serif;
+
+    --ct-border: hsl(0, 0%, 90%);
+    --ct-border-light: hsl(0, 0%, 80%);
+
+    --ct-header-bg: hsl(0, 0%, 95%);
+    --ct-header-border: hsl(0, 0%, 80%);
+    --ct-header-label: black;
+
+    --ct-row-bg: white;
+    --ct-row-hover: hsl(207, 100%, 97%);
+    --ct-sticky-bg: hsl(0, 0%, 96%);
+
+    --ct-selected-row-bg: hsl(207, 100%, 97%);
+    --ct-selected-col-bg: hsl(0, 0%, 90%);
+    --ct-selected-cell-bg: white;
+    --ct-selected-outline: hsl(207, 100%, 60%);
+    --ct-edited-outline: hsl(207, 100%, 60%);
+    --ct-selection-fill: #b3d9ff;
+    --ct-fill-outline: hsl(2, 100%, 60%);
+    --ct-dragger-bg: hsl(207, 100%, 60%);
+    --ct-dragger-border: white;
+
+    --ct-toolbar-bg: hsl(0, 0%, 95%);
+    --ct-toolbar-border: hsl(0, 0%, 90%);
+    --ct-input-border: hsl(0, 0%, 80%);
+    --ct-input-bg: white;
+    --ct-button-bg: white;
+    --ct-button-border: hsl(0, 0%, 70%);
+    --ct-button-hover: hsl(0, 0%, 95%);
+
+    --ct-focus-outline: hsl(207, 100%, 60%);
+
+    /* Status / interaction accents (consumed by core/base.css) */
+    --ct-hover-bg: #f0f0f0;
+    --ct-resize-handle: #4285f4;
+    --ct-status-ok: #2e7d32;
+    --ct-status-info: #1565c0;
+    --ct-status-warning: #e65100;
+    --ct-status-error: #c62828;
+
+    --ct-ctx-bg: white;
+    --ct-ctx-border: #ccc;
+    --ct-ctx-shadow: rgba(0, 0, 0, 0.2);
+    --ct-ctx-text: #222;
+    --ct-ctx-hover: #f0f0f0;
+    --ct-ctx-shortcut: #888;
+
+    --ct-muted: hsl(0, 0%, 60%);
+    --ct-muted-light: hsl(0, 0%, 80%);
+
+    --ct-dropdown-bg: white;
+    --ct-dropdown-border: hsl(0, 0%, 80%);
+    --ct-dropdown-shadow: rgba(0, 0, 0, 0.12);
+    --ct-dropdown-hover: hsl(0, 0%, 95%);
+    --ct-dropdown-selected: hsl(207, 100%, 97%);
+    --ct-dropdown-highlighted: hsl(207, 100%, 95%);
+    --ct-dropdown-both: hsl(207, 100%, 90%);
+    --ct-dropdown-text: hsl(0, 0%, 10%);
+    --ct-dropdown-placeholder: hsl(0, 0%, 40%);
+    --ct-dropdown-empty: hsl(0, 0%, 60%);
+
+    --ct-pagination-link: hsl(207, 100%, 40%);
+    --ct-pagination-hover-bg: hsl(207, 100%, 95%);
+    --ct-pagination-hover-border: hsl(207, 100%, 80%);
+    --ct-pagination-current-border: hsl(0, 0%, 60%);
+    --ct-pagination-label: hsl(0, 0%, 30%);
+
+    --ct-dialog-overlay: rgba(0, 0, 0, 0.3);
+    --ct-dialog-bg: white;
+    --ct-dialog-shadow: rgba(0, 0, 0, 0.2);
+    --ct-dialog-border: hsl(0, 0%, 80%);
+    --ct-dialog-title: hsl(0, 0%, 10%);
+    --ct-dialog-close: hsl(0, 0%, 60%);
+    --ct-dialog-close-hover: hsl(0, 0%, 10%);
+    --ct-dialog-input-border: hsl(0, 0%, 80%);
+    --ct-dialog-btn-bg: white;
+    --ct-dialog-btn-border: hsl(0, 0%, 80%);
+    --ct-dialog-btn-text: hsl(0, 0%, 30%);
+    --ct-dialog-btn-hover: hsl(0, 0%, 95%);
+    --ct-dialog-save-bg: hsl(207, 100%, 60%);
+    --ct-dialog-save-hover: hsl(207, 100%, 50%);
+
+    --ct-cell-error-bg: hsl(0, 90%, 95%);
+    --ct-cell-error-text: hsl(0, 70%, 35%);
+    --ct-cell-stale-bg: hsl(40, 100%, 93%);
+    --ct-cell-stale-text: hsl(30, 80%, 30%);
+    --ct-row-readonly-bg: hsl(0, 0%, 93%);
+    --ct-row-readonly-text: hsl(0, 0%, 45%);
+    --ct-pencil-icon: "🖉";
+
+  /*
+   * Light theme — clean, modern default.
+   *
+   * These are the same values core/base.css declares as its built-in defaults,
+   * so importing this file is a no-op on a fresh page. It exists so that
+   * switching back to "light" from another theme is a plain stylesheet swap.
+   */
+}

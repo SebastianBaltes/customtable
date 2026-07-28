@@ -1,0 +1,151 @@
+/*
+ * GENERATED FILE — do not edit.
+ * Source: ../dark.css
+ * Regenerate: node scripts/generate-scoped-themes.cjs
+ *
+ * Same declarations as the source theme, scoped to [data-ct-theme="dark"]
+ * instead of :root. Put the attribute on <html> (or <body>) to activate:
+ *
+ *   document.documentElement.dataset.ctTheme = "dark";
+ *
+ * The selector is more specific than :root, so this wins over a globally
+ * imported theme regardless of stylesheet order.
+ */
+
+:root[data-ct-theme="dark"],
+body[data-ct-theme="dark"] {
+    --ct-bg: hsl(220, 15%, 13%);
+    --ct-empty-area-bg: hsl(220, 15%, 10%);
+    --ct-text: hsl(220, 10%, 85%);
+    --ct-font: sans-serif;
+
+    --ct-border: hsl(220, 12%, 22%);
+    --ct-border-light: hsl(220, 12%, 18%);
+
+    --ct-header-bg: hsl(220, 15%, 16%);
+    --ct-header-border: hsl(220, 12%, 25%);
+    --ct-header-label: hsl(220, 10%, 80%);
+
+    --ct-row-bg: hsl(220, 15%, 13%);
+    --ct-row-hover: hsl(220, 20%, 18%);
+    --ct-sticky-bg: hsl(220, 15%, 15%);
+
+    --ct-selected-row-bg: hsl(215, 30%, 20%);
+    --ct-selected-col-bg: hsl(220, 15%, 20%);
+    --ct-selected-cell-bg: hsl(220, 15%, 16%);
+    --ct-selected-outline: hsl(207, 80%, 50%);
+    --ct-edited-outline: hsl(207, 80%, 50%);
+    --ct-selection-blend: screen; /* Used in base/light css to blend properly in dark mode */
+    --ct-selection-fill: #1a2b40;
+    --ct-fill-outline: hsl(2, 70%, 50%);
+    --ct-dragger-bg: hsl(207, 80%, 50%);
+    --ct-dragger-border: hsl(220, 15%, 13%);
+
+    --ct-toolbar-bg: hsl(220, 15%, 16%);
+    --ct-toolbar-border: hsl(220, 12%, 22%);
+    --ct-input-border: hsl(220, 12%, 28%);
+    --ct-input-bg: hsl(220, 15%, 18%);
+    --ct-button-bg: hsl(220, 15%, 20%);
+    --ct-button-border: hsl(220, 12%, 30%);
+    --ct-button-hover: hsl(220, 15%, 25%);
+
+    --ct-focus-outline: hsl(207, 80%, 50%);
+
+    /* Status / interaction accents (consumed by core/base.css) */
+    --ct-hover-bg: hsl(220, 15%, 24%);
+    --ct-resize-handle: hsl(207, 80%, 50%);
+    --ct-status-ok: hsl(122, 45%, 62%);
+    --ct-status-info: hsl(207, 80%, 52%);
+    --ct-status-warning: hsl(28, 90%, 62%);
+    --ct-status-error: hsl(0, 75%, 68%);
+
+    --ct-ctx-bg: hsl(220, 15%, 18%);
+    --ct-ctx-border: hsl(220, 12%, 28%);
+    --ct-ctx-shadow: rgba(0, 0, 0, 0.5);
+    --ct-ctx-text: hsl(220, 10%, 85%);
+    --ct-ctx-hover: hsl(220, 15%, 24%);
+    --ct-ctx-shortcut: hsl(220, 10%, 50%);
+
+    --ct-muted: hsl(220, 10%, 45%);
+    --ct-muted-light: hsl(220, 10%, 30%);
+
+    --ct-dropdown-bg: hsl(220, 15%, 18%);
+    --ct-dropdown-border: hsl(220, 12%, 28%);
+    --ct-dropdown-shadow: rgba(0, 0, 0, 0.4);
+    --ct-dropdown-hover: hsl(220, 15%, 22%);
+    --ct-dropdown-selected: hsl(215, 30%, 22%);
+    --ct-dropdown-highlighted: hsl(215, 30%, 25%);
+    --ct-dropdown-both: hsl(215, 35%, 28%);
+    --ct-dropdown-text: hsl(220, 10%, 85%);
+    --ct-dropdown-placeholder: hsl(220, 10%, 50%);
+    --ct-dropdown-empty: hsl(220, 10%, 45%);
+
+    --ct-pagination-link: hsl(207, 80%, 60%);
+    --ct-pagination-hover-bg: hsl(215, 30%, 22%);
+    --ct-pagination-hover-border: hsl(207, 60%, 40%);
+    --ct-pagination-current-border: hsl(220, 10%, 45%);
+    --ct-pagination-label: hsl(220, 10%, 60%);
+
+    --ct-dialog-overlay: rgba(0, 0, 0, 0.6);
+    --ct-dialog-bg: hsl(220, 15%, 16%);
+    --ct-dialog-shadow: rgba(0, 0, 0, 0.5);
+    --ct-dialog-border: hsl(220, 12%, 25%);
+    --ct-dialog-title: hsl(220, 10%, 85%);
+    --ct-dialog-close: hsl(220, 10%, 45%);
+    --ct-dialog-close-hover: hsl(220, 10%, 85%);
+    --ct-dialog-input-border: hsl(220, 12%, 28%);
+    --ct-dialog-btn-bg: hsl(220, 15%, 20%);
+    --ct-dialog-btn-border: hsl(220, 12%, 30%);
+    --ct-dialog-btn-text: hsl(220, 10%, 80%);
+    --ct-dialog-btn-hover: hsl(220, 15%, 25%);
+    --ct-dialog-save-bg: hsl(207, 80%, 45%);
+    --ct-dialog-save-hover: hsl(207, 80%, 38%);
+
+    --ct-cell-error-bg: hsl(0, 40%, 22%);
+    --ct-cell-error-text: hsl(0, 80%, 75%);
+    --ct-row-readonly-bg: hsl(220, 15%, 18%);
+    --ct-row-readonly-text: hsl(220, 10%, 50%);
+    --ct-pencil-icon: "🖉";
+
+  /*
+   * Dark theme — dark backgrounds, light text, blue accents.
+   */
+
+  /* Dark scrollbars & interactions */
+  .grid-db-editor {
+    .grid-db-editor-viewport {
+      scrollbar-color: hsl(220, 12%, 30%) hsl(220, 15%, 16%);
+
+      &::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      &::-webkit-scrollbar-track {
+        background: hsl(220, 15%, 16%);
+      }
+      &::-webkit-scrollbar-thumb {
+        background: hsl(220, 12%, 30%);
+        border-radius: 5px;
+        &:hover {
+          background: hsl(220, 12%, 38%);
+        }
+      }
+    }
+
+    /* Dark checkboxes */
+    & input[type="checkbox"] {
+      accent-color: hsl(207, 80%, 50%);
+    }
+  }
+
+  /* Cell-meta utility classes */
+  .grid-db-editor .cell-error {
+    background-color: var(--ct-cell-error-bg);
+    color: var(--ct-cell-error-text);
+  }
+
+  .grid-db-editor .row-readonly td {
+    background-color: var(--ct-row-readonly-bg);
+    color: var(--ct-row-readonly-text);
+  }
+}

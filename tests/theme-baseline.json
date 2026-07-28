@@ -1,0 +1,674 @@
+{
+  "light": {
+    "grid-root": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(204, 204, 204)",
+      "border-bottom-color": "rgb(204, 204, 204)",
+      "outline-color": "rgb(26, 26, 26)",
+      "font-family": "sans-serif"
+    },
+    "toolbar": {
+      "background-color": "rgb(242, 242, 242)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(26, 26, 26)",
+      "border-bottom-color": "rgb(230, 230, 230)",
+      "outline-color": "rgb(26, 26, 26)"
+    },
+    "toolbar-button": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(179, 179, 179)",
+      "border-bottom-color": "rgb(179, 179, 179)",
+      "outline-color": "rgb(26, 26, 26)"
+    },
+    "toolbar-input": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(204, 204, 204)",
+      "border-bottom-color": "rgb(204, 204, 204)",
+      "outline-color": "rgb(26, 26, 26)"
+    },
+    "viewport": {
+      "background-color": "rgb(235, 235, 235)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(26, 26, 26)",
+      "border-bottom-color": "rgb(26, 26, 26)",
+      "outline-color": "rgb(26, 26, 26)",
+      "scrollbar-color": "auto"
+    },
+    "col-header": {
+      "background-color": "rgb(230, 230, 230)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(26, 26, 26)",
+      "border-bottom-color": "rgb(26, 26, 26)",
+      "outline-color": "rgb(204, 204, 204)"
+    },
+    "col-header-label": {
+      "color": "rgb(0, 0, 0)"
+    },
+    "cell": {
+      "background-color": "rgb(240, 248, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(26, 26, 26)",
+      "border-bottom-color": "rgb(26, 26, 26)",
+      "outline-color": "rgb(204, 204, 204)"
+    },
+    "cell-sticky": {
+      "background-color": "rgb(240, 248, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(26, 26, 26)",
+      "border-bottom-color": "rgb(26, 26, 26)",
+      "outline-color": "rgb(204, 204, 204)"
+    },
+    "pagination": {
+      "font-family": "sans-serif"
+    },
+    "pagination-page": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(153, 153, 153)",
+      "border-bottom-color": "rgb(153, 153, 153)",
+      "outline-color": "rgb(26, 26, 26)",
+      "border-left-color": "rgb(153, 153, 153)"
+    },
+    "pagination-label": {
+      "color": "rgb(77, 77, 77)"
+    },
+    "pagination-select": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(26, 26, 26)",
+      "border-top-color": "rgb(204, 204, 204)",
+      "border-bottom-color": "rgb(204, 204, 204)",
+      "outline-color": "rgb(26, 26, 26)"
+    }
+  },
+  "dark": {
+    "grid-root": {
+      "background-color": "rgb(28, 31, 38)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(40, 44, 51)",
+      "border-bottom-color": "rgb(40, 44, 51)",
+      "outline-color": "rgb(213, 215, 221)",
+      "font-family": "sans-serif"
+    },
+    "toolbar": {
+      "background-color": "rgb(35, 39, 47)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(213, 215, 221)",
+      "border-bottom-color": "rgb(49, 54, 63)",
+      "outline-color": "rgb(213, 215, 221)"
+    },
+    "toolbar-button": {
+      "background-color": "rgb(43, 48, 59)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(67, 73, 86)",
+      "border-bottom-color": "rgb(67, 73, 86)",
+      "outline-color": "rgb(213, 215, 221)"
+    },
+    "toolbar-input": {
+      "background-color": "rgb(39, 44, 53)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(63, 69, 80)",
+      "border-bottom-color": "rgb(63, 69, 80)",
+      "outline-color": "rgb(213, 215, 221)"
+    },
+    "viewport": {
+      "background-color": "rgb(22, 24, 29)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(213, 215, 221)",
+      "border-bottom-color": "rgb(213, 215, 221)",
+      "outline-color": "rgb(213, 215, 221)",
+      "scrollbar-color": "rgb(67, 73, 86) rgb(35, 39, 47)"
+    },
+    "col-header": {
+      "background-color": "rgb(43, 48, 59)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(213, 215, 221)",
+      "border-bottom-color": "rgb(213, 215, 221)",
+      "outline-color": "rgb(56, 61, 71)"
+    },
+    "col-header-label": {
+      "color": "rgb(199, 202, 209)"
+    },
+    "cell": {
+      "background-color": "rgb(36, 48, 66)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(213, 215, 221)",
+      "border-bottom-color": "rgb(213, 215, 221)",
+      "outline-color": "rgb(56, 61, 71)"
+    },
+    "cell-sticky": {
+      "background-color": "rgb(36, 48, 66)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(213, 215, 221)",
+      "border-bottom-color": "rgb(213, 215, 221)",
+      "outline-color": "rgb(56, 61, 71)"
+    },
+    "pagination": {
+      "font-family": "sans-serif"
+    },
+    "pagination-page": {
+      "background-color": "rgb(28, 31, 38)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(103, 111, 126)",
+      "border-bottom-color": "rgb(103, 111, 126)",
+      "outline-color": "rgb(213, 215, 221)",
+      "border-left-color": "rgb(103, 111, 126)"
+    },
+    "pagination-label": {
+      "color": "rgb(143, 150, 163)"
+    },
+    "pagination-select": {
+      "background-color": "rgb(39, 44, 53)",
+      "color": "rgb(213, 215, 221)",
+      "border-top-color": "rgb(63, 69, 80)",
+      "border-bottom-color": "rgb(63, 69, 80)",
+      "outline-color": "rgb(213, 215, 221)"
+    }
+  },
+  "excel": {
+    "grid-root": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(212, 212, 212)",
+      "border-bottom-color": "rgb(212, 212, 212)",
+      "outline-color": "rgb(0, 0, 0)",
+      "font-family": "\"Segoe UI\", Calibri, Arial, sans-serif"
+    },
+    "toolbar": {
+      "background-color": "rgb(243, 243, 243)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(212, 212, 212)",
+      "outline-color": "rgb(0, 0, 0)"
+    },
+    "toolbar-button": {
+      "background-color": "rgb(230, 230, 230)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(160, 160, 160)",
+      "border-bottom-color": "rgb(160, 160, 160)",
+      "outline-color": "rgb(0, 0, 0)"
+    },
+    "toolbar-input": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(180, 180, 180)",
+      "border-bottom-color": "rgb(180, 180, 180)",
+      "outline-color": "rgb(0, 0, 0)"
+    },
+    "viewport": {
+      "background-color": "rgb(217, 217, 217)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(0, 0, 0)",
+      "scrollbar-color": "auto"
+    },
+    "col-header": {
+      "background-color": "rgb(213, 213, 213)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(180, 180, 180)"
+    },
+    "col-header-label": {
+      "color": "rgb(0, 0, 0)"
+    },
+    "cell": {
+      "background-color": "rgb(204, 229, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(180, 180, 180)"
+    },
+    "cell-sticky": {
+      "background-color": "rgb(204, 229, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(180, 180, 180)"
+    },
+    "pagination": {
+      "font-family": "\"Segoe UI\", Calibri, Arial, sans-serif"
+    },
+    "pagination-page": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(153, 153, 153)",
+      "border-bottom-color": "rgb(153, 153, 153)",
+      "outline-color": "rgb(0, 0, 0)",
+      "border-left-color": "rgb(153, 153, 153)"
+    },
+    "pagination-label": {
+      "color": "rgb(68, 68, 68)"
+    },
+    "pagination-select": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(180, 180, 180)",
+      "border-bottom-color": "rgb(180, 180, 180)",
+      "outline-color": "rgb(0, 0, 0)"
+    }
+  },
+  "sheets": {
+    "grid-root": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(232, 234, 237)",
+      "border-bottom-color": "rgb(232, 234, 237)",
+      "outline-color": "rgb(32, 33, 36)",
+      "font-family": "\"Google Sans\", Roboto, Arial, sans-serif"
+    },
+    "toolbar": {
+      "background-color": "rgb(248, 249, 250)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(32, 33, 36)",
+      "border-bottom-color": "rgb(218, 220, 224)",
+      "outline-color": "rgb(32, 33, 36)"
+    },
+    "toolbar-button": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(218, 220, 224)",
+      "border-bottom-color": "rgb(218, 220, 224)",
+      "outline-color": "rgb(32, 33, 36)"
+    },
+    "toolbar-input": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(218, 220, 224)",
+      "border-bottom-color": "rgb(218, 220, 224)",
+      "outline-color": "rgb(32, 33, 36)"
+    },
+    "viewport": {
+      "background-color": "rgb(235, 235, 235)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(32, 33, 36)",
+      "border-bottom-color": "rgb(32, 33, 36)",
+      "outline-color": "rgb(32, 33, 36)",
+      "scrollbar-color": "auto"
+    },
+    "col-header": {
+      "background-color": "rgb(232, 234, 237)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(32, 33, 36)",
+      "border-bottom-color": "rgb(32, 33, 36)",
+      "outline-color": "rgb(218, 220, 224)"
+    },
+    "col-header-label": {
+      "color": "rgb(32, 33, 36)"
+    },
+    "cell": {
+      "background-color": "rgb(232, 240, 254)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(32, 33, 36)",
+      "border-bottom-color": "rgb(32, 33, 36)",
+      "outline-color": "rgb(218, 220, 224)"
+    },
+    "cell-sticky": {
+      "background-color": "rgb(232, 240, 254)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(32, 33, 36)",
+      "border-bottom-color": "rgb(32, 33, 36)",
+      "outline-color": "rgb(218, 220, 224)"
+    },
+    "pagination": {
+      "font-family": "\"Google Sans\", Roboto, Arial, sans-serif"
+    },
+    "pagination-page": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(128, 134, 139)",
+      "border-bottom-color": "rgb(128, 134, 139)",
+      "outline-color": "rgb(32, 33, 36)",
+      "border-left-color": "rgb(128, 134, 139)"
+    },
+    "pagination-label": {
+      "color": "rgb(95, 99, 104)"
+    },
+    "pagination-select": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(32, 33, 36)",
+      "border-top-color": "rgb(218, 220, 224)",
+      "border-bottom-color": "rgb(218, 220, 224)",
+      "outline-color": "rgb(32, 33, 36)"
+    }
+  },
+  "material": {
+    "grid-root": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "border-top-color": "rgba(0, 0, 0, 0.87)",
+      "border-bottom-color": "rgba(0, 0, 0, 0.87)",
+      "outline-color": "rgba(0, 0, 0, 0.87)",
+      "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    },
+    "toolbar": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "border-top-color": "rgba(0, 0, 0, 0.87)",
+      "border-bottom-color": "rgba(0, 0, 0, 0.12)",
+      "outline-color": "rgba(0, 0, 0, 0.87)"
+    },
+    "toolbar-button": {
+      "background-color": "rgba(0, 0, 0, 0)",
+      "color": "rgb(25, 118, 210)",
+      "border-top-color": "rgba(25, 118, 210, 0.5)",
+      "border-bottom-color": "rgba(25, 118, 210, 0.5)",
+      "outline-color": "rgb(25, 118, 210)"
+    },
+    "toolbar-input": {
+      "background-color": "rgba(0, 0, 0, 0.04)",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "border-top-color": "rgba(0, 0, 0, 0.87)",
+      "border-bottom-color": "rgba(0, 0, 0, 0.42)",
+      "outline-color": "rgba(0, 0, 0, 0.87)"
+    },
+    "viewport": {
+      "background-color": "rgb(235, 235, 235)",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "border-top-color": "rgba(0, 0, 0, 0.87)",
+      "border-bottom-color": "rgba(0, 0, 0, 0.87)",
+      "outline-color": "rgba(0, 0, 0, 0.87)",
+      "scrollbar-color": "rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0)"
+    },
+    "col-header": {
+      "background-color": "rgba(25, 118, 210, 0.08)",
+      "color": "rgba(0, 0, 0, 0.6)",
+      "border-top-color": "rgba(0, 0, 0, 0.6)",
+      "border-bottom-color": "rgb(224, 224, 224)",
+      "outline-color": "rgba(0, 0, 0, 0.6)"
+    },
+    "col-header-label": {
+      "color": "rgba(0, 0, 0, 0.6)"
+    },
+    "cell": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "border-top-color": "rgba(0, 0, 0, 0.87)",
+      "border-bottom-color": "rgb(224, 224, 224)",
+      "outline-color": "rgba(0, 0, 0, 0.87)"
+    },
+    "cell-sticky": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "border-top-color": "rgba(0, 0, 0, 0.87)",
+      "border-bottom-color": "rgb(224, 224, 224)",
+      "outline-color": "rgba(0, 0, 0, 0.87)"
+    },
+    "pagination": {
+      "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    },
+    "pagination-page": {
+      "background-color": "rgba(25, 118, 210, 0.12)",
+      "color": "rgb(25, 118, 210)",
+      "border-top-color": "rgb(25, 118, 210)",
+      "border-bottom-color": "rgb(25, 118, 210)",
+      "outline-color": "rgb(25, 118, 210)",
+      "border-left-color": "rgb(25, 118, 210)"
+    },
+    "pagination-label": {
+      "color": "rgba(0, 0, 0, 0.6)"
+    },
+    "pagination-select": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgba(0, 0, 0, 0.87)",
+      "border-top-color": "rgba(0, 0, 0, 0.23)",
+      "border-bottom-color": "rgba(0, 0, 0, 0.23)",
+      "outline-color": "rgba(0, 0, 0, 0.87)"
+    }
+  },
+  "material3": {
+    "grid-root": {
+      "background-color": "rgb(254, 247, 255)",
+      "color": "rgb(29, 27, 32)",
+      "border-top-color": "rgb(202, 196, 208)",
+      "border-bottom-color": "rgb(202, 196, 208)",
+      "outline-color": "rgb(29, 27, 32)",
+      "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    },
+    "toolbar": {
+      "background-color": "rgba(0, 0, 0, 0)",
+      "color": "rgb(29, 27, 32)",
+      "border-top-color": "rgb(29, 27, 32)",
+      "border-bottom-color": "rgb(202, 196, 208)",
+      "outline-color": "rgb(29, 27, 32)"
+    },
+    "toolbar-button": {
+      "background-color": "rgba(0, 0, 0, 0)",
+      "color": "rgb(103, 80, 164)",
+      "border-top-color": "rgb(103, 80, 164)",
+      "border-bottom-color": "rgb(103, 80, 164)",
+      "outline-color": "rgb(103, 80, 164)"
+    },
+    "toolbar-input": {
+      "background-color": "rgba(29, 27, 32, 0.05)",
+      "color": "rgb(29, 27, 32)",
+      "border-top-color": "rgb(29, 27, 32)",
+      "border-bottom-color": "rgb(121, 116, 126)",
+      "outline-color": "rgb(29, 27, 32)"
+    },
+    "viewport": {
+      "background-color": "rgb(236, 230, 240)",
+      "color": "rgb(29, 27, 32)",
+      "border-top-color": "rgb(29, 27, 32)",
+      "border-bottom-color": "rgb(29, 27, 32)",
+      "outline-color": "rgb(29, 27, 32)",
+      "scrollbar-color": "rgba(29, 27, 32, 0.2) rgba(0, 0, 0, 0)"
+    },
+    "col-header": {
+      "background-color": "rgba(103, 80, 164, 0.12)",
+      "color": "rgb(29, 27, 32)",
+      "border-top-color": "rgb(29, 27, 32)",
+      "border-bottom-color": "rgb(174, 169, 180)",
+      "outline-color": "rgb(29, 27, 32)"
+    },
+    "col-header-label": {
+      "color": "rgb(29, 27, 32)"
+    },
+    "cell": {
+      "background-color": "rgb(243, 237, 247)",
+      "color": "rgb(29, 27, 32)",
+      "border-top-color": "rgb(29, 27, 32)",
+      "border-bottom-color": "rgb(202, 196, 208)",
+      "outline-color": "rgb(29, 27, 32)"
+    },
+    "cell-sticky": {
+      "background-color": "rgb(243, 237, 247)",
+      "color": "rgb(29, 27, 32)",
+      "border-top-color": "rgb(29, 27, 32)",
+      "border-bottom-color": "rgb(202, 196, 208)",
+      "outline-color": "rgb(29, 27, 32)"
+    },
+    "pagination": {
+      "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    },
+    "pagination-page": {
+      "background-color": "rgb(234, 221, 255)",
+      "color": "rgb(33, 0, 93)",
+      "border-top-color": "rgb(33, 0, 93)",
+      "border-bottom-color": "rgb(33, 0, 93)",
+      "outline-color": "rgb(33, 0, 93)",
+      "border-left-color": "rgb(33, 0, 93)"
+    },
+    "pagination-label": {
+      "color": "rgb(73, 69, 79)"
+    },
+    "pagination-select": {
+      "background-color": "rgba(29, 27, 32, 0.05)",
+      "color": "rgb(29, 27, 32)",
+      "border-top-color": "rgb(29, 27, 32)",
+      "border-bottom-color": "rgb(121, 116, 126)",
+      "outline-color": "rgb(29, 27, 32)"
+    }
+  },
+  "numbers": {
+    "grid-root": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(224, 224, 228)",
+      "border-bottom-color": "rgb(224, 224, 228)",
+      "outline-color": "rgb(29, 29, 31)",
+      "font-family": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Helvetica Neue\", sans-serif"
+    },
+    "toolbar": {
+      "background-color": "rgb(245, 245, 247)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(29, 29, 31)",
+      "border-bottom-color": "rgb(213, 213, 218)",
+      "outline-color": "rgb(29, 29, 31)"
+    },
+    "toolbar-button": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(199, 199, 204)",
+      "border-bottom-color": "rgb(199, 199, 204)",
+      "outline-color": "rgb(29, 29, 31)"
+    },
+    "toolbar-input": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(199, 199, 204)",
+      "border-bottom-color": "rgb(199, 199, 204)",
+      "outline-color": "rgb(29, 29, 31)"
+    },
+    "viewport": {
+      "background-color": "rgb(232, 232, 237)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(29, 29, 31)",
+      "border-bottom-color": "rgb(29, 29, 31)",
+      "outline-color": "rgb(29, 29, 31)",
+      "scrollbar-color": "auto"
+    },
+    "col-header": {
+      "background-color": "rgb(220, 232, 248)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(29, 29, 31)",
+      "border-bottom-color": "rgb(29, 29, 31)",
+      "outline-color": "rgb(187, 187, 192)"
+    },
+    "col-header-label": {
+      "color": "rgb(58, 58, 60)"
+    },
+    "cell": {
+      "background-color": "rgb(212, 228, 247)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(29, 29, 31)",
+      "border-bottom-color": "rgb(29, 29, 31)",
+      "outline-color": "rgb(187, 187, 192)"
+    },
+    "cell-sticky": {
+      "background-color": "rgb(212, 228, 247)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(29, 29, 31)",
+      "border-bottom-color": "rgb(29, 29, 31)",
+      "outline-color": "rgb(187, 187, 192)"
+    },
+    "pagination": {
+      "font-family": "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Helvetica Neue\", sans-serif"
+    },
+    "pagination-page": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(142, 142, 147)",
+      "border-bottom-color": "rgb(142, 142, 147)",
+      "outline-color": "rgb(29, 29, 31)",
+      "border-left-color": "rgb(142, 142, 147)"
+    },
+    "pagination-label": {
+      "color": "rgb(58, 58, 60)"
+    },
+    "pagination-select": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(29, 29, 31)",
+      "border-top-color": "rgb(199, 199, 204)",
+      "border-bottom-color": "rgb(199, 199, 204)",
+      "outline-color": "rgb(29, 29, 31)"
+    }
+  },
+  "high-contrast": {
+    "grid-root": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(0, 0, 0)",
+      "font-family": "sans-serif"
+    },
+    "toolbar": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(0, 0, 0)"
+    },
+    "toolbar-button": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(0, 0, 0)"
+    },
+    "toolbar-input": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(0, 0, 0)"
+    },
+    "viewport": {
+      "background-color": "rgb(217, 217, 217)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(0, 0, 0)",
+      "scrollbar-color": "auto"
+    },
+    "col-header": {
+      "background-color": "rgb(255, 255, 204)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(0, 0, 0)"
+    },
+    "col-header-label": {
+      "color": "rgb(0, 0, 0)"
+    },
+    "cell": {
+      "background-color": "rgb(255, 255, 204)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(255, 255, 255)"
+    },
+    "cell-sticky": {
+      "background-color": "rgb(255, 255, 204)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(255, 255, 255)"
+    },
+    "pagination": {
+      "font-family": "sans-serif"
+    },
+    "pagination-page": {
+      "background-color": "rgb(0, 0, 0)",
+      "color": "rgb(255, 255, 255)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(255, 255, 255)",
+      "border-left-color": "rgb(0, 0, 0)"
+    },
+    "pagination-label": {
+      "color": "rgb(0, 0, 0)"
+    },
+    "pagination-select": {
+      "background-color": "rgb(255, 255, 255)",
+      "color": "rgb(0, 0, 0)",
+      "border-top-color": "rgb(0, 0, 0)",
+      "border-bottom-color": "rgb(0, 0, 0)",
+      "outline-color": "rgb(0, 0, 0)"
+    }
+  }
+}
