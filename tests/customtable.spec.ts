@@ -1,4 +1,4 @@
-import { test, expect, Page } from "@playwright/test";
+import { test, expect, Locator, Page } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
   await page.goto("/");
@@ -352,6 +352,9 @@ test.describe("Cell editing", () => {
     const table = page.locator(".grid-db-editor");
     await table.focus();
 
+    const originalKeyCell = page.locator("table tbody tr").first().locator("td").nth(1);
+    const originalKey = await originalKeyCell.textContent();
+
     await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter");
 
@@ -372,7 +375,7 @@ test.describe("Cell editing", () => {
 
     // Cell 0,1 should still have original value
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
+    await expect(cell).toContainText(originalKey!);
 
     // Press ArrowRight from targetCell (2,1) should move to (2,2)
     await page.keyboard.press("ArrowRight");
@@ -1063,6 +1066,20 @@ test.describe("Copy & Paste", () => {
     const table = page.locator(".grid-db-editor");
     await table.focus();
 
+    // The Key column is long enough to be truncated in display mode
+    // (value + " [...]"), so the rendered text is NOT the cell value. StringEditor
+    // puts the untruncated value into the span's title — read it from there
+    // instead of hard-coding a literal that dies with the next data regeneration.
+    const originalKey = await page
+      .locator("table tbody tr")
+      .first()
+      .locator("td")
+      .nth(1)
+      .locator("span[title]")
+      .first()
+      .getAttribute("title");
+    expect(originalKey).toBeTruthy();
+
     // Navigate to Key column (0,1) and copy it
     await page.keyboard.press("ArrowRight");
     await page.waitForTimeout(100);
@@ -1071,7 +1088,7 @@ test.describe("Copy & Paste", () => {
 
     // Verify clipboard has the cell content
     const clipboardText = await page.evaluate(() => navigator.clipboard.readText());
-    expect(clipboardText).toBe("2ahYgqh2jbbm6ZY");
+    expect(clipboardText).toBe(originalKey);
 
     // Now write a distinct value to the clipboard for the paste test
     await page.evaluate(() => navigator.clipboard.writeText("PastedValue"));
@@ -1106,9 +1123,14 @@ test.describe("Copy & Paste", () => {
     await page.keyboard.press("Control+v");
     await page.waitForTimeout(400);
 
-    // The MultiComboboxEditor formats array as comma-separated string with spaces for the title
+    // MultiComboboxEditor renders the display text inside a <span title=...>;
+    // the title carries the untruncated, comma+space joined selection. The <td>
+    // itself only gets a title from cellMeta, so it must not be asserted here.
     const cell = page.locator("table tbody tr").first().locator("td").nth(6);
-    await expect(cell).toHaveAttribute("title", "React, Python, Docker");
+    await expect(cell.locator("span[title]").first()).toHaveAttribute(
+      "title",
+      "React, Python, Docker",
+    );
 
     // Copy it back to see if it copies as "React, Python, Docker" or "React,Python,Docker"
     // String(["React", "Python", "Docker"]) is "React,Python,Docker"
@@ -1151,6 +1173,9 @@ test.describe("Undo/Redo", () => {
     const table = page.locator(".grid-db-editor");
     await table.focus();
 
+    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
+    const originalKey = await cell.textContent();
+
     // Navigate to Key column and edit
     await page.keyboard.press("ArrowRight");
     await page.keyboard.press("Enter");
@@ -1160,7 +1185,6 @@ test.describe("Undo/Redo", () => {
     await page.keyboard.press("Enter");
 
     // Verify the edit
-    const cell = page.locator("table tbody tr").first().locator("td").nth(1);
     await expect(cell).toContainText("TestUndo");
 
     // Click on the table to ensure focus
@@ -1172,12 +1196,19 @@ test.describe("Undo/Redo", () => {
     await page.waitForTimeout(200);
 
     // Should revert to original value
-    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
+    await expect(cell).toContainText(originalKey!);
   });
 
   test("should redo after undo", async ({ page }) => {
     const table = page.locator(".grid-db-editor");
     await table.focus();
+
+    const originalKey = await page
+      .locator("table tbody tr")
+      .first()
+      .locator("td")
+      .nth(1)
+      .textContent();
 
     // Edit cell (0, 1)
     await page.keyboard.press("ArrowRight");
@@ -1198,7 +1229,7 @@ test.describe("Undo/Redo", () => {
     // Undo
     await page.keyboard.press("Control+z");
     await page.waitForTimeout(500);
-    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
+    await expect(cell).toContainText(originalKey!);
 
     // Re-focus table (rows changed on undo, cursor reset may have moved focus)
     await table.focus();
@@ -1345,14 +1376,16 @@ test.describe("Context menu", () => {
     await page.keyboard.press("ArrowRight");
 
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
+    const originalKey = await cell.textContent();
+    expect(originalKey).toBeTruthy();
+    await expect(cell).toContainText(originalKey!);
 
     // Right-click and delete
     await cell.click({ button: "right" });
     await page.locator(".context-menu-item").filter({ hasText: "delete content" }).click();
     await page.waitForTimeout(200);
 
-    await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
+    await expect(cell).not.toContainText(originalKey!);
   });
 
   test("should not open context menu on column header filter right-click", async ({ page }) => {
@@ -1457,13 +1490,15 @@ test.describe("Delete content", () => {
 
     // Verify cell has content
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
+    const originalKey = await cell.textContent();
+    expect(originalKey).toBeTruthy();
+    await expect(cell).toContainText(originalKey!);
 
     // Press Delete
     await page.keyboard.press("Delete");
 
     // Cell should be empty
-    await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
+    await expect(cell).not.toContainText(originalKey!);
   });
 
   test("should delete cell content with Backspace key", async ({ page }) => {
@@ -1473,11 +1508,13 @@ test.describe("Delete content", () => {
     await page.keyboard.press("ArrowRight");
 
     const cell = page.locator("table tbody tr").first().locator("td").nth(1);
-    await expect(cell).toContainText("2ahYgqh2jbbm6ZY");
+    const originalKey = await cell.textContent();
+    expect(originalKey).toBeTruthy();
+    await expect(cell).toContainText(originalKey!);
 
     await page.keyboard.press("Backspace");
 
-    await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
+    await expect(cell).not.toContainText(originalKey!);
   });
 
   test("should delete multi-cell selection with Delete key", async ({ page }) => {
@@ -1493,10 +1530,12 @@ test.describe("Delete content", () => {
     await page.keyboard.press("Delete");
     await page.waitForTimeout(200);
 
-    // First three rows Key column should be empty
+    // First three rows Key column should be empty (some fixture rows already
+    // start out empty — asserting emptiness directly is correct either way,
+    // unlike comparing against a captured "original" value).
     for (let r = 0; r < 3; r++) {
       const cell = page.locator("table tbody tr").nth(r).locator("td").nth(1);
-      await expect(cell).not.toContainText("2ahYgqh2jbbm6ZY");
+      await expect(cell).toHaveText("");
     }
   });
 
@@ -2644,6 +2683,30 @@ test.describe("ARIA conformance", () => {
 test.describe("Touch device interaction", () => {
   test.use({ hasTouch: true });
 
+  /**
+   * Emit a real double tap.
+   *
+   * Two consecutive `locator.tap()` calls are NOT a double tap: each call pays
+   * Playwright's per-action overhead (locator resolution plus actionability and
+   * stability waits), which is unbounded. Measured touchend-to-touchend gaps in
+   * this suite range from ~150 ms (warm page) to ~890 ms directly after load —
+   * while TableCell's double-tap window is 400 ms (TableCell.tsx, onTouchEnd).
+   * That is what made these tests look "order dependent".
+   *
+   * Resolving the coordinates once and firing both taps through the raw
+   * touchscreen API keeps the gap at ~110 ms and is still a genuine CDP touch
+   * sequence, so the production window stays under test.
+   */
+  async function doubleTap(page: Page, cell: Locator) {
+    await expect(cell).toBeVisible();
+    const box = await cell.boundingBox();
+    if (!box) throw new Error("cell has no bounding box");
+    const x = box.x + box.width / 2;
+    const y = box.y + box.height / 2;
+    await page.touchscreen.tap(x, y);
+    await page.touchscreen.tap(x, y);
+  }
+
   test("single tap should select a cell", async ({ page }) => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(2);
     await cell.tap();
@@ -2652,8 +2715,7 @@ test.describe("Touch device interaction", () => {
 
   test("double tap should enter edit mode", async ({ page }) => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(2);
-    await cell.tap();
-    await cell.tap();
+    await doubleTap(page, cell);
     await expect(cell).toHaveClass(/cell-edited/);
   });
 
@@ -2683,8 +2745,7 @@ test.describe("Touch device interaction", () => {
   }) => {
     const cell = page.locator("table tbody tr").first().locator("td").nth(2);
     // Double-tap to enter edit mode
-    await cell.tap();
-    await cell.tap();
+    await doubleTap(page, cell);
     const input = cell.locator("input.cell-editor-input");
     await expect(input).toBeVisible();
 
@@ -3471,25 +3532,27 @@ test.describe("Backend mode – optimistic edits", () => {
     const firstCell = page.locator("td.cell-selected");
     await firstCell.click({ button: "right" });
     await page.waitForSelector(".context-menu");
-    const insertBelow = page.locator(".context-menu-item").nth(1); // "Insert row below"
+    // Address the item by label, not by index: nth(1) used to be "Insert row
+    // below" but became "Redo" (disabled) when Undo/Redo were added to the menu,
+    // so the click was swallowed by the overlay and ran into the test timeout.
+    const insertBelow = page.locator(".context-menu-item", { hasText: /Insert row below/ });
     await insertBelow.click();
 
     // Verify row was inserted
     const rowsAfter = await page.locator("table tbody tr").count();
     expect(rowsAfter).toBe(rowsBefore + 1);
 
-    // Navigate to the new row (it's below the current one)
-    await page.keyboard.press("ArrowDown");
-    // Move to col 1 (System Key) — col 0 is ID (readOnly)
-    await page.keyboard.press("ArrowRight");
+    // Inserting a row already focuses the new row and opens its first editable
+    // cell (col 1, System Key — col 0 is the readOnly ID) in edit mode. So there
+    // is nothing to navigate here, and the cell carries cell-edited, not
+    // cell-selected.
+    const editedCell = page.locator("td.cell-edited");
+    await expect(editedCell).toHaveCount(1);
+    const newRowIdx = await editedCell.getAttribute("data-row-idx");
+    expect(newRowIdx).toBeTruthy();
+    await expect(editedCell).toHaveAttribute("data-col-idx", "1");
 
-    // Get the row index of the new row from the selected cell
-    const newRowIdx = await page
-      .locator("td.cell-selected")
-      .getAttribute("data-row-idx");
-
-    // Edit cell 1 (System Key): Enter → type → Tab
-    await page.keyboard.press("Enter");
+    // Edit cell 1 (System Key): already in edit mode → type → Tab
     await page.keyboard.type("KEY001");
     await page.keyboard.press("Tab");
 
@@ -3630,10 +3693,11 @@ test.describe("Backend mode – error handling (server error)", () => {
     const rowsAfterDelete = await page.locator("table tbody tr").count();
     expect(rowsAfterDelete).toBe(rowsBefore - 1);
 
-    // After error: row reappears (rollback)
+    // After error: row reappears (rollback). The error status can flip a tick
+    // before the rolled-back row is re-rendered, so poll for the count instead
+    // of sampling it once — a bare count() made this test flaky under load.
     await expect(page.locator(".toolbar-status-error")).toBeVisible({ timeout: 5000 });
-    const rowsAfterRollback = await page.locator("table tbody tr").count();
-    expect(rowsAfterRollback).toBe(rowsBefore);
+    await expect(page.locator("table tbody tr")).toHaveCount(rowsBefore);
   });
 
   test.afterEach(async ({ page }) => {
@@ -4122,15 +4186,18 @@ test.describe("Date editor", () => {
     expect(text).not.toMatch(/^\d{4}-\d{2}-\d{2}$/); // not raw ISO
   });
 
-  test("should enter edit mode and show raw ISO value", async ({ page }) => {
+  test("should enter edit mode showing the localized value, not raw ISO", async ({ page }) => {
     const cell = await getCellByHeader(page, "Hire Date", 0);
+    const displayed = (await cell.locator(".cell-editor-display-text").innerText()).trim();
     await cell.click();
     await page.keyboard.press("F2");
     const input = cell.locator(".cell-editor-input");
     await expect(input).toBeVisible();
-    // Raw value should be ISO format
+    // DateEditor edits in the column's display format (see transformValue in
+    // DateEditor.tsx); parseDateInput turns it back into ISO on commit.
     const val = await input.inputValue();
-    expect(val).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(val).toBe(displayed);
+    expect(val).not.toMatch(/^\d{4}-\d{2}-\d{2}$/);
     await page.keyboard.press("Escape");
   });
 
@@ -4212,14 +4279,18 @@ test.describe("Duration editor", () => {
     expect(text).toMatch(/\d+h/);
   });
 
-  test("should enter edit mode with raw ISO duration", async ({ page }) => {
+  test("should enter edit mode with the friendly duration, not raw ISO", async ({ page }) => {
     const cell = await getCellByHeader(page, "Shift", 0);
+    const displayed = (await cell.innerText()).trim();
     await cell.click();
     await page.keyboard.press("F2");
     const input = cell.locator(".cell-editor-input");
     await expect(input).toBeVisible();
+    // DurationEditor edits in the short/friendly form ("7h 30m") and normalizes
+    // to ISO 8601 only on commit — see DurationEditor.tsx.
     const val = await input.inputValue();
-    expect(val).toMatch(/^PT/); // ISO 8601 duration
+    expect(val).toBe(displayed);
+    expect(val).not.toMatch(/^PT/);
     await page.keyboard.press("Escape");
   });
 
@@ -4228,13 +4299,15 @@ test.describe("Duration editor", () => {
     await cell.click();
     await page.keyboard.press("F2");
     const input = cell.locator(".cell-editor-input");
-    await input.fill("2h 30m");
+    // Unspaced input must be parsed and normalized (stored as PT2H30M, shown
+    // in the friendly form again).
+    await input.fill("2h30m");
     await page.keyboard.press("Enter");
-    // After commit, the next edit should show normalized ISO
+    await expect(cell).toContainText("2h 30m");
     await cell.click();
     await page.keyboard.press("F2");
     const val = await cell.locator(".cell-editor-input").inputValue();
-    expect(val).toBe("PT2H30M");
+    expect(val).toBe("2h 30m");
     await page.keyboard.press("Escape");
   });
 });
