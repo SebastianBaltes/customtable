@@ -56,32 +56,61 @@ const roles = [
   "Data Analyst",
 ];
 
+/*
+ * Seeded PRNG (mulberry32) instead of rand(), so that two runs of this
+ * script produce byte-identical output and a regeneration shows an empty diff
+ * as long as the schema is unchanged.
+ *
+ * Note on history: src/examples/example-data.json predates this seed — it was
+ * generated with rand() and later patched in place. So the file in the
+ * repo is *not* the output of this script, and the first regeneration will
+ * produce a large one-time diff. That is deliberate; the seed is meant to hold
+ * from here on, not retroactively. Regenerating is a conscious act: it rerolls
+ * all 300 rows, so it wants an e2e run afterwards. Row 1 stays the complete
+ * "showcase" row either way (see `complete` below), which is what the specs
+ * anchor on.
+ */
+const SEED = 0x5eed1234;
+
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6d2b79f5) >>> 0;
+    let t = a;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const rand = mulberry32(SEED);
+
 function getRandomItem(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return arr[Math.floor(rand() * arr.length)];
 }
 
 function getRandomSubset(arr, maxItems) {
-  const subsetSize = Math.floor(Math.random() * (maxItems + 1));
-  return [...arr].sort(() => 0.5 - Math.random()).slice(0, subsetSize);
+  const subsetSize = Math.floor(rand() * (maxItems + 1));
+  return [...arr].sort(() => 0.5 - rand()).slice(0, subsetSize);
 }
 
 function maybeEmpty(value, probability = 0.2) {
-  return Math.random() < probability ? "" : value;
+  return rand() < probability ? "" : value;
 }
 
 function generateRandomKey(minLength, maxLength) {
   const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-  const length = Math.floor(Math.random() * (maxLength - minLength + 1)) + minLength;
+  const length = Math.floor(rand() * (maxLength - minLength + 1)) + minLength;
   let result = "";
   for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * chars.length));
+    result += chars.charAt(Math.floor(rand() * chars.length));
   }
   return result;
 }
 
 function generateLoremText(maxLength) {
-  if (Math.random() < 0.3) return "";
-  const targetLength = Math.floor(Math.random() * maxLength);
+  if (rand() < 0.3) return "";
+  const targetLength = Math.floor(rand() * maxLength);
   let result = "";
   while (result.length < targetLength) {
     result += getRandomItem(loremWords) + " ";
@@ -92,16 +121,16 @@ function generateLoremText(maxLength) {
 function randomDateBetween(startYear = 1990, endYear = 2024) {
   const start = new Date(startYear, 0, 1).getTime();
   const end = new Date(endYear, 11, 31).getTime();
-  const d = new Date(start + Math.random() * (end - start));
+  const d = new Date(start + rand() * (end - start));
   return d.toISOString();
 }
 
 function formatPhone() {
   // Simple German phone numbers or international
-  if (Math.random() < 0.5) {
-    return "+49" + Math.floor(100000000 + Math.random() * 900000000);
+  if (rand() < 0.5) {
+    return "+49" + Math.floor(100000000 + rand() * 900000000);
   }
-  return "+1" + Math.floor(1000000000 + Math.random() * 9000000000);
+  return "+1" + Math.floor(1000000000 + rand() * 9000000000);
 }
 
 function generateEmployeeNumber(idx) {
@@ -134,8 +163,8 @@ function generateDemoData(count) {
       email: mE(`${fName.toLowerCase()}.${lName.toLowerCase()}@example.com`, 0.1),
       department: mE(getRandomItem(departments), 0.15),
       skills: complete ? skillsPool.slice(0, 3) : getRandomSubset(skillsPool, 4),
-      isActive: complete ? true : Math.random() > 0.15,
-      salary: mE(Math.floor(Math.random() * 60000) + 40000, 0.15),
+      isActive: complete ? true : rand() > 0.15,
+      salary: mE(Math.floor(rand() * 60000) + 40000, 0.15),
 
       // additional (realistic) fields up to 30 fields
       hireDate: mE(randomDateBetween(2005, 2024).split("T")[0], 0.1),
@@ -150,16 +179,16 @@ function generateDemoData(count) {
         0.2,
       ),
       lastLogin: mE(randomDateBetween(2020, 2024), 0.4),
-      performanceScore: mE((Math.random() * 5).toFixed(2), 0.25),
-      bonus: mE(Math.floor(Math.random() * 15000), 0.4),
+      performanceScore: mE((rand() * 5).toFixed(2), 0.25),
+      bonus: mE(Math.floor(rand() * 15000), 0.4),
       contractType: mE(getRandomItem(contractTypes), 0.15),
       country: mE(getRandomItem(countries), 0.05),
       city: mE(
         getRandomItem(["Berlin", "Munich", "Hamburg", "Cologne", "Stuttgart", "Frankfurt"]),
         0.2,
       ),
-      postalCode: mE(String(Math.floor(10000 + Math.random() * 89999)), 0.2),
-      address: mE(`${Math.floor(Math.random() * 200)} Example Street`, 0.3),
+      postalCode: mE(String(Math.floor(10000 + rand() * 89999)), 0.2),
+      address: mE(`${Math.floor(rand() * 200)} Example Street`, 0.3),
       linkedin: mE(
         `https://www.linkedin.com/in/example-user-${String(i).padStart(3, "0")}`,
         0.7,
