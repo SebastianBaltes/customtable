@@ -2,12 +2,16 @@
   {
     "id": 1,
     "complexKey": "LHarp__--zJKdKrmfClme63j7UHwipw-8ezCXmxDWElrL8E",
-    "description": "",
+    "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.",
     "firstName": "Charlie",
     "lastName": "Schmidt",
     "email": "charlie.schmidt@example.com",
-    "department": "",
-    "skills": [],
+    "department": "IT",
+    "skills": [
+      "React",
+      "TypeScript",
+      "Python"
+    ],
     "isActive": true,
     "salary": 48697,
     "hireDate": "2014-03-27",
@@ -18,7 +22,7 @@
     "status": "Probation",
     "role": "Data Analyst",
     "team": "Mobile",
-    "lastLogin": "",
+    "lastLogin": "2024-05-14T08:23:11.000Z",
     "performanceScore": "1.86",
     "bonus": 9547,
     "contractType": "Temporary",
@@ -27,9 +31,12 @@
     "postalCode": "49866",
     "address": "154 Example Street",
     "linkedin": "https://www.linkedin.com/in/example-user-001",
-    "github": "",
-    "dateOfBirth": "",
-    "emergencyContact": ""
+    "github": "https://github.com/example-user-001",
+    "dateOfBirth": "1988-04-12",
+    "emergencyContact": "Grace Weber (+4915112345678)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 2,
@@ -63,7 +70,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-002",
     "github": "",
     "dateOfBirth": "1991-10-26",
-    "emergencyContact": "Ian Schmidt (+49138587704)"
+    "emergencyContact": "Ian Schmidt (+49138587704)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 3,
@@ -100,7 +110,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#10b981"
   },
   {
     "id": 4,
@@ -135,7 +148,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-004",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 5,
@@ -167,7 +183,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-005",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Wagner (+49232882408)"
+    "emergencyContact": "Grace Wagner (+49232882408)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 6,
@@ -199,7 +218,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1980-11-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 7,
@@ -236,7 +258,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-007",
     "dateOfBirth": "1978-06-21",
-    "emergencyContact": "Frank Weber (+17538115829)"
+    "emergencyContact": "Frank Weber (+17538115829)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f97316"
   },
   {
     "id": 8,
@@ -273,7 +298,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-008",
     "github": "",
     "dateOfBirth": "2000-12-07",
-    "emergencyContact": "Grace Müller (+49483132964)"
+    "emergencyContact": "Grace Müller (+49483132964)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 9,
@@ -305,7 +333,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-009",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Becker (+18875514805)"
+    "emergencyContact": "Diana Becker (+18875514805)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 10,
@@ -339,7 +370,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1972-06-11",
-    "emergencyContact": "Hannah Meyer (+49589439341)"
+    "emergencyContact": "Hannah Meyer (+49589439341)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 11,
@@ -371,7 +405,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Alice Schneider (+49444406690)"
+    "emergencyContact": "Alice Schneider (+49444406690)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#10b981"
   },
   {
     "id": 12,
@@ -407,7 +444,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1998-05-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 13,
@@ -444,7 +484,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1995-09-16",
-    "emergencyContact": "Diana Schneider (+49280044384)"
+    "emergencyContact": "Diana Schneider (+49280044384)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 14,
@@ -480,7 +523,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-014",
     "dateOfBirth": "1989-04-15",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 15,
@@ -516,7 +562,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f97316"
   },
   {
     "id": 16,
@@ -550,7 +599,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1974-04-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 17,
@@ -582,7 +634,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-017",
     "dateOfBirth": "1995-08-19",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 18,
@@ -619,7 +674,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-018",
     "github": "",
     "dateOfBirth": "1994-09-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 19,
@@ -651,7 +709,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-019",
     "dateOfBirth": "1979-11-06",
-    "emergencyContact": "Bob Meyer (+49143041697)"
+    "emergencyContact": "Bob Meyer (+49143041697)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 20,
@@ -687,7 +748,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 21,
@@ -723,7 +787,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-021",
     "github": "",
     "dateOfBirth": "1965-05-30",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 22,
@@ -755,7 +822,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-022",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 23,
@@ -792,7 +862,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-023",
     "dateOfBirth": "1990-03-29",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 24,
@@ -827,7 +900,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-024",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 25,
@@ -862,7 +938,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1966-10-03",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 26,
@@ -898,7 +977,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-026",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 27,
@@ -932,7 +1014,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#10b981"
   },
   {
     "id": 28,
@@ -968,7 +1053,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1977-08-02",
-    "emergencyContact": "Eva Schmidt (+17706019789)"
+    "emergencyContact": "Eva Schmidt (+17706019789)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 29,
@@ -1005,7 +1093,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-029",
     "github": "",
     "dateOfBirth": "1967-05-23",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 30,
@@ -1042,7 +1133,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-030",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 31,
@@ -1077,7 +1171,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-031",
     "dateOfBirth": "1966-05-03",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f97316"
   },
   {
     "id": 32,
@@ -1113,7 +1210,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-032",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Meyer (+49474048184)"
+    "emergencyContact": "Eva Meyer (+49474048184)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 33,
@@ -1149,7 +1249,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-033",
     "github": "",
     "dateOfBirth": "1966-07-16",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 34,
@@ -1181,7 +1284,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-034",
     "dateOfBirth": "1990-11-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 35,
@@ -1216,7 +1322,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#10b981"
   },
   {
     "id": 36,
@@ -1252,7 +1361,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 37,
@@ -1288,7 +1400,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1972-01-17",
-    "emergencyContact": "Charlie Meyer (+49519448637)"
+    "emergencyContact": "Charlie Meyer (+49519448637)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 38,
@@ -1323,7 +1438,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-038",
     "github": "",
     "dateOfBirth": "1999-08-20",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 39,
@@ -1358,7 +1476,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 40,
@@ -1392,7 +1513,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-040",
     "github": "",
     "dateOfBirth": "2000-11-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 41,
@@ -1429,7 +1553,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 42,
@@ -1464,7 +1591,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-042",
     "github": "",
     "dateOfBirth": "1970-02-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 43,
@@ -1496,7 +1626,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#10b981"
   },
   {
     "id": 44,
@@ -1533,7 +1666,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-044",
     "dateOfBirth": "1968-09-04",
-    "emergencyContact": "Ian Schneider (+49943392924)"
+    "emergencyContact": "Ian Schneider (+49943392924)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 45,
@@ -1570,7 +1706,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 46,
@@ -1606,7 +1745,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-046",
     "github": "https://github.com/example-user-046",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Weber (+19154893603)"
+    "emergencyContact": "Hannah Weber (+19154893603)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 47,
@@ -1642,7 +1784,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1990-05-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 48,
@@ -1677,7 +1822,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 49,
@@ -1711,7 +1859,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-049",
     "github": "",
     "dateOfBirth": "1983-11-27",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 50,
@@ -1743,7 +1894,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1996-03-31",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 51,
@@ -1780,7 +1934,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-051",
     "dateOfBirth": "1973-03-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 52,
@@ -1815,7 +1972,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-052",
     "dateOfBirth": "1976-02-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 53,
@@ -1849,7 +2009,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1991-01-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 54,
@@ -1883,7 +2046,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-054",
     "dateOfBirth": "2000-08-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 55,
@@ -1917,7 +2083,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Wagner (+49651108276)"
+    "emergencyContact": "Hannah Wagner (+49651108276)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f97316"
   },
   {
     "id": 56,
@@ -1951,7 +2120,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 57,
@@ -1985,7 +2157,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-057",
     "github": "https://github.com/example-user-057",
     "dateOfBirth": "1977-06-03",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 58,
@@ -2019,7 +2194,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-058",
     "github": "",
     "dateOfBirth": "1995-11-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 59,
@@ -2051,7 +2229,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-059",
     "github": "",
     "dateOfBirth": "1998-12-22",
-    "emergencyContact": "Charlie Schneider (+49571693488)"
+    "emergencyContact": "Charlie Schneider (+49571693488)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#10b981"
   },
   {
     "id": 60,
@@ -2085,7 +2266,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Alice Fischer (+49641279192)"
+    "emergencyContact": "Alice Fischer (+49641279192)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 61,
@@ -2121,7 +2305,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1984-07-15",
-    "emergencyContact": "Grace Fischer (+49377021452)"
+    "emergencyContact": "Grace Fischer (+49377021452)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 62,
@@ -2157,7 +2344,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-062",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Wagner (+49459170178)"
+    "emergencyContact": "Diana Wagner (+49459170178)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 63,
@@ -2192,7 +2382,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1973-01-11",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f97316"
   },
   {
     "id": 64,
@@ -2227,7 +2420,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1967-12-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 65,
@@ -2264,7 +2460,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 66,
@@ -2298,7 +2497,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 67,
@@ -2334,7 +2536,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Becker (+49160188421)"
+    "emergencyContact": "Charlie Becker (+49160188421)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#10b981"
   },
   {
     "id": 68,
@@ -2368,7 +2573,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-068",
     "github": "",
     "dateOfBirth": "1995-02-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 69,
@@ -2404,7 +2612,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Julia Becker (+14455022373)"
+    "emergencyContact": "Julia Becker (+14455022373)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 70,
@@ -2440,7 +2651,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1981-05-16",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 71,
@@ -2474,7 +2688,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-071",
     "github": "",
     "dateOfBirth": "1966-07-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f97316"
   },
   {
     "id": 72,
@@ -2508,7 +2725,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-072",
     "github": "",
     "dateOfBirth": "1994-03-12",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 73,
@@ -2540,7 +2760,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-073",
     "github": "",
     "dateOfBirth": "1984-10-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 74,
@@ -2574,7 +2797,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 75,
@@ -2606,7 +2832,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-075",
     "github": "",
     "dateOfBirth": "1987-12-12",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 76,
@@ -2642,7 +2871,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1978-04-17",
-    "emergencyContact": "Hannah Fischer (+15806744141)"
+    "emergencyContact": "Hannah Fischer (+15806744141)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 77,
@@ -2676,7 +2908,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1988-08-17",
-    "emergencyContact": "Eva Schneider (+12948778910)"
+    "emergencyContact": "Eva Schneider (+12948778910)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 78,
@@ -2712,7 +2947,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-078",
     "github": "https://github.com/example-user-078",
     "dateOfBirth": "1991-12-11",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 79,
@@ -2747,7 +2985,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 80,
@@ -2781,7 +3022,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-080",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 81,
@@ -2816,7 +3060,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-05-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 82,
@@ -2852,7 +3099,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1997-03-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 83,
@@ -2884,7 +3134,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-083",
     "github": "https://github.com/example-user-083",
     "dateOfBirth": "2000-05-05",
-    "emergencyContact": "Eva Fischer (+49329193695)"
+    "emergencyContact": "Eva Fischer (+49329193695)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#10b981"
   },
   {
     "id": 84,
@@ -2920,7 +3173,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-084",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 85,
@@ -2956,7 +3212,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-085",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Meyer (+15837517994)"
+    "emergencyContact": "Charlie Meyer (+15837517994)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 86,
@@ -2993,7 +3252,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-086",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 87,
@@ -3028,7 +3290,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1971-02-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f97316"
   },
   {
     "id": 88,
@@ -3060,7 +3325,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 89,
@@ -3096,7 +3364,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-089",
     "github": "",
     "dateOfBirth": "1966-10-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 90,
@@ -3132,7 +3403,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-090",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 91,
@@ -3169,7 +3443,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-11-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#10b981"
   },
   {
     "id": 92,
@@ -3201,7 +3478,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-092",
     "github": "",
     "dateOfBirth": "1971-12-09",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 93,
@@ -3233,7 +3513,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-093",
     "github": "",
     "dateOfBirth": "1985-05-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 94,
@@ -3269,7 +3552,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-094",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 95,
@@ -3304,7 +3590,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 96,
@@ -3341,7 +3630,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-096",
     "github": "https://github.com/example-user-096",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Schneider (+14011724578)"
+    "emergencyContact": "Charlie Schneider (+14011724578)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 97,
@@ -3377,7 +3669,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1992-04-13",
-    "emergencyContact": "Grace Meyer (+17334429243)"
+    "emergencyContact": "Grace Meyer (+17334429243)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 98,
@@ -3411,7 +3706,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-098",
     "dateOfBirth": "1984-04-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 99,
@@ -3448,7 +3746,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Wagner (+49929313518)"
+    "emergencyContact": "Ian Wagner (+49929313518)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#10b981"
   },
   {
     "id": 100,
@@ -3482,7 +3783,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1980-09-15",
-    "emergencyContact": "Frank Fischer (+19829808983)"
+    "emergencyContact": "Frank Fischer (+19829808983)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 101,
@@ -3517,7 +3821,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-101",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 102,
@@ -3554,7 +3861,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 103,
@@ -3590,7 +3900,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Müller (+14320852314)"
+    "emergencyContact": "Frank Müller (+14320852314)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 104,
@@ -3624,7 +3937,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Müller (+49109018876)"
+    "emergencyContact": "Ian Müller (+49109018876)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 105,
@@ -3660,7 +3976,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-105",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Meyer (+49854971152)"
+    "emergencyContact": "Eva Meyer (+49854971152)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 106,
@@ -3696,7 +4015,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 107,
@@ -3732,7 +4054,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 108,
@@ -3764,7 +4089,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1998-02-18",
-    "emergencyContact": "Hannah Meyer (+18913424972)"
+    "emergencyContact": "Hannah Meyer (+18913424972)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 109,
@@ -3796,7 +4124,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Fischer (+16555487007)"
+    "emergencyContact": "Charlie Fischer (+16555487007)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 110,
@@ -3828,7 +4159,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-02-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 111,
@@ -3865,7 +4199,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-111",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Becker (+49412063095)"
+    "emergencyContact": "Eva Becker (+49412063095)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f97316"
   },
   {
     "id": 112,
@@ -3901,7 +4238,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-03-20",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 113,
@@ -3933,7 +4273,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 114,
@@ -3967,7 +4310,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-114",
     "dateOfBirth": "1988-11-30",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 115,
@@ -4001,7 +4347,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1978-07-02",
-    "emergencyContact": "Eva Fischer (+49841029429)"
+    "emergencyContact": "Eva Fischer (+49841029429)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#10b981"
   },
   {
     "id": 116,
@@ -4035,7 +4384,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1999-06-03",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 117,
@@ -4071,7 +4423,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-01-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 118,
@@ -4105,7 +4460,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1983-01-21",
-    "emergencyContact": "Bob Schmidt (+49368782174)"
+    "emergencyContact": "Bob Schmidt (+49368782174)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 119,
@@ -4141,7 +4499,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1984-01-04",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f97316"
   },
   {
     "id": 120,
@@ -4175,7 +4536,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 121,
@@ -4209,7 +4573,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1976-05-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 122,
@@ -4243,7 +4610,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-122",
     "github": "",
     "dateOfBirth": "1967-12-13",
-    "emergencyContact": "Charlie Fischer (+49203510227)"
+    "emergencyContact": "Charlie Fischer (+49203510227)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 123,
@@ -4279,7 +4649,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-123",
     "github": "",
     "dateOfBirth": "1979-09-02",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#10b981"
   },
   {
     "id": 124,
@@ -4316,7 +4689,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-124",
     "github": "https://github.com/example-user-124",
     "dateOfBirth": "1967-08-23",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 125,
@@ -4352,7 +4728,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-125",
     "dateOfBirth": "2000-10-19",
-    "emergencyContact": "Grace Müller (+18810230114)"
+    "emergencyContact": "Grace Müller (+18810230114)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 126,
@@ -4389,7 +4768,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1976-04-02",
-    "emergencyContact": "Charlie Schneider (+14531178309)"
+    "emergencyContact": "Charlie Schneider (+14531178309)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 127,
@@ -4425,7 +4807,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1970-08-21",
-    "emergencyContact": "Diana Fischer (+49802233098)"
+    "emergencyContact": "Diana Fischer (+49802233098)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f97316"
   },
   {
     "id": 128,
@@ -4461,7 +4846,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1998-12-09",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 129,
@@ -4496,7 +4884,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1974-07-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 130,
@@ -4533,7 +4924,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1995-05-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 131,
@@ -4569,7 +4963,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-07-07",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 132,
@@ -4601,7 +4998,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 133,
@@ -4638,7 +5038,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1965-05-08",
-    "emergencyContact": "Frank Becker (+14126109686)"
+    "emergencyContact": "Frank Becker (+14126109686)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 134,
@@ -4672,7 +5075,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-134",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 135,
@@ -4706,7 +5112,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1981-01-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 136,
@@ -4742,7 +5151,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Fischer (+11350925062)"
+    "emergencyContact": "Hannah Fischer (+11350925062)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 137,
@@ -4778,7 +5190,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-137",
     "github": "",
     "dateOfBirth": "1978-01-19",
-    "emergencyContact": "Charlie Fischer (+49223494278)"
+    "emergencyContact": "Charlie Fischer (+49223494278)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 138,
@@ -4812,7 +5227,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1983-12-03",
-    "emergencyContact": "Frank Schmidt (+49805366680)"
+    "emergencyContact": "Frank Schmidt (+49805366680)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 139,
@@ -4849,7 +5267,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#10b981"
   },
   {
     "id": 140,
@@ -4886,7 +5307,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 141,
@@ -4922,7 +5346,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1970-08-12",
-    "emergencyContact": "Charlie Schmidt (+49882562025)"
+    "emergencyContact": "Charlie Schmidt (+49882562025)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 142,
@@ -4957,7 +5384,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-142",
     "dateOfBirth": "1976-01-13",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 143,
@@ -4992,7 +5422,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-143",
     "dateOfBirth": "1969-07-22",
-    "emergencyContact": "Julia Schmidt (+49131152798)"
+    "emergencyContact": "Julia Schmidt (+49131152798)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f97316"
   },
   {
     "id": 144,
@@ -5024,7 +5457,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-144",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Weber (+49294135668)"
+    "emergencyContact": "Grace Weber (+49294135668)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 145,
@@ -5058,7 +5494,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1970-04-19",
-    "emergencyContact": "Alice Weber (+49682279281)"
+    "emergencyContact": "Alice Weber (+49682279281)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 146,
@@ -5095,7 +5534,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-146",
     "github": "",
     "dateOfBirth": "1998-11-10",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 147,
@@ -5132,7 +5574,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-147",
     "github": "https://github.com/example-user-147",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#10b981"
   },
   {
     "id": 148,
@@ -5164,7 +5609,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Julia Meyer (+11286361740)"
+    "emergencyContact": "Julia Meyer (+11286361740)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 149,
@@ -5199,7 +5647,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Schneider (+49308957388)"
+    "emergencyContact": "Diana Schneider (+49308957388)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 150,
@@ -5233,7 +5684,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1989-04-26",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 151,
@@ -5267,7 +5721,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "2000-11-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 152,
@@ -5303,7 +5760,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-152",
     "github": "",
     "dateOfBirth": "1994-07-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 153,
@@ -5338,7 +5798,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-153",
     "github": "",
     "dateOfBirth": "1992-12-09",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 154,
@@ -5373,7 +5836,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-154",
     "dateOfBirth": "",
-    "emergencyContact": "Julia Schmidt (+11862220451)"
+    "emergencyContact": "Julia Schmidt (+11862220451)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 155,
@@ -5409,7 +5875,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1980-04-22",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#10b981"
   },
   {
     "id": 156,
@@ -5446,7 +5915,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-156",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Wagner (+12289558188)"
+    "emergencyContact": "Hannah Wagner (+12289558188)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 157,
@@ -5482,7 +5954,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-157",
     "github": "",
     "dateOfBirth": "1975-06-19",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 158,
@@ -5516,7 +5991,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Julia Müller (+49126127110)"
+    "emergencyContact": "Julia Müller (+49126127110)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 159,
@@ -5551,7 +6029,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Fischer (+14509995155)"
+    "emergencyContact": "Diana Fischer (+14509995155)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 160,
@@ -5583,7 +6064,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-06-24",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 161,
@@ -5620,7 +6104,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1978-10-26",
-    "emergencyContact": "Alice Schmidt (+12338081964)"
+    "emergencyContact": "Alice Schmidt (+12338081964)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 162,
@@ -5656,7 +6143,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-162",
     "dateOfBirth": "",
-    "emergencyContact": "Bob Wagner (+49702671999)"
+    "emergencyContact": "Bob Wagner (+49702671999)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 163,
@@ -5693,7 +6183,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1994-06-16",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 164,
@@ -5727,7 +6220,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-164",
     "dateOfBirth": "1987-10-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 165,
@@ -5763,7 +6259,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-165",
     "github": "",
     "dateOfBirth": "1966-10-27",
-    "emergencyContact": "Bob Fischer (+19809666272)"
+    "emergencyContact": "Bob Fischer (+19809666272)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 166,
@@ -5798,7 +6297,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-166",
     "dateOfBirth": "1981-06-29",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 167,
@@ -5830,7 +6332,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f97316"
   },
   {
     "id": 168,
@@ -5867,7 +6372,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 169,
@@ -5903,7 +6411,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1992-11-23",
-    "emergencyContact": "Charlie Schneider (+49605493465)"
+    "emergencyContact": "Charlie Schneider (+49605493465)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 170,
@@ -5939,7 +6450,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1995-03-17",
-    "emergencyContact": "Eva Wagner (+19115425502)"
+    "emergencyContact": "Eva Wagner (+19115425502)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 171,
@@ -5975,7 +6489,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1975-06-14",
-    "emergencyContact": "Bob Schmidt (+16465134091)"
+    "emergencyContact": "Bob Schmidt (+16465134091)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#10b981"
   },
   {
     "id": 172,
@@ -6011,7 +6528,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Schmidt (+19959641492)"
+    "emergencyContact": "Hannah Schmidt (+19959641492)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 173,
@@ -6048,7 +6568,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-173",
     "github": "",
     "dateOfBirth": "1997-11-15",
-    "emergencyContact": "Eva Wagner (+16298336576)"
+    "emergencyContact": "Eva Wagner (+16298336576)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 174,
@@ -6080,7 +6603,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-174",
     "github": "",
     "dateOfBirth": "1978-01-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 175,
@@ -6116,7 +6642,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-175",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f97316"
   },
   {
     "id": 176,
@@ -6151,7 +6680,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1978-10-30",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 177,
@@ -6186,7 +6718,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-01-10",
-    "emergencyContact": "Grace Schneider (+49744664061)"
+    "emergencyContact": "Grace Schneider (+49744664061)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 178,
@@ -6221,7 +6756,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1979-07-11",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 179,
@@ -6256,7 +6794,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-179",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Becker (+49186869731)"
+    "emergencyContact": "Frank Becker (+49186869731)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#10b981"
   },
   {
     "id": 180,
@@ -6292,7 +6833,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 181,
@@ -6328,7 +6872,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-181",
     "dateOfBirth": "1986-11-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 182,
@@ -6364,7 +6911,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-182",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Meyer (+17960051166)"
+    "emergencyContact": "Diana Meyer (+17960051166)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 183,
@@ -6401,7 +6951,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f97316"
   },
   {
     "id": 184,
@@ -6433,7 +6986,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-184",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 185,
@@ -6469,7 +7025,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-185",
     "github": "",
     "dateOfBirth": "1989-07-15",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 186,
@@ -6506,7 +7065,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-186",
     "github": "https://github.com/example-user-186",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Schmidt (+18360652171)"
+    "emergencyContact": "Ian Schmidt (+18360652171)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 187,
@@ -6541,7 +7103,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-187",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 188,
@@ -6576,7 +7141,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 189,
@@ -6610,7 +7178,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-189",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 190,
@@ -6642,7 +7213,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1984-10-21",
-    "emergencyContact": "Bob Schmidt (+13535470407)"
+    "emergencyContact": "Bob Schmidt (+13535470407)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 191,
@@ -6674,7 +7248,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Müller (+14165565082)"
+    "emergencyContact": "Ian Müller (+14165565082)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 192,
@@ -6711,7 +7288,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-192",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 193,
@@ -6748,7 +7328,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-193",
     "dateOfBirth": "1995-03-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 194,
@@ -6784,7 +7367,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-194",
     "dateOfBirth": "1977-03-01",
-    "emergencyContact": "Charlie Meyer (+15495884827)"
+    "emergencyContact": "Charlie Meyer (+15495884827)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 195,
@@ -6820,7 +7406,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Müller (+18113061746)"
+    "emergencyContact": "Eva Müller (+18113061746)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#10b981"
   },
   {
     "id": 196,
@@ -6854,7 +7443,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1994-05-31",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 197,
@@ -6891,7 +7483,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 198,
@@ -6927,7 +7522,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1969-04-15",
-    "emergencyContact": "Alice Schmidt (+12559675139)"
+    "emergencyContact": "Alice Schmidt (+12559675139)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 199,
@@ -6963,7 +7561,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Meyer (+49731070574)"
+    "emergencyContact": "Diana Meyer (+49731070574)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f97316"
   },
   {
     "id": 200,
@@ -7000,7 +7601,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-200",
     "github": "",
     "dateOfBirth": "1992-07-29",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 201,
@@ -7037,7 +7641,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 202,
@@ -7074,7 +7681,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Meyer (+49987827756)"
+    "emergencyContact": "Frank Meyer (+49987827756)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 203,
@@ -7109,7 +7719,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#10b981"
   },
   {
     "id": 204,
@@ -7144,7 +7757,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Schmidt (+49359470387)"
+    "emergencyContact": "Grace Schmidt (+49359470387)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 205,
@@ -7176,7 +7792,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 206,
@@ -7208,7 +7827,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-206",
     "github": "https://github.com/example-user-206",
     "dateOfBirth": "1980-11-01",
-    "emergencyContact": "Eva Fischer (+19185612067)"
+    "emergencyContact": "Eva Fischer (+19185612067)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 207,
@@ -7243,7 +7865,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-207",
     "dateOfBirth": "1966-07-05",
-    "emergencyContact": "Bob Meyer (+49698108846)"
+    "emergencyContact": "Bob Meyer (+49698108846)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 208,
@@ -7277,7 +7902,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-208",
     "dateOfBirth": "1990-04-09",
-    "emergencyContact": "Frank Weber (+12876622818)"
+    "emergencyContact": "Frank Weber (+12876622818)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 209,
@@ -7311,7 +7939,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 210,
@@ -7343,7 +7974,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-210",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 211,
@@ -7378,7 +8012,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#10b981"
   },
   {
     "id": 212,
@@ -7413,7 +8050,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-212",
     "dateOfBirth": "1989-02-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 213,
@@ -7447,7 +8087,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1982-03-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 214,
@@ -7479,7 +8122,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-214",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 215,
@@ -7514,7 +8160,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-215",
     "github": "https://github.com/example-user-215",
     "dateOfBirth": "1975-02-27",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 216,
@@ -7549,7 +8198,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Bob Fischer (+19671810711)"
+    "emergencyContact": "Bob Fischer (+19671810711)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 217,
@@ -7586,7 +8238,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1982-12-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 218,
@@ -7621,7 +8276,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 219,
@@ -7658,7 +8316,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-219",
     "github": "",
     "dateOfBirth": "1983-01-18",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 220,
@@ -7694,7 +8355,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1981-08-05",
-    "emergencyContact": "Charlie Schneider (+11638886818)"
+    "emergencyContact": "Charlie Schneider (+11638886818)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 221,
@@ -7726,7 +8390,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1999-08-24",
-    "emergencyContact": "Alice Schmidt (+49570120721)"
+    "emergencyContact": "Alice Schmidt (+49570120721)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 222,
@@ -7763,7 +8430,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-222",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Schmidt (+49706375532)"
+    "emergencyContact": "Frank Schmidt (+49706375532)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 223,
@@ -7800,7 +8470,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Fischer (+49919745184)"
+    "emergencyContact": "Diana Fischer (+49919745184)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f97316"
   },
   {
     "id": 224,
@@ -7835,7 +8508,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-224",
     "github": "",
     "dateOfBirth": "1994-07-28",
-    "emergencyContact": "Grace Becker (+19348766842)"
+    "emergencyContact": "Grace Becker (+19348766842)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 225,
@@ -7870,7 +8546,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Wagner (+49236379545)"
+    "emergencyContact": "Diana Wagner (+49236379545)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 226,
@@ -7906,7 +8585,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-05-29",
-    "emergencyContact": "Eva Wagner (+17345610506)"
+    "emergencyContact": "Eva Wagner (+17345610506)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 227,
@@ -7938,7 +8620,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-227",
     "github": "",
     "dateOfBirth": "1973-01-14",
-    "emergencyContact": "Grace Becker (+17207560529)"
+    "emergencyContact": "Grace Becker (+17207560529)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#10b981"
   },
   {
     "id": 228,
@@ -7970,7 +8655,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Wagner (+49449645461)"
+    "emergencyContact": "Eva Wagner (+49449645461)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 229,
@@ -8006,7 +8694,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-10-10",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 230,
@@ -8042,7 +8733,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1975-02-19",
-    "emergencyContact": "Diana Schneider (+49741600977)"
+    "emergencyContact": "Diana Schneider (+49741600977)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 231,
@@ -8076,7 +8770,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1993-10-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f97316"
   },
   {
     "id": 232,
@@ -8111,7 +8808,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1981-07-23",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 233,
@@ -8147,7 +8847,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-233",
     "github": "",
     "dateOfBirth": "1969-09-15",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 234,
@@ -8181,7 +8884,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1971-02-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 235,
@@ -8217,7 +8923,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-05-03",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#10b981"
   },
   {
     "id": 236,
@@ -8254,7 +8963,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Alice Schneider (+49884513269)"
+    "emergencyContact": "Alice Schneider (+49884513269)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 237,
@@ -8288,7 +9000,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1971-12-25",
-    "emergencyContact": "Ian Becker (+12795549100)"
+    "emergencyContact": "Ian Becker (+12795549100)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 238,
@@ -8322,7 +9037,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1988-12-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 239,
@@ -8354,7 +9072,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1996-01-27",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f97316"
   },
   {
     "id": 240,
@@ -8391,7 +9112,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-240",
     "dateOfBirth": "1983-01-16",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 241,
@@ -8426,7 +9150,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-241",
     "dateOfBirth": "1978-01-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 242,
@@ -8461,7 +9188,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-242",
     "dateOfBirth": "1998-10-09",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 243,
@@ -8497,7 +9227,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 244,
@@ -8534,7 +9267,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1987-10-26",
-    "emergencyContact": "Hannah Schneider (+49140494411)"
+    "emergencyContact": "Hannah Schneider (+49140494411)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 245,
@@ -8566,7 +9302,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 246,
@@ -8603,7 +9342,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-246",
     "dateOfBirth": "1968-11-03",
-    "emergencyContact": "Frank Weber (+49961095249)"
+    "emergencyContact": "Frank Weber (+49961095249)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 247,
@@ -8637,7 +9379,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-247",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Ian Schneider (+49937210123)"
+    "emergencyContact": "Ian Schneider (+49937210123)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 248,
@@ -8674,7 +9419,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1996-04-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 249,
@@ -8706,7 +9454,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Julia Schneider (+18605994121)"
+    "emergencyContact": "Julia Schneider (+18605994121)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 250,
@@ -8742,7 +9493,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-250",
     "github": "",
     "dateOfBirth": "1971-04-01",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 251,
@@ -8774,7 +9528,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#10b981"
   },
   {
     "id": 252,
@@ -8809,7 +9566,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1978-03-10",
-    "emergencyContact": "Grace Schmidt (+49658370135)"
+    "emergencyContact": "Grace Schmidt (+49658370135)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 253,
@@ -8843,7 +9603,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-253",
     "dateOfBirth": "1969-03-13",
-    "emergencyContact": "Ian Weber (+49605309754)"
+    "emergencyContact": "Ian Weber (+49605309754)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 254,
@@ -8875,7 +9638,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1988-08-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 255,
@@ -8909,7 +9675,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-255",
     "github": "https://github.com/example-user-255",
     "dateOfBirth": "1981-10-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f97316"
   },
   {
     "id": 256,
@@ -8943,7 +9712,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-256",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 257,
@@ -8978,7 +9750,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 258,
@@ -9015,7 +9790,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Alice Becker (+15369909882)"
+    "emergencyContact": "Alice Becker (+15369909882)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 259,
@@ -9047,7 +9825,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Schmidt (+19331406953)"
+    "emergencyContact": "Hannah Schmidt (+19331406953)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#10b981"
   },
   {
     "id": 260,
@@ -9083,7 +9864,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1985-01-14",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 261,
@@ -9119,7 +9903,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-261",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Bob Müller (+16702376553)"
+    "emergencyContact": "Bob Müller (+16702376553)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 262,
@@ -9156,7 +9943,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 263,
@@ -9190,7 +9980,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-263",
     "dateOfBirth": "",
-    "emergencyContact": "Grace Schneider (+15200903531)"
+    "emergencyContact": "Grace Schneider (+15200903531)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f97316"
   },
   {
     "id": 264,
@@ -9225,7 +10018,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Eva Müller (+16072363244)"
+    "emergencyContact": "Eva Müller (+16072363244)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 265,
@@ -9260,7 +10056,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-265",
     "dateOfBirth": "",
-    "emergencyContact": "Alice Schneider (+16605604536)"
+    "emergencyContact": "Alice Schneider (+16605604536)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 266,
@@ -9292,7 +10091,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-266",
     "dateOfBirth": "1969-08-15",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 267,
@@ -9324,7 +10126,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1966-08-21",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#10b981"
   },
   {
     "id": 268,
@@ -9359,7 +10164,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1966-03-26",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 269,
@@ -9394,7 +10202,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Hannah Becker (+49249030170)"
+    "emergencyContact": "Hannah Becker (+49249030170)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 270,
@@ -9428,7 +10239,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-270",
     "github": "",
     "dateOfBirth": "1984-12-26",
-    "emergencyContact": "Julia Müller (+49190992260)"
+    "emergencyContact": "Julia Müller (+49190992260)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 271,
@@ -9462,7 +10276,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f97316"
   },
   {
     "id": 272,
@@ -9498,7 +10315,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1995-10-28",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 273,
@@ -9530,7 +10350,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-273",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Meyer (+49583622806)"
+    "emergencyContact": "Frank Meyer (+49583622806)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 274,
@@ -9562,7 +10385,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1994-01-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 275,
@@ -9597,7 +10423,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Fischer (+49505895804)"
+    "emergencyContact": "Charlie Fischer (+49505895804)",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 276,
@@ -9631,7 +10460,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-276",
     "dateOfBirth": "1997-08-11",
-    "emergencyContact": "Alice Weber (+17933093506)"
+    "emergencyContact": "Alice Weber (+17933093506)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 277,
@@ -9668,7 +10500,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1980-01-12",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 278,
@@ -9702,7 +10537,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1990-05-06",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 279,
@@ -9737,7 +10575,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1973-09-25",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f97316"
   },
   {
     "id": 280,
@@ -9771,7 +10612,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 281,
@@ -9803,7 +10647,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1971-05-21",
-    "emergencyContact": "Charlie Müller (+12798985266)"
+    "emergencyContact": "Charlie Müller (+12798985266)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 282,
@@ -9840,7 +10687,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-282",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#ef4444"
   },
   {
     "id": 283,
@@ -9872,7 +10722,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#10b981"
   },
   {
     "id": 284,
@@ -9906,7 +10759,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-284",
     "dateOfBirth": "1995-03-11",
-    "emergencyContact": "Grace Schneider (+11845870801)"
+    "emergencyContact": "Grace Schneider (+11845870801)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 285,
@@ -9941,7 +10797,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1994-07-29",
-    "emergencyContact": "Alice Meyer (+49763922400)"
+    "emergencyContact": "Alice Meyer (+49763922400)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 286,
@@ -9978,7 +10837,10 @@
     "linkedin": "",
     "github": "https://github.com/example-user-286",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 287,
@@ -10012,7 +10874,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-287",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Becker (+16637342189)"
+    "emergencyContact": "Frank Becker (+16637342189)",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#f97316"
   },
   {
     "id": 288,
@@ -10044,7 +10909,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Charlie Schmidt (+19592910922)"
+    "emergencyContact": "Charlie Schmidt (+19592910922)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 289,
@@ -10081,7 +10949,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-289",
     "github": "",
     "dateOfBirth": "1969-11-08",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 290,
@@ -10115,7 +10986,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1996-07-13",
-    "emergencyContact": "Alice Wagner (+12652723608)"
+    "emergencyContact": "Alice Wagner (+12652723608)",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#ef4444"
   },
   {
     "id": 291,
@@ -10151,7 +11025,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1977-06-21",
-    "emergencyContact": "Grace Weber (+19202130279)"
+    "emergencyContact": "Grace Weber (+19202130279)",
+    "checkInTime": "08:30",
+    "shiftDuration": "PT4H",
+    "brandColor": "#10b981"
   },
   {
     "id": 292,
@@ -10186,7 +11063,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Diana Wagner (+13767933535)"
+    "emergencyContact": "Diana Wagner (+13767933535)",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#f59e0b"
   },
   {
     "id": 293,
@@ -10218,7 +11098,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-293",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Wagner (+15466670950)"
+    "emergencyContact": "Frank Wagner (+15466670950)",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#8b5cf6"
   },
   {
     "id": 294,
@@ -10252,7 +11135,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1995-09-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "10:00",
+    "shiftDuration": "PT5H45M",
+    "brandColor": "#06b6d4"
   },
   {
     "id": 295,
@@ -10284,7 +11170,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": "Frank Wagner (+49712292657)"
+    "emergencyContact": "Frank Wagner (+49712292657)",
+    "checkInTime": "07:00",
+    "shiftDuration": "PT8H",
+    "brandColor": "#f97316"
   },
   {
     "id": 296,
@@ -10318,7 +11207,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1999-07-09",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "07:30",
+    "shiftDuration": "PT7H30M",
+    "brandColor": "#a78bfa"
   },
   {
     "id": 297,
@@ -10354,7 +11246,10 @@
     "linkedin": "https://www.linkedin.com/in/example-user-297",
     "github": "",
     "dateOfBirth": "1996-11-05",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "08:00",
+    "shiftDuration": "PT6H",
+    "brandColor": "#3b82f6"
   },
   {
     "id": 298,
@@ -10388,7 +11283,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "1982-04-16",
-    "emergencyContact": "Charlie Weber (+19961485585)"
+    "emergencyContact": "Charlie Weber (+19961485585)",
+    "checkInTime": "",
+    "shiftDuration": "",
+    "brandColor": ""
   },
   {
     "id": 299,
@@ -10420,7 +11318,10 @@
     "linkedin": "",
     "github": "",
     "dateOfBirth": "",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:00",
+    "shiftDuration": "PT8H30M",
+    "brandColor": "#10b981"
   },
   {
     "id": 300,
@@ -10457,6 +11358,9 @@
     "linkedin": "https://www.linkedin.com/in/example-user-300",
     "github": "https://github.com/example-user-300",
     "dateOfBirth": "1986-02-10",
-    "emergencyContact": ""
+    "emergencyContact": "",
+    "checkInTime": "09:30",
+    "shiftDuration": "PT9H",
+    "brandColor": "#f59e0b"
   }
 ]
