@@ -4,3 +4,5 @@ release/
 node_modules/
 *.log
 .claude/worktrees/
+test-results/
+playwright-report/
