@@ -5,6 +5,7 @@ import { getCursorName } from "./GridDbEditor";
 import { TranslationsContext } from "./TranslationsContext";
 import { ComboboxFilter } from "./ComboboxFilter";
 import { throttledMouseMove } from "./useCursor";
+import { cursorBoxes, ctrlAddRange, isColSelected as isColSelectedIn } from "./selectionRanges";
 import { columnAlign } from "./utils";
 
 export const ColHeader = React.memo(
@@ -50,10 +51,10 @@ export const ColHeader = React.memo(
     commitFilterOnBlur?: boolean;
   }) => {
     const t = useContext(TranslationsContext);
-    const { editing, selectionStart, selectionEnd } = cursorRef.current;
-    const colHasCursor =
-      colIdx >= Math.min(selectionStart.colIdx, selectionEnd.colIdx) &&
-      colIdx <= Math.max(selectionStart.colIdx, selectionEnd.colIdx);
+    const { editing } = cursorRef.current;
+    // All selection areas count, not only the active one: with a Ctrl+click
+    // multi-selection every touched column keeps its header highlight.
+    const colHasCursor = isColSelectedIn(cursorBoxes(cursorRef.current), colIdx);
     const cursorName = getCursorName("col-", colHasCursor, editing);
     const isColSelected = colSelection && cursorRef.current.colSelection && colHasCursor;
     const label = column.label ?? column.name;
@@ -311,13 +312,36 @@ export const ColHeader = React.memo(
           if (isInteractiveTarget(event.target as HTMLElement)) return;
           if ((event.target as HTMLElement).closest(".col-header-label")) return;
           if (resizeHandleRef.current?.classList.contains("resizing")) return;
+          const wholeColumn = (col: number) => ({
+            start: { rowIdx: 0, colIdx: col },
+            end: { rowIdx: rowsLength - 1, colIdx: col },
+          });
+
+          // Ctrl/Cmd+click adds this column as an additional, disjoint area
+          // (Ctrl+click on an already selected column removes it again).
+          if ((event.ctrlKey || event.metaKey) && !event.shiftKey) {
+            event.preventDefault();
+            setCursorRef(ctrlAddRange(cursorRef.current, wholeColumn(colIdx), true));
+            return;
+          }
+
+          // Shift+click extends the active column range up to this column. The
+          // anchor is the column the active area started in; with no selection
+          // yet it degrades to a plain click on this column.
+          const anchorCol = cursorRef.current.selectionStart.colIdx;
+          const shiftExtend = event.shiftKey && anchorCol >= 0;
+          if (shiftExtend) event.preventDefault();
           setCursorRef({
             editing: false,
             filling: false,
             colSelection: true,
-            selectionStart: { rowIdx: 0, colIdx },
+            selectionStart: { rowIdx: 0, colIdx: shiftExtend ? anchorCol : colIdx },
             selectionEnd: { rowIdx: rowsLength - 1, colIdx },
             fillEnd: { rowIdx: rowsLength - 1, colIdx },
+            // Shift keeps the Ctrl+click areas alive; a plain click starts over
+            // (passing selectionStart without extraRanges would clear them, but
+            // being explicit keeps both paths readable).
+            extraRanges: shiftExtend ? cursorRef.current.extraRanges ?? [] : [],
           });
         }}
         onMouseMove={(event) => {

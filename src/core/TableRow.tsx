@@ -3,6 +3,7 @@ import React from "react";
 import classNames from "./classNames";
 import { TableCell } from "./TableCell";
 import { getCursorName } from "./GridDbEditor";
+import { cursorBoxes, isRowSelected } from "./selectionRanges";
 
 export const TableRow = React.memo(
   ({
@@ -32,10 +33,9 @@ export const TableRow = React.memo(
     textEllipsisLength?: number;
     ariaRowLabel?: string;
   }) => {
-    const { editing, selectionStart, selectionEnd } = cursorRef.current;
-    const rowHasCursor =
-      rowIdx >= Math.min(selectionStart.rowIdx, selectionEnd.rowIdx) &&
-      rowIdx <= Math.max(selectionStart.rowIdx, selectionEnd.rowIdx);
+    const { editing } = cursorRef.current;
+    // Every selection area highlights its rows, not just the active one.
+    const rowHasCursor = isRowSelected(cursorBoxes(cursorRef.current), rowIdx);
     const rowClass = getCursorName("row-", rowHasCursor, editing);
     return (
       <tr

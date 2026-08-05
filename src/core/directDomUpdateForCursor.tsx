@@ -1,7 +1,8 @@
-import { CellAddr, Cursor } from "./Types";
+import { CellAddr, Cursor, SelectionRect } from "./Types";
 import React from "react";
 import { getCursorName } from "./GridDbEditor";
-import { last, range } from "./utils";
+import { cursorBoxes, selectedColIndices, selectedRowIndices } from "./selectionRanges";
+import { last } from "./utils";
 
 export interface CursorRefs {
   viewportRef: React.RefObject<HTMLDivElement>;
@@ -30,41 +31,41 @@ export function directDomUpdateForCursor(
     oldCursor.fillEnd.rowIdx !== newCursor.fillEnd.rowIdx ||
     oldCursor.fillEnd.colIdx !== newCursor.fillEnd.colIdx;
 
-  const anyChange = colChange || rowChange || editChange || selectionChange || fillChange;
+  const extrasChange = oldCursor.extraRanges !== newCursor.extraRanges;
+
+  const anyChange =
+    colChange || rowChange || editChange || selectionChange || fillChange || extrasChange;
   if (!anyChange) return;
 
   if (!newCursor.colSelection) {
     scrollToCellAddr(newCursor.fillEnd, numberOfStickyColums, refs.viewportRef, getCellElement);
   }
 
-  if (colChange || editChange || selectionChange) {
-    range(oldCursor.selectionStart.colIdx, oldCursor.selectionEnd.colIdx).forEach((colIdx) => {
-      const oldColHeaderElement = getColHeaderElement(colIdx);
-      if (oldColHeaderElement) {
-        oldColHeaderElement.classList.remove(getCursorName("col-", true, oldCursor.editing));
-      }
-    });
-    range(newCursor.selectionStart.colIdx, newCursor.selectionEnd.colIdx).forEach((colIdx) => {
-      const newColHeaderElement = getColHeaderElement(colIdx);
-      if (newColHeaderElement) {
-        newColHeaderElement.classList.add(getCursorName("col-", true, newCursor.editing));
-      }
-    });
+  // The highlight covers every selection area (the active one plus the areas
+  // added with Ctrl+click), so both loops run over the union of their rows/columns
+  // instead of the active range alone.
+  const oldBoxes = cursorBoxes(oldCursor);
+  const newBoxes = cursorBoxes(newCursor);
+  const rangeChange = editChange || selectionChange || extrasChange;
+
+  if (colChange || rangeChange) {
+    const oldClass = getCursorName("col-", true, oldCursor.editing);
+    const newClass = getCursorName("col-", true, newCursor.editing);
+    selectedColIndices(oldBoxes).forEach((colIdx) =>
+      getColHeaderElement(colIdx)?.classList.remove(oldClass),
+    );
+    selectedColIndices(newBoxes).forEach((colIdx) =>
+      getColHeaderElement(colIdx)?.classList.add(newClass),
+    );
   }
 
-  if (rowChange || editChange || selectionChange) {
-    range(oldCursor.selectionStart.rowIdx, oldCursor.selectionEnd.rowIdx).forEach((rowIdx) => {
-      const oldRowElement = getRowElement(rowIdx);
-      if (oldRowElement) {
-        oldRowElement.classList.remove(getCursorName("row-", true, oldCursor.editing));
-      }
-    });
-    range(newCursor.selectionStart.rowIdx, newCursor.selectionEnd.rowIdx).forEach((rowIdx) => {
-      const newRowElement = getRowElement(rowIdx);
-      if (newRowElement) {
-        newRowElement.classList.add(getCursorName("row-", true, newCursor.editing));
-      }
-    });
+  if (rowChange || rangeChange) {
+    const oldClass = getCursorName("row-", true, oldCursor.editing);
+    const newClass = getCursorName("row-", true, newCursor.editing);
+    selectedRowIndices(oldBoxes).forEach((rowIdx) =>
+      getRowElement(rowIdx)?.classList.remove(oldClass),
+    );
+    selectedRowIndices(newBoxes).forEach((rowIdx) => getRowElement(rowIdx)?.classList.add(newClass));
   }
 
   if (colChange || rowChange || editChange) {
@@ -128,6 +129,15 @@ export function forceUpdateCursorRect(
     showSelection,
   );
 
+  syncExtraRectangles(
+    newCursor.extraRanges ?? [],
+    showSelection,
+    numberOfStickyColums,
+    stickyOffsetParent as HTMLElement,
+    refs,
+    getCellElement,
+  );
+
   const fillArea = calculateFillArea(newCursor);
   const [fillStart, fillEnd, fillStartSticky, fillEndSticky] = splitCursorRange(
     fillArea?.from,
@@ -143,6 +153,76 @@ export function forceUpdateCursorRect(
     fillEndSticky,
     showFill,
   );
+}
+
+/** Marker class for the imperatively managed rectangles of the extra areas. */
+const EXTRA_RECT_CLASS = "selection-rectangle-extra";
+
+/**
+ * Draws one rectangle per additional (Ctrl+click) selection area.
+ *
+ * The active area has two rectangles rendered by React (a normal one and a twin
+ * inside the sticky columns, see `splitCursorRange`); the extra areas need the
+ * same pair each, but their number changes at runtime. They are therefore pooled
+ * as plain DOM siblings of the React-rendered rectangles: extra areas only appear
+ * on a Ctrl+click, never during a drag, so creating/removing a handful of divs
+ * costs nothing on the hot path — and the rectangles stay out of React state,
+ * which is what keeps dragging a selection cheap in the first place.
+ */
+function syncExtraRectangles(
+  extraRanges: SelectionRect[],
+  show: boolean,
+  numberOfStickyColums: number,
+  stickyOffsetParent: HTMLElement | null | undefined,
+  refs: CursorRefs,
+  getCellElement: (addr: CellAddr | undefined) => HTMLTableCellElement | undefined,
+) {
+  const viewport = refs.viewportRef.current;
+  const nonSticky: [CellAddr, CellAddr][] = [];
+  const sticky: [CellAddr, CellAddr][] = [];
+
+  extraRanges.forEach((rect) => {
+    const [start, end, stickyStart, stickyEnd] = splitCursorRange(
+      rect.start,
+      rect.end,
+      numberOfStickyColums,
+    );
+    if (start && end) nonSticky.push([start, end]);
+    if (stickyStart && stickyEnd) sticky.push([stickyStart, stickyEnd]);
+  });
+
+  const sync = (
+    sibling: HTMLElement | null,
+    pairs: [CellAddr, CellAddr][],
+    offsetParent: HTMLElement | null | undefined,
+  ) => {
+    const parent = sibling?.parentElement;
+    if (!parent) return;
+    const pool = Array.from(
+      parent.querySelectorAll<HTMLDivElement>(`:scope > .${EXTRA_RECT_CLASS}`),
+    );
+    while (pool.length > pairs.length) pool.pop()!.remove();
+    while (pool.length < pairs.length) {
+      const div = document.createElement("div");
+      div.className = `selection-rectangle ${EXTRA_RECT_CLASS}`;
+      parent.appendChild(div);
+      pool.push(div);
+    }
+    pairs.forEach(([start, end], i) => {
+      const rect = pool[i];
+      setRectangleOverCells(
+        viewport,
+        offsetParent,
+        rect,
+        getCellElement(start),
+        getCellElement(end),
+      );
+      rect.style.display = show ? "block" : "none";
+    });
+  };
+
+  sync(refs.selectionRectangleRef.current, nonSticky, null);
+  sync(refs.selectionRectangleStickyRef.current, sticky, stickyOffsetParent);
 }
 
 function splitCursorRange(

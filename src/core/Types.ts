@@ -324,6 +324,24 @@ export type CellAddr = {
   rowIdx: number;
 };
 
+/**
+ * A single rectangular selection area, given by its anchor and its focus cell.
+ * `start` may lie below/right of `end` (selection dragged upwards/leftwards);
+ * use `rangeBox()` from `selectionRanges.ts` to normalize it.
+ */
+export type SelectionRect = {
+  start: CellAddr;
+  end: CellAddr;
+};
+
+/** A normalized (start <= end) selection area in display-index coordinates. */
+export type RangeBox = {
+  startRow: number;
+  endRow: number;
+  startCol: number;
+  endCol: number;
+};
+
 export type Cursor = {
   selectionStart: CellAddr;
   selectionEnd: CellAddr;
@@ -332,6 +350,17 @@ export type Cursor = {
   initialEditValue: string | null;
   filling: boolean;
   colSelection: boolean;
+  /**
+   * Additional, disjoint selection areas added with Ctrl/Cmd+click. The *active*
+   * area (`selectionStart`/`selectionEnd`) is NOT part of this list — it is the
+   * one that Shift+click, Shift+arrow and the fill handle keep extending. The
+   * full selection is `extraRanges` plus the active area (see `cursorRanges()`).
+   *
+   * `setCursorRef()` clears this list automatically whenever a partial cursor
+   * update moves `selectionStart` without passing `extraRanges` itself, so every
+   * plain click / arrow key drops the multi-selection as users expect.
+   */
+  extraRanges: SelectionRect[];
 };
 
 /**
@@ -413,9 +442,19 @@ export type ContextMenuItem =
  * handlers at the moment the user clicks the item.
  */
 export interface TableContextState {
-  /** Display-index range of the current selection (filtered/sorted view). */
-  selectionRange: { startRow: number; endRow: number; startCol: number; endCol: number };
-  /** The rows inside the selection (display order). */
+  /**
+   * Display-index range of the *active* selection area (filtered/sorted view).
+   * With a disjoint multi-selection (Ctrl+click) this is only the last area the
+   * user touched — use `selectionRanges` to see all of them.
+   */
+  selectionRange: RangeBox;
+  /**
+   * All areas of the current selection (display indices), the active one last.
+   * A plain single-area selection yields exactly one entry, equal to
+   * `selectionRange`.
+   */
+  selectionRanges: RangeBox[];
+  /** The rows inside the selection (display order, de-duplicated). */
   selectedRows: Row[];
   /** All rows currently visible (after filtering and sorting). */
   displayRows: Row[];
@@ -432,8 +471,17 @@ export interface TableContextState {
  * passed to the `onSelectionChange` callback.
  */
 export interface SelectionInfo {
-  /** Normalized selection range (start <= end). */
-  range: { startRow: number; endRow: number; startCol: number; endCol: number };
+  /**
+   * Normalized range (start <= end) of the *active* selection area. With a
+   * disjoint multi-selection (Ctrl+click) this is only the area the user touched
+   * last; `ranges` holds all of them.
+   */
+  range: RangeBox;
+  /**
+   * All areas of the selection (normalized, active one last). A plain
+   * single-area selection yields exactly one entry, equal to `range`.
+   */
+  ranges: RangeBox[];
   /** Whether any cells are selected (false when cursor is at -1,-1). */
   hasSelection: boolean;
 }

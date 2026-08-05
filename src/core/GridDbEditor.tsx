@@ -6,12 +6,21 @@ import {
   CustomContextMenuItem,
   FilterState,
   OnColumnResize,
+  RangeBox,
   Row,
   SelectionInfo,
   SortConfig,
   TableContextState,
   TableStatus,
 } from "./Types";
+import {
+  activeBox,
+  boundingBox,
+  cursorBoxes,
+  isCellSelected,
+  selectedRowIndices,
+  selectionTsvLayout,
+} from "./selectionRanges";
 import { forceUpdateCursorRect } from "./directDomUpdateForCursor";
 import classNames from "./classNames";
 import { ContextMenu } from "./ContextMenu";
@@ -579,22 +588,27 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     );
 
     // --- Selection helpers ---
-    const getSelectionRange = () => {
-      const cursor = cursorRef.current;
-      const startRow = Math.min(cursor.selectionStart.rowIdx, cursor.selectionEnd.rowIdx);
-      const endRow = Math.max(cursor.selectionStart.rowIdx, cursor.selectionEnd.rowIdx);
-      const startCol = Math.min(cursor.selectionStart.colIdx, cursor.selectionEnd.colIdx);
-      const endCol = Math.max(cursor.selectionStart.colIdx, cursor.selectionEnd.colIdx);
-      return { startRow, endRow, startCol, endCol };
-    };
+    /** Box of the *active* area only — the anchor for pasting and row insertion. */
+    const getSelectionRange = () => activeBox(cursorRef.current);
+    /** Every selection area (active one last); a single area yields one entry. */
+    const getSelectionBoxes = () => cursorBoxes(cursorRef.current);
 
     // --- Copy & Paste ---
     const copySelection = React.useCallback(async () => {
-      const { startRow, endRow, startCol, endCol } = getSelectionRange();
+      // Disjoint areas are laid out the way a spreadsheet does it: blocks that
+      // share their rows land next to each other, blocks that share their columns
+      // land underneath each other, anything else is copied as its bounding box
+      // with the unselected cells left empty (see selectionTsvLayout).
+      const boxes = getSelectionBoxes();
+      const { rows: rowIdxs, cols: colIdxs, mask } = selectionTsvLayout(boxes);
       const lines: string[] = [];
-      for (let r = startRow; r <= endRow; r++) {
+      for (const r of rowIdxs) {
         const cells: string[] = [];
-        for (let c = startCol; c <= endCol; c++) {
+        for (const c of colIdxs) {
+          if (mask && !isCellSelected(mask, r, c)) {
+            cells.push("");
+            continue;
+          }
           const col = columns[c];
           const val = displayRows[r]?.[col?.name];
           let formattedVal = val == null ? "" : String(val);
@@ -617,60 +631,66 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       try {
         const text = await navigator.clipboard.readText();
         if (!text) return;
-        // Ankerpunkt ist immer die obere linke Ecke der Selektion – nicht
-        // selectionStart, das bei Auswahl von unten nach oben die untere Zelle ist.
-        const { startRow, endRow, startCol, endCol } = getSelectionRange();
         const pasteLines = text
           .split(/\r?\n/)
           .filter((line, idx, arr) => idx < arr.length - 1 || line !== "");
         const pasteCells = pasteLines.map((line) => line.split("\t"));
-        // Tabellenkalkulations-Verhalten: ist die Selektion groesser als der
-        // Clipboard-Block, wird der Block ueber die Selektion gekachelt (eine
-        // kopierte Zelle fuellt also alle selektierten Zellen). Ist der Block
-        // groesser, wird er ab dem Ankerpunkt vollstaendig eingefuegt.
         const pasteRowCount = pasteCells.length;
         const pasteColCount = Math.max(...pasteCells.map((cells) => cells.length));
-        const targetRowCount = Math.max(pasteRowCount, endRow - startRow + 1);
-        const targetColCount = Math.max(pasteColCount, endCol - startCol + 1);
         const snapshot = rows;
         undoRedo.pushState(rows);
         const newRows = [...rows];
         const changedOrigIndices = new Set<number>();
-        for (let r = 0; r < targetRowCount; r++) {
-          const cells = pasteCells[r % pasteRowCount];
-          const displayIdx = startRow + r;
-          const origIdx = originalIndices[displayIdx];
-          if (origIdx == null || origIdx >= newRows.length) continue;
-          const displayRowKey = getRowKey(displayRows[displayIdx], displayIdx);
-          if (cellMeta?.[displayRowKey]?.row?.readOnly) continue;
-          const newRow = { ...newRows[origIdx] };
-          let rowChanged = false;
-          for (let c = 0; c < targetColCount; c++) {
-            const colIdx = startCol + c;
-            if (colIdx >= columns.length) break;
-            const col = columns[colIdx];
-            if (col.readOnly) continue;
-            // Innerhalb des Clipboard-Blocks direkt zugreifen (ragged Zeilen mit
-            // weniger Tabs lassen ihre Rest-Spalten unberuehrt), darueber hinaus
-            // den Block ueber die Selektion kacheln.
-            const cellVal = c < pasteColCount ? cells[c] : cells[c % pasteColCount];
-            if (cellVal === undefined) continue;
 
-            let parsedVal: any = cellVal;
-            if (col.type === "Duration") {
-              parsedVal = normalizeDuration(parsedVal);
-            } else if (col.type === "MultiCombobox" || col.multiselect) {
-              parsedVal = parsedVal === "" ? [] : parsedVal.split(",").map((s: string) => s.trim());
+        // Tabellenkalkulations-Verhalten: ist die Selektion groesser als der
+        // Clipboard-Block, wird der Block ueber die Selektion gekachelt (eine
+        // kopierte Zelle fuellt also alle selektierten Zellen). Ist der Block
+        // groesser, wird er ab dem Ankerpunkt vollstaendig eingefuegt. Bei einer
+        // disjunkten Auswahl (Strg+Klick) passiert das in jedem Bereich einzeln.
+        // Ankerpunkt ist immer die obere linke Ecke des Bereichs – nicht
+        // selectionStart, das bei Auswahl von unten nach oben die untere Zelle ist.
+        const pasteIntoBox = ({ startRow, endRow, startCol, endCol }: RangeBox) => {
+          const targetRowCount = Math.max(pasteRowCount, endRow - startRow + 1);
+          const targetColCount = Math.max(pasteColCount, endCol - startCol + 1);
+          for (let r = 0; r < targetRowCount; r++) {
+            const cells = pasteCells[r % pasteRowCount];
+            const displayIdx = startRow + r;
+            const origIdx = originalIndices[displayIdx];
+            if (origIdx == null || origIdx >= newRows.length) continue;
+            const displayRowKey = getRowKey(displayRows[displayIdx], displayIdx);
+            if (cellMeta?.[displayRowKey]?.row?.readOnly) continue;
+            const newRow = { ...newRows[origIdx] };
+            let rowChanged = false;
+            for (let c = 0; c < targetColCount; c++) {
+              const colIdx = startCol + c;
+              if (colIdx >= columns.length) break;
+              const col = columns[colIdx];
+              if (col.readOnly) continue;
+              // Innerhalb des Clipboard-Blocks direkt zugreifen (ragged Zeilen mit
+              // weniger Tabs lassen ihre Rest-Spalten unberuehrt), darueber hinaus
+              // den Block ueber die Selektion kacheln.
+              const cellVal = c < pasteColCount ? cells[c] : cells[c % pasteColCount];
+              if (cellVal === undefined) continue;
+
+              let parsedVal: any = cellVal;
+              if (col.type === "Duration") {
+                parsedVal = normalizeDuration(parsedVal);
+              } else if (col.type === "MultiCombobox" || col.multiselect) {
+                parsedVal =
+                  parsedVal === "" ? [] : parsedVal.split(",").map((s: string) => s.trim());
+              }
+
+              newRow[col.name] = parsedVal;
+              rowChanged = true;
             }
+            if (rowChanged) {
+              newRows[origIdx] = newRow;
+              changedOrigIndices.add(origIdx);
+            }
+          }
+        };
 
-            newRow[col.name] = parsedVal;
-            rowChanged = true;
-          }
-          if (rowChanged) {
-            newRows[origIdx] = newRow;
-            changedOrigIndices.add(origIdx);
-          }
-        }
+        getSelectionBoxes().forEach(pasteIntoBox);
         changeRows(newRows);
         if (onUpdateRows && changedOrigIndices.size > 0) {
           const updatedRows = [...changedOrigIndices].map((i) => newRows[i]);
@@ -693,19 +713,22 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     ]);
 
     const deleteSelection = React.useCallback(() => {
-      const { startRow, endRow, startCol, endCol } = getSelectionRange();
+      const boxes = getSelectionBoxes();
       const snapshot = rows;
       undoRedo.pushState(rows);
       const newRows = [...rows];
       const changedOrigIndices = new Set<number>();
-      for (let r = startRow; r <= endRow; r++) {
+      // Rows are visited once, even when several disjoint areas touch the same
+      // row — every cell selected in any area is cleared.
+      for (const r of selectedRowIndices(boxes)) {
         const origIdx = originalIndices[r];
         if (origIdx == null) continue;
         const displayRowKey = getRowKey(displayRows[r], r);
         if (cellMeta?.[displayRowKey]?.row?.readOnly) continue;
         const newRow = { ...newRows[origIdx] };
         let rowChanged = false;
-        for (let c = startCol; c <= endCol; c++) {
+        for (let c = 0; c < columns.length; c++) {
+          if (!isCellSelected(boxes, r, c)) continue;
           const col = columns[c];
           if (col && !col.readOnly) {
             newRow[col.name] = "";
@@ -787,7 +810,8 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
 
     // --- Insert row above / below ---
     const handleInsertRowAbove = React.useCallback(() => {
-      const { startRow } = getSelectionRange();
+      // Topmost selected row across all areas.
+      const { startRow } = boundingBox(getSelectionBoxes()) ?? getSelectionRange();
       const origIdx = originalIndices[startRow] ?? rows.length;
       const newRow: Row = {};
       columns.forEach((c) => {
@@ -802,7 +826,8 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     }, [rows, columns, originalIndices, focusNewRowOnCreate, changeRows, undoRedo, onCreateRows, withAsyncRollback]);
 
     const handleInsertRowBelow = React.useCallback(() => {
-      const { endRow } = getSelectionRange();
+      // Bottommost selected row across all areas.
+      const { endRow } = boundingBox(getSelectionBoxes()) ?? getSelectionRange();
       const origIdx = originalIndices[endRow] ?? rows.length - 1;
       const newRow: Row = {};
       columns.forEach((c) => {
@@ -818,9 +843,9 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
 
     // --- Row deletion ---
     const handleDeleteRows = React.useCallback(() => {
-      const { startRow, endRow } = getSelectionRange();
+      // Every row touched by any selection area is deleted.
       const origIndicesToDelete = new Set<number>();
-      for (let r = startRow; r <= endRow; r++) {
+      for (const r of selectedRowIndices(getSelectionBoxes())) {
         const origIdx = originalIndices[r];
         if (origIdx != null) origIndicesToDelete.add(origIdx);
       }
@@ -904,11 +929,17 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
         const snapshot = rows;
         const newRows = [...rows];
 
-        const { startRow, endRow, startCol, endCol } = getSelectionRange();
-        const rowStart = scope === "selection" ? startRow : 0;
-        const rowEnd = scope === "selection" ? endRow : displayRows.length - 1;
-        const colStart = scope === "selection" ? startCol : 0;
-        const colEnd = scope === "selection" ? endCol : columns.length - 1;
+        // In "selection" scope only cells that are actually selected are touched —
+        // with a disjoint multi-selection the gaps between the areas stay as they
+        // are instead of being replaced along with them.
+        const boxes = getSelectionBoxes();
+        const selectionBounds = boundingBox(boxes);
+        const inScope = (r: number, c: number) =>
+          scope !== "selection" || isCellSelected(boxes, r, c);
+        const rowStart = scope === "selection" ? selectionBounds?.startRow ?? 0 : 0;
+        const rowEnd = scope === "selection" ? selectionBounds?.endRow ?? -1 : displayRows.length - 1;
+        const colStart = scope === "selection" ? selectionBounds?.startCol ?? 0 : 0;
+        const colEnd = scope === "selection" ? selectionBounds?.endCol ?? -1 : columns.length - 1;
 
         for (let r = rowStart; r <= rowEnd; r++) {
           const origIdx = originalIndices[r];
@@ -917,6 +948,7 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
           const updatedRow = { ...newRows[origIdx] };
 
           for (let c = colStart; c <= colEnd; c++) {
+            if (!inScope(r, c)) continue;
             const col = columns[c];
             if (!col || col.readOnly) continue;
             const displayRowKey = getRowKey(displayRows[r], r);
@@ -1245,18 +1277,28 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     // Stable getter so custom item handlers always see fresh state at click time.
     const contextStateRef = React.useRef<() => TableContextState>(() => ({
       selectionRange: { startRow: 0, endRow: 0, startCol: 0, endCol: 0 },
+      selectionRanges: [],
       selectedRows: [],
       displayRows: [],
       rows: [],
       columns: [],
     }));
     contextStateRef.current = () => {
-      const range = getSelectionRange();
+      const ranges = getSelectionBoxes();
       const selectedRows: Row[] = [];
-      for (let r = range.startRow; r <= range.endRow; r++) {
+      // Union across all areas, in display order and without duplicates.
+      for (const r of selectedRowIndices(ranges)) {
         if (displayRows[r]) selectedRows.push(displayRows[r]);
       }
-      return { selectionRange: range, selectedRows, displayRows, rows, columns, cellMeta };
+      return {
+        selectionRange: getSelectionRange(),
+        selectionRanges: ranges,
+        selectedRows,
+        displayRows,
+        rows,
+        columns,
+        cellMeta,
+      };
     };
 
     const { contextMenu, openContextMenu, closeContextMenu, contextMenuItems } = useContextMenu({
@@ -1381,16 +1423,9 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
                 const rowIdx = parseInt(td.dataset.rowIdx ?? "-1");
                 const colIdx = parseInt(td.dataset.colIdx ?? "-1");
                 if (rowIdx >= 0 && colIdx >= 0) {
-                  const { selectionStart, selectionEnd } = cursorRef.current;
-                  const startRow = Math.min(selectionStart.rowIdx, selectionEnd.rowIdx);
-                  const endRow = Math.max(selectionStart.rowIdx, selectionEnd.rowIdx);
-                  const startCol = Math.min(selectionStart.colIdx, selectionEnd.colIdx);
-                  const endCol = Math.max(selectionStart.colIdx, selectionEnd.colIdx);
-                  const inSelection =
-                    rowIdx >= startRow &&
-                    rowIdx <= endRow &&
-                    colIdx >= startCol &&
-                    colIdx <= endCol;
+                  // "Outside the selection" means outside *every* area, so a
+                  // right-click inside one of them keeps the multi-selection.
+                  const inSelection = isCellSelected(getSelectionBoxes(), rowIdx, colIdx);
                   if (!inSelection) {
                     setCursorRef({
                       editing: false,

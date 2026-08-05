@@ -349,6 +349,12 @@
     z-index: 2;
   }
 
+  /* Rectangles of the additional (Ctrl+click) selection areas — same look as the
+     active area, but without the fill dragger, which belongs to the active one. */
+  .selection-rectangle-extra {
+    z-index: 2;
+  }
+
   #selection-rectangle-sticky,
   #fill-rectangle-sticky {
     position: absolute;

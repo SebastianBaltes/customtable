@@ -610,18 +610,21 @@ const App = () => {
         setSelectionSummary("");
         return;
       }
-      const { startRow, endRow, startCol, endCol } = sel.range;
+      // sel.ranges instead of sel.range: a disjoint selection (Ctrl+click) is
+      // summed over all of its areas, like a spreadsheet's status bar does.
       let sum = 0;
       let count = 0;
-      for (let r = startRow; r <= endRow; r++) {
-        for (let c = startCol; c <= endCol; c++) {
-          const col = effectiveColumns[c];
-          if (!col) continue;
-          const val = displayRows[r]?.[col.name];
-          const num = Number(val);
-          if (val != null && val !== "" && !isNaN(num)) {
-            sum += num;
-            count++;
+      for (const { startRow, endRow, startCol, endCol } of sel.ranges) {
+        for (let r = startRow; r <= endRow; r++) {
+          for (let c = startCol; c <= endCol; c++) {
+            const col = effectiveColumns[c];
+            if (!col) continue;
+            const val = displayRows[r]?.[col.name];
+            const num = Number(val);
+            if (val != null && val !== "" && !isNaN(num)) {
+              sum += num;
+              count++;
+            }
           }
         }
       }

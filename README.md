@@ -49,8 +49,8 @@ GridDbEditor sits between a rigid single-record form and a free-form spreadsheet
 - **Spreadsheet-style editing** — click, Enter, or F2 to edit; Escape to cancel
 - **Fast row creation** — Alt+Insert (or the footer button) adds rows and drops the cursor straight into the first editable cell, scrolled into view and ready to type (configurable via `focusNewRowOnCreate` / `enableCreateRowsHotkey`)
 - **Keyboard navigation** — arrow keys, Tab, Home/End, Page Up/Down
-- **Multi-cell selection** — Shift+Arrow for ranges, click-drag
-- **Column selection** — click column header area to select entire column (configurable via `colSelection` prop)
+- **Multi-cell selection** — click-drag, Shift+Arrow and Shift+click for a range, Ctrl/Cmd+click for additional, disjoint areas ([details](#multi-cell-selection))
+- **Column selection** — click column header area to select entire column, Shift+click extends and Ctrl/Cmd+click adds columns (configurable via `colSelection` prop)
 - **Fill drag** — Excel-style fill handle to copy values across cells
 - **Copy & Paste** — Ctrl+C / Ctrl+V with tab-separated clipboard (Excel-compatible)
 - **Undo / Redo** — Ctrl+Z / Ctrl+Y with full row-snapshot history
@@ -98,7 +98,7 @@ GridDbEditor sits between a rigid single-record form and a free-form spreadsheet
 - **8 built-in themes** + simple CSS-variable-based custom theming
 - **i18n** — all UI strings overridable via typesafe `translations` prop
 - **Pagination** — standalone `<Pagination>` component, works with any list
-- **Selection range listener** — `onSelectionChange` for aggregation (sum, count, average)
+- **Selection listener** — `onSelectionChange` for aggregation (sum, count, average) over all selected areas
 - **Header tooltips** — `headerTitle` per column for descriptive tooltips on column headers
 - **Clickable header icons** — `headerIcons` per column renders glyphs after the label; icons with `onClick` are buttons whose click is isolated from column sorting (e.g. an FK "open target" arrow)
 - **ARIA-conformant focus** — proper focus/blur behavior for accessibility
@@ -422,8 +422,13 @@ type Editor<T> = (params: EditorParams<T>) => JSX.Element;
 <summary>SelectionInfo</summary>
 
 ```ts
+type RangeBox = { startRow: number; endRow: number; startCol: number; endCol: number };
+
 interface SelectionInfo {
-  range: { startRow: number; endRow: number; startCol: number; endCol: number };
+  /** The *active* area — the one Shift+click / Shift+Arrow extends. */
+  range: RangeBox;
+  /** All areas of the selection, the active one last (see Multi-cell selection). */
+  ranges: RangeBox[];
   hasSelection: boolean;
 }
 ```
@@ -483,7 +488,11 @@ interface TableTranslations {
 
 ```ts
 interface TableContextState {
-  selectionRange: { startRow: number; endRow: number; startCol: number; endCol: number };
+  /** The active area (as before). */
+  selectionRange: RangeBox;
+  /** All areas of the selection, the active one last. */
+  selectionRanges: RangeBox[];
+  /** Union of the rows touched by any area, in display order, de-duplicated. */
   selectedRows: Row[];
   displayRows: Row[];
   rows: Row[];

@@ -2,6 +2,7 @@ import { CellAddr, ColumnConfig, Cursor, Row, SelectionInfo } from "./Types";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CursorRefs, directDomUpdateForCursor } from "./directDomUpdateForCursor";
 import { useCursorKeys } from "./useCursorKeys";
+import { activeBox, cursorBoxes } from "./selectionRanges";
 
 const addrEqual = (a: CellAddr, b: CellAddr) => a.colIdx === b.colIdx && a.rowIdx === b.rowIdx;
 
@@ -42,6 +43,7 @@ export function useCursor(
     selectionStart: { colIdx: -1, rowIdx: -1 },
     selectionEnd: { colIdx: -1, rowIdx: -1 },
     fillEnd: { colIdx: -1, rowIdx: -1 },
+    extraRanges: [],
   });
 
   // React state to trigger re-renders for the editing cell
@@ -73,9 +75,16 @@ export function useCursor(
   const setCursorRef = useCallback(
     (partialCursor: Partial<Cursor>) => {
       const oldCursor = cursorRef.current;
+      // Moving the anchor means "start a fresh selection here" for every caller
+      // that predates the Ctrl+click multi-selection (plain click, arrow keys,
+      // Tab, focus, right-click outside the selection …). Those must not leave
+      // the previously added areas behind, so the extra areas are dropped unless
+      // the caller manages them itself by passing `extraRanges`.
+      const resetExtras = "selectionStart" in partialCursor && !("extraRanges" in partialCursor);
       const newCursor: Cursor = (cursorRef.current = {
         ...oldCursor,
         ...partialCursor,
+        ...(resetExtras ? { extraRanges: [] } : null),
       });
       directDomUpdateForCursor(oldCursor, newCursor, numberOfStickyColums, cursorRefs);
 
@@ -91,19 +100,18 @@ export function useCursor(
         );
       }
 
-      // Fire onSelectionChange if the selection range changed
+      // Fire onSelectionChange if the selection changed
       if (onSelectionChangeRef.current) {
         const endChanged = !addrEqual(oldCursor.selectionEnd, newCursor.selectionEnd);
-        if (startChanged || endChanged) {
+        const extrasChanged = oldCursor.extraRanges !== newCursor.extraRanges;
+        if (startChanged || endChanged || extrasChanged) {
           const hasSelection =
             newCursor.selectionStart.colIdx >= 0 && newCursor.selectionStart.rowIdx >= 0;
-          const range = {
-            startRow: Math.min(newCursor.selectionStart.rowIdx, newCursor.selectionEnd.rowIdx),
-            endRow: Math.max(newCursor.selectionStart.rowIdx, newCursor.selectionEnd.rowIdx),
-            startCol: Math.min(newCursor.selectionStart.colIdx, newCursor.selectionEnd.colIdx),
-            endCol: Math.max(newCursor.selectionStart.colIdx, newCursor.selectionEnd.colIdx),
-          };
-          onSelectionChangeRef.current({ range, hasSelection });
+          onSelectionChangeRef.current({
+            range: activeBox(newCursor),
+            ranges: cursorBoxes(newCursor),
+            hasSelection,
+          });
         }
       }
     },
@@ -129,6 +137,7 @@ export function useCursor(
         selectionStart: { colIdx: 0, rowIdx: 0 },
         selectionEnd: { colIdx: 0, rowIdx: 0 },
         fillEnd: { colIdx: 0, rowIdx: 0 },
+        extraRanges: [],
       });
     }
   }, [rows]);

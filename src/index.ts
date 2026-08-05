@@ -13,6 +13,14 @@ export { DateTimeEditor } from "./editors/DateTimeEditor";
 export { TimeEditor } from "./editors/TimeEditor";
 export { DurationEditor } from "./editors/DurationEditor";
 export { ColorEditor } from "./editors/ColorEditor";
+// Helpers for consumers that evaluate `SelectionInfo.ranges` /
+// `TableContextState.selectionRanges` (disjoint Ctrl+click multi-selection).
+export {
+  boundingBox,
+  isCellSelected,
+  selectedColIndices,
+  selectedRowIndices,
+} from "./core/selectionRanges";
 export { InflightEditTracker } from "./core/InflightEditTracker";
 export { useAsyncTableState } from "./core/useAsyncTableState";
 export type {

@@ -4,6 +4,7 @@ import classNames from "./classNames";
 import { getCursorName } from "./GridDbEditor";
 import { renderCell } from "./renderCell";
 import { throttledMouseMove } from "./useCursor";
+import { ctrlClickCursor, shiftClickCursor } from "./selectionRanges";
 import { columnAlign, isDropdownType } from "./utils";
 
 export const TableCell = React.memo(
@@ -102,6 +103,22 @@ export const TableCell = React.memo(
             if (cellHasCursor && cursorRef.current.editing) {
               const target = event.target as HTMLElement;
               if (target.tagName === "INPUT" || target.tagName === "TEXTAREA") return;
+            }
+
+            // Shift+click extends the active area, Ctrl/Cmd+click starts an
+            // additional, disjoint one (both then follow the mouse via
+            // onMouseMove, which only moves the focus cell). Neither may enter
+            // edit mode — preventDefault keeps the browser from starting a text
+            // selection across the cells that are being selected.
+            if (event.shiftKey || event.ctrlKey || event.metaKey) {
+              event.preventDefault();
+              const addr = { rowIdx, colIdx };
+              setCursorRef(
+                event.shiftKey
+                  ? shiftClickCursor(cursorRef.current, addr)
+                  : ctrlClickCursor(cursorRef.current, addr),
+              );
+              return;
             }
 
             // Check if click lands within the 2rem dropdown zone (right edge of cell)
