@@ -428,12 +428,23 @@ export interface TableStatus {
   severity: "ok" | "info" | "warning" | "error";
 }
 
+/**
+ * One programmatic cell write for `applyCellValuesRef`. The cell is addressed by
+ * the row's key (as produced by the `rowKey` prop) and the logical column name,
+ * so callers do not have to know the current display order.
+ */
+export interface CellValueChange {
+  rowKey: string;
+  colName: string;
+  value: any;
+}
+
 export type ContextMenuItem =
   | Partial<{
       onClick: () => void;
       label: string;
       shortcut: string;
-      disabled: boolean;
+      disabled:boolean;
     }>
   | "---";
 

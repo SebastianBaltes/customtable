@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from "react";
 import { SearchReplaceDialog } from "./SearchReplaceDialog";
 import {
   CellMetaMap,
+  CellValueChange,
   ColumnConfig,
   CustomContextMenuItem,
   FilterState,
@@ -60,6 +61,29 @@ interface IProps {
   rowKey: (row: Row, rowIndex: number) => string;
   /** Ref populated with a function to programmatically trigger the shake animation. */
   shakeRef: React.MutableRefObject<(() => void) | null>;
+  /**
+   * Ref populated with a function that writes cell values programmatically and
+   * behaves exactly like a paste: it pushes an undo state (so Ctrl+Z restores the
+   * previous values), reports the full new rows via `onRowsChange` and the changed
+   * rows via `onUpdateRows` — including the same rollback when that promise
+   * rejects.
+   *
+   * Without this, a caller can only mutate its own `rows` source and re-render.
+   * That bypasses the grid's history, so the change is not undoable and does not
+   * take part in the rollback contract.
+   *
+   * Cells are addressed by `rowKey` (as produced by the `rowKey` prop) plus the
+   * logical column name — independent of the current sort/filter and of display
+   * order. A purely index-based `rowKey` function is therefore unsuitable.
+   *
+   * Skipped without failing: unknown row keys, unknown columns, `readOnly`
+   * columns and rows marked `readOnly` via `cellMeta`. Returns the number of
+   * cells actually written; 0 means nothing was applied and no undo state was
+   * pushed.
+   */
+  applyCellValuesRef: React.MutableRefObject<
+    ((changes: CellValueChange[]) => number) | null
+  >;
   numberOfStickyColums: number;
 
   // --- Controlled filter / sort ---
@@ -179,6 +203,7 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     pendingSortColumn,
     pendingFilterColumns,
     shakeRef,
+    applyCellValuesRef,
     onSelectionChange,
     enableSearchReplace,
     colSelection: colSelectionProp,
@@ -711,6 +736,59 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       onUpdateRows,
       withAsyncRollback,
     ]);
+
+    /**
+     * Programmatic sibling of `pasteAtCursor`: writes the given cells and takes
+     * the exact same route through history and the update contract, so Ctrl+Z
+     * undoes it like any other edit. Deliberately shares pasteAtCursor's shape —
+     * pushState, changeRows, withAsyncRollback(onUpdateRows) — instead of a
+     * second, subtly different write path.
+     *
+     * Addressing is by rowKey + column name rather than by index: a caller that
+     * holds row keys does not need to know the current sort/filter, and the
+     * mapping cannot silently shift when the view changes.
+     */
+    const applyCellValues = React.useCallback(
+      (changes: CellValueChange[]) => {
+        if (!changes || changes.length === 0) return 0;
+        const keyToOrigIdx = new Map<string, number>();
+        rows.forEach((row, idx) => keyToOrigIdx.set(getRowKey(row, idx), idx));
+        const colByName = new Map(columns.map((col) => [col.name, col]));
+        const snapshot = rows;
+        const newRows = [...rows];
+        const changedOrigIndices = new Set<number>();
+        let applied = 0;
+        for (const { rowKey: key, colName, value } of changes) {
+          const origIdx = keyToOrigIdx.get(key);
+          if (origIdx == null) continue;
+          const col = colByName.get(colName);
+          if (!col || col.readOnly) continue;
+          if (cellMeta?.[key]?.row?.readOnly) continue;
+          newRows[origIdx] = { ...newRows[origIdx], [colName]: value };
+          changedOrigIndices.add(origIdx);
+          applied++;
+        }
+        // Nichts angewendet => auch KEIN Undo-Eintrag. Sonst sammelte ein
+        // fehlgeschlagener Aufruf leere Schritte, die Ctrl+Z wirkungslos machen.
+        if (applied === 0) return 0;
+        undoRedo.pushState(snapshot);
+        changeRows(newRows);
+        if (onUpdateRows && changedOrigIndices.size > 0) {
+          const updatedRows = [...changedOrigIndices].map((i) => newRows[i]);
+          withAsyncRollback(snapshot, () => onUpdateRows(updatedRows));
+        }
+        return applied;
+      },
+      [rows, columns, getRowKey, cellMeta, changeRows, undoRedo, onUpdateRows, withAsyncRollback],
+    );
+
+    // Expose applyCellValues to parent via ref (same pattern as shakeRef).
+    React.useEffect(() => {
+      if (applyCellValuesRef) applyCellValuesRef.current = applyCellValues;
+      return () => {
+        if (applyCellValuesRef) applyCellValuesRef.current = null;
+      };
+    }, [applyCellValuesRef, applyCellValues]);
 
     const deleteSelection = React.useCallback(() => {
       const boxes = getSelectionBoxes();
