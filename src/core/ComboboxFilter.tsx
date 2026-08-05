@@ -96,13 +96,18 @@ export const ComboboxFilter: React.FC<ComboboxFilterProps> = ({ value, onChange,
     setSearchText("");
   };
 
-  // Close on click outside
+  // Close on click outside.
+  // Wichtig: searchText wird hier NICHT zurueckgesetzt. Der Klick nach aussen
+  // (z.B. in eine Datenzelle) laeuft als mousedown vor dem focusout des Inputs;
+  // ein Reset wuerde commitText() beim anschliessenden Blur mit leerem
+  // searchText sehen und damit einen aktiven Substring-Filter loeschen bzw. neu
+  // getippten Text verwerfen. Der Puffer wird beim naechsten onFocus ohnehin
+  // aus dem aktuellen Filterwert neu geseedet.
   useEffect(() => {
     if (!open) return;
     const handler = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
         setOpen(false);
-        setSearchText("");
       }
     };
     document.addEventListener("mousedown", handler);
