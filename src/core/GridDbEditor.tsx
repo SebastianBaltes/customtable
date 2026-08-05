@@ -617,18 +617,27 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       try {
         const text = await navigator.clipboard.readText();
         if (!text) return;
-        const cursor = cursorRef.current;
-        const startRow = cursor.selectionStart.rowIdx;
-        const startCol = cursor.selectionStart.colIdx;
+        // Ankerpunkt ist immer die obere linke Ecke der Selektion – nicht
+        // selectionStart, das bei Auswahl von unten nach oben die untere Zelle ist.
+        const { startRow, endRow, startCol, endCol } = getSelectionRange();
         const pasteLines = text
           .split(/\r?\n/)
           .filter((line, idx, arr) => idx < arr.length - 1 || line !== "");
+        const pasteCells = pasteLines.map((line) => line.split("\t"));
+        // Tabellenkalkulations-Verhalten: ist die Selektion groesser als der
+        // Clipboard-Block, wird der Block ueber die Selektion gekachelt (eine
+        // kopierte Zelle fuellt also alle selektierten Zellen). Ist der Block
+        // groesser, wird er ab dem Ankerpunkt vollstaendig eingefuegt.
+        const pasteRowCount = pasteCells.length;
+        const pasteColCount = Math.max(...pasteCells.map((cells) => cells.length));
+        const targetRowCount = Math.max(pasteRowCount, endRow - startRow + 1);
+        const targetColCount = Math.max(pasteColCount, endCol - startCol + 1);
         const snapshot = rows;
         undoRedo.pushState(rows);
         const newRows = [...rows];
         const changedOrigIndices = new Set<number>();
-        for (let r = 0; r < pasteLines.length; r++) {
-          const cells = pasteLines[r].split("\t");
+        for (let r = 0; r < targetRowCount; r++) {
+          const cells = pasteCells[r % pasteRowCount];
           const displayIdx = startRow + r;
           const origIdx = originalIndices[displayIdx];
           if (origIdx == null || origIdx >= newRows.length) continue;
@@ -636,13 +645,18 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
           if (cellMeta?.[displayRowKey]?.row?.readOnly) continue;
           const newRow = { ...newRows[origIdx] };
           let rowChanged = false;
-          for (let c = 0; c < cells.length; c++) {
+          for (let c = 0; c < targetColCount; c++) {
             const colIdx = startCol + c;
             if (colIdx >= columns.length) break;
             const col = columns[colIdx];
             if (col.readOnly) continue;
+            // Innerhalb des Clipboard-Blocks direkt zugreifen (ragged Zeilen mit
+            // weniger Tabs lassen ihre Rest-Spalten unberuehrt), darueber hinaus
+            // den Block ueber die Selektion kacheln.
+            const cellVal = c < pasteColCount ? cells[c] : cells[c % pasteColCount];
+            if (cellVal === undefined) continue;
 
-            let parsedVal: any = cells[c];
+            let parsedVal: any = cellVal;
             if (col.type === "Duration") {
               parsedVal = normalizeDuration(parsedVal);
             } else if (col.type === "MultiCombobox" || col.multiselect) {
