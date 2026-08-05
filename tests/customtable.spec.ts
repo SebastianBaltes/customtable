@@ -1969,13 +1969,27 @@ test.describe("Selection rectangle", () => {
   // Helper: read the numeric px value from a style string like "42.5px"
   const parsePx = (s: string) => parseFloat(s);
 
+  /**
+   * Resolve once the cursor's direct-DOM pass has run for `cell`.
+   *
+   * The class and the rectangle's inline position are written by the same
+   * synchronous pass (directDomUpdateForCursor), so the class appearing means
+   * the rectangle is placed too. Waiting for it instead of a fixed delay is what
+   * keeps these tests honest: a hard-coded `waitForTimeout` measured an
+   * unpositioned rectangle whenever the dev server was still cold, which showed
+   * up as `NaN` assertions. It also stays a real check — if the rectangle is
+   * placed *wrongly*, the assertions below still fail instead of timing out.
+   */
+  const waitForCursorOn = (cell: Locator, cls = "cell-selected") =>
+    expect(cell).toHaveClass(new RegExp(`(^|\\s)${cls}(\\s|$)`));
+
   test("should position selection rectangle over a non-sticky cell after click", async ({
     page,
   }) => {
     // Use a non-sticky cell (col index 2, columns 0+1 are sticky)
     const cell = page.locator("table tbody tr").nth(0).locator("td").nth(2);
     await cell.click();
-    await page.waitForTimeout(300);
+    await waitForCursorOn(cell);
 
     const rect = await page.evaluate(() => {
       const viewport = document.querySelector(".grid-db-editor-viewport") as HTMLElement;
@@ -2020,7 +2034,7 @@ test.describe("Selection rectangle", () => {
     // If the bug is present, actualTop would equal cellRect.top - viewport.left (wrong).
     const cell = page.locator("table tbody tr").nth(0).locator("td").nth(2);
     await cell.click();
-    await page.waitForTimeout(300);
+    await waitForCursorOn(cell);
 
     const result = await page.evaluate(() => {
       const viewport = document.querySelector(".grid-db-editor-viewport") as HTMLElement;
@@ -2060,7 +2074,9 @@ test.describe("Selection rectangle", () => {
     for (let rowIdx = 0; rowIdx < 5; rowIdx++) {
       const cell = page.locator("table tbody tr").nth(rowIdx).locator("td").nth(2);
       await cell.click();
-      await page.waitForTimeout(200);
+      // Per-row wait: the rectangle still carries the previous row's position
+      // until the cursor pass for THIS cell has run.
+      await waitForCursorOn(cell);
 
       const result = await page.evaluate((row) => {
         const viewport = document.querySelector(".grid-db-editor-viewport") as HTMLElement;
@@ -2092,7 +2108,7 @@ test.describe("Selection rectangle", () => {
   test("should show selection rectangle and hide it when editing", async ({ page }) => {
     const cell = page.locator("table tbody tr").nth(0).locator("td").nth(2);
     await cell.click();
-    await page.waitForTimeout(200);
+    await waitForCursorOn(cell);
 
     const displayBefore = await page.evaluate(() => {
       const selRect = document.getElementById("selection-rectangle");
@@ -2100,9 +2116,10 @@ test.describe("Selection rectangle", () => {
     });
     expect(displayBefore).toBe("block");
 
-    // Enter edit mode
+    // Enter edit mode — the cell swaps cell-selected for cell-edited in the same
+    // pass that hides the rectangle.
     await page.keyboard.press("Enter");
-    await page.waitForTimeout(100);
+    await waitForCursorOn(cell, "cell-edited");
 
     const displayDuring = await page.evaluate(() => {
       const selRect = document.getElementById("selection-rectangle");
@@ -2112,7 +2129,7 @@ test.describe("Selection rectangle", () => {
 
     // Leave edit mode
     await page.keyboard.press("Escape");
-    await page.waitForTimeout(100);
+    await waitForCursorOn(cell);
   });
 
   test("cell selected via keyboard: selection rectangle top/left matches cell ClientRect", async ({
@@ -2124,7 +2141,7 @@ test.describe("Selection rectangle", () => {
     // Move to col 2, row 0
     await page.keyboard.press("ArrowRight");
     await page.keyboard.press("ArrowRight");
-    await page.waitForTimeout(200);
+    await waitForCursorOn(page.locator("table tbody tr").nth(0).locator("td").nth(2));
 
     const result = await page.evaluate(() => {
       const viewport = document.querySelector(".grid-db-editor-viewport") as HTMLElement;
