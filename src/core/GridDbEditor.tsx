@@ -394,6 +394,7 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     const {
       cursorRef,
       editingCell,
+      editingColWidth,
       viewportRef,
       tableRef,
       selectionRectangleRef,
@@ -1465,6 +1466,10 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
           onBlurCapture={handleBlurCapture}
         >
           {frozenCss && <style dangerouslySetInnerHTML={{ __html: frozenCss }} />}
+          {editingColWidth && (
+            <style dangerouslySetInnerHTML={{ __html:
+              `#${tableId} th:nth-child(${editingColWidth.colIdx+1}),#${tableId} td:nth-child(${editingColWidth.colIdx+1}){min-width:${editingColWidth.width}px}` }} />
+          )}
           {stickyColumnsLefts.css != null && (
             <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
           )}

@@ -49,6 +49,17 @@ export function useCursor(
   // React state to trigger re-renders for the editing cell
   const [editingCell, setEditingCell] = useState<CellAddr | null>(null);
 
+  // Width the edited column had at the moment editing started. The table uses
+  // the browser's automatic layout, so a column is exactly as wide as its widest
+  // cell. Entering edit mode swaps that cell's text for an `<input>` whose
+  // intrinsic width is the browser default (~20 characters), not the text width
+  // — so editing the widest cell of a column made the column snap narrower.
+  // Freezing the width as a min-width for the duration of the edit keeps the
+  // layout still; typing longer content may still widen the column.
+  const [editingColWidth, setEditingColWidth] = useState<{ colIdx: number; width: number } | null>(
+    null,
+  );
+
   const viewportRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<HTMLTableElement>(null);
   const selectionRectangleRef = useRef<HTMLDivElement>(null);
@@ -71,6 +82,14 @@ export function useCursor(
     }),
     [],
   );
+
+  const measureColumnWidth = useCallback((colIdx: number) => {
+    const table = tableRef.current;
+    if (!table || colIdx < 0) return null;
+    const th = table.querySelectorAll("thead th")[colIdx] as HTMLElement | undefined;
+    const width = th?.offsetWidth ?? 0;
+    return width > 0 ? { colIdx, width } : null;
+  }, []);
 
   const setCursorRef = useCallback(
     (partialCursor: Partial<Cursor>) => {
@@ -98,6 +117,9 @@ export function useCursor(
             ? { rowIdx: newCursor.selectionStart.rowIdx, colIdx: newCursor.selectionStart.colIdx }
             : null,
         );
+        // Measured here, still in the event handler, i.e. before React swaps the
+        // cell's text for the editor input and the column can collapse.
+        setEditingColWidth(isEditing ? measureColumnWidth(newCursor.selectionStart.colIdx) : null);
       }
 
       // Fire onSelectionChange if the selection changed
@@ -115,7 +137,7 @@ export function useCursor(
         }
       }
     },
-    [numberOfStickyColums, cursorRefs],
+    [numberOfStickyColums, cursorRefs, measureColumnWidth],
   );
 
   useEffect(() => {
@@ -180,6 +202,7 @@ export function useCursor(
   return {
     cursorRef,
     editingCell,
+    editingColWidth,
     viewportRef,
     tableRef,
     selectionRectangleRef,
