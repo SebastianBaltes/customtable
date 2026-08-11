@@ -78,7 +78,9 @@ test("editing a cell freezes the column width it had before the editor opened", 
 
   // The <input> replacing the text must not be allowed to collapse the column.
   expect(cell(1, 1).querySelector("input.cell-editor-input")).not.toBeNull();
-  expect(injectedStyles()).toContain("td:nth-child(2){min-width:260px}");
+  // box-sizing, because the measured value is a border box — without it the
+  // min-width would constrain the content box and widen the column by its padding.
+  expect(injectedStyles()).toContain("td:nth-child(2){box-sizing:border-box;min-width:260px}");
 });
 
 test("leaving edit mode releases the frozen width again", () => {

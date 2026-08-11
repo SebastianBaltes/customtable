@@ -1468,7 +1468,11 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
           {frozenCss && <style dangerouslySetInnerHTML={{ __html: frozenCss }} />}
           {editingColWidth && (
             <style dangerouslySetInnerHTML={{ __html:
-              `#${tableId} th:nth-child(${editingColWidth.colIdx+1}),#${tableId} td:nth-child(${editingColWidth.colIdx+1}){min-width:${editingColWidth.width}px}` }} />
+              // box-sizing is what makes the measured value mean the same thing
+              // on both ends: offsetWidth is a border box, min-width would
+              // otherwise constrain the CONTENT box and the column would grow by
+              // its own padding the moment editing starts.
+              `#${tableId} th:nth-child(${editingColWidth.colIdx+1}),#${tableId} td:nth-child(${editingColWidth.colIdx+1}){box-sizing:border-box;min-width:${editingColWidth.width}px}` }} />
           )}
           {stickyColumnsLefts.css != null && (
             <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
