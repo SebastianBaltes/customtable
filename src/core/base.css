@@ -1291,7 +1291,7 @@
   }
 
   .selection-rectangle {
-    outline: solid 3px var(--ct-selected-outline);
+    outline: solid 2px var(--ct-selected-outline);
     outline-offset: 1px;
   }
   .fill-rectangle {
