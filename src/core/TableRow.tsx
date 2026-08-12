@@ -1,4 +1,4 @@
-import { CellAddr, CellMeta, ColumnConfig, Cursor, Row, RowMeta } from "./Types";
+import { CellMeta, ColumnConfig, Cursor, Row, RowMeta } from "./Types";
 import React from "react";
 import classNames from "./classNames";
 import { TableCell } from "./TableCell";
@@ -14,7 +14,7 @@ export const TableRow = React.memo(
     setCursorRef,
     numberOfStickyColums,
     onCellChange,
-    editingCell,
+    editingColIdx,
     rowMeta,
     cellMetaForRow,
     textEllipsisLength,
@@ -27,7 +27,11 @@ export const TableRow = React.memo(
     rowIdx: number;
     numberOfStickyColums: number;
     onCellChange: (rowIdx: number, colName: string, value: any) => void;
-    editingCell: CellAddr | null;
+    /** Column being edited IN THIS ROW, or null. Deliberately a scalar and not
+     *  the grid-wide editing address: a fresh {rowIdx, colIdx} object fails the
+     *  memo comparison for EVERY row, so entering edit mode re-rendered all of
+     *  them — ~500ms on a grid with 930 rows x 28 columns. */
+    editingColIdx: number | null;
     rowMeta?: RowMeta;
     cellMetaForRow?: Record<string, CellMeta>;
     textEllipsisLength?: number;
@@ -45,8 +49,7 @@ export const TableRow = React.memo(
         aria-label={ariaRowLabel}
       >
         {columns.map((column, colIdx) => {
-          const isEditing =
-            editingCell != null && editingCell.rowIdx === rowIdx && editingCell.colIdx === colIdx;
+          const isEditing = editingColIdx === colIdx;
           const cellMetaEntry = cellMetaForRow?.[column.name];
           return (
             <TableCell

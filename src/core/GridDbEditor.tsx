@@ -394,7 +394,6 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     const {
       cursorRef,
       editingCell,
-      editingColWidth,
       viewportRef,
       tableRef,
       selectionRectangleRef,
@@ -596,22 +595,45 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       [onCreateRows, onDeleteRows, onUpdateRows],
     );
 
-    const onCellChange = React.useCallback(
-      (displayRowIdx: number, colName: string, value: any) => {
-        const origIdx = originalIndices[displayRowIdx];
-        if (origIdx == null) return;
-        const oldValue = rows[origIdx][colName];
-        if (oldValue === value) return; // Do nothing if unchanged
+    // onCellChange reaches every cell, so its identity decides whether React.memo
+    // can hold: with `rows`/`undoRedo` in the dependency list it was a new
+    // function on every render, which failed the memo comparison for EVERY row
+    // and re-rendered all of them plus all their cells. Entering edit mode on a
+    // grid of 930 x 28 took ~500ms for that reason alone. The handler therefore
+    // reads its inputs from a ref (always the current ones, it only ever runs
+    // from an event) and stays identical for the lifetime of the grid.
+    const cellChangeDeps = React.useRef({
+      rows,
+      originalIndices,
+      changeRows,
+      undoRedo,
+      onUpdateRows,
+      withAsyncRollback,
+    });
+    cellChangeDeps.current = {
+      rows,
+      originalIndices,
+      changeRows,
+      undoRedo,
+      onUpdateRows,
+      withAsyncRollback,
+    };
 
-        const snapshot = rows;
-        undoRedo.pushState(rows);
-        const updatedRow = { ...rows[origIdx], [colName]: value };
-        const newRows = rows.map((r, i) => (i === origIdx ? updatedRow : r));
-        changeRows(newRows);
-        withAsyncRollback(snapshot, onUpdateRows ? () => onUpdateRows([updatedRow]) : undefined);
-      },
-      [rows, originalIndices, changeRows, undoRedo, onUpdateRows, withAsyncRollback],
-    );
+    const onCellChange = React.useCallback((displayRowIdx: number, colName: string, value: any) => {
+      const { rows, originalIndices, changeRows, undoRedo, onUpdateRows, withAsyncRollback } =
+        cellChangeDeps.current;
+      const origIdx = originalIndices[displayRowIdx];
+      if (origIdx == null) return;
+      const oldValue = rows[origIdx][colName];
+      if (oldValue === value) return; // Do nothing if unchanged
+
+      const snapshot = rows;
+      undoRedo.pushState(rows);
+      const updatedRow = { ...rows[origIdx], [colName]: value };
+      const newRows = rows.map((r, i) => (i === origIdx ? updatedRow : r));
+      changeRows(newRows);
+      withAsyncRollback(snapshot, onUpdateRows ? () => onUpdateRows([updatedRow]) : undefined);
+    }, []);
 
     // --- Selection helpers ---
     /** Box of the *active* area only — the anchor for pasting and row insertion. */
@@ -1466,14 +1488,6 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
           onBlurCapture={handleBlurCapture}
         >
           {frozenCss && <style dangerouslySetInnerHTML={{ __html: frozenCss }} />}
-          {editingColWidth && (
-            <style dangerouslySetInnerHTML={{ __html:
-              // box-sizing is what makes the measured value mean the same thing
-              // on both ends: offsetWidth is a border box, min-width would
-              // otherwise constrain the CONTENT box and the column would grow by
-              // its own padding the moment editing starts.
-              `#${tableId} th:nth-child(${editingColWidth.colIdx+1}),#${tableId} td:nth-child(${editingColWidth.colIdx+1}){box-sizing:border-box;min-width:${editingColWidth.width}px}` }} />
-          )}
           {stickyColumnsLefts.css != null && (
             <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
           )}

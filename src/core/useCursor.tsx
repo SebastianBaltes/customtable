@@ -10,7 +10,8 @@ const addrEqual = (a: CellAddr, b: CellAddr) => a.colIdx === b.colIdx && a.rowId
  * RAF-throttled mousemove dispatcher. Shared across all cells so that
  * rapid mousemove events during drag are batched to max once per frame.
  */
-let _pendingMove: { setCursorRef: (p: Partial<Cursor>) => void; update: Partial<Cursor> } | null = null;
+let _pendingMove: { setCursorRef: (p: Partial<Cursor>) => void; update: Partial<Cursor> } | null =
+  null;
 let _rafId = 0;
 
 export function throttledMouseMove(
@@ -49,16 +50,10 @@ export function useCursor(
   // React state to trigger re-renders for the editing cell
   const [editingCell, setEditingCell] = useState<CellAddr | null>(null);
 
-  // Width the edited column had at the moment editing started. The table uses
-  // the browser's automatic layout, so a column is exactly as wide as its widest
-  // cell. Entering edit mode swaps that cell's text for an `<input>` whose
-  // intrinsic width is the browser default (~20 characters), not the text width
-  // — so editing the widest cell of a column made the column snap narrower.
-  // Freezing the width as a min-width for the duration of the edit keeps the
-  // layout still; typing longer content may still widen the column.
-  const [editingColWidth, setEditingColWidth] = useState<{ colIdx: number; width: number } | null>(
-    null,
-  );
+  // Inline styles the header cells had before the column widths were frozen, so
+  // they can be handed back untouched — an app may be driving them itself via
+  // the columnWidths prop.
+  const thStylesBeforeFreeze = useRef<(string | null)[] | null>(null);
 
   const viewportRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<HTMLTableElement>(null);
@@ -83,12 +78,59 @@ export function useCursor(
     [],
   );
 
-  const measureColumnWidth = useCallback((colIdx: number) => {
+  // Hold the column layout still for the duration of an edit. Entering edit mode
+  // disturbs it twice over:
+  //
+  //   1. The edited cell's text is swapped for an `<input>` whose intrinsic
+  //      width is the browser default (~20 characters), not the text width — so
+  //      editing the widest cell of a column collapsed that column.
+  //   2. Whenever the table is wider than its content (a grid stretched to the
+  //      viewport), the browser distributes the surplus across the columns.
+  //      Constraining a single column changes its share, so it ends up WIDER
+  //      than the value it was pinned to and every other column loses a bit.
+  //
+  // Pinning one column can therefore not work; every width has to be held. The
+  // widths go on the header cells as inline styles, which is how the column
+  // resizing feature pins a column too. Doing it with an injected stylesheet of
+  // `th:nth-child(n), td:nth-child(n)` rules instead cost ~230ms on a grid of
+  // 26.000 cells, because every cell in the table has to be matched against
+  // those selectors; the header-only write is ~30 elements.
+  //
+  // Fractional widths on purpose: offsetWidth rounds to whole pixels, and 28
+  // columns rounded down move the table by several pixels — the very jump this
+  // is meant to prevent.
+  const freezeColumnWidths = useCallback((freeze: boolean) => {
     const table = tableRef.current;
-    if (!table || colIdx < 0) return null;
-    const th = table.querySelectorAll("thead th")[colIdx] as HTMLElement | undefined;
-    const width = th?.offsetWidth ?? 0;
-    return width > 0 ? { colIdx, width } : null;
+    if (!table) return;
+    const ths = Array.from(table.querySelectorAll<HTMLElement>("thead th"));
+
+    if (!freeze) {
+      const saved = thStylesBeforeFreeze.current;
+      if (!saved) return;
+      ths.forEach((th, i) => {
+        const before = saved[i];
+        if (before == null) th.removeAttribute("style");
+        else th.setAttribute("style", before);
+      });
+      thStylesBeforeFreeze.current = null;
+      return;
+    }
+
+    if (thStylesBeforeFreeze.current) return; // already frozen
+    // Measure everything before writing anything: interleaving reads and writes
+    // would force a reflow per column.
+    const widths = ths.map((th) => th.getBoundingClientRect().width);
+    if (!widths.length || !widths.every((w) => w > 0)) return;
+    thStylesBeforeFreeze.current = ths.map((th) => th.getAttribute("style"));
+    ths.forEach((th, i) => {
+      // box-sizing makes the measured value mean the same thing on both ends:
+      // the measurement is a border box, while width would otherwise size the
+      // content box and every column would grow by its own padding.
+      th.style.boxSizing = "border-box";
+      th.style.width = `${widths[i]}px`;
+      th.style.minWidth = `${widths[i]}px`;
+      th.style.maxWidth = `${widths[i]}px`;
+    });
   }, []);
 
   const setCursorRef = useCallback(
@@ -117,9 +159,9 @@ export function useCursor(
             ? { rowIdx: newCursor.selectionStart.rowIdx, colIdx: newCursor.selectionStart.colIdx }
             : null,
         );
-        // Measured here, still in the event handler, i.e. before React swaps the
-        // cell's text for the editor input and the column can collapse.
-        setEditingColWidth(isEditing ? measureColumnWidth(newCursor.selectionStart.colIdx) : null);
+        // Frozen here, still in the event handler, i.e. before React swaps the
+        // cell's text for the editor input and the layout can move.
+        freezeColumnWidths(isEditing);
       }
 
       // Fire onSelectionChange if the selection changed
@@ -137,7 +179,7 @@ export function useCursor(
         }
       }
     },
-    [numberOfStickyColums, cursorRefs, measureColumnWidth],
+    [numberOfStickyColums, cursorRefs, freezeColumnWidths],
   );
 
   useEffect(() => {
@@ -202,7 +244,6 @@ export function useCursor(
   return {
     cursorRef,
     editingCell,
-    editingColWidth,
     viewportRef,
     tableRef,
     selectionRectangleRef,

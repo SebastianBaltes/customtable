@@ -132,7 +132,7 @@ export const RowTable = React.memo(
                   setCursorRef,
                   numberOfStickyColums,
                   onCellChange,
-                  editingCell,
+                  editingColIdx: editingCell?.rowIdx === rowIdx ? editingCell.colIdx : null,
                   rowMeta,
                   cellMetaForRow,
                   textEllipsisLength,

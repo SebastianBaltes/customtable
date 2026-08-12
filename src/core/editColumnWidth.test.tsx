@@ -43,9 +43,9 @@ function Harness() {
 // jsdom does no layout, so the header widths the grid measures are stubbed.
 const stubHeaderWidths = (widths: number[]) => {
   const ths = container.querySelectorAll("thead th");
-  ths.forEach((th, i) =>
-    Object.defineProperty(th, "offsetWidth", { value: widths[i] ?? 0, configurable: true }),
-  );
+  ths.forEach((th, i) => {
+    (th as HTMLElement).getBoundingClientRect = () => ({ width: widths[i] ?? 0 }) as DOMRect;
+  });
 };
 
 const cell = (rowIdx: number, colIdx: number) =>
@@ -61,10 +61,8 @@ const startEditing = (rowIdx: number, colIdx: number) => {
   td.dispatchEvent(new MouseEvent("dblclick", { bubbles: true, cancelable: true, buttons: 1 }));
 };
 
-const injectedStyles = () =>
-  Array.from(container.querySelectorAll("style"))
-    .map((s) => s.textContent ?? "")
-    .join("\n");
+const headerWidths = () =>
+  Array.from(container.querySelectorAll<HTMLElement>("thead th")).map((th) => th.style.width);
 
 test("editing a cell freezes the column width it had before the editor opened", () => {
   act(() => {
@@ -76,11 +74,17 @@ test("editing a cell freezes the column width it had before the editor opened", 
     startEditing(1, 1);
   });
 
-  // The <input> replacing the text must not be allowed to collapse the column.
+  // The <input> replacing the text must not be allowed to collapse the column …
   expect(cell(1, 1).querySelector("input.cell-editor-input")).not.toBeNull();
-  // box-sizing, because the measured value is a border box — without it the
-  // min-width would constrain the content box and widen the column by its padding.
-  expect(injectedStyles()).toContain("td:nth-child(2){box-sizing:border-box;min-width:260px}");
+  // … and the untouched columns are pinned too, because in a table stretched
+  // beyond its content the browser would otherwise re-divide the surplus.
+  expect(headerWidths()).toEqual(["40px", "260px"]);
+  const th = container.querySelectorAll<HTMLElement>("thead th")[1];
+  // border-box, because the measured value is one: sizing the content box would
+  // widen every column by its own padding.
+  expect(th.style.boxSizing).toBe("border-box");
+  expect(th.style.minWidth).toBe("260px");
+  expect(th.style.maxWidth).toBe("260px");
 });
 
 test("leaving edit mode releases the frozen width again", () => {
@@ -92,12 +96,14 @@ test("leaving edit mode releases the frozen width again", () => {
   act(() => {
     startEditing(1, 1);
   });
-  expect(injectedStyles()).toContain("min-width:260px");
+  expect(headerWidths()).toEqual(["40px", "260px"]);
 
   act(() => {
     container
       .querySelector(".grid-db-editor")!
       .dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
   });
-  expect(injectedStyles()).not.toContain("min-width:260px");
+  // Handed back as it was — an app may be driving the widths itself.
+  expect(headerWidths()).toEqual(["", ""]);
+  expect(container.querySelectorAll("thead th")[1].getAttribute("style")).toBeNull();
 });
