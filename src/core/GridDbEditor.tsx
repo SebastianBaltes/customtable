@@ -23,6 +23,7 @@ import {
   selectionTsvLayout,
 } from "./selectionRanges";
 import { forceUpdateCursorRect } from "./directDomUpdateForCursor";
+import { focusLeftDocument } from "./focusLeftDocument";
 import classNames from "./classNames";
 import { ContextMenu } from "./ContextMenu";
 import { RowTable } from "./RowTable";
@@ -81,9 +82,7 @@ interface IProps {
    * cells actually written; 0 means nothing was applied and no undo state was
    * pushed.
    */
-  applyCellValuesRef: React.MutableRefObject<
-    ((changes: CellValueChange[]) => number) | null
-  >;
+  applyCellValuesRef: React.MutableRefObject<((changes: CellValueChange[]) => number) | null>;
   numberOfStickyColums: number;
 
   // --- Controlled filter / sort ---
@@ -360,9 +359,7 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
 
             // Text filter: substring match
             if (Array.isArray(cellVal)) {
-              return cellVal.some((v) =>
-                String(v).toLowerCase().includes(filterVal.toLowerCase()),
-              );
+              return cellVal.some((v) => String(v).toLowerCase().includes(filterVal.toLowerCase()));
             }
             return String(cellVal).toLowerCase().includes(filterVal.toLowerCase());
           }),
@@ -405,7 +402,8 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       gridDbEditorRef,
     } = useCursor(displayRows, columns, numberOfStickyColums, onSelectionChange);
 
-    const { frozenCss, handleFocusCapture, handleBlurCapture, onSortInitiated } = useColumnWidthAnimation(tableRef, viewportRef, tableId);
+    const { frozenCss, handleFocusCapture, handleBlurCapture, onSortInitiated } =
+      useColumnWidthAnimation(tableRef, viewportRef, tableId);
 
     const { stickyColumnsLefts } = useStickyColumnsLeftChecker(
       tableRef,
@@ -542,7 +540,9 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     // Expose triggerShake to parent via ref
     React.useEffect(() => {
       if (shakeRef) shakeRef.current = triggerShake;
-      return () => { if (shakeRef) shakeRef.current = null; };
+      return () => {
+        if (shakeRef) shakeRef.current = null;
+      };
     }, [shakeRef, triggerShake]);
 
     const withAsyncRollback = React.useCallback(
@@ -924,7 +924,16 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       if (focusNewRowOnCreate) pendingFocusRef.current = { row: newRow, attempts: 0 };
       changeRows(newRows);
       if (onCreateRows) withAsyncRollback(snapshot, () => onCreateRows([newRow]));
-    }, [rows, columns, originalIndices, focusNewRowOnCreate, changeRows, undoRedo, onCreateRows, withAsyncRollback]);
+    }, [
+      rows,
+      columns,
+      originalIndices,
+      focusNewRowOnCreate,
+      changeRows,
+      undoRedo,
+      onCreateRows,
+      withAsyncRollback,
+    ]);
 
     const handleInsertRowBelow = React.useCallback(() => {
       // Bottommost selected row across all areas.
@@ -940,7 +949,16 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
       if (focusNewRowOnCreate) pendingFocusRef.current = { row: newRow, attempts: 0 };
       changeRows(newRows);
       if (onCreateRows) withAsyncRollback(snapshot, () => onCreateRows([newRow]));
-    }, [rows, columns, originalIndices, focusNewRowOnCreate, changeRows, undoRedo, onCreateRows, withAsyncRollback]);
+    }, [
+      rows,
+      columns,
+      originalIndices,
+      focusNewRowOnCreate,
+      changeRows,
+      undoRedo,
+      onCreateRows,
+      withAsyncRollback,
+    ]);
 
     // --- Row deletion ---
     const handleDeleteRows = React.useCallback(() => {
@@ -1015,7 +1033,13 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
     // --- Fill drag ---
     // --- Search & Replace ---
     const handleSearchReplace = useCallback(
-      ({ search, replace, scope, matchCase, useRegex }: {
+      ({
+        search,
+        replace,
+        scope,
+        matchCase,
+        useRegex,
+      }: {
         search: string;
         replace: string;
         scope: "all" | "selection";
@@ -1038,7 +1062,8 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
         const inScope = (r: number, c: number) =>
           scope !== "selection" || isCellSelected(boxes, r, c);
         const rowStart = scope === "selection" ? selectionBounds?.startRow ?? 0 : 0;
-        const rowEnd = scope === "selection" ? selectionBounds?.endRow ?? -1 : displayRows.length - 1;
+        const rowEnd =
+          scope === "selection" ? selectionBounds?.endRow ?? -1 : displayRows.length - 1;
         const colStart = scope === "selection" ? selectionBounds?.startCol ?? 0 : 0;
         const colEnd = scope === "selection" ? selectionBounds?.endCol ?? -1 : columns.length - 1;
 
@@ -1084,7 +1109,19 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
 
         return count;
       },
-      [rows, displayRows, columns, originalIndices, getSelectionRange, getRowKey, cellMeta, undoRedo, changeRows, onUpdateRows, withAsyncRollback],
+      [
+        rows,
+        displayRows,
+        columns,
+        originalIndices,
+        getSelectionRange,
+        getRowKey,
+        cellMeta,
+        undoRedo,
+        changeRows,
+        onUpdateRows,
+        withAsyncRollback,
+      ],
     );
 
     const handleFillDragComplete = React.useCallback(() => {
@@ -1473,6 +1510,12 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
             if (contextMenuVisibleRef.current) return;
             if (document.querySelector(".editor-dialog-overlay")) return;
             if (searchReplaceOpen) return;
+            // Switching window/tab is not "leaving the grid": the browser hands
+            // the focus back to it on the way in, and a dropped selection would
+            // make the onFocus above re-seed the cursor at (0,0) — scrolling the
+            // viewport up there. The selection stays, so the return lands in the
+            // cell it left from.
+            if (focusLeftDocument(e)) return;
             if (!e.currentTarget.contains(e.relatedTarget as Node)) {
               setCursorRef({
                 editing: false,
@@ -1492,12 +1535,20 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
             <style dangerouslySetInnerHTML={{ __html: stickyColumnsLefts.css }} />
           )}
           {columnWidths && Object.keys(columnWidths).length > 0 && (
-            <style dangerouslySetInnerHTML={{ __html: columns
-              .map((col, i) => columnWidths[col.name] != null
-                ? `#${tableId} th:nth-child(${i+1}),#${tableId} td:nth-child(${i+1}){max-width:${columnWidths[col.name]}px;overflow:hidden}`
-                : "")
-              .filter(Boolean)
-              .join("\n") }} />
+            <style
+              dangerouslySetInnerHTML={{
+                __html: columns
+                  .map((col, i) =>
+                    columnWidths[col.name] != null
+                      ? `#${tableId} th:nth-child(${i + 1}),#${tableId} td:nth-child(${
+                          i + 1
+                        }){max-width:${columnWidths[col.name]}px;overflow:hidden}`
+                      : "",
+                  )
+                  .filter(Boolean)
+                  .join("\n"),
+              }}
+            />
           )}
           <div
             ref={viewportRef}
@@ -1506,7 +1557,9 @@ export const GridDbEditor: React.FC<GridDbEditorProps> = React.memo(
               // Don't show custom context menu when a dialog is open (but allow browser default inside dialogs)
               if (searchReplaceOpen || document.querySelector(".editor-dialog-overlay")) {
                 const target = event.target as HTMLElement;
-                const isInsideDialog = target.closest(".editor-dialog-overlay, .search-replace-dialog");
+                const isInsideDialog = target.closest(
+                  ".editor-dialog-overlay, .search-replace-dialog",
+                );
                 if (!isInsideDialog) {
                   event.preventDefault();
                 }
